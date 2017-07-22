@@ -90,25 +90,25 @@ It allows you to express SQL queries of almost any complexity (at least construc
 
 It works with any number of databases.
 
-It implements `DataMapper`_ pattern, which means classes of models free of metadata and database access logic, as is typical for `ActiveRecord`_.
+It implements `DataMapper`_ pattern, which means classes of models free of metadata and database access logic, as if it were `ActiveRecord`_.
 Model class can be inherited from the bare class `object`_.
 
 Due to `Identity Map`_, `Storm ORM`_ is very fast.
-On the page of one of the projects, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time was reduced by half, from 0.48 seconds to 0.24 seconds.
-The number of queries to the database reduced from 88 to 7.
-Identity Map also makes utilities of the prefetch_related() type unnecessary, but only for foreign keys referencing the primary key.
+On the page of one project, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM had been reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time had been reduced by half, from 0.48 seconds to 0.24 seconds.
+The number of queries to the database had been reduced from 88 to 7.
+Identity Map makes also utilities like prefetch_related() unnecessary, but only for foreign keys referencing the primary key.
 
 It is very pleasant to work with the code Storm ORM.
-Here you can find a lot of interesting techniques for code optimization.
+Here you can find a lot of interesting techniques to achieve high performance.
 We must pay tribute to the developers Storm ORM, - they made a real intellectual feat.
-All the code is carefully thought out.
-Any attempt to improve it usually only convince the correctness of existing solutions.
+whole code is carefully thought out.
+Any attempt to improve its code usually only convince us of the correctness of existing solutions.
 
-Storm ORM correctly processes transactions.
-There can not be found thoughtless reconnect when connection is lost during an incomplete transaction.
-The connection can be restored only if it can not affect the integrity of the data.
+Storm ORM handles transactions correctly.
+You can't found find thoughtless reconnect here when connection is lost during an incomplete transaction.
+The connection could be restored only if it could not affect the integrity of the data.
 The transactions are implemented in two levels.
-In the case of transaction rollback, the state of objects in the memory is also rolled back.
+In the case of transaction rollback, the state of objects in the memory will be also rolled back.
 
 Storm ORM is able to compile a selection criteria to the collection of filters of Python-code, which can be applied to any collection of objects in the memory.
 This feature allows you to create a dummy mapper for tests.
@@ -117,15 +117,15 @@ To select objects from ``Store()`` by primary key (even from a Foreign Key) you 
 Storm ORM does not convert values immediately, at the time of loading the object.
 Instead, it simply wraps the value in the wrapper (adapter) - the Variable class.
 
-It allows you:
+This approach allows you:
 
 - Control the assignment and access policy.
-- Optimize resource consumption (call-by-need lazy conversion which delays the conversion until its value is needed).
-- Keep the initial value of each attribute, observe its changes, perform rollback at the object level.
+- Optimize resource consumption (call-by-need lazy conversion will delay the action until the value is needed).
+- Keep the initial value of each attribute, observe the changes, perform rollback at the object level.
 - Watch for value changes (the observer) and update related objects.
 - Synchronize the value of the object with the value of the database record.
 - Implement "Defensive Programming" and prevent assignment of invalid value. You are not able to forget validation before to save anymore. This solves "G22: Make Logical Dependencies Physical" [#fncc]_ and "G31: Hidden Temporal Couplings" [#fncc]_.
-- Validate the value only when assigning it from the outside, but not from the database. This eliminates the problem of the impossibility of re-saving the objects when validation rules are changed.
+- Validate the value only when it is assigned from the outside, but not from the database. This eliminates the problem of the impossibility of re-saving the objects when validation rules are changed.
 - Convert the value to the required representation, depending on the context of the usage (Python or DB).
 
 The last one, however, has some nuances.
@@ -143,7 +143,7 @@ And what happens if we pass such a criterion: ``Func('SOME_FUNCTION_NAME', Autho
 To be fair, Storm ORM made a major breakthrough in ordering the conversion issue, compared to most other ORMs, and created the right grounding to create the ideal conversion.
 If you follow simple rules, converters will work perfectly correctly (to achieve this, you must pass the `Variable() instance  <http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/store.py#L597>`__ to the selection criteria, i.e. wrapped value).
 Many other ORMs do not have this technical capability at all, because they perform the conversion when the object is created.
-In other words, the converters of other ORMs are actually tied to the type of values and not to a particular attribute (as declared), which makes them virtually useless, because this `responsibility already is imposed for the connector <http://initd.org/psycopg/docs/advanced.html#adapting-new-python-types-to-sql-syntax>`__.
+In other words, the converters of other ORMs are actually tied to the type of value and not to a particular attribute (as the model definition declares this), which makes them virtually useless, because this `responsibility already is imposed for the connector <http://initd.org/psycopg/docs/advanced.html#adapting-new-python-types-to-sql-syntax>`__.
 
 Storm ORM does not impose you a way to obtain a connection.
 You `can easily <http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/database.py#L502>`__ share a connection between two ORMs or use `some special way <http://eventlet.net/doc/modules/db_pool.html>`__ of getting a connection.
@@ -152,10 +152,10 @@ Storm ORM `does not oblige <https://lists.ubuntu.com/archives/storm/2009-June/00
 This corresponds to the `DRY`_ principle, since the schema already exists in the database.
 Also, complete control of the database schema `can be achieved easier by the facilities of the database <https://blogs.gnome.org/jamesh/2007/09/28/orm-schema-generation/>`__.
 Usually large projects, which use replication and sharding, use own tools to control the database schema.
-You also able to use package `storm.schema <http://bazaar.launchpad.net/~storm/storm/trunk/files/477/storm/schema/>`__ which is the part of Storm ORM.
+You also able to use package `storm.schema <http://bazaar.launchpad.net/~storm/storm/trunk/files/477/storm/schema/>`__ from Storm ORM.
 `Unlike to SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_1/core/reflection.html>`__, Storm ORM does not provide automatical loading of undeclared properties of model from the DB.
-It can be implemented easily, but there is two points. First, you have to perform DB-query at the level of initialization of the code of module. Second, it's not enough anymore to browse source code to understand the schema of model.
-Also, different types of Python can use the same data-type of DB, thus, DB schema is not enough to deplare model classes correctly.
+It can be implemented easily, but there is two points. First, you have to perform DB-query at the level of initialization of the code of module. Second, it's not enough to browse source code to understand the schema of model anymore.
+Also, some different types of Python can have the single data-type of DB, thus, the DB schema is not enough to declare model classes correctly.
 
 Other advanteges you can see at the `Tutorial <https://storm.canonical.com/Tutorial>`__ and `Manual <https://storm.canonical.com/Manual>`__
 
@@ -165,8 +165,8 @@ Other advanteges you can see at the `Tutorial <https://storm.canonical.com/Tutor
 About SQLAlchemy
 ================
 
-Any `ORM could be good <http://aosabook.org/en/sqlalchemy.html>`__, if it `implements principles <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ of popular book «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
-Storm ORM contrasts with simplicity against the background of SQLAlchemy, just like VIM on the background of Emacs, or jQuery on the background of Dojo.
+Any `ORM is good <http://aosabook.org/en/sqlalchemy.html>`__, if it `implements principles <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ of popular book «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
+Storm ORM is distinguished by its simplicity from SQLAlchemy, like VIM from Emacs, or jQuery from Dojo.
 Ideologically, they have a lot in common, I would say that the Storm ORM is a simplified version of SQLAlchemy.
 You would have studied the source code of Storm ORM much faster than introduction of tutorial of SQLAlchemy.
 You can extend and adapt Storm ORM for your requirements much faster than you would have understood the way to implement it for SQLAlchemy.
@@ -181,27 +181,27 @@ Otherwise, SQLAlchemy becomes preferable, even despite the level of complexity, 
 Disadvantages
 =============
 
-Еhere were three cases in my practice, when I had to add to Storm ORM a few features, which already are implemented by SQLAlchemy (or its community).
+There were three cases in my practice, when I had to add a few features to Storm ORM, which already was implemented by SQLAlchemy (or its community).
 
 1. `Bulk inserting of objects <http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects>`__, moreover, using the clause ON DUPLICATE KEY UPDATE.
 2. Adaptation of `SQL Builder for interface of Django ORM <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
 3. Support the pattern `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
 
 Storm ORM `does not use thread locking <https://bugs.launchpad.net/storm/+bug/1412845>`__ for lazy modification of critical global metadata.
-This is not a problem, and can be easily solved (enough to fulfill them immediately, under the lock).
+This is not a problem, and can be easily solved (it's enough to fulfill them immediately, under the lock).
 But you have to know this, otherwise your server will have gone down for highly concurrent threads.
 
 Most likely, you would have to extend Storm ORM.
 The possibilities of SQL-builder should be extended.
-Utils prefetch_related() for OneToMany() would be useful.
+Utils like prefetch_related() for OneToMany() would be useful.
 Probably, you may need to implement a cascade deletion using ORM, not a database.
 And implement an object serializer.
-Storm ORM does not implement the topological sort, but allows it to easily implement.
+Storm ORM does not implement the topological sort, but allows you to implement it easily.
 
-Class Store (which is the implementation of pattern Repository) combines also the responsibility of DataMapper_ and it's not so well.
+Class Store (which is an implementation of pattern Repository) combines also the responsibility of DataMapper_ and it's not so well.
 For example, this creates a problem for implementing the pattern `Class Table Inheritance`_.
-Storm ORM core developers advice `to replace Inheritance with Delegation <https://storm.canonical.com/Infoheritance>`__ (However, postgresql `supports inheritance <postgresql inheritance_>`__ itself (`DDL <postgresql inheritance DDL_>`__)).
-The lack of a dedicated class for DataMapper forces you to clutter the domain model with `service logic <https://storm.canonical.com/Manual#A__storm_pre_flush__>`__.
+Storm ORM's core developers advice `to replace Inheritance with Delegation <https://storm.canonical.com/Infoheritance>`__ (However, postgresql `supports inheritance <postgresql inheritance_>`__ itself (`DDL <postgresql inheritance DDL_>`__)).
+The lack of the dedicated class for DataMapper forces you to clutter the domain model with `service logic <https://storm.canonical.com/Manual#A__storm_pre_flush__>`__.
 
 .. Дескрипторы связей Storm ORM запрашивают store у объекта.
    Таким образом, если объект приаттачен к фиктивному стору, то и связи он будет искать в фиктивном сторе.
@@ -243,7 +243,8 @@ a: If you migrated at least one library in Python3, then you understand that thi
 The command ``2to3`` does 95% of work.
 The only significant problem is the migration of the C-expansion.
 Storm ORM is fast enough even without the C-expansion, and does not lose much in performance.
-You can find the C-expansion for Python3 `here <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__)
+You can find the C-expansion for Python3 `here <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__).
+There is also yet another `py3 branch <https://code.launchpad.net/~hackedbellini/storm/py3>`__.
 
 
 *q: How t use Storm ORM with partial Raw-SQL*

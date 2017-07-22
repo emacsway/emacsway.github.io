@@ -134,36 +134,36 @@ But they can be described as &#8220;polishing&#8221;.</p>
 <p>Storm ORM supports composite keys and relations (after Django ORM I sighed with relief).</p>
 <p>It allows you to express SQL queries of almost any complexity (at least constructively).</p>
 <p>It works with any number of databases.</p>
-<p>It implements <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern, which means classes of models free of metadata and database access logic, as is typical for <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
+<p>It implements <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern, which means classes of models free of metadata and database access logic, as if it were <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
 Model class can be inherited from the bare class <a class="reference external" href="https://docs.python.org/2/library/functions.html#object">object</a>.</p>
 <p>Due to <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, <a class="reference external" href="https://storm.canonical.com/">Storm ORM</a> is very fast.
-On the page of one of the projects, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time was reduced by half, from 0.48 seconds to 0.24 seconds.
-The number of queries to the database reduced from 88 to 7.
-Identity Map also makes utilities of the prefetch_related() type unnecessary, but only for foreign keys referencing the primary key.</p>
+On the page of one project, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM had been reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time had been reduced by half, from 0.48 seconds to 0.24 seconds.
+The number of queries to the database had been reduced from 88 to 7.
+Identity Map makes also utilities like prefetch_related() unnecessary, but only for foreign keys referencing the primary key.</p>
 <p>It is very pleasant to work with the code Storm ORM.
-Here you can find a lot of interesting techniques for code optimization.
+Here you can find a lot of interesting techniques to achieve high performance.
 We must pay tribute to the developers Storm ORM, - they made a real intellectual feat.
-All the code is carefully thought out.
-Any attempt to improve it usually only convince the correctness of existing solutions.</p>
-<p>Storm ORM correctly processes transactions.
-There can not be found thoughtless reconnect when connection is lost during an incomplete transaction.
-The connection can be restored only if it can not affect the integrity of the data.
+whole code is carefully thought out.
+Any attempt to improve its code usually only convince us of the correctness of existing solutions.</p>
+<p>Storm ORM handles transactions correctly.
+You can&#8217;t found find thoughtless reconnect here when connection is lost during an incomplete transaction.
+The connection could be restored only if it could not affect the integrity of the data.
 The transactions are implemented in two levels.
-In the case of transaction rollback, the state of objects in the memory is also rolled back.</p>
+In the case of transaction rollback, the state of objects in the memory will be also rolled back.</p>
 <p>Storm ORM is able to compile a selection criteria to the collection of filters of Python-code, which can be applied to any collection of objects in the memory.
 This feature allows you to create a dummy mapper for tests.
 To select objects from <code class="docutils literal"><span class="pre">Store()</span></code> by primary key (even from a Foreign Key) you don&#8217;t have to do anything, because due to <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> pattern you don&#8217;t have to send objects to the database, thus you are able to use (partially) <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> as dummy mapper.</p>
 <p>Storm ORM does not convert values immediately, at the time of loading the object.
 Instead, it simply wraps the value in the wrapper (adapter) - the Variable class.</p>
-<p>It allows you:</p>
+<p>This approach allows you:</p>
 <ul class="simple">
 <li>Control the assignment and access policy.</li>
-<li>Optimize resource consumption (call-by-need lazy conversion which delays the conversion until its value is needed).</li>
-<li>Keep the initial value of each attribute, observe its changes, perform rollback at the object level.</li>
+<li>Optimize resource consumption (call-by-need lazy conversion will delay the action until the value is needed).</li>
+<li>Keep the initial value of each attribute, observe the changes, perform rollback at the object level.</li>
 <li>Watch for value changes (the observer) and update related objects.</li>
 <li>Synchronize the value of the object with the value of the database record.</li>
 <li>Implement &#8220;Defensive Programming&#8221; and prevent assignment of invalid value. You are not able to forget validation before to save anymore. This solves &#8220;G22: Make Logical Dependencies Physical&#8221; <a class="footnote-reference" href="#fncc" id="id2">[1]</a> and &#8220;G31: Hidden Temporal Couplings&#8221; <a class="footnote-reference" href="#fncc" id="id3">[1]</a>.</li>
-<li>Validate the value only when assigning it from the outside, but not from the database. This eliminates the problem of the impossibility of re-saving the objects when validation rules are changed.</li>
+<li>Validate the value only when it is assigned from the outside, but not from the database. This eliminates the problem of the impossibility of re-saving the objects when validation rules are changed.</li>
 <li>Convert the value to the required representation, depending on the context of the usage (Python or DB).</li>
 </ul>
 <p>The last one, however, has some nuances.</p>
@@ -179,23 +179,23 @@ And what happens if we pass such a criterion: <code class="docutils literal"><sp
 <p>To be fair, Storm ORM made a major breakthrough in ordering the conversion issue, compared to most other ORMs, and created the right grounding to create the ideal conversion.
 If you follow simple rules, converters will work perfectly correctly (to achieve this, you must pass the <a class="reference external" href="http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/store.py#L597">Variable() instance</a> to the selection criteria, i.e. wrapped value).
 Many other ORMs do not have this technical capability at all, because they perform the conversion when the object is created.
-In other words, the converters of other ORMs are actually tied to the type of values and not to a particular attribute (as declared), which makes them virtually useless, because this <a class="reference external" href="http://initd.org/psycopg/docs/advanced.html#adapting-new-python-types-to-sql-syntax">responsibility already is imposed for the connector</a>.</p>
+In other words, the converters of other ORMs are actually tied to the type of value and not to a particular attribute (as the model definition declares this), which makes them virtually useless, because this <a class="reference external" href="http://initd.org/psycopg/docs/advanced.html#adapting-new-python-types-to-sql-syntax">responsibility already is imposed for the connector</a>.</p>
 <p>Storm ORM does not impose you a way to obtain a connection.
 You <a class="reference external" href="http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/database.py#L502">can easily</a> share a connection between two ORMs or use <a class="reference external" href="http://eventlet.net/doc/modules/db_pool.html">some special way</a> of getting a connection.</p>
 <p>Storm ORM <a class="reference external" href="https://lists.ubuntu.com/archives/storm/2009-June/001010.html">does not oblige</a> to declare a database schema in the code.
 This corresponds to the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle, since the schema already exists in the database.
 Also, complete control of the database schema <a class="reference external" href="https://blogs.gnome.org/jamesh/2007/09/28/orm-schema-generation/">can be achieved easier by the facilities of the database</a>.
 Usually large projects, which use replication and sharding, use own tools to control the database schema.
-You also able to use package <a class="reference external" href="http://bazaar.launchpad.net/~storm/storm/trunk/files/477/storm/schema/">storm.schema</a> which is the part of Storm ORM.
+You also able to use package <a class="reference external" href="http://bazaar.launchpad.net/~storm/storm/trunk/files/477/storm/schema/">storm.schema</a> from Storm ORM.
 <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/core/reflection.html">Unlike to SQLAlchemy</a>, Storm ORM does not provide automatical loading of undeclared properties of model from the DB.
-It can be implemented easily, but there is two points. First, you have to perform DB-query at the level of initialization of the code of module. Second, it&#8217;s not enough anymore to browse source code to understand the schema of model.
-Also, different types of Python can use the same data-type of DB, thus, DB schema is not enough to deplare model classes correctly.</p>
+It can be implemented easily, but there is two points. First, you have to perform DB-query at the level of initialization of the code of module. Second, it&#8217;s not enough to browse source code to understand the schema of model anymore.
+Also, some different types of Python can have the single data-type of DB, thus, the DB schema is not enough to declare model classes correctly.</p>
 <p>Other advanteges you can see at the <a class="reference external" href="https://storm.canonical.com/Tutorial">Tutorial</a> and <a class="reference external" href="https://storm.canonical.com/Manual">Manual</a></p>
 </div>
 <div class="section" id="about-sqlalchemy">
 <span id="about-sqlalchemy-en"></span><h1><a class="toc-backref" href="#id35">About SQLAlchemy</a><a class="headerlink" href="#about-sqlalchemy" title="Permalink to this headline">¶</a></h1>
-<p>Any <a class="reference external" href="http://aosabook.org/en/sqlalchemy.html">ORM could be good</a>, if it <a class="reference external" href="http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/">implements principles</a> of popular book «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id4">[3]</a>.
-Storm ORM contrasts with simplicity against the background of SQLAlchemy, just like VIM on the background of Emacs, or jQuery on the background of Dojo.
+<p>Any <a class="reference external" href="http://aosabook.org/en/sqlalchemy.html">ORM is good</a>, if it <a class="reference external" href="http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/">implements principles</a> of popular book «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id4">[3]</a>.
+Storm ORM is distinguished by its simplicity from SQLAlchemy, like VIM from Emacs, or jQuery from Dojo.
 Ideologically, they have a lot in common, I would say that the Storm ORM is a simplified version of SQLAlchemy.
 You would have studied the source code of Storm ORM much faster than introduction of tutorial of SQLAlchemy.
 You can extend and adapt Storm ORM for your requirements much faster than you would have understood the way to implement it for SQLAlchemy.</p>
@@ -205,25 +205,25 @@ Otherwise, SQLAlchemy becomes preferable, even despite the level of complexity, 
 </div>
 <div class="section" id="disadvantages">
 <span id="storm-orm-disadvantages-en"></span><h1><a class="toc-backref" href="#id36">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h1>
-<p>Еhere were three cases in my practice, when I had to add to Storm ORM a few features, which already are implemented by SQLAlchemy (or its community).</p>
+<p>There were three cases in my practice, when I had to add a few features to Storm ORM, which already was implemented by SQLAlchemy (or its community).</p>
 <ol class="arabic simple">
 <li><a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects">Bulk inserting of objects</a>, moreover, using the clause ON DUPLICATE KEY UPDATE.</li>
 <li>Adaptation of <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">SQL Builder for interface of Django ORM</a>.</li>
 <li>Support the pattern <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance">Concrete Table Inheritance</a></li>
 </ol>
 <p>Storm ORM <a class="reference external" href="https://bugs.launchpad.net/storm/+bug/1412845">does not use thread locking</a> for lazy modification of critical global metadata.
-This is not a problem, and can be easily solved (enough to fulfill them immediately, under the lock).
+This is not a problem, and can be easily solved (it&#8217;s enough to fulfill them immediately, under the lock).
 But you have to know this, otherwise your server will have gone down for highly concurrent threads.</p>
 <p>Most likely, you would have to extend Storm ORM.
 The possibilities of SQL-builder should be extended.
-Utils prefetch_related() for OneToMany() would be useful.
+Utils like prefetch_related() for OneToMany() would be useful.
 Probably, you may need to implement a cascade deletion using ORM, not a database.
 And implement an object serializer.
-Storm ORM does not implement the topological sort, but allows it to easily implement.</p>
-<p>Class Store (which is the implementation of pattern Repository) combines also the responsibility of <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> and it&#8217;s not so well.
+Storm ORM does not implement the topological sort, but allows you to implement it easily.</p>
+<p>Class Store (which is an implementation of pattern Repository) combines also the responsibility of <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> and it&#8217;s not so well.
 For example, this creates a problem for implementing the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a>.
-Storm ORM core developers advice <a class="reference external" href="https://storm.canonical.com/Infoheritance">to replace Inheritance with Delegation</a> (However, postgresql <a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-inheritance.html">supports inheritance</a> itself (<a class="reference external" href="http://www.postgresql.org/docs/9.4/static/ddl-inherit.html">DDL</a>)).
-The lack of a dedicated class for DataMapper forces you to clutter the domain model with <a class="reference external" href="https://storm.canonical.com/Manual#A__storm_pre_flush__">service logic</a>.</p>
+Storm ORM&#8217;s core developers advice <a class="reference external" href="https://storm.canonical.com/Infoheritance">to replace Inheritance with Delegation</a> (However, postgresql <a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-inheritance.html">supports inheritance</a> itself (<a class="reference external" href="http://www.postgresql.org/docs/9.4/static/ddl-inherit.html">DDL</a>)).
+The lack of the dedicated class for DataMapper forces you to clutter the domain model with <a class="reference external" href="https://storm.canonical.com/Manual#A__storm_pre_flush__">service logic</a>.</p>
 </div>
 <div class="section" id="about-ambiguous">
 <span id="storm-orm-ambiguities-en"></span><h1><a class="toc-backref" href="#id37">About ambiguous</a><a class="headerlink" href="#about-ambiguous" title="Permalink to this headline">¶</a></h1>
@@ -249,7 +249,8 @@ From now on you can get the second object by the repository.</p>
 The command <code class="docutils literal"><span class="pre">2to3</span></code> does 95% of work.
 The only significant problem is the migration of the C-expansion.
 Storm ORM is fast enough even without the C-expansion, and does not lose much in performance.
-You can find the C-expansion for Python3 <a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c">here</a> (<a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438">diff</a>)</p>
+You can find the C-expansion for Python3 <a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c">here</a> (<a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438">diff</a>).
+There is also yet another <a class="reference external" href="https://code.launchpad.net/~hackedbellini/storm/py3">py3 branch</a>.</p>
 <p><em>q: How t use Storm ORM with partial Raw-SQL</em></p>
 <p>a: It&#8217;s better to avoid to do it, and extend the SQL-builder. But if you really need:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">storm.expr</span> <span class="k">import</span> <span class="n">SQL</span>

@@ -247,7 +247,8 @@ Storm ORM не реализует топологическую сортиров�
 95% работы делает команда <code class="docutils literal"><span class="pre">2to3</span></code>.
 Единственный вопрос, который может иметь значение, - это миграция Си-расширения.
 Впрочем, даже без него Storm ORM работает достаточно быстро, и не сильно теряет в производительности.
-Найти Си-расширение под Python3 можно <a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c">здесь</a> (<a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438">diff</a>)</p>
+Найти Си-расширение под Python3 можно <a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c">здесь</a> (<a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438">diff</a>).
+Есть еще один <a class="reference external" href="https://code.launchpad.net/~hackedbellini/storm/py3">py3 branch</a>.</p>
 <p><em>q: Как использовать Storm ORM с фрагментами Raw-SQL</em></p>
 <p>a: Вообще-то так лучше не делать. Лучше расширить SQL-builder. Но если очень надо:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">storm.expr</span> <span class="k">import</span> <span class="n">SQL</span>
