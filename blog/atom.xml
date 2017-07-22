@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">@emacsway's blog</title>
+  <id>https://emacsway.github.io/blog/atom.xml</id>
+  <updated>2017-07-17T00:00:00Z</updated>
+  <link href="https://emacsway.github.io/" />
+  <link href="https://emacsway.github.io/blog/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.3">ABlog</generator>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Проектирование Сервисных Слоев</title>
+    <id>https://emacsway.github.io/ru/service-layer/</id>
+    <updated>2017-07-17T00:00:00Z</updated>
+    <published>2017-07-17T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/service-layer/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Ошибки проектирования Сервисных Слоев (&lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/eaaCatalog/serviceLayer.html&quot;&gt;Service Layer&lt;/a&gt;) широко распространены.
+Эта статья написана в надежде несколько улучшить это положение.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">How to quickly develop high-quality code. Team work.</title>
+    <id>https://emacsway.github.io/en/how-to-quickly-develop-high-quality-code/</id>
+    <updated>2017-07-10T00:00:00Z</updated>
+    <published>2017-07-10T00:00:00Z</published>
+    <link href="https://emacsway.github.io/en/how-to-quickly-develop-high-quality-code/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;This article is about how to write high-quality code quickly.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Как добавить новые операторы для Python выражений</title>
+    <id>https://emacsway.github.io/ru/how-to-add-new-operators-for-python-expression/</id>
+    <updated>2016-09-08T00:00:00Z</updated>
+    <published>2016-09-08T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/how-to-add-new-operators-for-python-expression/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Библиотека &lt;a class=&quot;reference external&quot; href=&quot;https://bitbucket.org/emacsway/sqlbuilder&quot;&gt;sqlbuilder&lt;/a&gt; использует перегрузку операторов языка программирования Python для создания критериев выборки, что позволяет транслировать операторы языка программирования в операторы SQL.
+К сожалению, Python поддерживает не так много операторов, как PostgreSQL, например, таких операторов как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;#64;&amp;gt;&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;amp;&amp;gt;&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;-|-&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;#64;-&amp;#64;&lt;/span&gt;&lt;/code&gt; и т.д.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Usefull links</title>
+    <id>https://emacsway.github.io/en/useful-links/</id>
+    <updated>2016-09-06T00:00:00Z</updated>
+    <published>2016-08-29T00:00:00Z</published>
+    <link href="https://emacsway.github.io/en/useful-links/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Here is the list of articles and sites that I find interesting. This page is regularly updated.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Искусство воевать</title>
+    <id>https://emacsway.github.io/ru/martial-way/</id>
+    <updated>2016-08-21T00:00:00Z</updated>
+    <published>2016-08-21T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/martial-way/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Читая книгу «Code Complete» Steve McConnell, я обнаружил интересное сходство с военным искусством.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">О проблемах инвалидации кэша. Тегирование кэша.</title>
+    <id>https://emacsway.github.io/ru/cache-dependencies/</id>
+    <updated>2016-11-10T00:00:00Z</updated>
+    <published>2016-05-21T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/cache-dependencies/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;О моем опыте решения проблем инвалидации кэша, и о принципах работы библиотеки &lt;a class=&quot;reference external&quot; href=&quot;https://bitbucket.org/emacsway/cache-dependencies&quot;&gt;cache-dependencies&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">About problems of cache invalidation. Cache tagging.</title>
+    <id>https://emacsway.github.io/en/cache-dependencies/</id>
+    <updated>2016-11-10T00:00:00Z</updated>
+    <published>2016-05-21T00:00:00Z</published>
+    <link href="https://emacsway.github.io/en/cache-dependencies/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;About my experience of solving problems of cache invalidation and principles of the library &lt;a class=&quot;reference external&quot; href=&quot;https://bitbucket.org/emacsway/cache-dependencies&quot;&gt;cache-dependencies&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Построение Raw-SQL cредствами Storm-ORM</title>
+    <id>https://emacsway.github.io/ru/build-raw-sql-by-storm-orm/</id>
+    <updated>2015-12-08T00:00:00Z</updated>
+    <published>2015-12-08T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/build-raw-sql-by-storm-orm/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Возникло у меня желание попробовать построить чистый, сырой запрос (Raw-SQL) с помощью &lt;a class=&quot;reference external&quot; href=&quot;http://bazaar.launchpad.net/~storm/storm/trunk/view/head:/storm/expr.py&quot;&gt;storm.expr&lt;/a&gt; для одного самописного специфического маппера, сочетающего в себе паттерны &lt;a class=&quot;reference external&quot; href=&quot;http://martinfowler.com/eaaCatalog/singleTableInheritance.html&quot;&gt;Single Table Inheritance&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model&quot;&gt;Entity Attribute Value&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">О книге &quot;Refactoring&quot; by M.Fowler</title>
+    <id>https://emacsway.github.io/ru/refactoring-book/</id>
+    <updated>2015-11-01T00:00:00Z</updated>
+    <published>2015-11-01T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/refactoring-book/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Хочу ответить на уже ставший популярным вопрос, нужно ли читать
+«Refactoring: Improving the Design of Existing Code» &lt;a class=&quot;footnote-reference&quot; href=&quot;#fnr&quot; id=&quot;id1&quot;&gt;[1]&lt;/a&gt;
+если уже прочитал
+«Clean Code: A Handbook of Agile Software Craftsmanship» &lt;a class=&quot;footnote-reference&quot; href=&quot;#fncc&quot; id=&quot;id2&quot;&gt;[4]&lt;/a&gt;?&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Аргументы-флаги</title>
+    <id>https://emacsway.github.io/ru/flag-arguments/</id>
+    <updated>2015-10-22T00:00:00Z</updated>
+    <published>2015-10-22T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/flag-arguments/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;В главе &amp;#8220;Flag Arguments&amp;#8221; известной книги «Clean Code. A Handbook of Agile Software Craftsmanship.», Robert C. Martin советует не использовать аргументов-флагов, справедливо замечая, что это свидетельствует о том, что функция делает более одной операции.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Почему я выбираю Storm ORM для Python</title>
+    <id>https://emacsway.github.io/ru/storm-orm/</id>
+    <updated>2015-10-10T00:00:00Z</updated>
+    <published>2015-10-10T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/storm-orm/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;В промышленных решениях я чаще стал использовать &lt;a class=&quot;reference external&quot; href=&quot;https://en.wikipedia.org/wiki/KISS_principle&quot;&gt;KISS-style&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://storm.canonical.com/&quot;&gt;Storm ORM&lt;/a&gt;, и здесь я попытаюсь объяснить почему.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Why I prefer Storm ORM for Python</title>
+    <id>https://emacsway.github.io/en/storm-orm/</id>
+    <updated>2015-10-10T00:00:00Z</updated>
+    <published>2015-10-10T00:00:00Z</published>
+    <link href="https://emacsway.github.io/en/storm-orm/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;I began to use &lt;a class=&quot;reference external&quot; href=&quot;https://en.wikipedia.org/wiki/KISS_principle&quot;&gt;KISS&lt;/a&gt;-style &lt;a class=&quot;reference external&quot; href=&quot;https://storm.canonical.com/&quot;&gt;Storm ORM&lt;/a&gt; for enterprise applications, let me explain why.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Emacs autocomplete and Dependency injection (DI)</title>
+    <id>https://emacsway.github.io/ru/di-emacs-autocomplete/</id>
+    <updated>2016-02-16T00:00:00Z</updated>
+    <published>2015-10-09T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/di-emacs-autocomplete/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;В пассивных классах, которым &lt;a class=&quot;reference external&quot; href=&quot;http://www.martinfowler.com/articles/injection.html&quot;&gt;зависимости внедряет&lt;/a&gt; программа, возникают трудности с автокомплитом в &lt;a class=&quot;reference external&quot; href=&quot;https://www.gnu.org/software/emacs/&quot;&gt;emacs&lt;/a&gt; с &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jorgenschaefer/elpy&quot;&gt;elpy-mode&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

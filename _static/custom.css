@@ -1,0 +1,19 @@
+/* This file intentionally left blank. */
+
+div.body h1 {
+    font-size: 220%;
+}
+div.sphinxsidebarwrapper h1.logo {
+    font-size: 120%;
+}
+
+blockquote, q {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 1em 1em;
+	background: #eee;
+	border: solid 1px #ccc;
+	font-style: italic;
+/*	float:left;*/
+	width: 95%;
+}
