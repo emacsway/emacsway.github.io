@@ -59,7 +59,7 @@
             
   <div class="section" id="storm-orm-python">
 <h1><a class="toc-backref" href="#id39">Почему я выбираю Storm ORM для Python</a><a class="headerlink" href="#storm-orm-python" title="Permalink to this headline">¶</a></h1>
-<p>В промышленных решениях я чаще стал использовать <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">KISS-style</a> <a class="reference external" href="https://storm.canonical.com/">Storm ORM</a>, и здесь я попытаюсь объяснить почему.</p>
+<p>В промышленных решениях на Python я чаще стал использовать <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">KISS-style</a> <a class="reference external" href="https://storm.canonical.com/">Storm ORM</a>, и здесь я попытаюсь объяснить почему.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
@@ -477,18 +477,21 @@ freedom to design.
 Объект поведения начинает &#8220;завидовать&#8221; объекту данных &#8220;G14: Feature Envy&#8221; <a class="footnote-reference" href="#fncc" id="id30">[1]</a>, (&#8220;Feature Envy&#8221; <a class="footnote-reference" href="#fnr" id="id31">[2]</a>), обретая признаки &#8220;F2: Output Arguments&#8221; <a class="footnote-reference" href="#fncc" id="id32">[1]</a>, &#8220;Convert Procedural Design to Objects&#8221; <a class="footnote-reference" href="#fnr" id="id33">[2]</a>,  &#8220;Primitive Obsession&#8221; <a class="footnote-reference" href="#fnr" id="id34">[2]</a> и &#8220;Data Class&#8221; <a class="footnote-reference" href="#fnr" id="id35">[2]</a>.</p>
 <p>Рассуждения M.Fowler по этому поводу в статье &#8220;<a class="reference external" href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221;.</p>
 <blockquote>
-<div>&#8220;Многочисленность классов и методов иногда является результатом бессмысленного догматизма. В качестве примера можно привести стандарт кодирования, который требует создания интерфейса для каждого без исключения класса. Или разработчиков, настаивающих, что поля данных и поведение всегда должны быть разделены на классы данных и классы поведения. Избегайте подобных догм, а в своей работе руководствуйтесь более прагматичным подходом.&#8221;
-&#8220;High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted.&#8221;
-(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id36">[1]</a>)</div></blockquote>
+<div><p>&#8220;Многочисленность классов и методов иногда является результатом бессмысленного догматизма. В качестве примера можно привести стандарт кодирования, который требует создания интерфейса для каждого без исключения класса. Или разработчиков, настаивающих, что поля данных и поведение всегда должны быть разделены на классы данных и классы поведения. Избегайте подобных догм, а в своей работе руководствуйтесь более прагматичным подходом.&#8221;</p>
+<p>&#8220;High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted.&#8221;
+(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id36">[1]</a>)</p>
+</div></blockquote>
 <p>По поводу второго вопроса.
 Из всех ORM, что я встречал в своей практике (не только на Python), поддержка ACID в Storm ORM и SQLAlchemy реализована наилучшим образом.
 Надо сказать, в подавляющем большинстве существующих ORM такие попытки даже не предпринимаются.</p>
 <p>Рассуждения Мартина Фаулера на этот счет в статье &#8220;<a class="reference external" href="http://martinfowler.com/bliki/OrmHate.html">Orm Hate</a>&#8221;.</p>
 <p>Статья Роберта Мартина &#8220;<a class="reference external" href="https://8thlight.com/blog/uncle-bob/2013/10/01/Dance-You-Imps.html">Dance you Imps!</a>&#8221;.</p>
 <p>В целом у меня отношение к ORM неоднозначное.
-Я часто использую в сыром виде паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> для сложных запросов с аннотациями и агрегациями (особенно в Django-приложениям), но так же часто использую ORM.
+Я часто использую в сыром виде паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> для сложных запросов с аннотациями и агрегациями (особенно в Django-приложениях), но так же часто использую ORM.
 Слишком много существующих ORM создает больше &#8220;запахов&#8221; в коде, чем устраняет.
 Но Storm ORM к ним не относится.</p>
+<p>Интервью с Gustavo Niemeyer, ведущим разработчиком проекта Storm компании Canonical &#8220;<a class="reference external" href="http://www.drdobbs.com/storm-an-orm-for-python/201000460">Storm: An ORM for Python</a>&#8221;.</p>
+<p>This article in English <a class="reference internal" href="../../en/storm-orm/"><span class="doc">Why I prefer Storm ORM for Python</span></a>.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fncc" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -683,7 +686,7 @@ freedom to design.
   <ul>
     
     
-      <li><a href="../service-layer/">Jul 17 - Проектирование Сервисных Слоев</a></li>
+      <li><a href="../service-layer/">Jul 17 - Проектирование Сервисного Слоя</a></li>
     
       <li><a href="../../en/how-to-quickly-develop-high-quality-code/">Jul 10 - How to quickly develop high-quality code. Team work.</a></li>
     

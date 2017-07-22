@@ -9,7 +9,7 @@
 Why I prefer Storm ORM for Python
 =================================
 
-I began to use `KISS`_-style `Storm ORM`_ for enterprise applications, let me explain why.
+I began to use `KISS`_-style `Storm ORM`_ for enterprise applications on Python, let me explain why.
 
 .. contents:: Contents
 
@@ -547,6 +547,10 @@ Article "`Dance you Imps! <https://8thlight.com/blog/uncle-bob/2013/10/01/Dance-
 In general, my attitude towards ORM is ambiguous.
 I often use raw DataMapper_ pattern for complicated queries with annotations or aggregations (especially in Django-applications), and also I use an ORM.
 Too many existing ORMs create more "code smells" in the code than it eliminates, but Storm ORM is not one of them.
+
+Interview with Gustavo Niemeyer, lead developer on Canonical's Storm project "`Storm: An ORM for Python <http://www.drdobbs.com/storm-an-orm-for-python/201000460>`__".
+
+Эта статья на Русском языке :doc:`../ru/storm-orm`.
 
 
 .. rubric:: Footnotes

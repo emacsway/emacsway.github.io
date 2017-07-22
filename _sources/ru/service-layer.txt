@@ -1,5 +1,5 @@
 
-Проектирование Сервисных Слоев
+Проектирование Сервисного Слоя
 ==============================
 
 .. post:: Jul 17, 2017
@@ -8,7 +8,7 @@
    :category:
    :author: Ivan Zakrevsky
 
-Ошибки проектирования Сервисных Слоев (`Service Layer`_) широко распространены.
+Ошибки проектирования Сервисного Слоя (`Service Layer`_) широко распространены.
 Эта статья написана в надежде несколько улучшить это положение.
 
 .. contents:: Содержание
@@ -521,6 +521,8 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
 - «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma [#fngof]_, главы:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
+
+This article in English :doc:`../en/service-layer`.
 
 
 .. rubric:: Footnotes
