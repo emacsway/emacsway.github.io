@@ -79,13 +79,13 @@ Articles in English:
 
 * «:doc:`About problems of cache invalidation. Cache tagging. <en/cache-dependencies>`»
 * «:doc:`How to quickly develop high-quality code. Team work. <en/how-to-quickly-develop-high-quality-code>`»
-* «:doc:`Why I prefer Storm ORM for Python. <en/storm-orm>`»
+* «:doc:`Why I prefer Storm ORM for Python <en/storm-orm>`»
 
 Articles in Russian:
 
-* «:doc:`Проектирование Сервисного Слоя. <ru/service-layer>`»
+* «:doc:`Проектирование Сервисного Слоя <ru/service-layer>`»
 * «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-dependencies>`»
-* «:doc:`Почему я выбираю Storm ORM для Python. <ru/storm-orm>`»
+* «:doc:`Почему я выбираю Storm ORM для Python <ru/storm-orm>`»
 
 
 Bibliography
