@@ -522,7 +522,7 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 
-This article in English :doc:`../en/service-layer`.
+This article in English ":doc:`../en/service-layer`".
 
 
 .. rubric:: Footnotes

@@ -545,7 +545,7 @@ SQL-код, даже если он в Python-файлах, все равно о�
 
 Интервью с Gustavo Niemeyer, ведущим разработчиком проекта Storm компании Canonical "`Storm: An ORM for Python <http://www.drdobbs.com/storm-an-orm-for-python/201000460>`__".
 
-This article in English :doc:`../en/storm-orm`.
+This article in English ":doc:`../en/storm-orm`".
 
 
 .. rubric:: Footnotes

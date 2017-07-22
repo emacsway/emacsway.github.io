@@ -314,7 +314,7 @@ Gratitude
 
 Thanks a lot to `@akorn <https://bitbucket.org/akorn>`_ for the meaningful discussion of the problem of caching.
 
-Эта статья на Русском языке :doc:`../ru/cache-dependencies`.
+Эта статья на Русском языке ":doc:`../ru/cache-dependencies`".
 
 
 .. _cache-dependencies: https://bitbucket.org/emacsway/cache-dependencies

@@ -311,7 +311,7 @@ Serializable
 
 Моя благодарность `@akorn <https://bitbucket.org/akorn>`_ за содержательное обсуждение проблематики кэширования.
 
-This article in English :doc:`../en/cache-dependencies`.
+This article in English ":doc:`../en/cache-dependencies`".
 
 
 .. _cache-dependencies: https://bitbucket.org/emacsway/cache-dependencies

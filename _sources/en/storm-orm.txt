@@ -550,7 +550,7 @@ Too many existing ORMs create more "code smells" in the code than it eliminates,
 
 Interview with Gustavo Niemeyer, lead developer on Canonical's Storm project "`Storm: An ORM for Python <http://www.drdobbs.com/storm-an-orm-for-python/201000460>`__".
 
-Эта статья на Русском языке :doc:`../ru/storm-orm`.
+Эта статья на Русском языке ":doc:`../ru/storm-orm`".
 
 
 .. rubric:: Footnotes
