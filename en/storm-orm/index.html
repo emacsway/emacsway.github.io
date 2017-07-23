@@ -233,8 +233,8 @@ In fact, the instance of the model does not contain data, but refers to the data
 It&#8217;s a titanic work to implement it in the KISS style.
 Although I&#8217;m not sure that the implementation of such a complex mechanism corresponds to the principle of KISS.
 Perhaps, simplicity of implementation here would be preferable, rather than simplicity of the interface.
-Nevertheless, it makes one argument against ORM less.</p>
-<p>In addition, this solution does not provide full consistency of the behavior available for use.
+However, this makes one argument less against the ORM.</p>
+<p>In addition, this solution does not provide full consistency of all available behaviors for use.
 Suppose you have created two new objects, the first of which refers to the second on the foreign key.
 Then you created a link between them with a descriptor.
 Before commit, you are able <a class="reference external" href="https://storm.canonical.com/Tutorial#References_and_subclassing">to get the second object using the descriptor of the foreign key of the first object</a>.
@@ -247,11 +247,11 @@ From now on you can get the second object by the repository.</p>
 <p><em>q: Storm ORM does not support Python3.</em></p>
 <p>a: If you migrated at least one library in Python3, then you understand that this process does not cause major difficulties.
 The command <code class="docutils literal"><span class="pre">2to3</span></code> does 95% of work.
-The only significant problem is the migration of the C-expansion.
+The only significant problem is the migration of the C-extension.
 Storm ORM is fast enough even without the C-expansion, and does not lose much in performance.
-You can find the C-expansion for Python3 <a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c">here</a> (<a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438">diff</a>).
+You can find the C-extension for Python3 <a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c">here</a> (<a class="reference external" href="http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438">diff</a>).
 There is also yet another <a class="reference external" href="https://code.launchpad.net/~hackedbellini/storm/py3">py3 branch</a>.</p>
-<p><em>q: How t use Storm ORM with partial Raw-SQL</em></p>
+<p><em>q: How to use Storm ORM with partial Raw-SQL</em></p>
 <p>a: It&#8217;s better to avoid to do it, and extend the SQL-builder. But if you really need:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">storm.expr</span> <span class="k">import</span> <span class="n">SQL</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">authors.models</span> <span class="k">import</span> <span class="n">Author</span>
@@ -284,15 +284,15 @@ There is also yet another <a class="reference external" href="https://code.launc
 <div class="section" id="do-you-really-need-orm">
 <span id="why-orm-en"></span><h1><a class="toc-backref" href="#id39">Do you really need ORM?</a><a class="headerlink" href="#do-you-really-need-orm" title="Permalink to this headline">¶</a></h1>
 <p>Honestly, there is no need to use ORM always and everywhere.
-In many cases (for example, if an application needs to simply return a list of JSON values), the simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/tableDataGateway.html">Table Data Gateway</a> is enough, which returns the list of simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
+In many cases (for example, if the application needs to simply return a list of JSON values), the simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/tableDataGateway.html">Table Data Gateway</a> is enough, which returns the list of simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 This is an issue of personal preferences.</p>
 <div class="section" id="do-you-really-need-query-object">
 <span id="why-query-object-en"></span><h2><a class="toc-backref" href="#id40">Do you really need Query Object?</a><a class="headerlink" href="#do-you-really-need-query-object" title="Permalink to this headline">¶</a></h2>
-<p>The only thing I&#8217;m absolutely sure of is that it&#8217;s difficult do without without the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern (which is also named as SQLBuilder), or rather impossible.</p>
-<p>1. Even the most staunch adherents of the &#8220;pure SQL&#8221; concept quickly encounter the inability to express the SQL query in its pure form, and are forced to dynamically compose it depending on the conditions.
-And this is already a kind of SQLBuilder concept, albeit in a primitive form, and implemented in a particular way.
-But particular solutions always take a lot of place, as they depart from the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle.</p>
-<p>Let me to illustrate it with an example.
+<p>The only thing I&#8217;m absolutely sure of is that it&#8217;s difficult (if at all possible) do without without the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern (which is also named as SQLBuilder).</p>
+<p>1. Even the most staunch adherents of the &#8220;pure SQL&#8221; concept quickly encounter the inability to express the SQL query in the pure form, and then they are forced to dynamically compose the query depending on the conditions.
+But this is already a kind of SQLBuilder concept, albeit in a primitive form, and implemented in a particular way.
+The particular solutions always take a lot of place, as they depart from the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle.</p>
+<p>Let me to explain it with an example.
 Imagine a query to select ads from the database by 5 criteria.
 You need to allow users to select the ads using a set of any number of the following criteria:</p>
 <ol class="arabic simple" start="0">
@@ -340,11 +340,11 @@ You need to allow users to select the ads using a set of any number of the follo
 </div>
 <p>And if we add another criterion, it will be 2^6=64 combinations, i.e. in 2 times more.
 One more, it will be 2^7=128 combinations.</p>
-<p>128 fixed queries forced to abandon the concept of &#8220;pure SQL&#8221; in favor of the concept of &#8220;dynamic building of SQL-query.&#8221;
+<p>128 fixed queries forces them to abandon the concept of &#8220;pure SQL&#8221; in favor of the concept of &#8220;dynamic building of SQL-query.&#8221;
 The method that creates this query will take a lot of arguments, and this will affect the cleanness of the code.
-You can divide the method by responsibilities, so that each method builds its part of the query.
-But firstly, this approach will create the SQL-builder in a particular way (violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle).
-And secondly, if you continue to clean up the methods, to free its from dependencies, and increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> classes, then you will eventually come to the Criteria classes and implement the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
+You can divide the method by responsibilities, so that each method will build its part of the query.
+But firstly, this approach will have created the SQL-builder in a particular way (violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle).
+And secondly, if you continue to clean up the methods, to free they from dependencies, and increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the classes, then you will eventually come to the Criteria classes and implement the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
 Again, attempts to break this method will lead to a reduction in <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the class.
 To restore the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a>, you have to extract Criteria classes.</p>
 <p>In other words, you will actually create an SQL-builder that can be extracted to a separate library, which can be evolved independently.</p>

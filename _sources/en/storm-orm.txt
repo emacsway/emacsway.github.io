@@ -221,9 +221,9 @@ In fact, the instance of the model does not contain data, but refers to the data
 It's a titanic work to implement it in the KISS style.
 Although I'm not sure that the implementation of such a complex mechanism corresponds to the principle of KISS.
 Perhaps, simplicity of implementation here would be preferable, rather than simplicity of the interface.
-Nevertheless, it makes one argument against ORM less.
+However, this makes one argument less against the ORM.
 
-In addition, this solution does not provide full consistency of the behavior available for use.
+In addition, this solution does not provide full consistency of all available behaviors for use.
 Suppose you have created two new objects, the first of which refers to the second on the foreign key.
 Then you created a link between them with a descriptor.
 Before commit, you are able `to get the second object using the descriptor of the foreign key of the first object <https://storm.canonical.com/Tutorial#References_and_subclassing>`__.
@@ -241,13 +241,13 @@ FAQ
 
 a: If you migrated at least one library in Python3, then you understand that this process does not cause major difficulties.
 The command ``2to3`` does 95% of work.
-The only significant problem is the migration of the C-expansion.
+The only significant problem is the migration of the C-extension.
 Storm ORM is fast enough even without the C-expansion, and does not lose much in performance.
-You can find the C-expansion for Python3 `here <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__).
+You can find the C-extension for Python3 `here <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__).
 There is also yet another `py3 branch <https://code.launchpad.net/~hackedbellini/storm/py3>`__.
 
 
-*q: How t use Storm ORM with partial Raw-SQL*
+*q: How to use Storm ORM with partial Raw-SQL*
 
 a: It's better to avoid to do it, and extend the SQL-builder. But if you really need::
 
@@ -286,7 +286,7 @@ Do you really need ORM?
 =======================
 
 Honestly, there is no need to use ORM always and everywhere.
-In many cases (for example, if an application needs to simply return a list of JSON values), the simplest `Table Data Gateway`_ is enough, which returns the list of simplest `Data Transfer Object`_.
+In many cases (for example, if the application needs to simply return a list of JSON values), the simplest `Table Data Gateway`_ is enough, which returns the list of simplest `Data Transfer Object`_.
 This is an issue of personal preferences.
 
 
@@ -295,13 +295,13 @@ This is an issue of personal preferences.
 Do you really need Query Object?
 --------------------------------
 
-The only thing I'm absolutely sure of is that it's difficult do without without the `Query Object`_ pattern (which is also named as SQLBuilder), or rather impossible.
+The only thing I'm absolutely sure of is that it's difficult (if at all possible) do without without the `Query Object`_ pattern (which is also named as SQLBuilder).
 
-\1. Even the most staunch adherents of the "pure SQL" concept quickly encounter the inability to express the SQL query in its pure form, and are forced to dynamically compose it depending on the conditions.
-And this is already a kind of SQLBuilder concept, albeit in a primitive form, and implemented in a particular way.
-But particular solutions always take a lot of place, as they depart from the `DRY`_ principle.
+\1. Even the most staunch adherents of the "pure SQL" concept quickly encounter the inability to express the SQL query in the pure form, and then they are forced to dynamically compose the query depending on the conditions.
+But this is already a kind of SQLBuilder concept, albeit in a primitive form, and implemented in a particular way.
+The particular solutions always take a lot of place, as they depart from the `DRY`_ principle.
 
-Let me to illustrate it with an example.
+Let me to explain it with an example.
 Imagine a query to select ads from the database by 5 criteria.
 You need to allow users to select the ads using a set of any number of the following criteria:
 
@@ -351,11 +351,11 @@ The list of possible combinations of criteria::
 And if we add another criterion, it will be 2^6=64 combinations, i.e. in 2 times more.
 One more, it will be 2^7=128 combinations.
 
-128 fixed queries forced to abandon the concept of "pure SQL" in favor of the concept of "dynamic building of SQL-query."
+128 fixed queries forces them to abandon the concept of "pure SQL" in favor of the concept of "dynamic building of SQL-query."
 The method that creates this query will take a lot of arguments, and this will affect the cleanness of the code.
-You can divide the method by responsibilities, so that each method builds its part of the query.
-But firstly, this approach will create the SQL-builder in a particular way (violation of the `DRY`_ principle).
-And secondly, if you continue to clean up the methods, to free its from dependencies, and increase the `Cohesion`_ classes, then you will eventually come to the Criteria classes and implement the `Query Object`_ pattern.
+You can divide the method by responsibilities, so that each method will build its part of the query.
+But firstly, this approach will have created the SQL-builder in a particular way (violation of the `DRY`_ principle).
+And secondly, if you continue to clean up the methods, to free they from dependencies, and increase the `Cohesion`_ of the classes, then you will eventually come to the Criteria classes and implement the `Query Object`_ pattern.
 Again, attempts to break this method will lead to a reduction in `Cohesion`_ of the class.
 To restore the `Cohesion`_, you have to extract Criteria classes.
 
