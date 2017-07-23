@@ -28,7 +28,7 @@ About me
 A bearded developer since 2004.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable.
-My approaches are TDD_, OOP_, OOD_, DDD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
+My approaches are TDD_, OOP_, OOD_, DDD_, XP_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
 
 Terms such as the Coupling_, Cohesion_, SRP_, OCP_ are not empty words for me.
 
@@ -50,7 +50,7 @@ Preferences
 
 * Programming languages: Python (primary, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
-* Approaches: TDD, OOP, OOD, DDD, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling, High Cohesion, SRP, OCP, SOLID, GRASP etc.
+* Approaches: TDD, OOP, OOD, DDD, XP, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling, High Cohesion, SRP, OCP, SOLID, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Flask, also used Tornado, Twisted, Ruby on Rails, etc.
 * JavaScript Frameworks: Dojo, jQuery, Angular.
@@ -109,6 +109,7 @@ Bibliography
 * «JavaScript: The Definitive Guide» by David Flanagan
 * «Python Tutorial» and «Python HOWTOs» (official)
 * «Friendly meetings with the English language» by Maria A. Kolpakchi
+* «English. Reference materials.» by Ksenia A. Guzeeva, Tamara G. Troshko
 
 
 ..
@@ -177,6 +178,7 @@ Experience
 .. _Software Architectural Design: https://en.wikipedia.org/wiki/Software_architecture
 .. _Database Architecture: https://en.wikipedia.org/wiki/Data_architecture
 .. _Unit Of Work: https://martinfowler.com/eaaCatalog/unitOfWork.html
+.. _XP: https://martinfowler.com/bliki/ExtremeProgramming.html
 
 .. _Coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
 .. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)

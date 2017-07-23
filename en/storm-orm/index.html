@@ -284,7 +284,7 @@ There is also yet another <a class="reference external" href="https://code.launc
 <div class="section" id="do-you-really-need-orm">
 <span id="why-orm-en"></span><h1><a class="toc-backref" href="#id39">Do you really need ORM?</a><a class="headerlink" href="#do-you-really-need-orm" title="Permalink to this headline">¶</a></h1>
 <p>Honestly, there is no need to use ORM always and everywhere.
-In many cases (for example, if an application simply needs to issue a list of JSON values), the simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/tableDataGateway.html">Table Data Gateway</a> is enough, which returns the list of simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
+In many cases (for example, if an application needs to simply return a list of JSON values), the simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/tableDataGateway.html">Table Data Gateway</a> is enough, which returns the list of simplest <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 This is an issue of personal preferences.</p>
 <div class="section" id="do-you-really-need-query-object">
 <span id="why-query-object-en"></span><h2><a class="toc-backref" href="#id40">Do you really need Query Object?</a><a class="headerlink" href="#do-you-really-need-query-object" title="Permalink to this headline">¶</a></h2>
@@ -303,7 +303,7 @@ You need to allow users to select the ads using a set of any number of the follo
 <li>By users (all ads of the same user)</li>
 <li>By search words.</li>
 </ol>
-<p>Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests, and this if you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).</p>
+<p>Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests on condition you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).</p>
 <p>The list of possible combinations of criteria:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span>
 <span class="mi">1</span>

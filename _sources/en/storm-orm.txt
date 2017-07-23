@@ -286,7 +286,7 @@ Do you really need ORM?
 =======================
 
 Honestly, there is no need to use ORM always and everywhere.
-In many cases (for example, if an application simply needs to issue a list of JSON values), the simplest `Table Data Gateway`_ is enough, which returns the list of simplest `Data Transfer Object`_.
+In many cases (for example, if an application needs to simply return a list of JSON values), the simplest `Table Data Gateway`_ is enough, which returns the list of simplest `Data Transfer Object`_.
 This is an issue of personal preferences.
 
 
@@ -312,7 +312,7 @@ You need to allow users to select the ads using a set of any number of the follo
 4. By users (all ads of the same user)
 5. By search words.
 
-Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests, and this if you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).
+Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests on condition you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).
 
 The list of possible combinations of criteria::
 
