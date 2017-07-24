@@ -190,25 +190,25 @@ Waiting for parallel process until the end of the transaction, or until the slav
 <ul class="simple">
 <li>The quickness of response is important for web-application, otherwise a client simply could not wait for the response.</li>
 <li>There is no any reason to wait for lock release longer than it takes time to create the cache itself.</li>
-<li>The increase in the number of pending processes could lead to the memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.</li>
+<li>Increase the number of pending processes could lead to the memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.</li>
 </ul>
 <p>Also, there could be a problem with the implementation, since it is impossible to correctly block all tags by single query.</p>
 <ul class="simple">
-<li>First, we have to use method <code class="docutils literal"><span class="pre">cache.add()</span></code> instead of <code class="docutils literal"><span class="pre">cache.set_many()</span></code> for locking, to ensure the atomicity of the existence check and cache creation.</li>
-<li>Second, each tag should be locked by separate query, that increases the overhead.</li>
-<li>Third, the locking by single query per tag can lead to <a class="reference external" href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>, the probability of which can be significantly reduced by topological sorting.</li>
+<li>At first, we have to use method <code class="docutils literal"><span class="pre">cache.add()</span></code> instead of <code class="docutils literal"><span class="pre">cache.set_many()</span></code> for locking, to ensure the atomicity of the existence check and cache creation.</li>
+<li>Secondly, each tag should be locked by separate query, that increases the overhead.</li>
+<li>Thirdly, the locking by single query per tag can lead to <a class="reference external" href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>, the probability of which can be significantly reduced by topological sorting.</li>
 </ul>
 <p>We should also mention the possibility of <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/explicit-locking.html">row-level locking by DB</a> using <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE">SELECT FOR UPDATE</a>. But it works only when both transactions use <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE">SELECT FOR UPDATE</a>, otherwise <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/transaction-iso.html#XACT-READ-COMMITTED">it does not work</a>:</p>
 <blockquote>
 <div>When a transaction uses this isolation level, a SELECT query (without a FOR UPDATE/SHARE clause) sees only data committed before the query began; it never sees either uncommitted data or changes committed during query execution by concurrent transactions. In effect, a SELECT query sees a snapshot of the database as of the instant the query begins to run.</div></blockquote>
-<p>But no one uses cache of select for update (it doesn&#8217;t make sense to do it, and usually select for update is not used by web-applications because business transaction is used instead). Also, this approach is not able to solve the problem of replication.</p>
+<p>But nobody uses cache of select for update (it doesn&#8217;t make sense to do it, and usually select for update is not used by web-applications because business transaction is used instead). Also, this approach is not able to solve the problem of replication.</p>
 </div>
 </div>
 <div class="section" id="thundering-herd">
 <span id="thundering-herd-en"></span><h1><a class="toc-backref" href="#id10">Thundering herd</a><a class="headerlink" href="#thundering-herd" title="Permalink to this headline">¶</a></h1>
 <p>But what we can to do if cached logic is really resource intensive?</p>
 <p>Dogpile is also known as <a class="reference external" href="http://en.wikipedia.org/wiki/Thundering_herd_problem">Thundering Herd</a> effect or cache stampede.</p>
-<p>The answer is simple - Pessimistic Lock. But we have to lock not tags, but the key of the cache (or group of related keys, see <a class="reference external" href="http://martinfowler.com/eaaCatalog/coarseGrainedLock.html">Coarse-Grained Lock</a>, especially when using aggregate queries).
+<p>The answer is simple - Pessimistic Lock. But we have to lock the key of the cache (or group of related keys, see <a class="reference external" href="http://martinfowler.com/eaaCatalog/coarseGrainedLock.html">Coarse-Grained Lock</a>, especially when using aggregate queries) instead of tags.
 It&#8217;s because of when the cache key is released, the cache must be guaranteed to be created (but tags has many-to-many relation to caches).</p>
 <p>The lock must cover the entire code fragment from reading the cache to creating it.
 And this responsibility is not related to invalidation.</p>
@@ -231,8 +231,8 @@ And this responsibility is not related to invalidation.</p>
 </div>
 <div class="section" id="transaction-problem">
 <h1><a class="toc-backref" href="#id11">Transaction problem</a><a class="headerlink" href="#transaction-problem" title="Permalink to this headline">¶</a></h1>
-<p>When web-application has good traffic, it&#8217;s possible the concurrent process recreates the cache with the outdated data since the tag has been invalidated but before the transaction is committed.
-In contrast to replication problem, here is the manifestation of the problem strongly depends on the quality of the ORM, and the probability of problems is reduced when you use a pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>.</p>
+<p>When traffic of web-application is high, the concurrent process can recreate the cache with outdated data since the tag has been invalidated but before the transaction is committed.
+In contrast to replication problem, this problem depends on the quality of the ORM and can be reduced by using pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>.</p>
 <p>Let to consider the problem for each <a class="reference external" href="https://en.wikipedia.org/wiki/Isolation_(database_systems)">transaction isolation level</a> separately.</p>
 <div class="section" id="read-uncommitted">
 <h2><a class="toc-backref" href="#id12">Read uncommitted</a><a class="headerlink" href="#read-uncommitted" title="Permalink to this headline">¶</a></h2>
@@ -240,8 +240,9 @@ In contrast to replication problem, here is the manifestation of the problem str
 </div>
 <div class="section" id="read-committed">
 <h2><a class="toc-backref" href="#id13">Read committed</a><a class="headerlink" href="#read-committed" title="Permalink to this headline">¶</a></h2>
-<p>There is a problem, especially when you are using the pattern <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
-The probability of the problem can be reduced by using the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> together with <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>, this reduces the interval of time between data saving and transaction commit. But the problem is still possible.</p>
+<p>There is a problem, especially when you use the pattern <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
+The probability of the problem can be reduced by using the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> together with <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> to reduce the interval of time between data saving and transaction commit.
+But the problem is still possible.</p>
 <p>In contrast to the replication problem, it would be preferable to use tag locking here until the transaction will be committed, because the current process reads different data than concurrent processes.
 It&#8217;s impossible to say which process (the current process or concurrent one) will have created the cache, thus it would be desirable to avoid cache creation until transaction is committed.</p>
 <p>But this transaction isolation level is not so serious, and most often used to increase the degree of parallelism, i.e. has the same purpose as replication.
@@ -262,22 +263,21 @@ We can&#8217;t avoid tag locking here because we have to know not only the list 
 </div>
 <div class="section" id="multiple-connections-to-database">
 <h1><a class="toc-backref" href="#id16">Multiple connections to Database</a><a class="headerlink" href="#multiple-connections-to-database" title="Permalink to this headline">¶</a></h1>
-<p>When you use multiple databases, and its transactions are synchronous, or you use simple replication, then you can use by one instance of outer cache (wrapper) per one instance of inner cache (backend).
+<p>When you use multiple databases, and their transactions are synchronous, or you use simple replication, then you can use one instance of outer cache (wrapper) per one instance of inner cache (backend).
 The transaction of the cache does not have to strictly follow to system transactions of the DB.
-It is enough to fulfill its purpose - to prevent the substitution of the cached actual data by concurrent process until the actual data will be visible for the concurrent process.
+It is enough to fulfill its purpose - to prevent the substitution of the actual data in the cache by the concurrent process until the actual data will be visible for the concurrent process.
 Therefore, a single transaction of the cache can cover several system database transactions.</p>
-<p>When you use multiple connections to the same database (it sounds a little strange, but theoretically it&#8217;s possible, for example, when you don&#8217;t have ability to share connection between several ORMs in the single application), or the system database transactions are not synchronous, then you can configure the outer cache (wrapper) in the way to have by one instance of outer cache (wrapper) per one connection to DB for each instance of inner cache (backend).</p>
+<p>When you use multiple connections to the same database (it sounds a little strange, but theoretically it&#8217;s possible, for example, when you don&#8217;t have ability to share connection between several ORMs in the single application), or the system database transactions are not synchronous, then you can configure the outer cache (wrapper) in the way to have one instance of outer cache (wrapper) per one connection to DB for each instance of inner cache (backend).</p>
 </div>
 <div class="section" id="non-cached-fragment-dynamic-window-in-cache">
 <h1><a class="toc-backref" href="#id17">Non-cached fragment. Dynamic window in cache.</a><a class="headerlink" href="#non-cached-fragment-dynamic-window-in-cache" title="Permalink to this headline">¶</a></h1>
 <p>There are two mutually complementary patterns based on diametrically opposite principles - <a class="reference external" href="https://en.wikipedia.org/wiki/Decorator_pattern">Decorator</a> и <a class="reference external" href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategy</a>.
-The first one places variable logic around a code,
 In the first case, the variable logic is placed around the declared code, in the second case it is passed into it.
 Usual cache is similar to the pattern <a class="reference external" href="https://en.wikipedia.org/wiki/Decorator_pattern">Decorator</a>, when the dynamic logic is located around the cached logic.
 But sometimes a little fragment of the logic should not to be cached inside the cache.
-For example, it can be some data of user, permission checking etc.</p>
+For example, it can be some data of user, a personal menu, a permission checking etc.</p>
 <p>This problem can be solved by using <a class="reference external" href="https://en.wikipedia.org/wiki/Server_Side_Includes">Server Side Includes</a>.</p>
-<p>Another approach is using two-phase template rendering, for example <a class="reference external" href="https://pypi.python.org/pypi/django-phased">django-phased</a>.
+<p>Another approach is to use two-phase template rendering, for example <a class="reference external" href="https://pypi.python.org/pypi/django-phased">django-phased</a>.
 To be honest, this approach has a considerable resource consumption, and in some cases the achieved effect can be gone.
 Probably, due to this reason the approach is not widely used.</p>
 <p>The popular template engine Smarty written by PHP has the function <a class="reference external" href="http://www.smarty.net/docs/en/language.function.nocache.tpl">{nocache}</a>.</p>
@@ -291,15 +291,15 @@ Probably, due to this reason the approach is not widely used.</p>
 <h1><a class="toc-backref" href="#id18">Abstract dependency manager</a><a class="headerlink" href="#abstract-dependency-manager" title="Permalink to this headline">¶</a></h1>
 <p>For a long time I did not like the fact that several classes with different responsibilities were aware about the logic of tags handling.</p>
 <p>It would be good to encapsulate this logic into separate <a class="reference external" href="https://en.wikipedia.org/wiki/Strategy_pattern">class strategy</a>, for example, similar to <a class="reference external" href="http://www.yiiframework.com/doc-2.0/yii-caching-tagdependency.html">TagDependency of YII framework</a>,
-but this approach creates overhead as <a class="reference external" href="https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187">extra query per each cache key to verify its tags</a>, that means depriving the method <code class="docutils literal"><span class="pre">cache.get_many()</span></code> of the sense - aggregation queries.
-I think, the overhead should not be more than one extra query per action, even for case this action is aggregated like <code class="docutils literal"><span class="pre">cache.get_many()</span></code>.</p>
+but this approach creates overhead as <a class="reference external" href="https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187">extra query per each cache key to verify its tags</a>, that means depriving the method <code class="docutils literal"><span class="pre">cache.get_many()</span></code> of the sense of aggregation queries.
+I think, the overhead should not be more than one extra query per action, even where this action is aggregation like <code class="docutils literal"><span class="pre">cache.get_many()</span></code>.</p>
 <p>Also I had another method with tangled responsibilities to provide aggregation queries, that does not cause delight.</p>
 <p>But I like the idea to extract an abstract dependency manager, and obtain ability to use not only tags for invalidation, but any another principle, even an composite principle.</p>
-<p>The problem was solved by class <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/defer.py">Deferred</a>.
+<p>The problem had been solved by class <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/defer.py">Deferred</a>.
 It&#8217;s not pure Deferred as we know it from asynchronous programming, otherwise I would like to use this <a class="reference external" href="https://pypi.python.org/pypi/defer">elegant and lightweight library</a>, kindly provided by the guys from Canonical.</p>
 <p>My case requires not only delay the query execution, but also aggregation queries when it possible, for example, by using of <code class="docutils literal"><span class="pre">cache.get_many()</span></code>.</p>
 <p>Probably, the name Queue or Aggregator would be better, but since from the interface point of view we just postpone the task execution without going into details of its implementation, I preferred to leave the name Deferred.</p>
-<p>This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is simple an implementation of the intarface as class strategy <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/dependencies.py">TagsDependency</a>.</p>
+<p>This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is a simple implementation of the intarface as class strategy <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/dependencies.py">TagsDependency</a>.</p>
 <p>This opens prospects for the creation of other implementations of dependency management, for example, by observing a file changing, or SQL query, or some system events.</p>
 </div>
 <div class="section" id="gratitude">

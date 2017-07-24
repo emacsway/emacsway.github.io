@@ -152,19 +152,19 @@ There is the 3 main reasons:
 
 - The quickness of response is important for web-application, otherwise a client simply could not wait for the response.
 - There is no any reason to wait for lock release longer than it takes time to create the cache itself.
-- The increase in the number of pending processes could lead to the memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.
+- Increase the number of pending processes could lead to the memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.
 
 Also, there could be a problem with the implementation, since it is impossible to correctly block all tags by single query.
 
-- First, we have to use method ``cache.add()`` instead of ``cache.set_many()`` for locking, to ensure the atomicity of the existence check and cache creation.
-- Second, each tag should be locked by separate query, that increases the overhead.
-- Third, the locking by single query per tag can lead to Deadlock_, the probability of which can be significantly reduced by topological sorting.
+- At first, we have to use method ``cache.add()`` instead of ``cache.set_many()`` for locking, to ensure the atomicity of the existence check and cache creation.
+- Secondly, each tag should be locked by separate query, that increases the overhead.
+- Thirdly, the locking by single query per tag can lead to Deadlock_, the probability of which can be significantly reduced by topological sorting.
 
 We should also mention the possibility of `row-level locking by DB <https://www.postgresql.org/docs/9.5/static/explicit-locking.html>`__ using `SELECT FOR UPDATE <https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE>`_. But it works only when both transactions use `SELECT FOR UPDATE`_, otherwise `it does not work <https://www.postgresql.org/docs/9.5/static/transaction-iso.html#XACT-READ-COMMITTED>`__:
 
     When a transaction uses this isolation level, a SELECT query (without a FOR UPDATE/SHARE clause) sees only data committed before the query began; it never sees either uncommitted data or changes committed during query execution by concurrent transactions. In effect, a SELECT query sees a snapshot of the database as of the instant the query begins to run.
 
-But no one uses cache of select for update (it doesn't make sense to do it, and usually select for update is not used by web-applications because business transaction is used instead). Also, this approach is not able to solve the problem of replication.
+But nobody uses cache of select for update (it doesn't make sense to do it, and usually select for update is not used by web-applications because business transaction is used instead). Also, this approach is not able to solve the problem of replication.
 
 
 .. _thundering-herd-en:
@@ -176,7 +176,7 @@ But what we can to do if cached logic is really resource intensive?
 
 Dogpile is also known as `Thundering Herd`_ effect or cache stampede.
 
-The answer is simple - Pessimistic Lock. But we have to lock not tags, but the key of the cache (or group of related keys, see `Coarse-Grained Lock`_, especially when using aggregate queries).
+The answer is simple - Pessimistic Lock. But we have to lock the key of the cache (or group of related keys, see `Coarse-Grained Lock`_, especially when using aggregate queries) instead of tags.
 It's because of when the cache key is released, the cache must be guaranteed to be created (but tags has many-to-many relation to caches).
 
 The lock must cover the entire code fragment from reading the cache to creating it.
@@ -203,8 +203,8 @@ There is a lot of libraries which solve the issue, for example:
 Transaction problem
 ===================
 
-When web-application has good traffic, it's possible the concurrent process recreates the cache with the outdated data since the tag has been invalidated but before the transaction is committed.
-In contrast to replication problem, here is the manifestation of the problem strongly depends on the quality of the ORM, and the probability of problems is reduced when you use a pattern `Unit of Work`_.
+When traffic of web-application is high, the concurrent process can recreate the cache with outdated data since the tag has been invalidated but before the transaction is committed.
+In contrast to replication problem, this problem depends on the quality of the ORM and can be reduced by using pattern `Unit of Work`_.
 
 Let to consider the problem for each `transaction isolation level <Isolation_>`_ separately.
 
@@ -218,8 +218,9 @@ This is a simple case without any problems. If replication is used, it's enough 
 Read committed
 --------------
 
-There is a problem, especially when you are using the pattern `ActiveRecord`_.
-The probability of the problem can be reduced by using the pattern `DataMapper`_ together with `Unit of Work`_, this reduces the interval of time between data saving and transaction commit. But the problem is still possible.
+There is a problem, especially when you use the pattern `ActiveRecord`_.
+The probability of the problem can be reduced by using the pattern `DataMapper`_ together with `Unit of Work`_ to reduce the interval of time between data saving and transaction commit.
+But the problem is still possible.
 
 In contrast to the replication problem, it would be preferable to use tag locking here until the transaction will be committed, because the current process reads different data than concurrent processes.
 It's impossible to say which process (the current process or concurrent one) will have created the cache, thus it would be desirable to avoid cache creation until transaction is committed.
@@ -250,27 +251,26 @@ Because non-existent objects usually are not cached, we are able to limit the pr
 Multiple connections to Database
 ================================
 
-When you use multiple databases, and its transactions are synchronous, or you use simple replication, then you can use by one instance of outer cache (wrapper) per one instance of inner cache (backend).
+When you use multiple databases, and their transactions are synchronous, or you use simple replication, then you can use one instance of outer cache (wrapper) per one instance of inner cache (backend).
 The transaction of the cache does not have to strictly follow to system transactions of the DB.
-It is enough to fulfill its purpose - to prevent the substitution of the cached actual data by concurrent process until the actual data will be visible for the concurrent process.
+It is enough to fulfill its purpose - to prevent the substitution of the actual data in the cache by the concurrent process until the actual data will be visible for the concurrent process.
 Therefore, a single transaction of the cache can cover several system database transactions.
 
-When you use multiple connections to the same database (it sounds a little strange, but theoretically it's possible, for example, when you don't have ability to share connection between several ORMs in the single application), or the system database transactions are not synchronous, then you can configure the outer cache (wrapper) in the way to have by one instance of outer cache (wrapper) per one connection to DB for each instance of inner cache (backend).
+When you use multiple connections to the same database (it sounds a little strange, but theoretically it's possible, for example, when you don't have ability to share connection between several ORMs in the single application), or the system database transactions are not synchronous, then you can configure the outer cache (wrapper) in the way to have one instance of outer cache (wrapper) per one connection to DB for each instance of inner cache (backend).
 
 
 Non-cached fragment. Dynamic window in cache.
 =============================================
 
 There are two mutually complementary patterns based on diametrically opposite principles - `Decorator`_ и `Strategy`_.
-The first one places variable logic around a code, 
 In the first case, the variable logic is placed around the declared code, in the second case it is passed into it.
 Usual cache is similar to the pattern `Decorator`_, when the dynamic logic is located around the cached logic.
 But sometimes a little fragment of the logic should not to be cached inside the cache.
-For example, it can be some data of user, permission checking etc.
+For example, it can be some data of user, a personal menu, a permission checking etc.
 
 This problem can be solved by using `Server Side Includes`_.
 
-Another approach is using two-phase template rendering, for example `django-phased <https://pypi.python.org/pypi/django-phased>`_.
+Another approach is to use two-phase template rendering, for example `django-phased <https://pypi.python.org/pypi/django-phased>`_.
 To be honest, this approach has a considerable resource consumption, and in some cases the achieved effect can be gone.
 Probably, due to this reason the approach is not widely used.
 
@@ -290,21 +290,21 @@ Abstract dependency manager
 For a long time I did not like the fact that several classes with different responsibilities were aware about the logic of tags handling.
 
 It would be good to encapsulate this logic into separate `class strategy <Strategy_>`_, for example, similar to `TagDependency of YII framework`_,
-but this approach creates overhead as `extra query per each cache key to verify its tags <https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187>`_, that means depriving the method ``cache.get_many()`` of the sense - aggregation queries.
-I think, the overhead should not be more than one extra query per action, even for case this action is aggregated like ``cache.get_many()``.
+but this approach creates overhead as `extra query per each cache key to verify its tags <https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187>`_, that means depriving the method ``cache.get_many()`` of the sense of aggregation queries.
+I think, the overhead should not be more than one extra query per action, even where this action is aggregation like ``cache.get_many()``.
 
 Also I had another method with tangled responsibilities to provide aggregation queries, that does not cause delight.
 
 But I like the idea to extract an abstract dependency manager, and obtain ability to use not only tags for invalidation, but any another principle, even an composite principle.
 
-The problem was solved by class `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/defer.py>`_.
+The problem had been solved by class `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/defer.py>`_.
 It's not pure Deferred as we know it from asynchronous programming, otherwise I would like to use this `elegant and lightweight library <https://pypi.python.org/pypi/defer>`_, kindly provided by the guys from Canonical.
 
 My case requires not only delay the query execution, but also aggregation queries when it possible, for example, by using of ``cache.get_many()``.
 
 Probably, the name Queue or Aggregator would be better, but since from the interface point of view we just postpone the task execution without going into details of its implementation, I preferred to leave the name Deferred.
 
-This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is simple an implementation of the intarface as class strategy `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/dependencies.py>`_.
+This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is a simple implementation of the intarface as class strategy `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/dependencies.py>`_.
 
 This opens prospects for the creation of other implementations of dependency management, for example, by observing a file changing, or SQL query, or some system events.
 
