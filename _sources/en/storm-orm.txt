@@ -312,7 +312,7 @@ You need to allow users to select the ads using a set of any number of the follo
 4. By users (all ads of the same user)
 5. By search words.
 
-Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests on condition you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).
+Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests on condition you didn't take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).
 
 The list of possible combinations of criteria::
 
@@ -348,12 +348,12 @@ The list of possible combinations of criteria::
     4,5
     5
 
-And if we added yet another criterion, it would be 2^6=64 combinations, i.e. in 2 times more.
+If we added yet another criterion, it would be 2^6=64 combinations, i.e. in 2 times more.
 One more, it would be 2^7=128 combinations.
 
 128 fixed queries forces us to abandon the concept of "pure SQL" in favor of the concept of "dynamic building of SQL-query."
 The method that creates this query would take a lot of arguments, and this would affect the cleanness of the code.
-You can divide the method by responsibilities, so that each method would build its part of the query.
+You could divide the method by responsibilities, so that each method would build its part of the query.
 But firstly, this approach would have created the SQL-builder in a particular way (violation of the `DRY`_ principle).
 And secondly, if you continued to clean up the methods, to free they from dependencies, and to increase the `Cohesion`_ of the classes, then you would eventually come to the Criteria classes and implement the `Query Object`_ pattern.
 Again, attempts to break this method would lead to a reduction in `Cohesion`_ of the class.
@@ -361,7 +361,7 @@ To restore the `Cohesion`_, you have to extract Criteria classes.
 
 In other words, you would create actually an SQL-builder which could be extracted to a separate library and could be evolved independently.
 
-But what happens if you do not "clean up" the methods, do not release them from dependencies and do not increase the `Cohesion`_ of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
+But what would happen if you didn't "clean up" the methods, didn't release them from dependencies and didn't increase the `Cohesion`_ of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
 Sometimes such "pieces" can take the form of static methods of a class, which acquires the signs "G18: Inappropriate Static" [#fncc]_, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object `Criteria`_.
 In any case, the readability (the most important advantage) of such "pure SQL" would be lost (it would be even lower than the readability of the query which is created by SQL-builder).
 

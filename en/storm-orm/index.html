@@ -303,7 +303,7 @@ You need to allow users to select the ads using a set of any number of the follo
 <li>By users (all ads of the same user)</li>
 <li>By search words.</li>
 </ol>
-<p>Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests on condition you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).</p>
+<p>Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests on condition you didn&#8217;t take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).</p>
 <p>The list of possible combinations of criteria:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span>
 <span class="mi">1</span>
@@ -338,17 +338,17 @@ You need to allow users to select the ads using a set of any number of the follo
 <span class="mi">5</span>
 </pre></div>
 </div>
-<p>And if we added yet another criterion, it would be 2^6=64 combinations, i.e. in 2 times more.
+<p>If we added yet another criterion, it would be 2^6=64 combinations, i.e. in 2 times more.
 One more, it would be 2^7=128 combinations.</p>
 <p>128 fixed queries forces us to abandon the concept of &#8220;pure SQL&#8221; in favor of the concept of &#8220;dynamic building of SQL-query.&#8221;
 The method that creates this query would take a lot of arguments, and this would affect the cleanness of the code.
-You can divide the method by responsibilities, so that each method would build its part of the query.
+You could divide the method by responsibilities, so that each method would build its part of the query.
 But firstly, this approach would have created the SQL-builder in a particular way (violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle).
 And secondly, if you continued to clean up the methods, to free they from dependencies, and to increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the classes, then you would eventually come to the Criteria classes and implement the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
 Again, attempts to break this method would lead to a reduction in <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the class.
 To restore the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a>, you have to extract Criteria classes.</p>
 <p>In other words, you would create actually an SQL-builder which could be extracted to a separate library and could be evolved independently.</p>
-<p>But what happens if you do not &#8220;clean up&#8221; the methods, do not release them from dependencies and do not increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
+<p>But what would happen if you didn&#8217;t &#8220;clean up&#8221; the methods, didn&#8217;t release them from dependencies and didn&#8217;t increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
 Sometimes such &#8220;pieces&#8221; can take the form of static methods of a class, which acquires the signs &#8220;G18: Inappropriate Static&#8221; <a class="footnote-reference" href="#fncc" id="id5">[1]</a>, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Criteria</a>.
 In any case, the readability (the most important advantage) of such &#8220;pure SQL&#8221; would be lost (it would be even lower than the readability of the query which is created by SQL-builder).</p>
 <p>SQL-builders exists only because they are maximally implement the principle of <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP).
