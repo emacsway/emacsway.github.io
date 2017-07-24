@@ -447,8 +447,8 @@ Moreover, I like when the syntactic constructions of a language are represented 
 Do you really need DataMapper?
 ------------------------------
 
-First of all, you need to decide whether the application needs a `Domain Model`_, or just use the pattern `Transaction Script`_.
-This question is well considered by «Patterns of Enterprise Application Architecture» [#fnpoeaa]_, so I will not dwell on it.
+First of all, you need to decide whether the application needs the pattern `Domain Model`_ or the pattern `Transaction Script`_.
+This question is considered well by «Patterns of Enterprise Application Architecture» [#fnpoeaa]_, so I will not dwell on it.
 If the Domain Model is better suited for your application, then it will be difficult to do without an ORM (at least artisanal), for high-quality, convenient and fast work.
 
 There are several arguments against ORM.
@@ -461,7 +461,7 @@ By the way, the usefulness of inheritance in OOP is still a `discussed issue <ht
 Go-lang has no inheritance in favor of the composition.
 Inside programming languages inheritance is implemented using the composition.
 
-Thirdly, today only the lazy do not know about the patterns
+Thirdly, today only the lazy doesn't know about the patterns
 `Single Table Inheritance`_,
 `Concrete Table Inheritance`_,
 `Class Table Inheritance`_ and
@@ -472,9 +472,9 @@ Therefore, I will touch only on two important issues in my opinion:
 1. Shold be the data in memory an object or an data structure?
 2. ACID, consistency of the object in memory and its record in the database.
 
-I do not have an unequivocal opinion on the first question.
-We live in a world of objects, and that's why object-oriented programming has emerged.
-Human easier to think objects.
+I do not have the unequivocal opinion on the first question.
+We live in the world of objects, and that's why object-oriented programming has emerged.
+It's easier for human to think by objects.
 In Python, even elementary types are complete objects, with methods, inheritance, and so on.
 
 What is the difference between a data structure and an object? In Python, this difference is highly conditional.
@@ -528,7 +528,7 @@ One of the main principles of object-oriented programming is encapsulation.
 The `Single responsibility principle`_ proclaims that each object must have one responsibility and this responsibility must be completely encapsulated in its class.
 Depriving the object of behavior, we impose its behavior on another object, which must serve the first.
 The question is whether it is justified?
-If this is obvious in the ActiveRecord partition on DataMapper and Domain Model, and is aimed at achieving the Single responsibility principle, in this case the answer is not so obvious.
+This is obvious for the ActiveRecord partition on DataMapper and Domain Model, because it's aimed at achieving the Single responsibility principle, but the answer is not so obvious for the object.
 The behavior object begins to "envy" the data object "G14: Feature Envy" [#fncc]_, ("Feature Envy" [#fnr]_), with signs "F2: Output Arguments" [#fncc]_, "Convert Procedural Design to Objects" [#fnr]_,  "Primitive Obsession" [#fnr]_ and "Data Class" [#fnr]_.
 
 The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowler.
@@ -546,7 +546,7 @@ Martin Fowler reasoning on this point in the article "`Orm Hate`_".
 Article "`Dance you Imps! <https://8thlight.com/blog/uncle-bob/2013/10/01/Dance-You-Imps.html>`__" by Robert Martin.
 
 In general, my attitude towards ORM is ambiguous.
-I often use raw DataMapper_ pattern for complicated queries with annotations or aggregations (especially in Django-applications), and also I use an ORM.
+I often use raw DataMapper_ pattern for complicated queries with annotations or aggregations (especially in Django-applications), but I use ORM more often.
 Too many existing ORMs create more "code smells" in the code than it eliminates, but Storm ORM is not one of them.
 
 Interview with Gustavo Niemeyer, lead developer on Canonical's Storm project "`Storm: An ORM for Python <http://www.drdobbs.com/storm-an-orm-for-python/201000460>`__".

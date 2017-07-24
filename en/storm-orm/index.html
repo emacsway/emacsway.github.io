@@ -412,8 +412,8 @@ Moreover, I like when the syntactic constructions of a language are represented 
 </div>
 <div class="section" id="do-you-really-need-datamapper">
 <span id="why-datamapper-en"></span><h2><a class="toc-backref" href="#id41">Do you really need DataMapper?</a><a class="headerlink" href="#do-you-really-need-datamapper" title="Permalink to this headline">¶</a></h2>
-<p>First of all, you need to decide whether the application needs a <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>, or just use the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a>.
-This question is well considered by «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id20">[3]</a>, so I will not dwell on it.
+<p>First of all, you need to decide whether the application needs the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> or the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a>.
+This question is considered well by «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id20">[3]</a>, so I will not dwell on it.
 If the Domain Model is better suited for your application, then it will be difficult to do without an ORM (at least artisanal), for high-quality, convenient and fast work.</p>
 <p>There are several arguments against ORM.
 I don&#8217;t consider obsolete issues like the databases do not support inheritance.</p>
@@ -422,7 +422,7 @@ I don&#8217;t consider obsolete issues like the databases do not support inherit
 By the way, the usefulness of inheritance in OOP is still a <a class="reference external" href="http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html">discussed issue</a>.
 Go-lang has no inheritance in favor of the composition.
 Inside programming languages inheritance is implemented using the composition.</p>
-<p>Thirdly, today only the lazy do not know about the patterns
+<p>Thirdly, today only the lazy doesn&#8217;t know about the patterns
 <a class="reference external" href="http://martinfowler.com/eaaCatalog/singleTableInheritance.html">Single Table Inheritance</a>,
 <a class="reference external" href="http://martinfowler.com/eaaCatalog/concreteTableInheritance.html">Concrete Table Inheritance</a>,
 <a class="reference external" href="http://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a> and
@@ -432,9 +432,9 @@ Inside programming languages inheritance is implemented using the composition.</
 <li>Shold be the data in memory an object or an data structure?</li>
 <li>ACID, consistency of the object in memory and its record in the database.</li>
 </ol>
-<p>I do not have an unequivocal opinion on the first question.
-We live in a world of objects, and that&#8217;s why object-oriented programming has emerged.
-Human easier to think objects.
+<p>I do not have the unequivocal opinion on the first question.
+We live in the world of objects, and that&#8217;s why object-oriented programming has emerged.
+It&#8217;s easier for human to think by objects.
 In Python, even elementary types are complete objects, with methods, inheritance, and so on.</p>
 <p>What is the difference between a data structure and an object? In Python, this difference is highly conditional.
 Objects use data presentation on an abstract level.</p>
@@ -479,7 +479,7 @@ freedom to design.
 The <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> proclaims that each object must have one responsibility and this responsibility must be completely encapsulated in its class.
 Depriving the object of behavior, we impose its behavior on another object, which must serve the first.
 The question is whether it is justified?
-If this is obvious in the ActiveRecord partition on DataMapper and Domain Model, and is aimed at achieving the Single responsibility principle, in this case the answer is not so obvious.
+This is obvious for the ActiveRecord partition on DataMapper and Domain Model, because it&#8217;s aimed at achieving the Single responsibility principle, but the answer is not so obvious for the object.
 The behavior object begins to &#8220;envy&#8221; the data object &#8220;G14: Feature Envy&#8221; <a class="footnote-reference" href="#fncc" id="id25">[1]</a>, (&#8220;Feature Envy&#8221; <a class="footnote-reference" href="#fnr" id="id26">[2]</a>), with signs &#8220;F2: Output Arguments&#8221; <a class="footnote-reference" href="#fncc" id="id27">[1]</a>, &#8220;Convert Procedural Design to Objects&#8221; <a class="footnote-reference" href="#fnr" id="id28">[2]</a>,  &#8220;Primitive Obsession&#8221; <a class="footnote-reference" href="#fnr" id="id29">[2]</a> and &#8220;Data Class&#8221; <a class="footnote-reference" href="#fnr" id="id30">[2]</a>.</p>
 <p>The arguments on this subject in the article &#8220;<a class="reference external" href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221; of M.Fowler.</p>
 <blockquote>
@@ -491,7 +491,7 @@ Most of the existing ORM do not even try to solve this issue.</p>
 <p>Martin Fowler reasoning on this point in the article &#8220;<a class="reference external" href="http://martinfowler.com/bliki/OrmHate.html">Orm Hate</a>&#8221;.</p>
 <p>Article &#8220;<a class="reference external" href="https://8thlight.com/blog/uncle-bob/2013/10/01/Dance-You-Imps.html">Dance you Imps!</a>&#8221; by Robert Martin.</p>
 <p>In general, my attitude towards ORM is ambiguous.
-I often use raw <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern for complicated queries with annotations or aggregations (especially in Django-applications), and also I use an ORM.
+I often use raw <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern for complicated queries with annotations or aggregations (especially in Django-applications), but I use ORM more often.
 Too many existing ORMs create more &#8220;code smells&#8221; in the code than it eliminates, but Storm ORM is not one of them.</p>
 <p>Interview with Gustavo Niemeyer, lead developer on Canonical&#8217;s Storm project &#8220;<a class="reference external" href="http://www.drdobbs.com/storm-an-orm-for-python/201000460">Storm: An ORM for Python</a>&#8221;.</p>
 <p>Эта статья на Русском языке &#8220;<a class="reference internal" href="../../ru/storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8221;.</p>
