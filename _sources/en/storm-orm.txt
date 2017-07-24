@@ -63,8 +63,8 @@ It would not oblige you to "reload" objects.
 It makes it easy to replace the mapper, even if you change the relational database to non-relational.
 
 Imagine that you have created two new objects, one of which refers to another with foreign key.
-Can you create a link between them before at least one of them is stored in the database and received the primary key?
-Will the value of the foreign key of the associated object be updated when the first object is saved and the primary key is received?
+Could you create a link between them before at least one of them had been stored in the database and had been received the primary key?
+Would the value of the foreign key of the associated object be updated when the first object saved and the primary key is received?
 
 A good ORM prevents the deadlock, because it saves all objects just before the commit, minimizing the time interval from the first save to the commit.
 Also it allows you to influence the order of saving objects, for example, using topological sorting to prevent the deadlock.
@@ -363,16 +363,16 @@ In other words, you would create actually an SQL-builder which could be extracte
 
 But what would happen if you didn't "clean up" the methods, didn't release them from dependencies and didn't increase the `Cohesion`_ of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
 Sometimes such "pieces" can take the form of static methods of a class, which acquires the signs "G18: Inappropriate Static" [#fncc]_, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object `Criteria`_.
-In any case, the readability (the most important advantage) of such "pure SQL" would be lost (it would be even lower than the readability of the query which is created by SQL-builder).
+In any case, the readability (the most important advantage) of such "pure SQL" would be lost (it would be even worse than the readability of the query which is created by SQL-builder).
 
 SQL-builders exists only because they are maximally implement the principle of `Single responsibility principle`_ (SRP).
 In the "Chapter 10: Classes. Organizing for Change" of the widely known book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_, C.Martin demonstrates the achievement of the `SRP`_ principle in the example of SQL-builder.
 
 Similar to hybrid object, that contains disadvantages of data structures and objects, SQL-builder implemented in particular way contains disadvantages of both concepts.
 They do not have the readability of Raw-SQL, nor the convenience of complete SQL-builders.
-This forces us to abandon the dynamic construction, in favor of readability of the code, or to bring the levels of abstraction to a complete SQL-builder.
+This forces us to abandon the dynamic construction, in favor of readability of the code, or to bring the levels of abstraction up to a complete SQL-builder.
 
-Also, the concept of "pure SQL" is not feasible in the implementation of the following patterns and approaches:
+Also the concept of "pure SQL" is not feasible in the implementation of the following patterns and approaches:
 
 - Dynamically change the sorting
 - Multilanguage implemented with suffixed columns
@@ -382,20 +382,20 @@ Also, the concept of "pure SQL" is not feasible in the implementation of the fol
 - etc.
 
 \2. Raw-SQL can not use inheritance without `parsing <https://pypi.python.org/pypi/sqlparse>`__ (for example, to change the ORDER DY clause), this usually entails full copying of the Raw-SQL if you want to change a small its part.
-You have to support the each copy of the Raw-SQL separately, that makes the support a more difficult.
-However, at leisure I had wrote the simplest `mini-builder, which represents the Raw-SQL query in the form of a multilevel list of Raw-SQL pieces <http://sqlbuilder.readthedocs.io/en/latest/#short-manual-for-sqlbuilder-mini>`__. This approach allows you to build conditionally-compound SQL-queries and preserves the readability of Raw-SQL.
+You have to support each copy of the Raw-SQL separately, that makes the support a more difficult.
+However, at leisure I had wrote the simplest `mini-builder, which represents the Raw-SQL query in the form of a multilevel list of Raw-SQL pieces <http://sqlbuilder.readthedocs.io/en/latest/#short-manual-for-sqlbuilder-mini>`__. This approach allows you to build conditionally-compound SQL-queries and also preserves the readability of Raw-SQL.
 
 \3. I often had to see diffs of Version Control System with several hundred lines among the files with Raw-SQL just because a new attribute was added to the model. This has the signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
 This is because Raw-SQL queries contain many duplicate expressions.
 And it is also true the rule "G5: Duplication" [#fncc]_ ("Duplicated Code" [#fnr]_).
 SQLBuilder allows you to avoid this problem, because it keeps all metadata of the query (for example the list of fields) in the single place.
 
-\4. When the concept of Raw-SQL is used, the methods which make the query usually accept the selection criteria as arguments of the method which contain the plain values.
-If you need add yet another selection criteria or field, you have to change interface of the methods (or add yet another ones), which violates the `Open/Closed Principle`_ and has signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
+\4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in the form of method's arguments with plain values.
+When you need add yet another selection criteria or field, you have to change interface of the method (or add yet another method), but this violates the `Open/Closed Principle`_ and has signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
 
-This issue should be solved by using "`Introduce Parameter Object`_" [#fnr]_ in the form of the class Criteria of pattern `Query Object`_.
+This issue should be solved by using "`Introduce Parameter Object`_" [#fnr]_ in form of class Criteria of pattern `Query Object`_.
 In this case all selection criteria would be encapsulated in the single composite object (see `Composite pattern`_).
-This approach also eliminates the conditions from the methods, and fulfill the "`Replace Conditional with Polymorphism`_" [#fnr]_.
+This approach also eliminates conditions from the methods, and fulfills the "`Replace Conditional with Polymorphism`_" [#fnr]_.
 
 A human operates objects in his imagination (and in the program code).
 The sorting method and its direction - characterize the state of the object.
