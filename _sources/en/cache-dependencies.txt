@@ -19,8 +19,8 @@ The problem of cache dependencies
 
 When some data has been updated, all dependent caches should be reset.
 Suppose, the cache of main page of a company site contains an instance of Product model.
-When the instance of Product model has been updated, the cache should be updated too.
-Another example, when attributes of User model (for example, last_name) has been updated, all caches of posts of the user, contained the last_name, should be reset too.
+When the instance of Product is updated, the cache should be updated too.
+Another example, when an attribute of User model (for example, last_name) has been updated, all caches of the user's posts containing the last_name, should be reset too.
 
 Usually, the pattern `Observer`_ (or its variety pattern Multicast) is responsible for the cache invalidation.
 But even in this case the invalidation logic becomes too complicated, the achieved accuracy is too low, the `Coupling`_ is growing fast, and encapsulation is disclosed.
@@ -49,15 +49,15 @@ How to implement invalidation of caches dependent on the tag?
 There are two options:
 
 \1. Destroy physically all dependent caches on the tag invalidation.
-Implementation of this approach requires some overhead on the cache creation to add key of the cache into the cache list (or set) of the tag (for example, using `SADD <http://redis.io/commands/sadd>`_).
-The disadvantage is that the invalidation of too many dependent caches takes some time.
+Implementation of this approach requires some overhead on the cache creation to add key of the cache into a cache list (or set) of the tag (for example, using `SADD <http://redis.io/commands/sadd>`_).
+The disadvantage of this approach is that the invalidation of too many dependent caches takes some time.
 
 \2. Just change the version of tag on the tag invalidation.
 Implementation of this approach requires some overhead on the cache reading to verify the version of each tag of the cache with the actual tag version.
-So, the cache should contain all tag versions on the cache creation.
+Thus the cache should contain all tag versions on the cache creation.
 If any tag version is expired on the cache reading, the cache is invalid.
 The advantage of this approach is immediate invalidation of the tag and all dependent caches.
-Another advantage is that premature discarding of a tag info is not possible (using LRU_), because the tag info is read mush often than dependent caches.
+Another advantage of this approach is that premature discarding of a tag info is not possible (using LRU_), because the tag info is read mush often than dependent caches.
 
 I've chosen the second option.
 
@@ -65,26 +65,26 @@ I've chosen the second option.
 Tagging of nested caches
 ========================
 
-Because tags are verified at the moment of cache reading, let's imagine, what happens, when one cache will be nested to other cache.
+Because tags are being verified at the moment of cache reading, let's imagine, what happens, when one cache would be nested to other cache.
 Multi-level cache is not so rarely.
-In this case, the tags of inner cache will never be verified, and outer cache will alive with outdated data.
-At the moment of creation the outer cache, it must accept the all tags from the inner cache into own tag list.
-If we pass the tags from the inner cache to the outer cache in an explicit way, it violates encapsulation!
-So, cache system must keep track the relations between all nested caches, and pass automatically all tags from an inner cache to its outer cache.
+In this case, the tags of inner cache would be never verified, and outer cache would be alive with outdated data.
+At the moment of creation the outer cache it must accept the all tags from the inner cache into own tag list.
+If we passed the tags from the inner cache to the outer cache in an explicit way, it would violate encapsulation!
+So, the cache system must keep track the relations between all nested caches, and pass automatically all tags from an inner cache to its outer cache.
 
 
 Replication problem
 ===================
 
-When tag has been invalidated, a concurrent thread/process can recreate a dependent cache with outdated data from a slave, before the slave will be updated.
+When tag has been invalidated, a concurrent thread/process can recreate the dependent cache with outdated data from the slave, before the slave will be updated.
 
 The best solution of this problem is a :ref:`locking the tag <tags-lock-en>` for cache creation until slave will be updated.
-But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read outdated data from the slave (unless reading from the master is specified explicitly).
+But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read outdated data from the slave (unless the master is specified explicitly for reading).
 
 A compromise solution can be simple re-invalidation of the tag after period of time when the slave is guaranteed to be updated.
 
-I saw also an approach of cache regeneration instead of removing/invalidation.
-This approach entail ineffective memory usage (in case LRU_ principle).
+I saw also the approach of cache regeneration instead of removing/invalidation.
+This approach entail ineffective memory usage on condition of using the LRU_ principle.
 Also, this approach does not resolve the problem of complexity of invalidation logic.
 Usually, this approach is the cause of a lot of bugs.
 For example, it requires to use a high quality ORM.
