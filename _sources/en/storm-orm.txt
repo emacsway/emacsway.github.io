@@ -390,7 +390,7 @@ This is because Raw-SQL queries contain many duplicate expressions.
 And it is also true the rule "G5: Duplication" [#fncc]_ ("Duplicated Code" [#fnr]_).
 SQLBuilder allows you to avoid this problem, because it keeps all metadata of the query (for example the list of fields) in the single place.
 
-\4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in the form of method's arguments with plain values.
+\4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in form of method's arguments with plain values.
 When you need add yet another selection criteria or field, you have to change interface of the method (or add yet another method), but this violates the `Open/Closed Principle`_ and has signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
 
 This issue should be solved by using "`Introduce Parameter Object`_" [#fnr]_ in form of class Criteria of pattern `Query Object`_.
@@ -403,34 +403,34 @@ Selection criteria are also objects that express the database behavior, and have
 And you expect this behavior from they.
 When you mean objects, but do not express them in code, the program loses the ability to express the developer's intent ("G16: Obscured Intent" [#fncc]_).
 
-\5. If some value of the object requires a special conversion to the DB representation, you have to clutter the code explicitly calling these conversions.
+\5. If some value of the model instance requires a special conversion to the DB representation, you have to clutter the code explicitly calling these conversions.
 
 \6. There is a tendency (which I regularly see) to use the pattern `Repository`_ in combination with Raw-SQL.
 Since the Repository pattern is designed to hide the data source, it is not clear how to pass the selection criteria in the Repository so that they are completely abstract from the data source, i.e. are abstract from Raw-SQL.
 
-In primitive cases, this, of course, is not a problem (you can pass them by keyword arguments to the function, although this causes the problems described in clause 4).
+In a primitive case this, of course, is not a problem (you can pass them by keyword arguments to the function, although this causes the problems described in clause 4).
 
 But if your Criteria have an arbitrary quantity and needs to use nested operators ("OR", "AND", "XOR") with different precedences, then there is a problem, and the solution of the problem is the responsibility of the pattern Query Object.
 Your method can accept Raw-SQL as arguments, but this approach has the signs "G6: Code at Wrong Level of Abstraction" [#fncc]_ and "G34: Functions Should Descend Only One Level of Abstraction" [#fncc]_.
 
 \7. Quite often string formatting is used to build conditionally-compound SQL-queries.
-The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of the implementation of the mechanism for its modification.
-This entails the emergence of a logical dependence, a violation of encapsulation.
+The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of implementation of the mechanism for this modification.
+This entails the emergence of a logical dependence and a violation of encapsulation.
 
 To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should to have all methods to create any query required by each client.
-To save the encapsulation and remove the logical dependence, the object which is aware about details of implementation of query modification, should to have all methods to create any query which can be required by each client.
-But the object should not make assumptions about clients!
+To save the encapsulation and remove the logical dependence, the object which is aware about details of implementation of query modification, should contain all methods to create any query which can be required by each client.
+But an object should not make assumptions about clients!
 
-Otherwise, we receive a God object which is aware of the needs of all objects that can potentially use it.
+Otherwise, we receive a God object which is aware of the needs of all potential clients.
 
-This violates OCP entails the emergence of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
+This violates OCP and entails the emergence of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
 Often there is garbage in the form of unclaimed methods, after removing objects using them.
 Very large classes are usually broken up using inheritance or composition.
 This leads to the fact that in order to get the complete idea of what the method does, you need to repeatedly interrupt the view for research the contents of various methods, classes, and even files.
 
-The Query Object pattern provides the unified interface to query modification, which frees the object with query state from the need to know about the needs of its clients.
+The Query Object pattern provides the unified interface for query modification, which frees the object with query state from the need to know about the needs of its clients.
 
-\8. I would also like to raise the issue of using the language syntax constructions to construct the SQL-queries.
+\8. I would like also to raise the issue of using the language syntax constructions to construct the SQL-queries.
 
 There is a few examples:
 

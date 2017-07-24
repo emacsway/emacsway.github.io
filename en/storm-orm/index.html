@@ -372,7 +372,7 @@ However, at leisure I had wrote the simplest <a class="reference external" href=
 This is because Raw-SQL queries contain many duplicate expressions.
 And it is also true the rule &#8220;G5: Duplication&#8221; <a class="footnote-reference" href="#fncc" id="id9">[1]</a> (&#8220;Duplicated Code&#8221; <a class="footnote-reference" href="#fnr" id="id10">[2]</a>).
 SQLBuilder allows you to avoid this problem, because it keeps all metadata of the query (for example the list of fields) in the single place.</p>
-<p>4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in the form of method&#8217;s arguments with plain values.
+<p>4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in form of method&#8217;s arguments with plain values.
 When you need add yet another selection criteria or field, you have to change interface of the method (or add yet another method), but this violates the <a class="reference external" href="https://en.wikipedia.org/wiki/Open/closed_principle">Open/Closed Principle</a> and has signs of &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id11">[2]</a> and &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id12">[2]</a>.</p>
 <p>This issue should be solved by using &#8220;<a class="reference external" href="http://www.refactoring.com/catalog/introduceParameterObject">Introduce Parameter Object</a>&#8221; <a class="footnote-reference" href="#fnr" id="id13">[2]</a> in form of class Criteria of pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a>.
 In this case all selection criteria would be encapsulated in the single composite object (see <a class="reference external" href="https://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a>).
@@ -382,25 +382,25 @@ The sorting method and its direction - characterize the state of the object.
 Selection criteria are also objects that express the database behavior, and have own behavior (they are able to create compositions and render its state in several forms).
 And you expect this behavior from they.
 When you mean objects, but do not express them in code, the program loses the ability to express the developer&#8217;s intent (&#8220;G16: Obscured Intent&#8221; <a class="footnote-reference" href="#fncc" id="id15">[1]</a>).</p>
-<p>5. If some value of the object requires a special conversion to the DB representation, you have to clutter the code explicitly calling these conversions.</p>
+<p>5. If some value of the model instance requires a special conversion to the DB representation, you have to clutter the code explicitly calling these conversions.</p>
 <p>6. There is a tendency (which I regularly see) to use the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> in combination with Raw-SQL.
 Since the Repository pattern is designed to hide the data source, it is not clear how to pass the selection criteria in the Repository so that they are completely abstract from the data source, i.e. are abstract from Raw-SQL.</p>
-<p>In primitive cases, this, of course, is not a problem (you can pass them by keyword arguments to the function, although this causes the problems described in clause 4).</p>
+<p>In a primitive case this, of course, is not a problem (you can pass them by keyword arguments to the function, although this causes the problems described in clause 4).</p>
 <p>But if your Criteria have an arbitrary quantity and needs to use nested operators (&#8220;OR&#8221;, &#8220;AND&#8221;, &#8220;XOR&#8221;) with different precedences, then there is a problem, and the solution of the problem is the responsibility of the pattern Query Object.
 Your method can accept Raw-SQL as arguments, but this approach has the signs &#8220;G6: Code at Wrong Level of Abstraction&#8221; <a class="footnote-reference" href="#fncc" id="id16">[1]</a> and &#8220;G34: Functions Should Descend Only One Level of Abstraction&#8221; <a class="footnote-reference" href="#fncc" id="id17">[1]</a>.</p>
 <p>7. Quite often string formatting is used to build conditionally-compound SQL-queries.
-The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of the implementation of the mechanism for its modification.
-This entails the emergence of a logical dependence, a violation of encapsulation.</p>
+The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of implementation of the mechanism for this modification.
+This entails the emergence of a logical dependence and a violation of encapsulation.</p>
 <p>To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should to have all methods to create any query required by each client.
-To save the encapsulation and remove the logical dependence, the object which is aware about details of implementation of query modification, should to have all methods to create any query which can be required by each client.
-But the object should not make assumptions about clients!</p>
-<p>Otherwise, we receive a God object which is aware of the needs of all objects that can potentially use it.</p>
-<p>This violates OCP entails the emergence of &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id18">[2]</a> and &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id19">[2]</a>.
+To save the encapsulation and remove the logical dependence, the object which is aware about details of implementation of query modification, should contain all methods to create any query which can be required by each client.
+But an object should not make assumptions about clients!</p>
+<p>Otherwise, we receive a God object which is aware of the needs of all potential clients.</p>
+<p>This violates OCP and entails the emergence of &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id18">[2]</a> and &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id19">[2]</a>.
 Often there is garbage in the form of unclaimed methods, after removing objects using them.
 Very large classes are usually broken up using inheritance or composition.
 This leads to the fact that in order to get the complete idea of what the method does, you need to repeatedly interrupt the view for research the contents of various methods, classes, and even files.</p>
-<p>The Query Object pattern provides the unified interface to query modification, which frees the object with query state from the need to know about the needs of its clients.</p>
-<p>8. I would also like to raise the issue of using the language syntax constructions to construct the SQL-queries.</p>
+<p>The Query Object pattern provides the unified interface for query modification, which frees the object with query state from the need to know about the needs of its clients.</p>
+<p>8. I would like also to raise the issue of using the language syntax constructions to construct the SQL-queries.</p>
 <p>There is a few examples:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/pythonql/pythonql">A Query Language extension for Python</a>: Query files, objects, SQL and NoSQL databases with a built-in query language</li>
