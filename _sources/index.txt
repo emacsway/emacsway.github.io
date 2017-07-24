@@ -13,6 +13,7 @@ Welcome to @emacsway's blog!
 
 - :blog_baseurl:`Atom feeds <blog/atom.xml>`
 - :ref:`All blog posts <blog-posts>`
+- :ref:`Blog posts by language <blog-languages>`
 
 Here is a list of most recent posts:
 

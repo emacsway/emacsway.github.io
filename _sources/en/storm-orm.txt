@@ -348,22 +348,22 @@ The list of possible combinations of criteria::
     4,5
     5
 
-And if we add another criterion, it will be 2^6=64 combinations, i.e. in 2 times more.
-One more, it will be 2^7=128 combinations.
+And if we added yet another criterion, it would be 2^6=64 combinations, i.e. in 2 times more.
+One more, it would be 2^7=128 combinations.
 
-128 fixed queries forces them to abandon the concept of "pure SQL" in favor of the concept of "dynamic building of SQL-query."
-The method that creates this query will take a lot of arguments, and this will affect the cleanness of the code.
-You can divide the method by responsibilities, so that each method will build its part of the query.
-But firstly, this approach will have created the SQL-builder in a particular way (violation of the `DRY`_ principle).
-And secondly, if you continue to clean up the methods, to free they from dependencies, and increase the `Cohesion`_ of the classes, then you will eventually come to the Criteria classes and implement the `Query Object`_ pattern.
-Again, attempts to break this method will lead to a reduction in `Cohesion`_ of the class.
+128 fixed queries forces us to abandon the concept of "pure SQL" in favor of the concept of "dynamic building of SQL-query."
+The method that creates this query would take a lot of arguments, and this would affect the cleanness of the code.
+You can divide the method by responsibilities, so that each method would build its part of the query.
+But firstly, this approach would have created the SQL-builder in a particular way (violation of the `DRY`_ principle).
+And secondly, if you continued to clean up the methods, to free they from dependencies, and to increase the `Cohesion`_ of the classes, then you would eventually come to the Criteria classes and implement the `Query Object`_ pattern.
+Again, attempts to break this method would lead to a reduction in `Cohesion`_ of the class.
 To restore the `Cohesion`_, you have to extract Criteria classes.
 
-In other words, you will actually create an SQL-builder that can be extracted to a separate library, which can be evolved independently.
+In other words, you would create actually an SQL-builder which could be extracted to a separate library and could be evolved independently.
 
-But what happens if you do not "clean up" the methods, release them from dependencies and increase the `Cohesion`_ of classes? You will get an unreadable messian with a lot of SQL pieces scattered across different methods.
-Sometimes such "pieces" are made in the form of static methods of the class, which acquires the signs "G18: Inappropriate Static" [#fncc]_, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object `Criteria`_.
-In any case, the readability of such "pure SQL" (and this is one of the most weighty arguments in its favor) will be lost (it will be even lower than the readability of the query created by SQL-builder).
+But what happens if you do not "clean up" the methods, do not release them from dependencies and do not increase the `Cohesion`_ of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
+Sometimes such "pieces" can take the form of static methods of a class, which acquires the signs "G18: Inappropriate Static" [#fncc]_, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object `Criteria`_.
+In any case, the readability (the most important advantage) of such "pure SQL" would be lost (it would be even lower than the readability of the query which is created by SQL-builder).
 
 SQL-builders exists only because they are maximally implement the principle of `Single responsibility principle`_ (SRP).
 In the "Chapter 10: Classes. Organizing for Change" of the widely known book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_, C.Martin demonstrates the achievement of the `SRP`_ principle in the example of SQL-builder.

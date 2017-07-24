@@ -338,19 +338,19 @@ You need to allow users to select the ads using a set of any number of the follo
 <span class="mi">5</span>
 </pre></div>
 </div>
-<p>And if we add another criterion, it will be 2^6=64 combinations, i.e. in 2 times more.
-One more, it will be 2^7=128 combinations.</p>
-<p>128 fixed queries forces them to abandon the concept of &#8220;pure SQL&#8221; in favor of the concept of &#8220;dynamic building of SQL-query.&#8221;
-The method that creates this query will take a lot of arguments, and this will affect the cleanness of the code.
-You can divide the method by responsibilities, so that each method will build its part of the query.
-But firstly, this approach will have created the SQL-builder in a particular way (violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle).
-And secondly, if you continue to clean up the methods, to free they from dependencies, and increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the classes, then you will eventually come to the Criteria classes and implement the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
-Again, attempts to break this method will lead to a reduction in <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the class.
+<p>And if we added yet another criterion, it would be 2^6=64 combinations, i.e. in 2 times more.
+One more, it would be 2^7=128 combinations.</p>
+<p>128 fixed queries forces us to abandon the concept of &#8220;pure SQL&#8221; in favor of the concept of &#8220;dynamic building of SQL-query.&#8221;
+The method that creates this query would take a lot of arguments, and this would affect the cleanness of the code.
+You can divide the method by responsibilities, so that each method would build its part of the query.
+But firstly, this approach would have created the SQL-builder in a particular way (violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> principle).
+And secondly, if you continued to clean up the methods, to free they from dependencies, and to increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the classes, then you would eventually come to the Criteria classes and implement the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
+Again, attempts to break this method would lead to a reduction in <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of the class.
 To restore the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a>, you have to extract Criteria classes.</p>
-<p>In other words, you will actually create an SQL-builder that can be extracted to a separate library, which can be evolved independently.</p>
-<p>But what happens if you do not &#8220;clean up&#8221; the methods, release them from dependencies and increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of classes? You will get an unreadable messian with a lot of SQL pieces scattered across different methods.
-Sometimes such &#8220;pieces&#8221; are made in the form of static methods of the class, which acquires the signs &#8220;G18: Inappropriate Static&#8221; <a class="footnote-reference" href="#fncc" id="id5">[1]</a>, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Criteria</a>.
-In any case, the readability of such &#8220;pure SQL&#8221; (and this is one of the most weighty arguments in its favor) will be lost (it will be even lower than the readability of the query created by SQL-builder).</p>
+<p>In other words, you would create actually an SQL-builder which could be extracted to a separate library and could be evolved independently.</p>
+<p>But what happens if you do not &#8220;clean up&#8221; the methods, do not release them from dependencies and do not increase the <a class="reference external" href="https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29">Cohesion</a> of classes? You would get an unreadable messian with a lot of SQL pieces scattered across different methods.
+Sometimes such &#8220;pieces&#8221; can take the form of static methods of a class, which acquires the signs &#8220;G18: Inappropriate Static&#8221; <a class="footnote-reference" href="#fncc" id="id5">[1]</a>, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Criteria</a>.
+In any case, the readability (the most important advantage) of such &#8220;pure SQL&#8221; would be lost (it would be even lower than the readability of the query which is created by SQL-builder).</p>
 <p>SQL-builders exists only because they are maximally implement the principle of <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP).
 In the &#8220;Chapter 10: Classes. Organizing for Change&#8221; of the widely known book «Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id6">[1]</a>, C.Martin demonstrates the achievement of the <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a> principle in the example of SQL-builder.</p>
 <p>Similar to hybrid object, that contains disadvantages of data structures and objects, SQL-builder implemented in particular way contains disadvantages of both concepts.
