@@ -155,29 +155,29 @@ I saw such case in my practice, the cache saved the string from the HTTP-client 
 </div>
 <div class="section" id="implementation-of-tag-locking">
 <span id="tags-lock-en"></span><h1><a class="toc-backref" href="#id7">Implementation of tag locking</a><a class="headerlink" href="#implementation-of-tag-locking" title="Permalink to this headline">¶</a></h1>
-<p>The main purpose of tag locking is a preventing of substitution of actual data by outdated data by concurent threads/processes, if it&#8217;s needed by transaction isolation level or a delay of replication.</p>
-<p>The tag locking is implemented by library as preventing the dependent cache creation by concurent threads/processes while the tag is locked.</p>
-<p>Why was not implemented a <a class="reference external" href="http://martinfowler.com/eaaCatalog/pessimisticOfflineLock.html">Pessimistic Offline Lock</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_exclusion">Mutual Exclusion</a>?
-This is a <a class="reference internal" href="#thundering-herd-en"><span class="std std-ref">resonable</span></a> question, because the cached logic can be too resource intensive.
-This implementation requires concurent threads/processes are waiting untile the locked tag will be released.</p>
+<p>The main purpose of tag locking is to prevent the substitution of actual data by outdated data of concurrent threads/processes, if it&#8217;s needed by transaction isolation level or delay of replication.</p>
+<p>The tag locking is implemented by the library in the form of preventing the creation of dependent cache by the concurent threads/processes while the tag is locked.</p>
+<p>Why <a class="reference external" href="http://martinfowler.com/eaaCatalog/pessimisticOfflineLock.html">Pessimistic Offline Lock</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_exclusion">Mutual Exclusion</a>  had not been implemented?
+This is <a class="reference internal" href="#thundering-herd-en"><span class="std std-ref">resonable</span></a> question, because the cached logic can be too resource intensive.
+This way of implementation requires concurent threads/processes are waiting untile the locked tag will be released.</p>
 <div class="section" id="constructive-obstacle-to-implementing-pessimistic-locking">
 <h2><a class="toc-backref" href="#id8">Constructive obstacle to implementing pessimistic locking</a><a class="headerlink" href="#constructive-obstacle-to-implementing-pessimistic-locking" title="Permalink to this headline">¶</a></h2>
 <p>The main purpose of the library is cache invalidation.</p>
 <p>Suppose, the process P1 has begun transaction with isolation level of &#8220;Repeatable read&#8221;.</p>
 <p>Then the process P2 has begun the transaction, updated data in the DB, invalidated tag T1, and ascuired the lock for the tag T1 until the transaction will be committed.</p>
-<p>Process P1 are trying to read the cache with key C1, which is tagged by the tag T1, and is not valid anymore.
+<p>Process P1 are trying to read the cache with key C1, which is tagged by the tag T1 and is not valid anymore.
 Not being able to read the invalid cache C1, the process P1 receives the outdated data from the DB (remember, the transaction isolation level is &#8220;Repeatable read&#8221;).
 Then the process P1 are trying to create the cache C1, and waiting while the tag T1 will be released.</p>
 <p>When the transaction of process P2 is committed, the process P2 releases the tag T1.
 Then the process P1 writes the outdated data into the cache C1.
-This locking does not make sense.</p>
-<p>But what will be happened, if we check the status of tag T1 on the cache reading (not writing)?
-Can this approach to change something?</p>
+This locking does not make any sense.</p>
+<p>But what happens, if we check the status of tag T1 on the cache reading (not writing)?
+Could this approach to change something?</p>
 <p>Yes, it can.
-First, it adds an overhead to reading logic.
-The second, it can has an effect if transaction isolation level is not higher than &#8220;Read committed&#8221;.
-For the transaction isolation level &#8220;Repeatable read&#8221; (which is default for some DB, and at least required for the correct work of pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>) and higher, it does not has any effect.
-In this case, the process P2 would be locked before the transaction beginning.</p>
+At first, it would add the overhead to reading logic.
+Secondly, it could have the effect on condition transaction isolation level is not higher than &#8220;Read committed&#8221;.
+For the transaction isolation level &#8220;Repeatable read&#8221; (which is default for some DB and at least is required by correct work of pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>) and higher, it would not have any effect.
+To make it workable the process P2 should be locked before the transaction had been beginning.</p>
 <p>Thus, this solution would be partial, not universal, and would contain an uncontrolled dependence.
 For 2 from 4 of transaction isolation level it would not work.</p>
 </div>
@@ -188,11 +188,11 @@ For 2 from 4 of transaction isolation level it would not work.</p>
 Waiting for parallel process until the end of the transaction, or until the slave is updated, which in some cases can take 8 seconds or more, is practically not feasible in web applications.</p>
 <p>There is the 3 main reasons:</p>
 <ul class="simple">
-<li>The quickness of response is important for web-application, otherwise a client simply can not wait for the response.</li>
+<li>The quickness of response is important for web-application, otherwise a client simply could not wait for the response.</li>
 <li>There is no any reason to wait for lock release longer than it takes time to create the cache itself.</li>
-<li>An increase in the number of pending processes can lead to a memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.</li>
+<li>The increase in the number of pending processes could lead to the memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.</li>
 </ul>
-<p>Also, there would be a problem with the implementation, since it is impossible to correctly block all tags by single query.</p>
+<p>Also, there could be a problem with the implementation, since it is impossible to correctly block all tags by single query.</p>
 <ul class="simple">
 <li>First, we have to use method <code class="docutils literal"><span class="pre">cache.add()</span></code> instead of <code class="docutils literal"><span class="pre">cache.set_many()</span></code> for locking, to ensure the atomicity of the existence check and cache creation.</li>
 <li>Second, each tag should be locked by separate query, that increases the overhead.</li>

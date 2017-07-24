@@ -390,10 +390,10 @@ This is because Raw-SQL queries contain many duplicate expressions.
 And it is also true the rule "G5: Duplication" [#fncc]_ ("Duplicated Code" [#fnr]_).
 SQLBuilder allows you to avoid this problem, because it keeps all metadata of the query (for example the list of fields) in the single place.
 
-\4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in form of method's arguments with plain values.
+\4. When the concept of Raw-SQL is used, the method to create query usually accepts the selection criteria in the form of method's arguments with plain values.
 When you need add yet another selection criteria or field, you have to change interface of the method (or add yet another method), but this violates the `Open/Closed Principle`_ and has signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
 
-This issue should be solved by using "`Introduce Parameter Object`_" [#fnr]_ in form of class Criteria of pattern `Query Object`_.
+This issue should be solved by using "`Introduce Parameter Object`_" [#fnr]_ in the form of class Criteria of pattern `Query Object`_.
 In this case all selection criteria would be encapsulated in the single composite object (see `Composite pattern`_).
 This approach also eliminates conditions from the methods, and fulfills the "`Replace Conditional with Polymorphism`_" [#fnr]_.
 

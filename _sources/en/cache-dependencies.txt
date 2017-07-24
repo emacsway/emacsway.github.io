@@ -101,13 +101,13 @@ I saw such case in my practice, the cache saved the string from the HTTP-client 
 Implementation of tag locking
 =============================
 
-The main purpose of tag locking is a preventing of substitution of actual data by outdated data by concurent threads/processes, if it's needed by transaction isolation level or a delay of replication.
+The main purpose of tag locking is to prevent the substitution of actual data by outdated data of concurrent threads/processes, if it's needed by transaction isolation level or delay of replication.
 
-The tag locking is implemented by library as preventing the dependent cache creation by concurent threads/processes while the tag is locked.
+The tag locking is implemented by the library in the form of preventing the creation of dependent cache by the concurent threads/processes while the tag is locked.
 
-Why was not implemented a `Pessimistic Offline Lock`_ or `Mutual Exclusion`_?
-This is a :ref:`resonable <thundering-herd-en>` question, because the cached logic can be too resource intensive.
-This implementation requires concurent threads/processes are waiting untile the locked tag will be released.
+Why `Pessimistic Offline Lock`_ or `Mutual Exclusion`_  had not been implemented?
+This is :ref:`resonable <thundering-herd-en>` question, because the cached logic can be too resource intensive.
+This way of implementation requires concurent threads/processes are waiting untile the locked tag will be released.
 
 
 Constructive obstacle to implementing pessimistic locking
@@ -119,22 +119,22 @@ Suppose, the process P1 has begun transaction with isolation level of "Repeatabl
 
 Then the process P2 has begun the transaction, updated data in the DB, invalidated tag T1, and ascuired the lock for the tag T1 until the transaction will be committed.
 
-Process P1 are trying to read the cache with key C1, which is tagged by the tag T1, and is not valid anymore.
+Process P1 are trying to read the cache with key C1, which is tagged by the tag T1 and is not valid anymore.
 Not being able to read the invalid cache C1, the process P1 receives the outdated data from the DB (remember, the transaction isolation level is "Repeatable read").
 Then the process P1 are trying to create the cache C1, and waiting while the tag T1 will be released.
 
 When the transaction of process P2 is committed, the process P2 releases the tag T1.
 Then the process P1 writes the outdated data into the cache C1.
-This locking does not make sense.
+This locking does not make any sense.
 
-But what will be happened, if we check the status of tag T1 on the cache reading (not writing)?
-Can this approach to change something?
+But what happens, if we check the status of tag T1 on the cache reading (not writing)?
+Could this approach to change something?
 
 Yes, it can.
-First, it adds an overhead to reading logic.
-The second, it can has an effect if transaction isolation level is not higher than "Read committed".
-For the transaction isolation level "Repeatable read" (which is default for some DB, and at least required for the correct work of pattern `Identity Map`_) and higher, it does not has any effect.
-In this case, the process P2 would be locked before the transaction beginning.
+At first, it would add the overhead to reading logic.
+Secondly, it could have the effect on condition transaction isolation level is not higher than "Read committed".
+For the transaction isolation level "Repeatable read" (which is default for some DB and at least is required by correct work of pattern `Identity Map`_) and higher, it would not have any effect.
+To make it workable the process P2 should be locked before the transaction had been beginning.
 
 Thus, this solution would be partial, not universal, and would contain an uncontrolled dependence.
 For 2 from 4 of transaction isolation level it would not work.
@@ -150,11 +150,11 @@ Waiting for parallel process until the end of the transaction, or until the slav
 
 There is the 3 main reasons:
 
-- The quickness of response is important for web-application, otherwise a client simply can not wait for the response.
+- The quickness of response is important for web-application, otherwise a client simply could not wait for the response.
 - There is no any reason to wait for lock release longer than it takes time to create the cache itself.
-- An increase in the number of pending processes can lead to a memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.
+- The increase in the number of pending processes could lead to the memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.
 
-Also, there would be a problem with the implementation, since it is impossible to correctly block all tags by single query.
+Also, there could be a problem with the implementation, since it is impossible to correctly block all tags by single query.
 
 - First, we have to use method ``cache.add()`` instead of ``cache.set_many()`` for locking, to ensure the atomicity of the existence check and cache creation.
 - Second, each tag should be locked by separate query, that increases the overhead.
