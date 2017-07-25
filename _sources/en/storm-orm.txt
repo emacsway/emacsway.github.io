@@ -37,8 +37,8 @@ Thus, simplicity is important.
 If you are not able to use some component of the ORM separately, for example SQLBuilder, then, probably, it would be better to use raw pattern DataMapper_ instead of the ORM.
 Well designed ORM allows you to use its components separately, such as `Query Object`_ (SQLBuilder), Connection, `DataMapper`_, `Identity Map`_, `Unit of Work`_, `Repository`_.
 Does the ORM allow you to use Raw-SQL (entirely or partially)?
-Are you able to use only DataMapper (without Connection, SQLBuilder etc.)?
-Are you able to substitute the DataMapper by `Service Stub`_, to be free from DB for testing?
+Are you able to use only Data Mapper (without Connection, SQLBuilder etc.)?
+Are you able to substitute the Data Mapper by `Service Stub`_, to be free from DB for testing?
 
 Usually the possibilities of any ORM have to be expanded.
 Are you able to extend your ORM without monkey-patching, forks, patches?
@@ -444,8 +444,8 @@ Moreover, I like when the syntactic constructions of a language are represented 
 
 .. _why-datamapper-en:
 
-Do you really need DataMapper?
-------------------------------
+Do you really need Data Mapper?
+-------------------------------
 
 First of all, you need to decide whether the application needs the pattern `Domain Model`_ or the pattern `Transaction Script`_.
 This question is considered well by «Patterns of Enterprise Application Architecture» [#fnpoeaa]_, so I will not dwell on it.

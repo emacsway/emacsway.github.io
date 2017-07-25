@@ -58,28 +58,28 @@
           <div class="body" role="main">
             
   <div class="section" id="storm-orm-python">
-<h1><a class="toc-backref" href="#id39">Почему я выбираю Storm ORM для Python</a><a class="headerlink" href="#storm-orm-python" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id38">Почему я выбираю Storm ORM для Python</a><a class="headerlink" href="#storm-orm-python" title="Permalink to this headline">¶</a></h1>
 <p>В промышленных решениях на Python я чаще стал использовать <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">KISS-style</a> <a class="reference external" href="https://storm.canonical.com/">Storm ORM</a>, и здесь я попытаюсь объяснить почему.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#storm-orm-python" id="id39">Почему я выбираю Storm ORM для Python</a></li>
-<li><a class="reference internal" href="#orm" id="id40">Мои критерии к ORM</a></li>
-<li><a class="reference internal" href="#storm-orm-advantages-ru" id="id41">О достоинствах</a></li>
-<li><a class="reference internal" href="#sqlalchemy" id="id42">По поводу SQLAlchemy</a></li>
-<li><a class="reference internal" href="#storm-orm-disadvantages-ru" id="id43">О недостатках</a></li>
-<li><a class="reference internal" href="#storm-orm-ambiguities-ru" id="id44">О неоднозначном</a></li>
-<li><a class="reference internal" href="#faq" id="id45">FAQ</a></li>
-<li><a class="reference internal" href="#why-orm-ru" id="id46">А нужен ли вообще ORM?</a><ul>
-<li><a class="reference internal" href="#query-object" id="id47">Нужен ли Query Object?</a></li>
-<li><a class="reference internal" href="#datamapper" id="id48">Нужен ли сам DataMapper?</a></li>
+<li><a class="reference internal" href="#storm-orm-python" id="id38">Почему я выбираю Storm ORM для Python</a></li>
+<li><a class="reference internal" href="#orm" id="id39">Мои критерии к ORM</a></li>
+<li><a class="reference internal" href="#storm-orm-advantages-ru" id="id40">О достоинствах</a></li>
+<li><a class="reference internal" href="#sqlalchemy" id="id41">По поводу SQLAlchemy</a></li>
+<li><a class="reference internal" href="#storm-orm-disadvantages-ru" id="id42">О недостатках</a></li>
+<li><a class="reference internal" href="#storm-orm-ambiguities-ru" id="id43">О неоднозначном</a></li>
+<li><a class="reference internal" href="#faq" id="id44">FAQ</a></li>
+<li><a class="reference internal" href="#why-orm-ru" id="id45">А нужен ли вообще ORM?</a><ul>
+<li><a class="reference internal" href="#query-object" id="id46">Нужен ли Query Object?</a></li>
+<li><a class="reference internal" href="#data-mapper" id="id47">Нужен ли сам Data Mapper?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="orm">
-<span id="orm-criteria-ru"></span><h1><a class="toc-backref" href="#id40">Мои критерии к ORM</a><a class="headerlink" href="#orm" title="Permalink to this headline">¶</a></h1>
+<span id="orm-criteria-ru"></span><h1><a class="toc-backref" href="#id39">Мои критерии к ORM</a><a class="headerlink" href="#orm" title="Permalink to this headline">¶</a></h1>
 <p>- <strong>Скорость</strong>. ORM должен быть быстрым.
 ORM должен иметь <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> для предотвращения запросов в БД, если объект уже был загружен.
 Этот момент особенно важен, когда различные изолированные компоненты приложения пытаются загрузить один и тот же объект из БД в собственную область видимости.
@@ -95,8 +95,8 @@ ORM должен иметь <a class="reference external" href="http://martinfow
 <p>Если Вы не можете использовать отдельно взятый компонент ORM, например SQLBuilder, изолированно от всей системы, то, наверное, такой ORM лучше вообще не использовать (в пользу &#8220;низкоуровневых&#8221; паттернов обработки данных).
 Хорошо спроектированный ORM позволяет использовать свои компоненты по отдельности, <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> (SQLBuilder), Connection, <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>, <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>, <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>.
 Можете ли Вы в своем ORM использовать Raw-SQL (полностью или частично)?
-Можете ли Вы изолированно использовать только DataMapper?
-Можете ли Вы подменить DataMapper, например, на <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">фиктивную службу</a>, которая не будет осуществлять запросы в БД?</p>
+Можете ли Вы изолированно использовать только Data Mapper?
+Можете ли Вы подменить Data Mapper, например, на <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">фиктивную службу</a>, которая не будет осуществлять запросы в БД?</p>
 <p>Возможности любого ORM приходится расширять.
 Насколько легко расширить Ваш ORM без форков, патчей, манкипатчей? Соблюдается ли в нем <a class="reference external" href="https://en.wikipedia.org/wiki/Open/closed_principle">Open/Closed Principle</a> (OCP)?</p>
 <blockquote>
@@ -121,7 +121,7 @@ ORM должен иметь <a class="reference external" href="http://martinfow
 Кроме того, он позволит Вам влиять на порядок сохранения объектов, например, используя топологическую сортировку для предотвращения дедлоков.</p>
 </div>
 <div class="section" id="storm-orm-advantages-ru">
-<span id="id3"></span><h1><a class="toc-backref" href="#id41">О достоинствах</a><a class="headerlink" href="#storm-orm-advantages-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id3"></span><h1><a class="toc-backref" href="#id40">О достоинствах</a><a class="headerlink" href="#storm-orm-advantages-ru" title="Permalink to this headline">¶</a></h1>
 <p>Несмотря на номер релиза, - код достаточно стабилен.
 Удачная архитектура в сочетании с <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">принципом KISS</a> создает ложную иллюзию, что Storm ORM якобы не развивается.
 Это не так.
@@ -192,7 +192,7 @@ Identity Map так же делает ненужными утилиты типа
 <p>Другие достоинства хорошо отражены в <a class="reference external" href="https://storm.canonical.com/Tutorial">Tutorial</a> и в <a class="reference external" href="https://storm.canonical.com/Manual">Manual</a></p>
 </div>
 <div class="section" id="sqlalchemy">
-<span id="about-sqlalchemy-ru"></span><h1><a class="toc-backref" href="#id42">По поводу SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
+<span id="about-sqlalchemy-ru"></span><h1><a class="toc-backref" href="#id41">По поводу SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
 <p>В общем-то любой <a class="reference external" href="http://aosabook.org/en/sqlalchemy.html">ORM хорош</a>, если он <a class="reference external" href="http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/">реализует принципы</a> нашумевшей книги «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id6">[3]</a>.
 Storm ORM контрастирует своей простотой на фоне SQLAlchemy так же, как VIM на фоне Emacs, или jQuery на фоне Dojo.
 Идеологически между ними много общего, я бы даже сказал, что Storm ORM - это упрощенная версия SQLAlchemy.
@@ -203,7 +203,7 @@ Storm ORM контрастирует своей простотой на фоне
 В противном случае, SQLAlchemy становится предпочтительней, даже невзирая на уровень ее сложности, поскольку многие решения предоставляет &#8220;из коробки&#8221;.</p>
 </div>
 <div class="section" id="storm-orm-disadvantages-ru">
-<span id="id7"></span><h1><a class="toc-backref" href="#id43">О недостатках</a><a class="headerlink" href="#storm-orm-disadvantages-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id7"></span><h1><a class="toc-backref" href="#id42">О недостатках</a><a class="headerlink" href="#storm-orm-disadvantages-ru" title="Permalink to this headline">¶</a></h1>
 <p>В моей практике было три случая, когда в Storm ORM требовалось &#8220;допиливать&#8221; то, что SQLAlchemy (или ее сообщество) предоставляет в готовом виде.</p>
 <ol class="arabic simple">
 <li><a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects">Массовая вставка объектов</a>, причем, с условием ON DUPLICATE KEY UPDATE.</li>
@@ -225,7 +225,7 @@ Storm ORM не реализует топологическую сортиров�
 Отсутствие выделенного класса для маппера вынуждает так же загромождать доменную модель <a class="reference external" href="https://storm.canonical.com/Manual#A__storm_pre_flush__">служебной логикой</a>.</p>
 </div>
 <div class="section" id="storm-orm-ambiguities-ru">
-<span id="id8"></span><h1><a class="toc-backref" href="#id44">О неоднозначном</a><a class="headerlink" href="#storm-orm-ambiguities-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id8"></span><h1><a class="toc-backref" href="#id43">О неоднозначном</a><a class="headerlink" href="#storm-orm-ambiguities-ru" title="Permalink to this headline">¶</a></h1>
 <p>Поддержка ACID привела к тому, что доменная модель на самом деле не является чистой.
 Тем не менее, она имеет чистый интерфейс, и ведет себя как обычный чистый объект.
 На самом деле инстанция модели не содержит данных, а ссылается на структуру данных посредством дескрипторов.
@@ -241,7 +241,7 @@ Storm ORM не реализует топологическую сортиров�
 Тем не менее, вы не имеете возможности запросить напрямую второй объект у хранилища Store() до момента сохранения.</p>
 </div>
 <div class="section" id="faq">
-<span id="storm-orm-faq-ru"></span><h1><a class="toc-backref" href="#id45">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<span id="storm-orm-faq-ru"></span><h1><a class="toc-backref" href="#id44">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <p><em>q: Storm ORM не поддерживает Python3.</em></p>
 <p>a: Если Вы мигрировали хотя бы одну библиотеку на Python3, то понимаете, что этот процесс больших трудностей не вызывает.
 95% работы делает команда <code class="docutils literal"><span class="pre">2to3</span></code>.
@@ -280,12 +280,12 @@ Storm ORM не реализует топологическую сортиров�
 </div>
 </div>
 <div class="section" id="why-orm-ru">
-<span id="id9"></span><h1><a class="toc-backref" href="#id46">А нужен ли вообще ORM?</a><a class="headerlink" href="#why-orm-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id9"></span><h1><a class="toc-backref" href="#id45">А нужен ли вообще ORM?</a><a class="headerlink" href="#why-orm-ru" title="Permalink to this headline">¶</a></h1>
 <p>Честно говоря, нет необходимости использовать ОРМ всегда и везде.
 Во многих случаях (например, если от приложения требуется просто выдать список JSON значений) вполне достаточно простейшего <a class="reference external" href="http://martinfowler.com/eaaCatalog/tableDataGateway.html">Table Data Gateway</a>, который будет возвращать простейшие значения <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 Тут уже дело личных предпочтений.</p>
 <div class="section" id="query-object">
-<span id="why-query-object-ru"></span><h2><a class="toc-backref" href="#id47">Нужен ли Query Object?</a><a class="headerlink" href="#query-object" title="Permalink to this headline">¶</a></h2>
+<span id="why-query-object-ru"></span><h2><a class="toc-backref" href="#id46">Нужен ли Query Object?</a><a class="headerlink" href="#query-object" title="Permalink to this headline">¶</a></h2>
 <p>Единственное в чем я убежден твердо, - это в том, что без паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> (часто именуемом как SQLBuilder) обойтись довольно трудно, если не невозможно.</p>
 <p>1. Даже самые стойкие сторонники концепции &#8220;чистого SQL&#8221; достаточно быстро сталкиваются с невозможностью выразить SQL-запрос в чистом виде, и вынуждены его динамически составлять в зависимости от условий.
 А это уже разновидность концепции SQLBuilder, пусть и в примитивном виде, и реализованном в частном порядке.
@@ -402,8 +402,8 @@ SQL-код, даже если он в Python-файлах, все равно о�
 <p>Я скажу субъективно, мне больше нравится использовать для этого объекты.
 Более того, мне нравится когда сами синтаксические конструкции языка представлены объектами, как в Smalltalk.</p>
 </div>
-<div class="section" id="datamapper">
-<span id="why-datamapper-ru"></span><h2><a class="toc-backref" href="#id48">Нужен ли сам DataMapper?</a><a class="headerlink" href="#datamapper" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-mapper">
+<span id="why-datamapper-ru"></span><h2><a class="toc-backref" href="#id47">Нужен ли сам Data Mapper?</a><a class="headerlink" href="#data-mapper" title="Permalink to this headline">¶</a></h2>
 <p>Что же касается самого маппера, то тут следует решить, нужна ли приложению <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>, или вполне устроит паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a>.
 Я не буду останавливаться на этом выборе, так как он хорошо освещен в «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id25">[3]</a>.
 Но если нуждам приложения больше соответствует Domain Model, то без полноценного ORM (пусть и самодельного) обойтись будет непросто, по крайней мере, для качественной, удобной и быстрой работы.</p>

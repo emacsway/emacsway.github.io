@@ -194,14 +194,14 @@ However, the widely held view that access to the model should always be made thr
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
-Service is not a wrapper for DataMapper
-=======================================
+Service is not a wrapper for Data Mapper
+========================================
 
-Часто `Service Layer`_ ошибочно делают как враппер над `DataMapper`_.
-Это не совсем верно.
-Маппер обслуживает Domain (объект предметной области), а сервисный слой обслуживает клиента (группу клиентов).
-Сервисный слой может манипулировать в рамках бизнес-транзакции или в интересах клиента несколькими маперами и другими сервисами.
-Поэтому методы сервиса обычно содержат имя возвращаемого домена в качестве суффикса (например, getUser()), в то время как методы маппера в этом суффиксе не нуждается (так как имя домена присутствует в имени класса маппера, и маппер обслуживает только один домен).
+Often `Service Layer`_ is mistakenly made in the for of wrapper over `DataMapper`_.
+This is not quite the right decision.
+Data Mapper serves Domain, while Service Layer serves client (or client group).
+The Service Layer can manipulate multiple Data Mappers and other Services within a business transaction or in the interests of the client.
+Therefore, the Service methods usually contain the name of the returned Domain as a suffix (for example, getUser()), while the methods of the Data Mapper do not need this suffix (since the Domain name is present in the name of the Data Mapper class, and the Data Mapper serves only one Domain).
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
@@ -243,14 +243,15 @@ Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Depende
 Widespread problem of Django applications
 =========================================
 
-Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
-Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.
+A common mistake is to use the django.db.models.Manager class (and even django.db.models.Model) as a service layer.
+Often you can see how some method of the class django.db.models.Model takes as an argument the HTTP-request object django.http.request.HttpRequest, for example, to check the permissions.
 
-Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которую так же называют правилами делового регламента (business rules).
+The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.
 
-Нижележащий слой не должен ничего знать о вышестоящем слое. Логика уровня домена не должна быть осведомлена о логике уровня приложения.
+The lower layer should not be aware of the higher layer.
+Domain-level logic should not be aware of application-level logic.
 
-Классу django.db.models.Manager более всего соответствует класс Finder описанный в «Patterns of Enterprise Application Architecture» [#fnpoeaa]_
+The class django.db.models.Manager corresponds most closely to the class Finder described in «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
 
     With a Row Data Gateway you're faced with the questions of where to put the find operations that generate this
     pattern. You can use static find methods, but they preclude polymorphism should you want to substitute

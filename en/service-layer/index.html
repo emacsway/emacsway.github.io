@@ -66,7 +66,7 @@ This article is written in the hope of improving this situation somewhat.</p>
 <ul class="simple">
 <li><a class="reference internal" href="#design-of-service-layer" id="id30">Design of Service Layer</a></li>
 <li><a class="reference internal" href="#purpose-of-service-layer" id="id31">Purpose of Service Layer</a></li>
-<li><a class="reference internal" href="#service-is-not-a-wrapper-for-datamapper" id="id32">Service is not a wrapper for DataMapper</a></li>
+<li><a class="reference internal" href="#service-is-not-a-wrapper-for-data-mapper" id="id32">Service is not a wrapper for Data Mapper</a></li>
 <li><a class="reference internal" href="#implementation-of-service-layer" id="id33">Implementation of Service Layer</a></li>
 <li><a class="reference internal" href="#inversion-of-control" id="id34">Inversion of control</a></li>
 <li><a class="reference internal" href="#widespread-problem-of-django-applications" id="id35">Widespread problem of Django applications</a></li>
@@ -233,13 +233,13 @@ LANGUAGE . Make the SERVICE stateless.
 («Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id12">[3]</a>)</p>
 </div></blockquote>
 </div>
-<div class="section" id="service-is-not-a-wrapper-for-datamapper">
-<h1><a class="toc-backref" href="#id32">Service is not a wrapper for DataMapper</a><a class="headerlink" href="#service-is-not-a-wrapper-for-datamapper" title="Permalink to this headline">¶</a></h1>
-<p>Часто <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> ошибочно делают как враппер над <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>.
-Это не совсем верно.
-Маппер обслуживает Domain (объект предметной области), а сервисный слой обслуживает клиента (группу клиентов).
-Сервисный слой может манипулировать в рамках бизнес-транзакции или в интересах клиента несколькими маперами и другими сервисами.
-Поэтому методы сервиса обычно содержат имя возвращаемого домена в качестве суффикса (например, getUser()), в то время как методы маппера в этом суффиксе не нуждается (так как имя домена присутствует в имени класса маппера, и маппер обслуживает только один домен).</p>
+<div class="section" id="service-is-not-a-wrapper-for-data-mapper">
+<h1><a class="toc-backref" href="#id32">Service is not a wrapper for Data Mapper</a><a class="headerlink" href="#service-is-not-a-wrapper-for-data-mapper" title="Permalink to this headline">¶</a></h1>
+<p>Often <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> is mistakenly made in the for of wrapper over <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>.
+This is not quite the right decision.
+Data Mapper serves Domain, while Service Layer serves client (or client group).
+The Service Layer can manipulate multiple Data Mappers and other Services within a business transaction or in the interests of the client.
+Therefore, the Service methods usually contain the name of the returned Domain as a suffix (for example, getUser()), while the methods of the Data Mapper do not need this suffix (since the Domain name is present in the name of the Data Mapper class, and the Data Mapper serves only one Domain).</p>
 <blockquote>
 <div>Identifying the operations needed on a Service Layer boundary is pretty straightforward. They&#8217;re determined
 by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
@@ -275,11 +275,12 @@ file or programmatically in a special-purpose construction module.
 </div>
 <div class="section" id="widespread-problem-of-django-applications">
 <h1><a class="toc-backref" href="#id35">Widespread problem of Django applications</a><a class="headerlink" href="#widespread-problem-of-django-applications" title="Permalink to this headline">¶</a></h1>
-<p>Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
-Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.</p>
-<p>Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которую так же называют правилами делового регламента (business rules).</p>
-<p>Нижележащий слой не должен ничего знать о вышестоящем слое. Логика уровня домена не должна быть осведомлена о логике уровня приложения.</p>
-<p>Классу django.db.models.Manager более всего соответствует класс Finder описанный в «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id16">[2]</a></p>
+<p>A common mistake is to use the django.db.models.Manager class (and even django.db.models.Model) as a service layer.
+Often you can see how some method of the class django.db.models.Model takes as an argument the HTTP-request object django.http.request.HttpRequest, for example, to check the permissions.</p>
+<p>The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.</p>
+<p>The lower layer should not be aware of the higher layer.
+Domain-level logic should not be aware of application-level logic.</p>
+<p>The class django.db.models.Manager corresponds most closely to the class Finder described in «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id16">[2]</a>.</p>
 <blockquote>
 <div><p>With a Row Data Gateway you&#8217;re faced with the questions of where to put the find operations that generate this
 pattern. You can use static find methods, but they preclude polymorphism should you want to substitute
