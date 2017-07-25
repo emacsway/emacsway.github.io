@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="author" title="About these documents" href="../../about/" />
     <link rel="top" title="@emacsway&#39;s blog" href="../../" />
-  
+
 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -33,20 +33,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
 
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="@emacsway's blog">
-  
-  
-  <link href="True" rel="stylesheet">
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+
+
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5977b23b80bb1d0011ab6d8a&product=sticky-share-buttons"></script>
+
+
 
   </head>
   <body role="document">
@@ -291,13 +282,15 @@ matter is whether there&#8217;s any domain logic present; if there is, you have 
 Gateway should contain only database access logic and no domain logic.
 (Chapter 10. &#8220;Data Source Architectural Patterns : Row Data Gateway&#8221;, «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id17">[2]</a>)</p>
 </div></blockquote>
-<p>Хотя Django не использует паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, она использует абстракцию критериев выборки, своего рода разновидность паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a>.
-Подобно паттерну Repository, класс модели (<a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>) ограничивает свой интерфейс посредством интерфейса Query Object.
-Клиенты должны пользоваться предоставленным интерфейсом, а не возлагать на модель и ее менеджер свои обязанности.
-А так как никакой класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе модели нельзя, ибо он не может владеть потребностями всех клиентов.
-Клиенты должны сами заботиться о себе.
-А сервисный слой как раз и создан для обслуживания клиентов.</p>
-<p>Попытки исключить Сервинсый Слой из Django-приложений приводит к появлению менеджеров с огромным количеством методов.</p>
+<p>Although Django does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern, it uses an abstraction of the selection criteria in a form similar to the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
+Like the Repository pattern, the model class (<a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>) limits its interface using the Query Object interface.
+Clients should use the provided interface, rather than impose their responsibilities on the Model and its Manager on knowledge of their queries.
+And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> class, because it can not be aware about the all needs of all clients.
+And since no class should make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class, because it can not own the needs of all clients.
+Clients should take care of themselves.
+But the service layer was created for client service.
+Therefore, it&#8217;s a responsibility of the Service Layer.</p>
+<p>Attempts to exclude the Serving Layer from Django applications leads to the appearance of managers with a lot of methods.</p>
 <p>Хорошей практикой было бы сокрытие посредством сервисного слоя способа реализации Django моделей в виде <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
 Это позволит безболезненно подменить ORM в случае необходимости.</p>
 <blockquote>
@@ -463,14 +456,6 @@ architectural framework.
 </table>
 </div>
 
-  <div class="section">
-  
-    
-
-
-  
-  
-  </div>
 
           </div>
         </div>
@@ -706,6 +691,22 @@ architectural framework.
     
 
     
+
+
+<!-- google.com/analytics counter -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69288289-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /google.com/analytics counter -->
+
+
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
@@ -735,18 +736,7 @@ architectural framework.
 <noscript><div><img src="https://mc.yandex.ru/watch/32948409" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!-- google.com/analytics counter -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-69288289-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<!-- /google.com/analytics counter -->
 
   </body>
 </html>

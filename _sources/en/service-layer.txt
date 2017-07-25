@@ -263,14 +263,16 @@ The class django.db.models.Manager corresponds most closely to the class Finder 
     Gateway should contain only database access logic and no domain logic.
     (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", «Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Хотя Django не использует паттерн `Repository`_, она использует абстракцию критериев выборки, своего рода разновидность паттерна `Query Object`_.
-Подобно паттерну Repository, класс модели (`ActiveRecord`_) ограничивает свой интерфейс посредством интерфейса Query Object.
-Клиенты должны пользоваться предоставленным интерфейсом, а не возлагать на модель и ее менеджер свои обязанности.
-А так как никакой класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе модели нельзя, ибо он не может владеть потребностями всех клиентов.
-Клиенты должны сами заботиться о себе.
-А сервисный слой как раз и создан для обслуживания клиентов.
+Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in a form similar to the `Query Object`_ pattern.
+Like the Repository pattern, the model class (`ActiveRecord`_) limits its interface using the Query Object interface.
+Clients should use the provided interface, rather than impose their responsibilities on the Model and its Manager on knowledge of their queries.
+And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients.
+And since no class should make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class, because it can not own the needs of all clients.
+Clients should take care of themselves.
+But the service layer was created for client service.
+Therefore, it's a responsibility of the Service Layer.
 
-Попытки исключить Сервинсый Слой из Django-приложений приводит к появлению менеджеров с огромным количеством методов.
+Attempts to exclude the Serving Layer from Django applications leads to the appearance of managers with a lot of methods.
 
 Хорошей практикой было бы сокрытие посредством сервисного слоя способа реализации Django моделей в виде `ActiveRecord`_.
 Это позволит безболезненно подменить ORM в случае необходимости.
