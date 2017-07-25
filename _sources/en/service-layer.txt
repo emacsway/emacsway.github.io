@@ -384,8 +384,8 @@ You have to distinguish the service layer from infrastructure layer services.
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
-What to read
-============
+Further Reading
+===============
 
 - «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, chapters:
     - Dependency Injection ... 157
