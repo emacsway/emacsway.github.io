@@ -1,6 +1,6 @@
 
-Design of Service Layers
-========================
+Design of Service Layer
+=======================
 
 .. post:: 
    :language: en
@@ -14,8 +14,8 @@ This article is written in the hope of improving this situation somewhat.
 .. contents:: Contents
 
 
-Purpose of the Service Layer
-============================
+Purpose of Service Layer
+========================
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
@@ -211,7 +211,7 @@ Service is not a wrapper for DataMapper
 Implementation of Service Layer
 ===============================
 
-Некоторые примеры реализации:
+There is a few examples of Service Layer implementations:
 
 - https://github.com/in2it/zfdemo/blob/master/application/modules/user/services/User.php
 - https://framework.zend.com/manual/2.4/en/in-depth-guide/services-and-servicemanager.html
@@ -222,7 +222,17 @@ Implementation of Service Layer
 Inversion of control
 ====================
 
-Используйте инверсию управления, желательно в виде "Пассивного внедрения зависимостей" [#fnccode]_, `Dependency Injection`_ Principle (DIP).
+Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Dependency Injection`_ Principle" (DIP).
+
+    True Dependency Injection goes one step further. The class takes no direct steps to
+    resolve its dependencies; it is completely passive. Instead, it provides setter methods or
+    constructor arguments (or both) that are used to inject the dependencies. During the con-
+    struction process, the DI container instantiates the required objects (usually on demand)
+    and uses the constructor arguments or setter methods provided to wire together the depen-
+    dencies. Which dependent objects are actually used is specified through a configuration
+    file or programmatically in a special-purpose construction module.
+    «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_
+
 Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
 Для тестирования можно использовать фиктивный Сервис (`Service Stub`_).
 Этот же прием можно использовать для параллельной разработки, когда реализация сервисного слоя еще не готова.
@@ -230,8 +240,8 @@ Inversion of control
 В общем, пользы от сервисного слоя будет мало, если нет возможности его подменить (или подменить используемые им зависимости).
 
 
-Widely spread problem of Django applications
-============================================
+Widespread problem of Django applications
+=========================================
 
 Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
 Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.
@@ -341,7 +351,7 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
 Services of infrastructure layer
 ================================
 
-От сервисного слоя следует отличать сервисы инфраструктурного уровня.
+You have to distinguish the service layer from infrastructure layer services.
 
     The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
     domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
@@ -377,7 +387,8 @@ Services of infrastructure layer
 What to read
 ============
 
-- «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, главы:
+- «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, chapters:
+    - Dependency Injection ... 157
     - Cross-Cutting Concerns ... 160
     - Java Proxies ... 161
     - Pure Java AOP Frameworks ... 163
