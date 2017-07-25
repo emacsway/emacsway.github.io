@@ -168,7 +168,7 @@ architectural framework.</dd>
 </dl>
 <p>(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id8">[3]</a>)</p>
 </div></blockquote>
-<p>В то время как Martin Fowler понимает под термином &#8220;business logic&#8221; не только логику предметной области.</p>
+<p>В то время как Martin Fowler понимает под термином &#8220;business logic&#8221; не только логику предметной области:</p>
 <blockquote>
 <div><p>Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
 (Domain Model, 140), слой служб представляет собой типовое решение по организации
@@ -200,7 +200,7 @@ are few things that are less logical than business logic.
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id11">[2]</a>)</div></blockquote>
 <p>Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:</p>
 <ul class="simple">
-<li>Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзации, или откатить все назад).</li>
+<li>Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзакции, или откатить все назад).</li>
 <li>Сокрытия источника данных (здесь он дублирует функции паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>) и может быть опущен, если нет других причин.</li>
 <li>Компоновки реиспользуемых операций уровня приложения (например, некая часть логики уровня приложения используется в нескольких различных контроллерах).</li>
 <li>Как основа для реализации <a class="reference external" href="https://www.martinfowler.com/eaaCatalog/remoteFacade.html">Интерфейса удаленного доступа</a>.</li>

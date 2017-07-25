@@ -58,27 +58,27 @@
           <div class="body" role="main">
             
   <div class="section" id="design-of-service-layers">
-<h1><a class="toc-backref" href="#id36">Design of Service Layers</a><a class="headerlink" href="#design-of-service-layers" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id29">Design of Service Layers</a><a class="headerlink" href="#design-of-service-layers" title="Permalink to this headline">¶</a></h1>
 <p>Design mistakes of <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> are widespread.
 This article is written in the hope of improving this situation somewhat.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#design-of-service-layers" id="id36">Design of Service Layers</a></li>
-<li><a class="reference internal" href="#purpose-of-the-service-layer" id="id37">Purpose of the Service Layer</a></li>
-<li><a class="reference internal" href="#datamapper" id="id38">Сервис - не обертка для DataMapper</a></li>
-<li><a class="reference internal" href="#id14" id="id39">Реализация Сервисного Слоя</a></li>
-<li><a class="reference internal" href="#id15" id="id40">Инверсия Управления</a></li>
-<li><a class="reference internal" href="#django" id="id41">Распространенная проблема Django-приложений</a></li>
-<li><a class="reference internal" href="#id20" id="id42">Укрощение разбухших моделей</a></li>
-<li><a class="reference internal" href="#id26" id="id43">Проблема Django-аннотаций</a></li>
-<li><a class="reference internal" href="#id27" id="id44">Сервисы инфраструктурного уровня</a></li>
-<li><a class="reference internal" href="#id30" id="id45">Что почитать</a></li>
+<li><a class="reference internal" href="#design-of-service-layers" id="id29">Design of Service Layers</a></li>
+<li><a class="reference internal" href="#purpose-of-the-service-layer" id="id30">Purpose of the Service Layer</a></li>
+<li><a class="reference internal" href="#service-is-not-a-wrapper-for-datamapper" id="id31">Service is not a wrapper for DataMapper</a></li>
+<li><a class="reference internal" href="#implementation-of-service-layer" id="id32">Implementation of Service Layer</a></li>
+<li><a class="reference internal" href="#inversion-of-control" id="id33">Inversion of control</a></li>
+<li><a class="reference internal" href="#widely-spread-problem-of-django-applications" id="id34">Widely spread problem of Django applications</a></li>
+<li><a class="reference internal" href="#taming-of-swollen-models" id="id35">Taming of swollen models</a></li>
+<li><a class="reference internal" href="#problems-of-django-annotation" id="id36">Problems of Django annotation</a></li>
+<li><a class="reference internal" href="#services-of-infrastructure-layer" id="id37">Services of infrastructure layer</a></li>
+<li><a class="reference internal" href="#what-to-read" id="id38">What to read</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="purpose-of-the-service-layer">
-<h1><a class="toc-backref" href="#id37">Purpose of the Service Layer</a><a class="headerlink" href="#purpose-of-the-service-layer" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id30">Purpose of the Service Layer</a><a class="headerlink" href="#purpose-of-the-service-layer" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div>Defines an application&#8217;s boundary with a layer of services that establishes a set of available
 operations and coordinates the application&#8217;s response in each operation.
@@ -141,7 +141,7 @@ architectural framework.</dd>
 </dl>
 <p>(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id5">[3]</a>)</p>
 </div></blockquote>
-<p>В то время как Martin Fowler понимает под термином &#8220;business logic&#8221; не только логику предметной области.</p>
+<p>While Martin Fowler understands by the term &#8220;business logic&#8221; not only the logic of the Domain Layer:</p>
 <blockquote>
 <div>Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing <strong>business logic</strong>.
 Many designers, including me, like to divide &#8220;<strong>business logic</strong>&#8221; into two kinds: &#8220;domain logic,&#8221; having to
@@ -151,7 +151,7 @@ administrators, and integrated applications, of revenue recognition calculations
 sometimes referred to as &#8220;workflow logic,&#8221; although different people have different interpretations of
 &#8220;workflow.&#8221;
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id6">[2]</a>)</div></blockquote>
-<p>Мы будем рассматривать под термином &#8220;business rules&#8221; (правила делового регламента) исключительно логику предметной области, тем более, что Martin Fowler на это косвенно указывает:</p>
+<p>We will understand by the term &#8220;business rules&#8221; only the logic of the Domain Layer, especially since Martin Fowler indirectly indicates this:</p>
 <blockquote>
 <div>The problem came with domain logic: business rules, validations, calculations, and
 the like.
@@ -160,16 +160,16 @@ the like.
 <div>Then there&#8217;s the matter of what comes under the term &#8220;business logic.&#8221; I find this a curious term because there
 are few things that are less logical than business logic.
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id8">[2]</a>)</div></blockquote>
-<p>Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:</p>
+<p>In addition to the above, the service layer can perform the following responsibilities:</p>
 <ul class="simple">
-<li>Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзации, или откатить все назад).</li>
-<li>Сокрытия источника данных (здесь он дублирует функции паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>) и может быть опущен, если нет других причин.</li>
-<li>Компоновки реиспользуемых операций уровня приложения (например, некая часть логики уровня приложения используется в нескольких различных контроллерах).</li>
-<li>Как основа для реализации <a class="reference external" href="https://www.martinfowler.com/eaaCatalog/remoteFacade.html">Интерфейса удаленного доступа</a>.</li>
-<li>Когда контроллер имеет какой-то большой метод, он нуждается в декомпозиции, и к нему применяется <a class="reference external" href="https://www.refactoring.com/catalog/extractMethod.html">Extract Method</a> для вычленения обязанностей в отдельные методы. При этом растет количество методов класса, что влечет за собой падение его сфокусированности или <a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Связанности</a> (т.е. коэффициент совместного использования свойств класса его методами). Чтобы восстановить связанность, эти методы выделяются в отдельный класс, образуя <a class="reference external" href="https://www.refactoring.com/catalog/replaceMethodWithMethodObject.html">Method Object</a>. И вот этот метод-объект и может быть преобразован в сервисный слой.</li>
-<li>Сервисный слой можно использовать в качестве концентратора запросов, если он стоит поверх паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> и использует паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query object</a>. Дело в том, что паттерн Repository ограничивает свой интерфейс посредством интерфейса Query Object. А так как класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> нельзя, ибо он не может владеть потребностями всех клиентов. Клиенты должны сами заботиться о себе. А сервисный слой как раз и создан для обслуживания клиентов.</li>
+<li>To combine the parts of an atomic operation (for example, application should to save the data in the database, in the redis, and in the file system within a single business transaction or should to roll back all).</li>
+<li>To hide the data source (here it duplicates the responsibility of the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>) and can be omitted if there are no other reasons.</li>
+<li>To aggregate the application level operations that are being reused by several clients (for example, some part of application-level logic is used in several different controllers).</li>
+<li>As basis for implementation of <a class="reference external" href="https://www.martinfowler.com/eaaCatalog/remoteFacade.html">Remote Facade</a>.</li>
+<li>When you have a large controller method, you have to do decomposition. Thus, you apply <a class="reference external" href="https://www.refactoring.com/catalog/extractMethod.html">Extract Method</a> to separate each responsibility into own method. When you did it, you found that the class lost its focus. The quantity of methods has been increased that means the <a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Cohesion</a> (i.e. coefficient of sharing the class&#8217; properties by the class&#8217; methods) has been reduced. To restore the <a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Cohesion</a> you have to extraсt these methods into separate <a class="reference external" href="https://www.refactoring.com/catalog/replaceMethodWithMethodObject.html">Method Object</a>, which can be used as a Service Layer.</li>
+<li>The service layer can be used as an aggregator for queries if it is over the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern and uses the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query object</a> pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the service layer was created for client service. Therefore, it&#8217;s a responsibility of the Service Layer.</li>
 </ul>
-<p>В остальных случаях логику сервисного слоя можно размещать прямо на уровне приложения (обычно - контроллер).</p>
+<p>In other cases, the logic of the service layer can be placed directly at the application level (usually a controller).</p>
 <blockquote>
 <div>The easier question to answer is probably when not to use it. You probably don&#8217;t need a Service Layer if your
 application&#8217;s business logic will only have one kind of client say, a user interface and its use case responses
@@ -179,7 +179,7 @@ layer.
 But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
 pays to design in a Service Layer from the beginning.
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id9">[2]</a>)</div></blockquote>
-<p>Тем не менее, широко распространена точка зрения, что доступ к модели должен всегда производиться через сервисный слой:</p>
+<p>However, the widely held view that access to the model should always be made through the service layer:</p>
 <blockquote>
 <div>My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
 approach is to assume that I don&#8217;t need one and only add it if it seems that the application needs it. However, I
@@ -233,8 +233,8 @@ LANGUAGE . Make the SERVICE stateless.
 («Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id12">[3]</a>)</p>
 </div></blockquote>
 </div>
-<div class="section" id="datamapper">
-<h1><a class="toc-backref" href="#id38">Сервис - не обертка для DataMapper</a><a class="headerlink" href="#datamapper" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="service-is-not-a-wrapper-for-datamapper">
+<h1><a class="toc-backref" href="#id31">Service is not a wrapper for DataMapper</a><a class="headerlink" href="#service-is-not-a-wrapper-for-datamapper" title="Permalink to this headline">¶</a></h1>
 <p>Часто <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> ошибочно делают как враппер над <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>.
 Это не совсем верно.
 Маппер обслуживает Domain (объект предметной области), а сервисный слой обслуживает клиента (группу клиентов).
@@ -245,8 +245,8 @@ LANGUAGE . Make the SERVICE stateless.
 by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id13">[2]</a>)</div></blockquote>
 </div>
-<div class="section" id="id14">
-<h1><a class="toc-backref" href="#id39">Реализация Сервисного Слоя</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="implementation-of-service-layer">
+<h1><a class="toc-backref" href="#id32">Implementation of Service Layer</a><a class="headerlink" href="#implementation-of-service-layer" title="Permalink to this headline">¶</a></h1>
 <p>Некоторые примеры реализации:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/in2it/zfdemo/blob/master/application/modules/user/services/User.php">https://github.com/in2it/zfdemo/blob/master/application/modules/user/services/User.php</a></li>
@@ -255,22 +255,22 @@ by the needs of Service Layer clients, the most significant (and first) of which
 <li><a class="reference external" href="https://github.com/zendframework/zf2-tutorial/blob/master/module/Album/src/Album/Model/AlbumTable.php">https://github.com/zendframework/zf2-tutorial/blob/master/module/Album/src/Album/Model/AlbumTable.php</a></li>
 </ul>
 </div>
-<div class="section" id="id15">
-<h1><a class="toc-backref" href="#id40">Инверсия Управления</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h1>
-<p>Используйте инверсию управления, желательно в виде &#8220;Пассивного внедрения зависимостей&#8221; <a class="footnote-reference" href="#fnccode" id="id16">[1]</a>, <a class="reference external" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> Principle (DIP).
+<div class="section" id="inversion-of-control">
+<h1><a class="toc-backref" href="#id33">Inversion of control</a><a class="headerlink" href="#inversion-of-control" title="Permalink to this headline">¶</a></h1>
+<p>Используйте инверсию управления, желательно в виде &#8220;Пассивного внедрения зависимостей&#8221; <a class="footnote-reference" href="#fnccode" id="id14">[1]</a>, <a class="reference external" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> Principle (DIP).
 Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
 Для тестирования можно использовать фиктивный Сервис (<a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>).
 Этот же прием можно использовать для параллельной разработки, когда реализация сервисного слоя еще не готова.
 Иногда бывает полезно подменить Сервис генератором фэйковых данных.
 В общем, пользы от сервисного слоя будет мало, если нет возможности его подменить (или подменить используемые им зависимости).</p>
 </div>
-<div class="section" id="django">
-<h1><a class="toc-backref" href="#id41">Распространенная проблема Django-приложений</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="widely-spread-problem-of-django-applications">
+<h1><a class="toc-backref" href="#id34">Widely spread problem of Django applications</a><a class="headerlink" href="#widely-spread-problem-of-django-applications" title="Permalink to this headline">¶</a></h1>
 <p>Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
 Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.</p>
 <p>Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которую так же называют правилами делового регламента (business rules).</p>
 <p>Нижележащий слой не должен ничего знать о вышестоящем слое. Логика уровня домена не должна быть осведомлена о логике уровня приложения.</p>
-<p>Классу django.db.models.Manager более всего соответствует класс Finder описанный в «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id17">[2]</a></p>
+<p>Классу django.db.models.Manager более всего соответствует класс Finder описанный в «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id15">[2]</a></p>
 <blockquote>
 <div><p>With a Row Data Gateway you&#8217;re faced with the questions of where to put the find operations that generate this
 pattern. You can use static find methods, but they preclude polymorphism should you want to substitute
@@ -279,7 +279,7 @@ objects so that each table in a relational database will have one finder class a
 <p>It&#8217;s often hard to tell the difference between a Row Data Gateway and an Active Record (160). The crux of the
 matter is whether there&#8217;s any domain logic present; if there is, you have an Active Record (160). A Row Data
 Gateway should contain only database access logic and no domain logic.
-(Chapter 10. &#8220;Data Source Architectural Patterns : Row Data Gateway&#8221;, «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id18">[2]</a>)</p>
+(Chapter 10. &#8220;Data Source Architectural Patterns : Row Data Gateway&#8221;, «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id16">[2]</a>)</p>
 </div></blockquote>
 <p>Хотя Django не использует паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, она использует абстракцию критериев выборки, своего рода разновидность паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a>.
 Подобно паттерну Repository, класс модели (<a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>) ограничивает свой интерфейс посредством интерфейса Query Object.
@@ -300,16 +300,16 @@ should model the parts of the problem domain that are of interest to the applica
 application&#8217;s use case responsibilities. Second, encapsulating application logic in a &#8220;higher&#8221; layer
 dedicated to that purpose (which the data source layer isn&#8217;t) facilitates changing the implementation of that
 layer perhaps to use a workflow engine.
-(«Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id19">[2]</a>)</div></blockquote>
+(«Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id17">[2]</a>)</div></blockquote>
 </div>
-<div class="section" id="id20">
-<h1><a class="toc-backref" href="#id42">Укрощение разбухших моделей</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="taming-of-swollen-models">
+<h1><a class="toc-backref" href="#id35">Taming of swollen models</a><a class="headerlink" href="#taming-of-swollen-models" title="Permalink to this headline">¶</a></h1>
 <p>Часто можно встретить модели имеющие больше число методов (я встречал несколько сотен).
 При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
 Все обязанности, которые не относятся к Доменной области, следует вынести в Сервисный Слой.
 Но что делать с другими методами?</p>
 <p>Предположим, некая Модель имеет несколько десятков методов, которые не имеют общего применения, а используются только одним клиентом.
-Отнести их к обязанности клиентов нельзя, так как это привело бы к появлению &#8220;G14: Feature Envy&#8221; <a class="footnote-reference" href="#fnccode" id="id21">[1]</a>.</p>
+Отнести их к обязанности клиентов нельзя, так как это привело бы к появлению &#8220;G14: Feature Envy&#8221; <a class="footnote-reference" href="#fnccode" id="id18">[1]</a>.</p>
 <p>Как уже упоминалось ранее, Service Layer обычно реализуется как объект без состояния.
 Если клиент относится к логике Приложения, то решением может быть создание Service Layer.</p>
 <blockquote>
@@ -321,11 +321,11 @@ Second, commingling both kinds of logic in the same classes makes it harder to r
 logic in, say, a workflow tool if that should ever become desirable. For these reasons Service Layer factors
 each kind of business logic into a separate layer, yielding the usual benefits of layering and rendering the pure
 domain object classes more reusable from application to application.
-(«Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id22">[2]</a>)</div></blockquote>
+(«Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id19">[2]</a>)</div></blockquote>
 <p>Но если клиент относится к логике Доменной области, то нельзя допустить чтобы слой уровня Доменной логики был осведомлен о логике Приложения.
 А Service Layer - это логика уровня приложения.</p>
 <p>Иными словами, клиент требует от Доменной Модели интерфейс, который не должен быть реализован Доменной Моделью.
-Для выравнивания интерфейсов существует паттерн Adapter (aka Wrapper), см. «Design Patterns Elements of Reusable Object-Oriented Software» <a class="footnote-reference" href="#fngof" id="id23">[4]</a>.</p>
+Для выравнивания интерфейсов существует паттерн Adapter (aka Wrapper), см. «Design Patterns Elements of Reusable Object-Oriented Software» <a class="footnote-reference" href="#fngof" id="id20">[4]</a>.</p>
 <p>Иными словами, это враппер над инстанцией Модели, который оборачивает её и придает ей дополнительное поведение, которое требуется клиентом. Иногда такие обертки ошибочно называют Аспектом или Декоратором, но это неверно, так как они не изменяют интерфейса оригинального объекта.</p>
 <p>Вернемся к случаю, когда клиент относится к логике Приложения. Можно ли применять паттерн Adapter в этом случае?</p>
 <p>Martin Fowler говорит что:</p>
@@ -341,19 +341,19 @@ operations available to clients of a Service Layer are implemented as scripts, o
 defining a subject area of related logic. Each such class forms an application &#8220;service,&#8221; and it&#8217;s common for
 service type names to end with &#8220;Service.&#8221; A Service Layer is comprised of these application service classes,
 which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
-(«Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id24">[2]</a>)</p>
+(«Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id21">[2]</a>)</p>
 </div></blockquote>
 <p>Поскольку Martin Fowler прекрасно понимает отличие между &#8220;<a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>&#8221; и &#8220;<a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>&#8221;,
-эта цитата сильно напоминает мне &#8220;Cross-Cutting Concerns&#8221; <a class="footnote-reference" href="#fnccode" id="id25">[1]</a> с тем только отличием, что &#8220;Cross-Cutting Concerns&#8221; реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.</p>
+эта цитата сильно напоминает мне &#8220;Cross-Cutting Concerns&#8221; <a class="footnote-reference" href="#fnccode" id="id22">[1]</a> с тем только отличием, что &#8220;Cross-Cutting Concerns&#8221; реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.</p>
 </div>
-<div class="section" id="id26">
-<h1><a class="toc-backref" href="#id43">Проблема Django-аннотаций</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problems-of-django-annotation">
+<h1><a class="toc-backref" href="#id36">Problems of Django annotation</a><a class="headerlink" href="#problems-of-django-annotation" title="Permalink to this headline">¶</a></h1>
 <p>Я часто наблюдал такую проблему, когда в Django Model добавлялось какое-то новое поле, и начинали сыпаться проблемы, так как это имя уже было использовано либо с помощью аннотаций, либо с помощью Raw-SQL.
 Storm ORM/SQLAlchemy, реализуют аннотации более удачно.
 Если Вам все-таки пришлось работать с Django ORM, воздержитесь от использования механизма Django аннотаций в пользу голого паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>.</p>
 </div>
-<div class="section" id="id27">
-<h1><a class="toc-backref" href="#id44">Сервисы инфраструктурного уровня</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="services-of-infrastructure-layer">
+<h1><a class="toc-backref" href="#id37">Services of infrastructure layer</a><a class="headerlink" href="#services-of-infrastructure-layer" title="Permalink to this headline">¶</a></h1>
 <p>От сервисного слоя следует отличать сервисы инфраструктурного уровня.</p>
 <blockquote>
 <div><p>The infrastructure layer usually does not initiate action in the domain layer. Being &#8220;below&#8221; the
@@ -373,7 +373,7 @@ technical components are designed to directly support the basic functions of oth
 providing an abstract base class for all domain objects) and provide the mechanisms for them to
 relate (such as implementations of MVC and the like). Such an &#8220;architectural framework&#8221; has
 much more impact on the design of the other parts of the program.
-(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id28">[3]</a>)</p>
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id23">[3]</a>)</p>
 </div></blockquote>
 <blockquote>
 <div>Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
@@ -381,13 +381,13 @@ message sending for the application, persistence for the domain, drawing
 widgets for the UI, and so on. The infrastructure layer may also support
 the pattern of interactions between the four layers through an
 architectural framework.
-(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id29">[3]</a>)</div></blockquote>
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id24">[3]</a>)</div></blockquote>
 </div>
-<div class="section" id="id30">
-<h1><a class="toc-backref" href="#id45">Что почитать</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-to-read">
+<h1><a class="toc-backref" href="#id38">What to read</a><a class="headerlink" href="#what-to-read" title="Permalink to this headline">¶</a></h1>
 <ul>
 <li><dl class="first docutils">
-<dt>«Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin <a class="footnote-reference" href="#fnccode" id="id31">[1]</a>, главы:</dt>
+<dt>«Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin <a class="footnote-reference" href="#fnccode" id="id25">[1]</a>, главы:</dt>
 <dd><ul class="first last simple">
 <li>Cross-Cutting Concerns ... 160</li>
 <li>Java Proxies ... 161</li>
@@ -397,7 +397,7 @@ architectural framework.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>«Patterns of Enterprise Application Architecture» by Martin Fowler <a class="footnote-reference" href="#fnpoeaa" id="id32">[2]</a>, главы:</dt>
+<dt>«Patterns of Enterprise Application Architecture» by Martin Fowler <a class="footnote-reference" href="#fnpoeaa" id="id26">[2]</a>, главы:</dt>
 <dd><ul class="first last simple">
 <li>Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer</li>
 <li>Part 1. The Narratives : Chapter 8. Putting It All Together</li>
@@ -407,7 +407,7 @@ architectural framework.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>«Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans <a class="footnote-reference" href="#fnddd" id="id33">[3]</a>, глава:</dt>
+<dt>«Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans <a class="footnote-reference" href="#fnddd" id="id27">[3]</a>, глава:</dt>
 <dd><ul class="first last simple">
 <li>Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services</li>
 </ul>
@@ -415,7 +415,7 @@ architectural framework.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>«Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma <a class="footnote-reference" href="#fngof" id="id34">[4]</a>, главы:</dt>
+<dt>«Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma <a class="footnote-reference" href="#fngof" id="id28">[4]</a>, главы:</dt>
 <dd><ul class="first last simple">
 <li>Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139</li>
 <li>Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175</li>
@@ -429,25 +429,25 @@ architectural framework.
 <table class="docutils footnote" frame="void" id="fnccode" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id21">2</a>, <a class="fn-backref" href="#id25">3</a>, <a class="fn-backref" href="#id31">4</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id22">3</a>, <a class="fn-backref" href="#id25">4</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id6">4</a>, <a class="fn-backref" href="#id7">5</a>, <a class="fn-backref" href="#id8">6</a>, <a class="fn-backref" href="#id9">7</a>, <a class="fn-backref" href="#id10">8</a>, <a class="fn-backref" href="#id11">9</a>, <a class="fn-backref" href="#id13">10</a>, <a class="fn-backref" href="#id17">11</a>, <a class="fn-backref" href="#id18">12</a>, <a class="fn-backref" href="#id19">13</a>, <a class="fn-backref" href="#id22">14</a>, <a class="fn-backref" href="#id24">15</a>, <a class="fn-backref" href="#id32">16</a>)</em> «<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>» by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id6">4</a>, <a class="fn-backref" href="#id7">5</a>, <a class="fn-backref" href="#id8">6</a>, <a class="fn-backref" href="#id9">7</a>, <a class="fn-backref" href="#id10">8</a>, <a class="fn-backref" href="#id11">9</a>, <a class="fn-backref" href="#id13">10</a>, <a class="fn-backref" href="#id15">11</a>, <a class="fn-backref" href="#id16">12</a>, <a class="fn-backref" href="#id17">13</a>, <a class="fn-backref" href="#id19">14</a>, <a class="fn-backref" href="#id21">15</a>, <a class="fn-backref" href="#id26">16</a>)</em> «<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>» by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id12">3</a>, <a class="fn-backref" href="#id28">4</a>, <a class="fn-backref" href="#id29">5</a>, <a class="fn-backref" href="#id33">6</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id12">3</a>, <a class="fn-backref" href="#id23">4</a>, <a class="fn-backref" href="#id24">5</a>, <a class="fn-backref" href="#id27">6</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngof" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id23">1</a>, <a class="fn-backref" href="#id34">2</a>)</em> «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id28">2</a>)</em> «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994</td></tr>
 </tbody>
 </table>
 </div>

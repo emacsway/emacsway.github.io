@@ -85,7 +85,7 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
 
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
-В то время как Martin Fowler понимает под термином "business logic" не только логику предметной области.
+While Martin Fowler understands by the term "business logic" not only the logic of the Domain Layer:
 
     Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing **business logic**.
     Many designers, including me, like to divide "**business logic**" into two kinds: "domain logic," having to
@@ -96,7 +96,7 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
     "workflow."
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Мы будем рассматривать под термином "business rules" (правила делового регламента) исключительно логику предметной области, тем более, что Martin Fowler на это косвенно указывает:
+We will understand by the term "business rules" only the logic of the Domain Layer, especially since Martin Fowler indirectly indicates this:
 
     The problem came with domain logic: business rules, validations, calculations, and
     the like.
@@ -108,16 +108,16 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
     are few things that are less logical than business logic.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:
+In addition to the above, the service layer can perform the following responsibilities:
 
-- Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзации, или откатить все назад).
-- Сокрытия источника данных (здесь он дублирует функции паттерна `Repository`_) и может быть опущен, если нет других причин.
-- Компоновки реиспользуемых операций уровня приложения (например, некая часть логики уровня приложения используется в нескольких различных контроллерах).
-- Как основа для реализации `Интерфейса удаленного доступа <Remote Facade_>`__.
-- Когда контроллер имеет какой-то большой метод, он нуждается в декомпозиции, и к нему применяется `Extract Method`_ для вычленения обязанностей в отдельные методы. При этом растет количество методов класса, что влечет за собой падение его сфокусированности или `Связанности <Cohesion_>`__ (т.е. коэффициент совместного использования свойств класса его методами). Чтобы восстановить связанность, эти методы выделяются в отдельный класс, образуя `Method Object <Replace Method with Method Object_>`__. И вот этот метод-объект и может быть преобразован в сервисный слой.
-- Сервисный слой можно использовать в качестве концентратора запросов, если он стоит поверх паттерна `Repository`_ и использует паттерн `Query object`_. Дело в том, что паттерн Repository ограничивает свой интерфейс посредством интерфейса Query Object. А так как класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе `Repository`_ нельзя, ибо он не может владеть потребностями всех клиентов. Клиенты должны сами заботиться о себе. А сервисный слой как раз и создан для обслуживания клиентов.
+- To combine the parts of an atomic operation (for example, application should to save the data in the database, in the redis, and in the file system within a single business transaction or should to roll back all).
+- To hide the data source (here it duplicates the responsibility of the pattern `Repository`_) and can be omitted if there are no other reasons.
+- To aggregate the application level operations that are being reused by several clients (for example, some part of application-level logic is used in several different controllers).
+- As basis for implementation of `Remote Facade`_.
+- When you have a large controller method, you have to do decomposition. Thus, you apply `Extract Method`_ to separate each responsibility into own method. When you did it, you found that the class lost its focus. The quantity of methods has been increased that means the `Cohesion`_ (i.e. coefficient of sharing the class' properties by the class' methods) has been reduced. To restore the `Cohesion`_ you have to extraсt these methods into separate `Method Object <Replace Method with Method Object_>`__, which can be used as a Service Layer.
+- The service layer can be used as an aggregator for queries if it is over the `Repository`_ pattern and uses the `Query object`_ pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the service layer was created for client service. Therefore, it's a responsibility of the Service Layer.
 
-В остальных случаях логику сервисного слоя можно размещать прямо на уровне приложения (обычно - контроллер).
+In other cases, the logic of the service layer can be placed directly at the application level (usually a controller).
 
     The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
     application's business logic will only have one kind of client say, a user interface and its use case responses
@@ -128,7 +128,7 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
     pays to design in a Service Layer from the beginning.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Тем не менее, широко распространена точка зрения, что доступ к модели должен всегда производиться через сервисный слой:
+However, the widely held view that access to the model should always be made through the service layer:
 
     My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
     approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
@@ -194,8 +194,8 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
-Сервис - не обертка для DataMapper
-==================================
+Service is not a wrapper for DataMapper
+=======================================
 
 Часто `Service Layer`_ ошибочно делают как враппер над `DataMapper`_.
 Это не совсем верно.
@@ -208,8 +208,8 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
 
-Реализация Сервисного Слоя
-==========================
+Implementation of Service Layer
+===============================
 
 Некоторые примеры реализации:
 
@@ -219,8 +219,8 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
 - https://github.com/zendframework/zf2-tutorial/blob/master/module/Album/src/Album/Model/AlbumTable.php
 
 
-Инверсия Управления
-===================
+Inversion of control
+====================
 
 Используйте инверсию управления, желательно в виде "Пассивного внедрения зависимостей" [#fnccode]_, `Dependency Injection`_ Principle (DIP).
 Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
@@ -230,8 +230,8 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
 В общем, пользы от сервисного слоя будет мало, если нет возможности его подменить (или подменить используемые им зависимости).
 
 
-Распространенная проблема Django-приложений
-===========================================
+Widely spread problem of Django applications
+============================================
 
 Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
 Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.
@@ -276,8 +276,8 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
 
-Укрощение разбухших моделей
-===========================
+Taming of swollen models
+========================
 
 Часто можно встретить модели имеющие больше число методов (я встречал несколько сотен).
 При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
@@ -330,15 +330,15 @@ Martin Fowler говорит что:
 эта цитата сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
 
 
-Проблема Django-аннотаций
-=========================
+Problems of Django annotation
+=============================
 
 Я часто наблюдал такую проблему, когда в Django Model добавлялось какое-то новое поле, и начинали сыпаться проблемы, так как это имя уже было использовано либо с помощью аннотаций, либо с помощью Raw-SQL.
 Storm ORM/SQLAlchemy, реализуют аннотации более удачно.
 Если Вам все-таки пришлось работать с Django ORM, воздержитесь от использования механизма Django аннотаций в пользу голого паттерна `DataMapper`_.
 
 
-Сервисы инфраструктурного уровня
+Services of infrastructure layer
 ================================
 
 От сервисного слоя следует отличать сервисы инфраструктурного уровня.
@@ -374,7 +374,7 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
-Что почитать
+What to read
 ============
 
 - «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, главы:
