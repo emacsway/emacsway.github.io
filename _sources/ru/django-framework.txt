@@ -58,7 +58,7 @@ Identity Map
 Джанго не реализует паттерна `Identity Map`_, и, как результат этого, возникает много дублируемых запросов.
 Частично этот недостаток смягчается наличием `prefetch_related() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related>`_.
 Существуют реализации этого паттерна в виде сторонних библиотек,
-`django-idmapper <https://github.com/dcramer/django-idmapper>`_
+`django-idmapper <https://github.com/dcramer/django-idmapper>`_,
 `django-idmap <https://pypi.python.org/pypi/django-idmap>`_.
 Но они, к сожалению, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.
 

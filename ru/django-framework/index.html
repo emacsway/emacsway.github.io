@@ -126,7 +126,7 @@
 <p>Джанго не реализует паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, и, как результат этого, возникает много дублируемых запросов.
 Частично этот недостаток смягчается наличием <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related">prefetch_related()</a>.
 Существуют реализации этого паттерна в виде сторонних библиотек,
-<a class="reference external" href="https://github.com/dcramer/django-idmapper">django-idmapper</a>
+<a class="reference external" href="https://github.com/dcramer/django-idmapper">django-idmapper</a>,
 <a class="reference external" href="https://pypi.python.org/pypi/django-idmap">django-idmap</a>.
 Но они, к сожалению, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.</p>
 </div>
