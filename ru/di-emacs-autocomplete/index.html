@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -23,9 +23,10 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about/" />
     <link rel="top" title="@emacsway&#39;s blog" href="../../" />
-
+  
 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -33,6 +34,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
 
+    
+        <meta name="description" content="В пассивных классах, которым зависимости внедряет программа, возникают трудности с автокомплитом в emacs с elpy-mode."> 
+    
+
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="@emacsway's blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
 
   </head>
   <body role="document">
@@ -43,7 +63,6 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-
   <div class="section" id="emacs-autocomplete-and-dependency-injection-di">
 <h1>Emacs autocomplete and Dependency injection (DI)<a class="headerlink" href="#emacs-autocomplete-and-dependency-injection-di" title="Permalink to this headline">¶</a></h1>
 <p>В пассивных классах, которым <a class="reference external" href="http://www.martinfowler.com/articles/injection.html">зависимости внедряет</a> программа, возникают трудности с автокомплитом в <a class="reference external" href="https://www.gnu.org/software/emacs/">emacs</a> с <a class="reference external" href="https://github.com/jorgenschaefer/elpy">elpy-mode</a>.</p>
@@ -91,7 +110,49 @@
 </div>
 </div>
 
+  <div class="section">
+  
+    
 
+
+<div class="section">
+  <span style="float: left;">
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../../en/storm-orm/">
+    Why I prefer Storm ORM for Python
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'emacsway';
+        var disqus_identifier = '/ru/di-emacs-autocomplete/';
+        var disqus_title = 'Emacs autocomplete and Dependency injection (DI)';
+        var disqus_url = 'https://emacsway.github.io/ru/di-emacs-autocomplete';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
 
           </div>
         </div>
@@ -183,7 +244,7 @@
     (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
-    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
     </script>
@@ -340,7 +401,6 @@
       <div class="clearer"></div>
     </div>
 
-
     <div class="footer">
       &copy;2017, Ivan Zakrevsky.
       
@@ -355,6 +415,12 @@
 
     
 
+    
+
+
+    
+
+        <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5977b23b80bb1d0011ab6d8a&product=sticky-share-buttons"></script>
     
 
 
@@ -400,7 +466,6 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/32948409" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-
 
 
 
