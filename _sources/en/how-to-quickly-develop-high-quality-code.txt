@@ -407,7 +407,7 @@ This approach is unbelievable effective when you use Type Hinting declaration (m
 .. _Code Complete: http://www.informit.com/store/code-complete-9780735619678
 .. _Steve McConnell: http://www.informit.com/authors/bio/754ffba3-b7b2-45ef-be37-3d9995e8e409
 .. _Refactoring\: Improving the Design of Existing Code: https://martinfowler.com/books/refactoring.html
+.. _Martin Fowler: https://martinfowler.com/aboutMe.html
 .. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
 .. _Catalog of Refactorings: http://www.refactoring.com/catalog/
 .. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
-.. _Martin Fowler: https://martinfowler.com/aboutMe.html

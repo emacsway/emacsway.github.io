@@ -528,7 +528,7 @@ One of the main principles of object-oriented programming is encapsulation.
 The `Single responsibility principle`_ proclaims that each object must have one responsibility and this responsibility must be completely encapsulated in its class.
 Depriving the object of behavior, we impose its behavior on another object, which must serve the first.
 The question is whether it is justified?
-This is obvious for the ActiveRecord partition on DataMapper and Domain Model, because it's aimed at achieving the Single responsibility principle, but the answer is not so obvious for the object.
+This is obvious for the Active Record partition on Data Mapper and Domain Model, because it's aimed at achieving the Single responsibility principle, but the answer is not so obvious for the object.
 The behavior object begins to "envy" the data object "G14: Feature Envy" [#fncc]_, ("Feature Envy" [#fnr]_), with signs "F2: Output Arguments" [#fncc]_, "Convert Procedural Design to Objects" [#fnr]_,  "Primitive Obsession" [#fnr]_ and "Data Class" [#fnr]_.
 
 The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowler.
