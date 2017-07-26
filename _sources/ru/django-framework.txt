@@ -200,7 +200,42 @@ Django REST framework позволяет `генерировать схему <w
 Это открывает неограниченные возможности по генерированию `стабов <Service Stub_>`__ для клиента.
 Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.
 
-Схема OpenAPI так же может быть использована для автоматической генерации тестов с помощью `pyresttest <https://github.com/svanoort/pyresttest>`_.
+Схема OpenAPI так же может быть использована для автоматической генерации тестов, например, с помощью `pyresttest <https://github.com/svanoort/pyresttest>`_.
+
+
+Проблема JOIN-ов
+----------------
+
+Django REST framework часто используется вместе с `django-filter <https://pypi.python.org/pypi/django-filter>`_.
+И тут возникает проблема, которая отражена в документации как:
+
+        "To handle both of these situations, Django has a consistent way of processing filter() calls.
+        Everything inside a single filter() call is applied simultaneously to filter out items matching
+        all those requirements. Successive filter() calls further restrict the set of objects,
+        but for multi-valued relations, they apply to any object linked to the primary model,
+        not necessarily those objects that were selected by an earlier filter() call."
+
+        See more info on:
+        https://docs.djangoproject.com/en/1.8/topics/db/queries/#lookups-that-span-relationships
+
+Решается эта проблема легко, в классе FilterSet() следует использовать обертку с ленивым вычислением  вместо реального django.db.models.query.QuerySet, которая будет полность повторять его интерфейс, но вызвать метод filter() однократно, передавая ему все накопленные критерии выборки.
+
+
+Генерация *.csv, *.xlsx
+-----------------------
+
+Django и Django REST framework содержит огромное количество расширений.
+Это то главное преимущество, ради которого есть смысл терпеть их недостатки.
+Можно даже генерировать *.csv, *.xlsx файлы:
+
+- `django-rest-framework-excel <https://github.com/diegueus9/django-rest-framework-excel>`_
+- `django-rest-framework-csv <https://github.com/mjumbewu/django-rest-framework-csv>`_
+- `django-rest-pandas <https://github.com/wq/django-rest-pandas>`_
+- и др.
+
+Здесь, правда, возникает проблема с трансляцией вложенных структур данных в плоский список, и наоборот, парсинг плоского списка во вложенную структуру.
+Частично эту проблему можно решить с помощью библиотеки `jsonmapping <https://github.com/pudo/jsonmapping>`_.
+Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.
 
 
 .. rubric:: Footnotes
