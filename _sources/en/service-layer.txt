@@ -2,7 +2,7 @@
 Design of Service Layer
 =======================
 
-.. post:: 
+.. post:: Jul 17, 2017
    :language: en
    :tags: Design, Architecture
    :category:
@@ -274,8 +274,8 @@ Therefore, it's a responsibility of the Service Layer.
 
 Attempts to exclude the Serving Layer from Django applications leads to the appearance of managers with a lot of methods.
 
-Хорошей практикой было бы сокрытие посредством сервисного слоя способа реализации Django моделей в виде `ActiveRecord`_.
-Это позволит безболезненно подменить ORM в случае необходимости.
+A good practice would be to hide the implementation (in the form of `ActiveRecord`_) of Django models by the service layer.
+This will allow painless ORM replace if necessary.
 
     Some might also argue that the application logic responsibilities could be implemented in domain object
     methods, such as Contract.calculateRevenueRecognitions(), or even in the data source layer,
@@ -292,16 +292,16 @@ Attempts to exclude the Serving Layer from Django applications leads to the appe
 Taming of swollen models
 ========================
 
-Часто можно встретить модели имеющие больше число методов (я встречал несколько сотен).
-При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
-Все обязанности, которые не относятся к Доменной области, следует вынести в Сервисный Слой.
-Но что делать с другими методами?
+It is often possible to find models with a large number of methods (I met several hundred).
+If you analyze such models, you can often find outside responsibilities in the class. AS you know, the size of the class is measured by the amount of its responsibilities.
+All responsibilities that are not related to the Domain Layer should be moved to the Service Layer.
+But what to do with other methods?
 
-Предположим, некая Модель имеет несколько десятков методов, которые не имеют общего применения, а используются только одним клиентом.
-Отнести их к обязанности клиентов нельзя, так как это привело бы к появлению "G14: Feature Envy" [#fnccode]_.
+Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
+You can not assign them to the responsibility of the client, as this would lead to "G14: Feature Envy" [#fnccode]_.
 
-Как уже упоминалось ранее, Service Layer обычно реализуется как объект без состояния.
-Если клиент относится к логике Приложения, то решением может быть создание Service Layer.
+As mentioned previously, Service Layer is usually implemented as a stateless object.
+If the client belongs to the Application level logic, the solution may be to create a Service Layer.
 
     Domain Models (116) are preferable to Transaction Scripts (110) for avoiding domain logic duplication and
     for managing complexity using classical design patterns. But putting application logic into pure domain object
@@ -313,17 +313,19 @@ Taming of swollen models
     domain object classes more reusable from application to application.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Но если клиент относится к логике Доменной области, то нельзя допустить чтобы слой уровня Доменной логики был осведомлен о логике Приложения.
-А Service Layer - это логика уровня приложения.
+But if the client belongs to the Domain layer, then this client may not be aware of the Application Layer logic.
+But Service Layer is the logic of the Application Layer.
 
-Иными словами, клиент требует от Доменной Модели интерфейс, который не должен быть реализован Доменной Моделью.
-Для выравнивания интерфейсов существует паттерн Adapter (aka Wrapper), см. «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_.
+In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
+For interface equalization we have the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_ for more info.
 
-Иными словами, это враппер над инстанцией Модели, который оборачивает её и придает ей дополнительное поведение, которое требуется клиентом. Иногда такие обертки ошибочно называют Аспектом или Декоратором, но это неверно, так как они не изменяют интерфейса оригинального объекта.
+In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
+Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.
 
-Вернемся к случаю, когда клиент относится к логике Приложения. Можно ли применять паттерн Adapter в этом случае?
+Let's return to the case when the client belongs to the Application logic.
+Is it possible to use the Adapter pattern in this case?
 
-Martin Fowler говорит что:
+Martin Fowler says:
 
     The two basic implementation variations are the domain facade approach and the operation script approach. In
     the domain facade approach a Service Layer is implemented as a set of thin facades over a Domain Model
@@ -339,16 +341,15 @@ Martin Fowler говорит что:
     which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Поскольку Martin Fowler прекрасно понимает отличие между "`Domain Model`_" и "`DataMapper`_",
-эта цитата сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
+Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
 
 
 Problems of Django annotation
 =============================
 
-Я часто наблюдал такую проблему, когда в Django Model добавлялось какое-то новое поле, и начинали сыпаться проблемы, так как это имя уже было использовано либо с помощью аннотаций, либо с помощью Raw-SQL.
-Storm ORM/SQLAlchemy, реализуют аннотации более удачно.
-Если Вам все-таки пришлось работать с Django ORM, воздержитесь от использования механизма Django аннотаций в пользу голого паттерна `DataMapper`_.
+I often observed the problem when a new field was added to the Django Model, and multiple problems started to occur, since this name was already used either with the annotation interface or with Raw-SQL.
+Storm ORM / SQLAlchemy implement annotations more successfully.
+If you still had to work with Django ORM, refrain from using Django annotation mechanism in favor of bare pattern `DataMapper`_.
 
 
 Services of infrastructure layer
