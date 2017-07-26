@@ -51,6 +51,17 @@ Django ORM реализует паттерн `ActiveRecord`_, который с�
 В любом случае, реализация доступа к данным должна быть сокрыта от приложения, и это одна из обязанностей Сервисного Слоя.
 
 
+Identity Map
+------------
+
+Джанго не реализует паттерна `Identity Map`_, и, как результат этого, возникает много дублируемых запросов.
+Частично этот недостаток смягчается наличием `prefetch_related() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related>`_.
+Существуют реализации этого паттерна в виде сторонних библиотек,
+`django-idmapper <https://github.com/dcramer/django-idmapper>`_
+`django-idmap <https://pypi.python.org/pypi/django-idmap>`_.
+Но они, к сожалению, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.
+
+
 Выполнение сложных SQL-запросов
 -------------------------------
 
@@ -199,6 +210,7 @@ Django REST framework позволяет `генерировать схему <w
 .. _Martin Fowler: https://martinfowler.com/aboutMe.html
 
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
+.. _Identity Map: http://martinfowler.com/eaaCatalog/identityMap.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
 .. _Data Transfer Object: http://martinfowler.com/eaaCatalog/dataTransferObject.html
 .. _Domain Model: https://martinfowler.com/eaaCatalog/domainModel.html
