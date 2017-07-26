@@ -77,6 +77,7 @@ Articles
 
 Articles in English:
 
+* «:doc:`Design of Service Layer <ru/service-layer>`»
 * «:doc:`About problems of cache invalidation. Cache tagging. <en/cache-dependencies>`»
 * «:doc:`How to quickly develop high-quality code. Team work. <en/how-to-quickly-develop-high-quality-code>`»
 * «:doc:`Why I prefer Storm ORM for Python <en/storm-orm>`»
