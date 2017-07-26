@@ -130,11 +130,12 @@
 Существуют реализации этого паттерна в виде сторонних библиотек,
 <a class="reference external" href="https://github.com/dcramer/django-idmapper">django-idmapper</a>,
 <a class="reference external" href="https://pypi.python.org/pypi/django-idmap">django-idmap</a>.
-Но они, к сожалению, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.</p>
+Но они, к сожалению, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.
+Правда, вы вряд-ли заметите эту проблему, так как Django приложение обычно обрабатывает HTTP-запрос одной транзакцией.</p>
 </div>
 <div class="section" id="sql">
 <h2><a class="toc-backref" href="#id25">Выполнение сложных SQL-запросов</a><a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
-<p>К сожалению, возможности интерфейса Django ORM для создания сложных SQL-запросов недостаточно.
+<p>К сожалению, возможностей интерфейса Django ORM для создания сложных SQL-запросов недостаточно.
 В таком случае приходится или использовать сторонние инструменты, которые будут рассмотрены далее, или использовать Raw-SQL.
 В любом случае, детали реализации должны быть инкапсулированы внутри фабрики запроса.</p>
 </div>
@@ -147,7 +148,7 @@
 Механизм аннотаций Django ORM лучше не использовать вообще, в пользу голого паттерна Data Mapper.
 Дело в том, что схема модели постоянно эволюционирует, и в нее постоянно добавляются новые поля.
 И нередко случается так, что имя нового поля уже используется аннотацией, из-за чего возникает конфликт в пространстве имен.
-Решением проблемы может быть разделение пространства имен, используя для аннотаций отдельную модель, или обертку (Wrapper) над экземпляром модели.</p>
+Решением проблемы может быть разделение пространства имен, используя для аннотаций отдельную модель или обертку (Wrapper) над экземпляром модели.</p>
 <p>Вот почему важно скрывать детали реализации доступа к данным последством слоя <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> или <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>.
 В таком случае я просто использую голый паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> и чистую <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>.</p>
 <p>Как показывает практика, обычно такие случаи не превышают 10%, что не настолько существенно для отказа от Django ORM, ибо привлекательность легкого поиска специалистов все равно перевешивает.</p>
@@ -197,7 +198,7 @@ Django 1.9 и выше возволяет использовать <a class="ref
 <h1><a class="toc-backref" href="#id33">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
 <p>Если мы до этого рассматривали недостатки Django ORM, то <a class="reference external" href="http://www.django-rest-framework.org/">Django REST framework</a> удивительным образом превращает его недостатки в достоинства, ведь интерфейс создания запросов Django ORM великолепно подходит для REST.</p>
 <p>Если Вам посчастливилось использовать на стороне клиента <a class="reference external" href="http://dstorejs.io/">Dstore</a>, то на стороне сервера Вы можете использовать <a class="reference external" href="https://pypi.python.org/pypi/django-rql-filter">django-rql-filter</a> или <a class="reference external" href="https://pypi.python.org/pypi/rql">rql</a>.</p>
-<p>Честно сказать, Django REST framework заставляет изрядно посидеть в отладчике, и потратить на него определенное время, что, разумеется, характеризует проектные решения не с лучшей стороны.
+<p>Честно говоря, Django REST framework заставляет изрядно посидеть в отладчике, и потратить на него определенное время, что, разумеется, характеризует используемые им проектные решения не с лучшей стороны.
 Хорошая программа должна читаться, а не пониматься, и уж тем более без помощи отладчика.
 Это характеризует соблюдение главного императива разработки программного обеспечения:</p>
 <blockquote>
@@ -220,7 +221,7 @@ accidental complexity from proliferating needlessly.
 <div class="section" id="id13">
 <h2><a class="toc-backref" href="#id34">Суффиксирование внешних ключей Django REST framework</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>Когда на стороне клиента используются инструменты для обработки внешних ключей, возникает желание для значений внешнего ключа использовать поле с *_id суффиксом. Здесь приводится <a class="reference external" href="https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6">пример реализации</a> как это можно достигнуть.
-Этот же пример в виде <a class="reference external" href="https://gist.github.com/ostcar/eb78515a41ab41d1755b">gist</a> и <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/3121">обсуждение</a>.</p>
+Этот же пример на <a class="reference external" href="https://gist.github.com/ostcar/eb78515a41ab41d1755b">gist</a> и <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/3121">обсуждение</a>.</p>
 </div>
 <div class="section" id="id14">
 <h2><a class="toc-backref" href="#id35">SQLAlchemy</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
@@ -232,9 +233,10 @@ accidental complexity from proliferating needlessly.
 <div class="section" id="openapi-swagger">
 <h2><a class="toc-backref" href="#id36">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework позволяет <a class="reference external" href="www.django-rest-framework.org/api-guide/schemas/">генерировать схему</a> в формате OpenAPI и интегрируется с <a class="reference external" href="https://swagger.io/">swagger</a> с помощью библиотеки <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a>.</p>
-<p>Это открывает неограниченные возможности по генерированию <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">стабов</a> для клиента.
+<p>Это открывает неограниченные возможности по генерированию <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">стабов</a> для клиента и позволяет использовать один из существующих генераторов стабов для swagger.
 Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.</p>
 <p>Схема OpenAPI так же может быть использована для автоматической генерации тестов, например, с помощью <a class="reference external" href="https://github.com/svanoort/pyresttest">pyresttest</a>.</p>
+<p>Мой товарищ работает над библиотекой <a class="reference external" href="https://bitbucket.org/sergeyglazyrindev/python-easytest">python-easytest</a>, которая избавляет от необходимости написания интеграционных тестов и тестирует приложение на основании схемы OpenAPI.</p>
 </div>
 <div class="section" id="join">
 <h2><a class="toc-backref" href="#id37">Проблема JOIN-ов</a><a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
@@ -262,7 +264,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <li><a class="reference external" href="https://github.com/wq/django-rest-pandas">django-rest-pandas</a></li>
 <li>и др.</li>
 </ul>
-<p>Здесь, правда, возникает проблема с трансляцией вложенных структур данных в плоский список, и наоборот, парсинг плоского списка во вложенную структуру.
+<p>Здесь, правда, возникает проблема с трансляцией вложенных структур данных в плоский список, и наоборот, с парсингом плоского списка во вложенную структуру.
 Частично эту проблему можно решить с помощью библиотеки <a class="reference external" href="https://github.com/pudo/jsonmapping">jsonmapping</a>.
 Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.</p>
 <p class="rubric">Footnotes</p>
