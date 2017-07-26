@@ -221,12 +221,12 @@ Django REST framework часто используется вместе с `djang
 Решается эта проблема легко, в классе FilterSet() следует использовать обертку с ленивым вычислением  вместо реального django.db.models.query.QuerySet, которая будет полность повторять его интерфейс, но вызвать метод filter() однократно, передавая ему все накопленные критерии выборки.
 
 
-Генерация *.csv, *.xlsx
------------------------
+Генерация \*.csv, \*.xlsx
+-------------------------
 
 Django и Django REST framework содержит огромное количество расширений.
 Это то главное преимущество, ради которого есть смысл терпеть их недостатки.
-Можно даже генерировать *.csv, *.xlsx файлы:
+Можно даже генерировать \*.csv, \*.xlsx файлы:
 
 - `django-rest-framework-excel <https://github.com/diegueus9/django-rest-framework-excel>`_
 - `django-rest-framework-csv <https://github.com/mjumbewu/django-rest-framework-csv>`_
