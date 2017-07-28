@@ -64,7 +64,7 @@
           <div class="body" role="main">
             
   <div class="section" id="django-framework">
-<h1><a class="toc-backref" href="#id26">О моем опыте использования Django Framework</a><a class="headerlink" href="#django-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id27">О моем опыте использования Django Framework</a><a class="headerlink" href="#django-framework" title="Permalink to this headline">¶</a></h1>
 <p>В свое время кто-то красиво сказал, что безопасность - это баланс между затратами на защиту и потенциальной выгодой от взлома.
 Нет смысла превышать этот баланс.</p>
 <p>Принимая решение относительно IT-технологий, мы тоже пытаемся найти баланс между затратами на содержание технологии (в том числе поиск и обучение новых специалистов) и обретаемой функциональностью.</p>
@@ -73,45 +73,46 @@
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#django-framework" id="id26">О моем опыте использования Django Framework</a></li>
-<li><a class="reference internal" href="#django-orm" id="id27">Проблемы Django ORM и способы их решения</a><ul>
-<li><a class="reference internal" href="#id2" id="id28">Семантическое сопряжение валидации моделей</a></li>
-<li><a class="reference internal" href="#active-record" id="id29">Active Record</a></li>
-<li><a class="reference internal" href="#identity-map" id="id30">Identity Map</a></li>
-<li><a class="reference internal" href="#sql" id="id31">Выполнение сложных SQL-запросов</a></li>
-<li><a class="reference internal" href="#id6" id="id32">Реализация сложных моделей</a></li>
-<li><a class="reference internal" href="#id8" id="id33">Сторонние инструменты</a><ul>
-<li><a class="reference internal" href="#sqlalchemy" id="id34">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#sqlbuilder" id="id35">SQLBuilder</a></li>
-<li><a class="reference internal" href="#storm-orm" id="id36">Storm ORM</a></li>
-<li><a class="reference internal" href="#id10" id="id37">Тестирование</a></li>
+<li><a class="reference internal" href="#django-framework" id="id27">О моем опыте использования Django Framework</a></li>
+<li><a class="reference internal" href="#django-orm" id="id28">Проблемы Django ORM и способы их решения</a><ul>
+<li><a class="reference internal" href="#id2" id="id29">Семантическое сопряжение валидации моделей</a></li>
+<li><a class="reference internal" href="#active-record" id="id30">Active Record</a></li>
+<li><a class="reference internal" href="#identity-map" id="id31">Identity Map</a></li>
+<li><a class="reference internal" href="#id6" id="id32">Транзакционная согласованность данных</a></li>
+<li><a class="reference internal" href="#sql" id="id33">Выполнение сложных SQL-запросов</a></li>
+<li><a class="reference internal" href="#id7" id="id34">Реализация сложных моделей</a></li>
+<li><a class="reference internal" href="#id9" id="id35">Сторонние инструменты</a><ul>
+<li><a class="reference internal" href="#sqlalchemy" id="id36">SQLAlchemy</a></li>
+<li><a class="reference internal" href="#sqlbuilder" id="id37">SQLBuilder</a></li>
+<li><a class="reference internal" href="#storm-orm" id="id38">Storm ORM</a></li>
+<li><a class="reference internal" href="#id11" id="id39">Тестирование</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11" id="id38">Очистка кэша</a></li>
+<li><a class="reference internal" href="#id12" id="id40">Очистка кэша</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#django-rest-framework" id="id39">Django REST framework</a><ul>
-<li><a class="reference internal" href="#id13" id="id40">Суффиксирование внешних ключей Django REST framework</a></li>
-<li><a class="reference internal" href="#id14" id="id41">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#openapi-swagger" id="id42">OpenAPI и Swagger</a></li>
-<li><a class="reference internal" href="#join" id="id43">Проблема JOIN-ов</a></li>
-<li><a class="reference internal" href="#csv-xlsx" id="id44">Генерация *.csv, *.xlsx</a></li>
+<li><a class="reference internal" href="#django-rest-framework" id="id41">Django REST framework</a><ul>
+<li><a class="reference internal" href="#id14" id="id42">Суффиксирование внешних ключей Django REST framework</a></li>
+<li><a class="reference internal" href="#id15" id="id43">SQLAlchemy</a></li>
+<li><a class="reference internal" href="#openapi-swagger" id="id44">OpenAPI и Swagger</a></li>
+<li><a class="reference internal" href="#join" id="id45">Проблема JOIN-ов</a></li>
+<li><a class="reference internal" href="#csv-xlsx" id="id46">Генерация *.csv, *.xlsx</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id16" id="id45">Плюсы и минусы</a><ul>
-<li><a class="reference internal" href="#id17" id="id46">Плюсы</a></li>
-<li><a class="reference internal" href="#id18" id="id47">Минусы</a></li>
+<li><a class="reference internal" href="#id17" id="id47">Плюсы и минусы</a><ul>
+<li><a class="reference internal" href="#id18" id="id48">Плюсы</a></li>
+<li><a class="reference internal" href="#id19" id="id49">Минусы</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id19" id="id48">Заключение</a></li>
+<li><a class="reference internal" href="#id20" id="id50">Заключение</a></li>
 </ul>
 </div>
 <p>Больше всего хлопот доставляет Django ORM, поэтому мы начнем с него.</p>
 </div>
 <div class="section" id="django-orm">
-<h1><a class="toc-backref" href="#id27">Проблемы Django ORM и способы их решения</a><a class="headerlink" href="#django-orm" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id28">Проблемы Django ORM и способы их решения</a><a class="headerlink" href="#django-orm" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id28">Семантическое сопряжение валидации моделей</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id29">Семантическое сопряжение валидации моделей</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Принцип &#8220;Защитного программирования&#8221; <a class="footnote-reference" href="#fncodec" id="id3">[2]</a> требует делать невозможным создание невалидного объекта.
 Для валидации должны использоваться сеттеры объекта.
 В Джанго мы должны явно вызвать метод <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean">Model.full_clean()</a> перед сохранением объекта, что, конечно же, часто никто не делает, и это часто приводит к различным проблемам.
@@ -119,7 +120,7 @@
 Можно решить это проблему технически, но обычно достаточно просто соблюдать дисциплину разработки.</p>
 </div>
 <div class="section" id="active-record">
-<h2><a class="toc-backref" href="#id29">Active Record</a><a class="headerlink" href="#active-record" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">Active Record</a><a class="headerlink" href="#active-record" title="Permalink to this headline">¶</a></h2>
 <p>Django ORM реализует паттерн <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>, который создает простоту использования за счет нарушения принципа <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP), из-за чего его часто называют антипаттерном.
 Этот паттерн смешивает в одном классе бизнес-логику и служебную логику доступа к данным.
 К сожалению, эта простота уместна только в простых случаях.
@@ -130,7 +131,7 @@
 В любом случае, реализация доступа к данным должна быть сокрыта от приложения, и это одна из обязанностей Сервисного Слоя.</p>
 </div>
 <div class="section" id="identity-map">
-<h2><a class="toc-backref" href="#id30">Identity Map</a><a class="headerlink" href="#identity-map" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">Identity Map</a><a class="headerlink" href="#identity-map" title="Permalink to this headline">¶</a></h2>
 <p>Джанго не реализует паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, и, как результат этого, возникает много дублируемых запросов.
 Частично этот недостаток смягчается наличием <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related">prefetch_related()</a>.
 Существуют реализации этого паттерна в виде сторонних библиотек,
@@ -139,30 +140,46 @@
 Но они, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.
 Правда, вы вряд-ли заметите эту проблему, так как Django приложение обычно обрабатывает HTTP-запрос одной транзакцией.</p>
 </div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id32">Транзакционная согласованность данных</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Мало того, что Вы получаете несколько экземпляров одного и тоже же объекта в памяти потока, что может привести к утрате данных из-за рассинхронизации состояния этих экземпляров, так эти экземпляры еще и никак не согласовываются с их записами в БД в момент фиксации (отката) транзакции.</p>
+<p>Джанго поддерживает транзакции, но не поддерживает транзакционной согласованности данных, в отличии от Storm ORM / SQLAlchemy.
+Вы должны самостоятельно заботиться о состоянии экземпляров моделей в памяти в момент фиксации (отката) транзакции.</p>
+<p>Так например, если Вы используете уровень изоляции транзакции &#8220;Repeatable read&#8221;, то после фиксации транзакции состояние Ваших экземпляров моделей в памяти может утратить актуальность.
+Соответственно, при откате транзакции вы должны вернуть им начальное состояние.</p>
+<p>Как уже упоминалось ранее, для обработки HTTP-запроса это не критично, так как Django framework обычно обслуживает его одной транзакцией.
+А вот при разработке командных скриптов и задач по расписанию этот момент следует учитывать.</p>
+<p>Вы должны так же самостоятельно заботиться о предотвращении взаимных блокировок (<a class="reference external" href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>), так как Django ORM не реализует паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> и не использует топологической сортировки.</p>
+<p>Здесь стоит так же упомянуть частую проблему начинающих разработчиков, которые пытаются обработать большую коллекцию объектов не используя <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#select-for-update">select_for_update()</a>.
+Обработка коллекции занимает значительное время, которое достаточно для того, чтобы состояние записи в БД для загруженного объекта, ожидающего своей обработки, успело измениться, что при неумелом использовании транзакций приводит к утрате параллельных изменений (а при умелом может привести к неразрешимому конфликту).</p>
+<p>Кроме того, следует внимательно ознакомиться со всеми предостережениями метода <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator">iterator()</a>, использование которого не гарантирует отсутствия утечки памяти, если Вы не используете <a class="reference external" href="https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending">SSCursor</a> для MySQL.</p>
+</div>
 <div class="section" id="sql">
-<h2><a class="toc-backref" href="#id31">Выполнение сложных SQL-запросов</a><a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id33">Выполнение сложных SQL-запросов</a><a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
 <p>Возможностей интерфейса Django ORM для создания сложных SQL-запросов недостаточно.
 В таком случае приходится или использовать сторонние инструменты, которые будут рассмотрены далее, или использовать Raw-SQL.
 В любом случае, детали реализации должны быть инкапсулированы внутри фабрики запроса.</p>
 </div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id32">Реализация сложных моделей</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id34">Реализация сложных моделей</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Очень часто приходится иметь дело с объектами, которые содержат агрегированную информацию, аннотации, или сочетают в себе данные нескольких таблиц.</p>
 <p>SQLAlchemy, безусловно, предоставляет <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html">более гибкие возможности</a>.
 Но даже этих возможностей <a class="reference external" href="http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/">хватает не всегда</a>.</p>
-<p>Механизм аннотаций в Storm ORM/SQLAlchemy реализован более удачно.
+<p>Механизм аннотаций в Storm ORM / SQLAlchemy реализован более удачно.
 Механизм аннотаций Django ORM лучше не использовать вообще, в пользу голого паттерна Data Mapper.
 Дело в том, что схема модели постоянно эволюционирует, и в нее постоянно добавляются новые поля.
 И нередко случается так, что имя нового поля уже используется аннотацией, из-за чего возникает конфликт в пространстве имен.
 Решением проблемы может быть разделение пространства имен, используя для аннотаций отдельную модель или обертку (Wrapper) над экземпляром модели.</p>
+<p>Identity Map еще одна из причин чтобы не использовать механизм аннотаций Django ORM (а так же отнестись с большой осторожностью к prefetch_related()).
+Ведь если в потоке может быть только один экземпляр объекта, то его состояние не может нести никаких отличий для каждого конкретного запроса.</p>
 <p>Вот почему важно скрывать детали реализации доступа к данным последством слоя <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> или <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>.
 В таком случае я просто выполняю реализацию в виде голого паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> и чистой <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>.</p>
 <p>Как показывает практика, обычно такие случаи не превышают 10%, что не настолько существенно для отказа от Django ORM, ибо привлекательность легкого поиска специалистов все равно перевешивает.</p>
 </div>
-<div class="section" id="id8">
-<h2><a class="toc-backref" href="#id33">Сторонние инструменты</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id35">Сторонние инструменты</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sqlalchemy">
-<h3><a class="toc-backref" href="#id34">SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h3>
 <p>Джанго имеет несколько приложений для интеграции SQLAlchemy:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/auvipy/django-sqlalchemy">django-sqlalchemy</a></li>
@@ -171,27 +188,27 @@
 </ul>
 </div>
 <div class="section" id="sqlbuilder">
-<h3><a class="toc-backref" href="#id35">SQLBuilder</a><a class="headerlink" href="#sqlbuilder" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">SQLBuilder</a><a class="headerlink" href="#sqlbuilder" title="Permalink to this headline">¶</a></h3>
 <p>Для создания сложных запросов с Django ORM я обычно использую <a class="reference external" href="http://sqlbuilder.readthedocs.io/en/latest/">sqlbuilder</a>.</p>
 <p>Правила хорошего тона требуют создавать отдельный класс-фабрику для каждого запроса, чтобы скрыть детали реализации от приложения.
 Внутри этого класса Вы можете легко подменить одну реализацию другой.</p>
 </div>
 <div class="section" id="storm-orm">
-<h3><a class="toc-backref" href="#id36">Storm ORM</a><a class="headerlink" href="#storm-orm" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id38">Storm ORM</a><a class="headerlink" href="#storm-orm" title="Permalink to this headline">¶</a></h3>
 <p>Вопрос интеграции Storm ORM уже рассматривался, поэтому я просто приведу ссылки:</p>
 <ul class="simple">
 <li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8220;</li>
 <li>&#8220;<a class="reference internal" href="../build-raw-sql-by-storm-orm/"><span class="doc">Построение Raw-SQL cредствами Storm-ORM</span></a>&#8220;</li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h3><a class="toc-backref" href="#id37">Тестирование</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id39">Тестирование</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>Если используется несколько технологий доступа к данным, то стоит упомянуть генератор файковых данных <a class="reference external" href="https://github.com/klen/mixer">mixer</a>, который поддерживает несколько ORM.
 Другие генераторы <a class="reference external" href="https://djangopackages.org/grids/g/fixtures/">можно найти</a>, как обычно, на <a class="reference external" href="https://djangopackages.org/">djangopackages.org</a>.</p>
 </div>
 </div>
-<div class="section" id="id11">
-<h2><a class="toc-backref" href="#id38">Очистка кэша</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id40">Очистка кэша</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>Реализация Django ORM в виде <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> вынуждает нас напрямую вызывать метод <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save">Model.save()</a>.
 Проблема в том, что сигналы <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/signals/#post-save">post_save</a> и <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete">pre_delete</a> часто используются разработчиками для инвалидации кэша.
 Это не совсем правильно, так как Django ORM не использует паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>, и время между сохранением и фиксацией транзакции оказывается достаточным чтобы параллельный поток успел воссоздать кэш с устаревшими данными.</p>
@@ -201,7 +218,7 @@ Django 1.9 и выше возволяет использовать <a class="ref
 </div>
 </div>
 <div class="section" id="django-rest-framework">
-<h1><a class="toc-backref" href="#id39">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id41">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
 <p>Если мы до этого рассматривали недостатки Django ORM, то <a class="reference external" href="http://www.django-rest-framework.org/">Django REST framework</a> удивительным образом превращает его недостатки в достоинства, ведь интерфейс создания запросов Django ORM великолепно подходит для REST.</p>
 <p>Если Вам посчастливилось использовать на стороне клиента <a class="reference external" href="http://dstorejs.io/">Dstore</a>, то на стороне сервера Вы можете использовать <a class="reference external" href="https://pypi.python.org/pypi/django-rql-filter">django-rql-filter</a> или <a class="reference external" href="https://pypi.python.org/pypi/rql">rql</a>.</p>
 <p>Честно говоря, Django REST framework заставляет изрядно посидеть в отладчике, и потратить на него определенное время, что, разумеется, характеризует используемые им проектные решения не с лучшей стороны.
@@ -219,25 +236,25 @@ aided by a design focus on simplicity.
 Simplicity is achieved in two general ways: minimizing the amount of essential
 complexity that anyone&#8217;s brain has to deal with at any one time, and keeping
 accidental complexity from proliferating needlessly.
-(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id12">[2]</a>)</p>
+(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id13">[2]</a>)</p>
 </div></blockquote>
 <p>Однако совокупный баланс преимуществ и недостатков делает Django REST framework весьма привлекательным для разработки, особенно если Вам нужно привлекать к работе новых (или временных) специалистов или отдать часть работы на аутсорсинг.</p>
 <p>Просто нужно учитывать, что существует определенный входной барьер, который требует определенных затрат на его преодоление, и Вы должны понимать какую выгоду Вы с этого можете получить, ибо не всегда эта выгода стоит потраченных усилий для преодоления входного барьера.</p>
 <p>На критике проектных решений я останавливаться не буду, конструктивно Django REST framework меня ни в чем не ограничивает, а это самое главное.</p>
-<div class="section" id="id13">
-<h2><a class="toc-backref" href="#id40">Суффиксирование внешних ключей Django REST framework</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id42">Суффиксирование внешних ключей Django REST framework</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>Когда на стороне клиента используются инструменты для обработки внешних ключей, возникает желание для значений внешнего ключа использовать поле с *_id суффиксом. Здесь приводится <a class="reference external" href="https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6">пример реализации</a> как это можно достигнуть.
 Этот же пример на <a class="reference external" href="https://gist.github.com/ostcar/eb78515a41ab41d1755b">gist</a> и <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/3121">обсуждение</a>.</p>
 </div>
-<div class="section" id="id14">
-<h2><a class="toc-backref" href="#id41">SQLAlchemy</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id43">SQLAlchemy</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <p>Огромным преимуществом Django REST framework является то, что он ORM agnostic.
 Он имеет прекрасную интергацию с Django ORM, но он легко может работать с голой реализацией паттерна Data Mapper который будет возвращать <a class="reference external" href="https://docs.python.org/2/library/collections.html#collections.namedtuple">namedtuple</a> для <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 Так же он имеет хорошую интеграцию с <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> в виде стороннего приложения <a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> (<a class="reference external" href="http://djangorest-alchemy.readthedocs.io/en/latest/">документация</a>).
 См. <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/2439">обсуждение интеграции</a>.</p>
 </div>
 <div class="section" id="openapi-swagger">
-<h2><a class="toc-backref" href="#id42">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id44">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework позволяет <a class="reference external" href="www.django-rest-framework.org/api-guide/schemas/">генерировать схему</a> в формате OpenAPI и интегрируется с <a class="reference external" href="https://swagger.io/">swagger</a> с помощью библиотеки <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a>.</p>
 <p>Это открывает неограниченные возможности по генерированию <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">стабов</a> для клиента и позволяет использовать один из существующих генераторов стабов для swagger.
 Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.</p>
@@ -245,7 +262,7 @@ accidental complexity from proliferating needlessly.
 <p>Мой товарищ работает над библиотекой <a class="reference external" href="https://bitbucket.org/sergeyglazyrindev/python-easytest">python-easytest</a>, которая избавляет от необходимости написания интеграционных тестов и тестирует приложение на основании схемы OpenAPI.</p>
 </div>
 <div class="section" id="join">
-<h2><a class="toc-backref" href="#id43">Проблема JOIN-ов</a><a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id45">Проблема JOIN-ов</a><a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework часто используется вместе с <a class="reference external" href="https://pypi.python.org/pypi/django-filter">django-filter</a>.
 И тут возникает проблема, которая отражена в документации как:</p>
 <blockquote>
@@ -260,7 +277,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>Решается эта проблема легко, в классе FilterSet() следует использовать обертку с ленивым вычислением  вместо реального django.db.models.query.QuerySet, которая будет полность повторять его интерфейс, но вызвать метод filter() однократно, передавая ему все накопленные критерии выборки.</p>
 </div>
 <div class="section" id="csv-xlsx">
-<h2><a class="toc-backref" href="#id44">Генерация *.csv, *.xlsx</a><a class="headerlink" href="#csv-xlsx" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id46">Генерация *.csv, *.xlsx</a><a class="headerlink" href="#csv-xlsx" title="Permalink to this headline">¶</a></h2>
 <p>Django и Django REST framework содержит огромное количество расширений.
 Это то главное преимущество, ради которого есть смысл терпеть их недостатки.
 Можно даже генерировать *.csv, *.xlsx файлы:</p>
@@ -275,10 +292,10 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.</p>
 </div>
 </div>
-<div class="section" id="id16">
-<h1><a class="toc-backref" href="#id45">Плюсы и минусы</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id17">
-<h2><a class="toc-backref" href="#id46">Плюсы</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h1><a class="toc-backref" href="#id47">Плюсы и минусы</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id48">Плюсы</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p>Джанго имеет удачный <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>,  который представляет собой разновидность паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, достаточно удачные формы и шаблонизатор (если использовать <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Несмотря на все недостатки Django ORM, его интерфейс построения запросов хорошо подходит для REST API.</p>
 <p>Django имеет огромное сообщество с огромным количеством готовых приложений.
@@ -286,8 +303,8 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>Django декларирует такой способ разработки, который не требователен к уровню разработчиков.</p>
 <p>Django способен экономить много времени при правильном использовании.</p>
 </div>
-<div class="section" id="id18">
-<h2><a class="toc-backref" href="#id47">Минусы</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id19">
+<h2><a class="toc-backref" href="#id49">Минусы</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <p>Уровень сложности Django растет с каждым релизом, зачастую опережая реализуемые ею возможности, и от этого ее привлекательность постоянно уменьшается.</p>
 <p>Если Вам нужно адаптировать Django ORM для своих потребностей, то сделать это с последним релизом будет, пожалуй, сложнее, чем адаптировать SQLAlchemy.
 При том что в адаптации он нуждается чаще чем SQLAlchemy.
@@ -299,8 +316,8 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 Квалифицированные специалисты среди моих друзей стараются избегать работу с Django.</p>
 </div>
 </div>
-<div class="section" id="id19">
-<h1><a class="toc-backref" href="#id48">Заключение</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id20">
+<h1><a class="toc-backref" href="#id50">Заключение</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h1>
 <p>Использовать или не использовать Django framework зависит от того, какие цели Вы перед собой ставите, и командой какой квалификации Вы располагаете.</p>
 <p>Если Ваша команда высоко-квалифицированная в области архитектуры и проектирования, вы используете <a class="reference internal" href="../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">методики совместной разработки</span></a> для распространения опыта, чувствуете в себе силы сделать проект более качественным без Django, и располагаете достаточными ресурсами и финансами для этого, тогда есть смысл использовать другой стэк технологий.</p>
 <p>В противном случае, Django framework может сослужить Вам хорошую пользу.
@@ -323,7 +340,7 @@ Django REST framework позволяет Вам абстрагироваться
 <table class="docutils footnote" frame="void" id="fncodec" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> «<a class="reference external" href="http://www.informit.com/store/code-complete-9780735619678">Code Complete</a>» Steve McConnell</td></tr>
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> «<a class="reference external" href="http://www.informit.com/store/code-complete-9780735619678">Code Complete</a>» Steve McConnell</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnrefactoring" rules="none">
