@@ -9,7 +9,7 @@
 Why I prefer Storm ORM for Python
 =================================
 
-I began to use `KISS`_-style `Storm ORM`_ for enterprise applications on Python, let me explain why.
+I began using `KISS`_-style `Storm ORM`_ for enterprise applications on Python, let me explain why.
 
 .. contents:: Contents
 
@@ -20,7 +20,7 @@ My requirements for ORM
 =======================
 
 \- **Quickness**. ORM should be fast.
-ORM should to have `Identity Map`_ to prevent duplicated queries to DB if the object is already loaded to the memory.
+ORM should have `Identity Map`_ to prevent duplicated queries to DB if the object is already loaded to the memory.
 This is important for case when several isolated scopes are trying to load the same object to the own namespace.
 Also, I think, `Identity Map`_ should be configurable for different transaction isolation levels, for example, to prevent query to DB when object does not exist and transaction isolation level is "Serializable".
 
@@ -124,7 +124,7 @@ This approach allows you:
 - Keep the initial value of each attribute, observe the changes, perform rollback at the object level.
 - Watch for value changes (the observer) and update related objects.
 - Synchronize the value of the object with the value of the database record.
-- Implement "Defensive Programming" and prevent assignment of invalid value. You are not able to forget validation before to save anymore. This solves "G22: Make Logical Dependencies Physical" [#fncc]_ and "G31: Hidden Temporal Couplings" [#fncc]_.
+- Implement "Defensive Programming" and prevent assignment of invalid value. You are not able to forget validation before saving anymore. This solves "G22: Make Logical Dependencies Physical" [#fncc]_ and "G31: Hidden Temporal Couplings" [#fncc]_.
 - Validate the value only when it is assigned from the outside, but not from the database. This eliminates the problem of the impossibility of re-saving the objects when validation rules are changed.
 - Convert the value to the required representation, depending on the context of the usage (Python or DB).
 
@@ -301,7 +301,7 @@ The only thing I'm absolutely sure of is that it's difficult (if at all possible
 But this is already a kind of SQLBuilder concept, albeit in a primitive form, and implemented in a particular way.
 The particular solutions always take a lot of place, as they depart from the `DRY`_ principle.
 
-Let me to explain it with an example.
+Let me explain it with an example.
 Imagine a query to select ads from the database by 5 criteria.
 You need to allow users to select the ads using a set of any number of the following criteria:
 
@@ -417,8 +417,7 @@ Your method can accept Raw-SQL as arguments, but this approach has the signs "G6
 The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of implementation of the mechanism for this modification.
 This entails the emergence of a logical dependence and a violation of encapsulation.
 
-To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should to have all methods to create any query required by each client.
-To save the encapsulation and remove the logical dependence, the object which is aware about details of implementation of query modification, should contain all methods to create any query which can be required by each client.
+To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should contain all methods to create any query required by each client.
 But an object should not make assumptions about clients!
 
 Otherwise, we receive a God object which is aware of the needs of all potential clients.
