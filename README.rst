@@ -1,1 +1,1 @@
-Source code of https://emacsway.bitbucket.io/
+Source code of https://emacsway.github.io/

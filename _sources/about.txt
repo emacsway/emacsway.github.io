@@ -14,7 +14,7 @@ About me
 Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 
 - Ivan Zakrevskyi, Python-developer.
-- Blog: https://emacsway.bitbucket.io/
+- Blog: https://emacsway.github.io/
 - E-mail: emacsway@gmail.com
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `Facebook <https://www.facebook.com/emacsway>`__
