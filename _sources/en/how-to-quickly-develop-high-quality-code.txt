@@ -32,7 +32,7 @@ Do you know the Primary Technical Imperative of software development?
     Managing complexity is the most important technical topic in software development. In my view, it's so important that Software's Primary Technical Imperative has to be managing complexity.
     («Code Complete» [#fncodec]_)
 
-When developer writes code, he 91% of the time reads code, and only 9% of time he types text from keyboard.
+During code construction developer reads code for 91% of the time, and only for 9% of the time he types text from keyboard.
 
     You might ask: How much is code really read? Doesn’t most of the effort go into
     writing it?
