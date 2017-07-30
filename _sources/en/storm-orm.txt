@@ -550,6 +550,13 @@ Too many existing ORMs create more "code smells" in the code than it eliminates,
 
 Interview with Gustavo Niemeyer, lead developer on Canonical's Storm project "`Storm: An ORM for Python <http://www.drdobbs.com/storm-an-orm-for-python/201000460>`__".
 
+
+Afterword
+=========
+
+Storm ORM is the tool for highly skilled professionals who understand its superiority and are not afraid to support 300 KB of high-quality code themselves.
+
+
 Эта статья на Русском языке ":doc:`../ru/storm-orm`".
 
 
@@ -559,6 +566,9 @@ Interview with Gustavo Niemeyer, lead developer on Canonical's Storm project "`S
 .. [#fnr] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnpoeaa] «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
+
+
+.. update:: 29 Jul, 2017
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html

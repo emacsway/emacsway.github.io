@@ -546,6 +546,13 @@ SQL-код, даже если он в Python-файлах, все равно о�
 
 Интервью с Gustavo Niemeyer, ведущим разработчиком проекта Storm компании Canonical "`Storm: An ORM for Python <http://www.drdobbs.com/storm-an-orm-for-python/201000460>`__".
 
+
+Послесловие
+===========
+
+Storm ORM - это инструмент для высококвалифицированных специалистов которые понимают его превосходства и не боятся сопровождать 300 Кб высококачественного кода самостоятельно.
+
+
 This article in English ":doc:`../en/storm-orm`".
 
 
@@ -555,6 +562,9 @@ This article in English ":doc:`../en/storm-orm`".
 .. [#fnr] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnpoeaa] «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
+
+
+.. update:: 29 Jul, 2017
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html

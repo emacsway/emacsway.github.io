@@ -93,6 +93,14 @@ Identity Map
 В таком случае приходится или использовать сторонние инструменты, которые будут рассмотрены далее, или использовать Raw-SQL.
 В любом случае, детали реализации должны быть инкапсулированы внутри фабрики запроса.
 
+В моей практике был случай когда нужно было в админке реализовать выборку пользователей с поиском по шаблону (LIKE '%keyword%') как по строкам в таблице пользователей так и в присоединенной (LEFT JOIN) таблице профилей, причем критерии поиска должны были сочетаться условием ИЛИ (OR), что приводило к полному проходу по присоединенной таблице на каждую строку таблицы пользователей.
+Записей в БД MySQL было несколько миллионов, и это работало очень медленно.
+В той версии MySQL еще не поддерживался ngram FULLTEXT index.
+Для оптимизации запроса нужно было присоединять уже профильтрованную выборку из таблицы профилей, а не всю таблицу профилей, переместив критерий выборки в подзапрос.
+Подобный пример Вы можете найти в книге «High Performance MySQL» [#hpmysql]_.
+Для решения проблемы моему коллеге пришлось ":doc:`сделать адаптер для sqlbuilder Storm ORM <storm-orm>`" наподобие `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+В результате была достигнута возможность выразить SQL-запрос любого уровня сложности в интерфейсе django.db.models.query.QuerySet.
+
 
 Реализация сложных моделей
 --------------------------
@@ -129,6 +137,7 @@ SQLAlchemy
 - `django-sqlalchemy <https://github.com/auvipy/django-sqlalchemy>`_
 - `aldjemy <https://github.com/Deepwalker/aldjemy>`_
 - `django-sabridge <https://github.com/johnpaulett/django-sabridge>`_
+- `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`_
 
 
 SQLBuilder
@@ -332,6 +341,11 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
 .. [#fncodec] «`Code Complete`_» Steve McConnell
 .. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
+
+
+.. update:: 29 Jul, 2017
+
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
 .. _Robert C. Martin: http://informit.com/martinseries
