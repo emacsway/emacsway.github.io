@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Аргументы-флаги &mdash; @emacsway&#39;s blog</title>
+    <title>Реализация паттерна Repository в браузерном JavaScript &mdash; @emacsway&#39;s blog</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -36,16 +36,16 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Thu, 22 Oct 2015 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 31 Jul 2017 20:23:36 GMT" />
         
-            <meta name="description" content="В главе “Flag Arguments” известной книги «Clean Code. A Handbook of Agile Software Craftsmanship.», Robert C. Martin советует не использовать аргументов-флагов, справедливо замечая, что это свидетельствует о том, что функция делает более одной операции." />
+            <meta name="description" content="Хорошая архитектура освобождает Вас от конкретной реализации. Она позволяет Вам отложить решения о реализации, и вести разработку без него. Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а так же легко подменить конкретную реализацию на любую другую. Эта обязанность возложена на паттерн Repository." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
             <link rel="image_src" href="../../_static/logo.jpg" />
         
 
-        <link rel="canonical" href="https://emacsway.github.io/ru/flag-arguments/" />
+        <link rel="canonical" href="https://emacsway.github.io/ru/javascript-and-repository-pattern/" />
 
     
 
@@ -74,14 +74,61 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
-<h1>Аргументы-флаги<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>В главе &#8220;Flag Arguments&#8221; известной книги «Clean Code. A Handbook of Agile Software Craftsmanship.», Robert C. Martin советует не использовать аргументов-флагов, справедливо замечая, что это свидетельствует о том, что функция делает более одной операции.</p>
-<p>Но что если функция, например, атомарно создает неизменяемый объект? Если состояние объекта зависит от 5-ти флагов, то для того, чтобы разбить функцию на безфлаговые нам придется создать 2^5 = 32 фиксированные функции чтобы перебрать все возможные комбинации флагов.</p>
-<p>Это приводит нас к одной из мотиваций паттерна &#8220;<a class="reference external" href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge</a>&#8221; - устранению комбинаторного роста количества классов. Чтобы не создавать иерархию классов для каждой реализации (раздувая количество классов), применяется композиция вместо наследования. Иначе говоря, речь идет о <a class="reference external" href="http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html">превосходстве композиции перед наследованием</a>.</p>
-<p>В данном случае, чтобы не создавать комбинаторного роста количества функций, могут быть использованы флаги.
-Robert C. Martin эту тему не раскрыл, а жаль.</p>
-<p>В качестве иллюстрации можно привести битовые маски флагов функций <a class="reference external" href="https://docs.python.org/2/library/re.html#re.search">re.search(pattern, string, flags=0)</a> или <a class="reference external" href="https://docs.python.org/2/library/functions.html#open">open(name[, mode[, buffering]])</a>. Только представьте себе, сколько понадобилось бы функций, чтобы выразить все возможные сочетания флагов.</p>
+  <div class="section" id="repository-javascript">
+<h1>Реализация паттерна Repository в браузерном JavaScript<a class="headerlink" href="#repository-javascript" title="Permalink to this headline">¶</a></h1>
+<p>Хорошая архитектура освобождает Вас от конкретной реализации.
+Она позволяет Вам отложить решения о реализации, и <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">вести разработку без него</a>.
+Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а так же легко подменить конкретную реализацию на любую другую.
+Эта обязанность возложена на паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>.</p>
+<blockquote>
+<div><p>&#8220;Однако мы часто забываем, что принятие решений лучше всего откладывать до последнего момента.
+Дело не в лени или безответственности;
+просто это позволяет принять информированное решение с максимумом возможной информации.
+Преждевременное решение принимается на базе неполной информации.
+Принимая решение слишком рано, мы лишаемся всего полезного, что происходит на более поздних стадиях:
+обратной связи от клиентов, возможности поразмышлять над текущим состоянием проекта и опыта применения решений из области реализации.&#8221;</p>
+<p>&#8220;We often forget that it is also best to postpone decisions until the last possible moment.
+This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.
+A premature decision is a decision made with suboptimal knowledge. We will have that
+much less customer feedback, mental reflection on the project, and experience with our
+implementation choices if we decide too soon.&#8221;
+(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id1">[1]</a>)</p>
+</div></blockquote>
+<p>Наибольшим преимуществом полноценных моделей в программе является возможность использования Domain-Driven Design (DDD) <a class="footnote-reference" href="#fnddd" id="id2">[3]</a>.
+Если модели содержат исключительно бизнес-логику, и освобождены от служебной логики, то такие модели могут легко читаться специалистами предметной области (т.е. представителем заказчика), что освобождает Вас от создания UML-диаграмм для обсуждений.</p>
+<p>Сегодня модно увлекаться реактивным программированием.
+Знаете ли Вы, что разработчики dojo впервые <a class="reference external" href="https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35">применили реактивное программирование</a> 13 сентября 2010?</p>
+<p>Реактивное программирование дополняет (а не противопоставляет) паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, о чем красноречиво свидетельствует опыт <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a> и <a class="reference external" href="http://dstorejs.io/">Dstore</a>.</p>
+<p>Примеры имплементации паттерна Repository в проекте <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
+<ul class="simple">
+<li>Angular2: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts</a></li>
+<li>Angular1: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js</a></li>
+</ul>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="fnccode" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>«<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>«<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>» by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fnddd" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>«Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fngof" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td>«Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994</td></tr>
+</tbody>
+</table>
 </div>
 
   <div class="section">
@@ -89,48 +136,7 @@ Robert C. Martin эту тему не раскрыл, а жаль.</p>
     
 
 
-<div class="section">
-  <span style="float: left;">
   
-  
-  <a href="../storm-orm/">
-    <i class="fa fa-arrow-circle-left"></i>
-    Почему я выбираю Storm ORM для Python
-  </a>
-  
-  </span>
-  <span>&nbsp;</span>
-  <span style="float: right;">
-  
-  
-  <a href="../refactoring-book/">
-    О книге "Refactoring" by M.Fowler
-    <i class="fa fa-arrow-circle-right"></i>
-  </a>
-  </span>
-  
-</div>
-
-  
-  
-    <div class="section">
-    <h2>Comments</h2>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'emacsway';
-        var disqus_identifier = '/ru/flag-arguments/';
-        var disqus_title = 'Аргументы-флаги';
-        var disqus_url = 'https://emacsway.github.io/ru/flag-arguments/';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </div>
   
   </div>
 
@@ -160,8 +166,8 @@ Robert C. Martin эту тему не раскрыл, а жаль.</p>
   
   <h2>
   
-  <i class="fa fa-calendar"></i>
-    Oct 22, 2015
+    <i class="fa fa-pencil"></i>
+     Draft 
   
   </h2>
 
@@ -194,32 +200,15 @@ Robert C. Martin эту тему не раскрыл, а жаль.</p>
   <li><i class="fa-fw fa fa-tags"></i>
       
     
-      
-      <a href="../../blog/tag/python/">Python</a>,
-      
+      Repository,
     
       
-      <a href="../../blog/tag/programming/">programming</a>
+      <a href="../../blog/tag/orm/">ORM</a>,
       
+    
+      JavaScript
     </li>
   
-  
-  <li>
-    <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'emacsway'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
-    <i class="fa-fw fa fa-comments"></i>
-    <a href="#disqus_thread" data-disqus-identifier="/ru/flag-arguments/"> </a>
-  </li>
   
   </ul>
 
@@ -387,7 +376,7 @@ Robert C. Martin эту тему не раскрыл, а жаль.</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/ru/flag-arguments.txt"
+      <a href="../../_sources/ru/javascript-and-repository-pattern.txt"
           rel="nofollow">Page source</a>
     </div>
 
@@ -395,11 +384,6 @@ Robert C. Martin эту тему не раскрыл, а жаль.</p>
 
     
 
-
-    
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-597ba7fb5af2ef1e"></script>
 
     
 

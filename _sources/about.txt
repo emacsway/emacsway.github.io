@@ -77,6 +77,8 @@ Articles
 
 Articles in English:
 
+.. * «:doc:`../en/django-framework`»
+
 * «:doc:`en/service-layer`»
 * «:doc:`en/cache-dependencies`»
 * «:doc:`en/how-to-quickly-develop-high-quality-code`»

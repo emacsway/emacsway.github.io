@@ -535,6 +535,15 @@ The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowle
     "High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
+..
+
+    "If the framework's partitioning conventions pull apart the elements implementing the
+    conceptual objects, the code no longer reveals the model.
+
+    There is only so much partitioning a mind can stitch back together, and if the framework uses 
+    it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 About the second question.
 
 Of all the ORMs that I met in my practice (not only in Python), ACID support in Storm ORM and SQLAlchemy is implemented in the best way.
@@ -568,7 +577,7 @@ Storm ORM is the tool for highly skilled professionals who understand its superi
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 
 
-.. update:: 29 Jul, 2017
+.. update:: 31 Jul, 2017
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html

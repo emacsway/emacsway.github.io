@@ -531,6 +531,20 @@ SQL-код, даже если он в Python-файлах, все равно о�
     "High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
+..
+
+    "Если требования архитектурной среды к распределению обязанностей таковы, что элементы, реализующие концептуальные объекты, оказываются физически разделенными, то код больше не выражает модель.
+
+    Нельзя разделять до бесконечности, у человеческого ума есть свои пределы, до которых он еще способен соединять пазделенное;
+    если среда выходит ха это пределы, разработчики предметной области теряют способность расчленять модель на осмысленные фрагменты."
+
+    "If the framework's partitioning conventions pull apart the elements implementing the
+    conceptual objects, the code no longer reveals the model.
+
+    There is only so much partitioning a mind can stitch back together, and if the framework uses 
+    it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 По поводу второго вопроса.
 Из всех ORM, что я встречал в своей практике (не только на Python), поддержка ACID в Storm ORM и SQLAlchemy реализована наилучшим образом.
 Надо сказать, в подавляющем большинстве существующих ORM такие попытки даже не предпринимаются.
@@ -564,7 +578,7 @@ This article in English ":doc:`../en/storm-orm`".
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 
 
-.. update:: 29 Jul, 2017
+.. update:: 31 Jul, 2017
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html

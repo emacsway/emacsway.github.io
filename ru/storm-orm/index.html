@@ -36,7 +36,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sat, 29 Jul 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 31 Jul 2017 00:00:00 GMT" />
         
             <meta name="description" content="В промышленных решениях на Python я чаще стал использовать KISS-style Storm ORM, и здесь я попытаюсь объяснить почему." />
         
@@ -75,29 +75,29 @@
           <div class="body" role="main">
             
   <div class="section" id="storm-orm-python">
-<h1><a class="toc-backref" href="#id39">Почему я выбираю Storm ORM для Python</a><a class="headerlink" href="#storm-orm-python" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id40">Почему я выбираю Storm ORM для Python</a><a class="headerlink" href="#storm-orm-python" title="Permalink to this headline">¶</a></h1>
 <p>В промышленных решениях на Python я чаще стал использовать <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">KISS-style</a> <a class="reference external" href="https://storm.canonical.com/">Storm ORM</a>, и здесь я попытаюсь объяснить почему.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#storm-orm-python" id="id39">Почему я выбираю Storm ORM для Python</a></li>
-<li><a class="reference internal" href="#orm" id="id40">Мои критерии к ORM</a></li>
-<li><a class="reference internal" href="#storm-orm-advantages-ru" id="id41">О достоинствах</a></li>
-<li><a class="reference internal" href="#sqlalchemy" id="id42">По поводу SQLAlchemy</a></li>
-<li><a class="reference internal" href="#storm-orm-disadvantages-ru" id="id43">О недостатках</a></li>
-<li><a class="reference internal" href="#storm-orm-ambiguities-ru" id="id44">О неоднозначном</a></li>
-<li><a class="reference internal" href="#faq" id="id45">FAQ</a></li>
-<li><a class="reference internal" href="#why-orm-ru" id="id46">А нужен ли вообще ORM?</a><ul>
-<li><a class="reference internal" href="#query-object" id="id47">Нужен ли Query Object?</a></li>
-<li><a class="reference internal" href="#data-mapper" id="id48">Нужен ли сам Data Mapper?</a></li>
+<li><a class="reference internal" href="#storm-orm-python" id="id40">Почему я выбираю Storm ORM для Python</a></li>
+<li><a class="reference internal" href="#orm" id="id41">Мои критерии к ORM</a></li>
+<li><a class="reference internal" href="#storm-orm-advantages-ru" id="id42">О достоинствах</a></li>
+<li><a class="reference internal" href="#sqlalchemy" id="id43">По поводу SQLAlchemy</a></li>
+<li><a class="reference internal" href="#storm-orm-disadvantages-ru" id="id44">О недостатках</a></li>
+<li><a class="reference internal" href="#storm-orm-ambiguities-ru" id="id45">О неоднозначном</a></li>
+<li><a class="reference internal" href="#faq" id="id46">FAQ</a></li>
+<li><a class="reference internal" href="#why-orm-ru" id="id47">А нужен ли вообще ORM?</a><ul>
+<li><a class="reference internal" href="#query-object" id="id48">Нужен ли Query Object?</a></li>
+<li><a class="reference internal" href="#data-mapper" id="id49">Нужен ли сам Data Mapper?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id37" id="id49">Послесловие</a></li>
+<li><a class="reference internal" href="#id38" id="id50">Послесловие</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="orm">
-<span id="orm-criteria-ru"></span><h1><a class="toc-backref" href="#id40">Мои критерии к ORM</a><a class="headerlink" href="#orm" title="Permalink to this headline">¶</a></h1>
+<span id="orm-criteria-ru"></span><h1><a class="toc-backref" href="#id41">Мои критерии к ORM</a><a class="headerlink" href="#orm" title="Permalink to this headline">¶</a></h1>
 <p>- <strong>Скорость</strong>. ORM должен быть быстрым.
 ORM должен иметь <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> для предотвращения запросов в БД, если объект уже был загружен.
 Этот момент особенно важен, когда различные изолированные компоненты приложения пытаются загрузить один и тот же объект из БД в собственную область видимости.
@@ -139,7 +139,7 @@ ORM должен иметь <a class="reference external" href="http://martinfow
 Кроме того, он позволит Вам влиять на порядок сохранения объектов, например, используя топологическую сортировку для предотвращения дедлоков.</p>
 </div>
 <div class="section" id="storm-orm-advantages-ru">
-<span id="id3"></span><h1><a class="toc-backref" href="#id41">О достоинствах</a><a class="headerlink" href="#storm-orm-advantages-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id3"></span><h1><a class="toc-backref" href="#id42">О достоинствах</a><a class="headerlink" href="#storm-orm-advantages-ru" title="Permalink to this headline">¶</a></h1>
 <p>Несмотря на номер релиза, - код достаточно стабилен.
 Удачная архитектура в сочетании с <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">принципом KISS</a> создает ложную иллюзию, что Storm ORM якобы не развивается.
 Это не так.
@@ -210,7 +210,7 @@ Identity Map так же делает ненужными утилиты типа
 <p>Другие достоинства хорошо отражены в <a class="reference external" href="https://storm.canonical.com/Tutorial">Tutorial</a> и в <a class="reference external" href="https://storm.canonical.com/Manual">Manual</a></p>
 </div>
 <div class="section" id="sqlalchemy">
-<span id="about-sqlalchemy-ru"></span><h1><a class="toc-backref" href="#id42">По поводу SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
+<span id="about-sqlalchemy-ru"></span><h1><a class="toc-backref" href="#id43">По поводу SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
 <p>В общем-то любой <a class="reference external" href="http://aosabook.org/en/sqlalchemy.html">ORM хорош</a>, если он <a class="reference external" href="http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/">реализует принципы</a> нашумевшей книги «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id6">[3]</a>.
 Storm ORM контрастирует своей простотой на фоне SQLAlchemy так же, как VIM на фоне Emacs, или jQuery на фоне Dojo.
 Идеологически между ними много общего, я бы даже сказал, что Storm ORM - это упрощенная версия SQLAlchemy.
@@ -221,7 +221,7 @@ Storm ORM контрастирует своей простотой на фоне
 В противном случае, SQLAlchemy становится предпочтительней, даже невзирая на уровень ее сложности, поскольку многие решения предоставляет &#8220;из коробки&#8221;.</p>
 </div>
 <div class="section" id="storm-orm-disadvantages-ru">
-<span id="id7"></span><h1><a class="toc-backref" href="#id43">О недостатках</a><a class="headerlink" href="#storm-orm-disadvantages-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id7"></span><h1><a class="toc-backref" href="#id44">О недостатках</a><a class="headerlink" href="#storm-orm-disadvantages-ru" title="Permalink to this headline">¶</a></h1>
 <p>В моей практике было три случая, когда в Storm ORM требовалось &#8220;допиливать&#8221; то, что SQLAlchemy (или ее сообщество) предоставляет в готовом виде.</p>
 <ol class="arabic simple">
 <li><a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects">Массовая вставка объектов</a>, причем, с условием ON DUPLICATE KEY UPDATE.</li>
@@ -243,7 +243,7 @@ Storm ORM не реализует топологическую сортиров�
 Отсутствие выделенного класса для маппера вынуждает так же загромождать доменную модель <a class="reference external" href="https://storm.canonical.com/Manual#A__storm_pre_flush__">служебной логикой</a>.</p>
 </div>
 <div class="section" id="storm-orm-ambiguities-ru">
-<span id="id8"></span><h1><a class="toc-backref" href="#id44">О неоднозначном</a><a class="headerlink" href="#storm-orm-ambiguities-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id8"></span><h1><a class="toc-backref" href="#id45">О неоднозначном</a><a class="headerlink" href="#storm-orm-ambiguities-ru" title="Permalink to this headline">¶</a></h1>
 <p>Поддержка ACID привела к тому, что доменная модель на самом деле не является чистой.
 Тем не менее, она имеет чистый интерфейс, и ведет себя как обычный чистый объект.
 На самом деле инстанция модели не содержит данных, а ссылается на структуру данных посредством дескрипторов.
@@ -259,7 +259,7 @@ Storm ORM не реализует топологическую сортиров�
 Тем не менее, вы не имеете возможности запросить напрямую второй объект у хранилища Store() до момента сохранения.</p>
 </div>
 <div class="section" id="faq">
-<span id="storm-orm-faq-ru"></span><h1><a class="toc-backref" href="#id45">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<span id="storm-orm-faq-ru"></span><h1><a class="toc-backref" href="#id46">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <p><em>q: Storm ORM не поддерживает Python3.</em></p>
 <p>a: Если Вы мигрировали хотя бы одну библиотеку на Python3, то понимаете, что этот процесс больших трудностей не вызывает.
 95% работы делает команда <code class="docutils literal"><span class="pre">2to3</span></code>.
@@ -298,12 +298,12 @@ Storm ORM не реализует топологическую сортиров�
 </div>
 </div>
 <div class="section" id="why-orm-ru">
-<span id="id9"></span><h1><a class="toc-backref" href="#id46">А нужен ли вообще ORM?</a><a class="headerlink" href="#why-orm-ru" title="Permalink to this headline">¶</a></h1>
+<span id="id9"></span><h1><a class="toc-backref" href="#id47">А нужен ли вообще ORM?</a><a class="headerlink" href="#why-orm-ru" title="Permalink to this headline">¶</a></h1>
 <p>Честно говоря, нет необходимости использовать ОРМ всегда и везде.
 Во многих случаях (например, если от приложения требуется просто выдать список JSON значений) вполне достаточно простейшего <a class="reference external" href="http://martinfowler.com/eaaCatalog/tableDataGateway.html">Table Data Gateway</a>, который будет возвращать простейшие значения <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 Тут уже дело личных предпочтений.</p>
 <div class="section" id="query-object">
-<span id="why-query-object-ru"></span><h2><a class="toc-backref" href="#id47">Нужен ли Query Object?</a><a class="headerlink" href="#query-object" title="Permalink to this headline">¶</a></h2>
+<span id="why-query-object-ru"></span><h2><a class="toc-backref" href="#id48">Нужен ли Query Object?</a><a class="headerlink" href="#query-object" title="Permalink to this headline">¶</a></h2>
 <p>Единственное в чем я убежден твердо, - это в том, что без паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> (часто именуемом как SQLBuilder) обойтись довольно трудно, если не невозможно.</p>
 <p>1. Даже самые стойкие сторонники концепции &#8220;чистого SQL&#8221; достаточно быстро сталкиваются с невозможностью выразить SQL-запрос в чистом виде, и вынуждены его динамически составлять в зависимости от условий.
 А это уже разновидность концепции SQLBuilder, пусть и в примитивном виде, и реализованном в частном порядке.
@@ -421,7 +421,7 @@ SQL-код, даже если он в Python-файлах, все равно о�
 Более того, мне нравится когда сами синтаксические конструкции языка представлены объектами, как в Smalltalk.</p>
 </div>
 <div class="section" id="data-mapper">
-<span id="why-datamapper-ru"></span><h2><a class="toc-backref" href="#id48">Нужен ли сам Data Mapper?</a><a class="headerlink" href="#data-mapper" title="Permalink to this headline">¶</a></h2>
+<span id="why-datamapper-ru"></span><h2><a class="toc-backref" href="#id49">Нужен ли сам Data Mapper?</a><a class="headerlink" href="#data-mapper" title="Permalink to this headline">¶</a></h2>
 <p>Что же касается самого маппера, то тут следует решить, нужна ли приложению <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>, или вполне устроит паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a>.
 Я не буду останавливаться на этом выборе, так как он хорошо освещен в «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id25">[3]</a>.
 Но если нуждам приложения больше соответствует Domain Model, то без полноценного ORM (пусть и самодельного) обойтись будет непросто, по крайней мере, для качественной, удобной и быстрой работы.</p>
@@ -500,6 +500,16 @@ freedom to design.
 <p>&#8220;High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted.&#8221;
 («Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id36">[1]</a>)</p>
 </div></blockquote>
+<blockquote>
+<div><p>&#8220;Если требования архитектурной среды к распределению обязанностей таковы, что элементы, реализующие концептуальные объекты, оказываются физически разделенными, то код больше не выражает модель.</p>
+<p>Нельзя разделять до бесконечности, у человеческого ума есть свои пределы, до которых он еще способен соединять пазделенное;
+если среда выходит ха это пределы, разработчики предметной области теряют способность расчленять модель на осмысленные фрагменты.&#8221;</p>
+<p>&#8220;If the framework&#8217;s partitioning conventions pull apart the elements implementing the
+conceptual objects, the code no longer reveals the model.</p>
+<p>There is only so much partitioning a mind can stitch back together, and if the framework uses
+it all up, the domain developers lose their ability to chunk the model into meaningful pieces.&#8221;
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id37">[4]</a>)</p>
+</div></blockquote>
 <p>По поводу второго вопроса.
 Из всех ORM, что я встречал в своей практике (не только на Python), поддержка ACID в Storm ORM и SQLAlchemy реализована наилучшим образом.
 Надо сказать, в подавляющем большинстве существующих ORM такие попытки даже не предпринимаются.</p>
@@ -512,8 +522,8 @@ freedom to design.
 <p>Интервью с Gustavo Niemeyer, ведущим разработчиком проекта Storm компании Canonical &#8220;<a class="reference external" href="http://www.drdobbs.com/storm-an-orm-for-python/201000460">Storm: An ORM for Python</a>&#8221;.</p>
 </div>
 </div>
-<div class="section" id="id37">
-<h1><a class="toc-backref" href="#id49">Послесловие</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id38">
+<h1><a class="toc-backref" href="#id50">Послесловие</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h1>
 <p>Storm ORM - это инструмент для высококвалифицированных специалистов которые понимают его превосходства и не боятся сопровождать 300 Кб высококачественного кода самостоятельно.</p>
 <p>This article in English &#8220;<a class="reference internal" href="../../en/storm-orm/"><span class="doc">Why I prefer Storm ORM for Python</span></a>&#8221;.</p>
 <p class="rubric">Footnotes</p>
@@ -538,11 +548,11 @@ freedom to design.
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id29">2</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id29">2</a>, <a class="fn-backref" href="#id37">3</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Jul 29, 2017</p>
+<p class="first last admonition-title">Updated on Jul 31, 2017</p>
 </div>
 </div>
 
@@ -630,7 +640,7 @@ freedom to design.
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Jul 29, 2017</li>
+    Jul 31, 2017</li>
   
 
   
@@ -781,6 +791,8 @@ freedom to design.
       
     
       
+    
+      
       <li class="ablog-cloud ablog-cloud-3">
         <a href="../../blog/tag/orm/">ORM</a></li>
       
@@ -788,6 +800,8 @@ freedom to design.
       
       <li class="ablog-cloud ablog-cloud-5">
         <a href="../../blog/tag/python/">Python</a></li>
+      
+    
       
     
       

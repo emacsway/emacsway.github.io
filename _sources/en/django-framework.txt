@@ -337,6 +337,9 @@ Django REST framework позволяет Вам абстрагироваться
 А можете не использовать вообще. Среди альтернатив я советую обратить внимание на web-framework который мне импонирует `wheezy.web <https://pypi.python.org/pypi/wheezy.web>`_.
 
 
+Эта статья на Русском языке ":doc:`../ru/django-framework`".
+
+
 .. rubric:: Footnotes
 
 .. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
