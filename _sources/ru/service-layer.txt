@@ -487,6 +487,7 @@ Martin Fowler говорит что:
 =========================
 
 Я часто наблюдал такую проблему, когда в Django Model добавлялось какое-то новое поле, и начинали сыпаться проблемы, так как это имя уже было использовано либо с помощью аннотаций, либо с помощью Raw-SQL.
+Также реализация аннотаций в Django ORM делает невозможным использование паттерна `Identity Map`_.
 Storm ORM/SQLAlchemy реализуют аннотации более удачно.
 Если Вам все-таки пришлось работать с Django ORM, воздержитесь от использования механизма Django аннотаций в пользу голого паттерна `DataMapper`_.
 
@@ -567,6 +568,7 @@ This article in English ":doc:`../en/service-layer`".
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
 .. _Domain Model: https://martinfowler.com/eaaCatalog/domainModel.html
+.. _Identity Map: http://martinfowler.com/eaaCatalog/identityMap.html
 .. _Query Object: http://martinfowler.com/eaaCatalog/queryObject.html
 .. _Remote Facade: https://www.martinfowler.com/eaaCatalog/remoteFacade.html
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html

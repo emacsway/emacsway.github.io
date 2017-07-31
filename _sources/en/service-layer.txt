@@ -348,6 +348,7 @@ Problems of Django annotation
 =============================
 
 I often observed the problem when a new field was added to the Django Model, and multiple problems started to occur, since this name was already used either with the annotation interface or with Raw-SQL.
+Also, the implementation of annotations by Django ORM makes it impossible to use the pattern `Identity Map`_.
 Storm ORM / SQLAlchemy implement annotations more successfully.
 If you still had to work with Django ORM, refrain from using Django annotation mechanism in favor of bare pattern `DataMapper`_.
 
@@ -427,6 +428,7 @@ Further Reading
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
 .. _Domain Model: https://martinfowler.com/eaaCatalog/domainModel.html
+.. _Identity Map: http://martinfowler.com/eaaCatalog/identityMap.html
 .. _Query Object: http://martinfowler.com/eaaCatalog/queryObject.html
 .. _Remote Facade: https://www.martinfowler.com/eaaCatalog/remoteFacade.html
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html

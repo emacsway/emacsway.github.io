@@ -86,6 +86,13 @@ Identity Map
 Кроме того, следует внимательно ознакомиться со всеми предостережениями метода `iterator() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator>`_, использование которого не гарантирует отсутствия утечки памяти, если Вы не используете `SSCursor <https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending>`_ для MySQL.
 
 
+Сервисный слой и django.db.models.Manager
+-----------------------------------------
+
+Широко распространенная ошибка - использование класса django.db.models.Manager в качестве сервисного слоя.
+Этот вопрос детально был рассмотрен в статье ":doc:`service-layer`".
+
+
 Выполнение сложных SQL-запросов
 -------------------------------
 
@@ -163,7 +170,6 @@ Storm ORM
 
 Если используется несколько технологий доступа к данным, то стоит упомянуть генератор файковых данных `mixer <https://github.com/klen/mixer>`_, который поддерживает несколько ORM.
 Другие генераторы `можно найти <https://djangopackages.org/grids/g/fixtures/>`__, как обычно, на `djangopackages.org <https://djangopackages.org/>`_.
-
 
 
 Очистка кэша
