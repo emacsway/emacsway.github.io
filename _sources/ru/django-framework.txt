@@ -281,6 +281,12 @@ Django и Django REST framework содержит огромное количес
 Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.
 
 
+Graphql
+=======
+
+- `graphene-django <https://github.com/graphql-python/graphene-django>`_ - a Django integration for `graphene <https://github.com/graphql-python/graphene>`_.
+
+
 Плюсы и минусы
 ==============
 

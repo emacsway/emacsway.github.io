@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Tue, 01 Aug 2017 19:03:30 GMT" />
+        <meta http-equiv="Last-Modified" content="Tue, 01 Aug 2017 23:26:03 GMT" />
         
             <meta name="description" content="Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings." />
         
@@ -123,12 +123,13 @@ With a competent approach, you can use all the advantages of Django and not beco
 <li><a class="reference internal" href="#generating-csv-xlsx" id="id36">Generating *.csv, *.xlsx</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#advantages-and-disadvantages" id="id37">Advantages and disadvantages</a><ul>
-<li><a class="reference internal" href="#advantages" id="id38">Advantages</a></li>
-<li><a class="reference internal" href="#disadvantages" id="id39">Disadvantages</a></li>
+<li><a class="reference internal" href="#graphql" id="id37">Graphql</a></li>
+<li><a class="reference internal" href="#advantages-and-disadvantages" id="id38">Advantages and disadvantages</a><ul>
+<li><a class="reference internal" href="#advantages" id="id39">Advantages</a></li>
+<li><a class="reference internal" href="#disadvantages" id="id40">Disadvantages</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#conclusion" id="id40">Conclusion</a></li>
+<li><a class="reference internal" href="#conclusion" id="id41">Conclusion</a></li>
 </ul>
 </div>
 <p>Django ORM brings the most trouble, so we&#8217;ll start with it.</p>
@@ -166,22 +167,24 @@ However, you hardly notice this problem, since the Django application usually pr
 </div>
 <div class="section" id="transactional-consistency-of-data">
 <h2><a class="toc-backref" href="#id21">Transactional consistency of data</a><a class="headerlink" href="#transactional-consistency-of-data" title="Permalink to this headline">¶</a></h2>
-<p>Мало того, что Вы получаете несколько экземпляров одного и тоже же объекта в памяти потока, что может привести к утрате данных из-за рассинхронизации состояния этих экземпляров, так эти экземпляры еще и никак не согласовываются с их записами в БД в момент фиксации (отката) транзакции.</p>
-<p>Джанго поддерживает транзакции, но не поддерживает транзакционной согласованности данных, в отличии от Storm ORM / SQLAlchemy.
-Вы должны самостоятельно заботиться о состоянии экземпляров моделей в памяти в момент фиксации (отката) транзакции.</p>
-<p>Так например, если Вы используете уровень изоляции транзакции &#8220;Repeatable read&#8221;, то после фиксации транзакции состояние Ваших экземпляров моделей в памяти может утратить актуальность.
-Соответственно, при откате транзакции вы должны вернуть им начальное состояние.</p>
-<p>Как уже упоминалось ранее, для обработки HTTP-запроса это не критично, так как Django framework обычно обслуживает его одной транзакцией.
-А вот при разработке командных скриптов и задач по расписанию этот момент следует учитывать.</p>
-<p>Вы должны так же самостоятельно заботиться о предотвращении взаимных блокировок (<a class="reference external" href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>), так как Django ORM не реализует паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> и не использует топологической сортировки.</p>
-<p>Здесь стоит так же упомянуть частую проблему начинающих разработчиков, которые пытаются обработать большую коллекцию объектов не используя <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#select-for-update">select_for_update()</a>.
-Обработка коллекции занимает значительное время, которое достаточно для того, чтобы состояние записи в БД для загруженного объекта, ожидающего своей обработки, успело измениться, что при неумелом использовании транзакций приводит к утрате параллельных изменений (а при умелом может привести к неразрешимому конфликту).</p>
-<p>Кроме того, следует внимательно ознакомиться со всеми предостережениями метода <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator">iterator()</a>, использование которого не гарантирует отсутствия утечки памяти, если Вы не используете <a class="reference external" href="https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending">SSCursor</a> для MySQL.</p>
+<p>Django allows you to create multiple instances of the same domain object in the thread&#8217;s memory, and this can lead to data loss due to the dissynchronization of the state of these instances.
+Worse still, these instances do not synchronize their state with their records in the database at the time of the commit (rollback) of the transaction.</p>
+<p>Django supports transactions, but does not support the transactional consistency of the data, unlike the Storm ORM / SQLAlchemy.
+You have to take care about the state model instances in memory at the time of the commit (rollback) of the transaction.</p>
+<p>For example, if you use the transaction isolation level &#8220;Repeatable read&#8221;, after the transaction is committed, the status of your model instances in the memory may become outdated.
+Accordingly, when you roll back a transaction, you must return the initial state to them.</p>
+<p>As previously mentioned, this is not critical for HTTP request processing, since Django framework usually serves it with one transaction.
+But when you develop command-line scripts or scheduled tasks, you need to take this into account.</p>
+<p>You must also take care of yourself to prevent mutual blocking (<a class="reference external" href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>), since the Django ORM does not implement the <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> pattern and does not use topological sorting.</p>
+<p>It is worth also mention the frequent problem of novice developers, who are trying to process a large collection of objects without using <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#select-for-update">select_for_update()</a>.
+The processing of the collection takes a considerable amount of time, which is enough for the loaded object, waiting for its processing, to change the record in the database.
+Unskilful use of transactions can lead to the loss of parallel changes, and skillful use can lead to an unresolvable conflict.</p>
+<p>In addition, you should carefully read all the precautions of the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator">iterator()</a> method, the use of which does not guarantee that there is no memory leak if you do not use <a class="reference external" href="https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending">SSCursor</a> for MySQL.</p>
 </div>
 <div class="section" id="service-layer-and-django-db-models-manager">
 <h2><a class="toc-backref" href="#id22">Service Layer and django.db.models.Manager</a><a class="headerlink" href="#service-layer-and-django-db-models-manager" title="Permalink to this headline">¶</a></h2>
-<p>Широко распространенная ошибка - использование класса django.db.models.Manager в качестве сервисного слоя.
-Этот вопрос детально был рассмотрен в статье &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.</p>
+<p>A common mistake is using the django.db.models.Manager class as a Service Layer.
+This question was considered in detail in the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.</p>
 </div>
 <div class="section" id="building-of-complicated-sql-queries">
 <h2><a class="toc-backref" href="#id23">Building of complicated SQL-queries</a><a class="headerlink" href="#building-of-complicated-sql-queries" title="Permalink to this headline">¶</a></h2>
@@ -216,7 +219,7 @@ However, you hardly notice this problem, since the Django application usually pr
 <h2><a class="toc-backref" href="#id25">Third-party tools</a><a class="headerlink" href="#third-party-tools" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sqlalchemy">
 <h3><a class="toc-backref" href="#id26">SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h3>
-<p>Джанго имеет несколько приложений для интеграции SQLAlchemy:</p>
+<p>Django has several applications for SQLAlchemy integration:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/auvipy/django-sqlalchemy">django-sqlalchemy</a></li>
 <li><a class="reference external" href="https://github.com/Deepwalker/aldjemy">aldjemy</a></li>
@@ -226,13 +229,13 @@ However, you hardly notice this problem, since the Django application usually pr
 </div>
 <div class="section" id="sqlbuilder">
 <h3><a class="toc-backref" href="#id27">SQLBuilder</a><a class="headerlink" href="#sqlbuilder" title="Permalink to this headline">¶</a></h3>
-<p>Для создания сложных запросов с Django ORM я обычно использую <a class="reference external" href="http://sqlbuilder.readthedocs.io/en/latest/">sqlbuilder</a>.</p>
-<p>Правила хорошего тона требуют создавать отдельный класс-фабрику для каждого запроса, чтобы скрыть детали реализации от приложения.
-Внутри этого класса Вы можете легко подменить одну реализацию другой.</p>
+<p>To build complicated queries for Django ORM, I usually use the library <a class="reference external" href="http://sqlbuilder.readthedocs.io/en/latest/">sqlbuilder</a>.</p>
+<p>Good manners require you to create a separate factory class for each query to hide implementation details from the application.
+Within this class, you can easily replace one implementation with another.</p>
 </div>
 <div class="section" id="storm-orm">
 <h3><a class="toc-backref" href="#id28">Storm ORM</a><a class="headerlink" href="#storm-orm" title="Permalink to this headline">¶</a></h3>
-<p>Вопрос интеграции Storm ORM уже рассматривался, поэтому я просто приведу ссылки:</p>
+<p>The issue of integration of Storm ORM has already been considered, so I&#8217;ll just give the links:</p>
 <ul class="simple">
 <li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Why I prefer Storm ORM for Python</span></a>&#8220;</li>
 <li>&#8220;<a class="reference internal" href="../../ru/build-raw-sql-by-storm-orm/"><span class="doc">Построение Raw-SQL cредствами Storm-ORM</span></a>&#8220;</li>
@@ -240,8 +243,8 @@ However, you hardly notice this problem, since the Django application usually pr
 </div>
 <div class="section" id="testing">
 <h3><a class="toc-backref" href="#id29">Testing</a><a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
-<p>Если используется несколько технологий доступа к данным, то стоит упомянуть генератор файковых данных <a class="reference external" href="https://github.com/klen/mixer">mixer</a>, который поддерживает несколько ORM.
-Другие генераторы <a class="reference external" href="https://djangopackages.org/grids/g/fixtures/">можно найти</a>, как обычно, на <a class="reference external" href="https://djangopackages.org/">djangopackages.org</a>.</p>
+<p>If you use several data access technologies, then it&#8217;s worth mentioning the fake data generator <a class="reference external" href="https://github.com/klen/mixer">mixer</a>, which supports several ORMs.
+Other generators <a class="reference external" href="https://djangopackages.org/grids/g/fixtures/">can be found</a>, as usual, on <a class="reference external" href="https://djangopackages.org/">djangopackages.org</a>.</p>
 </div>
 </div>
 <div class="section" id="cache-invalidation">
@@ -322,10 +325,16 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.</p>
 </div>
 </div>
+<div class="section" id="graphql">
+<h1><a class="toc-backref" href="#id37">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/graphql-python/graphene-django">graphene-django</a> - a Django integration for <a class="reference external" href="https://github.com/graphql-python/graphene">graphene</a>.</li>
+</ul>
+</div>
 <div class="section" id="advantages-and-disadvantages">
-<h1><a class="toc-backref" href="#id37">Advantages and disadvantages</a><a class="headerlink" href="#advantages-and-disadvantages" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id38">Advantages and disadvantages</a><a class="headerlink" href="#advantages-and-disadvantages" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="advantages">
-<h2><a class="toc-backref" href="#id38">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id39">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
 <p>Джанго имеет удачный <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>,  который представляет собой разновидность паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, достаточно удачные формы и шаблонизатор (если использовать <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Несмотря на все недостатки Django ORM, его интерфейс построения запросов хорошо подходит для REST API.</p>
 <p>Django имеет огромное сообщество с огромным количеством готовых приложений.
@@ -334,7 +343,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>Django способен экономить много времени при правильном использовании.</p>
 </div>
 <div class="section" id="disadvantages">
-<h2><a class="toc-backref" href="#id39">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id40">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
 <p>Уровень сложности Django растет с каждым релизом, зачастую опережая реализуемые ею возможности, и от этого ее привлекательность постоянно уменьшается.</p>
 <p>Если Вам нужно адаптировать Django ORM для своих потребностей, то сделать это с последним релизом будет, пожалуй, сложнее, чем адаптировать SQLAlchemy.
 При том что в адаптации он нуждается чаще чем SQLAlchemy.
@@ -347,7 +356,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 </div>
 </div>
 <div class="section" id="conclusion">
-<h1><a class="toc-backref" href="#id40">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id41">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
 <p>Использовать или не использовать Django framework зависит от того, какие цели Вы перед собой ставите, и командой какой квалификации Вы располагаете.</p>
 <p>Если Ваша команда высоко-квалифицированная в области архитектуры и проектирования, вы используете <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">методики совместной разработки</span></a> для распространения опыта, чувствуете в себе силы сделать проект более качественным без Django, и располагаете достаточными ресурсами и финансами для этого, тогда есть смысл использовать другой стэк технологий.</p>
 <p>В противном случае, Django framework может сослужить Вам хорошую пользу.

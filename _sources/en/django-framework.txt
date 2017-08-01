@@ -69,30 +69,32 @@ However, you hardly notice this problem, since the Django application usually pr
 Transactional consistency of data
 ---------------------------------
 
-Мало того, что Вы получаете несколько экземпляров одного и тоже же объекта в памяти потока, что может привести к утрате данных из-за рассинхронизации состояния этих экземпляров, так эти экземпляры еще и никак не согласовываются с их записами в БД в момент фиксации (отката) транзакции.
+Django allows you to create multiple instances of the same domain object in the thread's memory, and this can lead to data loss due to the dissynchronization of the state of these instances.
+Worse still, these instances do not synchronize their state with their records in the database at the time of the commit (rollback) of the transaction.
 
-Джанго поддерживает транзакции, но не поддерживает транзакционной согласованности данных, в отличии от Storm ORM / SQLAlchemy.
-Вы должны самостоятельно заботиться о состоянии экземпляров моделей в памяти в момент фиксации (отката) транзакции.
+Django supports transactions, but does not support the transactional consistency of the data, unlike the Storm ORM / SQLAlchemy.
+You have to take care about the state model instances in memory at the time of the commit (rollback) of the transaction.
 
-Так например, если Вы используете уровень изоляции транзакции "Repeatable read", то после фиксации транзакции состояние Ваших экземпляров моделей в памяти может утратить актуальность.
-Соответственно, при откате транзакции вы должны вернуть им начальное состояние.
+For example, if you use the transaction isolation level "Repeatable read", after the transaction is committed, the status of your model instances in the memory may become outdated.
+Accordingly, when you roll back a transaction, you must return the initial state to them.
 
-Как уже упоминалось ранее, для обработки HTTP-запроса это не критично, так как Django framework обычно обслуживает его одной транзакцией.
-А вот при разработке командных скриптов и задач по расписанию этот момент следует учитывать.
+As previously mentioned, this is not critical for HTTP request processing, since Django framework usually serves it with one transaction.
+But when you develop command-line scripts or scheduled tasks, you need to take this into account.
 
-Вы должны так же самостоятельно заботиться о предотвращении взаимных блокировок (Deadlock_), так как Django ORM не реализует паттерна `Unit of Work`_ и не использует топологической сортировки.
+You must also take care of yourself to prevent mutual blocking (Deadlock_), since the Django ORM does not implement the `Unit of Work`_ pattern and does not use topological sorting.
 
-Здесь стоит так же упомянуть частую проблему начинающих разработчиков, которые пытаются обработать большую коллекцию объектов не используя `select_for_update() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#select-for-update>`_.
-Обработка коллекции занимает значительное время, которое достаточно для того, чтобы состояние записи в БД для загруженного объекта, ожидающего своей обработки, успело измениться, что при неумелом использовании транзакций приводит к утрате параллельных изменений (а при умелом может привести к неразрешимому конфликту).
+It is worth also mention the frequent problem of novice developers, who are trying to process a large collection of objects without using `select_for_update() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#select-for-update>`_.
+The processing of the collection takes a considerable amount of time, which is enough for the loaded object, waiting for its processing, to change the record in the database.
+Unskilful use of transactions can lead to the loss of parallel changes, and skillful use can lead to an unresolvable conflict.
 
-Кроме того, следует внимательно ознакомиться со всеми предостережениями метода `iterator() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator>`_, использование которого не гарантирует отсутствия утечки памяти, если Вы не используете `SSCursor <https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending>`_ для MySQL.
+In addition, you should carefully read all the precautions of the `iterator() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator>`_ method, the use of which does not guarantee that there is no memory leak if you do not use `SSCursor <https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending>`_ for MySQL.
 
 
 Service Layer and django.db.models.Manager
 ------------------------------------------
 
-Широко распространенная ошибка - использование класса django.db.models.Manager в качестве сервисного слоя.
-Этот вопрос детально был рассмотрен в статье ":doc:`service-layer`".
+A common mistake is using the django.db.models.Manager class as a Service Layer.
+This question was considered in detail in the article ":doc:`service-layer`".
 
 
 Building of complicated SQL-queries
@@ -141,7 +143,7 @@ Third-party tools
 SQLAlchemy
 ^^^^^^^^^^
 
-Джанго имеет несколько приложений для интеграции SQLAlchemy:
+Django has several applications for SQLAlchemy integration:
 
 - `django-sqlalchemy <https://github.com/auvipy/django-sqlalchemy>`_
 - `aldjemy <https://github.com/Deepwalker/aldjemy>`_
@@ -152,16 +154,16 @@ SQLAlchemy
 SQLBuilder
 ^^^^^^^^^^
 
-Для создания сложных запросов с Django ORM я обычно использую `sqlbuilder <http://sqlbuilder.readthedocs.io/en/latest/>`_.
+To build complicated queries for Django ORM, I usually use the library `sqlbuilder <http://sqlbuilder.readthedocs.io/en/latest/>`_.
 
-Правила хорошего тона требуют создавать отдельный класс-фабрику для каждого запроса, чтобы скрыть детали реализации от приложения.
-Внутри этого класса Вы можете легко подменить одну реализацию другой.
+Good manners require you to create a separate factory class for each query to hide implementation details from the application.
+Within this class, you can easily replace one implementation with another.
 
 
 Storm ORM
 ^^^^^^^^^
 
-Вопрос интеграции Storm ORM уже рассматривался, поэтому я просто приведу ссылки:
+The issue of integration of Storm ORM has already been considered, so I'll just give the links:
 
 - ":doc:`storm-orm`"
 - ":doc:`../ru/build-raw-sql-by-storm-orm`"
@@ -170,8 +172,8 @@ Storm ORM
 Testing
 ^^^^^^^
 
-Если используется несколько технологий доступа к данным, то стоит упомянуть генератор файковых данных `mixer <https://github.com/klen/mixer>`_, который поддерживает несколько ORM.
-Другие генераторы `можно найти <https://djangopackages.org/grids/g/fixtures/>`__, как обычно, на `djangopackages.org <https://djangopackages.org/>`_.
+If you use several data access technologies, then it's worth mentioning the fake data generator `mixer <https://github.com/klen/mixer>`_, which supports several ORMs.
+Other generators `can be found <https://djangopackages.org/grids/g/fixtures/>`__, as usual, on `djangopackages.org <https://djangopackages.org/>`_.
 
 
 Cache invalidation
@@ -274,6 +276,12 @@ Django и Django REST framework содержит огромное количес
 Здесь, правда, возникает проблема с трансляцией вложенных структур данных в плоский список, и наоборот, с парсингом плоского списка во вложенную структуру.
 Частично эту проблему можно решить с помощью библиотеки `jsonmapping <https://github.com/pudo/jsonmapping>`_.
 Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.
+
+
+Graphql
+=======
+
+- `graphene-django <https://github.com/graphql-python/graphene-django>`_ - a Django integration for `graphene <https://github.com/graphql-python/graphene>`_.
 
 
 Advantages and disadvantages
