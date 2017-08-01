@@ -232,11 +232,11 @@ Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Depende
     file or programmatically in a special-purpose construction module.
     «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_
 
-Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
-Для тестирования можно использовать фиктивный Сервис (`Service Stub`_).
-Этот же прием можно использовать для параллельной разработки, когда реализация сервисного слоя еще не готова.
-Иногда бывает полезно подменить Сервис генератором фэйковых данных.
-В общем, пользы от сервисного слоя будет мало, если нет возможности его подменить (или подменить используемые им зависимости).
+One of the main responsibilities of Service Layer is the hiding of data source.
+It allows you to use `Service Stub`_ for testing.
+The same approach can be used for parallel development, when the implementation of the service layer is not ready yet.
+Sometimes it is useful to replace the Service with a fake data generator.
+In general, the service layer will be of little use if it is not possible to substitute it (or to substitute the dependencies used by it).
 
 
 Widespread problem of Django applications

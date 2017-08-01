@@ -295,11 +295,11 @@ and uses the constructor arguments or setter methods provided to wire together t
 dencies. Which dependent objects are actually used is specified through a configuration
 file or programmatically in a special-purpose construction module.
 «Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id15">[1]</a></div></blockquote>
-<p>Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
-Для тестирования можно использовать фиктивный Сервис (<a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>).
-Этот же прием можно использовать для параллельной разработки, когда реализация сервисного слоя еще не готова.
-Иногда бывает полезно подменить Сервис генератором фэйковых данных.
-В общем, пользы от сервисного слоя будет мало, если нет возможности его подменить (или подменить используемые им зависимости).</p>
+<p>One of the main responsibilities of Service Layer is the hiding of data source.
+It allows you to use <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a> for testing.
+The same approach can be used for parallel development, when the implementation of the service layer is not ready yet.
+Sometimes it is useful to replace the Service with a fake data generator.
+In general, the service layer will be of little use if it is not possible to substitute it (or to substitute the dependencies used by it).</p>
 </div>
 <div class="section" id="widespread-problem-of-django-applications">
 <h1><a class="toc-backref" href="#id35">Widespread problem of Django applications</a><a class="headerlink" href="#widespread-problem-of-django-applications" title="Permalink to this headline">¶</a></h1>
