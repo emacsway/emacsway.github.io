@@ -43,27 +43,27 @@ You can solve this problem technically, but usually it's enough just to follow t
 Active Record
 -------------
 
-Django ORM реализует паттерн `ActiveRecord`_, который создает простоту использования за счет нарушения принципа `Single responsibility principle`_ (SRP), из-за чего его часто называют антипаттерном.
-Этот паттерн смешивает в одном классе бизнес-логику и служебную логику доступа к данным.
-К сожалению, эта простота уместна только в простых случаях.
-В более-менее серьезном приложении от этого больше проблем, чем достоинств.
+Django ORM implements the `ActiveRecord`_ pattern, which makes it easy to use due to violation of the `Single responsibility principle`_ (SRP) principle, for this reason it is often called antipattern.
+This pattern mixes business logic and data access logic in one class.
+Unfortunately, this simplicity is appropriate only in simple cases.
+In a more serious application, there are more problems than advantages.
 
-Поскольку Django не использует слоя `Repository`_, было бы желательно сокрыть реализацию доступа к источнику данных посредством Сервисного Слоя, см. статью ":doc:`service-layer`".
-Это необходимо потому, что возможностей Django ORM не всегда достаточно для построения сложных запросов или для создания сложных моделей.
-Тогда приходится подменять Django ORM сторонними инструментами или реализацией в голом виде паттерна `DataMapper`_, к этому вопросу мы еще вернемся.
-В любом случае, реализация доступа к данным должна быть сокрыта от приложения, и это одна из обязанностей Сервисного Слоя.
+Since Django does not use the `Repository`_ layer, it would be desirable to hide the implementation of access to the data source by the Service Layer, see the article ":doc:`service-layer`".
+This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models.
+Then you have to replace Django ORM with third-party tools or the bare implementation of `DataMapper`_ pattern, we will return to this issue a little later.
+In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.
 
 
 Identity Map
 ------------
 
-Джанго не реализует паттерна `Identity Map`_, и, как результат этого, возникает много дублируемых запросов.
-Частично этот недостаток смягчается наличием `prefetch_related() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related>`_.
-Существуют реализации этого паттерна в виде сторонних библиотек,
+Django does not implement the pattern `Identity Map`_, and, as a result, creates many duplicate queries.
+Part of this weakness is mitigated by the presence of `prefetch_related() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related>`_.
+There are implementations of this pattern in the form of third-party libraries,
 `django-idmapper <https://github.com/dcramer/django-idmapper>`_,
 `django-idmap <https://pypi.python.org/pypi/django-idmap>`_.
-Но они, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.
-Правда, вы вряд-ли заметите эту проблему, так как Django приложение обычно обрабатывает HTTP-запрос одной транзакцией.
+But they do not perform any functions except caching, and do not provide transactional data consistency.
+However, you hardly notice this problem, since the Django application usually processes an HTTP-request inside one transaction.
 
 
 Transactional consistency of data

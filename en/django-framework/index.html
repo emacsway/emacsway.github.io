@@ -10,6 +10,7 @@
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -23,6 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about/" />
     <link rel="top" title="@emacsway&#39;s blog" href="../../" />
@@ -36,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 31 Jul 2017 20:23:34 GMT" />
+        <meta http-equiv="Last-Modified" content="Tue, 01 Aug 2017 03:57:55 GMT" />
         
             <meta name="description" content="Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings." />
         
@@ -46,6 +48,16 @@
         
 
         <link rel="canonical" href="https://emacsway.github.io/en/django-framework/" />
+
+        <script type="text/javascript">
+            setTimeout(function() {
+                $.toast({
+                    text: 'If you like this site, please support it with an external link or share it with an social nerwork. Thanks!',
+                    position: 'bottom-right',
+                    hideAfter: 7000
+                });
+            }, 30000);
+        </script>
 
     
 
@@ -133,24 +145,24 @@ You can solve this problem technically, but usually it&#8217;s enough just to fo
 </div>
 <div class="section" id="active-record">
 <h2><a class="toc-backref" href="#id19">Active Record</a><a class="headerlink" href="#active-record" title="Permalink to this headline">¶</a></h2>
-<p>Django ORM реализует паттерн <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>, который создает простоту использования за счет нарушения принципа <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP), из-за чего его часто называют антипаттерном.
-Этот паттерн смешивает в одном классе бизнес-логику и служебную логику доступа к данным.
-К сожалению, эта простота уместна только в простых случаях.
-В более-менее серьезном приложении от этого больше проблем, чем достоинств.</p>
-<p>Поскольку Django не использует слоя <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, было бы желательно сокрыть реализацию доступа к источнику данных посредством Сервисного Слоя, см. статью &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.
-Это необходимо потому, что возможностей Django ORM не всегда достаточно для построения сложных запросов или для создания сложных моделей.
-Тогда приходится подменять Django ORM сторонними инструментами или реализацией в голом виде паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>, к этому вопросу мы еще вернемся.
-В любом случае, реализация доступа к данным должна быть сокрыта от приложения, и это одна из обязанностей Сервисного Слоя.</p>
+<p>Django ORM implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which makes it easy to use due to violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP) principle, for this reason it is often called antipattern.
+This pattern mixes business logic and data access logic in one class.
+Unfortunately, this simplicity is appropriate only in simple cases.
+In a more serious application, there are more problems than advantages.</p>
+<p>Since Django does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> layer, it would be desirable to hide the implementation of access to the data source by the Service Layer, see the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.
+This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models.
+Then you have to replace Django ORM with third-party tools or the bare implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern, we will return to this issue a little later.
+In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.</p>
 </div>
 <div class="section" id="identity-map">
 <h2><a class="toc-backref" href="#id20">Identity Map</a><a class="headerlink" href="#identity-map" title="Permalink to this headline">¶</a></h2>
-<p>Джанго не реализует паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, и, как результат этого, возникает много дублируемых запросов.
-Частично этот недостаток смягчается наличием <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related">prefetch_related()</a>.
-Существуют реализации этого паттерна в виде сторонних библиотек,
+<p>Django does not implement the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, and, as a result, creates many duplicate queries.
+Part of this weakness is mitigated by the presence of <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related">prefetch_related()</a>.
+There are implementations of this pattern in the form of third-party libraries,
 <a class="reference external" href="https://github.com/dcramer/django-idmapper">django-idmapper</a>,
 <a class="reference external" href="https://pypi.python.org/pypi/django-idmap">django-idmap</a>.
-Но они, никаких функций кроме кэширования не выполняют, и за транзакционной согласованностью данных не следят.
-Правда, вы вряд-ли заметите эту проблему, так как Django приложение обычно обрабатывает HTTP-запрос одной транзакцией.</p>
+But they do not perform any functions except caching, and do not provide transactional data consistency.
+However, you hardly notice this problem, since the Django application usually processes an HTTP-request inside one transaction.</p>
 </div>
 <div class="section" id="transactional-consistency-of-data">
 <h2><a class="toc-backref" href="#id21">Transactional consistency of data</a><a class="headerlink" href="#transactional-consistency-of-data" title="Permalink to this headline">¶</a></h2>
