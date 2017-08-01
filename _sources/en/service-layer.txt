@@ -8,8 +8,7 @@ Design of Service Layer
    :category:
    :author: Ivan Zakrevsky
 
-Design mistakes of `Service Layer`_ are widespread.
-This article is written in the hope of improving this situation somewhat.
+This article is devoted to the issues of designing `Service Layer`_ and considers the widespread mistakes.
 
 .. contents:: Contents
 
