@@ -102,7 +102,7 @@ Composite foreign keys and Django ORM
 
 As you can see from the ticket `#373 <https://code.djangoproject.com/ticket/373>`_ and the discussion of "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM does not yet support composite relations.
 
-This means that you will have to create surrogate keys, which can cause certain difficulties in the integration of existing databases, or use one of these libraries:
+This means that you have to create surrogate keys, which can cause certain difficulties in the integration of an existing database, or you have to use one of these libraries:
 
 - `django-compositekey <https://pypi.python.org/pypi/django-compositekey>`_
 - `django-composite-foreignkey <https://pypi.python.org/pypi/django-composite-foreignkey>`_

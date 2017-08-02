@@ -96,7 +96,7 @@ Identity Map
 Композитные внешние ключи и Django ORM
 --------------------------------------
 
-Как видно из тикета `#373 <https://code.djangoproject.com/ticket/373>`_ и обсуждения "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM пока не поддерживают композитные связи.
+Как видно из тикета `#373 <https://code.djangoproject.com/ticket/373>`_ и обсуждения "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM пока не поддерживает композитные связи.
 
 Это значит, что Вам придется создавать суррогатные ключи, что может вызвать определенные трудности при интеграции уже существующей базы данных, или использовать одну из этих библиотек:
 
