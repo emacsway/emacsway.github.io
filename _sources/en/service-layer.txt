@@ -51,7 +51,7 @@ Purpose of Service Layer
 
 The most important thing to understand is that the `Service Layer`_ is the logic of the level of Application layer.
 This is important because this implies that the Service Layer is located over the Domain Layer (i.e. layer of real world objects, which is also called "business rules").
-This means that the the objects of the Domain Layer should not be aware of the Service Layer.
+This means that the objects of the Domain Layer should not be aware of the Service Layer.
 
 Note that Eric Evans understands the logic of the Domain Layer under the term "business rules":
 
@@ -107,7 +107,7 @@ We will understand by the term "business rules" only the logic of the Domain Lay
     are few things that are less logical than business logic.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-In addition to the above, the service layer can perform the following responsibilities:
+In addition to the above, the service layer can carry the following responsibilities:
 
 - To combine the parts of an atomic operation (for example, application should to save the data in the database, in the redis, and in the file system within a single business transaction or should to roll back all).
 - To hide the data source (here it duplicates the responsibility of the pattern `Repository`_) and can be omitted if there are no other reasons.
@@ -246,6 +246,7 @@ A common mistake is to use the django.db.models.Manager class (and even django.d
 Often you can see how some method of the class django.db.models.Model takes as an argument the HTTP-request object django.http.request.HttpRequest, for example, to check the permissions.
 
 The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.
+Checking permissions is also the logic of Application Layer.
 
 The lower layer should not be aware of the higher layer.
 Domain-level logic should not be aware of application-level logic.
@@ -292,7 +293,8 @@ Taming of swollen models
 ========================
 
 It is often possible to find models with a large number of methods (I met several hundred).
-If you analyze such models, you can often find outside responsibilities in the class. AS you know, the size of the class is measured by the amount of its responsibilities.
+If you analyze such models, you can often find outside responsibilities in the class.
+As you know, the size of the class is measured by the amount of its responsibilities.
 All responsibilities that are not related to the Domain Layer should be moved to the Service Layer.
 But what to do with other methods?
 
@@ -316,7 +318,7 @@ But if the client belongs to the Domain layer, then this client may not be aware
 But Service Layer is the logic of the Application Layer.
 
 In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
-For interface equalization we have the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_ for more info.
+For interface equalization we have to use the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_ for more info.
 
 In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
 Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.

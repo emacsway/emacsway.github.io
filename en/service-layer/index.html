@@ -136,7 +136,7 @@ choice for this, but .NET&#8217;s attributes provide a nice way of doing it dire
 </div></blockquote>
 <p>The most important thing to understand is that the <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> is the logic of the level of Application layer.
 This is important because this implies that the Service Layer is located over the Domain Layer (i.e. layer of real world objects, which is also called &#8220;business rules&#8221;).
-This means that the the objects of the Domain Layer should not be aware of the Service Layer.</p>
+This means that the objects of the Domain Layer should not be aware of the Service Layer.</p>
 <p>Note that Eric Evans understands the logic of the Domain Layer under the term &#8220;business rules&#8221;:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -188,7 +188,7 @@ the like.
 <div>Then there&#8217;s the matter of what comes under the term &#8220;business logic.&#8221; I find this a curious term because there
 are few things that are less logical than business logic.
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id8">[2]</a>)</div></blockquote>
-<p>In addition to the above, the service layer can perform the following responsibilities:</p>
+<p>In addition to the above, the service layer can carry the following responsibilities:</p>
 <ul class="simple">
 <li>To combine the parts of an atomic operation (for example, application should to save the data in the database, in the redis, and in the file system within a single business transaction or should to roll back all).</li>
 <li>To hide the data source (here it duplicates the responsibility of the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>) and can be omitted if there are no other reasons.</li>
@@ -305,7 +305,8 @@ In general, the service layer will be of little use if it is not possible to sub
 <h1><a class="toc-backref" href="#id35">Widespread problem of Django applications</a><a class="headerlink" href="#widespread-problem-of-django-applications" title="Permalink to this headline">¶</a></h1>
 <p>A common mistake is to use the django.db.models.Manager class (and even django.db.models.Model) as a service layer.
 Often you can see how some method of the class django.db.models.Model takes as an argument the HTTP-request object django.http.request.HttpRequest, for example, to check the permissions.</p>
-<p>The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.</p>
+<p>The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.
+Checking permissions is also the logic of Application Layer.</p>
 <p>The lower layer should not be aware of the higher layer.
 Domain-level logic should not be aware of application-level logic.</p>
 <p>The class django.db.models.Manager corresponds most closely to the class Finder described in «Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id16">[2]</a>.</p>
@@ -345,7 +346,8 @@ layer perhaps to use a workflow engine.
 <div class="section" id="taming-of-swollen-models">
 <h1><a class="toc-backref" href="#id36">Taming of swollen models</a><a class="headerlink" href="#taming-of-swollen-models" title="Permalink to this headline">¶</a></h1>
 <p>It is often possible to find models with a large number of methods (I met several hundred).
-If you analyze such models, you can often find outside responsibilities in the class. AS you know, the size of the class is measured by the amount of its responsibilities.
+If you analyze such models, you can often find outside responsibilities in the class.
+As you know, the size of the class is measured by the amount of its responsibilities.
 All responsibilities that are not related to the Domain Layer should be moved to the Service Layer.
 But what to do with other methods?</p>
 <p>Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
@@ -365,7 +367,7 @@ domain object classes more reusable from application to application.
 <p>But if the client belongs to the Domain layer, then this client may not be aware of the Application Layer logic.
 But Service Layer is the logic of the Application Layer.</p>
 <p>In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
-For interface equalization we have the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» <a class="footnote-reference" href="#fngof" id="id21">[4]</a> for more info.</p>
+For interface equalization we have to use the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» <a class="footnote-reference" href="#fngof" id="id21">[4]</a> for more info.</p>
 <p>In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
 Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.</p>
 <p>Let&#8217;s return to the case when the client belongs to the Application logic.
