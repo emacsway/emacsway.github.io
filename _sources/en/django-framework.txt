@@ -97,43 +97,61 @@ A common mistake is using the django.db.models.Manager class as a Service Layer.
 This question was considered in detail in the article ":doc:`service-layer`".
 
 
-Building of complicated SQL-queries
------------------------------------
+Composite foreign keys and Django ORM
+-------------------------------------
 
-Возможностей интерфейса Django ORM для создания сложных SQL-запросов недостаточно.
-В таком случае приходится или использовать сторонние инструменты, которые будут рассмотрены далее, или использовать Raw-SQL.
-В любом случае, детали реализации должны быть инкапсулированы внутри фабрики запроса.
+As you can see from the ticket `#373 <https://code.djangoproject.com/ticket/373>`_ and the discussion of "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM does not yet support composite relations.
 
-В моей практике был случай когда нужно было в `админке <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ реализовать выборку пользователей с поиском по шаблону (LIKE '%keyword%') как по строкам в таблице пользователей так и в присоединенной (LEFT JOIN) таблице профилей, причем критерии поиска должны были сочетаться условием ИЛИ (OR), что приводило к полному проходу по присоединенной таблице на каждую строку таблицы пользователей.
-Записей в БД MySQL было несколько миллионов, и это работало очень медленно.
-В той версии MySQL еще не поддерживался ngram FULLTEXT index.
-Для оптимизации запроса нужно было присоединять уже профильтрованную выборку из таблицы профилей, а не всю таблицу профилей, переместив критерий выборки в подзапрос.
-Подобный пример Вы можете найти в книге «High Performance MySQL» [#hpmysql]_.
-Для решения проблемы моему коллеге пришлось ":doc:`сделать адаптер для sqlbuilder Storm ORM <storm-orm>`" наподобие `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
-В результате была достигнута возможность выразить SQL-запрос любого уровня сложности в интерфейсе django.db.models.query.QuerySet.
+This means that you will have to create surrogate keys, which can cause certain difficulties in the integration of existing databases, or use one of these libraries:
+
+- `django-compositekey <https://pypi.python.org/pypi/django-compositekey>`_
+- `django-composite-foreignkey <https://pypi.python.org/pypi/django-composite-foreignkey>`_
+- `django-compositepk <https://pypi.python.org/pypi/django-compositepk>`_
+
+Frankly, I have not used these libraries.
+In that case, I just do not use Django ORM.
+But you have a choice.
 
 
-Implementation of complicated Models
-------------------------------------
+Building of complicated SQL-queries for Django ORM
+--------------------------------------------------
 
-Очень часто приходится иметь дело с объектами, которые содержат агрегированную информацию, аннотации, или сочетают в себе данные нескольких таблиц.
+The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
+In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
+In any case, the details of implementation should be encapsulated within a query factory class.
 
-SQLAlchemy, безусловно, предоставляет `более гибкие возможности <http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html>`_.
-Но даже этих возможностей `хватает не всегда <http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/>`__.
+In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE '% keyword%') in the `admin panel <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ using the user table joined with the table of profiles (using LEFT JOIN).
 
-Механизм аннотаций в Storm ORM / SQLAlchemy реализован более удачно.
-Механизм аннотаций Django ORM лучше не использовать вообще, в пользу голого паттерна Data Mapper.
-Дело в том, что схема модели постоянно эволюционирует, и в нее постоянно добавляются новые поля.
-И нередко случается так, что имя нового поля уже используется аннотацией, из-за чего возникает конфликт в пространстве имен.
-Решением проблемы может быть разделение пространства имен, используя для аннотаций отдельную модель или обертку (Wrapper) над экземпляром модели.
+Moreover, the search criteria should be combined with the OR condition, this leads to a complete pass through the attached table for each row of the user table.
+There were several million MySQL database entries, and it worked very slowly.
+That version of MySQL did not yet support ngram FULLTEXT index.
+To optimize the query, we had to join the already filtered result from the profile table instead of the entire profile table, by moving the selection criterion to a subquery.
+A similar example can be found in the book «High Performance MySQL» [#hpmysql]_.
+To solve the problem my colleague had to ":doc:`make an adapter for sql-builder Storm ORM <storm-orm>`" like `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+As a result, it was possible to express an SQL query of any complexity in the interface of django.db.models.query.QuerySet.
 
-Identity Map - еще одна из причин чтобы не использовать механизм аннотаций Django ORM (а так же отнестись с большой осторожностью к prefetch_related()).
-Ведь если в потоке может быть только один экземпляр объекта, то его состояние не может нести никаких отличий для каждого конкретного запроса.
 
-Вот почему важно скрывать детали реализации доступа к данным последством слоя `Repository`_ или `Service Layer`_.
-В таком случае я просто выполняю реализацию в виде голого паттерна `DataMapper`_ и чистой `Domain Model`_.
+Implementation of complicated Models for Django Framework
+---------------------------------------------------------
 
-Как показывает практика, обычно такие случаи не превышают 10%, что не настолько существенно для отказа от Django ORM, ибо привлекательность легкого поиска специалистов все равно перевешивает.
+Very often you have to deal with objects that contain aggregated data, annotations, or combine the data of several tables.
+
+SQLAlchemy certainly provides `more flexible features <http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html>`_.
+But even these features `are not always enough <http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/>`__.
+
+The annotations of Storm ORM / SQLAlchemy are implemented more successfully.
+Annotations of Django ORM is better not to use at all, in favor of a bare implementation of the pattern Data Mapper.
+The fact is that the model scheme is constantly evolving, and new fields are constantly added to it.
+And it often happens that the name of the new field is already used by the annotation that leads the conflict in the namespace.
+The solution can be to separate the namespace by using a separate model or Wrapper for annotations over the model instance.
+
+Identity Map is another reason not to use the Django ORM annotations (and also be careful with prefetch_related()).
+After all, if there is only one instance of an object in the thread, then its state can not have any differences for each particular request.
+
+That is why it is important to hide the implementation details of the data access using `Repository`_ pattern or `Service Layer`_.
+In this case, I just make an implementation in the form of the bare pattern `DataMapper`_ and the plain `Domain Model`_.
+
+Practice shows that such cases usually do not exceed 10%, which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of specialists still outweighs.
 
 
 Third-party tools
@@ -284,8 +302,8 @@ Graphql
 - `graphene-django <https://github.com/graphql-python/graphene-django>`_ - a Django integration for `graphene <https://github.com/graphql-python/graphene>`_.
 
 
-Advantages and disadvantages
-============================
+Advantages and disadvantages of Django Framework
+================================================
 
 
 Advantages
@@ -356,7 +374,7 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. .. update:: 29 Jul, 2017
+.. .. update:: 02 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
