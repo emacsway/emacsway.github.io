@@ -19,7 +19,7 @@
 </content>
   </entry>
   <entry xml:base="https://emacsway.github.io/blog/atom.xml">
-    <title type="text">About my experience using the Django Framework</title>
+    <title type="text">About my experience of using Django Framework</title>
     <id>https://emacsway.github.io/en/django-framework/</id>
     <updated>2017-08-02T00:00:00Z</updated>
     <published>2017-07-26T00:00:00Z</published>
