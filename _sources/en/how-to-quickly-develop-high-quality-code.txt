@@ -451,6 +451,10 @@ It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programm
 .. [#fnrtp] «`Refactoring To Patterns`_» by Joshua Kerievsky
 .. [#fnxp] «Extreme Programming Explained» by Kent Beck
 
+
+.. update:: 03 Aug, 2017
+
+
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
 .. _Robert C. Martin: http://informit.com/martinseries
 .. _Code Complete: http://www.informit.com/store/code-complete-9780735619678
