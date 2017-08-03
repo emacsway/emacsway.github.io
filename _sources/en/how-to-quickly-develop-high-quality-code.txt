@@ -336,6 +336,30 @@ There is an opinion that pair programming reduces the velocity of development.
 
 The main conclusion is that you can't say about affect of pair programming to velocity of development until you begin to track the time of your team for bugfixes, refactoring and debugging.
 
+Please do not confuse "Inspection" [#fncodec]_ (or "Code Reading" [#fncodec]_) and usual Code Review on github.
+Inspection is the kind of Collaborative Development Practice, while usual Code Review usually involves only 2 persons (reviewer and author).
+Code Review is weak for experience sharing.
+Also, usual Code Review does not require any preparation.
+
+    90 percent of the defects were
+    found in preparation for the review meeting, and only about 10
+    percent were found during the review itself (Votta 1991, Glass
+    1999).
+    («Code Complete» [#fncodec]_)
+
+There was one real example of my practice.
+We had a ticket for 3 days of development had been assigned to the new developer.
+It was a talented developer, but he had a lack of knowledges for the project.
+
+- The new developer solved the ticket during 6 days, because he needed a time to understand the program.
+- Then I spent 1-2 days for a few of Code Reviews with fixes.
+- Eventually I understood that I spent a lot of time and I approved the incomplete pull request with a lot of design mistakes. Also product team insisted on merge the pull request even with bugs.
+- After it, when I was developing my own ticket and I saw that this mistakes interfere to my implementation, I did the refactoring of the mistakes and spent about a day for refactoring.
+
+Thus, we both spent 6 + 2 * 2 + 1 = 11 days.
+If we used "Continued Review" of XP we would spent 3 * 2 = 6 days + growing the skills of the new developer.
+Next time he would be able to solve the issue independently.
+
 
 The fourth myth. Theory and practice are two different things.
 --------------------------------------------------------------
@@ -395,12 +419,37 @@ More info on topic of "Design by refactoring" you can find in the chapter «Refa
 This approach is unbelievable effective when you use Type Hinting declaration (more info `here <https://github.com/python-rope/rope/blob/master/docs/overview.rst#type-hinting>`__, `here <http://jedi.readthedocs.io/en/latest/docs/features.html#type-hinting>`__ and `here <https://www.jetbrains.com/help/pycharm/type-hinting-in-pycharm.html>`__) with a tool for automated refactoring (`rope <https://github.com/python-rope/rope>`_, `refactoring tool of PyCharm <https://www.jetbrains.com/help/pycharm/refactoring-source-code.html>`_).
 
 
+Create motivation
+-----------------
+
+Many times I saw how talented developers lost motivation due to management mistakes and left the company.
+Once I saw how the tight-knit collective with high self-motivation was destroyed for a couple of weeks after the change of the management.
+
+    "Quality means doing it right when no one is looking." (Henry Ford)
+
+
+Be fair and honest
+------------------
+
+It worth to read chapter "33.4. Intellectual Honesty" of «Code Complete» [#fncodec]_.
+
+    "Any fool can defend his or her mistakes—and most fools do." (Dale Carnegie)
+
+
+Be courageous
+-------------
+
+It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programming Explained» [#fnxp]_.
+
+
+
 .. rubric:: Footnotes
 
-.. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
+.. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» by `Robert C. Martin`_
 .. [#fncodec] «`Code Complete`_» Steve McConnell
 .. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
-.. [#fnrtp] «`Refactoring To Patterns`_» Joshua Kerievsky
+.. [#fnrtp] «`Refactoring To Patterns`_» by Joshua Kerievsky
+.. [#fnxp] «Extreme Programming Explained» by Kent Beck
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
 .. _Robert C. Martin: http://informit.com/martinseries
