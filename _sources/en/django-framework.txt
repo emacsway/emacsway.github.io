@@ -174,7 +174,7 @@ SQLBuilder
 To build complicated queries for Django ORM, I usually use the library `sqlbuilder <http://sqlbuilder.readthedocs.io/en/latest/>`_.
 
 Good manners require you to create a separate factory class for each query to hide implementation details from the application.
-Within this class, you can easily replace one implementation with another.
+Within the interface of this class, you can easily replace one implementation with another.
 
 
 Storm ORM
@@ -335,7 +335,7 @@ Almost in all projects that I had to deal with, Django ORM was supplemented (or 
 
 Несмотря на то, что Django framework имеет огромное количество готовых приложений, их качество зачастую оставляет желать лучшего, а то и вовсе содержит баги, причем, попадаются очень коварные баги, которые проявляются только в многопоточной среде под нагрузками, и которые отлаживать весьма затруднительно.
 
-Качество специалистов, имеющих опыт работы с Django, тоже зачастую невысокое.
+Качество специалистов, специализирующихся на Django, тоже зачастую невысокое.
 Квалифицированные специалисты среди моих друзей стараются избегать работу с Django.
 
 
