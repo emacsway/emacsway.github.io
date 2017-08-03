@@ -162,8 +162,8 @@ choice for this, but .NET&#8217;s attributes provide a nice way of doing it dire
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id7">[2]</a>)</p>
 </div></blockquote>
 <p>Самое главное что следует усвоить, так это то, что Сервисный Слой относится к логике уровня Приложения.
-Это важно, поскольку из этого следует, что Сервисный Слой находится выше слоя уровня предметной области (domain logic), т.е. слоя объектов реального мира, который так же называет деловыми регламентами (business rules).
-Из этого так же следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.</p>
+Это важно, поскольку из этого следует, что Сервисный Слой находится выше слоя уровня предметной области (domain logic), т.е. слоя объектов реального мира, который также называет деловыми регламентами (business rules).
+Из этого также следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.</p>
 <p>Следует обратить внимание на тот факт, что под термином &#8220;business rules&#8221; Eric Evans понимает логику предметной области:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -382,7 +382,7 @@ file or programmatically in a special-purpose construction module.
 <h1><a class="toc-backref" href="#id45">Распространенная проблема Django-приложений</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
 <p>Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
 Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.</p>
-<p>Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которую так же называют правилами делового регламента (business rules).
+<p>Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которую также называют правилами делового регламента (business rules).
 Проверка прав - это тоже логика уровня приложения.</p>
 <p>Нижележащий слой не должен ничего знать о вышестоящем слое.
 Логика уровня домена не должна быть осведомлена о логике уровня приложения.</p>
@@ -648,8 +648,8 @@ architectural framework.
   <span style="float: right;">
   
   
-  <a href="../django-framework/">
-    О моем опыте использования Django Framework
+  <a href="../../en/django-framework/">
+    About my experience using the Django Framework
     <i class="fa fa-arrow-circle-right"></i>
   </a>
   </span>
@@ -781,13 +781,13 @@ architectural framework.
     
       <li><a href="../django-framework/">Jul 26 - О моем опыте использования Django Framework</a></li>
     
+      <li><a href="../../en/django-framework/">Jul 26 - About my experience using the Django Framework</a></li>
+    
       <li><a href="../../en/service-layer/">Jul 17 - Design of Service Layer</a></li>
     
       <li><a href="../../en/how-to-quickly-develop-high-quality-code/">Jul 10 - How to quickly develop high-quality code. Team work.</a></li>
     
       <li><a href="../how-to-add-new-operators-for-python-expression/">Sep 08 - Как добавить новые операторы для Python выражений</a></li>
-    
-      <li><a href="../../en/useful-links/">Aug 29 - Usefull links</a></li>
     
   </ul>
 
@@ -896,7 +896,7 @@ architectural framework.
   <ul>
   
     
-    <li><a href="../../blog/2017/">2017 (4)</a></li>
+    <li><a href="../../blog/2017/">2017 (5)</a></li>
     
   
     

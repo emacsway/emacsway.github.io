@@ -2,7 +2,7 @@
 About my experience using the Django Framework
 ==============================================
 
-.. post:: 
+.. post:: Jul 26, 2017
    :language: en
    :tags: Django, ORM
    :category:
@@ -11,14 +11,13 @@ About my experience using the Django Framework
 
    Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
 
-.. Jul 26, 2017
-
 At one time, someone beautifully said that security is a balance between the cost of protection and the potential benefits of hacking.
 There is no sense to exceed this balance.
 
 Taking a decision on IT-technologies, we are also trying to find a balance between the costs of maintaining technology (including search and training of new staff) and the functionality that is being acquired.
 
 Django framework, of course, brings some trouble, but at the same time it allows you to solve a huge range of tasks quickly and easily find the developers.
+In other words, Django framework makes software development cheaper.
 With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
 
 .. contents:: Contents
@@ -197,26 +196,26 @@ Other generators `can be found <https://djangopackages.org/grids/g/fixtures/>`__
 Cache invalidation
 ------------------
 
-Реализация Django ORM в виде `ActiveRecord`_ вынуждает нас напрямую вызывать метод `Model.save() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save>`_.
-Проблема в том, что сигналы `post_save <https://docs.djangoproject.com/en/1.11/ref/signals/#post-save>`_ и `pre_delete <https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete>`_ часто используются разработчиками для инвалидации кэша.
-Это не совсем правильно, так как Django ORM не использует паттерна `Unit of Work`_, и время между сохранением и фиксацией транзакции оказывается достаточным чтобы параллельный поток успел воссоздать кэш с устаревшими данными.
+Django ORM implements the `ActiveRecord`_ pattern, which forces us to explicitly call `Model.save() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save>`_ method.
+The problem is that the `post_save <https://docs.djangoproject.com/en/1.11/ref/signals/#post-save>`_ and `pre_delete <https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete>`_ signals are often used by developers to invalidate the cache.
+This is not quite the right way, since Django ORM does not use the `Unit of Work`_ pattern, and the time between saving and committing the transaction is sufficient to parallel thread could recreate the cache with outdated data.
 
-В интернете можно найти библиотеки которые позволяют `послать сигнал во время фиксации транзакции <https://pypi.python.org/pypi?%3Aaction=search&term=django+commit+signal&submit=search>`__.
-Django 1.9 и выше возволяет использовать `transaction.on_commit() <https://docs.djangoproject.com/en/1.11/topics/db/transactions/#django.db.transaction.on_commit>`_, что частично решает проблему если не используется репликация.
+On the Internet, you can find libraries that allow you to send a signal when the transaction is committed (use search query "django commit signal" on pypi.python.org).
+Django 1.9 and above allows you to use `transaction.on_commit() <https://docs.djangoproject.com/en/1.11/topics/db/transactions/#django.db.transaction.on_commit>`_, which partially solves the problem if you do not use replication.
 
-Я использую библиотеку `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, о чем я писал в статье ":doc:`cache-dependencies`".
+I use the library `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, as I wrote in the article ":doc:`cache-dependencies`".
 
 
 Django REST framework
 =====================
 
-Если мы до этого рассматривали недостатки Django ORM, то `Django REST framework`_ удивительным образом превращает его недостатки в достоинства, ведь интерфейс создания запросов Django ORM великолепно подходит для REST.
+If we have previously considered the shortcomings of Django ORM, the `Django REST framework`_ surprisingly turns its disadvantages into advantages, because the interface for building Django ORM queries is great for REST.
 
-Если Вам посчастливилось использовать на стороне клиента `Dstore`_, то на стороне сервера Вы можете использовать `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ или `rql <https://pypi.python.org/pypi/rql>`__.
+If you were lucky enough to use `Dstore`_ on the client side, then you can use `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ or `rql <https://pypi.python.org/pypi/rql>`__ on the server side.
 
-Честно говоря, Django REST framework заставляет изрядно посидеть в отладчике, и потратить на него определенное время, что, разумеется, характеризует используемые им проектные решения не с лучшей стороны.
-Хорошая программа должна читаться, а не пониматься, и уж тем более без помощи отладчика.
-Это характеризует соблюдение главного императива разработки программного обеспечения:
+Frankly, the Django REST framework makes a lot of time for the debugger, and this, of course, characterizes its design solutions not from the best side.
+A good program should be read, not understood, and even more so without the help of a debugger.
+This characterizes the observance of the main imperative of software development:
 
     Software's Primary Technical Imperative is managing complexity. This is greatly
     aided by a design focus on simplicity.
@@ -225,47 +224,48 @@ Django REST framework
     accidental complexity from proliferating needlessly.
     («Code Complete» [#fncodec]_)
 
-Однако совокупный баланс преимуществ и недостатков делает Django REST framework весьма привлекательным для разработки, особенно если Вам нужно привлекать к работе новых (или временных) специалистов или отдать часть работы на аутсорсинг.
+However, the overall balance of advantages and disadvantages makes the Django REST framework very attractive for development, especially if you need to involve new (or temporary) developers or allocate some of the work for outsourcing.
 
-Просто нужно учитывать, что существует определенный входной барьер, который требует определенных затрат на его преодоление, и Вы должны понимать какую выгоду Вы с этого можете получить, ибо не всегда эта выгода стоит потраченных усилий для преодоления входного барьера.
+You just have to take into account that there is a certain entry barrier, which requires certain costs to overcome it, and you need to understand what benefit you can get from this, because not always this benefit is worth the effort to overcome the entrance barrier.
 
-На критике проектных решений я останавливаться не буду, конструктивно Django REST framework меня ни в чем не ограничивает, а это самое главное.
+I will not dwell on the criticism of the design decisions, the Django REST framework does not restrict me in anything constructively, and this is most important.
 
 
 Related fields with _id suffix for Django REST framework
 --------------------------------------------------------
 
-Когда на стороне клиента используются инструменты для обработки внешних ключей, возникает желание для значений внешнего ключа использовать поле с \*_id суффиксом. Здесь приводится `пример реализации <https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6>`__ как это можно достигнуть.
-Этот же пример на `gist <https://gist.github.com/ostcar/eb78515a41ab41d1755b>`__ и `обсуждение <https://github.com/encode/django-rest-framework/issues/3121>`__.
+When you use client-side tools to handle foreign keys, you might want to use \*_id suffix for the fields with foreign key values.
+Here is an `implementation example <https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6>`__ how this can be achieved.
+The same example on the `gist <https://gist.github.com/ostcar/eb78515a41ab41d1755b>`__ and `discussion <https://github.com/encode/django-rest-framework/issues/3121>`__.
 
 
 SQLAlchemy
 ----------
 
-Огромным преимуществом Django REST framework является то, что он ORM agnostic.
-Он имеет прекрасную интергацию с Django ORM, но он легко может работать с голой реализацией паттерна Data Mapper который будет возвращать `namedtuple`_ для `Data Transfer Object`_.
-Так же он имеет хорошую интеграцию с `SQLAlchemy`_ в виде стороннего приложения `djangorest-alchemy <https://github.com/dealertrack/djangorest-alchemy>`_ (`документация <http://djangorest-alchemy.readthedocs.io/en/latest/>`__).
-См. `обсуждение интеграции <https://github.com/encode/django-rest-framework/issues/2439>`__.
+The huge advantage of Django REST framework is that it is ORM agnostic.
+It has perfect interfacing with Django ORM, but it can easily work with a bare implementation of the Data Mapper pattern which returns a `namedtuple`_ collection for some `Data Transfer Object`_.
+It also has good integration with `SQLAlchemy`_ in the form of a third-party application `djangorest-alchemy <https://github.com/dealertrack/djangorest-alchemy>`_ (`docs <http://djangorest-alchemy.readthedocs.io/en/latest/>`__).
+See also `discussion of the integration <https://github.com/encode/django-rest-framework/issues/2439>`__.
 
 
 OpenAPI и Swagger
 -----------------
 
-Django REST framework позволяет `генерировать схему <www.django-rest-framework.org/api-guide/schemas/>`_ в формате OpenAPI и интегрируется с `swagger <https://swagger.io/>`_ с помощью библиотеки `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_.
+Django REST framework allows you to `generate scheme OpenAPI <www.django-rest-framework.org/api-guide/schemas/>`_ and integrates with `swagger <https://swagger.io/>`_ using the `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_ library.
 
-Это открывает неограниченные возможности по генерированию `стабов <Service Stub_>`__ для клиента и позволяет использовать один из существующих генераторов стабов для swagger.
-Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.
+This opens up unlimited possibilities for generating `Service Stub`_ for clients and also allows using one of the existing stab generators for swagger.
+This allows you to test client-side without any server-side implementation, divide the responsibility between client-side and server-side developers, quickly find the cause of problems, freeze the communication protocol, and, most importantly, allows you to develop client-side in parallel even if server-side implementation is not finished yet.
 
-Схема OpenAPI так же может быть использована для автоматической генерации тестов, например, с помощью `pyresttest <https://github.com/svanoort/pyresttest>`_.
+OpenAPI schema could also be used to automatically generate tests, for example, using the `pyresttest <https://github.com/svanoort/pyresttest>`_.
 
-Мой товарищ работает над библиотекой `python-easytest <https://bitbucket.org/sergeyglazyrindev/python-easytest>`_, которая избавляет от необходимости написания интеграционных тестов и тестирует приложение на основании схемы OpenAPI.
+My friend works on the `python-easytest <https://bitbucket.org/sergeyglazyrindev/python-easytest>`_ library, which eliminates the need for writing integration tests and performs the testing of the application using the OpenAPI scheme.
 
 
 JOIN-s problem
 --------------
 
-Django REST framework часто используется вместе с `django-filter <https://pypi.python.org/pypi/django-filter>`_.
-И тут возникает проблема, которая отражена в документации как:
+The Django REST framework is often used together with `django-filter <https://pypi.python.org/pypi/django-filter>`_.
+And here there is a problem, which is reflected in the documentation as:
 
         "To handle both of these situations, Django has a consistent way of processing filter() calls.
         Everything inside a single filter() call is applied simultaneously to filter out items matching
@@ -276,24 +276,24 @@ Django REST framework часто используется вместе с `djang
         See more info on:
         https://docs.djangoproject.com/en/1.8/topics/db/queries/#lookups-that-span-relationships
 
-Решается эта проблема легко, в классе FilterSet() следует использовать обертку с ленивым вычислением  вместо реального django.db.models.query.QuerySet, которая будет полность повторять его интерфейс, но вызвать метод filter() однократно, передавая ему все накопленные критерии выборки.
+To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the filter() method once, passing all accumulated selection criteria to it.
 
 
 Generating \*.csv, \*.xlsx
 --------------------------
 
-Django и Django REST framework содержит огромное количество расширений.
-Это то главное преимущество, ради которого есть смысл терпеть их недостатки.
-Можно даже генерировать \*.csv, \*.xlsx файлы:
+Django and Django REST framework has a lot of extensions.
+This is a major advantage for which it makes sense to tolerate their shortcomings.
+You can even generate \*.csv, \*.xlsx files:
 
 - `django-rest-framework-excel <https://github.com/diegueus9/django-rest-framework-excel>`_
 - `django-rest-framework-csv <https://github.com/mjumbewu/django-rest-framework-csv>`_
 - `django-rest-pandas <https://github.com/wq/django-rest-pandas>`_
-- и др.
+- etc.
 
-Здесь, правда, возникает проблема с трансляцией вложенных структур данных в плоский список, и наоборот, с парсингом плоского списка во вложенную структуру.
-Частично эту проблему можно решить с помощью библиотеки `jsonmapping <https://github.com/pudo/jsonmapping>`_.
-Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.
+However, there is a problem with translating the nested data structures into the flat list, and vice versa, with the parsing of the flat list into the nested data structure.
+Partially this problem can be solved using the library `jsonmapping <https://github.com/pudo/jsonmapping>`_.
+But this decision did not suit me, and I have done a complete declarative data mapper.
 
 
 Graphql
@@ -309,27 +309,27 @@ Advantages and disadvantages of Django Framework
 Advantages
 ----------
 
-Джанго имеет удачный `View <https://docs.djangoproject.com/en/1.11/topics/http/views/>`__,  который представляет собой разновидность паттерна `Page Controller`_, достаточно удачные формы и шаблонизатор (если использовать `django.template.loaders.cached.Loader <https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader>`_).
+Django has a successful `View <https://docs.djangoproject.com/en/1.11/topics/http/views/>`__, which is a kind of the pattern `Page Controller`_, fairly successful forms and template (if you use `django.template.loaders.cached.Loader <https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader>`_).
 
-Несмотря на все недостатки Django ORM, его интерфейс построения запросов хорошо подходит для REST API.
+Despite all the shortcomings of Django ORM, its query building interface is well suited for the REST API.
 
-Django имеет огромное сообщество с огромным количеством готовых приложений.
-Находить специалистов для Django и Django REST framework очень легко.
+Django has a huge community with a huge number of ready-made applications.
+It is very easy to find developers (and outsourcing companies) for Django and Django REST framework.
 
-Django декларирует такой способ разработки, который не требователен к уровню разработчиков.
+Django declares such a way of development, which is not exacting to the skill level of developers.
 
-Django способен экономить много времени при правильном использовании.
+Django can save a lot of time and financial resources if used properly.
 
 
 Disadvantages
 -------------
 
-Уровень сложности Django растет с каждым релизом, зачастую опережая реализуемые ею возможности, и от этого ее привлекательность постоянно уменьшается.
+The level of complexity of Django grows with each release, often outstripping the opportunities it implements, and from this its attractiveness is constantly decreasing.
 
-Если Вам нужно адаптировать Django ORM для своих потребностей, то сделать это с последним релизом будет, пожалуй, сложнее, чем адаптировать SQLAlchemy.
-При том что в адаптации он нуждается чаще чем SQLAlchemy.
-Простота больше не является главной прерогативой Django, как это было в ранних версиях.
-Практически во всех проектах, с которыми мне приходилось иметь дело, Django ORM дополнялся (или заменялся) сторонними инструментами либо голой реализацией паттерна Data Mapper.
+If you need to adapt Django ORM for your needs, then it's probably more difficult to do this with the latest release than to adapt SQLAlchemy.
+And it needs to adapt more often than SQLAlchemy.
+Simplicity is no longer the main prerogative of Django, as it was in earlier versions.
+Almost in all projects that I had to deal with, Django ORM was supplemented (or replaced) with third-party tools or bare implementation of the Data Mapper pattern.
 
 В кругу моих друзей Django framework используется в основном в силу привычки и по инерции.
 
@@ -374,7 +374,7 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. .. update:: 02 Aug, 2017
+.. update:: 02 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
