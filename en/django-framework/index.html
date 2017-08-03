@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Wed, 02 Aug 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Thu, 03 Aug 2017 00:00:00 GMT" />
         
             <meta name="description" content="Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings." />
         
@@ -87,7 +87,7 @@
           <div class="body" role="main">
             
   <div class="section" id="about-my-experience-of-using-django-framework">
-<h1><a class="toc-backref" href="#id15">About my experience of using Django Framework</a><a class="headerlink" href="#about-my-experience-of-using-django-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id13">About my experience of using Django Framework</a><a class="headerlink" href="#about-my-experience-of-using-django-framework" title="Permalink to this headline">¶</a></h1>
 <p>At one time, someone beautifully said that security is a balance between the cost of protection and the potential benefits of hacking.
 There is no sense to exceed this balance.</p>
 <p>Taking a decision on IT-technologies, we are also trying to find a balance between the costs of maintaining technology (including search and training of new staff) and the functionality that is being acquired.</p>
@@ -97,49 +97,49 @@ With a competent approach, you can use all the advantages of Django and not beco
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#about-my-experience-of-using-django-framework" id="id15">About my experience of using Django Framework</a></li>
-<li><a class="reference internal" href="#django-orm-problems-and-their-solutions" id="id16">Django ORM problems and their solutions</a><ul>
-<li><a class="reference internal" href="#semantic-coupling-of-model-validation" id="id17">Semantic coupling of model validation</a></li>
-<li><a class="reference internal" href="#active-record" id="id18">Active Record</a></li>
-<li><a class="reference internal" href="#identity-map" id="id19">Identity Map</a></li>
-<li><a class="reference internal" href="#transactional-consistency-of-data" id="id20">Transactional consistency of data</a></li>
-<li><a class="reference internal" href="#service-layer-and-django-db-models-manager" id="id21">Service Layer and django.db.models.Manager</a></li>
-<li><a class="reference internal" href="#composite-foreign-keys-and-django-orm" id="id22">Composite foreign keys and Django ORM</a></li>
-<li><a class="reference internal" href="#building-of-complicated-sql-queries-for-django-orm" id="id23">Building of complicated SQL-queries for Django ORM</a></li>
-<li><a class="reference internal" href="#implementation-of-complicated-models-for-django-framework" id="id24">Implementation of complicated Models for Django Framework</a></li>
-<li><a class="reference internal" href="#third-party-tools" id="id25">Third-party tools</a><ul>
-<li><a class="reference internal" href="#sqlalchemy" id="id26">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#sqlbuilder" id="id27">SQLBuilder</a></li>
-<li><a class="reference internal" href="#storm-orm" id="id28">Storm ORM</a></li>
-<li><a class="reference internal" href="#testing" id="id29">Testing</a></li>
+<li><a class="reference internal" href="#about-my-experience-of-using-django-framework" id="id13">About my experience of using Django Framework</a></li>
+<li><a class="reference internal" href="#django-orm-problems-and-their-solutions" id="id14">Django ORM problems and their solutions</a><ul>
+<li><a class="reference internal" href="#semantic-coupling-of-model-validation" id="id15">Semantic coupling of model validation</a></li>
+<li><a class="reference internal" href="#active-record" id="id16">Active Record</a></li>
+<li><a class="reference internal" href="#identity-map" id="id17">Identity Map</a></li>
+<li><a class="reference internal" href="#transactional-consistency-of-data" id="id18">Transactional consistency of data</a></li>
+<li><a class="reference internal" href="#service-layer-and-django-db-models-manager" id="id19">Service Layer and django.db.models.Manager</a></li>
+<li><a class="reference internal" href="#composite-foreign-keys-and-django-orm" id="id20">Composite foreign keys and Django ORM</a></li>
+<li><a class="reference internal" href="#building-of-complicated-sql-queries-for-django-orm" id="id21">Building of complicated SQL-queries for Django ORM</a></li>
+<li><a class="reference internal" href="#implementation-of-complicated-models-for-django-framework" id="id22">Implementation of complicated Models for Django Framework</a></li>
+<li><a class="reference internal" href="#third-party-tools" id="id23">Third-party tools</a><ul>
+<li><a class="reference internal" href="#sqlalchemy" id="id24">SQLAlchemy</a></li>
+<li><a class="reference internal" href="#sqlbuilder" id="id25">SQLBuilder</a></li>
+<li><a class="reference internal" href="#storm-orm" id="id26">Storm ORM</a></li>
+<li><a class="reference internal" href="#testing" id="id27">Testing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#cache-invalidation" id="id30">Cache invalidation</a></li>
+<li><a class="reference internal" href="#cache-invalidation" id="id28">Cache invalidation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#django-rest-framework" id="id31">Django REST framework</a><ul>
-<li><a class="reference internal" href="#related-fields-with-id-suffix-for-django-rest-framework" id="id32">Related fields with _id suffix for Django REST framework</a></li>
-<li><a class="reference internal" href="#id8" id="id33">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#openapi-swagger" id="id34">OpenAPI и Swagger</a></li>
-<li><a class="reference internal" href="#join-s-problem" id="id35">JOIN-s problem</a></li>
-<li><a class="reference internal" href="#generating-csv-xlsx" id="id36">Generating *.csv, *.xlsx</a></li>
+<li><a class="reference internal" href="#django-rest-framework" id="id29">Django REST framework</a><ul>
+<li><a class="reference internal" href="#related-fields-with-id-suffix-for-django-rest-framework" id="id30">Related fields with _id suffix for Django REST framework</a></li>
+<li><a class="reference internal" href="#id8" id="id31">SQLAlchemy</a></li>
+<li><a class="reference internal" href="#openapi-swagger" id="id32">OpenAPI и Swagger</a></li>
+<li><a class="reference internal" href="#join-s-problem" id="id33">JOIN-s problem</a></li>
+<li><a class="reference internal" href="#generating-csv-xlsx" id="id34">Generating *.csv, *.xlsx</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphql" id="id37">Graphql</a></li>
-<li><a class="reference internal" href="#advantages-and-disadvantages-of-django-framework" id="id38">Advantages and disadvantages of Django Framework</a><ul>
-<li><a class="reference internal" href="#advantages" id="id39">Advantages</a></li>
-<li><a class="reference internal" href="#disadvantages" id="id40">Disadvantages</a></li>
+<li><a class="reference internal" href="#graphql" id="id35">Graphql</a></li>
+<li><a class="reference internal" href="#advantages-and-disadvantages-of-django-framework" id="id36">Advantages and disadvantages of Django Framework</a><ul>
+<li><a class="reference internal" href="#advantages" id="id37">Advantages</a></li>
+<li><a class="reference internal" href="#disadvantages" id="id38">Disadvantages</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#conclusion" id="id41">Conclusion</a></li>
+<li><a class="reference internal" href="#conclusion" id="id39">Conclusion</a></li>
 </ul>
 </div>
 <p>Django ORM brings the most trouble, so we&#8217;ll start with it.</p>
 </div>
 <div class="section" id="django-orm-problems-and-their-solutions">
-<h1><a class="toc-backref" href="#id16">Django ORM problems and their solutions</a><a class="headerlink" href="#django-orm-problems-and-their-solutions" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id14">Django ORM problems and their solutions</a><a class="headerlink" href="#django-orm-problems-and-their-solutions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="semantic-coupling-of-model-validation">
-<h2><a class="toc-backref" href="#id17">Semantic coupling of model validation</a><a class="headerlink" href="#semantic-coupling-of-model-validation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Semantic coupling of model validation</a><a class="headerlink" href="#semantic-coupling-of-model-validation" title="Permalink to this headline">¶</a></h2>
 <p>The principle of &#8220;Defensive Programming&#8221; <a class="footnote-reference" href="#fncodec" id="id1">[2]</a> requires making it impossible to create an invalid object.
 You must use object setters for validation.
 In Django, we have to explicitly call the method <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean">Model.full_clean()</a> object before saving that, of course, often no one does, and this often leads to various troubles.
@@ -147,7 +147,7 @@ This problem is known as &#8220;Semantic Coupling&#8221; as well as &#8220;G22: 
 You can solve this problem technically, but usually it&#8217;s enough just to follow the development discipline.</p>
 </div>
 <div class="section" id="active-record">
-<h2><a class="toc-backref" href="#id18">Active Record</a><a class="headerlink" href="#active-record" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Active Record</a><a class="headerlink" href="#active-record" title="Permalink to this headline">¶</a></h2>
 <p>Django ORM implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which makes it easy to use due to violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP) principle, for this reason it is often called antipattern.
 This pattern mixes business logic and data access logic in one class.
 Unfortunately, this simplicity is appropriate only in simple cases.
@@ -158,7 +158,7 @@ Then you have to replace Django ORM with third-party tools or the bare implement
 In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.</p>
 </div>
 <div class="section" id="identity-map">
-<h2><a class="toc-backref" href="#id19">Identity Map</a><a class="headerlink" href="#identity-map" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Identity Map</a><a class="headerlink" href="#identity-map" title="Permalink to this headline">¶</a></h2>
 <p>Django does not implement the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, and, as a result, creates many duplicate queries.
 Part of this weakness is mitigated by the presence of <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#prefetch-related">prefetch_related()</a>.
 There are implementations of this pattern in the form of third-party libraries,
@@ -168,7 +168,7 @@ But they do not perform any functions except caching, and do not provide transac
 However, you hardly notice this problem, since the Django application usually processes an HTTP-request inside one transaction.</p>
 </div>
 <div class="section" id="transactional-consistency-of-data">
-<h2><a class="toc-backref" href="#id20">Transactional consistency of data</a><a class="headerlink" href="#transactional-consistency-of-data" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Transactional consistency of data</a><a class="headerlink" href="#transactional-consistency-of-data" title="Permalink to this headline">¶</a></h2>
 <p>Django allows you to create multiple instances of the same domain object in the thread&#8217;s memory, and this can lead to data loss due to the dissynchronization of the state of these instances.
 Worse still, these instances do not synchronize their state with their records in the database at the time of the commit (rollback) of the transaction.</p>
 <p>Django supports transactions, but does not support the transactional consistency of the data, unlike the Storm ORM / SQLAlchemy.
@@ -184,12 +184,12 @@ Unskilful use of transactions can lead to the loss of parallel changes, and skil
 <p>In addition, you should carefully read all the precautions of the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#iterator">iterator()</a> method, the use of which does not guarantee that there is no memory leak if you do not use <a class="reference external" href="https://github.com/farcepest/MySQLdb1/blob/master/doc/user_guide.rst#using-and-extending">SSCursor</a> for MySQL.</p>
 </div>
 <div class="section" id="service-layer-and-django-db-models-manager">
-<h2><a class="toc-backref" href="#id21">Service Layer and django.db.models.Manager</a><a class="headerlink" href="#service-layer-and-django-db-models-manager" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Service Layer and django.db.models.Manager</a><a class="headerlink" href="#service-layer-and-django-db-models-manager" title="Permalink to this headline">¶</a></h2>
 <p>A common mistake is using the django.db.models.Manager class as a Service Layer.
 This question was considered in detail in the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.</p>
 </div>
 <div class="section" id="composite-foreign-keys-and-django-orm">
-<h2><a class="toc-backref" href="#id22">Composite foreign keys and Django ORM</a><a class="headerlink" href="#composite-foreign-keys-and-django-orm" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Composite foreign keys and Django ORM</a><a class="headerlink" href="#composite-foreign-keys-and-django-orm" title="Permalink to this headline">¶</a></h2>
 <p>As you can see from the ticket <a class="reference external" href="https://code.djangoproject.com/ticket/373">#373</a> and the discussion of &#8220;<a class="reference external" href="https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys">Multi-Column Primary Key support</a>&#8221;, Django ORM does not yet support composite relations.</p>
 <p>This means that you have to create surrogate keys, which can cause certain difficulties in the integration of an existing database, or you have to use one of these libraries:</p>
 <ul class="simple">
@@ -202,7 +202,7 @@ In that case, I just do not use Django ORM.
 But you have a choice.</p>
 </div>
 <div class="section" id="building-of-complicated-sql-queries-for-django-orm">
-<h2><a class="toc-backref" href="#id23">Building of complicated SQL-queries for Django ORM</a><a class="headerlink" href="#building-of-complicated-sql-queries-for-django-orm" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Building of complicated SQL-queries for Django ORM</a><a class="headerlink" href="#building-of-complicated-sql-queries-for-django-orm" title="Permalink to this headline">¶</a></h2>
 <p>The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
 In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
 In any case, the details of implementation should be encapsulated within a query factory class.</p>
@@ -216,7 +216,7 @@ To solve the problem my colleague had to &#8220;<a class="reference internal" hr
 As a result, it was possible to express an SQL query of any complexity in the interface of django.db.models.query.QuerySet.</p>
 </div>
 <div class="section" id="implementation-of-complicated-models-for-django-framework">
-<h2><a class="toc-backref" href="#id24">Implementation of complicated Models for Django Framework</a><a class="headerlink" href="#implementation-of-complicated-models-for-django-framework" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">Implementation of complicated Models for Django Framework</a><a class="headerlink" href="#implementation-of-complicated-models-for-django-framework" title="Permalink to this headline">¶</a></h2>
 <p>Very often you have to deal with objects that contain aggregated data, annotations, or combine the data of several tables.</p>
 <p>SQLAlchemy certainly provides <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html">more flexible features</a>.
 But even these features <a class="reference external" href="http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/">are not always enough</a>.</p>
@@ -232,9 +232,9 @@ In this case, I just make an implementation in the form of the bare pattern <a c
 <p>Practice shows that such cases usually do not exceed 10%, which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of specialists still outweighs.</p>
 </div>
 <div class="section" id="third-party-tools">
-<h2><a class="toc-backref" href="#id25">Third-party tools</a><a class="headerlink" href="#third-party-tools" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Third-party tools</a><a class="headerlink" href="#third-party-tools" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sqlalchemy">
-<h3><a class="toc-backref" href="#id26">SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id24">SQLAlchemy</a><a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h3>
 <p>Django has several applications for SQLAlchemy integration:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/auvipy/django-sqlalchemy">django-sqlalchemy</a></li>
@@ -244,13 +244,13 @@ In this case, I just make an implementation in the form of the bare pattern <a c
 </ul>
 </div>
 <div class="section" id="sqlbuilder">
-<h3><a class="toc-backref" href="#id27">SQLBuilder</a><a class="headerlink" href="#sqlbuilder" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id25">SQLBuilder</a><a class="headerlink" href="#sqlbuilder" title="Permalink to this headline">¶</a></h3>
 <p>To build complicated queries for Django ORM, I usually use the library <a class="reference external" href="http://sqlbuilder.readthedocs.io/en/latest/">sqlbuilder</a>.</p>
 <p>Good manners require you to create a separate factory class for each query to hide implementation details from the application.
 Within the interface of this class, you can easily replace one implementation with another.</p>
 </div>
 <div class="section" id="storm-orm">
-<h3><a class="toc-backref" href="#id28">Storm ORM</a><a class="headerlink" href="#storm-orm" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id26">Storm ORM</a><a class="headerlink" href="#storm-orm" title="Permalink to this headline">¶</a></h3>
 <p>The issue of integration of Storm ORM has already been considered, so I&#8217;ll just give the links:</p>
 <ul class="simple">
 <li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Why I prefer Storm ORM for Python</span></a>&#8220;</li>
@@ -258,13 +258,13 @@ Within the interface of this class, you can easily replace one implementation wi
 </ul>
 </div>
 <div class="section" id="testing">
-<h3><a class="toc-backref" href="#id29">Testing</a><a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id27">Testing</a><a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
 <p>If you use several data access technologies, then it&#8217;s worth mentioning the fake data generator <a class="reference external" href="https://github.com/klen/mixer">mixer</a>, which supports several ORMs.
 Other generators <a class="reference external" href="https://djangopackages.org/grids/g/fixtures/">can be found</a>, as usual, on <a class="reference external" href="https://djangopackages.org/">djangopackages.org</a>.</p>
 </div>
 </div>
 <div class="section" id="cache-invalidation">
-<h2><a class="toc-backref" href="#id30">Cache invalidation</a><a class="headerlink" href="#cache-invalidation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">Cache invalidation</a><a class="headerlink" href="#cache-invalidation" title="Permalink to this headline">¶</a></h2>
 <p>Django ORM implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which forces us to explicitly call <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save">Model.save()</a> method.
 The problem is that the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/signals/#post-save">post_save</a> and <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete">pre_delete</a> signals are often used by developers to invalidate the cache.
 This is not quite the right way, since Django ORM does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> pattern, and the time between saving and committing the transaction is sufficient to parallel thread could recreate the cache with outdated data.</p>
@@ -274,7 +274,7 @@ Django 1.9 and above allows you to use <a class="reference external" href="https
 </div>
 </div>
 <div class="section" id="django-rest-framework">
-<h1><a class="toc-backref" href="#id31">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id29">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
 <p>If we have previously considered the shortcomings of Django ORM, the <a class="reference external" href="http://www.django-rest-framework.org/">Django REST framework</a> surprisingly turns its disadvantages into advantages, because the interface for building Django ORM queries is great for REST.</p>
 <p>If you were lucky enough to use <a class="reference external" href="http://dstorejs.io/">Dstore</a> on the client side, then you can use <a class="reference external" href="https://pypi.python.org/pypi/django-rql-filter">django-rql-filter</a> or <a class="reference external" href="https://pypi.python.org/pypi/rql">rql</a> on the server side.</p>
 <p>Frankly, the Django REST framework makes a lot of time for the debugger, and this, of course, characterizes its design solutions not from the best side.
@@ -291,20 +291,20 @@ accidental complexity from proliferating needlessly.
 <p>You just have to take into account that there is a certain entry barrier, which requires certain costs to overcome it, and you need to understand what benefit you can get from this, because not always this benefit is worth the effort to overcome the entrance barrier.</p>
 <p>I will not dwell on the criticism of the design decisions, the Django REST framework does not restrict me in anything constructively, and this is most important.</p>
 <div class="section" id="related-fields-with-id-suffix-for-django-rest-framework">
-<h2><a class="toc-backref" href="#id32">Related fields with _id suffix for Django REST framework</a><a class="headerlink" href="#related-fields-with-id-suffix-for-django-rest-framework" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">Related fields with _id suffix for Django REST framework</a><a class="headerlink" href="#related-fields-with-id-suffix-for-django-rest-framework" title="Permalink to this headline">¶</a></h2>
 <p>When you use client-side tools to handle foreign keys, you might want to use *_id suffix for the fields with foreign key values.
 Here is an <a class="reference external" href="https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6">implementation example</a> how this can be achieved.
 The same example on the <a class="reference external" href="https://gist.github.com/ostcar/eb78515a41ab41d1755b">gist</a> and <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/3121">discussion</a>.</p>
 </div>
 <div class="section" id="id8">
-<h2><a class="toc-backref" href="#id33">SQLAlchemy</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">SQLAlchemy</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>The huge advantage of Django REST framework is that it is ORM agnostic.
 It has perfect interfacing with Django ORM, but it can easily work with a bare implementation of the Data Mapper pattern which returns a <a class="reference external" href="https://docs.python.org/2/library/collections.html#collections.namedtuple">namedtuple</a> collection for some <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 It also has good integration with <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> in the form of a third-party application <a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> (<a class="reference external" href="http://djangorest-alchemy.readthedocs.io/en/latest/">docs</a>).
 See also <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/2439">discussion of the integration</a>.</p>
 </div>
 <div class="section" id="openapi-swagger">
-<h2><a class="toc-backref" href="#id34">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id32">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework allows you to <a class="reference external" href="www.django-rest-framework.org/api-guide/schemas/">generate scheme OpenAPI</a> and integrates with <a class="reference external" href="https://swagger.io/">swagger</a> using the <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a> library.</p>
 <p>This opens up unlimited possibilities for generating <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a> for clients and also allows using one of the existing stab generators for swagger.
 This allows you to test client-side without any server-side implementation, divide the responsibility between client-side and server-side developers, quickly find the cause of problems, freeze the communication protocol, and, most importantly, allows you to develop client-side in parallel even if server-side implementation is not finished yet.</p>
@@ -312,7 +312,7 @@ This allows you to test client-side without any server-side implementation, divi
 <p>My friend works on the <a class="reference external" href="https://bitbucket.org/sergeyglazyrindev/python-easytest">python-easytest</a> library, which eliminates the need for writing integration tests and performs the testing of the application using the OpenAPI scheme.</p>
 </div>
 <div class="section" id="join-s-problem">
-<h2><a class="toc-backref" href="#id35">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id33">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
 <p>The Django REST framework is often used together with <a class="reference external" href="https://pypi.python.org/pypi/django-filter">django-filter</a>.
 And here there is a problem, which is reflected in the documentation as:</p>
 <blockquote>
@@ -327,7 +327,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the filter() method once, passing all accumulated selection criteria to it.</p>
 </div>
 <div class="section" id="generating-csv-xlsx">
-<h2><a class="toc-backref" href="#id36">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id34">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
 <p>Django and Django REST framework has a lot of extensions.
 This is a major advantage for which it makes sense to tolerate their shortcomings.
 You can even generate *.csv, *.xlsx files:</p>
@@ -343,15 +343,15 @@ But this decision did not suit me, and I have done a complete declarative data m
 </div>
 </div>
 <div class="section" id="graphql">
-<h1><a class="toc-backref" href="#id37">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id35">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/graphql-python/graphene-django">graphene-django</a> - a Django integration for <a class="reference external" href="https://github.com/graphql-python/graphene">graphene</a>.</li>
 </ul>
 </div>
 <div class="section" id="advantages-and-disadvantages-of-django-framework">
-<h1><a class="toc-backref" href="#id38">Advantages and disadvantages of Django Framework</a><a class="headerlink" href="#advantages-and-disadvantages-of-django-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id36">Advantages and disadvantages of Django Framework</a><a class="headerlink" href="#advantages-and-disadvantages-of-django-framework" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="advantages">
-<h2><a class="toc-backref" href="#id39">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id37">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
 <p>Django has a successful <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>, which is a kind of the pattern <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, fairly successful forms and template (if you use <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Despite all the shortcomings of Django ORM, its query building interface is well suited for the REST API.</p>
 <p>Django has a huge community with a huge number of ready-made applications.
@@ -360,32 +360,34 @@ It is very easy to find developers (and outsourcing companies) for Django and Dj
 <p>Django can save a lot of time and financial resources if used properly.</p>
 </div>
 <div class="section" id="disadvantages">
-<h2><a class="toc-backref" href="#id40">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id38">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
 <p>The level of complexity of Django grows with each release, often outstripping the opportunities it implements, and from this its attractiveness is constantly decreasing.</p>
 <p>If you need to adapt Django ORM for your needs, then it&#8217;s probably more difficult to do this with the latest release than to adapt SQLAlchemy.
 And it needs to adapt more often than SQLAlchemy.
 Simplicity is no longer the main prerogative of Django, as it was in earlier versions.
 Almost in all projects that I had to deal with, Django ORM was supplemented (or replaced) with third-party tools or bare implementation of the Data Mapper pattern.</p>
-<p>В кругу моих друзей Django framework используется в основном в силу привычки и по инерции.</p>
-<p>Несмотря на то, что Django framework имеет огромное количество готовых приложений, их качество зачастую оставляет желать лучшего, а то и вовсе содержит баги, причем, попадаются очень коварные баги, которые проявляются только в многопоточной среде под нагрузками, и которые отлаживать весьма затруднительно.</p>
-<p>Качество специалистов, специализирующихся на Django, тоже зачастую невысокое.
-Квалифицированные специалисты среди моих друзей стараются избегать работу с Django.</p>
+<p>In the circle of my friends Django framework is used mainly because of habit and inertia.</p>
+<p>Despite the fact that Django framework has a huge number of ready-made applications, their quality often leaves much to be desired, or even contains bugs.
+Moreover, very insidious bugs may appear, which only appear in a multi-threaded environment under high loads, and which are very difficult to debug.</p>
+<p>The quality of developers specializing in Django is also often low.
+Highly skilled developers from my friends try to avoid working with Django.</p>
 </div>
 </div>
 <div class="section" id="conclusion">
-<h1><a class="toc-backref" href="#id41">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
-<p>Использовать или не использовать Django framework зависит от того, какие цели Вы перед собой ставите, и командой какой квалификации Вы располагаете.</p>
-<p>Если Ваша команда высоко-квалифицированная в области архитектуры и проектирования, вы используете <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">методики совместной разработки</span></a> для распространения опыта, чувствуете в себе силы сделать проект более качественным без Django, и располагаете достаточными ресурсами и финансами для этого, тогда есть смысл использовать другой стэк технологий.</p>
-<p>В противном случае, Django framework может сослужить Вам хорошую пользу.
-Много самонадеянных команд так и не смогли без Django сделать свои проекты лучше, чем сделали бы это с ней.</p>
-<p>Никто не обязывает Вас использовать Django всегда и везде.
-Django REST framework позволяет Вам абстрагироваться от Django ORM и даже от своего сериализатора.</p>
-<p>Если Вы занимаетесь аутсорсингом, Ваш средний проект длится не больше года, бюджет невысокий а сроки сжатые, то у Django есть что Вам предложить.</p>
-<p>Если Вы работаете над большим действующим проектом, то выгоды уже не столь очевидны.
-Все дело в балансе, который Вы должны сами для себя определить.</p>
-<p>Но если Вы используете <a class="reference external" href="https://martinfowler.com/bliki/BoundedContext.html">ограниченные контексты</a> или <a class="reference external" href="https://martinfowler.com/articles/microservices.html">микросервисную архитектуру</a>, то каждая команда может принимать решение о стэке технологий самостоятельно.
-Вы можете использовать Джангу только для части проекта, или использовать только некоторые компоненты Джанги.</p>
-<p>А можете не использовать вообще. Среди альтернатив я советую обратить внимание на web-framework который мне импонирует <a class="reference external" href="https://pypi.python.org/pypi/wheezy.web">wheezy.web</a>.</p>
+<h1><a class="toc-backref" href="#id39">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<p>Whether to use Django framework depends on what goals you set for yourself and how qualified are the teams you have.</p>
+<p>If your team is highly qualified in the field of architecture and design, you use <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">collaborative development techniques</span></a> for the dissemination of experience, have sufficient resources and finances to make the project more better without Django, then it makes sense to use another stack of technologies.</p>
+<p>Otherwise the Django framework can do you a good favor.
+A lot of overconfident teams could not make without Django their projects better than they would have make with it.</p>
+<p>Nobody obliges you to use Django anytime and anywhere.
+Django REST framework allows you to abstract from Django ORM and even from its serializer.</p>
+<p>If you are engaged in outsourcing, your average project lasts no more than a year, the budget is low and the deadlines are short, then Django has a lot to offer you.</p>
+<p>If you are working on a large ongoing project, the benefits are not so obvious.
+All the matter in the balance that you need to determine for themselves.</p>
+<p>But if you use <a class="reference external" href="https://martinfowler.com/bliki/BoundedContext.html">Bounded Contexts</a> or <a class="reference external" href="https://martinfowler.com/articles/microservices.html">Microservice Architecture</a>, then each team can decide on their own technology stack.
+You can use Django only for part of the project, or use only some of the Django Framework components.</p>
+<p>And you can not use it at all.
+Among the alternatives, I advise you to pay attention to the web-framework that impresses me <a class="reference external" href="https://pypi.python.org/pypi/wheezy.web">wheezy.web</a>.</p>
 <p>Эта статья на Русском языке &#8220;<a class="reference internal" href="../../ru/django-framework/"><span class="doc">О моем опыте использования Django Framework</span></a>&#8221;.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnccode" rules="none">
@@ -413,7 +415,7 @@ Django REST framework позволяет Вам абстрагироваться
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Aug 02, 2017</p>
+<p class="first last admonition-title">Updated on Aug 03, 2017</p>
 </div>
 </div>
 
@@ -501,7 +503,7 @@ Django REST framework позволяет Вам абстрагироваться
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Aug 02, 2017</li>
+    Aug 03, 2017</li>
   
 
   
