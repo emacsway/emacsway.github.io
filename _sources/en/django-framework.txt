@@ -263,7 +263,7 @@ JOIN-s problem
 --------------
 
 The Django REST framework is often used together with `django-filter <https://pypi.python.org/pypi/django-filter>`_.
-And here there is a problem, which is reflected in the documentation as:
+And here is a problem, which is reflected in the documentation as:
 
         "To handle both of these situations, Django has a consistent way of processing filter() calls.
         Everything inside a single filter() call is applied simultaneously to filter out items matching
@@ -274,7 +274,7 @@ And here there is a problem, which is reflected in the documentation as:
         See more info on:
         https://docs.djangoproject.com/en/1.8/topics/db/queries/#lookups-that-span-relationships
 
-To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the filter() method once, passing all accumulated selection criteria to it.
+To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the original filter() method once, passing all accumulated selection criteria to it.
 
 
 Generating \*.csv, \*.xlsx
@@ -291,7 +291,7 @@ You can even generate \*.csv, \*.xlsx files:
 
 However, there is a problem with translating the nested data structures into the flat list, and vice versa, with the parsing of the flat list into the nested data structure.
 Partially this problem can be solved using the library `jsonmapping <https://github.com/pudo/jsonmapping>`_.
-But this decision did not suit me, and I have done a complete declarative data mapper.
+But this decision did not suit me, and I had done a complete declarative data mapper.
 
 
 Graphql

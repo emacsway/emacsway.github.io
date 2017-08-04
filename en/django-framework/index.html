@@ -312,7 +312,7 @@ This allows you to test client-side without any server-side implementation, divi
 <div class="section" id="join-s-problem">
 <h2><a class="toc-backref" href="#id33">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
 <p>The Django REST framework is often used together with <a class="reference external" href="https://pypi.python.org/pypi/django-filter">django-filter</a>.
-And here there is a problem, which is reflected in the documentation as:</p>
+And here is a problem, which is reflected in the documentation as:</p>
 <blockquote>
 <div><p>&#8220;To handle both of these situations, Django has a consistent way of processing filter() calls.
 Everything inside a single filter() call is applied simultaneously to filter out items matching
@@ -322,7 +322,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>See more info on:
 <a class="reference external" href="https://docs.djangoproject.com/en/1.8/topics/db/queries/#lookups-that-span-relationships">https://docs.djangoproject.com/en/1.8/topics/db/queries/#lookups-that-span-relationships</a></p>
 </div></blockquote>
-<p>To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the filter() method once, passing all accumulated selection criteria to it.</p>
+<p>To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the original filter() method once, passing all accumulated selection criteria to it.</p>
 </div>
 <div class="section" id="generating-csv-xlsx">
 <h2><a class="toc-backref" href="#id34">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
@@ -337,7 +337,7 @@ You can even generate *.csv, *.xlsx files:</p>
 </ul>
 <p>However, there is a problem with translating the nested data structures into the flat list, and vice versa, with the parsing of the flat list into the nested data structure.
 Partially this problem can be solved using the library <a class="reference external" href="https://github.com/pudo/jsonmapping">jsonmapping</a>.
-But this decision did not suit me, and I have done a complete declarative data mapper.</p>
+But this decision did not suit me, and I had done a complete declarative data mapper.</p>
 </div>
 </div>
 <div class="section" id="graphql">
