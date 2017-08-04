@@ -219,16 +219,15 @@ As a result, it became possible to express an SQL query of any complexity in the
 <p>Very often you have to deal with objects that contain aggregated data, annotations, or combine the data of several tables.</p>
 <p>SQLAlchemy certainly provides <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html">more flexible features</a>.
 But even these features <a class="reference external" href="http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/">are not always enough</a>.</p>
-<p>The annotations of Storm ORM / SQLAlchemy are implemented more successfully.
-Annotations of Django ORM is better not to use at all, in favor of a bare implementation of the pattern Data Mapper.
+<p>The annotations of Storm ORM / SQLAlchemy are implemented more successfully than annotations of Django ORM (which are better not to use at all, in favor of a bare implementation of the pattern Data Mapper).
 The fact is that the model scheme is constantly evolving, and new fields are constantly added to it.
 And it often happens that the name of the new field is already used by the annotation that leads the conflict in the namespace.
 The solution can be to separate the namespace by using a separate model or Wrapper for annotations over the model instance.</p>
 <p>Identity Map is another reason not to use the Django ORM annotations (and also be careful with prefetch_related()).
-After all, if there is only one instance of an object in the thread, then its state can not have any differences for each particular request.</p>
+After all, if there is only one instance of an object in the thread, then its state can not have any differences for each particular query.</p>
 <p>That is why it is important to hide the implementation details of the data access using <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern or <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>.
 In this case, I just make an implementation in the form of the bare pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> and the plain <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>.</p>
-<p>Practice shows that such cases usually do not exceed 10%, which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of specialists still outweighs.</p>
+<p>Practice shows that such cases usually do not exceed 10% (rarely 30%), which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of the developers still outweighs.</p>
 </div>
 <div class="section" id="third-party-tools">
 <h2><a class="toc-backref" href="#id23">Third-party tools</a><a class="headerlink" href="#third-party-tools" title="Permalink to this headline">¶</a></h2>
@@ -276,7 +275,7 @@ Django 1.9 and above allows you to use <a class="reference external" href="https
 <h1><a class="toc-backref" href="#id29">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
 <p>If we have previously considered the shortcomings of Django ORM, the <a class="reference external" href="http://www.django-rest-framework.org/">Django REST framework</a> surprisingly turns its disadvantages into advantages, because the interface for building Django ORM queries is great for REST.</p>
 <p>If you were lucky enough to use <a class="reference external" href="http://dstorejs.io/">Dstore</a> on the client side, then you can use <a class="reference external" href="https://pypi.python.org/pypi/django-rql-filter">django-rql-filter</a> or <a class="reference external" href="https://pypi.python.org/pypi/rql">rql</a> on the server side.</p>
-<p>Frankly, the Django REST framework makes a lot of time for the debugger, and this, of course, characterizes its design solutions not from the best side.
+<p>Frankly, the Django REST framework requires a lot of time for the debugger to help researching it, and this, of course, characterizes its design solutions not from the best side.
 A good program should be read, not understood, and even more so without the help of a debugger.
 This characterizes the observance of the main imperative of software development:</p>
 <blockquote>

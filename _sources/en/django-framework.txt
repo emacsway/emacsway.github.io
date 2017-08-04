@@ -137,19 +137,18 @@ Very often you have to deal with objects that contain aggregated data, annotatio
 SQLAlchemy certainly provides `more flexible features <http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html>`_.
 But even these features `are not always enough <http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/>`__.
 
-The annotations of Storm ORM / SQLAlchemy are implemented more successfully.
-Annotations of Django ORM is better not to use at all, in favor of a bare implementation of the pattern Data Mapper.
+The annotations of Storm ORM / SQLAlchemy are implemented more successfully than annotations of Django ORM (which are better not to use at all, in favor of a bare implementation of the pattern Data Mapper).
 The fact is that the model scheme is constantly evolving, and new fields are constantly added to it.
 And it often happens that the name of the new field is already used by the annotation that leads the conflict in the namespace.
 The solution can be to separate the namespace by using a separate model or Wrapper for annotations over the model instance.
 
 Identity Map is another reason not to use the Django ORM annotations (and also be careful with prefetch_related()).
-After all, if there is only one instance of an object in the thread, then its state can not have any differences for each particular request.
+After all, if there is only one instance of an object in the thread, then its state can not have any differences for each particular query.
 
 That is why it is important to hide the implementation details of the data access using `Repository`_ pattern or `Service Layer`_.
 In this case, I just make an implementation in the form of the bare pattern `DataMapper`_ and the plain `Domain Model`_.
 
-Practice shows that such cases usually do not exceed 10%, which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of specialists still outweighs.
+Practice shows that such cases usually do not exceed 10% (rarely 30%), which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of the developers still outweighs.
 
 
 Third-party tools
@@ -212,7 +211,7 @@ If we have previously considered the shortcomings of Django ORM, the `Django RES
 
 If you were lucky enough to use `Dstore`_ on the client side, then you can use `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ or `rql <https://pypi.python.org/pypi/rql>`__ on the server side.
 
-Frankly, the Django REST framework makes a lot of time for the debugger, and this, of course, characterizes its design solutions not from the best side.
+Frankly, the Django REST framework requires a lot of time for the debugger to help researching it, and this, of course, characterizes its design solutions not from the best side.
 A good program should be read, not understood, and even more so without the help of a debugger.
 This characterizes the observance of the main imperative of software development:
 
