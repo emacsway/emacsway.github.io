@@ -34,7 +34,7 @@ Semantic coupling of model validation
 
 The principle of "Defensive Programming" [#fncodec]_ requires making it impossible to create an invalid object.
 You must use object setters for validation.
-In Django, we have to explicitly call the method `Model.full_clean() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean>`_ object before saving that, of course, often no one does, and this often leads to various troubles.
+In Django, we have to explicitly call the method `Model.full_clean() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean>`_ of an object before saving, that, of course, often no one does, and this often leads to various troubles.
 This problem is known as "Semantic Coupling" as well as "G22: Make Logical Dependencies Physical" [#fnccode]_ and "G31: Hidden Temporal Couplings" [#fnccode]_.
 You can solve this problem technically, but usually it's enough just to follow the development discipline.
 
@@ -48,8 +48,7 @@ Unfortunately, this simplicity is appropriate only in simple cases.
 In a more serious application, there are more problems than advantages.
 
 Since Django does not use the `Repository`_ layer, it would be desirable to hide the implementation of access to the data source by the Service Layer, see the article ":doc:`service-layer`".
-This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models.
-Then you have to replace Django ORM with third-party tools or the bare implementation of `DataMapper`_ pattern, we will return to this issue a little later.
+This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models, and you have to replace Django ORM with third-party tools or a bare implementation of `DataMapper`_ pattern (we will return to this issue a little later).
 In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.
 
 
@@ -72,7 +71,7 @@ Django allows you to create multiple instances of the same domain object in the 
 Worse still, these instances do not synchronize their state with their records in the database at the time of the commit (rollback) of the transaction.
 
 Django supports transactions, but does not support the transactional consistency of the data, unlike the Storm ORM / SQLAlchemy.
-You have to take care about the state model instances in memory at the time of the commit (rollback) of the transaction.
+You have to take care about the state model instances in the memory at the time of the commit (rollback) of the transaction.
 
 For example, if you use the transaction isolation level "Repeatable read", after the transaction is committed, the status of your model instances in the memory may become outdated.
 Accordingly, when you roll back a transaction, you must return the initial state to them.
@@ -80,7 +79,7 @@ Accordingly, when you roll back a transaction, you must return the initial state
 As previously mentioned, this is not critical for HTTP request processing, since Django framework usually serves it with one transaction.
 But when you develop command-line scripts or scheduled tasks, you need to take this into account.
 
-You must also take care of yourself to prevent mutual blocking (Deadlock_), since the Django ORM does not implement the `Unit of Work`_ pattern and does not use topological sorting.
+You must also take care of yourself to prevent Deadlock_, since the Django ORM does not implement the `Unit of Work`_ pattern and does not use topological sorting.
 
 It is worth also mention the frequent problem of novice developers, who are trying to process a large collection of objects without using `select_for_update() <https://docs.djangoproject.com/en/1.11/ref/models/querysets/#select-for-update>`_.
 The processing of the collection takes a considerable amount of time, which is enough for the loaded object, waiting for its processing, to change the record in the database.
@@ -121,13 +120,13 @@ In any case, the details of implementation should be encapsulated within a query
 
 In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE '% keyword%') in the `admin panel <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ using the user table joined with the table of profiles (using LEFT JOIN).
 
-Moreover, the search criteria should be combined with the OR condition, this leads to a complete pass through the attached table for each row of the user table.
+Moreover, the search criteria had to be combined with the OR condition, this leaded to a complete pass through the attached table for each row of the user table.
 There were several million MySQL database entries, and it worked very slowly.
 That version of MySQL did not yet support ngram FULLTEXT index.
 To optimize the query, we had to join the already filtered result from the profile table instead of the entire profile table, by moving the selection criterion to a subquery.
 A similar example can be found in the book «High Performance MySQL» [#hpmysql]_.
-To solve the problem my colleague had to ":doc:`make an adapter for sql-builder Storm ORM <storm-orm>`" like `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
-As a result, it was possible to express an SQL query of any complexity in the interface of django.db.models.query.QuerySet.
+To solve the problem my colleague had to :doc:`make an adapter for sql-builder Storm ORM <storm-orm>` like `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+As a result, it became possible to express an SQL query of any complexity in the interface of django.db.models.query.QuerySet.
 
 
 Implementation of complicated Models for Django Framework
@@ -376,7 +375,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 03 Aug, 2017
+.. update:: 04 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884

@@ -122,7 +122,7 @@ Django ORM поддерживает транзакции, но не поддер
 В той версии MySQL еще не поддерживался ngram FULLTEXT index.
 Для оптимизации запроса нужно было присоединять уже профильтрованную выборку из таблицы профилей, а не всю таблицу профилей, переместив критерий выборки в подзапрос.
 Подобный пример Вы можете найти в книге «High Performance MySQL» [#hpmysql]_.
-Для решения проблемы моему коллеге пришлось ":doc:`сделать адаптер для sqlbuilder Storm ORM <storm-orm>`" наподобие `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+Для решения проблемы моему коллеге пришлось :doc:`сделать адаптер для sqlbuilder Storm ORM <storm-orm>` наподобие `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
 В результате была достигнута возможность выразить SQL-запрос любого уровня сложности в интерфейсе django.db.models.query.QuerySet.
 
 

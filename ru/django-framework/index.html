@@ -209,7 +209,7 @@
 В той версии MySQL еще не поддерживался ngram FULLTEXT index.
 Для оптимизации запроса нужно было присоединять уже профильтрованную выборку из таблицы профилей, а не всю таблицу профилей, переместив критерий выборки в подзапрос.
 Подобный пример Вы можете найти в книге «High Performance MySQL» <a class="footnote-reference" href="#hpmysql" id="id9">[4]</a>.
-Для решения проблемы моему коллеге пришлось &#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">сделать адаптер для sqlbuilder Storm ORM</span></a>&#8221; наподобие <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">sqlalchemy-django-query</a>.
+Для решения проблемы моему коллеге пришлось <a class="reference internal" href="../storm-orm/"><span class="doc">сделать адаптер для sqlbuilder Storm ORM</span></a> наподобие <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">sqlalchemy-django-query</a>.
 В результате была достигнута возможность выразить SQL-запрос любого уровня сложности в интерфейсе django.db.models.query.QuerySet.</p>
 </div>
 <div class="section" id="id10">
