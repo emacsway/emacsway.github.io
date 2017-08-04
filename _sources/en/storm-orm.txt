@@ -19,55 +19,60 @@ I began using `KISS`_-style `Storm ORM`_ for enterprise applications on Python, 
 My requirements for ORM
 =======================
 
-\- **Quickness**. ORM should be fast.
-ORM should have `Identity Map`_ to prevent duplicated queries to DB if the object is already loaded to the memory.
-This is important for case when several isolated scopes are trying to load the same object to the own namespace.
-Also, I think, `Identity Map`_ should be configurable for different transaction isolation levels, for example, to prevent query to DB when object does not exist and transaction isolation level is "Serializable".
+Quickness
+    ORM should be fast.
+    ORM should have `Identity Map`_ to prevent duplicated queries to DB if the object is already loaded to the memory.
+    This is important for case when several isolated scopes are trying to load the same object to the own namespace.
+    Also, I think, `Identity Map`_ should be configurable for different transaction isolation levels, for example, to prevent query to DB when object does not exist and transaction isolation level is "Serializable".
 
-\- **Simplicity**. ORM should not scare you from debugger, you have to understand what it does by browsing the source code.
-Any product sooner or later can be dead, or author can lose the interest in it, thus you should be able to support the product yourself.
-New developers of the team should be able to master the ORM quickly.
-The single source of truth about the code is the code itself.
-Documentation and comments is good, but they are not always comprehensive and actual.
-And often the product should be adapted, extended for your requirements.
-Thus, simplicity is important.
+Simplicity
+    ORM should not scare you from debugger, you have to understand what it does by browsing the source code.
+    Any product sooner or later can be dead, or author can lose the interest in it, thus you should be able to support the product yourself.
+    New developers of the team should be able to master the ORM quickly.
+    The single source of truth about the code is the code itself.
+    Documentation and comments is good, but they are not always comprehensive and actual.
+    And often the product should be adapted, extended for your requirements.
+    Thus, simplicity is important.
 
-\- **Architecture**. Proper separation of abstraction layers, adherence to the basic principles of architecture (such as `SOLID`_).
+Architecture
+    Proper separation of abstraction layers, adherence to the basic principles of architecture (such as `SOLID`_).
 
-If you are not able to use some component of the ORM separately, for example SQLBuilder, then, probably, it would be better to use raw pattern DataMapper_ instead of the ORM.
-Well designed ORM allows you to use its components separately, such as `Query Object`_ (SQLBuilder), Connection, `DataMapper`_, `Identity Map`_, `Unit of Work`_, `Repository`_.
-Does the ORM allow you to use Raw-SQL (entirely or partially)?
-Are you able to use only Data Mapper (without Connection, SQLBuilder etc.)?
-Are you able to substitute the Data Mapper by `Service Stub`_, to be free from DB for testing?
+    If you are not able to use some component of the ORM separately, for example SQLBuilder, then, probably, it would be better to use raw pattern DataMapper_ instead of the ORM.
+    Well designed ORM allows you to use its components separately, such as `Query Object`_ (SQLBuilder), Connection, `DataMapper`_, `Identity Map`_, `Unit of Work`_, `Repository`_.
+    Does the ORM allow you to use Raw-SQL (entirely or partially)?
+    Are you able to use only Data Mapper (without Connection, SQLBuilder etc.)?
+    Are you able to substitute the Data Mapper by `Service Stub`_, to be free from DB for testing?
 
-Usually the possibilities of any ORM have to be expanded.
-Are you able to extend your ORM without monkey-patching, forks, patches?
-Does the ORM follow to the `Open/Closed Principle`_ (OCP)?
+    Usually the possibilities of any ORM have to be expanded.
+    Are you able to extend your ORM without monkey-patching, forks, patches?
+    Does the ORM follow to the `Open/Closed Principle`_ (OCP)?
 
-    "The primary occasion for using Data Mapper is when you want the database schema and the object model to evolve independently. The most common case for this is with a Domain Model (116). Data Mapper's primary benefit is that when working on the domain model you can ignore the database, both in design and in the build and testing process. The domain objects have no idea what the database structure is, because all the correspondence is done by the mappers."
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+        "The primary occasion for using Data Mapper is when you want the database schema and the object model to evolve independently. The most common case for this is with a Domain Model (116). Data Mapper's primary benefit is that when working on the domain model you can ignore the database, both in design and in the build and testing process. The domain objects have no idea what the database structure is, because all the correspondence is done by the mappers."
+        («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-\- `ACID`_. Good ORM takes care of that the object has always been consistent to the record of the DB.
+`ACID`_ and `Two-phase transaction`_
+    Good ORM takes care of that the object has always been consistent to the record of the DB.
 
-Suppose, you have loaded the object in the memory, and then executed transaction commit.
-The object has a lot of references to it, but the object has been updated by a concurrent process.
-If you try to modify the object, the changes of the concurrent process will be lost.
-When you are doing transaction commit, you have to synchronize the object to the record of the DB, and at the same time to keep alive all references to the object.
-See also this `article <http://techspot.zzzeek.org/2012/11/14/pycon-canada-the-sqlalchemy-session-in-depth/>`__ and `presentation <http://techspot.zzzeek.org/files/2012/session.key.pdf>`__.
-To ensure the integrity of data, the transaction support alone is not enough for the application.
-Of course, this is not a critical requirement, but without it you can not completely hide the source of data in the code.
+    Suppose, you have loaded the object in the memory, and then executed transaction commit.
+    The object has a lot of references to it, but the object has been updated by a concurrent process.
+    If you try to modify the object, the changes of the concurrent process will be lost.
+    When you are doing transaction commit, you have to synchronize the object to the record of the DB, and at the same time to keep alive all references to the object.
+    See also this `article <http://techspot.zzzeek.org/2012/11/14/pycon-canada-the-sqlalchemy-session-in-depth/>`__ and `presentation <http://techspot.zzzeek.org/files/2012/session.key.pdf>`__.
+    To ensure the integrity of data, the transaction support alone is not enough for the application.
+    Of course, this is not a critical requirement, but without it you can not completely hide the source of data in the code.
 
-\- **Hiding the data source**. A good ORM allows you to forget about its existence, and handle instances of models as if they were ordinary objects.
-It would not disclose the source of the data by requiring you to explicitly call the method to save the objects.
-It would not oblige you to "reload" objects.
-It makes it easy to replace the mapper, even if you change the relational database to non-relational.
+Hiding the data source
+    A good ORM allows you to forget about its existence, and handle instances of models as if they were ordinary objects.
+    It would not disclose the source of the data by requiring you to explicitly call the method to save the objects.
+    It would not oblige you to "reload" objects.
+    It makes it easy to replace the mapper, even if you change the relational database to non-relational.
 
-Imagine that you have created two new objects, one of which refers to another with foreign key.
-Could you create a link between them before at least one of them had been stored in the database and had been received the primary key?
-Would the value of the foreign key of the associated object be updated when the first object saved and the primary key is received?
+    Imagine that you have created two new objects, one of which refers to another with foreign key.
+    Could you create a link between them before at least one of them had been stored in the database and had been received the primary key?
+    Would the value of the foreign key of the associated object be updated when the first object saved and the primary key is received?
 
-A good ORM prevents the deadlock, because it saves all objects just before the commit, minimizing the time interval from the first save to the commit.
-Also it allows you to influence the order of saving objects, for example, using topological sorting to prevent the deadlock.
+    A good ORM prevents the deadlock, because it saves all objects just before the commit, minimizing the time interval from the first save to the commit.
+    Also it allows you to influence the order of saving objects, for example, using topological sorting to prevent the deadlock.
 
 
 .. _storm-orm-advantages-en:
@@ -215,7 +220,7 @@ The lack of the dedicated class for DataMapper forces you to clutter the domain 
 About ambiguous
 ===============
 
-ACID support has led to the fact that the domain model is not really pure.
+ACID and Two-phase transaction support has led to the fact that the domain model is not really pure.
 The domain model has pure interface, behaves like realy plain object, and is inherited from the ``object`` class.
 In fact, the instance of the model does not contain data, but refers to the data structure through descriptors.
 It's a titanic work to implement it in the KISS style.
@@ -469,7 +474,7 @@ Thirdly, today only the lazy doesn't know about the patterns
 Therefore, I will touch only on two important issues in my opinion:
 
 1. Shold be the data in memory an object or an data structure?
-2. ACID, consistency of the object in memory and its record in the database.
+2. ACID and Two-phase transaction, consistency of the object in memory and its record in the database.
 
 I do not have the unequivocal opinion on the first question.
 We live in the world of objects, and that's why object-oriented programming has emerged.
@@ -546,7 +551,7 @@ The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowle
 
 About the second question.
 
-Of all the ORMs that I met in my practice (not only in Python), ACID support in Storm ORM and SQLAlchemy is implemented in the best way.
+Of all the ORMs that I met in my practice (not only in Python), ACID and Two-phase transaction support in Storm ORM and SQLAlchemy is implemented in the best way.
 Most of the existing ORM do not even try to solve this issue.
 
 Martin Fowler reasoning on this point in the article "`Orm Hate`_".
@@ -618,6 +623,7 @@ Storm ORM is the tool for highly skilled professionals who understand its superi
 .. _SRP: `Single responsibility principle`_
 
 .. _ACID: https://en.wikipedia.org/wiki/ACID
+.. _Two-phase transaction: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
 .. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29
 .. _Composite pattern: https://en.wikipedia.org/wiki/Composite_pattern
 .. _DRY: https://en.wikipedia.org/wiki/Don't_repeat_yourself

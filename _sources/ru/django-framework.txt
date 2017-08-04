@@ -70,7 +70,7 @@ Django ORM не реализует паттерна `Identity Map`_, и, как 
 
 Мало того, что Вы получаете несколько экземпляров одного и тоже же объекта в памяти потока, что может привести к утрате данных из-за рассинхронизации состояния этих экземпляров, так эти экземпляры еще и никак не согласовываются с их записами в БД в момент фиксации (отката) транзакции.
 
-Django ORM поддерживает транзакции, но не поддерживает транзакционной согласованности данных, в отличии от Storm ORM / SQLAlchemy.
+Django ORM поддерживает транзакции, но не поддерживает транзакционной согласованности данных (`ACID`_, `Two-phase transaction`_), в отличии от Storm ORM / SQLAlchemy.
 Вы должны самостоятельно заботиться о состоянии экземпляров моделей в памяти в момент фиксации (отката) транзакции.
 
 Так например, если Вы используете уровень изоляции транзакции "Repeatable read", то после фиксации транзакции состояние Ваших экземпляров моделей в памяти может утратить актуальность.
@@ -399,6 +399,7 @@ This article in English ":doc:`../en/django-framework`".
 .. _Unit of Work: http://martinfowler.com/eaaCatalog/unitOfWork.html
 
 .. _ACID: https://en.wikipedia.org/wiki/ACID
+.. _Two-phase transaction: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
 .. _Deadlock: https://en.wikipedia.org/wiki/Deadlock
 .. _Single responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 

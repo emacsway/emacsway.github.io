@@ -70,7 +70,7 @@ Transactional consistency of data
 Django allows you to create multiple instances of the same domain object in the thread's memory, and this can lead to data loss due to the dissynchronization of the state of these instances.
 Worse still, these instances do not synchronize their state with their records in the database at the time of the commit (rollback) of the transaction.
 
-Django supports transactions, but does not support the transactional consistency of the data, unlike the Storm ORM / SQLAlchemy.
+Django supports transactions, but does not support the transactional consistency of the data (`ACID`_, `Two-phase transaction`_) unlike the Storm ORM / SQLAlchemy.
 You have to take care about the state model instances in the memory at the time of the commit (rollback) of the transaction.
 
 For example, if you use the transaction isolation level "Repeatable read", after the transaction is committed, the status of your model instances in the memory may become outdated.
@@ -397,6 +397,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
 .. _Unit of Work: http://martinfowler.com/eaaCatalog/unitOfWork.html
 
 .. _ACID: https://en.wikipedia.org/wiki/ACID
+.. _Two-phase transaction: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
 .. _Deadlock: https://en.wikipedia.org/wiki/Deadlock
 .. _Single responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 
