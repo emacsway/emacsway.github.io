@@ -4,11 +4,12 @@ Design of Service Layer
 
 .. post:: Jul 17, 2017
    :language: en
-   :tags: Design, Architecture
+   :tags: Design, Architecture, ORM, Django Model
    :category:
    :author: Ivan Zakrevsky
 
 This article is devoted to the issues of designing `Service Layer`_ and considers the widespread mistakes.
+
 
 .. contents:: Contents
 
@@ -351,7 +352,7 @@ Problems of Django annotation
 I often observed the problem when a new field was added to the Django Model, and multiple problems started to occur, since this name was already used either with the annotation interface or with Raw-SQL.
 Also, the implementation of annotations by Django ORM makes it impossible to use the pattern `Identity Map`_.
 Storm ORM / SQLAlchemy implement annotations more successfully.
-If you still had to work with Django ORM, refrain from using Django annotation mechanism in favor of bare pattern `DataMapper`_.
+If you still had to work with Django Model, refrain from using Django annotation mechanism in favor of bare pattern `DataMapper`_.
 
 
 Services of infrastructure layer

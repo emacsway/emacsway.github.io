@@ -1,7 +1,7 @@
 
 .. post:: Oct 10, 2015
    :language: en
-   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python
+   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python, Django Model
    :category:
    :author: Ivan Zakrevsky
 
@@ -89,7 +89,7 @@ Storm ORM can be extended, but not improved.
 `Commits occur regularly <https://code.launchpad.net/storm>`__.
 But they can be described as "polishing".
 
-Storm ORM supports composite keys and relations (after Django ORM I sighed with relief).
+Storm ORM supports composite keys and relations (after Django Models I sighed with relief).
 
 It allows you to express SQL queries of almost any complexity (at least constructively).
 
@@ -189,7 +189,7 @@ Disadvantages
 There were three cases in my practice, when I had to add a few features to Storm ORM, which already was implemented by SQLAlchemy (or its community).
 
 1. `Bulk inserting of objects <http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects>`__, moreover, using the clause ON DUPLICATE KEY UPDATE.
-2. Adaptation of `SQL Builder for interface of Django ORM <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+2. Adaptation of `SQL Builder for interface of django.db.models.query.QuerySet <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
 3. Support the pattern `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
 
 Storm ORM `does not use thread locking <https://bugs.launchpad.net/storm/+bug/1412845>`__ for lazy modification of critical global metadata.

@@ -4,7 +4,7 @@ About my experience of using Django Framework
 
 .. post:: Jul 26, 2017
    :language: en
-   :tags: Django, ORM, Python
+   :tags: Django, ORM, Python, Django Model
    :category:
    :author: Ivan Zakrevsky
    :exclude:

@@ -1,7 +1,7 @@
 
 .. post:: Oct 10, 2015
    :language: ru
-   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python
+   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python, Django Model
    :category:
    :author: Ivan Zakrevsky
 
@@ -88,7 +88,7 @@
 `Коммиты происходят регулярно <https://code.launchpad.net/storm>`__.
 Но их можно охарактеризовать как "вылизывание", или "полирование".
 
-Storm ORM поддерживает композитные ключи и связи (после Django ORM я облегченно вздохнул).
+Storm ORM поддерживает композитные ключи и связи (после Django Models я облегченно вздохнул).
 
 Позволяет выражать SQL-запросы практически любой сложности (по крайней мере, конструктивно).
 
@@ -187,7 +187,7 @@ Storm ORM контрастирует своей простотой на фоне
 В моей практике было три случая, когда в Storm ORM требовалось "допиливать" то, что SQLAlchemy (или ее сообщество) предоставляет в готовом виде.
 
 1. `Массовая вставка объектов <http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects>`__, причем, с условием ON DUPLICATE KEY UPDATE.
-2. Адаптация `SQL Builder под интерфейс Django ORM <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+2. Адаптация `SQL Builder под интерфейс django.db.models.query.QuerySet <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
 3. Поддержка паттерна `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
 
 В Storm ORM `нет блокировки потоков <https://bugs.launchpad.net/storm/+bug/1412845>`__ при ленивой модификации критически важных глобальных метаданных.

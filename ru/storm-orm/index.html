@@ -170,7 +170,7 @@ ORM должен иметь <a class="reference external" href="http://martinfow
 Но не изменить.
 <a class="reference external" href="https://code.launchpad.net/storm">Коммиты происходят регулярно</a>.
 Но их можно охарактеризовать как &#8220;вылизывание&#8221;, или &#8220;полирование&#8221;.</p>
-<p>Storm ORM поддерживает композитные ключи и связи (после Django ORM я облегченно вздохнул).</p>
+<p>Storm ORM поддерживает композитные ключи и связи (после Django Models я облегченно вздохнул).</p>
 <p>Позволяет выражать SQL-запросы практически любой сложности (по крайней мере, конструктивно).</p>
 <p>Работает с любым количеством БД.</p>
 <p>Реализует <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern, а значит классы моделей свободны от метаданных и логики доступа к БД, как это свойственно для <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
@@ -246,7 +246,7 @@ Storm ORM контрастирует своей простотой на фоне
 <p>В моей практике было три случая, когда в Storm ORM требовалось &#8220;допиливать&#8221; то, что SQLAlchemy (или ее сообщество) предоставляет в готовом виде.</p>
 <ol class="arabic simple">
 <li><a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects">Массовая вставка объектов</a>, причем, с условием ON DUPLICATE KEY UPDATE.</li>
-<li>Адаптация <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">SQL Builder под интерфейс Django ORM</a>.</li>
+<li>Адаптация <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">SQL Builder под интерфейс django.db.models.query.QuerySet</a>.</li>
 <li>Поддержка паттерна <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance">Concrete Table Inheritance</a></li>
 </ol>
 <p>В Storm ORM <a class="reference external" href="https://bugs.launchpad.net/storm/+bug/1412845">нет блокировки потоков</a> при ленивой модификации критически важных глобальных метаданных.
@@ -711,7 +711,11 @@ it all up, the domain developers lose their ability to chunk the model into mean
       
     
       
-      <a href="../../blog/tag/python/">Python</a>
+      <a href="../../blog/tag/python/">Python</a>,
+      
+    
+      
+      <a href="../../blog/tag/django-model/">Django Model</a>
       
     </li>
   
@@ -802,6 +806,11 @@ it all up, the domain developers lose their ability to chunk the model into mean
       
     
       
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/django-model/">Django Model</a></li>
+      
+    
+      
       <li class="ablog-cloud ablog-cloud-1">
         <a href="../../blog/tag/emacs/">Emacs</a></li>
       
@@ -814,7 +823,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/orm/">ORM</a></li>
       
     

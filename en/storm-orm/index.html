@@ -171,7 +171,7 @@ For three years of investigation of the source code of Storm ORM, I did not find
 Storm ORM can be extended, but not improved.
 <a class="reference external" href="https://code.launchpad.net/storm">Commits occur regularly</a>.
 But they can be described as &#8220;polishing&#8221;.</p>
-<p>Storm ORM supports composite keys and relations (after Django ORM I sighed with relief).</p>
+<p>Storm ORM supports composite keys and relations (after Django Models I sighed with relief).</p>
 <p>It allows you to express SQL queries of almost any complexity (at least constructively).</p>
 <p>It works with any number of databases.</p>
 <p>It implements <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern, which means classes of models free of metadata and database access logic, as if it were <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
@@ -248,7 +248,7 @@ Otherwise, SQLAlchemy becomes preferable, even despite the level of complexity, 
 <p>There were three cases in my practice, when I had to add a few features to Storm ORM, which already was implemented by SQLAlchemy (or its community).</p>
 <ol class="arabic simple">
 <li><a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects">Bulk inserting of objects</a>, moreover, using the clause ON DUPLICATE KEY UPDATE.</li>
-<li>Adaptation of <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">SQL Builder for interface of Django ORM</a>.</li>
+<li>Adaptation of <a class="reference external" href="https://github.com/mitsuhiko/sqlalchemy-django-query">SQL Builder for interface of django.db.models.query.QuerySet</a>.</li>
 <li>Support the pattern <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance">Concrete Table Inheritance</a></li>
 </ol>
 <p>Storm ORM <a class="reference external" href="https://bugs.launchpad.net/storm/+bug/1412845">does not use thread locking</a> for lazy modification of critical global metadata.
@@ -710,7 +710,11 @@ Too many existing ORMs create more &#8220;code smells&#8221; in the code than it
       
     
       
-      <a href="../../blog/tag/python/">Python</a>
+      <a href="../../blog/tag/python/">Python</a>,
+      
+    
+      
+      <a href="../../blog/tag/django-model/">Django Model</a>
       
     </li>
   
@@ -801,6 +805,11 @@ Too many existing ORMs create more &#8220;code smells&#8221; in the code than it
       
     
       
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/django-model/">Django Model</a></li>
+      
+    
+      
       <li class="ablog-cloud ablog-cloud-1">
         <a href="../../blog/tag/emacs/">Emacs</a></li>
       
@@ -813,7 +822,7 @@ Too many existing ORMs create more &#8220;code smells&#8221; in the code than it
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/orm/">ORM</a></li>
       
     
