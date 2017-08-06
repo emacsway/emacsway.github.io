@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Fri, 04 Aug 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Sun, 06 Aug 2017 00:00:00 GMT" />
         
             <meta name="description" content="Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings." />
         
@@ -104,7 +104,7 @@ With a competent approach, you can use all the advantages of Django and not beco
 <li><a class="reference internal" href="#identity-map" id="id17">Identity Map</a></li>
 <li><a class="reference internal" href="#transactional-consistency-of-data" id="id18">Transactional consistency of data</a></li>
 <li><a class="reference internal" href="#service-layer-and-django-db-models-manager" id="id19">Service Layer and django.db.models.Manager</a></li>
-<li><a class="reference internal" href="#composite-foreign-keys-and-django-orm" id="id20">Composite foreign keys and Django ORM</a></li>
+<li><a class="reference internal" href="#composite-foreign-keys-and-django-models" id="id20">Composite foreign keys and Django Models</a></li>
 <li><a class="reference internal" href="#building-of-complicated-sql-queries-for-django-orm" id="id21">Building of complicated SQL-queries for Django ORM</a></li>
 <li><a class="reference internal" href="#implementation-of-complicated-models-for-django-framework" id="id22">Implementation of complicated Models for Django Framework</a></li>
 <li><a class="reference internal" href="#third-party-tools" id="id23">Third-party tools</a><ul>
@@ -142,13 +142,13 @@ With a competent approach, you can use all the advantages of Django and not beco
 <h2><a class="toc-backref" href="#id15">Semantic coupling of model validation</a><a class="headerlink" href="#semantic-coupling-of-model-validation" title="Permalink to this headline">¶</a></h2>
 <p>The principle of &#8220;Defensive Programming&#8221; <a class="footnote-reference" href="#fncodec" id="id1">[2]</a> requires making it impossible to create an invalid object.
 You must use object setters for validation.
-In Django, we have to explicitly call the method <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean">Model.full_clean()</a> of an object before saving, that, of course, often no one does, and this often leads to various troubles.
+In Django Model, we have to explicitly call the method <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean">Model.full_clean()</a> of an object before saving, that, of course, often no one does, and this often leads to various troubles.
 This problem is known as &#8220;Semantic Coupling&#8221; as well as &#8220;G22: Make Logical Dependencies Physical&#8221; <a class="footnote-reference" href="#fnccode" id="id2">[1]</a> and &#8220;G31: Hidden Temporal Couplings&#8221; <a class="footnote-reference" href="#fnccode" id="id3">[1]</a>.
 You can solve this problem technically, but usually it&#8217;s enough just to follow the development discipline.</p>
 </div>
 <div class="section" id="active-record">
 <h2><a class="toc-backref" href="#id16">Active Record</a><a class="headerlink" href="#active-record" title="Permalink to this headline">¶</a></h2>
-<p>Django ORM implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which makes it easy to use due to violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP) principle, for this reason it is often called antipattern.
+<p>Django Model implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which makes it easy to use due to violation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a> (SRP) principle, for this reason it is often called antipattern.
 This pattern mixes business logic and data access logic in one class.
 Unfortunately, this simplicity is appropriate only in simple cases.
 In a more serious application, there are more problems than advantages.</p>
@@ -187,9 +187,9 @@ Unskilful use of transactions can lead to the loss of parallel changes, and skil
 <p>A common mistake is using the django.db.models.Manager class as a Service Layer.
 This question was considered in detail in the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.</p>
 </div>
-<div class="section" id="composite-foreign-keys-and-django-orm">
-<h2><a class="toc-backref" href="#id20">Composite foreign keys and Django ORM</a><a class="headerlink" href="#composite-foreign-keys-and-django-orm" title="Permalink to this headline">¶</a></h2>
-<p>As you can see from the ticket <a class="reference external" href="https://code.djangoproject.com/ticket/373">#373</a> and the discussion of &#8220;<a class="reference external" href="https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys">Multi-Column Primary Key support</a>&#8221;, Django ORM does not yet support composite relations.</p>
+<div class="section" id="composite-foreign-keys-and-django-models">
+<h2><a class="toc-backref" href="#id20">Composite foreign keys and Django Models</a><a class="headerlink" href="#composite-foreign-keys-and-django-models" title="Permalink to this headline">¶</a></h2>
+<p>As you can see from the ticket <a class="reference external" href="https://code.djangoproject.com/ticket/373">#373</a> and the discussion of &#8220;<a class="reference external" href="https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys">Multi-Column Primary Key support</a>&#8221;, Django Model does not yet support composite relations.</p>
 <p>This means that you have to create surrogate keys, which can cause certain difficulties in the integration of an existing database, or you have to use one of these libraries:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://pypi.python.org/pypi/django-compositekey">django-compositekey</a></li>
@@ -205,7 +205,7 @@ But you have a choice.</p>
 <p>The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
 In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
 In any case, the details of implementation should be encapsulated within a query factory class.</p>
-<p>In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE &#8216;% keyword%&#8217;) in the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/contrib/admin/">admin panel</a> using the user table joined with the table of profiles (using LEFT JOIN).</p>
+<p>In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE &#8216;% keyword%&#8217;) in the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/contrib/admin/">Django admin panel</a> using the user table joined with the table of profiles (using LEFT JOIN).</p>
 <p>Moreover, the search criteria had to be combined with the OR condition, this leaded to a complete pass through the attached table for each row of the user table.
 There were several million MySQL database entries, and it worked very slowly.
 That version of MySQL did not yet support ngram FULLTEXT index.
@@ -243,7 +243,7 @@ In this case, I just make an implementation in the form of the bare pattern <a c
 </div>
 <div class="section" id="sqlbuilder">
 <h3><a class="toc-backref" href="#id25">SQLBuilder</a><a class="headerlink" href="#sqlbuilder" title="Permalink to this headline">¶</a></h3>
-<p>To build complicated queries for Django ORM, I usually use the library <a class="reference external" href="http://sqlbuilder.readthedocs.io/en/latest/">sqlbuilder</a>.</p>
+<p>To build complicated queries for Django Model, I usually use the library <a class="reference external" href="http://sqlbuilder.readthedocs.io/en/latest/">sqlbuilder</a>.</p>
 <p>Good manners require you to create a separate factory class for each query to hide implementation details from the application.
 Within the interface of this class, you can easily replace one implementation with another.</p>
 </div>
@@ -263,7 +263,7 @@ Other generators <a class="reference external" href="https://djangopackages.org/
 </div>
 <div class="section" id="cache-invalidation">
 <h2><a class="toc-backref" href="#id28">Cache invalidation</a><a class="headerlink" href="#cache-invalidation" title="Permalink to this headline">¶</a></h2>
-<p>Django ORM implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which forces us to explicitly call <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save">Model.save()</a> method.
+<p>Django Model implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern, which forces us to explicitly call <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save">Model.save()</a> method.
 The problem is that the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/signals/#post-save">post_save</a> and <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete">pre_delete</a> signals are often used by developers to invalidate the cache.
 This is not quite the right way, since Django ORM does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> pattern, and the time between saving and committing the transaction is sufficient to parallel thread could recreate the cache with outdated data.</p>
 <p>On the Internet, you can find libraries that allow you to send a signal when the transaction is committed (use search query &#8220;django commit signal&#8221; on pypi.python.org).
@@ -297,7 +297,7 @@ The same example on the <a class="reference external" href="https://gist.github.
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id31">SQLAlchemy</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>The huge advantage of Django REST framework is that it is ORM agnostic.
-It has perfect interfacing with Django ORM, but it can easily work with a bare implementation of the Data Mapper pattern which returns a <a class="reference external" href="https://docs.python.org/2/library/collections.html#collections.namedtuple">namedtuple</a> collection for some <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
+It has perfect interfacing with Django Models, but it can easily work with a bare implementation of the Data Mapper pattern which returns a <a class="reference external" href="https://docs.python.org/2/library/collections.html#collections.namedtuple">namedtuple</a> collection for some <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 It also has good integration with <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> in the form of a third-party application <a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> (<a class="reference external" href="http://djangorest-alchemy.readthedocs.io/en/latest/">docs</a>).
 See also <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/2439">discussion of the integration</a>.</p>
 </div>
@@ -351,7 +351,7 @@ But this decision did not suit me, and I had done a complete declarative data ma
 <div class="section" id="advantages">
 <h2><a class="toc-backref" href="#id37">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
 <p>Django has a successful <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>, which is a kind of the pattern <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, fairly successful forms and template (if you use <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
-<p>Despite all the shortcomings of Django ORM, its query building interface is well suited for the REST API.</p>
+<p>Despite all the shortcomings of Django Models, its query building interface is well suited for the REST API.</p>
 <p>Django has a huge community with a huge number of ready-made applications.
 It is very easy to find developers (and outsourcing companies) for Django and Django REST framework.</p>
 <p>Django declares such a way of development, which is not exacting to the skill level of developers.</p>
@@ -413,7 +413,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Aug 04, 2017</p>
+<p class="first last admonition-title">Updated on Aug 06, 2017</p>
 </div>
 </div>
 
@@ -501,7 +501,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Aug 04, 2017</li>
+    Aug 06, 2017</li>
   
 
   

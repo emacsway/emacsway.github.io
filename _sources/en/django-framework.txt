@@ -20,7 +20,9 @@ Django framework, of course, brings some trouble, but at the same time it allows
 In other words, Django framework makes software development cheaper.
 With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
 
+
 .. contents:: Contents
+
 
 Django ORM brings the most trouble, so we'll start with it.
 
@@ -34,7 +36,7 @@ Semantic coupling of model validation
 
 The principle of "Defensive Programming" [#fncodec]_ requires making it impossible to create an invalid object.
 You must use object setters for validation.
-In Django, we have to explicitly call the method `Model.full_clean() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean>`_ of an object before saving, that, of course, often no one does, and this often leads to various troubles.
+In Django Model, we have to explicitly call the method `Model.full_clean() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.full_clean>`_ of an object before saving, that, of course, often no one does, and this often leads to various troubles.
 This problem is known as "Semantic Coupling" as well as "G22: Make Logical Dependencies Physical" [#fnccode]_ and "G31: Hidden Temporal Couplings" [#fnccode]_.
 You can solve this problem technically, but usually it's enough just to follow the development discipline.
 
@@ -42,7 +44,7 @@ You can solve this problem technically, but usually it's enough just to follow t
 Active Record
 -------------
 
-Django ORM implements the `ActiveRecord`_ pattern, which makes it easy to use due to violation of the `Single responsibility principle`_ (SRP) principle, for this reason it is often called antipattern.
+Django Model implements the `ActiveRecord`_ pattern, which makes it easy to use due to violation of the `Single responsibility principle`_ (SRP) principle, for this reason it is often called antipattern.
 This pattern mixes business logic and data access logic in one class.
 Unfortunately, this simplicity is appropriate only in simple cases.
 In a more serious application, there are more problems than advantages.
@@ -95,10 +97,10 @@ A common mistake is using the django.db.models.Manager class as a Service Layer.
 This question was considered in detail in the article ":doc:`service-layer`".
 
 
-Composite foreign keys and Django ORM
--------------------------------------
+Composite foreign keys and Django Models
+----------------------------------------
 
-As you can see from the ticket `#373 <https://code.djangoproject.com/ticket/373>`_ and the discussion of "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM does not yet support composite relations.
+As you can see from the ticket `#373 <https://code.djangoproject.com/ticket/373>`_ and the discussion of "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django Model does not yet support composite relations.
 
 This means that you have to create surrogate keys, which can cause certain difficulties in the integration of an existing database, or you have to use one of these libraries:
 
@@ -118,7 +120,7 @@ The capabilities of the Django ORM interface are not enough to build complicated
 In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
 In any case, the details of implementation should be encapsulated within a query factory class.
 
-In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE '% keyword%') in the `admin panel <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ using the user table joined with the table of profiles (using LEFT JOIN).
+In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE '% keyword%') in the `Django admin panel <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ using the user table joined with the table of profiles (using LEFT JOIN).
 
 Moreover, the search criteria had to be combined with the OR condition, this leaded to a complete pass through the attached table for each row of the user table.
 There were several million MySQL database entries, and it worked very slowly.
@@ -169,7 +171,7 @@ Django has several applications for SQLAlchemy integration:
 SQLBuilder
 ^^^^^^^^^^
 
-To build complicated queries for Django ORM, I usually use the library `sqlbuilder <http://sqlbuilder.readthedocs.io/en/latest/>`_.
+To build complicated queries for Django Model, I usually use the library `sqlbuilder <http://sqlbuilder.readthedocs.io/en/latest/>`_.
 
 Good manners require you to create a separate factory class for each query to hide implementation details from the application.
 Within the interface of this class, you can easily replace one implementation with another.
@@ -194,7 +196,7 @@ Other generators `can be found <https://djangopackages.org/grids/g/fixtures/>`__
 Cache invalidation
 ------------------
 
-Django ORM implements the `ActiveRecord`_ pattern, which forces us to explicitly call `Model.save() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save>`_ method.
+Django Model implements the `ActiveRecord`_ pattern, which forces us to explicitly call `Model.save() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save>`_ method.
 The problem is that the `post_save <https://docs.djangoproject.com/en/1.11/ref/signals/#post-save>`_ and `pre_delete <https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete>`_ signals are often used by developers to invalidate the cache.
 This is not quite the right way, since Django ORM does not use the `Unit of Work`_ pattern, and the time between saving and committing the transaction is sufficient to parallel thread could recreate the cache with outdated data.
 
@@ -241,7 +243,7 @@ SQLAlchemy
 ----------
 
 The huge advantage of Django REST framework is that it is ORM agnostic.
-It has perfect interfacing with Django ORM, but it can easily work with a bare implementation of the Data Mapper pattern which returns a `namedtuple`_ collection for some `Data Transfer Object`_.
+It has perfect interfacing with Django Models, but it can easily work with a bare implementation of the Data Mapper pattern which returns a `namedtuple`_ collection for some `Data Transfer Object`_.
 It also has good integration with `SQLAlchemy`_ in the form of a third-party application `djangorest-alchemy <https://github.com/dealertrack/djangorest-alchemy>`_ (`docs <http://djangorest-alchemy.readthedocs.io/en/latest/>`__).
 See also `discussion of the integration <https://github.com/encode/django-rest-framework/issues/2439>`__.
 
@@ -309,7 +311,7 @@ Advantages
 
 Django has a successful `View <https://docs.djangoproject.com/en/1.11/topics/http/views/>`__, which is a kind of the pattern `Page Controller`_, fairly successful forms and template (if you use `django.template.loaders.cached.Loader <https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader>`_).
 
-Despite all the shortcomings of Django ORM, its query building interface is well suited for the REST API.
+Despite all the shortcomings of Django Models, its query building interface is well suited for the REST API.
 
 Django has a huge community with a huge number of ready-made applications.
 It is very easy to find developers (and outsourcing companies) for Django and Django REST framework.
@@ -374,7 +376,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 04 Aug, 2017
+.. update:: 06 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
