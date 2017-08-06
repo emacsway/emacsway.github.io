@@ -53,7 +53,7 @@ Preferences
 * Approaches: TDD, OOP, OOD, DDD, XP, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling, High Cohesion, SRP, OCP, SOLID, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Flask, also used Tornado, Twisted, Ruby on Rails, etc.
-* JavaScript Frameworks: Dojo, jQuery, Angular.
+* JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2.
 * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
 * Bug-tracking: Trac (mainly), Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.

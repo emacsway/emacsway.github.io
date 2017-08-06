@@ -2,4 +2,5 @@ User-Agent: *
 Disallow: /about/
 Disallow: /_images/me.jpg
 Disallow: /_website/_sources/
+sitemap: https://emacsway.github.io/sitemap.xml
 Host: https://emacsway.github.io

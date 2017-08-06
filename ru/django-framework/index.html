@@ -225,7 +225,7 @@
 Ведь если в потоке может быть только один экземпляр объекта, то его состояние не может нести никаких отличий для каждого конкретного запроса.</p>
 <p>Вот почему важно скрывать детали реализации доступа к данным посредством слоя <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> или <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>.
 В таком случае я просто выполняю реализацию в виде голого паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> и чистой <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>.</p>
-<p>Как показывает практика, обычно такие случаи не превышают 10%, что не настолько существенно для отказа от Django ORM, ибо привлекательность легкого поиска специалистов все равно перевешивает.</p>
+<p>Как показывает практика, обычно такие случаи не превышают 10% (редко они достигают 30%), что не настолько существенно для отказа от Django ORM, ибо привлекательность легкого поиска специалистов все равно перевешивает.</p>
 </div>
 <div class="section" id="id12">
 <h2><a class="toc-backref" href="#id40">Сторонние инструменты</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
@@ -308,7 +308,7 @@ accidental complexity from proliferating needlessly.
 </div>
 <div class="section" id="openapi-swagger">
 <h2><a class="toc-backref" href="#id49">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
-<p>Django REST framework позволяет <a class="reference external" href="www.django-rest-framework.org/api-guide/schemas/">генерировать схему</a> в формате OpenAPI и интегрируется с <a class="reference external" href="https://swagger.io/">swagger</a> с помощью библиотеки <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a>.</p>
+<p>Django REST framework позволяет <a class="reference external" href="http://www.django-rest-framework.org/api-guide/schemas/">генерировать схему</a> в формате OpenAPI и интегрируется с <a class="reference external" href="https://swagger.io/">swagger</a> с помощью библиотеки <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a>.</p>
 <p>Это открывает неограниченные возможности по генерированию <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">стабов</a> для клиента и позволяет использовать один из существующих генераторов стабов для swagger.
 Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.</p>
 <p>Схема OpenAPI также может быть использована для автоматической генерации тестов, например, с помощью <a class="reference external" href="https://github.com/svanoort/pyresttest">pyresttest</a>.</p>

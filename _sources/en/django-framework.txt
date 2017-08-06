@@ -249,7 +249,7 @@ See also `discussion of the integration <https://github.com/encode/django-rest-f
 OpenAPI и Swagger
 -----------------
 
-Django REST framework allows you to `generate scheme OpenAPI <www.django-rest-framework.org/api-guide/schemas/>`_ and integrates with `swagger <https://swagger.io/>`_ using the `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_ library.
+Django REST framework allows you to `generate scheme OpenAPI <http://www.django-rest-framework.org/api-guide/schemas/>`_ and integrates with `swagger <https://swagger.io/>`_ using the `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_ library.
 
 This opens up unlimited possibilities for generating `Service Stub`_ for clients and also allows using one of the existing stab generators for swagger.
 This allows you to test client-side without any server-side implementation, divide the responsibility between client-side and server-side developers, quickly find the cause of problems, freeze the communication protocol, and, most importantly, allows you to develop client-side in parallel even if server-side implementation is not finished yet.
