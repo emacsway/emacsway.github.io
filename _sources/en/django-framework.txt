@@ -4,12 +4,12 @@ About my experience of using Django Framework
 
 .. post:: Jul 26, 2017
    :language: en
-   :tags: Django, ORM
+   :tags: Django, ORM, Python
    :category:
    :author: Ivan Zakrevsky
    :exclude:
 
-   Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
+   Django framework by Python allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
 
 At one time, someone beautifully said that security is a balance between the cost of protection and the potential benefits of hacking.
 There is no sense to exceed this balance.
@@ -17,7 +17,7 @@ There is no sense to exceed this balance.
 Taking a decision on IT-technologies, we are also trying to find a balance between the costs of maintaining technology (including search and training of new staff) and the functionality that is being acquired.
 
 Django framework, of course, brings some trouble, but at the same time it allows you to solve a huge range of tasks quickly and easily find the developers.
-In other words, Django framework makes software development cheaper.
+In other words, Django framework makes software development by Python cheaper.
 With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
 
 
@@ -27,8 +27,8 @@ With a competent approach, you can use all the advantages of Django and not beco
 Django ORM brings the most trouble, so we'll start with it.
 
 
-Django ORM problems and their solutions
-=======================================
+Django Models problems and their solutions
+==========================================
 
 
 Semantic coupling of model validation
@@ -308,6 +308,8 @@ Advantages and disadvantages of Django Framework
 
 Advantages
 ----------
+
+Django framework is written by the great programming language Python.
 
 Django has a successful `View <https://docs.djangoproject.com/en/1.11/topics/http/views/>`__, which is a kind of the pattern `Page Controller`_, fairly successful forms and template (if you use `django.template.loaders.cached.Loader <https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader>`_).
 
