@@ -85,6 +85,7 @@ Articles in English:
 
 Articles in Russian:
 
+* «:doc:`ru/javascript-and-repository-pattern`»
 * «:doc:`ru/django-framework`»
 * «:doc:`ru/service-layer`»
 * «:doc:`ru/cache-dependencies`»
