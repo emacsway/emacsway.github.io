@@ -212,8 +212,7 @@ Domain-Driven Design подходит к связям более строго, �
 Конечно, мы можем эмулировать объекты даже в функциональных языках программирования с помощью замыканий, см. статью "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
 Тут нельзя обойти вниманием замечательную книгу "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick и главу "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" в книге «Code Complete» [#fncodec]_.
 
-    Абстрактный тип данных (АТД) — это набор, включающий данные и выполняе-
-    выполняемые над ними операции.
+    Абстрактный тип данных (АТД) — это набор, включающий данные и выполняемые над ними операции.
 
     An abstract data type is a collection of data and operations that work on that data.
     («Code Complete» [#fncodec]_)
