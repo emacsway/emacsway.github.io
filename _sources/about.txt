@@ -124,6 +124,7 @@ Bibliography
     * «An Introduction to Database Systems» by C.J. Date
     * «Extreme Programming Explained» by Kent Beck
     * «Test-Driven Development By Example» by Kent Beck
+    * «xUnit Test Patterns. Refactoring Test Code.» by Gerard Meszaros
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» by Craig Larman
     * «Agile Software Development. Principles, Patterns, and Practices.» by Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Implementation Patterns» by Kent Beck

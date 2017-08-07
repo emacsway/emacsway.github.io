@@ -178,6 +178,7 @@ book would be a better tool to help pass on your understanding of refactoring.
 <li>«Pattern-Oriented Software Architecture (known as POSA) by Buschmann, Meunier, Rohnert, Sommerlad, and Sta;</li>
 <li>«Enterprise Integration Patterns» by Hohpe and Woolf.</li>
 <li>«The Design of Sites: Patterns, Principles, and Processes for Crafting a Customer-Centered Web Experience» by Duyne, Landay, and Hong.</li>
+<li>«xUnit Test Patterns. Refactoring Test Code.» <a class="footnote-reference" href="#xutp" id="id23">[7]</a></li>
 </ol>
 <p>Систематизированная форма этих знаний легко входит в привычку, и может сделать работу всей команды согласованной при наименьших затратах времени.</p>
 <blockquote>
@@ -187,12 +188,12 @@ book would be a better tool to help pass on your understanding of refactoring.
 <p>&#8220;As the essential Gang of Four book says, &#8220;Design Patterns ... provide targets for your refactorings.&#8221;
 There is a natural relation between patterns and refactorings.
 Patterns are where you want to be; refactorings are ways to get there from somewhere else.&#8221;
-(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnr" id="id23">[1]</a>)</p>
+(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnr" id="id24">[1]</a>)</p>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="id24">
-<h2>Философия рефакторинга<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id25">
+<h2>Философия рефакторинга<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
 <p>Одно правило мне показалось особенно важным для наших, славянских ребят (включая меня), которые нередко увлекаются поиском совершенства в коде.
 Поэтому я решил его процитировать:</p>
 <blockquote>
@@ -239,7 +240,7 @@ process easier and less stressful. Once you have a broad sense of things that re
 57don&#8217;t even think of the flexible solutions. You have the confidence to refactor if the time comes.
 You build the simplest thing that can possibly work. As for the flexible, complex design, most of
 the time you aren&#8217;t going to need it.&#8221;
-(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnr" id="id25">[1]</a>)</p>
+(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnr" id="id26">[1]</a>)</p>
 </div></blockquote>
 <p>Если подрезюмировать, - то ценность должен представлять не завершенный код, а те принципы, которые позволяют сделать его завершенным.
 Это как в физике.
@@ -260,17 +261,17 @@ This isn’t lazy or irresponsible; it lets us make informed choices with the be
 A premature decision is a decision made with suboptimal knowledge. We will have that
 much less customer feedback, mental reflection on the project, and experience with our
 implementation choices if we decide too soon.&#8221;
-(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id26">[4]</a>)</p>
+(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id27">[4]</a>)</p>
 </div></blockquote>
-<p>См. также &#8220;Speculative Generality&#8221; <a class="footnote-reference" href="#fnr" id="id27">[1]</a>.</p>
+<p>См. также &#8220;Speculative Generality&#8221; <a class="footnote-reference" href="#fnr" id="id28">[1]</a>.</p>
 </div>
-<div class="section" id="id28">
-<h2>Чистота кода кроется в его честности<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id29">
+<h2>Чистота кода кроется в его честности<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
 <p>Следующая фраза заставила меня по новому взглянуть на определение &#8220;чистого кода&#8221;:</p>
 <blockquote>
 <div><p>&#8220;Потратив немного времени на рефакторинг, можно добиться того, что код станет лучше информировать о своей цели. В таком режиме суть программирования состоит в том, чтобы точно сказать, что вы имеете в виду.&#8221;</p>
 <p>&#8220;A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean.&#8221;
-(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnr" id="id29">[1]</a>)</p>
+(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnr" id="id30">[1]</a>)</p>
 </div></blockquote>
 <p>Я пришел к умозаключению, что стремление к чистому коду - это стремление к истине, и предотвращение лжи.
 Основная проблема запутанного кода - введение в заблуждение.
@@ -289,7 +290,7 @@ implementation choices if we decide too soon.&#8221;
 Ненужность лжи кроется в ее бесполезности, и даже вредности, - она отнимает ресурсы.
 Она не нужна.
 Поэтому она портит красоту кода и отнимает эффективность.
-Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id30">[4]</a> много говорит о лжи в коде, и как от нее освободиться.</p>
+Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id31">[4]</a> много говорит о лжи в коде, и как от нее освободиться.</p>
 <p>Представьте себе работу литературного переводчика, который не смог передать литературные художественные образы на другой язык.
 Программы тоже являются языком, пусть и языком программирования.
 Это не значит, что их будут читать только интерпритаторы и компиляторы.
@@ -312,23 +313,23 @@ There is no escape from this logic.
 You cannot write code if you cannot read the surrounding code.
 The code you are trying to write today will be hard or easy to write depending on how hard or easy the surrounding code is to read.
 So if you want to go fast, if you want to get done quickly, if you want your code to be easy to write, make it easy to read.&#8221;
-(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id31">[4]</a>)</p>
+(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fncc" id="id32">[4]</a>)</p>
 </div></blockquote>
 <p>Принцип простоты вылился в целое философское направление <a class="reference external" href="https://en.wikipedia.org/wiki/KISS_principle">KISS principle</a>.</p>
 <p>Деятельность программиста во многом напоминает мне работу скульптора.
 Нужно увидеть образ, и отсечь от него все лишнее.
 Освободить образ, проявить его, т.е. явить его в явь.</p>
 </div>
-<div class="section" id="id32">
-<h2>Тестирование очищает код<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id33">
+<h2>Тестирование очищает код<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
 <p>Все просто. Класс, который делает слишком много и имеет жесткие привязки, сложнее тестировать.
 Класс, соответствующий &#8220;<a class="reference external" href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility principle</a>&#8221;, легче тестировать.
-См. &#8220;Simple Design Rule 1: Runs All the Tests&#8221; <a class="footnote-reference" href="#fncc" id="id33">[4]</a>.</p>
+См. &#8220;Simple Design Rule 1: Runs All the Tests&#8221; <a class="footnote-reference" href="#fncc" id="id34">[4]</a>.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnr" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>, <a class="fn-backref" href="#id6">5</a>, <a class="fn-backref" href="#id7">6</a>, <a class="fn-backref" href="#id12">7</a>, <a class="fn-backref" href="#id13">8</a>, <a class="fn-backref" href="#id16">9</a>, <a class="fn-backref" href="#id23">10</a>, <a class="fn-backref" href="#id25">11</a>, <a class="fn-backref" href="#id27">12</a>, <a class="fn-backref" href="#id29">13</a>)</em> «<a class="reference external" href="http://martinfowler.com/books/refactoring.html">Refactoring: Improving the Design of Existing Code</a>» by <a class="reference external" href="http://martinfowler.com/">Martin Fowler</a>, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>, <a class="fn-backref" href="#id6">5</a>, <a class="fn-backref" href="#id7">6</a>, <a class="fn-backref" href="#id12">7</a>, <a class="fn-backref" href="#id13">8</a>, <a class="fn-backref" href="#id16">9</a>, <a class="fn-backref" href="#id24">10</a>, <a class="fn-backref" href="#id26">11</a>, <a class="fn-backref" href="#id28">12</a>, <a class="fn-backref" href="#id30">13</a>)</em> «<a class="reference external" href="http://martinfowler.com/books/refactoring.html">Refactoring: Improving the Design of Existing Code</a>» by <a class="reference external" href="http://martinfowler.com/">Martin Fowler</a>, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnrre" rules="none">
@@ -346,7 +347,7 @@ So if you want to go fast, if you want to get done quickly, if you want your cod
 <table class="docutils footnote" frame="void" id="fncc" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id26">3</a>, <a class="fn-backref" href="#id30">4</a>, <a class="fn-backref" href="#id31">5</a>, <a class="fn-backref" href="#id33">6</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id27">3</a>, <a class="fn-backref" href="#id31">4</a>, <a class="fn-backref" href="#id32">5</a>, <a class="fn-backref" href="#id34">6</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngof" rules="none">
@@ -359,6 +360,12 @@ So if you want to go fast, if you want to get done quickly, if you want your cod
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="xutp" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id23">[7]</a></td><td>«<a class="reference external" href="https://martinfowler.com/books/meszaros.html">xUnit Test Patterns. Refactoring Test Code.</a>» by Gerard Meszaros</td></tr>
 </tbody>
 </table>
 </div>

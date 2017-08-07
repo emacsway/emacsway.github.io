@@ -114,6 +114,7 @@
 #. «Pattern-Oriented Software Architecture (known as POSA) by Buschmann, Meunier, Rohnert, Sommerlad, and Sta;
 #. «Enterprise Integration Patterns» by Hohpe and Woolf.
 #. «The Design of Sites: Patterns, Principles, and Processes for Crafting a Customer-Centered Web Experience» by Duyne, Landay, and Hong.
+#. «xUnit Test Patterns. Refactoring Test Code.» [#xutp]_
 
 Систематизированная форма этих знаний легко входит в привычку, и может сделать работу всей команды согласованной при наименьших затратах времени.
 
@@ -291,12 +292,14 @@ Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Crafts
 .. [#fncc] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
 .. [#fngof] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 .. [#fnpoeaa] «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+.. [#xutp] «`xUnit Test Patterns. Refactoring Test Code.`_» by Gerard Meszaros
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html
 .. _Refactoring Ruby Edition: http://martinfowler.com/books/refactoringRubyEd.html
 .. _Catalog of Refactorings: http://www.refactoring.com/catalog/
 .. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
+.. _xUnit Test Patterns. Refactoring Test Code.: https://martinfowler.com/books/meszaros.html
 .. _Catalog of Patterns of Enterprise Application Architecture: http://martinfowler.com/eaaCatalog/
 .. _Martin Fowler: http://martinfowler.com/
 
