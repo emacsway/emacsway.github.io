@@ -210,7 +210,7 @@ Domain-Driven Design подходит к связям более строго, �
 - `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
 
 Конечно, мы можем эмулировать объекты даже в функциональных языках программирования с помощью замыканий, см. статью "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
-Тут нельзя обойти вниманием замечательную книгу "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick и главу "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" в книге «Code Complete» [#fncodec]_.
+Тут нельзя обойти вниманием замечательную книгу "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick и главу "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги «Code Complete» [#fncodec]_.
 
     Абстрактный тип данных (АТД) — это набор, включающий данные и выполняемые над ними операции.
 
