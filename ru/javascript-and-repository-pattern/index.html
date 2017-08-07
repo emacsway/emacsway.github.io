@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sun, 06 Aug 2017 19:42:48 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 07 Aug 2017 00:00:00 GMT" />
         
             <meta name="description" content="Хорошая архитектура освобождает Вас от привязки к конкретной реализации. Она позволяет Вам отложить момент принятия решения о реализации, и начать конструирование кода еще не имея этого решения. Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а также всегда можете легко подменить конкретную реализацию на любую другую. Вот эта обязанность возложена на паттерн Repository." />
         
@@ -87,7 +87,7 @@
           <div class="body" role="main">
             
   <div class="section" id="repository-javascript">
-<h1><a class="toc-backref" href="#id16">Реализация паттерна Repository в браузерном JavaScript</a><a class="headerlink" href="#repository-javascript" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id21">Реализация паттерна Repository в браузерном JavaScript</a><a class="headerlink" href="#repository-javascript" title="Permalink to this headline">¶</a></h1>
 <p>Хорошая архитектура освобождает Вас от привязки к конкретной реализации.
 Она позволяет Вам отложить момент принятия решения о реализации, и <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">начать конструирование кода еще не имея этого решения</a>.
 Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а также всегда можете легко подменить конкретную реализацию на любую другую.
@@ -95,11 +95,17 @@
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#repository-javascript" id="id16">Реализация паттерна Repository в браузерном JavaScript</a></li>
-<li><a class="reference internal" href="#domain-model" id="id17">Модель предметной области (Domain Model)</a></li>
-<li><a class="reference internal" href="#id6" id="id18">Парадигма реактивного программирования</a></li>
-<li><a class="reference internal" href="#id7" id="id19">Примеры реализаций</a></li>
-<li><a class="reference internal" href="#id8" id="id20">Реляционные связи</a></li>
+<li><a class="reference internal" href="#repository-javascript" id="id21">Реализация паттерна Repository в браузерном JavaScript</a></li>
+<li><a class="reference internal" href="#domain-model" id="id22">Модель предметной области (Domain Model)</a></li>
+<li><a class="reference internal" href="#id6" id="id23">Парадигма реактивного программирования</a></li>
+<li><a class="reference internal" href="#id7" id="id24">Примеры реализаций паттерна Repository в JavaScript</a></li>
+<li><a class="reference internal" href="#id8" id="id25">Реализация реляционных связей</a><ul>
+<li><a class="reference internal" href="#id9" id="id26">Синхронное программирование</a></li>
+<li><a class="reference internal" href="#id14" id="id27">Асинхронное программирование</a></li>
+<li><a class="reference internal" href="#id16" id="id28">Функциональное программирование</a></li>
+<li><a class="reference internal" href="#id18" id="id29">Реализация связей в виде присваивания</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <p>Таким образом, у Вас появляется полная абстракция от источника данных, будь то REST-API, MBaaS, SaaS, IndexedDB, HTML, сторонний сервис по протоколу JSON-RPC или <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>.</p>
@@ -118,10 +124,10 @@ implementation choices if we decide too soon.&#8221;
 («Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id2">[1]</a>)</p>
 </div></blockquote>
 <p>Кроме того, у Вас появляется возможность реализовать паттерны <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> и <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>.
-Последний очень часто востребован, так как позволяет сохранить на сервере уже полностью завершенный агрегат вложенных объектов, либо выполнить откат состояния локальных объектов в случае, если сохранить данные невозможно (пользователь передумал или ввел невалидные данные).</p>
+Последний очень часто востребован, так как позволяет сохранять на сервере только измененные объекты окончательно сформированного агрегата вложенных объектов, либо выполнить откат состояния локальных объектов в случае, если сохранить данные невозможно (пользователь передумал или ввел невалидные данные).</p>
 </div>
 <div class="section" id="domain-model">
-<h1><a class="toc-backref" href="#id17">Модель предметной области (Domain Model)</a><a class="headerlink" href="#domain-model" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id22">Модель предметной области (Domain Model)</a><a class="headerlink" href="#domain-model" title="Permalink to this headline">¶</a></h1>
 <p>Наибольшим преимуществом полноценных <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Моделей предметной области</a> в программе является возможность использования принципов Domain-Driven Design (DDD) <a class="footnote-reference" href="#fnddd" id="id3">[4]</a>.
 Если Модели содержат исключительно бизнес-логику, и освобождены от служебной логики, то они могут легко читаться специалистами предметной области (т.е. представителем заказчика), что освобождает Вас от создания UML-диаграмм для обсуждений, и позволяет реализовывать модели максимально качественно.</p>
 <p>В одном из проектов я пытался реализовать достаточно сложную доменную логику (которая содержала около 20 доменных Моделей) в парадигме реактивного программирования, когда атрибуты экземпляра Модели изменяли свое значение путем реакции на изменения других моделей.
@@ -147,22 +153,22 @@ it all up, the domain developers lose their ability to chunk the model into mean
 </div></blockquote>
 <p>Это привело к такому огромному количеству хитросплетений слушателей, что превосходство в performance было утрачено, но еще раньше была утрачена читаемость кода.
 Даже я не мог на следующий день сказать что делает тот или иной фрагмент кода, не говоря уже о специалисте предметной области.
-Мало того, что это в корне разрушало DDD, так это еще и в значительной мере <a class="reference internal" href="../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">снижало скорость разработки новых функций проекта</span></a>.</p>
+Мало того, что это в корне разрушало принципы Domain-Driven Design, так это еще и в значительной мере <a class="reference internal" href="../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">снижало скорость разработки новых функций проекта</span></a>.</p>
 <p>Надежды на такой подход окончательно рухнули когда выяснилось, что каждый экземпляр модели должен изменять значения своих атрибутов в зависимости от контекста использования (выбранной группировки отображения или критериев фильтрации).</p>
 <p>Впоследствии модели вернули себе свои концептуальные контуры и читаемость кода, и вместе с тем сохранили механизм реакций при добавлении, изменении или удалении объектов.
 Для достижения этого результата пришлось своими силами создать библиотеку реализующую паттерн Repository, так как существующих решений для реляционных данных с качественной кодовой базой я не смог найти.</p>
 </div>
 <div class="section" id="id6">
-<h1><a class="toc-backref" href="#id18">Парадигма реактивного программирования</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id23">Парадигма реактивного программирования</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
 <p>Сегодня модно увлекаться реактивным программированием.
 Знаете ли Вы, что разработчики dojo впервые <a class="reference external" href="https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35">применили реактивное программирование</a> в своей реализации паттерна Repository еще 13 сентября 2010?</p>
 <p>Реактивное программирование дополняет (а не противопоставляет) паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, о чем красноречиво свидетельствует опыт <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a>, <a class="reference external" href="http://dstorejs.io/">Dstore</a> и нового <a class="reference external" href="https://github.com/dojo/stores">Dojo 2 - data stores</a>.</p>
-<p>Разработчики dojo - команда высококвалифицированных специалистов, их библиотеки используют такие серьезные компании как IBM.
+<p>Разработчики dojo - команда высококвалифицированных специалистов, чьи библиотеки используют такие серьезные компании как IBM.
 Примером того, насколько серьезно и комплексно они подходят к решению проблем, может служить <a class="reference external" href="http://requirejs.org/docs/history.html">история библиотеки RequireJS</a>.</p>
 </div>
 <div class="section" id="id7">
-<h1><a class="toc-backref" href="#id19">Примеры реализаций</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
-<p>Примеры реализации паттерна Repository в проекте <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
+<h1><a class="toc-backref" href="#id24">Примеры реализаций паттерна Repository в JavaScript</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
+<p>Примеры реализации паттерна Repository на JavaScript в проекте <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
 <ul class="simple">
 <li>Angular2: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts</a></li>
 <li>Angular1: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js</a></li>
@@ -179,27 +185,35 @@ it all up, the domain developers lose their ability to chunk the model into mean
 </ul>
 </div>
 <div class="section" id="id8">
-<h1><a class="toc-backref" href="#id20">Реляционные связи</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
-<p>На заре появления ORM, мапперы делали таким образом, чтобы они выбирали одним запросом все связанные объекты (<a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">пример реализации</a>).</p>
-<p>Domain-Driven Design подходит к связям более строго, и рассматривает связи с позиции концептуальных контуров агрегата вложенных объектов <a class="footnote-reference" href="#fnddd" id="id10">[4]</a>.
-Здесь также особую роль играет направление связей, и соблюдение принципа минимальной достаточности.</p>
-<p>С появлением ORM в синхронном программировании активно начали применяться ленивые вычисления для разрешения связей.
-В Python для этого активно используются <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html">Descriptors</a>, а в Java - AOP и Cross-Cutting Concerns <a class="footnote-reference" href="#fnccode" id="id11">[1]</a>.</p>
+<h1><a class="toc-backref" href="#id25">Реализация реляционных связей</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id26">Синхронное программирование</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>На заре появления ORM, мапперы делали таким образом, чтобы они извлекали из базы данных все связанные объекты одним запросом (<a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">пример реализации</a>).</p>
+<p>Domain-Driven Design подходит к связям более строго, и рассматривает связи с позиции концептуальных контуров агрегата вложенных объектов <a class="footnote-reference" href="#fnddd" id="id11">[4]</a>.
+Здесь также особую роль играет направление связей, и соблюдение принципа минимальной достаточности (&#8220;дистиляция моделей&#8221; <a class="footnote-reference" href="#fnddd" id="id12">[4]</a>).</p>
+<p>С появлением ORM, в синхронном программировании активно начали применяться ленивые вычисления для разрешения связей.
+В Python для этого активно используются <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html">Descriptors</a>, а в Java - AOP и Cross-Cutting Concerns <a class="footnote-reference" href="#fnccode" id="id13">[1]</a>.</p>
 <p>Ключевым моментом является освобождение Domain Model от логики доступа к источнику данных.
-Это необходимо как из принципах чистоты архитектуры и проектных решений, чтобы снизить сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), так из из принципов простоты тестирования.
-Наибольших успехов здесь достих принцип Cross-Cutting Concerns, который полностью освобождает модель от служебной логики.</p>
-<p>Организация связей стала настолько легкой, что о ней перестали думать.
+Это необходимо как из принципа чистоты архитектуры и проектных решений, чтобы снизить сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), так из из принципа простоты тестирования.
+Наибольших успехов позволяет достигнуть принцип Cross-Cutting Concerns, который полностью освобождает модель от служебной логики.</p>
+<p>С появлением ОРМ организация связей стала настолько легкой, что о ней перестали думать.
 Там где требуются однонаправленные связи, разработчики с легкостью применяют двунаправленные связи.
-Появлились механизмы оптимизации связей, которые неявно предзагружают все связанные объекты, что значительно сокращает количество обращений в базу данных.</p>
-<p>Существует также распространенная точка зрения, что объект не должен отвечать за свои связи, а исключительное право на доступ к объекту должно принадлежать только Repository.
+Появились механизмы оптимизации выборки связанных объектов, которые неявно предзагружают все связанные объекты, что значительно сокращает количество обращений в базу данных.</p>
+<p>Однако, стоит упомянуть и другую распространенную точку зрения, которая гласит, что объект не должен отвечать за свои связи, а исключительное право на доступ к объекту должно принадлежать только Repository.
 Такой точки зрения придерживаются некоторые уважаемые мною друзья.</p>
+</div>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id27">Асинхронное программирование</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>Рост популярности асинхронных приложений заставил пересмотреть устоявшиеся представления на реализацию связей.
 Асинхронное обращение к каждой связи каждого объекта значительно усложняет ясность программного года, и препятствует оптимизации.</p>
-<p>Это привело к росту популярности объекто-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегат целиком.
-Все чаще REST-frameworks стали использоваться для передачи клиенту <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">агрегата вложенных объектов</a>.
+<p>Это привело к росту популярности объекто-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
+Все чаще REST-frameworks стали использоваться для передачи клиенту <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">агрегатов вложенных объектов</a>.
 Необходимость обслуживания агрегатов активизировала интерес к функциональному программированию, особенно в сочетании с парадигмой реактивного программирования.</p>
 <p>Однако, решение одной проблемы порождало другую проблему.</p>
-<p>Функциональное программирование горадо сложнее структурировать логически, что приводит к появлению плохо читаемого кода, который выражает не &#8220;что&#8221; он делает, а &#8220;как&#8221; он это делает.
+</div>
+<div class="section" id="id16">
+<h2><a class="toc-backref" href="#id28">Функциональное программирование</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p>Функциональное программирование сложнее использовать для объектов реального мира, так как его сложнее структурировать логически (особенно при отсутствии поддержки <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9C%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D0%BC%D0%B5%D1%82%D0%BE%D0%B4">множественной диспетчеризации</a>), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, &#8220;что&#8221; он делает, а то, &#8220;как&#8221; он делает непонятно что.
 А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.</p>
 <blockquote>
 <div><p>Шестимесячное исследование, проведенное в IBM, показало, что программисты,
@@ -209,33 +223,66 @@ it all up, the domain developers lose their ability to chunk the model into mean
 conducted by IBM found that maintenance programmers &#8220;most
 often said that understanding the original programmer&#8217;s intent was
 the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
-(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id13">[2]</a>)</p>
+(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id17">[2]</a>)</p>
 </div></blockquote>
-<p>Как упоминалось в статье <a class="reference internal" href="../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">How to quickly develop high-quality code. Team work.</span></a>, в процессе конструирования кода разработчик 91% времени читает код, и только 9% времени он печатает символы на клавиатуре.
+<p>Как упоминалось в статье &#8220;<a class="reference internal" href="../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">How to quickly develop high-quality code. Team work.</span></a>&#8221;, в процессе конструирования кода разработчик 91% времени читает код, и только 9% времени он вводит символы с клавиатуры.
 А это значит, что плохо читаемый код на 91% может затормозить темпы разработки.</p>
-<p>Я не хочу навлекать тень на парадигму функционального программирования, я просто говорю что она более требовательна к уровню квалификации разработчика, требует соответствующих навыков, и имеет свою нишу, в которой ее преимущества очевидны.
-Универсальных инструментов не существует, нельзя совместить микроскоп и молоток.</p>
 <p>Также такой подход разрушает все выгоды использования Domain-Driven Design, и разделяет элементы, реализующие концептуальные объекты, которые оказываются физически разделенными, что приводит к появлению кода, который больше не выражает модель.</p>
-<p>Все <a class="reference external" href="https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J">это привело к появлению</a> в сообществе ReactJS таких библиотек как:</p>
+<p>Все <a class="reference external" href="https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J">это способствовало появлению</a> в сообществе ReactJS таких библиотек как:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/paularmstrong/normalizr">Normalizr</a> - Normalizes (decomposes) nested JSON according to a schema.</li>
 <li><a class="reference external" href="https://github.com/gpbl/denormalizr">Denormalizr</a> - Denormalize data normalized with normalizr.</li>
 </ul>
-<p>Принцип физической предустановки связанных объектов <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">реализован и в js-data</a>.</p>
-<p>В нашей библиотеки мы предусмотрели как возможность декомпозиции агрегатов вложенных объектов, так и их композиции из плоских данных.
-Причем, агрегат всегда сохраняет актуальное состояние, и при добавлении объекта в Repository он автоматически появляется в соответствующем агрегате.
-Библиотека реализует это поведение либо в парадигме реактивного программирования, либо в парадигме Событийно-ориентированного программирования (на выбор).</p>
+<p>Мне, как емаксоиду, импонирует парадигма функционального программирования, но я должен быть честным - она более требовательна к уровню квалификации разработчика, требует соответствующих навыков, и имеет свою нишу, в которой ее преимущества очевидны.
+Я не отношу к этой нише проектирование объектов реального мира.
+В своей практике я встречал такие безобразия в парадигме функционального программирования, которые было бы весьма затруднительно воспроизвести используя принципы Domain-Driven Design.
+Универсальных инструментов не существует, и при всей симпатии к микроскопу его нельзя использовать в качестве молотка, хотя бы из уважения к нему.</p>
+<p>Функциональное программирование не имеет состояния, и поэтому идеально подходит для распределенных вычислений и обработки потоков данных.
+Но значит ли это то, что парадигма объектно-ориентированного программирования противостоит парадигме функционального программирования?</p>
+<p>Несмотря на то, что парадигма ООП традиционно считается разновидностью императивной парадигмы, т.е. основанной на состоянии программы, Robert C. Martin делает паразительный вывод - так как объекты предоставляют свой интерфейс, т.е. поведение, и скрывают свое состояние, то они легко могут быть применены в парадигме функционального программирования.</p>
+<blockquote>
+<div>&#8220;Objects are not data structures.
+Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
+This is why data fields are private.
+From the outside looking in you cannot see any state.
+All you can see are functions.
+Therefore Objects are about functions not about state.&#8221;
+(&#8220;<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>&#8221; by Robert C. Martin)</div></blockquote>
+<p>Поэтому некоторые классические функциональные языки программирвания имеют поддержку ООП:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/eieio.html">Enhanced Implementation of Emacs Interpreted Objects</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System">Common Lisp Object System</a></li>
+</ul>
+<p>Конечно, мы можем эммулировать объекты даже в функциональных языках программирования с помощью замыканий, см. статью &#8220;<a class="reference external" href="https://martinfowler.com/bliki/FunctionAsObject.html">Function As Object</a>&#8221; by Martin Fowler.
+Тут нельзя обойти вниманием замечательную книгу &#8220;<a class="reference external" href="https://leanpub.com/fp-oo">Functional Programming for the Object-Oriented Programmer</a>&#8221; by Brian Marick.</p>
+<p>Но ведь изначально вопрос состоял в том, стоит ли отказываться от объектов в объектно-ориентированном языке при проектировании объектов реального мира в пользу &#8220;<a class="reference external" href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221;, и стоит ли приносить в жертву все выгоды Domain-Driven Design в угоду удобства конкретной реализации обработки связей?</p>
+<p>Также стоит отметить, что далеко не все виды связей вписываются в концепцию агрегата.
+Если объект логически не принадлежит агрегату, то мы не можем вкладывать его в агрегат ради удобства разрешения связей, ибо в таком случае у нас интерфейс будет следовать за реализацией что в корне ломает фундаментальный принцип абстракции.
+Так же агрегат не совместим со связями типа Many-To-Many.</p>
+</div>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id29">Реализация связей в виде присваивания</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<p>Принцип физического присваивания связанных объектов <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">реализован и в библиотеке js-data</a>.</p>
+<p>В нашей библиотеки мы предусмотрели как возможность декомпозиции агрегатов вложенных объектов, так и их композиции из плоских данных в Repositories.
+Причем, агрегат всегда сохраняет актуальное состояние, и при добавлении, изменении, удалении объекта в Repository, изменения автоматически отображаются в структурах соответствующих агрегатов.
+Библиотека реализует это поведение как в парадигме Реактивного программирования, так и в парадигме Событийно-ориентированного программирования (на выбор).</p>
+<p>Существует так же возможность формировать двусторонние связи.
+Но, несмотря на то, что современные интерпретаторы легко чистят мусор с кольцевыми ссылками, с концептуальной точки зрения лучше когда вложенные объекты не осведомлены о своем родителе, если на то нет веской причины.</p>
+<p>Таким образом, для реализации связей объекту совершенно не требуется никакая служебная логика доступа к данным, что поддерживает нулевое сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>).
+Это значит, что доменные модели могут быть инстанцией &#8220;класса&#8221; Object.</p>
+<p>Я так же уважительно отношусь к той точке зрения, что доменная модель не должна отвечать за связи.
+Поэтому предусмотрена возможность легкого доступа к любому объекту через его Repository.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnccode" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fncodec" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[2]</a></td><td>«<a class="reference external" href="http://www.informit.com/store/code-complete-9780735619678">Code Complete</a>» Steve McConnell</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id17">[2]</a></td><td>«<a class="reference external" href="http://www.informit.com/store/code-complete-9780735619678">Code Complete</a>» Steve McConnell</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
@@ -247,7 +294,7 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id10">3</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id11">3</a>, <a class="fn-backref" href="#id12">4</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngof" rules="none">
@@ -262,6 +309,10 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
 <tr><td class="label"><a class="fn-backref" href="#id4">[6]</a></td><td>«<a class="reference external" href="https://martinfowler.com/books/refactoring.html">Refactoring: Improving the Design of Existing Code</a>» by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
 </tbody>
 </table>
+<div class="note update admonition">
+<p class="first last admonition-title">Updated on Aug 07, 2017</p>
+</div>
+</div>
 </div>
 
   <div class="section">
@@ -269,7 +320,41 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
     
 
 
+<div class="section">
+  <span style="float: left;">
   
+  
+  <a href="../django-framework/">
+    <i class="fa fa-arrow-circle-left"></i>
+    О моем опыте использования Django Framework
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'emacsway';
+        var disqus_identifier = '/ru/javascript-and-repository-pattern/';
+        var disqus_title = 'Реализация паттерна Repository в браузерном JavaScript';
+        var disqus_url = 'https://emacsway.github.io/ru/javascript-and-repository-pattern/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
   
   </div>
 
@@ -299,13 +384,16 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
   
   <h2>
   
-    <i class="fa fa-pencil"></i>
-     Draft 
+  <i class="fa fa-calendar"></i>
+    Aug 06, 2017
   
   </h2>
 
   <ul>
     
+  <li><i class="fa fa-pencil-square-o"></i>
+    Aug 07, 2017</li>
+  
 
   
   <li><i class="fa-fw fa fa-user"></i>
@@ -333,15 +421,36 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
   <li><i class="fa-fw fa fa-tags"></i>
       
     
-      Repository,
+      
+      <a href="../../blog/tag/repository/">Repository</a>,
+      
     
       
       <a href="../../blog/tag/orm/">ORM</a>,
       
     
-      JavaScript
+      
+      <a href="../../blog/tag/javascript/">JavaScript</a>
+      
     </li>
   
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'emacsway'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/ru/javascript-and-repository-pattern/"> </a>
+  </li>
   
   </ul>
 
@@ -427,6 +536,9 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
       
     
       
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/javascript/">JavaScript</a></li>
+      
     
       
       <li class="ablog-cloud ablog-cloud-4">
@@ -438,6 +550,9 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
         <a href="../../blog/tag/python/">Python</a></li>
       
     
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/repository/">Repository</a></li>
       
     
       
@@ -478,7 +593,7 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
   <ul>
   
     
-    <li><a href="../../blog/2017/">2017 (5)</a></li>
+    <li><a href="../../blog/2017/">2017 (6)</a></li>
     
   
     
@@ -522,6 +637,11 @@ the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
 
     
 
+
+    
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-597ba7fb5af2ef1e"></script>
 
     
 
