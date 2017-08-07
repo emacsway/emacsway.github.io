@@ -50,8 +50,8 @@ Purpose of Service Layer
     choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-The most important thing to understand is that the `Service Layer`_ is the logic of the level of Application layer.
-This is important because this implies that the Service Layer is located over the Domain Layer (i.e. layer of real world objects, which is also called "business rules").
+The most important thing to understand is that the `Service Layer`_ is an Application layer logic.
+This is important because this implies that the Service Layer is over the Domain Layer (i.e. layer of real world objects, which is also called "business rules").
 This means that the objects of the Domain Layer should not be aware of the Service Layer.
 
 Note that Eric Evans understands the logic of the Domain Layer under the term "business rules":
@@ -108,16 +108,16 @@ We will understand by the term "business rules" only the logic of the Domain Lay
     are few things that are less logical than business logic.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-In addition to the above, the service layer can carry the following responsibilities:
+In addition to the above, the Service Layer can carry the following responsibilities:
 
-- To combine the parts of an atomic operation (for example, application should to save the data in the database, in the redis, and in the file system within a single business transaction or should to roll back all).
+- To combine the parts of an atomic operation (for example, application should save the data to several storages, e.g. database, redis, file system within a single business transaction or should roll back all).
 - To hide the data source (here it duplicates the responsibility of the pattern `Repository`_) and can be omitted if there are no other reasons.
 - To aggregate the application level operations that are being reused by several clients (for example, some part of application-level logic is used in several different controllers).
 - As basis for implementation of `Remote Facade`_.
 - When you have a large controller method, you have to do decomposition. Thus, you apply `Extract Method`_ to separate each responsibility into own method. When you did it, you found that the class lost its focus. The quantity of methods has been increased that means the `Cohesion`_ (i.e. coefficient of sharing the class' properties by the class' methods) has been reduced. To restore the `Cohesion`_ you have to extraсt these methods into separate `Method Object <Replace Method with Method Object_>`__, which can be used as a Service Layer.
-- The service layer can be used as an aggregator for queries if it is over the `Repository`_ pattern and uses the `Query object`_ pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the service layer was created for client service. Therefore, it's a responsibility of the Service Layer.
+- The Service Layer can be used as an aggregator for queries if it is over the `Repository`_ pattern and uses the `Query object`_ pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the Service Layer was created for client service. Therefore, it's a responsibility of the Service Layer.
 
-In other cases, the logic of the service layer can be placed directly at the application level (usually a controller).
+In other cases, the logic of the Service Layer can be placed directly at the application level (usually a controller).
 
     The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
     application's business logic will only have one kind of client say, a user interface and its use case responses
@@ -128,7 +128,7 @@ In other cases, the logic of the service layer can be placed directly at the app
     pays to design in a Service Layer from the beginning.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-However, the widely held view that access to the model should always be made through the service layer:
+However, the widely held view that access to the model should always be made through the Service Layer:
 
     My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
     approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
@@ -200,8 +200,8 @@ Service is not a wrapper for Data Mapper
 Often `Service Layer`_ is mistakenly made in the for of wrapper over `DataMapper`_.
 This is not quite the right decision.
 Data Mapper serves Domain, while Service Layer serves client (or client group).
-The Service Layer can manipulate multiple Data Mappers and other Services within a business transaction or in the interests of the client.
-Therefore, the Service methods usually contain the name of the returned Domain as a suffix (for example, getUser()), while the methods of the Data Mapper do not need this suffix (since the Domain name is present in the name of the Data Mapper class, and the Data Mapper serves only one Domain).
+The Service Layer can manipulate multiple Data Mappers and other Services within a business transaction or for the interests of the client.
+Therefore, the Service's methods usually contain the name of the returned Domain as a suffix (for example, getUser()), while the methods of the Data Mapper do not need this suffix (since the Domain name is present in the name of the Data Mapper class, and the Data Mapper serves only one Domain).
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
@@ -235,15 +235,15 @@ Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Depende
 
 One of the main responsibilities of Service Layer is the hiding of data source.
 It allows you to use `Service Stub`_ for testing.
-The same approach can be used for parallel development, when the implementation of the service layer is not ready yet.
+The same approach can be used for parallel development, when the implementation of the Service Layer is not ready yet.
 Sometimes it is useful to replace the Service with a fake data generator.
-In general, the service layer will be of little use if it is not possible to substitute it (or to substitute the dependencies used by it).
+In general, the Service Layer will be of little use if it is not possible to substitute it (or to substitute the dependencies used by it).
 
 
 Widespread problem of Django applications
 =========================================
 
-A common mistake is to use the django.db.models.Manager class (and even django.db.models.Model) as a service layer.
+A common mistake is to use the django.db.models.Manager class (and even django.db.models.Model) as a Service Layer.
 Often you can see how some method of the class django.db.models.Model takes as an argument the HTTP-request object django.http.request.HttpRequest, for example, to check the permissions.
 
 The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.
@@ -264,18 +264,17 @@ The class django.db.models.Manager corresponds most closely to the class Finder 
     Gateway should contain only database access logic and no domain logic.
     (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", «Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in a form similar to the `Query Object`_ pattern.
+Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in the form similar to the `Query Object`_ pattern.
 Like the Repository pattern, the model class (`ActiveRecord`_) limits its interface using the Query Object interface.
 Clients should use the provided interface, rather than impose their responsibilities on the Model and its Manager on knowledge of their queries.
-And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients.
-And since no class should make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class, because it can not own the needs of all clients.
+And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class class, because it can not be aware about the all needs of all clients.
 Clients should take care of themselves.
-But the service layer was created for client service.
+But the Service Layer was created for client service.
 Therefore, it's a responsibility of the Service Layer.
 
-Attempts to exclude the Serving Layer from Django applications leads to the appearance of managers with a lot of methods.
+Attempts to exclude the Serving Layer from Django applications leads to the appearance of Managers with a lot of methods.
 
-A good practice would be to hide the implementation (in the form of `ActiveRecord`_) of Django models by the service layer.
+A good practice would be to hide the implementation (in the form of `ActiveRecord`_) of Django models by the Service Layer.
 This will allow painless ORM replace if necessary.
 
     Some might also argue that the application logic responsibilities could be implemented in domain object
@@ -358,7 +357,7 @@ If you still had to work with Django Model, refrain from using Django annotation
 Services of infrastructure layer
 ================================
 
-You have to distinguish the service layer from infrastructure layer services.
+You have to distinguish the Service Layer from infrastructure layer services.
 
     The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
     domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
