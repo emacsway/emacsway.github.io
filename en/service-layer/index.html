@@ -323,7 +323,7 @@ Gateway should contain only database access logic and no domain logic.
 <p>Although Django does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern, it uses an abstraction of the selection criteria in the form similar to the <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> pattern.
 Like the Repository pattern, the model class (<a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>) limits its interface using the Query Object interface.
 Clients should use the provided interface, rather than impose their responsibilities on the Model and its Manager on knowledge of their queries.
-And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class class, because it can not be aware about the all needs of all clients.
+And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class, because it can not be aware about the all needs of all clients.
 Clients should take care of themselves.
 But the Service Layer was created for client service.
 Therefore, it&#8217;s a responsibility of the Service Layer.</p>

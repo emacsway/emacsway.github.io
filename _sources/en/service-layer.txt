@@ -267,7 +267,7 @@ The class django.db.models.Manager corresponds most closely to the class Finder 
 Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in the form similar to the `Query Object`_ pattern.
 Like the Repository pattern, the model class (`ActiveRecord`_) limits its interface using the Query Object interface.
 Clients should use the provided interface, rather than impose their responsibilities on the Model and its Manager on knowledge of their queries.
-And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class class, because it can not be aware about the all needs of all clients.
+And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the Model class, because it can not be aware about the all needs of all clients.
 Clients should take care of themselves.
 But the Service Layer was created for client service.
 Therefore, it's a responsibility of the Service Layer.
