@@ -115,6 +115,10 @@
   article with interesting comments.
 - `Kinvey Data Store <http://devcenter.kinvey.com/angular/guides/datastore>`_ - \
   implementation of `Repository`_ pattern by MBaaS Kinvey, `source code <https://github.com/Kinvey/js-sdk/tree/master/src/datastore/src>`__
+- `Pocket.js <https://github.com/vincentracine/pocketjs>`_ - \
+  a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB's proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.
+
+Я хотел бы добавить сюда и `Ember.js <https://emberjs.com/>`_, но он реализует паттерн `ActiveRecord`_.
 
 
 Реализация реляционных связей
@@ -284,6 +288,7 @@ Domain-Driven Design подходит к связям более строго, �
 .. _Refactoring\: Improving the Design of Existing Code: https://martinfowler.com/books/refactoring.html
 .. _Martin Fowler: https://martinfowler.com/aboutMe.html
 
+.. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _Domain Model: http://martinfowler.com/eaaCatalog/domainModel.html
 .. _Identity Map: http://martinfowler.com/eaaCatalog/identityMap.html
 .. _Query Object: http://martinfowler.com/eaaCatalog/queryObject.html
