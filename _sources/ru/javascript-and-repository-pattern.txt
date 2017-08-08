@@ -95,7 +95,7 @@
 Примеры реализаций паттерна Repository в JavaScript
 ===================================================
 
-Примеры реализации паттерна Repository на JavaScript в проекте `todomvc.com <http://todomvc.com/>`_:
+Примеры простейших реализаций паттерна Repository на JavaScript в проекте `todomvc.com <http://todomvc.com/>`_:
 
 - Angular2: https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts
 - Angular1: https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js
