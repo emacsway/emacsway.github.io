@@ -443,7 +443,7 @@ You are forced to see and understand an implementation.        You don't have *t
                                                                Code is written once, but it is read many times.
                                                                Make reading the code easy, save the time.
 
-You are forced to understand the program using the debugger.   This violates of the Primary Technical Imperative of
+You are forced to understand the program using the debugger.   This violates the Primary Technical Imperative of
                                                                software development "Managing complexity".
                                                                Don't ask the author to improve the code quality, because he can't to do it.
                                                                Introduce a Collaborative Development Practice to share experience:
