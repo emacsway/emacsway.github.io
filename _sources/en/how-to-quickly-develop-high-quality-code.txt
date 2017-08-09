@@ -401,7 +401,7 @@ Pay attention, each method of refactoring has the page number of the book «Refa
 Use catalogs of code smells
 ---------------------------
 
-Do you want to avoid a wars of opinions and save a lot of team's time?
+Do you want to avoid a war of opinions and save a lot of team's time?
 Ground your arguments on knowledge, instead of opinion, when you do code review.
 Use catalogs of Code Smells.
 There is a few of most frequently used catalogs:
@@ -415,8 +415,71 @@ There is a few of most frequently used catalogs:
 Use design by refactoring
 -------------------------
 
-More info on topic of "Design by refactoring" you can find in the chapter «Refactoring and Design» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler.
+More info on approach of "Design by refactoring" you can find in the chapter «Refactoring and Design» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler.
 This approach is unbelievable effective when you use Type Hinting declaration (more info `here <https://github.com/python-rope/rope/blob/master/docs/overview.rst#type-hinting>`__, `here <http://jedi.readthedocs.io/en/latest/docs/features.html#type-hinting>`__ and `here <https://www.jetbrains.com/help/pycharm/type-hinting-in-pycharm.html>`__) with a tool for automated refactoring (`rope <https://github.com/python-rope/rope>`_, `refactoring tool of PyCharm <https://www.jetbrains.com/help/pycharm/refactoring-source-code.html>`_).
+
+
+Track and analyze the inefficient time spent
+--------------------------------------------
+
+There are several tools to track your time, for example:
+
+- `rescuetime <https://www.rescuetime.com/>`_
+- `timescreen <https://bitbucket.org/emacsway/timescreen>`_
+
+I personally use `timescreen`_.
+
+Track and analyze the inefficient time spent, and you will see how to save a lot of time.
+
+=============================================================  ===============================================================================
+Ineffective waste of time                                      The solution
+=============================================================  ===============================================================================
+You are forced to see and understand an implementation.        You don't have *to see* the implementation.
+                                                               You don't have *to understand* the program, you have *to read* the program.
+                                                               You have to read the *interface*, not the *implementation*.
+                                                               If the interface is not clear, ask the author to improve it.
+                                                               The declaration of public interfaces is important,
+                                                               it's a great way to reduce the complexity of the program.
+                                                               Code is written once, but it is read many times.
+                                                               Make reading the code easy, save the time.
+
+You are forced to understand the program using the debugger.   This violates of the Primary Technical Imperative of
+                                                               software development "Managing complexity".
+                                                               Don't ask the author to improve the code quality, because he can't to do it.
+                                                               Introduce a Collaborative Development Practice to share experience:
+                                                               XP, Pair Programming, Formal Inspection, Code Reading (don't confuse it
+                                                               with usual Code Review).
+                                                               Ask some experienced developer to refactor the complicated part of code,
+                                                               and share the solution with the author to improve his skills.
+                                                               Remember the quote:
+
+                                                                   "The competent programmer is fully aware of the strictly limited size
+                                                                   of his own skull; therefore, he approaches the programming task
+                                                                   in full humility"
+                                                                   (Dijkstra 1972).
+
+You are forced to debug and fix bugs.                          Introduce `Test-Driven Development`_ (TDD), improve the quality of code
+                                                               and the corporate culture of code construction.
+                                                               The time of debugging and bug fixing is one of the important
+                                                               measurement parameters.
+                                                               The main goal of TDD is saving the time.
+                                                               Also TDD improves the code quality, because it is easier to write well
+                                                               decomposed classes with low coupling and clear responsibility
+                                                               than to think how to test a tangled mishmash.
+
+A lot of discussions in the team. A war of opinions.           A lot of discussions mean the lack of the knowledges.
+                                                               Where there is knowledge, there is not a lot of discussions,
+                                                               and everyone knows what and how to do it.
+                                                               Introduce using of a catalog of code smells, the catalog of refactorings,
+                                                               the approach of design by refactoring.
+                                                               Introduce reading technical literature into corporate culture.
+
+You can't implement a new feature without refactoring.         This is normal if you use the approach of design by refactoring.
+                                                               But if the cause is a lack of design skills,
+                                                               you have to improve the skills of the team.
+                                                               Introduce a Collaborative Development Practice to share experience.
+
+=============================================================  ===============================================================================
 
 
 Create motivation
@@ -442,6 +505,29 @@ Be courageous
 It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programming Explained» [#fnxp]_.
 
 
+Keep improving yourself
+-----------------------
+
+One company asks the question to new candidates:
+
+    "What have you learned in the last year and what would you like to learn next?"
+
+Ask this question to yourself and everyone in the team.
+
+    "If you aren't curious enough to keep up with the changes,
+    you might find yourself down at the old-programmers' home playing cards with T-Bone
+    Rex and the Brontosaurus sisters."
+    («Code Complete», Steve McConnell [#fncodec]_)
+
+..
+
+    "We become authorities and experts in the practical and scientific spheres
+    by so many separate acts and hours of work.
+    If a person keeps faithfully busy each hour of the working day,
+    he can count on waking up some morning to find himself one of the competent
+    ones of his generation."
+    (William James [#fncodec]_)
+
 
 .. rubric:: Footnotes
 
@@ -452,7 +538,7 @@ It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programm
 .. [#fnxp] «Extreme Programming Explained» by Kent Beck
 
 
-.. update:: 03 Aug, 2017
+.. update:: 10 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
@@ -464,3 +550,4 @@ It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programm
 .. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
 .. _Catalog of Refactorings: http://www.refactoring.com/catalog/
 .. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
+.. _Test-Driven Development: https://martinfowler.com/bliki/TestDrivenDevelopment.html
