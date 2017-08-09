@@ -458,7 +458,7 @@ You are forced to understand the program using the debugger.   This violates the
                                                                    in full humility"
                                                                    (Dijkstra 1972).
 
-You are forced to debug and fix bugs.                          Introduce `Test-Driven Development`_ (TDD), improve the quality of code
+You are forced to debug and to fix bugs.                       Introduce `Test-Driven Development`_ (TDD), improve the quality of code
                                                                and the corporate culture of code construction.
                                                                The time of debugging and bug fixing is one of the important
                                                                measurement parameters.
@@ -467,7 +467,7 @@ You are forced to debug and fix bugs.                          Introduce `Test-D
                                                                decomposed classes with low coupling and clear responsibility
                                                                than to think how to test a tangled mishmash.
 
-A lot of discussions in the team. A war of opinions.           A lot of discussions mean the lack of the knowledges.
+A lot of discussions in the team. A war of opinions.           A lot of discussions means the lack of the knowledges.
                                                                Where there is knowledge, there is not a lot of discussions,
                                                                and everyone knows what and how to do it.
                                                                Introduce using of a catalog of code smells, the catalog of refactorings,
@@ -514,7 +514,8 @@ One company asks the question to new candidates:
 
 Ask this question to yourself and everyone in the team.
 
-    "If you aren't curious enough to keep up with the changes,
+    "Specific features of the technical environment change every 5 to 10 years.
+    If you aren't curious enough to keep up with the changes,
     you might find yourself down at the old-programmers' home playing cards with T-Bone
     Rex and the Brontosaurus sisters."
     («Code Complete», Steve McConnell [#fncodec]_)
