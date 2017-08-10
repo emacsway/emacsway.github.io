@@ -78,5 +78,5 @@ P.S.: За что я люблю KISS-принцип, так это за то, ч
     Будьте Скромны, не считайте себя супер-гением, это ваша первая ошибка.
     Оставаясь Скромным вы в конечном итоге достигнете уровня супер-гения, и даже если нет, какая разница. Ваш код чертовски прост так, что вам не нужно быть гением чтобы работать с ним.
 
-    Be Humble, don't think of yourself as a super genius, this is your first mistake
+    Be Humble, don't think of yourself as a super genius, this is your first mistake.
     By being humble, you will eventually achieve super genius status =), and even if you don't, who cares! your code is stupid simple, so you don't have to be a genius to work with it.

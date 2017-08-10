@@ -451,12 +451,22 @@ You are forced to understand the program using the debugger.   This violates the
                                                                with usual Code Review).
                                                                Ask some experienced developer to refactor the complicated part of code,
                                                                and share the solution with the author to improve his skills.
-                                                               Remember the quote:
+                                                               Remember the quotes:
 
                                                                    "The competent programmer is fully aware of the strictly limited size
                                                                    of his own skull; therefore, he approaches the programming task
                                                                    in full humility"
                                                                    (Dijkstra 1972).
+
+                                                               ..
+
+                                                                   "Be Humble, don’t think of yourself as a super genius,
+                                                                   this is your first mistake.
+                                                                   By being humble, you will eventually achieve super genius status =),
+                                                                   and even if you don’t, who cares!
+                                                                   your code is stupid simple,
+                                                                   so you don’t have to be a genius to work with it."
+                                                                   (`KISS principle <https://people.apache.org/~fhanik/kiss.html>`__)
 
 You are forced to debug and to fix bugs.                       Introduce `Test-Driven Development`_ (TDD), improve the quality of code
                                                                and the corporate culture of code construction.
