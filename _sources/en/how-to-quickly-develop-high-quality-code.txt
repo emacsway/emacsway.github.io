@@ -475,7 +475,7 @@ You are forced to debug and to fix bugs.                       Introduce `Test-D
                                                                The main goal of TDD is saving the time.
                                                                Also TDD improves the code quality, because it is easier to write well
                                                                decomposed classes with low coupling and clear responsibility
-                                                               than to think how to test a tangled mishmash.
+                                                               than to be thinking how to test a tangled mishmash.
 
 A lot of discussions in the team. A war of opinions.           A lot of discussions means the lack of the knowledges.
                                                                Where there is knowledge, there is not a lot of discussions,
