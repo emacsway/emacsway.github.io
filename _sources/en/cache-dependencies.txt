@@ -20,7 +20,7 @@ The problem of cache dependencies
 When some data has been updated, all dependent caches should be reset.
 Suppose, the cache of main page of a company site contains an instance of Product model.
 When the instance of Product is updated, the cache should be updated too.
-Another example, when an attribute of User model (for example, last_name) has been updated, all caches of the user's posts containing the last_name, should be reset too.
+Another example, when an attribute of User model (for example, last_name) has been updated, all caches of the user's posts containing the last_name should be reset too.
 
 Usually, the pattern `Observer`_ (or its variety pattern Multicast) is responsible for the cache invalidation.
 But even in this case the invalidation logic becomes too complicated, the achieved accuracy is too low, the `Coupling`_ is growing fast, and encapsulation is disclosed.
@@ -30,9 +30,9 @@ For example, the cache of main page can be marked by tag ``product.id:635``.
 The all user's posts can be marked by tag ``user.id:10``.
 Post lists can be marked by composite tag, composed of selection criteria, for example ``type.id:1;category.id:15;region.id:239``.
 
-Now it's enough to invalidate a tag to invalidate all dependent caches.
-This approach is not new, and widely used in other programming languages.
-At one time it was even implemented in memcache, see `memcached-tag <http://code.google.com/p/memcached-tag/>`_.
+Now it's enough to invalidate the tag to invalidate all dependent caches.
+This approach is not new, and widely used for other programming languages.
+At one time it was even implemented for memcache, see `memcached-tag <http://code.google.com/p/memcached-tag/>`_.
 
 See also:
 
@@ -46,18 +46,18 @@ Overhead of cache reading vs overhead of cache creation
 =======================================================
 
 How to implement invalidation of caches dependent on the tag?
-There are two options:
+There are two ways:
 
-\1. Destroy physically all dependent caches on the tag invalidation.
+\1. To destroy physically all dependent caches on the tag invalidation.
 Implementation of this approach requires some overhead on the cache creation to add key of the cache into a cache list (or set) of the tag (for example, using `SADD <http://redis.io/commands/sadd>`_).
 The disadvantage of this approach is that the invalidation of too many dependent caches takes some time.
 
-\2. Just change the version of tag on the tag invalidation.
-Implementation of this approach requires some overhead on the cache reading to verify the version of each tag of the cache with the actual tag version.
+\2. To just change the version of the tag on invalidation it.
+Implementation of this approach requires some overhead on reading the cache to verify the version of each tag of the cache with the actual tag version.
 Thus the cache should contain all tag versions on the cache creation.
-If any tag version is expired on the cache reading, the cache is invalid.
+If any tag has expired version on the cache reading, the cache is invalid.
 The advantage of this approach is immediate invalidation of the tag and all dependent caches.
-Another advantage of this approach is that premature discarding of a tag info is not possible (using LRU_), because the tag info is read mush often than dependent caches.
+Another advantage of this approach is that premature discarding of a tag info is not possible (using LRU_), because the tag info has been read mush often than dependent caches.
 
 I've chosen the second option.
 
