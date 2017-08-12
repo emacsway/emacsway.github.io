@@ -442,7 +442,7 @@ Domain-Driven Design подходит к связям более строго, �
 .. [#fnoovsop] «`OO vs FP`_» by Robert C. Martin
 
 
-.. update:: 12 Aug, 2017
+.. update:: 13 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
