@@ -134,6 +134,31 @@ Domain-Driven Design подходит к связям более строго, �
 Доступ к объекту осуществлялся либо по ссылке (от родительского объекта к вложеному), либо через Repository.
 Здесь также особую роль играет направление связей, и соблюдение принципа минимальной достаточности ("дистиляция моделей" [#fnddd]_).
 
+    In real life, there are lots of many-to-many associations, and a great number are naturally
+    bidirectional. The same tends to be true of early forms of a model as we brainstorm and explore
+    the domain. But these general associations complicate implementation and maintenance.
+    Furthermore, they communicate very little about the nature of the relationship.
+
+    There are at least three ways of making associations more tractable.
+
+    1. Imposing a traversal direction
+    2. Adding a qualifier, effectively reducing multiplicity
+    3. Eliminating nonessential associations
+
+    It is important to constrain relationships as much as possible. A bidirectional association means
+    that both objects can be understood only together. When application requirements do not call for
+    traversal in both directions, adding a traversal direction reduces interdependence and simplifies
+    the design. Understanding the domain may reveal a natural directional bias.
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+..
+
+    Minimalist design of associations helps simplify traversal and limit the explosion of relationships
+    somewhat, but most business domains are so interconnected that we still end up tracing long,
+    deep paths through object references. In a way, this tangle reflects the realities of the world,
+    which seldom obliges us with sharp boundaries. It is a problem in a software design.
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 С появлением ORM, в синхронном программировании активно начали применяться ленивые вычисления для разрешения связей.
 В Python для этого активно используются `Descriptors <https://docs.python.org/3/howto/descriptor.html>`__, а в Java - AOP и Cross-Cutting Concerns [#fnccode]_.
 
@@ -141,11 +166,15 @@ Domain-Driven Design подходит к связям более строго, �
 Это необходимо как из принципа чистоты архитектуры и проектных решений, чтобы снизить сопряжение (`Coupling`_), так и из принципа простоты тестирования.
 Наибольших успехов позволяет достигнуть принцип Cross-Cutting Concerns, который полностью освобождает модель от служебной логики.
 
-С появлением ОРМ, организация связей стала настолько легкой, что о ней перестали думать.
+С появлением ОРМ, организация связей стала настолько легкой, что о ней перестали задумываться.
 Там где требуются однонаправленные связи, разработчики с легкостью применяют двунаправленные связи.
 Появились механизмы оптимизации выборки связанных объектов, которые неявно предзагружают все связанные объекты, что значительно сокращает количество обращений в базу данных.
 
-Однако, стоит упомянуть и другую распространенную точку зрения, которая гласит, что объект не должен отвечать за свои связи, а исключительное право на доступ к объекту должно принадлежать только Repository.
+
+Избегание связей
+----------------
+
+Стоит упомянуть и другую распространенную точку зрения, которая гласит, что объект не должен отвечать за свои связи, а исключительное право на доступ к объекту должно принадлежать только Repository.
 Такой точки зрения придерживаются некоторые уважаемые мною друзья.
 
 
@@ -157,6 +186,29 @@ Domain-Driven Design подходит к связям более строго, �
 
 Это привело к росту популярности объекто-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
 Все чаще REST-frameworks стали использоваться для передачи клиенту `агрегатов вложенных объектов <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
+
+    To do anything with an object, you have to hold a reference to it. How do you get that reference?
+    One way is to create the object, as the creation operation will return a reference to the new
+    object. A second way is to traverse an association. You start with an object you already know and
+    ask it for an associated object. Any object-oriented program is going to do a lot of this, and these
+    links give object models much of their expressive power. But you have to get that first object.
+
+    I actually encountered a project once in which the team was attempting, in an enthusiastic
+    embrace of MODEL-DRIVEN DESIGN , to do all object access by creation or traversal! Their objects
+    resided in an object database, and they reasoned that existing conceptual relationships would
+    provide all necessary associations. They needed only to analyze them enough, making their entire
+    domain model cohesive. This self-imposed limitation forced them to create just the kind of endless
+    tangle that we have been trying to avert over the last few chapters, with careful implementation of
+    ENTITIES and application of AGGREGATES . The team members didn't stick with this strategy long, but
+    they never replaced it with another coherent approach. They cobbled together ad hoc solutions
+    and became less ambitious.
+
+    Few would even think of this approach, much less be tempted by it, because they store most oftheir objects in relational databases.
+    This storage technology makes it natural to use the third way
+    of getting a reference: Execute a query to find the object in a database based on its attributes, or
+    find the constituents of an object and then reconstitute it.
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 Необходимость обхода агрегатов активизировала интерес к функциональному программированию, особенно в сочетании с парадигмой реактивного программирования.
 
 Однако, решение одной проблемы порождало другую проблему.
@@ -226,7 +278,7 @@ Domain-Driven Design подходит к связям более строго, �
 
 Именно поэтому парадигма реактивного программирования `может сочетаться с различными парадигмами <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, императивной, объектно-ориентированной и функциональной.
 
-Однако, вся суть вопроса заключается в том, что в каноническом виде функциональное программирование не имеет переменных (изменяемого состояния):
+Однако, вся суть вопроса заключается в том, что в каноническом виде функциональное программирование не имеет переменных (от слова "переменчивость", изменяемость). т.е. изменяемого состояния:
 
     A true functional programming language has no assignment operator.
     You cannot change the state of a variable.
