@@ -224,7 +224,7 @@ Domain-Driven Design подходит к связям более строго, �
     But in an OO language, those pointers are managed for you.
     The language takes care to initialize them, and marshal them, and call all the functions through them.
 
-    .. There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
+    ... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
     («OO vs FP» [#fnoovsop]_)
 
 А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.
