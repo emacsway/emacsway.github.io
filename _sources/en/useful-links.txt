@@ -40,6 +40,7 @@ Articles
 - `AnemicDomainModel <http://www.martinfowler.com/bliki/AnemicDomainModel.html>`__
 - `SQLAlchemy Architecture <http://aosabook.org/en/sqlalchemy.html>`__
 - `Concurrency model and Event Loop <https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop>`__
+- `Clean architectures in Python: a step-by-step example <http://blog.thedigitalcatonline.com/blog/2016/11/14/clean-architectures-in-python-a-step-by-step-example/>`__
 
 
 

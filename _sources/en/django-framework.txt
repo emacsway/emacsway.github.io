@@ -53,6 +53,8 @@ Since Django does not use the `Repository`_ layer, it would be desirable to hide
 This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models, and you have to replace Django ORM with third-party tools or a bare implementation of `DataMapper`_ pattern (we will return to this issue a little later).
 In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.
 
+In the article `Clean Architecture in Django <https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9>`_ you can find an example of using the Repository pattern to hide the data source for Django-application.
+
 
 Identity Map
 ------------

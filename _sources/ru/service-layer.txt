@@ -394,6 +394,8 @@
     layer perhaps to use a workflow engine.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
+В статье `Clean Architecture in Django <https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9>`_ вы можете найти пример использования паттерна Repository для сокрытия источника данных в Django-приложении.
+
 
 Укрощение разбухших моделей
 ===========================
