@@ -288,7 +288,7 @@ This will allow painless ORM replace if necessary.
     layer perhaps to use a workflow engine.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-In the article `Clean Architecture in Django <https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9>`_ you can find an example of using the Repository pattern to hide the data source for Django-application.
+In the article "`Clean Architecture in Django <https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9>`__" you can find an example of using the Repository pattern to hide the data source for Django-application.
 
 
 Taming of swollen models
