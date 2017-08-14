@@ -559,6 +559,10 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 .. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 
+
+.. update:: 14 Aug, 2017
+
+
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
 .. _Robert C. Martin: http://informit.com/martinseries
 .. _Patterns of Enterprise Application Architecture: https://www.martinfowler.com/books/eaa.html

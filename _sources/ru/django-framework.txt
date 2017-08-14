@@ -382,7 +382,7 @@ This article in English ":doc:`../en/django-framework`".
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 06 Aug, 2017
+.. update:: 14 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
