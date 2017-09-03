@@ -418,6 +418,10 @@ Don't spend a lot of time for explanations at code review.
 You can simple use link to certain method of refactoring by using `Catalog of Refactorings`_.
 Pay attention, each method of refactoring has the page number of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
 
+..
+
+    Change is the only constant. (Kent Beck [#fnxp]_)
+
 
 Use catalogs of code smells
 ---------------------------
@@ -431,10 +435,6 @@ There is a few of most frequently used catalogs:
 - Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler
 - `Code Smell`_
 - «Refactoring To Patterns» [#fnrtp]_
-
-..
-
-    Change is the only constant. (Kent Beck [#fnxp]_)
 
 Use design by refactoring
 -------------------------
