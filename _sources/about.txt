@@ -103,6 +103,7 @@ Bibliography
 * «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin
 * «Code Complete» by Steve McConnell
 * «Domain-Driven Design» by Eric Evans
+* «Extreme Programming Explained» by Kent Beck
 * «Algorithms and Data Structures» by N.Wirth
 * «Compiler Construction» by N.Wirth
 * «PostgreSQL» by Korry Douglas, Susan Douglas
@@ -122,7 +123,6 @@ Bibliography
 
     * «SQL Antipatterns. Avoiding the Pitfalls of Database Programming.» by Bill Karwin
     * «An Introduction to Database Systems» by C.J. Date
-    * «Extreme Programming Explained» by Kent Beck
     * «Test-Driven Development By Example» by Kent Beck
     * «xUnit Test Patterns. Refactoring Test Code.» by Gerard Meszaros
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» by Craig Larman

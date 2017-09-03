@@ -134,8 +134,8 @@ Experience sharing is the rule №1 for the high-skilled team.
 If your team still has a junior developer after a few weeks, your team needs a better manager.
 
 
-The second myth. Quality code is not combined with hot deadline.
-----------------------------------------------------------------
+The second myth. Quality code is not suitable for hot deadline.
+---------------------------------------------------------------
 
 Team doesn't have time to write high-quality code, because they have a hot deadline.
 
@@ -214,6 +214,27 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     from the fact that virtually no time is devoted to debugging on TSP or cleanroom
     projects. No time spent on debugging? That is truly a worthy goal!
     («Code Complete» [#fncodec]_)
+
+..
+
+    Quality is another strange variable. Often, by insisting on better quality you can get
+    projects done sooner, or you can get more done in a given amount of time. This
+    happened to me when I started writing unit tests...
+    As soon as I had my tests, I had so much more
+    confidence in my code that I wrote faster, without stress. I could clean up my
+    system more easily, which made further development easier. I've also seen this
+    happen with teams. As soon as they start testing, or as soon as they agree on coding
+    standards, they start going faster.
+
+    There is a strange relationship between internal and external quality. External quality
+    is quality as measured by the customer. Internal quality is quality as measured by
+    the programmers. Temporarily sacrificing internal quality to reduce time to market in
+    hopes that external quality won't suffer too much is a tempting short-term play. And
+    you can often get away with making a mess for a matter of weeks or months.
+    Eventually, though, internal quality problems will catch up with you and make your
+    software prohibitively expensive to maintain, or unable to reach a competitive level
+    of external quality.
+    (Kent Beck [#fnxp]_)
 
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
@@ -411,6 +432,9 @@ There is a few of most frequently used catalogs:
 - `Code Smell`_
 - «Refactoring To Patterns» [#fnrtp]_
 
+..
+
+    Change is the only constant. (Kent Beck [#fnxp]_)
 
 Use design by refactoring
 -------------------------
@@ -500,6 +524,15 @@ Once I saw how the tight-knit collective with high self-motivation was destroyed
 
     "Quality means doing it right when no one is looking." (Henry Ford)
 
+..
+
+    There is a human effect from quality. Everybody wants to do a good job, and they
+    work much better if they feel they are doing good work. If you deliberately
+    downgrade quality, your team might go faster at first, but soon the demoralization of
+    producing crap will overwhelm any gains you temporarily made from not testing, or
+    not reviewing, or not sticking to standards.
+    (Kent Beck [#fnxp]_)
+
 
 Be fair and honest
 ------------------
@@ -546,7 +579,7 @@ Ask this question to yourself and everyone in the team.
 .. [#fncodec] «`Code Complete`_» Steve McConnell
 .. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnrtp] «`Refactoring To Patterns`_» by Joshua Kerievsky
-.. [#fnxp] «Extreme Programming Explained» by Kent Beck
+.. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
 .. update:: 10 Aug, 2017
@@ -559,6 +592,7 @@ Ask this question to yourself and everyone in the team.
 .. _Refactoring\: Improving the Design of Existing Code: https://martinfowler.com/books/refactoring.html
 .. _Martin Fowler: https://martinfowler.com/aboutMe.html
 .. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
+.. _Extreme Programming Explained: http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654
 .. _Catalog of Refactorings: http://www.refactoring.com/catalog/
 .. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
 .. _Test-Driven Development: https://martinfowler.com/bliki/TestDrivenDevelopment.html
