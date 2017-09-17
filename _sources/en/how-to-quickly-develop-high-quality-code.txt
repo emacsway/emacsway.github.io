@@ -533,6 +533,21 @@ Once I saw how the tight-knit collective with high self-motivation was destroyed
     not reviewing, or not sticking to standards.
     (Kent Beck [#fnxp]_)
 
+..
+
+    This points to a deeper value, one that lies below the surface of the other four —
+    respect. If members of a team don't care about each other and what they are doing,
+    XP is doomed.
+    (Kent Beck [#fnxp]_)
+
+..
+
+    If members of a team don't care about the project, nothing can
+    save it. Given some minimal passion, XP provides some positive feedback. This is not
+    manipulative; it's just enjoying being part of something that works, instead of part of
+    something that doesn't work.
+    (Kent Beck [#fnxp]_)
+
 
 Be fair and honest
 ------------------
