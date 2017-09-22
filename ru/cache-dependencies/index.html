@@ -1,0 +1,710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>О проблемах инвалидации кэша. Тегирование кэша. &mdash; @emacsway&#39;s blog</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="top" title="@emacsway&#39;s blog" href="../../" />
+  
+
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+    
+
+        <meta http-equiv="Last-Modified" content="Thu, 10 Nov 2016 00:00:00 GMT" />
+        
+            <meta name="description" content="О моем опыте решения проблем инвалидации кэша, и о принципах работы библиотеки cache-dependencies." />
+        
+        
+            <meta property="og:image" content="../../_static/logo.jpg" />
+            <link rel="image_src" href="../../_static/logo.jpg" />
+        
+
+        <link rel="canonical" href="https://emacsway.github.io/ru/cache-dependencies/" />
+
+        <script type="text/javascript">
+            setTimeout(function() {
+                $.toast({
+                    text: 'If you like this site, please support it with an external link or share it with an social nerwork. Thanks!',
+                    position: 'bottom-right',
+                    hideAfter: 7000
+                });
+            }, 30000);
+        </script>
+
+    
+
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="@emacsway's blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1><a class="toc-backref" href="#id18">О проблемах инвалидации кэша. Тегирование кэша.</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>О моем опыте решения проблем инвалидации кэша, и о принципах работы библиотеки <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies">cache-dependencies</a>.</p>
+<div class="contents topic" id="id2">
+<p class="topic-title first">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id18">О проблемах инвалидации кэша. Тегирование кэша.</a></li>
+<li><a class="reference internal" href="#id3" id="id19">Проблема зависимостей в кэшировании</a></li>
+<li><a class="reference internal" href="#id4" id="id20">Накладные расходы при чтении кэша или его создании?</a></li>
+<li><a class="reference internal" href="#id5" id="id21">Многоуровневое кэширование и тегирование</a></li>
+<li><a class="reference internal" href="#id6" id="id22">Проблема репликации</a></li>
+<li><a class="reference internal" href="#tags-lock-ru" id="id23">Реализация блокировки меток</a><ul>
+<li><a class="reference internal" href="#id8" id="id24">Конструктивное препятствие реализации пессимистической блокировки</a></li>
+<li><a class="reference internal" href="#id9" id="id25">Сопутствующие препятствия реализации пессимистической блокировки</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#thundering-herd" id="id26">Thundering herd</a></li>
+<li><a class="reference internal" href="#id10" id="id27">Проблема транзакций</a><ul>
+<li><a class="reference internal" href="#read-uncommitted" id="id28">Read uncommitted</a></li>
+<li><a class="reference internal" href="#read-committed" id="id29">Read committed</a></li>
+<li><a class="reference internal" href="#repeatable-read" id="id30">Repeatable read</a></li>
+<li><a class="reference internal" href="#serializable" id="id31">Serializable</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11" id="id32">Множественные соединения с БД</a></li>
+<li><a class="reference internal" href="#id12" id="id33">Динамические окна в кэше</a></li>
+<li><a class="reference internal" href="#id13" id="id34">Абстрактный менеджер зависимостей</a></li>
+<li><a class="reference internal" href="#id16" id="id35">Благодарности</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h1><a class="toc-backref" href="#id19">Проблема зависимостей в кэшировании</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>При редактировании данных, необходимо удалить также и все кэши, содержащие данные этой модели.
+Например, при редактировании продукта, который присутствует на закэшированной главной странице компании, требуется инвалидировать и ее кэш тоже.
+Другой случай, - обновляя данные пользователя (например, фамилию), мы должны также удалить все кэши страниц его постов, на которых присутствуют обновленные данные.</p>
+<p>Обычно за инвалидацию кэша отвечает паттерн <a class="reference external" href="https://en.wikipedia.org/wiki/Observer_pattern">Observer</a>, или его разновидность - паттерн Multicast.
+Но даже в этом случае механизмы инвалидации получаются слишком сложными, достигаемая точность слишком низкая, a код обрастает лишним <a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">сопряжением</a> и зачастую жертвует своей инкапсуляцией.</p>
+<p>И тут на выручку приходит тегирование кэша, т.е. прошивание кэша метками.
+Например, кэш главной страницы может быть прошит тегом <code class="docutils literal"><span class="pre">product.id:635</span></code>.
+А все посты пользователя могут быть прошиты меткой <code class="docutils literal"><span class="pre">user.id:10</span></code>.
+Коллекции можно кэшировать составным тегом, состоящим из критериев выборки, например <code class="docutils literal"><span class="pre">type.id:1;category.id:15;region.id:239</span></code>.</p>
+<p>Теперь достаточно инвалидировать метку, чтобы все зависимые кэши автоматически инвалидировались.
+Эта технология не нова, и активно используется в других языках программирования.
+Одно время ее даже пытались внедрить в memcached, см. <a class="reference external" href="http://code.google.com/p/memcached-tag/">memcached-tag</a>.</p>
+<p>Также смотрите:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.python.org/pypi/wheezy.caching">Cache dependency in wheezy.caching</a></li>
+<li><a class="reference external" href="http://framework.zend.com/manual/current/en/modules/zend.cache.storage.adapter.html#the-taggableinterface">TaggableInterface of ZF</a></li>
+<li><a class="reference external" href="http://www.yiiframework.com/doc-2.0/yii-caching-tagdependency.html">TagDependency of YII framework</a></li>
+<li><a class="reference external" href="http://dklab.ru/lib/Dklab_Cache/">Dklab_Cache: правильное кэширование — тэги в memcached, namespaces, статистика</a></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1><a class="toc-backref" href="#id20">Накладные расходы при чтении кэша или его создании?</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<p>Возникает вопрос реализации инвалидации зависимых от метки кэшей.
+Возможны два варианта:</p>
+<p>1. При инвалидации метки физически уничтожать все зависимые кэши.
+Для реализации такого подхода потребуются накладные расходы при создании кэша, чтобы добавить информацию о нем в список (точнее, множество) зависимостей каждой метки (например, используя <a class="reference external" href="http://redis.io/commands/sadd">SADD</a>).
+Недостаток заключается в том, что инвалидация большого количества зависимых кэшей требует определенного времени.</p>
+<p>2. При инвалидации метки просто изменять версию этой метки.
+Для реализации потребуется добавлять в кэш информацию о версиях меток.
+При чтении кэша потребуются накладные расходы для сверки версии каждой его метки, и, если версия устарела, то кэш считается недействительным.
+Достоинство этого подхода заключается в мгновенной инвалидации метки и всех ее зависимых кэшей.
+Можно не бояться вытеснения из хранилища закэшированной информации о версии метки по <a class="reference external" href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">LRU</a> принципу, так как метки запрашиваются намного чаще самого кэша.</p>
+<p>Я выбрал второй вариант.</p>
+</div>
+<div class="section" id="id5">
+<h1><a class="toc-backref" href="#id21">Многоуровневое кэширование и тегирование</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<p>Поскольку метки сверяются в момент чтения кэша, давайте представим, что произойдет, если один кэш поглощается другим кэшем.
+Многоуровневый кэш - не редкость.
+В таком случае, метки вложенного, дочернего кэша никогда не пройдут сверку, и родительский кэш останется с неактуальными данными.
+Необходимо явно передать метки родительскому кэшу в момент его создания, что может нарушать принцип инкапсуляции.</p>
+<p>Поэтому система кэширования должна автоматически отслеживать связи между вложенными кэшами, и передавать метки от дочернего кэша к родительскому.</p>
+</div>
+<div class="section" id="id6">
+<h1><a class="toc-backref" href="#id22">Проблема репликации</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<p>При инвалидации кэша параллельный поток может успеть воссоздать кэш с устаревшими данными, прочитанными из slave в перид времени после инвалидации кэша, но до момента обновления slave.</p>
+<p>Лучшим решением было бы <a class="reference internal" href="#tags-lock-ru"><span class="std std-ref">блокирование создания кэша</span></a> до момента обновления slave.
+Но, во-первых, это сопряжено с определенными накладными расходами, а во-вторых, все потоки (в том числе и текущий) продолжают считывать устаревшие данные из slave (если не указано явное чтение из мастера).
+Поэтому, компромиссным решением может быть просто повторная инвалидация кэша через период времени гарантированного обновления slave.</p>
+<p>В своей практике мне приходилось встречать такой подход как регенерация кэша вместо его удаления/инвалидации.
+Такой подход влечет за собой не совсем эффективное использование памяти кэша (работающего по <a class="reference external" href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">LRU</a> принципу).
+К тому же, он не решает проблему сложности инвалидации, и, в данном вопросе, мало чем отличается от обычного удаления кэша по его ключу, возлагая всю сложность на само приложение.
+Также он таит множество потенциальных баг.
+Например, он чувствителен к качеству ORM, и если ORM не приводит все атрибуты инстанции модели к нужному типу при сохранении, то в кэш записываются неверные типы данных.
+Мне приходилось видеть случай, когда атрибут даты записывался к кэш в формате строки, в таком же виде, в каком он пришел от клиента.
+Хотя он и записывался в БД корректно, но модель не делала приведение типов без дополнительных манипуляций при сохранении (семантическое сопряжение).</p>
+<div class="note update admonition">
+<p class="first admonition-title">Updated on Nov 10, 2016</p>
+<p class="last">Добавлено описание реализации блокировки меток.</p>
+</div>
+</div>
+<div class="section" id="tags-lock-ru">
+<span id="id7"></span><h1><a class="toc-backref" href="#id23">Реализация блокировки меток</a><a class="headerlink" href="#tags-lock-ru" title="Permalink to this headline">¶</a></h1>
+<p>Главное назначение блокировки меток - предотвратить подмену данных посредством кэша в параллельных потоках, если это требуется уровнем изоляции транзакций или задержкой репликации.</p>
+<p>Блокировка меток в библиотеке реализована в виде обхода параллельными потоками процедуры сохранения кэша, помеченного заблокированной меткой.</p>
+<p>Почему не была использована пессимистическая блокировка меток (<a class="reference external" href="http://martinfowler.com/eaaCatalog/pessimisticOfflineLock.html">Pessimistic Offline Lock</a>), или <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_exclusion">Mutual Exclusion</a>?
+Вопрос <a class="reference internal" href="#thundering-herd-ru"><span class="std std-ref">резонный</span></a>, ведь закэшированная логика может быть достаточно ресурсоемкой.
+При такой реализации параллельные потоки ожидали бы освобождения заблокированной метки.</p>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id24">Конструктивное препятствие реализации пессимистической блокировки</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>Библиотека предназначена, прежде всего, для управления инвалидацией кэша.</p>
+<p>Предположим, поток П1 начал транзакцию с уровнем изоляции Repeatable read.</p>
+<p>Следом за ним, поток П2 начал транзакцию, изменил данные в БД, и вызвал инвалидацию метки М1, что наложило блокировку на метку М1 до момента фиксации транзакции.</p>
+<p>Поток П1 пытается прочитать кэш К1, который прошит меткой М1, и является невалидным.
+Не сумев прочитать невалидный кэш К1, поток П1 получает данные из БД, которые уже утратили актуальность (напомню, уровень изоляции - Repeatable read).
+Затем он пытается создать кэш К1, и встает в ожидание, так как на метку К1 наложена пессимистическая блокировка.</p>
+<p>Во время фиксации транзакции, поток П2 освобождает метку М1.
+Затем поток П1 записывает в кэш устаревшие данные.
+Смысла от такой блокировки нет.</p>
+<p>Но что если мы будем проверять статус метки не во время создания кэша, а во время чтения кэша?
+Изменило бы это хоть что-то?</p>
+<p>Изменило бы. Во-первых, добавило бы оверхед на логику чтения.
+Во-вторых, изменило бы результат, если бы уровень изоляции транзакции не превышал Read committed.
+Для уровня изоляции Repeatable read (который выбран по умолчанию для ряда БД, и является минимально необходимым для корректной работы паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>) и выше, - ничего не изменило бы.
+Для этого пришлось бы блокировать поток еще до начала транзакции.</p>
+<p>Таким образом, данное решение было бы половинчатым, не универсальным, и содержало бы неконтролируемую зависимость.
+Для 2-х из 4-х уровней изоляции транзакций работать не будет.</p>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id25">Сопутствующие препятствия реализации пессимистической блокировки</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Кроме конструктивного препятствия есть еще и другие.</p>
+<p>Библиотека ориентирована главным образом на веб-приложения.
+Ожидание параллельных потоков до момента окончания транзакции, или до момента обновления slave, который в некоторых случаях может длиться 8 секунд и более, практически не реализуемо в веб-приложениях.</p>
+<p>Основных причин здесь три:</p>
+<ul class="simple">
+<li>Для веб-приложения важна быстрота отклика, так как клиент может просто не дождаться ответа.</li>
+<li>Нет смысла ожидать создание кэша более, чем требуется времени на само создание кэша.</li>
+<li>Рост количества ожидающих потоков может привести к перерасходу памяти, или доступных воркеров сервера, или исчерпанию максимально допустимого числа коннектов к БД или других ресурсов.</li>
+</ul>
+<p>Также возникла бы проблема с реализацией, поскольку корректно заблокировать все метки одним запросом невозможно.</p>
+<ul class="simple">
+<li>Во-первых, для блокировки метки нужно использовать метод <code class="docutils literal"><span class="pre">cache.add()</span></code> вместо <code class="docutils literal"><span class="pre">cache.set_many()</span></code>, чтобы гарантировать атомарность проверки существования и создания кэша.</li>
+<li>Во-вторых, каждую метку нужно блокировать отдельным запросом, что увеличило бы накладные расходы.</li>
+<li>В-третьих, поодиночное блокирование чревато взаимной блокировкой (<a class="reference external" href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>), вероятность которой можно заметно сократить с помощью топологической сортировки.</li>
+</ul>
+<p>Отдельно стоит упомянуть возможность <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/explicit-locking.html">блокировки строк в БД</a> при использовании выражения <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE">SELECT FOR UPDATE</a>. Но это будет работать только в том случае, если обе транзакции используют выражение <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE">SELECT FOR UPDATE</a>, в <a class="reference external" href="https://www.postgresql.org/docs/9.5/static/transaction-iso.html#XACT-READ-COMMITTED">противном случае</a>:</p>
+<blockquote>
+<div>When a transaction uses this isolation level, a SELECT query (without a FOR UPDATE/SHARE clause) sees only data committed before the query began; it never sees either uncommitted data or changes committed during query execution by concurrent transactions. In effect, a SELECT query sees a snapshot of the database as of the instant the query begins to run.</div></blockquote>
+<p>Однако, выборку для модификации не имеет смысла кэшировать (да и вообще, в веб-приложениях ее мало кто использует, так как этот вопрос перекрывается уже вопросом организации бизнес-транзакций), соответственно, ее блокировка мало чем может быть полезна в этом вопросе. К тому же она не решает проблему репликации.</p>
+</div>
+</div>
+<div class="section" id="thundering-herd">
+<span id="thundering-herd-ru"></span><h1><a class="toc-backref" href="#id26">Thundering herd</a><a class="headerlink" href="#thundering-herd" title="Permalink to this headline">¶</a></h1>
+<p>Но что делать, если закэшированная логика действительно очень ресурсоемка?</p>
+<p>Dogpile известен также как <a class="reference external" href="http://en.wikipedia.org/wiki/Thundering_herd_problem">Thundering Herd</a> effect или cache stampede.</p>
+<p>Ответ прост, - пессимистическая блокировка. Только не меток кэша, а ключа кэша (или группы связанных ключей, см. <a class="reference external" href="http://martinfowler.com/eaaCatalog/coarseGrainedLock.html">Coarse-Grained Lock</a>, особенно при использовании агрегирования запросов).
+Потому что при освобождении блокировки кэш должен быть гарантированно создан (а кэш и метки связаны отношением many to many).</p>
+<p>Блокировка должна охватывать весь фрагмент кода от чтения кэша до его создания.
+Она решает другую задачу, которая не связана с инвалидацией.</p>
+<p>Существует ряд решений для реализации такой блокировки, вот только некоторые из них:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&amp;fileviewer=file-view-default#patterns.py-348">wheezy.caching.patterns.OnePass</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/memcached_lock">memcached_lock</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/memcachelock">memcachelock</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/unimr.memcachedlock">unimr.memcachedlock</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/DistributedLock">DistributedLock</a></li>
+<li><a class="reference external" href="https://chris-lamb.co.uk/posts/distributing-locking-python-and-redis">distributing-locking-python-and-redis</a></li>
+<li><a class="reference external" href="https://github.com/mpessas/python-redis-lock/blob/master/redislock/lock.py">mpessas/python-redis-lock</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/pylock">pylock</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/python-redis-lock">python-redis-lock</a></li>
+<li><a class="reference external" href="https://github.com/andymccurdy/redis-py/blob/master/redis/lock.py">redis-py</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/redlock">redlock</a></li>
+<li><a class="reference external" href="https://github.com/bbangert/retools/blob/master/retools/lock.py">retools</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/score.distlock">score.distlock</a></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h1><a class="toc-backref" href="#id27">Проблема транзакций</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h1>
+<p>Если Ваш проект имеет более-менее нормальную посещаемость, то с момента инвалидации кэша и до момента фиксации транзакции, параллельный поток может успеть воссоздать кэш с устаревшими данными.
+В отличии от проблемы репликации, здесь проявление проблемы сильно зависит от качества ORM, и вероятность проблемы снижается при использовании паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>.</p>
+<p>Рассмотрим проблему для каждого <a class="reference external" href="https://en.wikipedia.org/wiki/Isolation_(database_systems)">уровня изоляции транзакции</a> по отдельности.</p>
+<div class="section" id="read-uncommitted">
+<h2><a class="toc-backref" href="#id28">Read uncommitted</a><a class="headerlink" href="#read-uncommitted" title="Permalink to this headline">¶</a></h2>
+<p>Тут все просто, и никакой проблемы не может быть в принципе. В случае использования репликации достаточно сделать отложенный повтор инвалидации через интервал времени гарантированного обновления slave.</p>
+</div>
+<div class="section" id="read-committed">
+<h2><a class="toc-backref" href="#id29">Read committed</a><a class="headerlink" href="#read-committed" title="Permalink to this headline">¶</a></h2>
+<p>Тут уже проблема может присутствовать, особенно если Вы используете <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
+Использование паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> в сочетании с <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a> заметно снижает интервал времени между сохранением данных и фиксацией транзакции, но вероятность проблемы все равно остается.</p>
+<p>В отличии от проблемы репликации, здесь предпочтительней было бы блокирование создания кэша до момента фиксации транзакции, так как текущий поток видит в БД не те данные, которые видят параллельные потоки.
+А поскольку нельзя гарантированно сказать какой именно поток, текущий или параллельный, создаст новый кэш, то создание кэша до фиксации транзакции было бы желательно избежать.</p>
+<p>Тем не менее, этот уровень изоляции не является достаточно серьезным, и выбирается, как правило, для повышения степени параллелизма, т.е. с той же целью что и репликация.
+А в таком случае, эта проблема обычно поглощается проблемой репликации, ведь чтение делается все равно из slave.</p>
+<p>Поэтому, дорогостоящая блокировка может быть компромисно заменена повторной инвалидацией в момент фиксации транзакции.</p>
+</div>
+<div class="section" id="repeatable-read">
+<h2><a class="toc-backref" href="#id30">Repeatable read</a><a class="headerlink" href="#repeatable-read" title="Permalink to this headline">¶</a></h2>
+<p>Этот случай наиболее интересен.
+Здесь уже без блокировки создания кэша не обойтись, хотя бы потому, что нам нужно знать не только список меток, но и время фиксации транзакции, которая осуществила инвалидацию метки кэша.</p>
+<p>Мало того, что мы должны заблокировать метку с момента инвалидации до момента фиксации транзакции, так мы еще и не можем создавать кэш в тех параллельных транзакциях, которые были открыты до момента фиксации текущей транзакции.</p>
+<p>Хорошая новость заключается в том, что раз уж мы и вынуждены мириться с накладными расходами на блокировку меток, то можно блокировать их вплоть до обновления slave, и обойтись без компромисов.</p>
+</div>
+<div class="section" id="serializable">
+<h2><a class="toc-backref" href="#id31">Serializable</a><a class="headerlink" href="#serializable" title="Permalink to this headline">¶</a></h2>
+<p>Поскольку несуществующие объекты обычно не кэшируются, то здесь достаточно ограничится той же проблематикой, что и для уровня <a class="reference internal" href="#repeatable-read">Repeatable read</a>.</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h1><a class="toc-backref" href="#id32">Множественные соединения с БД</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h1>
+<p>Если Вы используете разные БД, и их транзакции синхронны, или просто используется репликация, Вы можете использовать по одному экземляру внешнего кэша (враппера) для каждого экземпляра внутреннего кэша (бэкенда).
+Транзакции кэша не обязаны строго соответствовать системным транзакциям каждой БД.
+Достаточно того, чтобы они выполняли свое предназначение, - не допускать подмену данных посредством кэша в параллельных потоках.
+Поэтому, они могут охватывать несколько системных транзакций БД.</p>
+<p>Но если Вы используете несколько соединений к одной и той же БД (что само по себе странно, но теоретически могут быть случаи когда нет возможности расшарить коннект для нескольких ORM в едином проекте), или же просто транзакции различных БД не синхронны, то Вы можете сконфигурировать внешний кэш так, чтобы иметь по одному экземпляру внешнего кэша на каждое соединение с БД для каждого экземпляра внутреннего кэша.</p>
+</div>
+<div class="section" id="id12">
+<h1><a class="toc-backref" href="#id33">Динамические окна в кэше</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h1>
+<p>Есть два взаимно-дополняющих паттерна, основанных на диаметрально противоположных принципах, - <a class="reference external" href="https://en.wikipedia.org/wiki/Decorator_pattern">Decorator</a> и <a class="reference external" href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategy</a>.
+В первом случае изменяемая логика располагается вокруг объявленного кода, во втором - передается внутрь него.
+Обычное кэширование имеет черты паттерна <a class="reference external" href="https://en.wikipedia.org/wiki/Decorator_pattern">Decorator</a>, когда динамический код расположен вокруг закэшированной логики.
+Но иногда в кэше небольшой фрагмент логики не должен подлежать кэшированию.
+Например, персонализированные данные пользователя, проверка прав и т.п.</p>
+<p>Один из вариантов решения этой проблемы - это использование технологии <a class="reference external" href="https://en.wikipedia.org/wiki/Server_Side_Includes">Server Side Includes</a>.</p>
+<p>Другой вариант - это использование двухфазной шаблонизации, например, используя библиотеку <a class="reference external" href="https://pypi.python.org/pypi/django-phased">django-phased</a>.
+Справедливости ради нужно отметить, что решение имеет немаленькое ресурсопотребление, и в некоторых случаях может нивелировать (если не усугублять) эффект от кэширования.
+Возможно, именно поэтому, оно не получило широкого распространения.</p>
+<p>Популярный шаблонный движок Smarty на PHP имеет функцию <a class="reference external" href="http://www.smarty.net/docs/en/language.function.nocache.tpl">{nocache}</a>.</p>
+<p>Но более интересной мне показалась возможность использовать в качестве динамического окна обычный Python-код, и абстрагироваться от сторонних технологий.</p>
+<div class="note update admonition">
+<p class="first admonition-title">Updated on Nov 06, 2016</p>
+<p class="last">Добавлен абстрактный менеджер зависимостей.</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h1><a class="toc-backref" href="#id34">Абстрактный менеджер зависимостей</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<p>Долгое время мне не нравилось то, что о логике, ответственной за обработку тегов, были осведомлены сразу несколько различных классов с различными обязанностями.</p>
+<p>Было желание инкапсулировать эту обязанность в отдельном <a class="reference external" href="https://en.wikipedia.org/wiki/Strategy_pattern">классе-стратегии</a>, как это сделано, например, в <a class="reference external" href="http://www.yiiframework.com/doc-2.0/yii-caching-tagdependency.html">TagDependency of YII framework</a>,
+но не хотелось ради этого увеличивать накладные расходы в виде <a class="reference external" href="https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187">дополнительного запроса на каждый ключ кэша для сверки его меток</a>, что означало бы лишение метода <code class="docutils literal"><span class="pre">cache.get_many()</span></code> своего смысла - агрегирования запросов.
+По моему мнению, накладные расходы не должны превышать одного запроса в совокупности на каждое действие, даже если это действие агрегированное, такое как <code class="docutils literal"><span class="pre">cache.get_many()</span></code>.</p>
+<p>Кроме того, у меня там был еще один метод со спутанными обязанностями для обеспечения возможности агрегации запросов в хранилище, что большого восторга не вызывало.</p>
+<p>Но мысль инкапсулировать управление тегами в отдельном абстрактном классе, отвечающем за управления зависимостями, и получить возможность использовать для управления инвалидацией не только теги, но и любой иной принцип, включая компоновку различных принципов, мне нравилась.</p>
+<p>Решение появилось с введение класса <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/defer.py">Deferred</a>.
+Собственно это не Deferred в чистом виде, в каком его привыкли видеть в асинхронном программировании, иначе я просто использовал бы эту <a class="reference external" href="https://pypi.python.org/pypi/defer">элегантную и легковесную библиотечку</a>, любезно предоставленную ребятами из Canonical.</p>
+<p>В моем же случае, требуется не только отложить выполнение задачи, но и накапливать их с целью агрегации однотипных задач, которые допускают возможность агрегации (<code class="docutils literal"><span class="pre">cache.get_many()</span></code> является как раз таким случаем).</p>
+<p>Возможно, название Queue или Aggregator здесь подошло бы лучше, но так как с точки зрения интерфейса мы всего лишь откладываем выполнение задачи, не вникая в детали ее реализации, то я предпочел оставить название Deferred.</p>
+<p>Все это позволило выделить интерфейс абстрактного класса, ответственного за управление зависимостями, и теперь управление метками кэша стало всего лишь одной из его возможных реализаций в виде класса <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/dependencies.py">TagsDependency</a>.</p>
+<p>Это открывает перспективы создания других вариантов реализаций управления зависимостями, например, на основе наблюдения за изменением какого-либо файла, или SQL-запроса, или какого-то системного события.</p>
+</div>
+<div class="section" id="id16">
+<h1><a class="toc-backref" href="#id35">Благодарности</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h1>
+<p>Моя благодарность <a class="reference external" href="https://bitbucket.org/akorn">&#64;akorn</a> за содержательное обсуждение проблематики кэширования.</p>
+<p>This article in English &#8220;<a class="reference internal" href="../../en/cache-dependencies/"><span class="doc">About problems of cache invalidation. Cache tagging.</span></a>&#8221;.</p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../../en/cache-dependencies/">
+    <i class="fa fa-arrow-circle-left"></i>
+    About problems of cache invalidation. Cache tagging.
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../martial-way/">
+    Искусство воевать
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'emacsway';
+        var disqus_identifier = '/ru/cache-dependencies/';
+        var disqus_title = 'О проблемах инвалидации кэша. Тегирование кэша.';
+        var disqus_url = 'https://emacsway.github.io/ru/cache-dependencies/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+    <h1 class="logo logo-name">@emacsway's blog</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    May 21, 2016
+  
+  </h2>
+
+  <ul>
+    
+  <li><i class="fa fa-pencil-square-o"></i>
+    Nov 10, 2016</li>
+  
+
+  
+  <li><i class="fa-fw fa fa-user"></i>
+    
+      
+      <a href="../../blog/author/ivan-zakrevsky/">Ivan Zakrevsky</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-language"></i>
+    
+      
+      <a href="../../blog/language/russian/">Russian</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-tag"></i>
+    
+      
+      <a href="../../blog/tag/cache/">cache</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'emacsway'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/ru/cache-dependencies/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About me</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../about-quality-of-comments/">Aug 13 - О качестве комментариев в интернете</a></li>
+    
+      <li><a href="../javascript-and-repository-pattern/">Aug 06 - Реализация паттерна Repository в браузерном JavaScript</a></li>
+    
+      <li><a href="../django-framework/">Jul 26 - О моем опыте использования Django Framework</a></li>
+    
+      <li><a href="../../en/django-framework/">Jul 26 - About my experience of using Django Framework</a></li>
+    
+      <li><a href="../service-layer/">Jul 17 - Проектирование Сервисного Слоя</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">Architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/db/">DB</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/datamapper/">DataMapper</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/dependency-injection/">Dependency Injection</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/design/">Design</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/django/">Django</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/django-model/">Django Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/emacs/">Emacs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/fowler/">Fowler</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/javascript/">JavaScript</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-4">
+        <a href="../../blog/tag/orm/">ORM</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/python/">Python</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/repository/">Repository</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/sql/">SQL</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/storm-orm/">Storm ORM</a></li>
+      
+    
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/autocomplete/">autocomplete</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cache/">cache</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/programming/">programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/refactoring/">refactoring</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2017/">2017 (7)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016/">2016 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2015/">2015 (6)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer">
+      &copy;2017, Ivan Zakrevsky.
+      
+      |
+      Powered by <a href="http://ablog.readthedocs.org/">ABlog</a> &amp; <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/ru/cache-dependencies.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+
+
+    
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-597ba7fb5af2ef1e"></script>
+
+    
+
+
+<!-- google.com/analytics counter -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69288289-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /google.com/analytics counter -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32948409 = new Ya.Metrika({
+                    id:32948409,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/32948409" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+  </body>
+</html>

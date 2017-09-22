@@ -1,0 +1,59 @@
+
+Usefull links
+=============
+
+.. post:: Aug 29, 2016
+   :language: en
+   :tags:
+   :category:
+   :author: Ivan Zakrevsky
+
+
+Here is the list of articles and sites that I find interesting. This page is regularly updated.
+
+
+Sites
+-----
+
+- `IT eBooks <http://www.it-ebooks.org/>`__
+- `Live, Web-Based Browser Testing <https://www.browserstack.com/>`__
+- `Catalog of Refactorings <http://www.refactoring.com/catalog/>`__
+- `Code Smell <http://c2.com/cgi/wiki?CodeSmell>`__
+- `Anti Patterns Catalog <http://c2.com/cgi/wiki?AntiPatternsCatalog>`__
+- `Coupling And Cohesion <http://wiki.c2.com/?CouplingAndCohesion>`__
+- `A visualization of the most famous Sorting Algorithms. <http://sorting.at/>`__
+
+
+
+Articles
+--------
+
+- `Simple Top-Down Parsing in Python <http://effbot.org/zone/simple-top-down-parsing.htm>`__
+- `Top Down Operator Precedence <http://javascript.crockford.com/tdop/tdop.html>`__
+- `Why extends is evil <http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html>`__
+- `Why getter and setter methods are evil <http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html>`__
+- `The Kiss Principle <https://people.apache.org/~fhanik/kiss.html>`__
+- `The Case for Slow Programming <https://ventrellathing.wordpress.com/2013/06/18/the-case-for-slow-programming/>`__
+- `Inversion of Control Containers and the Dependency Injection pattern <http://martinfowler.com/articles/injection.html>`__
+- `Microservices <http://martinfowler.com/articles/microservices.html>`__
+- `Mocks Aren't Stubs <http://martinfowler.com/articles/mocksArentStubs.html>`__
+- `AnemicDomainModel <http://www.martinfowler.com/bliki/AnemicDomainModel.html>`__
+- `SQLAlchemy Architecture <http://aosabook.org/en/sqlalchemy.html>`__
+- `Concurrency model and Event Loop <https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop>`__
+- `Clean architectures in Python: a step-by-step example <http://blog.thedigitalcatonline.com/blog/2016/11/14/clean-architectures-in-python-a-step-by-step-example/>`__
+
+
+
+Sites in Russian
+----------------
+
+- `учебники компьютерщику <http://bookwebmaster.narod.ru/>`__
+- `AlgoList - алгоритмы, методы, исходники <http://algolist.manual.ru/>`__
+
+
+Articles in Russian
+-------------------
+
+- `Разница менталитетов и национальных деловых культур. <http://bulochnikov.livejournal.com/2326301.html>`__
+
+.. update:: 14 Aug, 2017
