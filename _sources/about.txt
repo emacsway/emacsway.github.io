@@ -42,7 +42,9 @@ My guiding light is:
 Education
 ---------
 
-1994-1999 - The Dnepropetrovsk State Technical University of Railway Transportation
+.. 1994-1999 - 
+
+The Dnepropetrovsk State Technical University of Railway Transportation
 
 
 Preferences
