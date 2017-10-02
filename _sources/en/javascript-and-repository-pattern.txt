@@ -404,7 +404,7 @@ Source code
 ===========
 
 Currently, the source code of the library is not open.
-But such a probability exists for the near future.
+But such probability exists for the near future.
 
 
 .. rubric:: Footnotes
