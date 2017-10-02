@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Реализация паттерна Repository в браузерном JavaScript &mdash; @emacsway&#39;s blog</title>
+    <title>Implementation of the pattern Repository for browser’s JavaScript &mdash; @emacsway&#39;s blog</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -38,9 +38,9 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sun, 24 Sep 2017 22:11:30 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 02 Oct 2017 22:44:36 GMT" />
         
-            <meta name="description" content="Хорошая архитектура освобождает Вас от привязки к конкретной реализации. Она позволяет Вам отложить момент принятия решения о реализации, и начать конструирование кода еще не имея этого решения. Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а также всегда можете легко подменить конкретную реализацию на любую другую. Вот эта обязанность возложена на паттерн Repository." />
+            <meta name="description" content="Good architecture makes you free from certain implementation. It allows you to postpone the moment of decision on implementation and begin code construction even without the decision. The most important point is that you gain the opportunity to make a decision at the time of the greatest awareness, and you can also easily replace a specific implementation with any other. This responsibility is assigned to the Repository." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
@@ -86,39 +86,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="repository-javascript">
-<h1><a class="toc-backref" href="#id42">Реализация паттерна Repository в браузерном JavaScript</a><a class="headerlink" href="#repository-javascript" title="Permalink to this headline">¶</a></h1>
-<p>Хорошая архитектура освобождает Вас от привязки к конкретной реализации.
-Она позволяет Вам отложить момент принятия решения о реализации, и <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">начать конструирование кода еще не имея этого решения</a>.
-Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а также всегда можете легко подменить конкретную реализацию на любую другую.
-Вот эта обязанность возложена на паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>.</p>
-<div class="contents topic" id="id1">
-<p class="topic-title first">Содержание</p>
+  <div class="section" id="implementation-of-the-pattern-repository-for-browser-s-javascript">
+<h1><a class="toc-backref" href="#id29">Implementation of the pattern Repository for browser&#8217;s JavaScript</a><a class="headerlink" href="#implementation-of-the-pattern-repository-for-browser-s-javascript" title="Permalink to this headline">¶</a></h1>
+<p>Good architecture makes you free from certain implementation.
+It allows you to postpone the moment of decision on implementation and <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">begin code construction even without the decision</a>.
+The most important point is that you gain the opportunity to make a decision at the time of the greatest awareness, and you can also easily replace a specific implementation with any other.
+This responsibility is assigned to the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#repository-javascript" id="id42">Реализация паттерна Repository в браузерном JavaScript</a></li>
-<li><a class="reference internal" href="#domain-model" id="id43">Модель предметной области (Domain Model)</a></li>
-<li><a class="reference internal" href="#id7" id="id44">Парадигма реактивного программирования</a></li>
-<li><a class="reference internal" href="#id8" id="id45">Примеры реализаций паттерна Repository в JavaScript</a></li>
-<li><a class="reference internal" href="#id9" id="id46">Реализация реляционных связей</a><ul>
-<li><a class="reference internal" href="#id10" id="id47">Синхронное программирование</a></li>
-<li><a class="reference internal" href="#id17" id="id48">Отказ от связей</a></li>
-<li><a class="reference internal" href="#id18" id="id49">Асинхронное программирование</a></li>
-<li><a class="reference internal" href="#id21" id="id50">Функциональное программирование</a></li>
-<li><a class="reference internal" href="#id25" id="id51">Лирическое отступление</a></li>
-<li><a class="reference internal" href="#id38" id="id52">Реализация связей путем присваивания</a></li>
+<li><a class="reference internal" href="#implementation-of-the-pattern-repository-for-browser-s-javascript" id="id29">Implementation of the pattern Repository for browser&#8217;s JavaScript</a></li>
+<li><a class="reference internal" href="#domain-model" id="id30">Domain Model</a></li>
+<li><a class="reference internal" href="#reactive-programming-paradigm" id="id31">Reactive programming paradigm</a></li>
+<li><a class="reference internal" href="#examples-of-implementations-of-repository-pattern-by-javascript" id="id32">Examples of implementations of Repository pattern by JavaScript</a></li>
+<li><a class="reference internal" href="#implementation-of-relational-relations" id="id33">Implementation of relational relations</a><ul>
+<li><a class="reference internal" href="#synchronous-programming" id="id34">Synchronous programming</a></li>
+<li><a class="reference internal" href="#rejecting-relations" id="id35">Rejecting relations</a></li>
+<li><a class="reference internal" href="#asynchronous-programming" id="id36">Asynchronous programming</a></li>
+<li><a class="reference internal" href="#functional-programming" id="id37">Functional Programming</a></li>
+<li><a class="reference internal" href="#minor-offtopic" id="id38">Minor offtopic</a></li>
+<li><a class="reference internal" href="#implementation-of-relations-by-assigning" id="id39">Implementation of relations by assigning</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id39" id="id53">Исходный код</a></li>
+<li><a class="reference internal" href="#source-code" id="id40">Source code</a></li>
 </ul>
 </div>
-<p>Таким образом, у Вас появляется полная абстракция от источника данных, будь то REST-API, MBaaS, SaaS, IndexedDB, HTML, сторонний сервис по протоколу JSON-RPC или <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>.</p>
+<p>Thus, you have a complete abstraction from the data source, whether it&#8217;s REST-API, MBaaS, SaaS, IndexedDB, HTML, third-party service for JSON-RPC protocol or <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>.</p>
 <blockquote>
 <div>&#8220;We often forget that it is also best to postpone decisions until the last possible moment.
 This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.
 A premature decision is a decision made with suboptimal knowledge. We will have that
 much less customer feedback, mental reflection on the project, and experience with our
 implementation choices if we decide too soon.&#8221;
-(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id2">[1]</a>)</div></blockquote>
+(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id1">[1]</a>)</div></blockquote>
 <blockquote>
 <div>A good architecture allows major decision to be deferred! (Robert Martin)</div></blockquote>
 <blockquote>
@@ -127,53 +127,53 @@ late in the process as possible, to defer the cost of making the decisions and t
 the greatest possible chance that they would be right. You would only implement
 what you had to, in hopes that the needs you anticipate for tomorrow wouldn&#8217;t come
 true.
-(Kent Beck <a class="footnote-reference" href="#fnxp" id="id3">[10]</a>)</div></blockquote>
-<p>Кроме того, у Вас появляется возможность реализовать паттерны <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> и <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>.
-Последний очень часто востребован, так как позволяет сохранять на сервере только измененные объекты окончательно сформированного агрегата вложенных объектов, либо выполнить откат состояния локальных объектов в случае, если сохранить данные невозможно (пользователь передумал или ввел невалидные данные).</p>
+(Kent Beck <a class="footnote-reference" href="#fnxp" id="id2">[10]</a>)</div></blockquote>
+<p>In addition, you have the opportunity to implement patterns <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a> and <a class="reference external" href="http://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>.
+The last one is very often in demand, since it allows you to save only changed objects of the finally formed aggregate of nested objects on the server, or roll back the state of local objects in case the data can not be saved (the user has changed his mind or entered invalid data).</p>
 </div>
 <div class="section" id="domain-model">
-<h1><a class="toc-backref" href="#id43">Модель предметной области (Domain Model)</a><a class="headerlink" href="#domain-model" title="Permalink to this headline">¶</a></h1>
-<p>Наибольшим преимуществом полноценных <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Моделей предметной области</a> в программе является возможность использования принципов Domain-Driven Design (DDD) <a class="footnote-reference" href="#fnddd" id="id4">[4]</a>.
-Если Модели содержат исключительно бизнес-логику, и освобождены от служебной логики, то они могут легко читаться специалистами предметной области (т.е. представителем заказчика).
-Это освобождает Вас от необходимости создания UML-диаграмм для обсуждений и позволяет добиться максимально выского уровня взаимопонимания, продуктивности, и качества реализации моделей.</p>
-<p>В одном из проектов я пытался реализовать достаточно сложную доменную логику (которая содержала около 20 доменных Моделей) в парадигме реактивного программирования, когда атрибуты экземпляра Модели, содержащие аннотации агрегации или зависимые от них, изменяли свое значение путем реакции на изменения других моделей и хранилищ.
-Суть в том, что вся эта реактивная логика уже не принадлежала самой доменной модели, и располагалась в разного рода <a class="reference external" href="https://en.wikipedia.org/wiki/Observer_pattern">слушателях</a> и обработчиках.</p>
+<h1><a class="toc-backref" href="#id30">Domain Model</a><a class="headerlink" href="#domain-model" title="Permalink to this headline">¶</a></h1>
+<p>The greatest advantage of the <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> in the program is the ability to use the principles of Domain-Driven Design (DDD) <a class="footnote-reference" href="#fnddd" id="id3">[4]</a>.
+If the Models contain only business logic, and are devoid of service logic, then they can easily be read by domain expert (ie, the customer&#8217;s representative).
+This frees you from the need to create UML diagrams for discussions and allows you to achieve the highest level of mutual understanding, productivity, and quality of implementation of the models.</p>
+<p>In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
+The bottom line is that all this reactive logic no longer belonged to the domain model itself, and was located in a different sort of <a class="reference external" href="https://en.wikipedia.org/wiki/Observer_pattern">Observers</a> and handlers.</p>
 <blockquote>
 <div>&#8220;The whole point of objects is that they are a technique to package data with the processes used
 on that data. A classic smell is a method that seems more interested in a class other than the one
 it actually is in. The most common focus of the envy is the data.&#8221;
-(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnrefactoring" id="id5">[6]</a>)</div></blockquote>
+(«Refactoring: Improving the Design of Existing Code» <a class="footnote-reference" href="#fnrefactoring" id="id4">[6]</a>)</div></blockquote>
 <blockquote>
 <div><p>&#8220;If the framework&#8217;s partitioning conventions pull apart the elements implementing the
 conceptual objects, the code no longer reveals the model.</p>
 <p>There is only so much partitioning a mind can stitch back together, and if the framework uses
 it all up, the domain developers lose their ability to chunk the model into meaningful pieces.&#8221;
-(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id6">[4]</a>)</p>
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id5">[4]</a>)</p>
 </div></blockquote>
-<p>Это привело к такому огромному количеству хитросплетений слушателей, что превосходство в performance было утрачено, но еще раньше была утрачена читаемость кода.
-Даже я не мог на следующий день сказать что делает тот или иной фрагмент кода, не говоря уже о специалисте предметной области.
-Мало того, что это в корне разрушало принципы Domain-Driven Design, так это еще и в значительной мере <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">снижало скорость разработки новых функций проекта</span></a>.</p>
-<p>Надежды на такой подход окончательно рухнули когда выяснилось, что каждый экземпляр модели должен изменять значения своих атрибутов, содержащих аннотации агрегации или зависимых от них, в зависимости от контекста использования (выбранной группировки отображения или критериев фильтрации).</p>
-<p>Впоследствии модели вернули себе свои концептуальные контуры и читаемость кода, и вместе с тем сохранили механизм реакций при добавлении, изменении или удалении объектов.
-Для достижения этого результата пришлось своими силами создать библиотеку реализующую паттерн Repository, так как существующих решений для реляционных данных с качественной кодовой базой я не смог найти.</p>
+<p>This led to such a huge number of intricacies of listeners that the superiority in performance was lost, but before that was lost readability.
+Even I could not understand the next day what a particular code fragment does, I&#8217;m not talking about the domain expert.
+This radically destroyed the principles of Domain-Driven Design, and significantly <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">reduced the speed of developing new project features</span></a>.</p>
+<p>Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).</p>
+<p>Subsequently, the models recovered their conceptual outlines and code readability, and at the same time preserved the mechanism of reactions for adding, changing or deleting objects.
+To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.</p>
 </div>
-<div class="section" id="id7">
-<h1><a class="toc-backref" href="#id44">Парадигма реактивного программирования</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
-<p>Сегодня модно увлекаться реактивным программированием.
-Знаете ли Вы, что разработчики dojo впервые <a class="reference external" href="https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35">применили реактивное программирование</a> в своей реализации паттерна Repository еще 13 сентября 2010?</p>
-<p>Реактивное программирование дополняет (а не противопоставляет) паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, о чем красноречиво свидетельствует опыт <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a>, <a class="reference external" href="http://dstorejs.io/">Dstore</a> и нового <a class="reference external" href="https://github.com/dojo/stores">Dojo 2 - data stores</a>.</p>
-<p>Разработчики dojo - команда высококвалифицированных специалистов, чьи библиотеки используют такие серьезные компании как IBM.
-Примером того, насколько серьезно и комплексно они подходят к решению проблем, может служить <a class="reference external" href="http://requirejs.org/docs/history.html">история библиотеки RequireJS</a>.</p>
+<div class="section" id="reactive-programming-paradigm">
+<h1><a class="toc-backref" href="#id31">Reactive programming paradigm</a><a class="headerlink" href="#reactive-programming-paradigm" title="Permalink to this headline">¶</a></h1>
+<p>Today it is fashionable to get involved in reactive programming.
+Did you know that dojo developers first <a class="reference external" href="https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35">applied reactive programming</a> in their implementation of the Repository pattern as early as September 13, 2010?</p>
+<p>Reactive programming complements (rather than contrasts) the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern, as it&#8217;s evidenced by the experience of <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a>, <a class="reference external" href="http://dstorejs.io/">Dstore</a> and the new <a class="reference external" href="https://github.com/dojo/stores">Dojo 2 - data stores</a>.</p>
+<p>The developers of dojo are a team of highly qualified specialists whose libraries are used by such reputable companies as IBM.
+An example of how seriously and comprehensively they solves problems is the <a class="reference external" href="http://requirejs.org/docs/history.html">history of the RequireJS library</a>.</p>
 </div>
-<div class="section" id="id8">
-<h1><a class="toc-backref" href="#id45">Примеры реализаций паттерна Repository в JavaScript</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
-<p>Примеры простейших реализаций паттерна Repository на JavaScript в проекте <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
+<div class="section" id="examples-of-implementations-of-repository-pattern-by-javascript">
+<h1><a class="toc-backref" href="#id32">Examples of implementations of Repository pattern by JavaScript</a><a class="headerlink" href="#examples-of-implementations-of-repository-pattern-by-javascript" title="Permalink to this headline">¶</a></h1>
+<p>Examples of the simplest implementations of the Repository pattern by JavaScript in the project <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
 <ul class="simple">
 <li>Angular2: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts</a></li>
 <li>Angular1: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js</a></li>
 <li>React: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/react-alt/js/stores/todoStore.js">https://github.com/tastejs/todomvc/blob/gh-pages/examples/react-alt/js/stores/todoStore.js</a></li>
 </ul>
-<p>Другие реализации:</p>
+<p>Other implementations:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/dojo/stores">Dojo2 Stores</a> - Excellent implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern in paradigm of <a class="reference external" href="https://en.wikipedia.org/wiki/Reactive_programming">Reactive Programming</a> for non-relational data.</li>
 <li><a class="reference external" href="http://dstorejs.io/">Dstore</a> - yet another excellent implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern.</li>
@@ -183,16 +183,16 @@ it all up, the domain developers lose their ability to chunk the model into mean
 <li><a class="reference external" href="http://devcenter.kinvey.com/angular/guides/datastore">Kinvey Data Store</a> - implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern by MBaaS Kinvey, <a class="reference external" href="https://github.com/Kinvey/js-sdk/tree/master/src/datastore/src">source code</a></li>
 <li><a class="reference external" href="https://github.com/vincentracine/pocketjs">Pocket.js</a> - a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB&#8217;s proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.</li>
 </ul>
-<p>Я хотел бы добавить сюда и <a class="reference external" href="https://emberjs.com/">Ember.js</a>, но он реализует паттерн <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.</p>
+<p>I would like to add here <a class="reference external" href="https://emberjs.com/">Ember.js</a>, but it implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern.</p>
 </div>
-<div class="section" id="id9">
-<h1><a class="toc-backref" href="#id46">Реализация реляционных связей</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id10">
-<h2><a class="toc-backref" href="#id47">Синхронное программирование</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>На заре появления ORM, мапперы делали таким образом, чтобы они извлекали из базы данных все связанные объекты одним запросом (см. <a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">пример реализации</a>).</p>
-<p>Domain-Driven Design подходит к связям более строго, и рассматривает связи с позиции концептуальных контуров агрегата вложенных объектов <a class="footnote-reference" href="#fnddd" id="id12">[4]</a>.
-Доступ к объекту осуществлялся либо по ссылке (от родительского объекта к вложеному), либо через Repository.
-Здесь также особую роль играет направление связей, и соблюдение принципа минимальной достаточности (&#8220;дистиляция моделей&#8221; <a class="footnote-reference" href="#fnddd" id="id13">[4]</a>).</p>
+<div class="section" id="implementation-of-relational-relations">
+<h1><a class="toc-backref" href="#id33">Implementation of relational relations</a><a class="headerlink" href="#implementation-of-relational-relations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synchronous-programming">
+<h2><a class="toc-backref" href="#id34">Synchronous programming</a><a class="headerlink" href="#synchronous-programming" title="Permalink to this headline">¶</a></h2>
+<p>At the dawn of ORM, the Data Mappers retrieved from the database all related objects with a single query (see <a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">example of implementation</a>).</p>
+<p>Domain-Driven Design approaches relations more strictly, and considers relations from the point of view of conceptual contour of an aggregate of nested objects <a class="footnote-reference" href="#fnddd" id="id6">[4]</a>.
+The object can be accessed either by reference (from the parent object to the embedded object) or through the Repository.
+It is also important the direction of relations and the principle of minimal sufficiency (&#8220;distillation of models&#8221; <a class="footnote-reference" href="#fnddd" id="id7">[4]</a>).</p>
 <blockquote>
 <div><p>In real life, there are lots of many-to-many associations, and a great number are naturally
 bidirectional. The same tends to be true of early forms of a model as we brainstorm and explore
@@ -208,34 +208,34 @@ Furthermore, they communicate very little about the nature of the relationship.<
 that both objects can be understood only together. When application requirements do not call for
 traversal in both directions, adding a traversal direction reduces interdependence and simplifies
 the design. Understanding the domain may reveal a natural directional bias.
-(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id14">[4]</a>)</p>
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id8">[4]</a>)</p>
 </div></blockquote>
 <blockquote>
 <div>Minimalist design of associations helps simplify traversal and limit the explosion of relationships
 somewhat, but most business domains are so interconnected that we still end up tracing long,
 deep paths through object references. In a way, this tangle reflects the realities of the world,
 which seldom obliges us with sharp boundaries. It is a problem in a software design.
-(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id15">[4]</a>)</div></blockquote>
-<p>С появлением ORM, в синхронном программировании активно начали применяться ленивые вычисления для разрешения связей.
-В Python для этого активно используются <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html">Descriptors</a>, а в Java - AOP и Cross-Cutting Concerns <a class="footnote-reference" href="#fnccode" id="id16">[1]</a>.</p>
-<p>Ключевым моментом является освобождение Domain Model от логики доступа к источнику данных.
-Это необходимо как из принципа чистоты архитектуры и проектных решений, чтобы снизить сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), так и из принципа простоты тестирования.
-Наибольших успехов позволяет достигнуть принцип Cross-Cutting Concerns, который полностью освобождает модель от служебной логики.</p>
-<p>С появлением ОРМ, организация связей стала настолько легкой, что о ней перестали задумываться.
-Там где требуются однонаправленные связи, разработчики с легкостью применяют двунаправленные связи.
-Появились механизмы оптимизации выборки связанных объектов, которые неявно предзагружают все связанные объекты, что значительно сокращает количество обращений в базу данных.</p>
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id9">[4]</a>)</div></blockquote>
+<p>With the advent of ORM, lazy evaluation actively began to use to resolve ties synchronous programming.
+Python community actifely uses <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html">Descriptors</a> for this purpose, but Java - AOP and Cross-Cutting Concerns <a class="footnote-reference" href="#fnccode" id="id10">[1]</a>.</p>
+<p>The key is to free the Domain Model from the data access logic.
+This is required by the principle of clean architecture to reduce coupling (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), and by the principle of simplicity of testing.
+The greatest success is achieved by the principle of Cross-Cutting Concerns which completely frees the model from the service logic.</p>
+<p>With the advent of ORM the implementation of relations has become so easy that no one longer think about it.
+Where unidirectional relations are required, developers can easily apply bidirectional relations.
+Utilities for optimizing the selection of related objects have appeared, which implicitly preload all related objects, which significantly reduces the number of calls to the database.</p>
 </div>
-<div class="section" id="id17">
-<h2><a class="toc-backref" href="#id48">Отказ от связей</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
-<p>Стоит упомянуть и другую распространенную точку зрения, которая гласит, что объект не должен отвечать за свои связи, а исключительное право на доступ к объекту должно принадлежать только Repository.
-Такой точки зрения придерживаются некоторые уважаемые мною друзья.</p>
+<div class="section" id="rejecting-relations">
+<h2><a class="toc-backref" href="#id35">Rejecting relations</a><a class="headerlink" href="#rejecting-relations" title="Permalink to this headline">¶</a></h2>
+<p>It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relations, and only Repository can have an exclusive right to access the object.
+Some respected by me friends adhere to this point of view.</p>
 </div>
-<div class="section" id="id18">
-<h2><a class="toc-backref" href="#id49">Асинхронное программирование</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
-<p>Рост популярности асинхронных приложений заставил пересмотреть устоявшиеся представления о ленивой реализации связей.
-Асинхронное обращение к каждой ленивой связи каждого объекта значительно усложняет ясность программного кода, и препятствует оптимизации.</p>
-<p>Это привело к росту популярности объекто-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
-Все чаще REST-frameworks стали использоваться для передачи клиенту <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">агрегатов вложенных объектов</a>.</p>
+<div class="section" id="asynchronous-programming">
+<h2><a class="toc-backref" href="#id36">Asynchronous programming</a><a class="headerlink" href="#asynchronous-programming" title="Permalink to this headline">¶</a></h2>
+<p>The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relations.
+Asynchronous access to each lazy relation of each object significantly complicates the clarity of the program code and prevents optimization.</p>
+<p>This has increased the popularity of object-oriented database in asynchronous programming that allows to save aggregates entirely.
+Increasingly, REST-frameworks began to be used to <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">transfer aggregates of nested objects to the client</a>.</p>
 <blockquote>
 <div><p>To do anything with an object, you have to hold a reference to it. How do you get that reference?
 One way is to create the object, as the creation operation will return a reference to the new
@@ -255,46 +255,47 @@ and became less ambitious.</p>
 This storage technology makes it natural to use the third way
 of getting a reference: Execute a query to find the object in a database based on its attributes, or
 find the constituents of an object and then reconstitute it.
-(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id20">[4]</a>)</p>
+(«Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id11">[4]</a>)</p>
 </div></blockquote>
-<p>Необходимость обхода агрегатов активизировала интерес к функциональному программированию, особенно в сочетании с парадигмой реактивного программирования.</p>
-<p>Однако, решение одной проблемы порождало другую проблему.</p>
+<p>The need for processing aggregates has intensified interest in functional programming, especially in combination with reactive programming paradigm.</p>
+<p>However, the solution to one problem creates another problem.</p>
 </div>
-<div class="section" id="id21">
-<h2><a class="toc-backref" href="#id50">Функциональное программирование</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
-<p>Функциональное программирование сложнее использовать для объектов предметной области, так как его сложнее структурировать логически (особенно при отсутствии поддержки <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9C%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D0%BC%D0%B5%D1%82%D0%BE%D0%B4">множественной диспетчеризации</a>), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, &#8220;что&#8221; он делает, а то, &#8220;как&#8221; он делает непонятно что.</p>
+<div class="section" id="functional-programming">
+<h2><a class="toc-backref" href="#id37">Functional Programming</a><a class="headerlink" href="#functional-programming" title="Permalink to this headline">¶</a></h2>
+<p>Functional programming is more difficult to use for domain objects, since it is more difficult to structure logically (especially if programming language does not support <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatching</a>).
+This often leads to unreadable code that expresses not &#8220;what&#8221; it does, but &#8220;how&#8221; it does something incomprehensible.</p>
 <blockquote>
 <div><p>If you wanted polymophism in C, you’d have to manage those pointers yourself;
 and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
 But in an OO language, those pointers are managed for you.
 The language takes care to initialize them, and marshal them, and call all the functions through them.</p>
 <p>... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
-(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id22">[7]</a>)</p>
+(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id12">[7]</a>)</p>
 </div></blockquote>
 <blockquote>
 <div>However, my experience is that the cost of change rises
 more steeply without objects than with objects.
-(Kent Beck <a class="footnote-reference" href="#fnxp" id="id23">[10]</a>)</div></blockquote>
-<p>А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.</p>
+(Kent Beck <a class="footnote-reference" href="#fnxp" id="id13">[10]</a>)</div></blockquote>
+<p>And yet, not clear intentions and objectives of the author - is a key issue when reading someone else&#8217;s code.</p>
 <blockquote>
 <div>A six-month study
 conducted by IBM found that maintenance programmers &#8220;most
 often said that understanding the original programmer&#8217;s intent was
 the most difficult problem&#8221; (Fjelstad and Hamlen 1979).
-(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id24">[2]</a>)</div></blockquote>
-<p>Как упоминалось в статье &#8220;<a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">How to quickly develop high-quality code. Team work.</span></a>&#8221;, в процессе конструирования кода разработчик 91% времени читает код, и только 9% времени он вводит символы с клавиатуры.
-А это значит, что плохо читаемый код на 91% влияет на темпы разработки.</p>
-<p>Также такой подход разрушает все выгоды использования Domain-Driven Design, и разделяет элементы, реализующие концептуальные объекты, которые оказываются физически разделенными, что приводит к появлению кода, который больше не выражает модель.</p>
-<p>Все <a class="reference external" href="https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J">это способствовало появлению</a> в сообществе ReactJS таких библиотек как:</p>
+(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id14">[2]</a>)</div></blockquote>
+<p>As it mentioned in the article &#8220;<a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">How to quickly develop high-quality code. Team work.</span></a>&#8221;, the developer reads the code 91% of the time while constructing the code, and only 9% of the time he enters the characters with keyboard.
+And this means that poorly readable code affects 91% of the development velocity.</p>
+<p>Also, this approach destroys all the benefits of using Domain-Driven Design and pull apart the elements implementing the conceptual objects, which leads to the code that no longer expresses the model.</p>
+<p>All this <a class="reference external" href="https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J">contributed to the appearance</a> in the ReactJS community of such libraries as:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/paularmstrong/normalizr">Normalizr</a> - Normalizes (decomposes) nested JSON according to a schema.</li>
 <li><a class="reference external" href="https://github.com/gpbl/denormalizr">Denormalizr</a> - Denormalize data normalized with normalizr.</li>
 </ul>
 </div>
-<div class="section" id="id25">
-<h2><a class="toc-backref" href="#id51">Лирическое отступление</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
-<p>Несмотря на то, что приемы функционального программирования часто используются совместно с парадигмой реактивного программирования, в своей сути эти парадигмы не всегда сочетаемы в каноническом виде в веб-разработке.</p>
-<p>Это потому, что реактивное программирование основано на распространении изменений, т.е. подразумевает наличие переменных и присваивания.</p>
+<div class="section" id="minor-offtopic">
+<h2><a class="toc-backref" href="#id38">Minor offtopic</a><a class="headerlink" href="#minor-offtopic" title="Permalink to this headline">¶</a></h2>
+<p>Despite the fact that functional programming techniques are often used together with the paradigm of reactive programming, in their essence these paradigms are not always suitable for combination in the canonical form for web development.</p>
+<p>This is because reactive programming is based on the propagation of changes, i.e. it implies the existence of variables and assignment.</p>
 <blockquote>
 <div><p>This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.</p>
 <p>For example, in an imperative programming setting, <code class="docutils literal"><span class="pre">a</span> <span class="pre">:=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></code> would mean that <code class="docutils literal"><span class="pre">a</span></code> is being assigned the result of <code class="docutils literal"><span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></code> in the instant the expression is evaluated, and later, the values of <code class="docutils literal"><span class="pre">b</span></code> and/or <code class="docutils literal"><span class="pre">c</span></code> can be changed with no effect on the value of <code class="docutils literal"><span class="pre">a</span></code>.
@@ -303,8 +304,8 @@ without the program having to re-execute the sentence <code class="docutils lite
 <p>... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
 (&#8220;<a class="reference external" href="https://en.wikipedia.org/wiki/Reactive_programming">Reactive programming</a>&#8221;, wikipedia)</p>
 </div></blockquote>
-<p>Именно поэтому парадигма реактивного программирования <a class="reference external" href="https://en.wikipedia.org/wiki/Reactive_programming#Approaches">может сочетаться с различными парадигмами</a>, императивной, объектно-ориентированной и функциональной.</p>
-<p>Однако, вся суть вопроса заключается в том, что в каноническом виде функциональное программирование не имеет переменных (от слова &#8220;переменчивость&#8221;, изменяемость). т.е. изменяемого состояния:</p>
+<p>That is why reactive programming paradigm <a class="reference external" href="https://en.wikipedia.org/wiki/Reactive_programming#Approaches">can be combined with different paradigms</a>, imperative, object-oriented and functional.</p>
+<p>However, the whole point of the matter is that in the canonical form of functional programming does not has variables (from the word &#8220;vary&#8221;), i.e. changeable state:</p>
 <blockquote>
 <div><p>A true functional programming language has no assignment operator.
 You cannot change the state of a variable.
@@ -312,28 +313,24 @@ Indeed, the word “variable” is a misnomer in a functional language because y
 <p>...The overriding difference between a functional language and a non-functional language is that functional languages don’t have assignment statements.</p>
 <p>... The point is that a functional language imposes some kind of ceremony or discipline on changes of state. You have to jump through the right hoops in order to do it.</p>
 <p>And so, for the most part, you don’t.
-(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id26">[7]</a>)</p>
+(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id15">[7]</a>)</p>
 </div></blockquote>
-<p>Поэтому, использование подходов функционального программирования не делает программу функциональной до тех пор, пока программа имеет изменяемое состояние, - это просто процедурное программирование.
-А если это так, то отказ от Domain-Driven Design просто отнимает превосходства обоих подходов (ни полиморфизма объектно-ориентированного программирования, ни неизменяемости функционального программирования), объединяя все худшее, подобно объектам-гибридам <a class="footnote-reference" href="#fnccode" id="id27">[1]</a>, так и не делая программу по настоящему функциональной.</p>
+<p>Therefore, the use of functional programming techniques does not make the program functional until the program has a variable state - it&#8217;s just procedural programming.
+And if so, then the rejection of Domain-Driven Design just takes away the superiority of both approaches (neither object-oriented programming polymorphism nor the immutability of functional programming), and combines the all worst, similar to hybrid objects <a class="footnote-reference" href="#fnccode" id="id16">[1]</a>, and does not make program really functional.</p>
 <blockquote>
 <div><p>Hybrids</p>
 <p>This confusion sometimes leads to unfortunate hybrid structures that are half object and
 half data structure. They have functions that do significant things, and they also have either
 public variables or public accessors and mutators that, for all intents and purposes, make
 the private variables public, tempting other external functions to use those variables the
-way a procedural program would use a data structure (this is sometimes called Feature Envy from &#8220;Refactoring&#8221; <a class="footnote-reference" href="#fnrefactoring" id="id28">[6]</a>).
+way a procedural program would use a data structure (this is sometimes called Feature Envy from &#8220;Refactoring&#8221; <a class="footnote-reference" href="#fnrefactoring" id="id17">[6]</a>).
 Such hybrids make it hard to add new functions but also make it hard to add new data
 structures. They are the worst of both worlds. Avoid creating them. They are indicative of a
 muddled design whose authors are unsure of—or worse, ignorant of—whether they need
 protection from functions or types.
-(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id29">[1]</a>)</p>
+(«Clean Code: A Handbook of Agile Software Craftsmanship» <a class="footnote-reference" href="#fnccode" id="id18">[1]</a>)</p>
 </div></blockquote>
-<p>Мне, как емаксоиду, импонирует парадигма функционального программирования, но я должен быть честным - она более требовательна к уровню квалификации разработчика, требует соответствующих навыков, и имеет свою нишу, в которой ее преимущества очевидны.
-Я не отношу к этой нише проектирование объектов реального мира.
-В своей практике я встречал такие безобразия в парадигме функционального программирования, которые было бы весьма затруднительно воспроизвести используя принципы Domain-Driven Design.
-Универсальных инструментов не существует, и при всей симпатии к микроскопу его нельзя использовать в качестве молотка, хотя бы из уважения к нему.</p>
-<p>Каноническое функциональное программирование не имеет состояния, и поэтому идеально подходит для распределенных вычислений и обработки потоков данных.</p>
+<p>Canonical functional programming has no state and therefore ideally suited for distributed computing and data flow processing.</p>
 <blockquote>
 <div><p>The benefit of not using assignment statements should be obvious.
 You can’t have concurrent update problems if you never update anything.</p>
@@ -341,10 +338,10 @@ You can’t have concurrent update problems if you never update anything.</p>
 Mutation is reserved for very specific sections of the system that can tolerate the high ceremony required.
 Those sections are inherently safe from multiple threads and multiple cores.</p>
 <p>The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
-(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id30">[7]</a>)</p>
+(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id19">[7]</a>)</p>
 </div></blockquote>
-<p>Но значит ли это то, что парадигма объектно-ориентированного программирования противостоит парадигме функционального программирования?</p>
-<p>Несмотря на то, что парадигма ООП традиционно считается разновидностью императивной парадигмы, т.е. основанной на состоянии программы, Robert C. Martin делает поразительный вывод - так как объекты предоставляют свой интерфейс, т.е. поведение, и скрывают свое состояние, то они не противоречат парадигме функционального программирования.</p>
+<p>Does this mean that the object-oriented programming paradigm is opposed to the functional programming programming?</p>
+<p>Despite the fact that the OOP paradigm is traditionally considered as a kind of imperative paradigm, i.e. based on the state of the program, Robert C. Martin makes an amazing conclusion - as objects provide their interface, i.e. behavior, and hide their state, they do not contradict the functional programming paradigm.</p>
 <blockquote>
 <div>&#8220;Objects are not data structures.
 Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
@@ -352,8 +349,8 @@ This is why data fields are private.
 From the outside looking in you cannot see any state.
 All you can see are functions.
 Therefore Objects are about functions not about state.&#8221;
-(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id31">[7]</a>)</div></blockquote>
-<p>Поэтому некоторые классические функциональные языки программирвания имеют поддержку ООП:</p>
+(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id20">[7]</a>)</div></blockquote>
+<p>That&#8217;s why some classical functional programming languages support OOP:</p>
 <ul>
 <li><p class="first"><a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/eieio.html">Enhanced Implementation of Emacs Interpreted Objects</a></p>
 </li>
@@ -366,64 +363,67 @@ These two things don’t have anything to do with each other.
 And that means that OO and FP are not mutually exclusive at all.
 It means that you can write OO-Functional programs.</p>
 <p>It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
-(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id32">[7]</a>)</p>
+(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id21">[7]</a>)</p>
 </div></blockquote>
 </li>
 </ul>
-<p>Разумеется, объекты в функциональном программировании <a class="reference external" href="https://youtu.be/7Zlp9rKHGD4?t=50m">должны быть неизменяемым</a>.</p>
-<p>Эмулировать объекты можно даже в функциональных языках программирования с помощью замыканий, см. статью &#8220;<a class="reference external" href="https://martinfowler.com/bliki/FunctionAsObject.html">Function As Object</a>&#8221; by Martin Fowler.
-Тут нельзя обойти вниманием замечательную книгу &#8220;<a class="reference external" href="https://leanpub.com/fp-oo">Functional Programming for the Object-Oriented Programmer</a>&#8221; by Brian Marick.</p>
-<p>Давайте вспомним главу &#8220;Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments&#8221; книги «Code Complete» <a class="footnote-reference" href="#fncodec" id="id33">[2]</a>.</p>
+<p>Of course, objects in functional programming <a class="reference external" href="https://youtu.be/7Zlp9rKHGD4?t=50m">must be immutable</a>.</p>
+<p>Objects can be emulated even by functional programming languages using closures, see article &#8220;<a class="reference external" href="https://martinfowler.com/bliki/FunctionAsObject.html">Function As Object</a>&#8221; by Martin Fowler.
+Here you can not ignore the wonderful book &#8220;<a class="reference external" href="https://leanpub.com/fp-oo">Functional Programming for the Object-Oriented Programmer</a>&#8221; by Brian Marick.</p>
+<p>Let&#8217;s remember the chapter &#8220;Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments&#8221; книги «Code Complete» <a class="footnote-reference" href="#fncodec" id="id22">[2]</a>.</p>
 <blockquote>
 <div>An abstract data type is a collection of data and operations that work on that data.
-(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id34">[2]</a>)</div></blockquote>
+(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id23">[2]</a>)</div></blockquote>
 <blockquote>
 <div>Abstract data types form the foundation for the concept of classes.
-(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id35">[2]</a>)</div></blockquote>
+(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id24">[2]</a>)</div></blockquote>
 <blockquote>
 <div>Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
-(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id36">[2]</a>)</div></blockquote>
-<p>Я не буду переписывать сюда достоинства АТД, их можно прочитать в указанной главе этой книги.</p>
-<p>Но ведь изначально вопрос состоял в том, стоит ли отказываться от АТД в объектно-ориентированном языке при проектировании объектов предметной области в пользу &#8220;<a class="reference external" href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221;, и стоит ли приносить в жертву все выгоды Domain-Driven Design в угоду удобства конкретной реализации обработки связей?</p>
+(«Code Complete» <a class="footnote-reference" href="#fncodec" id="id25">[2]</a>)</div></blockquote>
+<p>I&#8217;m not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.</p>
+<p>But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of &#8220;<a class="reference external" href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221;?
+And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relation resolving?</p>
 <blockquote>
 <div>The bottom, bottom line here is simply this.
 OO programming is good, when you know what it is.
 Functional programming is good when you know what it is.
 And functional OO programming is also good once you know what it is.
-(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id37">[7]</a>)</div></blockquote>
-<p>Также стоит отметить, что далеко не все виды связей вписываются в концепцию агрегата.
-Если объект логически не принадлежит агрегату, то мы не можем вкладывать его в агрегат ради удобства разрешения связей, ибо в таком случае у нас интерфейс будет следовать за реализацией что в корне разрушает фундаментальный принцип абстракции.
-Также агрегат не совместим со связями типа Many-To-Many и перекрестными иерархиями связей.</p>
+(«OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id26">[7]</a>)</div></blockquote>
+<p>It is also worth noting that not all kinds of relationships fit into the concept of aggregate.
+If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relations.
+For in this case, the interface will follow the implementation, which fundamentally destroys the fundamental principle of abstraction.
+Also, the concept of an aggregate can not be used to emulate Many-To-Many relations and cross-link hierarchies.</p>
 </div>
-<div class="section" id="id38">
-<h2><a class="toc-backref" href="#id52">Реализация связей путем присваивания</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
-<p>Принцип физического присваивания связанных объектов <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">реализован так же и в библиотеке js-data</a>.</p>
-<p>В нашей библиотеке мы предусмотрели как возможность декомпозиции агрегатов вложенных объектов, так и возможность их композиции из плоских данных в Repositories.
-Причем, агрегат всегда сохраняет актуальное состояние, и при добавлении, изменении, удалении объекта в Repository, изменения автоматически отображаются в структурах соответствующих агрегатов.
-Библиотека реализует это поведение как в парадигме Реактивного программирования, так и в парадигме Событийно-ориентированного программирования (на выбор).</p>
-<p>Существует также возможность формировать двусторонние связи.
-Но, несмотря на то, что современные интерпретаторы легко чистят мусор с кольцевыми ссылками, с концептуальной точки зрения лучше когда вложенные объекты не осведомлены о своем родителе, если на то нет веских оснований.</p>
-<p>Таким образом, для реализации связей объекту совершенно не требуется никакая служебная логика доступа к данным, что поддерживает нулевое сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>) и образует кристально чистые доменные модели.
-Это значит, что доменные модели могут быть инстанцией &#8220;класса&#8221; Object.</p>
-<p>Я также уважительно отношусь к той точке зрения, что доменная модель не должна отвечать за связи.
-Поэтому предусмотрена возможность легкого доступа к любому объекту через его Repository.</p>
+<div class="section" id="implementation-of-relations-by-assigning">
+<h2><a class="toc-backref" href="#id39">Implementation of relations by assigning</a><a class="headerlink" href="#implementation-of-relations-by-assigning" title="Permalink to this headline">¶</a></h2>
+<p>The principle of physical assignment of related objects is <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">implemented also by the library js-data</a>.</p>
+<p>In our library, we implemented both the ability to decompose aggregates of nested objects and the ability to compose aggregates from flat data of Repositories.
+Moreover, the aggregate always keeps the actual state.
+When you add, change, delete an object in the Repository, the changes automatically propagate to the structures of the corresponding aggregates.
+The library implements this behavior as in the paradigm of reactive programming, as well as in the paradigm of event-driven programming (optional).</p>
+<p>There is also the ability to create bidirectional relations.
+But, despite the fact that modern interpreters able to easily collect garbage with reference cycles, it&#8217;s better when child objects are not aware of their parents from a conceptual point of view, if you don&#8217;t have a strong reason for that.</p>
+<p>Thus, the implementation of communications does not require any service data access logic for the object, that provides zero <a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a> and absolutly clear domain models.
+This means that domain model can be instance of the &#8220;class&#8221; Object.</p>
+<p>I also took into account the point of view that the domain model should not be responsible for the relations.
+Therefore, there is the possibility of easy access to any object through its Repository.</p>
 </div>
 </div>
-<div class="section" id="id39">
-<h1><a class="toc-backref" href="#id53">Исходный код</a><a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h1>
-<p>На данный момент исходный код библиотеки пока еще не раскрыт.
-Но такая вероятность существует в обозримом будущем.</p>
+<div class="section" id="source-code">
+<h1><a class="toc-backref" href="#id40">Source code</a><a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h1>
+<p>Currently, the source code of the library is not open.
+But such a probability exists for the near future.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnccode" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id16">2</a>, <a class="fn-backref" href="#id27">3</a>, <a class="fn-backref" href="#id29">4</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id10">2</a>, <a class="fn-backref" href="#id16">3</a>, <a class="fn-backref" href="#id18">4</a>)</em> «<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>» by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fncodec" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id33">2</a>, <a class="fn-backref" href="#id34">3</a>, <a class="fn-backref" href="#id35">4</a>, <a class="fn-backref" href="#id36">5</a>)</em> «<a class="reference external" href="http://www.informit.com/store/code-complete-9780735619678">Code Complete</a>» Steve McConnell</td></tr>
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>, <a class="fn-backref" href="#id24">4</a>, <a class="fn-backref" href="#id25">5</a>)</em> «<a class="reference external" href="http://www.informit.com/store/code-complete-9780735619678">Code Complete</a>» Steve McConnell</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
@@ -435,7 +435,7 @@ And functional OO programming is also good once you know what it is.
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>, <a class="fn-backref" href="#id12">3</a>, <a class="fn-backref" href="#id13">4</a>, <a class="fn-backref" href="#id14">5</a>, <a class="fn-backref" href="#id15">6</a>, <a class="fn-backref" href="#id20">7</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>, <a class="fn-backref" href="#id7">4</a>, <a class="fn-backref" href="#id8">5</a>, <a class="fn-backref" href="#id9">6</a>, <a class="fn-backref" href="#id11">7</a>)</em> «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngof" rules="none">
@@ -447,13 +447,13 @@ And functional OO programming is also good once you know what it is.
 <table class="docutils footnote" frame="void" id="fnrefactoring" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id28">2</a>)</em> «<a class="reference external" href="https://martinfowler.com/books/refactoring.html">Refactoring: Improving the Design of Existing Code</a>» by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
+<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> «<a class="reference external" href="https://martinfowler.com/books/refactoring.html">Refactoring: Improving the Design of Existing Code</a>» by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnoovsop" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[7]</td><td><em>(<a class="fn-backref" href="#id22">1</a>, <a class="fn-backref" href="#id26">2</a>, <a class="fn-backref" href="#id30">3</a>, <a class="fn-backref" href="#id31">4</a>, <a class="fn-backref" href="#id32">5</a>, <a class="fn-backref" href="#id37">6</a>)</em> «<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>» by Robert C. Martin</td></tr>
+<tr><td class="label">[7]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id15">2</a>, <a class="fn-backref" href="#id19">3</a>, <a class="fn-backref" href="#id20">4</a>, <a class="fn-backref" href="#id21">5</a>, <a class="fn-backref" href="#id26">6</a>)</em> «<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>» by Robert C. Martin</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnca" rules="none">
@@ -471,7 +471,7 @@ And functional OO programming is also good once you know what it is.
 <table class="docutils footnote" frame="void" id="fnxp" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[10]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> «<a class="reference external" href="http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654">Extreme Programming Explained</a>» by Kent Beck</td></tr>
+<tr><td class="label">[10]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> «<a class="reference external" href="http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654">Extreme Programming Explained</a>» by Kent Beck</td></tr>
 </tbody>
 </table>
 </div>
@@ -554,7 +554,15 @@ And functional OO programming is also good once you know what it is.
       
     
       
-      <a href="../../blog/tag/javascript/">JavaScript</a>
+      <a href="../../blog/tag/javascript/">JavaScript</a>,
+      
+    
+      
+      <a href="../../blog/tag/model/">Model</a>,
+      
+    
+      
+      <a href="../../blog/tag/ddd/">DDD</a>
       
     </li>
   
@@ -609,6 +617,11 @@ And functional OO programming is also good once you know what it is.
     
       
       <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/ddd/">DDD</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/datamapper/">DataMapper</a></li>
       
     
@@ -645,6 +658,11 @@ And functional OO programming is also good once you know what it is.
       
       <li class="ablog-cloud ablog-cloud-1">
         <a href="../../blog/tag/javascript/">JavaScript</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/model/">Model</a></li>
       
     
       

@@ -1,7 +1,7 @@
 
 .. post:: Oct 10, 2015
    :language: en
-   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python, Django Model
+   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python, Django Model, Model, DDD
    :category:
    :author: Ivan Zakrevsky
 
