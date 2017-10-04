@@ -490,7 +490,7 @@ Domain-Driven Design подходит к связям более строго, �
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
-.. update:: 04 Sep, 2017
+.. update:: 04 Oct, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
