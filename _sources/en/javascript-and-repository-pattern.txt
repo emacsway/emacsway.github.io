@@ -1,6 +1,6 @@
 
-Implementation of the pattern Repository for browser's JavaScript
-=================================================================
+Implementation of Repository pattern for browser's JavaScript
+=============================================================
 
 .. post::
    :language: en
@@ -403,8 +403,10 @@ Therefore, there is the possibility of easy access to any object through its Rep
 Source code
 ===========
 
-Currently, the source code of the library is not open.
-But such probability exists for the near future.
+* Store.js - https://github.com/emacsway/store
+* Canonical repo - https://github.com/joor/store-js-external
+
+Эта статья на Русском языке ":doc:`../ru/javascript-and-repository-pattern`".
 
 
 .. rubric:: Footnotes

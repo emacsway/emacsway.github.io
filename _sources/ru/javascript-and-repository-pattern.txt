@@ -463,8 +463,10 @@ Domain-Driven Design подходит к связям более строго, �
 Исходный код
 ============
 
-На данный момент исходный код библиотеки пока еще не раскрыт.
-Но такая вероятность существует в обозримом будущем.
+* Store.js - https://github.com/emacsway/store
+* Canonical repo - https://github.com/joor/store-js-external
+
+.. This article in English ":doc:`../en/javascript-and-repository-pattern`".
 
 
 .. rubric:: Footnotes
