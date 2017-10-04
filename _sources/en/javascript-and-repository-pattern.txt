@@ -408,7 +408,7 @@ Therefore, there is the possibility of easy access to any object through its Rep
 Source code
 ===========
 
-* Store.js - https://github.com/emacsway/store
+* Edge (unstable) repo - https://github.com/emacsway/store
 * Canonical repo - https://github.com/joor/store-js-external
 
 Эта статья на Русском языке ":doc:`../ru/javascript-and-repository-pattern`".
