@@ -75,7 +75,7 @@ Open Source Projects
 .. * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (owner) - a lightweight Python datamapper ORM
 
 * JavaScript
-    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and composed nested aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming. (`canonical repo <https://github.com/joor/store-js-external>`__).
+    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming. (`canonical repo <https://github.com/joor/store-js-external>`__).
 
 
 Articles
@@ -152,9 +152,9 @@ Bibliography
 Experience
 ----------
 
-* 2016 – 2017 – Full-Stack Software Engineer at jooraccess.com (Django, PostgreSQL, AngularJS, Dojo, CORS, JWT, Django-rest-framework, CakePHP, Pl/SQL, Scrum). Introduced TDD, DDD, Design By Refactoring, code review based on catalogs of refactorings and code smells. Solved a lot of issues of Architecture and Design. Improved quality of the codebase. Reduced time of implementation new features due to the introduced design approaches. Created the high-level tool to handle data on client-side (similar to `dstore <http://dstorejs.io/>`_ but for relational data with support for the pattern `Unit Of Work`_).
+* 2016 – 2017 – Full-Stack Software Engineer at jooraccess.com (Django, PostgreSQL, AngularJS, Dojo, CORS, JWT, Django-rest-framework, CakePHP, Pl/SQL, Scrum). Introduced TDD, DDD, Design By Refactoring, code review based on catalogs of refactorings and code smells. Solved a lot of issues of Architecture and Design. Improved quality of the codebase. Reduced time of implementation new features due to the introduced design approaches. Created the `high-level tool to handle data <https://github.com/emacsway/store>`__ on client-side.
 * 2013 – 2016 – Senior Python-Developer at popular social network rebelmouse.com (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
-* 2011 – 2013 – Senior Full-Stack Developer at Russian travel portal tripster.ru​ (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache dependencies, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
+* 2011 – 2013 – Senior Full-Stack Developer at Russian travel portal tripster.ru (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache dependencies, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
 * 2010 – 2011 – Team Leader at Soft-Ukraine (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
 * 2009 – 2010 – Co-founder and CTO at Dstudio (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
 * 2004 – 2009 – Zakrevskyi Entrepreneur, PHP and Python Development
