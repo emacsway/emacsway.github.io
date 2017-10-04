@@ -61,7 +61,12 @@ The bottom line is that all this reactive logic no longer belonged to the domain
     "The whole point of objects is that they are a technique to package data with the processes used
     on that data. A classic smell is a method that seems more interested in a class other than the one
     it actually is in. The most common focus of the envy is the data."
-    («Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_)   
+    («Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_)
+
+..
+
+    "Good design puts the logic near the data it operates on."
+    (Kent Beck [#fnxp]_)
 
 ..
 

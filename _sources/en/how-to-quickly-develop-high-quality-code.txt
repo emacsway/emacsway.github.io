@@ -236,6 +236,27 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     of external quality.
     (Kent Beck [#fnxp]_)
 
+..
+
+    Why can't you just listen, write a test case, make it run, listen, write a test case,
+    make it run indefinitely? Because we know it doesn't work that way. You can do that
+    for a while. In a forgiving language you may even be able to do that for a long while.
+    Eventually, though, you get stuck. The only way to make the next test case run is to
+    break another. Or the only way to make the test case run is far more trouble than it
+    is worth. Entropy claims another victim.
+
+    The only way to avoid this is to design. Designing is creating a structure that
+    organizes the logic in the system. Good design organizes the logic so that a change
+    45 in one part of the system doesn't always require a change in another part of the system.
+    Good design ensures that every piece of logic in the system has one and only one home.
+    Good design puts the logic near the data it operates allows the extension of the system with changes in only one place.
+    (Kent Beck [#fnxp]_)
+
+..
+
+    ... the activity of design is not an option. It must be given serious thought for software development to be effective.
+    (Kent Beck [#fnxp]_)
+
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
 
