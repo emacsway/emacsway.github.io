@@ -75,7 +75,7 @@ Open Source Projects
 .. * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (owner) - a lightweight Python datamapper ORM
 
 * JavaScript
-    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - The Store.js is a super lightweight implementation of Repository pattern for relational data and composed nested aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming. (`canonical repo <https://github.com/joor/store-js-external>`__).
+    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and composed nested aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming. (`canonical repo <https://github.com/joor/store-js-external>`__).
 
 
 Articles
