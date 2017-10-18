@@ -609,6 +609,15 @@ Ask this question to yourself and everyone in the team.
     (William James [#fncodec]_)
 
 
+Use Extreme Progrgramming (XP)
+------------------------------
+
+    "XP is a lightweight, efficient, low-risk, flexible, predictable, scientific, and fun way to develop software."
+    (Kent Beck [#fnxp]_)
+
+«`Extreme Programming Explained`_» by Kent Beck is one of the most valuable books I've ever read.
+
+
 .. rubric:: Footnotes
 
 .. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» by `Robert C. Martin`_
