@@ -204,6 +204,7 @@ But you have a choice.</p>
 <div class="section" id="building-of-complicated-sql-queries-for-django-orm">
 <h2><a class="toc-backref" href="#id21">Building of complicated SQL-queries for Django ORM</a><a class="headerlink" href="#building-of-complicated-sql-queries-for-django-orm" title="Permalink to this headline">¶</a></h2>
 <p>The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
+Fortunately, Django ORM perfectly deals with Raw-SQL, which means that the responsibility of creating a SQL-query does not necessarily have to be assigned to it.
 In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
 In any case, the details of implementation should be encapsulated within a query factory class.</p>
 <p>In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE &#8216;% keyword%&#8217;) in the <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/contrib/admin/">Django admin panel</a> using the user table joined with the table of profiles (using LEFT JOIN).</p>

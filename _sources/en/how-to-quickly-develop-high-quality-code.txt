@@ -120,6 +120,22 @@ During code construction developer reads code for 91% of the time, and only for 
     classes (Riel 1996).
     («Code Complete» [#fncodec]_)
 
+..
+
+    Collective ownership increases your feeling of personal power on a project. On an XP
+    project you are never stuck with someone else's stupidity. You see something in the
+    way, you get it out of the way. If you choose to live with something for the moment
+    80because it is expedient, that is your business. But you're never stuck. So you never
+    get the sense that, "I could get my work done, if only I didn't have to deal with these
+    other idiots." One less frustration. One step closer to clear thinking.
+
+    Collective ownership also tends to spread knowledge of the system around the team.
+    It is unlikely that there will ever be a part of the system that only two people know
+    (it has to be at least a pair, which is already better than the usual situation where
+    one smart programmer holds everyone else hostage). This further reduces project
+    risk.
+    (Kent Beck [#fnxp]_)
+
 Thus, when one developer writes an unreadable code for 9% of his time, this code slows down the development velocity of the whole team by 91%.
 The code is written once, but is read incommensurably many times in the development process.
 
@@ -131,7 +147,41 @@ Thus, each developer in the team MUST be a senior developer.
 The best way to achieve it is the XP by Kent Beck.
 
 Experience sharing is the rule №1 for the high-skilled team.
-If your team still has a junior developer after a few weeks, your team needs a better manager.
+If your team still has a junior developer after two months, your team needs a better manager.
+
+    Pair programming is also not a tutoring session. Sometimes pairs contain one
+    partner with much more experience than the other partner. When this is true, the
+    first few sessions will look a lot like tutoring. The junior partner will ask lots of
+    questions, and type very little. Very quickly, though, the junior partner will start
+    catching stupid little mistakes, like unbalanced parentheses. The senior partner will
+    notice the help. After a few more weeks, the junior partner will start picking up the
+    larger patterns that the senior partner is using, and notice deviations from those
+    patterns.
+
+    In a couple of months, typically, the gap between the partners is not nearly so
+    noticeable as it was at first. The junior partner is typing more regularly. The pair
+    notices that each of them has strengths and weaknesses. Productivity, quality, and
+    satisfaction rise.
+    (Kent Beck [#fnxp]_)
+
+..
+
+    So, why does pair programming work for XP? Well, the first value is communication,
+    and there are few forms of communication more intense than face-to-face. So, pair
+    programming works for XP because it encourages communication. I like to think of
+    the analogy of a pool of water. When an important new bit of information is learned
+    by someone on the team, it is like putting a drop of dye in the water. Because of the
+    pairs switching around all the time, the information rapidly diffuses throughout the
+    team just as the dye spreads throughout the pool. Unlike the dye, however, the
+    information becomes richer and more intense as it spreads and is enriched by the
+    experience and insight of everyone on the team.
+
+    In my experience, pair programming is more productive than dividing the work
+    between two programmers and then integrating the results. Pair programming is
+    often a sticking point for folks wanting to adopt XP. All I can say is that you should
+    get good at it, then try an iteration where you pair for all production code and
+    another where you program everything solo. Then you can make your own decision.
+    (Kent Beck [#fnxp]_)
 
 
 The second myth. Quality code is not suitable for hot deadline.

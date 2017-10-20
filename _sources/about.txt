@@ -128,6 +128,7 @@ Bibliography
     In the queue
     ------------
 
+    * «Planning Extreme Programming» by Kent Beck, Martin Fowler
     * «SQL Antipatterns. Avoiding the Pitfalls of Database Programming.» by Bill Karwin
     * «An Introduction to Database Systems» by C.J. Date
     * «Test-Driven Development By Example» by Kent Beck
@@ -135,7 +136,6 @@ Bibliography
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» by Craig Larman
     * «Agile Software Development. Principles, Patterns, and Practices.» by Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Implementation Patterns» by Kent Beck
-    * «Planning Extreme Programming» by Kent Beck, Martin Fowler
     * «The Clean Coder» by Robert C. Martin
     * «The Definitive Guide to MongoDB» by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko

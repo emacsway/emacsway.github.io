@@ -119,6 +119,7 @@ Building of complicated SQL-queries for Django ORM
 --------------------------------------------------
 
 The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
+Fortunately, Django ORM perfectly deals with Raw-SQL, which means that the responsibility of creating a SQL-query does not necessarily have to be assigned to it.
 In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
 In any case, the details of implementation should be encapsulated within a query factory class.
 
