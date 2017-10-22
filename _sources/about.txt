@@ -25,10 +25,10 @@ Current status: open for new offers
 About me
 --------
 
-A bearded developer since 2004.
+.. A bearded developer since 2004.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable.
-My approaches are TDD_, OOP_, OOD_, DDD_, XP_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
+My approaches are XP_, TDD_, DDD_, OOP_, OOD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
 
 Terms such as the Coupling_, Cohesion_, SRP_, OCP_ are not empty words for me.
 

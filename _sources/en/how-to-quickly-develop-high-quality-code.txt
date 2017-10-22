@@ -507,10 +507,10 @@ There is a few of most frequently used catalogs:
 - `Code Smell`_
 - «Refactoring To Patterns» [#fnrtp]_
 
-Use design by refactoring
--------------------------
+Use Designing Through Refactoring
+---------------------------------
 
-More info on approach of "Design by refactoring" you can find in the chapter «Refactoring and Design» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler.
+More info on approach of "Designing Through Refactoring" you can find in the chapter «Refactoring and Design» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler.
 This approach is unbelievable effective when you use Type Hinting declaration (more info `here <https://github.com/python-rope/rope/blob/master/docs/overview.rst#type-hinting>`__, `here <http://jedi.readthedocs.io/en/latest/docs/features.html#type-hinting>`__ and `here <https://www.jetbrains.com/help/pycharm/type-hinting-in-pycharm.html>`__) with a tool for automated refactoring (`rope <https://github.com/python-rope/rope>`_, `refactoring tool of PyCharm <https://www.jetbrains.com/help/pycharm/refactoring-source-code.html>`_).
 
 
@@ -576,10 +576,10 @@ A lot of discussions in the team. A war of opinions.           A lot of discussi
                                                                Where there is knowledge, there is not a lot of discussions,
                                                                and everyone knows what and how to do it.
                                                                Introduce using of a catalog of code smells, the catalog of refactorings,
-                                                               the approach of design by refactoring.
+                                                               the approach of "Designing Through Refactoring".
                                                                Introduce reading technical literature into corporate culture.
 
-You can't implement a new feature without refactoring.         This is normal if you use the approach of design by refactoring.
+You can't implement a new feature without refactoring.         This is normal if you use the approach of "Designing Through Refactoring".
                                                                But if the cause is a lack of design skills,
                                                                you have to improve the skills of the team.
                                                                Introduce a Collaborative Development Practice to share experience.
