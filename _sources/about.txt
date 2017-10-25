@@ -25,12 +25,13 @@ Current status: open for new offers
 About me
 --------
 
-.. A bearded developer since 2004.
+A bearded developer since 2004, XP_ and DDD_ expert.
 
-My main interest is to make the code clean, simple, readable, modifiable and maintainable.
-My approaches are XP_, TDD_, DDD_, OOP_, OOD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
+My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features cheap; the cost of code change asymptotic; the team skilled and successful, with high self-motivation.
 
-Terms such as the Coupling_, Cohesion_, SRP_, OCP_ are not empty words for me.
+My approaches are XP_, TDD_, DDD_, OOP_, OOD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_ & Designing Through Refactoring, `Software Architectural Design`_, SOLID_ and so on.
+
+Terms such as Coupling_, Cohesion_, SRP_, OCP_ are not empty words for me.
 
 Also I'm an Open Source developer. Sure, I'm an adherent of `KISS principle <KISS_>`_. My philosophy is: «Do it shortly, clearly».
 
@@ -52,7 +53,7 @@ Preferences
 
 * Programming languages: Python (primary, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
-* Approaches: TDD, OOP, OOD, DDD, XP, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling, High Cohesion, SRP, OCP, SOLID, GRASP etc.
+* Approaches: TDD, OOP, OOD, DDD, XP, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, SOLID, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Flask, also used Tornado, Twisted, Ruby on Rails, etc.
 * JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2.
