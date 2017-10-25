@@ -25,7 +25,9 @@ Current status: open for new offers
 About me
 --------
 
-A bearded developer since 2004, XP_ and DDD_ expert.
+.. bearded developer since 2004
+
+An XP_ and DDD_ expert.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features cheap; the cost of code change asymptotic; the team skilled and successful, with high self-motivation.
 
