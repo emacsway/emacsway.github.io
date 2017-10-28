@@ -426,6 +426,12 @@ There is an opinion that pair programming reduces the velocity of development.
     reduction is desired. Some developers prefer working in pairs to working solo.
     («Code Complete» [#fncodec]_)
 
+..
+
+    In my experience, pair programming is more productive than dividing the work
+    between two programmers and then integrating the results.
+    (Kent Beck [#fnxp]_)
+
 The main conclusion is that you can't say about affect of pair programming to velocity of development until you begin to track the time of your team for bugfixes, refactoring and debugging.
 
 Please do not confuse "Inspection" [#fncodec]_ (or "Code Reading" [#fncodec]_) and usual Code Review on github.
