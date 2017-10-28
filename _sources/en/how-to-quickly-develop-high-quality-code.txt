@@ -479,6 +479,88 @@ There is 5 fundamental books which must be read by each professional:
 I recommend to read the books in the given order.
 
 
+The fifth myth. Quality code is perfectionism and excess of complicated design patterns.
+----------------------------------------------------------------------------------------
+
+Some people thinks that quality always has a lot of complicated design patterns and, therefore, it is too difficult.
+Let me open, for example, motivation of the pattern Mediator.
+
+    "Mediator promotes loose **coupling** by keeping objects from referring to each other explicitly,
+    and it lets you vary their interaction independently."
+    («Design Patterns: Elements of Reusable Object-Oriented Software» [#fndp]_)
+
+The key word in the quote is the word "Coupling_".
+The `low coupling and high cohesion <Coupling_>`__ is the most important criteria of code quality.
+Low coupling reduces the complexity of the code.
+It's simplification, not the complication.
+It allows to limit the attention necessary to understand this responsibility of the code.
+Thus, patterns is not complexity.
+
+The quality code is always simple!
+
+    On the surface, being an XP programmer looks a lot like being a programmer within
+    other software development disciplines. You spend your time working with programs,
+    making them bigger, simpler, faster. Beneath the surface, however, the focus is
+    quite different. Your job isn't over when the computer understands what to do. Your
+    first value is communication with other people. If the program runs, but there is
+    some vital component of communication left to be done, you aren't done. You write
+    tests that demonstrate some vital aspect of the software. You break the program
+    into more smaller pieces, or merge pieces that are too small into larger, more
+    coherent pieces. You find a system of names that more accurately reflects your
+    intent.
+
+    This may sound like a high-minded pursuit of perfection. It is anything but. You try
+    to develop the most valuable software for the customer, but not to develop anything
+    that isn't valuable. If you can reduce the size of the problem enough, then you can
+    afford to be careful with the work you do on what remains. Then, you are careful by
+    habit.
+    (Kent Beck [#fnxp]_)
+
+..
+
+    Of course, you can
+    do a better job if you have more tools in your toolbox than if you have fewer, but it
+    is much more important to have a handful of tools that you know when not to use,
+    than to know everything about everything and risk using too much solution.
+    (Kent Beck [#fnxp]_)
+
+..
+
+    "I like my code to be elegant and efficient.
+    The logic should be straightforward to make it hard for bugs to hide,
+    the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy,
+    and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations.
+    Clean code does one thing well."
+    (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
+
+..
+
+    "The design goal for Eventlet’s API is simplicity and readability.
+    You should be able to read its code and understand what it’s doing.
+    Fewer lines of code are preferred over excessively clever implementations."
+    (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
+
+..
+
+    "Simplicity and elegance are unpopular because they require hard work and discipline to achieve and education to be appreciated."
+    (Edsger W. Dijkstra)
+
+..
+
+    "Simplicity is prerequisite for reliability."
+    (Edsger W. Dijkstra)
+
+..
+
+    "Simplicity is a great virtue but it requires hard work to achieve it and education to appreciate it. And to make matters worse: complexity sells better."
+    (Edsger W. Dijkstra, 1984 `On the nature of Computing Science <http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD896.html>`__ (EWD896))
+
+..
+
+    "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
+    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+
+
 Advices
 =======
 
@@ -633,6 +715,10 @@ Be courageous
 
 It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programming Explained» [#fnxp]_.
 
+..
+
+    "programmers will have to wrestle with the messy real world." (Steve McConnel)
+
 
 Keep improving yourself
 -----------------------
@@ -675,6 +761,7 @@ Use Extreme Progrgramming (XP)
 .. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnrtp] «`Refactoring To Patterns`_» by Joshua Kerievsky
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
+.. [#fndp] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 
 .. update:: 04 Oct, 2017
@@ -689,5 +776,7 @@ Use Extreme Progrgramming (XP)
 .. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
 .. _Extreme Programming Explained: http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654
 .. _Catalog of Refactorings: http://www.refactoring.com/catalog/
+.. _Coupling: http://wiki.c2.com/?CouplingAndCohesion
+.. _Cohesion: http://wiki.c2.com/?CouplingAndCohesion
 .. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
 .. _Test-Driven Development: https://martinfowler.com/bliki/TestDrivenDevelopment.html
