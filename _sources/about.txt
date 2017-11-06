@@ -29,15 +29,13 @@ About me
 
 An XP_ and DDD_ expert.
 
-My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features cheap; the cost of code change asymptotic; the team skilled and successful, with high self-motivation.
+My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features cheap; the cost of code change asymptotic; the team skilled, successful, and having high self-motivation.
 
-My approaches are XP_, TDD_, DDD_, OOP_, OOD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_ & Designing Through Refactoring, `Software Architectural Design`_, SOLID_ and so on.
+My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring, Clean Code & Clean Architecture, and so on.
 
-Terms such as Coupling_, Cohesion_, SRP_, OCP_ are not empty words for me.
+Also I'm an Open Source developer and an adherent of `KISS principle <KISS_>`_. My philosophy is: «Do it shortly, clearly».
 
-Also I'm an Open Source developer. Sure, I'm an adherent of `KISS principle <KISS_>`_. My philosophy is: «Do it shortly, clearly».
-
-My guiding light is:
+My trend is:
 
     "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
 
@@ -50,17 +48,17 @@ Education
 The Dnepropetrovsk State Technical University of Railway Transportation
 
 
-Preferences
------------
+Technologies & approaches
+-------------------------
 
 * Programming languages: Python (primary, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
-* Approaches: TDD, OOP, OOD, DDD, XP, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, SOLID, GRASP etc.
+* Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Designing Through Refactoring, Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Flask, also used Tornado, Twisted, Ruby on Rails, etc.
-* JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2.
+* JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2-5.
 * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
-* Bug-tracking: Trac (mainly), Redmine, Pivotal Tracker.
+* Bug-tracking: Jira (mainly), Trac, Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
 * CVS: Mercurial (mainly), GIT, SVN, Bazar.
 * Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
@@ -187,8 +185,9 @@ Experience
 .. _OOP: https://en.wikipedia.org/wiki/Object-oriented_programming
 .. _OOD: https://en.wikipedia.org/wiki/Object-oriented_design
 .. _DDD: https://en.wikipedia.org/wiki/Domain-driven_design
-.. _Design Patterns: https://en.wikipedia.org/wiki/Software_design_pattern
+.. _DIP: http://martinfowler.com/articles/injection.html
 .. _Inversion Of Control: http://martinfowler.com/articles/injection.html
+.. _Design Patterns: https://en.wikipedia.org/wiki/Software_design_pattern
 .. _Refactoring: http://www.refactoring.com/catalog/
 .. _Software Architectural Design: https://en.wikipedia.org/wiki/Software_architecture
 .. _Database Architecture: https://en.wikipedia.org/wiki/Data_architecture
@@ -197,6 +196,7 @@ Experience
 
 .. _Coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
 .. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)
+.. _Coupling And Cohesion: http://wiki.c2.com/?CouplingAndCohesion
 .. _SRP: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _OCP: https://en.wikipedia.org/wiki/Open/closed_principle
 .. _SOLID: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
