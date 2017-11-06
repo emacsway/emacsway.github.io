@@ -757,7 +757,17 @@ Use Extreme Progrgramming (XP)
     "XP is a lightweight, efficient, low-risk, flexible, predictable, scientific, and fun way to develop software."
     (Kent Beck [#fnxp]_)
 
-«`Extreme Programming Explained`_» by Kent Beck is one of the most valuable books I've ever read.
+"`Extreme Programming Explained`_" by Kent Beck is one of the most valuable books I've ever read.
+
+
+Further reading
+===============
+
+* "`Extreme Programming Explained`_" by Kent Beck
+* "Planning Extreme Programming" by Kent Beck, Martin Fowler
+* "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
+* "The Clean Coder" by Robert C. Martin
+* "Code Complete" by Steve McConnell
 
 
 .. rubric:: Footnotes
@@ -770,7 +780,7 @@ Use Extreme Progrgramming (XP)
 .. [#fndp] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 
-.. update:: 04 Oct, 2017
+.. update:: 06 Nov, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
