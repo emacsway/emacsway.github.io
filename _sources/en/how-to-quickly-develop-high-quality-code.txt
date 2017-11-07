@@ -532,6 +532,11 @@ The quality code is always simple!
 
 ..
 
+    It doesn't take a Ph.D. in computer science to contribute to an XP project (in fact, the Ph.D.'s sometimes have the most trouble).
+    (Kent Beck [#fnxp]_)
+
+..
+
     "I like my code to be elegant and efficient.
     The logic should be straightforward to make it hard for bugs to hide,
     the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy,

@@ -147,7 +147,7 @@ Bibliography
     * "Implementation Patterns" by Kent Beck
     * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
-    * "Microsoft Application Architecture Guide" by J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat
+    * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
     * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
     * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
