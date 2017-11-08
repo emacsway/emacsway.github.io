@@ -316,6 +316,11 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     ... the activity of design is not an option. It must be given serious thought for software development to be effective.
     (Kent Beck [#fnxp]_)
 
+..
+
+    ... the true value of internal quality - that it's the enabler to speed. The purpose of internal quality is to go faster.
+    (`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__ by Martin Fowler)
+
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
 
