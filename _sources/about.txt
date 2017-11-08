@@ -11,9 +11,9 @@ About me
    :alt: me
    :align: right
 
-Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
+Python/FullStack Software Engineer, Software/Solution architect
 
-- Ivan Zakrevskyi, Python/FullStack Software Engineer
+- Ivan Zakrevskyi
 - Blog: https://emacsway.github.io/
 - E-mail: emacsway@gmail.com
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
@@ -164,12 +164,12 @@ Bibliography
 Experience
 ----------
 
-* 2016 – 2017 – Full-Stack Software Engineer at jooraccess.com (Django, PostgreSQL, AngularJS, Dojo, CORS, JWT, Django-rest-framework, CakePHP, Pl/SQL, Scrum). Introduced TDD (and some others practices of XP), DDD, Designing Through Refactoring, code review based on catalogs of refactorings and on catalogs of code smells. Solved a lot of issues of Architecture and Design. Improved quality of the codebase. Reduced time of implementation new features due to the introduced design approaches. Created the `high-level tool to handle data <https://github.com/emacsway/store>`__ on client-side.
-* 2013 – 2016 – Senior Python-Developer at popular social network rebelmouse.com (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.). Actively used Designing Through Refactoring, TDD, code review based on catalogs of refactorings and on catalogs of code smells.
-* 2011 – 2013 – Senior Full-Stack Developer at Russian travel portal tripster.ru (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache dependencies, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
-* 2010 – 2011 – Team Leader at Soft-Ukraine (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
-* 2009 – 2010 – Co-founder and CTO at Dstudio (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
-* 2004 – 2009 – Zakrevskyi Entrepreneur, PHP and Python Development
+* 2016 – 2017 – Senior Full Stack Software Engineer (remote) at jooraccess.com, the global wholesale marketplace where the biggest brands and best retailers do business online. Introduced TDD (and some other practices of XP), DDD, Designing Through Refactoring, code review based on catalog of refactorings and catalogs of code smells, continuous review, monitoring with New Relic. Solved a lot of issues of architecture and design. Improved quality of the codebase. Reduced time of implementation of new features due to the introduced design approaches. Created the high-level library `Store.js <https://github.com/emacsway/store>`__ to handle data on client-side. Used Python, JavaScript, PHP, Bash, Django, PostgreSQL, jQuery, AngularJS, Dojo, RESTful API, CORS, JWT, Django-rest-framework, CakePHP, Redis, Celery, Pl/SQL, AWS, Ubuntu, Scrum, etc.
+* 2013 – 2016 – Senior Backend Developer (remote) at rebelmouse.com, the best online CMS for social websites. Actively used Designing Through Refactoring, TDD, code review based on catalog of refactorings and catalogs of code smells. Debugging on production and low-level debugging with GDB. Backend/SQL high performance optimization. Monitoring with New Relic. Implemented social networks integration, polymorphic relations, ACL, statistics, data analytics. Used Python, Bash, Django, MySQL, MongoDB, RESTful API, Redis, Celery, Memcached, Eventlet, Ubuntu, replication, clustering, document-oriented data storage, kanban, etc.
+* 2011 – 2013 – Senior Full Stack Software Engineer (remote) at tripster.ru, the Russian travel portal and FAQ for independent travelers. Used Python, JavaScript, Bash, Django, GIS, jQuery, MySQL, RESTful API, Solr, Nginx, Memcached, Debian, sub-processing, threading, Queue, Async, 3-d SQL Builders, morphology, fast compiled template engine wheezy.template, automatic text processing, etc. Implemented a lot of basic features, social networks integration, HTML5 API History for legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax UI widgets, cache dependencies, phased cache (with nocache fragments), cache cleaning synchronization with DB transactions. Backend/SQL high performance optimization.
+* 2010 – 2011 – Team Leader at Soft-Ukraine. Developed an online corporative brainstorm system. Used Python, JavaScript, Bash, Django, Dojo, jQuery, PostgreSQL, RESTful API, MVVM, dojox.data.JsonRestStore, Ajax UI, Ruby On Rails, Pinax, Debian, Multilingual, etc. System Administration.
+* 2009 – 2010 – Co-founder and CTO at Dstudio. Organized mass production of business card site using Drupal. Developed a city portal using Django and Pinax. Organized infrastructure and team training. System Administration. Used Python, JavaScript, PHP, Bash, Drupal, Django, Pinax, Redmine, Trac, Debian, etc.
+* 2004 – 2009 – Zakrevskyi Entrepreneur. Web-development using PHP, Python, JavaScript. Development and maintenance an industrial business portal. Used Python, JavaScript, PHP, Bash, Django, PostgreSQL, MySQL, Dojo, jQuery, Zend Framework, Pinax, Debian, etc.
 
 
 ..

@@ -183,6 +183,15 @@ If your team still has a junior developer after two months, your team needs a be
     another where you program everything solo. Then you can make your own decision.
     (Kent Beck [#fnxp]_)
 
+..
+
+    It's hard to collaborate. Our whole education system is tuned to individual
+    achievement. If you work with someone on a project, the teacher calls it cheating
+    and punishes you. The reward systems in most companies, with individual
+    evaluations and raises (often cast as a zero sum game), also encourages individual thinking.
+    You will likely have to learn new people skills, interacting as closely with your team as you will in XP.
+    (Kent Beck [#fnxp]_)
+
 
 The second myth. Quality code is not suitable for hot deadline.
 ---------------------------------------------------------------
@@ -504,7 +513,7 @@ Thus, patterns is not complexity.
 
 The quality code is always simple!
 
-    On the surface, being an XP programmer looks a lot like being a programmer within
+    "On the surface, being an XP programmer looks a lot like being a programmer within
     other software development disciplines. You spend your time working with programs,
     making them bigger, simpler, faster. Beneath the surface, however, the focus is
     quite different. Your job isn't over when the computer understands what to do. Your
@@ -519,20 +528,32 @@ The quality code is always simple!
     to develop the most valuable software for the customer, but not to develop anything
     that isn't valuable. If you can reduce the size of the problem enough, then you can
     afford to be careful with the work you do on what remains. Then, you are careful by
-    habit.
+    habit."
     (Kent Beck [#fnxp]_)
 
 ..
 
-    Of course, you can
+    "Of course, you can
     do a better job if you have more tools in your toolbox than if you have fewer, but it
     is much more important to have a handful of tools that you know when not to use,
-    than to know everything about everything and risk using too much solution.
+    than to know everything about everything and risk using too much solution."
     (Kent Beck [#fnxp]_)
 
 ..
 
-    It doesn't take a Ph.D. in computer science to contribute to an XP project (in fact, the Ph.D.'s sometimes have the most trouble).
+    "It doesn't take a Ph.D. in computer science to contribute to an XP project (in fact, the Ph.D.'s sometimes have the most trouble)."
+    (Kent Beck [#fnxp]_)
+
+..
+
+    "It's hard to do simple things. It seems crazy, but sometimes it is easier to do 
+    something more complicated than to do something simple. This is particularly true 
+    when you have been successful doing the complicated thing in the past. Learning to 
+    see the world in the simplest possible terms is a skill and a challenge. The challenge 
+    is that you may have to change your value system. Instead of being impressed when 
+    someone (like you, for instance) gets something complicated to work, you have to 
+    learn to be dissatisfied with complexity, not to rest until you can't imagine anything 
+    simpler working."
     (Kent Beck [#fnxp]_)
 
 ..
