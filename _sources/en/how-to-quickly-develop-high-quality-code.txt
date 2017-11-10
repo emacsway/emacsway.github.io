@@ -459,7 +459,7 @@ There is an opinion that pair programming reduces the velocity of development.
 The main conclusion is that you can't say about affect of pair programming to velocity of development until you begin to track the time of your team for bugfixes, refactoring and debugging.
 
 Please do not confuse "Inspection" [#fncodec]_ (or "Code Reading" [#fncodec]_) and usual Code Review on github.
-Inspection is the kind of Collaborative Development Practice, while usual Code Review usually involves only 2 persons (reviewer and author).
+Inspection is a kind of Collaborative Development Practice, while usual Code Review usually involves only 2 persons (reviewer and author).
 Code Review is weak for experience sharing.
 Also, usual Code Review does not require any preparation.
 
