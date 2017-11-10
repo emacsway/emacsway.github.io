@@ -316,12 +316,22 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     ... the activity of design is not an option. It must be given serious thought for software development to be effective.
     (Kent Beck [#fnxp]_)
 
-..
+As it's said by Martin Fowler:
 
     ... the true value of internal quality - that it's the enabler to speed. The purpose of internal quality is to go faster.
     (`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__ by Martin Fowler)
 
+.. image:: /_media/en/how-to-quickly-develop-high-quality-code/designStaminaGraph.png
+   :alt: The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design.
+   :align: center
+
+The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`DesignStaminaHypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`_" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
+
 There is only one way to develop a software quickly: to do it in the right way for the first time.
+
+    | \- We don't time to do it right!
+    | \- Do you have time to do it twice?
+    | (`Randy Shoup <https://www.infoq.com/presentations/microservices-data-centric>`_, VP Engineering at Stitch Fix in San Francisco)
 
 
 The third myth. Pair programming reduces the velocity of development.
@@ -799,6 +809,7 @@ Further reading
 * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
 * "The Clean Coder" by Robert C. Martin
 * "Code Complete" by Steve McConnell
+* "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
 
 
 .. rubric:: Footnotes

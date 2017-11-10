@@ -29,9 +29,7 @@ About me
 
 An XP_ and DDD_ expert.
 
-My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features rapid and cheap; the cost of code change asymptotic (instead of exponential); the team skilled, successful, and having high self-motivation.
-
-    "The purpose of internal quality is to go faster." (Martin Fowler)
+My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the cost of code change asymptotic (instead of exponential); the team skilled, successful, and having high self-motivation.
 
 My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring, Clean Code & Clean Architecture, and so on.
 
@@ -133,6 +131,7 @@ Bibliography
     * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
     * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+    * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
     * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
     * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
