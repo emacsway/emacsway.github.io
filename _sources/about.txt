@@ -29,7 +29,7 @@ About me
 
 An XP_ and DDD_ expert.
 
-My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the cost of code change asymptotic (instead of exponential); the team skilled, successful, and having high self-motivation.
+My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the team skilled, successful, and having high self-motivation.
 
 My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring, Clean Code & Clean Architecture, and so on.
 
