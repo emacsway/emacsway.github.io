@@ -316,16 +316,26 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     ... the activity of design is not an option. It must be given serious thought for software development to be effective.
     (Kent Beck [#fnxp]_)
 
-As it's said by Martin Fowler:
+As Martin Fowler said:
 
     ... the true value of internal quality - that it's the enabler to speed. The purpose of internal quality is to go faster.
-    (`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__ by Martin Fowler)
+    ("`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__" by Martin Fowler)
+
+..
+
+    In most contexts higher quality ⇒ expensive. But high internal quality of software allows us to develop features faster and cheaper.
+    ("`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__" by Martin Fowler)
+
+..
+
+    The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
+    ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
 
 .. image:: /_media/en/how-to-quickly-develop-high-quality-code/designStaminaGraph.png
    :alt: The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design.
    :align: center
 
-The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`DesignStaminaHypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`_" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
+The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
 
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
