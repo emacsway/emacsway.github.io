@@ -817,6 +817,7 @@ Further reading
 * "`Extreme Programming Explained`_" by Kent Beck
 * "Planning Extreme Programming" by Kent Beck, Martin Fowler
 * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
+* "Software Estimation: Demystifying the Black Art" by Steve McConnell
 * "The Clean Coder" by Robert C. Martin
 * "Code Complete" by Steve McConnell
 * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
