@@ -101,12 +101,15 @@ Bibliography
     * "JavaScript Patterns" by Stoyan Stefanov
 * Databases:
     * "PostgreSQL" by Korry Douglas, Susan Douglas
+    * "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 * Algorithms:
     * "Algorithms and Data Structures" by N.Wirth
 * Compilers & Parsers:
     * "Compiler Construction" by N.Wirth
 * Methodologies:
     * "Extreme Programming Explained" by Kent Beck
+    * "Planning Extreme Programming" by Kent Beck, Martin Fowler
+    * "The Clean Coder" by Robert C. Martin
 * Operational system:
     * "Unix and Linux System Administration Handbook" by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
     * "The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures" by Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
@@ -120,17 +123,15 @@ Bibliography
     In the queue
     ------------
 
-    * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
-    * "Planning Extreme Programming" by Kent Beck, Martin Fowler
-    * "The Clean Coder" by Robert C. Martin
     * "Test-Driven Development By Example" by Kent Beck
+    * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
     * "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
     * "An Introduction to Database Systems" by C.J. Date
-    * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
+    * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
     * "Implementation Patterns" by Kent Beck
     * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
-    * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+    * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
     * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
     * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
     * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
