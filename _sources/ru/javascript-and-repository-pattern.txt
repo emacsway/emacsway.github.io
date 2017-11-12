@@ -35,7 +35,7 @@
 
 ..
 
-    A good architecture allows major decision to be deferred! (Robert Martin)
+    A good architecture allows major decision to be deferred! (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__)
 
 .. A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility.
    («Clean Architecture» [#fnca]_)
