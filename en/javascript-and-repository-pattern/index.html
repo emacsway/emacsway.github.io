@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sun, 12 Nov 2017 23:35:47 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 13 Nov 2017 14:45:18 GMT" />
         
             <meta name="description" content="Good architecture makes you free from certain implementation. It allows you to postpone the moment of decision on implementation and begin code construction even without the decision. The most important point is that you gain the opportunity to make a decision at the time of the greatest awareness, and you can also easily replace a specific implementation with any other. This responsibility is assigned to the Repository." />
         
@@ -136,7 +136,7 @@ The last one is very often in demand, since it allows you to save only changed o
 <p>The greatest advantage of the <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> in the program is the ability to use the principles of Domain-Driven Design (DDD) <a class="footnote-reference" href="#fnddd" id="id3">[4]</a>.
 If the Models contain only business logic, and are devoid of service logic, then they can easily be read by domain expert (ie, the customer&#8217;s representative).
 This frees you from the need to create UML diagrams for discussions and allows you to achieve the highest level of mutual understanding, productivity, and quality of implementation of the models.</p>
-<p>In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
+<p>In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming with push-algorithm, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
 The bottom line is that all this reactive logic no longer belonged to the domain model itself, and was located in a different sort of <a class="reference external" href="https://en.wikipedia.org/wiki/Observer_pattern">Observers</a> and handlers.</p>
 <blockquote>
 <div>&#8220;The whole point of objects is that they are a technique to package data with the processes used
@@ -157,7 +157,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
 Even I could not understand the next day what a particular code fragment does, I&#8217;m not talking about the domain expert.
 This radically destroyed the principles of Domain-Driven Design, and significantly <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">reduced the speed of developing new project features</span></a>.</p>
 <p>Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).</p>
-<p>Subsequently, the models recovered their conceptual outlines and code readability, and at the same time preserved the mechanism of reactions for adding, changing or deleting objects.
+<p>Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to more more precisely, a hybrid push-pull), and at the same time preserved the mechanism of reactions for adding, changing or deleting objects.
 To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.</p>
 </div>
 <div class="section" id="reactive-programming-paradigm">

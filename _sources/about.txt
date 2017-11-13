@@ -125,6 +125,7 @@ Bibliography
 
     * "Test-Driven Development By Example" by Kent Beck
     * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+    * "Analysis Patterns. Reusable Object Models" by Martin Fowler
     * "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
     * "An Introduction to Database Systems" by C.J. Date
     * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell

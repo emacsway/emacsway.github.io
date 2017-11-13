@@ -55,7 +55,7 @@ The greatest advantage of the `Domain Model`_ in the program is the ability to u
 If the Models contain only business logic, and are devoid of service logic, then they can easily be read by domain expert (ie, the customer's representative).
 This frees you from the need to create UML diagrams for discussions and allows you to achieve the highest level of mutual understanding, productivity, and quality of implementation of the models.
 
-In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
+In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming with push-algorithm, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
 The bottom line is that all this reactive logic no longer belonged to the domain model itself, and was located in a different sort of `Observers <Observer_>`__ and handlers.
 
     "The whole point of objects is that they are a technique to package data with the processes used
@@ -83,7 +83,7 @@ This radically destroyed the principles of Domain-Driven Design, and significant
 
 Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).
 
-Subsequently, the models recovered their conceptual outlines and code readability, and at the same time preserved the mechanism of reactions for adding, changing or deleting objects.
+Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to more more precisely, a hybrid push-pull), and at the same time preserved the mechanism of reactions for adding, changing or deleting objects.
 To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.
 
 
