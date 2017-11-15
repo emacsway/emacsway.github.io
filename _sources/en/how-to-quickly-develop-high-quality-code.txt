@@ -628,7 +628,7 @@ Don't spend a lot of time for explanations at code review.
 You can simple use link to certain method of refactoring by using `Catalog of Refactorings`_.
 Pay attention, each method of refactoring has the page number of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
 
-There is also online catalogs of refactorings for database:
+There are also online catalogs of refactorings for database:
 
 - http://www.databaserefactoring.com/
 - http://www.agiledata.org/essays/databaseRefactoringCatalog.html
