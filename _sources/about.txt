@@ -134,6 +134,7 @@ Bibliography
     * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
     * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
+    * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
     * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
     * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
     * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins

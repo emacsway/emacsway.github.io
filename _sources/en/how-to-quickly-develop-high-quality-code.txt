@@ -617,6 +617,13 @@ The quality code is always simple!
     "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
     ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
 
+..
+
+    "Really smart programmers sometimes have a hard time with XP. Sometimes the 
+    smart people have the hardest time trading the "Guess Right" game for close 
+    communication and continuous evolution."
+    (Kent Beck [#fnxp]_)
+
 
 Advices
 =======
@@ -650,6 +657,7 @@ There is a few of most frequently used catalogs:
 - Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler
 - `Code Smell`_
 - «Refactoring To Patterns» [#fnrtp]_
+
 
 Use Designing Through Refactoring
 ---------------------------------

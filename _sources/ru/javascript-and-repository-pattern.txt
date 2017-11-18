@@ -473,7 +473,7 @@ Domain-Driven Design подходит к связям более строго, �
 * Edge (unstable) repo - https://github.com/emacsway/store
 * Canonical repo - https://github.com/joor/store-js-external
 
-.. This article in English ":doc:`../en/javascript-and-repository-pattern`".
+This article in English ":doc:`../en/javascript-and-repository-pattern`".
 
 
 .. rubric:: Footnotes

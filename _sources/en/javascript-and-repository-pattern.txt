@@ -2,13 +2,12 @@
 Implementation of Repository pattern for browser's JavaScript
 =============================================================
 
-.. post::
+.. post:: 06 Aug, 2017
    :language: en
    :tags: Repository, ORM, JavaScript, Model, DDD
    :category:
    :author: Ivan Zakrevsky
 
-.. 06 Aug, 2017
 
 Good architecture makes you free from certain implementation.
 It allows you to postpone the moment of decision on implementation and `begin code construction even without the decision <Service Stub_>`__.
@@ -428,7 +427,7 @@ Source code
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
-.. .. update:: 04 Oct, 2017
+.. update:: 04 Oct, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
