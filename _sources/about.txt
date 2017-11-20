@@ -55,8 +55,7 @@ Open Source Projects
     * `rope <https://github.com/python-rope/rope>`_ (contributor) - a python refactoring library.
     * `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ (owner) - a lightweight Python SQLBuilder. Can be integrated with Django.
     * `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_ (owner). Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
-
-.. * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (owner) - a lightweight Python datamapper ORM
+    * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (owner) - a lightweight Python DataMapper ORM (the project is incomplete).
 
 * JavaScript
     * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming. (`canonical repo <https://github.com/joor/store-js-external>`__).
