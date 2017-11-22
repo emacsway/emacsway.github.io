@@ -54,7 +54,7 @@ Open Source Projects
 * Python
     * `rope <https://github.com/python-rope/rope>`_ (contributor) - a python refactoring library.
     * `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ (author) - a lightweight Python SQLBuilder. Can be integrated with Django.
-    * `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_ (author). Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
+    * `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_ (author). Cache-dependencies (former Cache-tagging) allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
     * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (author) - a lightweight Python DataMapper ORM (the project is incomplete).
 
 * JavaScript
