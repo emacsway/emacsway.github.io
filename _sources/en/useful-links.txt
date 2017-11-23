@@ -22,6 +22,12 @@ Sites
 - `Anti Patterns Catalog <http://c2.com/cgi/wiki?AntiPatternsCatalog>`__
 - `Coupling And Cohesion <http://wiki.c2.com/?CouplingAndCohesion>`__
 - `A visualization of the most famous Sorting Algorithms. <http://sorting.at/>`__
+- `Enterprise Integration Patterns <http://www.enterpriseintegrationpatterns.com/>`__
+- `SOAPatterns.org http://soapatterns.org/`__
+- `Microservice Patterns <https://www.manning.com/books/microservice-patterns>`__
+- `Domain Driven Design Community <http://dddcommunity.org/>`__
+- `Refactoring Databases <http://www.databaserefactoring.com/>`__
+- `Microsoft Application Architecture Guide, 2nd Edition <https://msdn.microsoft.com/en-us/library/ff650706.aspx>`__
 
 
 

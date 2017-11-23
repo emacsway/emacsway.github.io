@@ -110,11 +110,11 @@
 
 #. «Design Patterns: Elements of Reusable Object-Oriented Software» [#fngof]_ - паттерны проектирования.
 #. "`Catalog of Patterns of Enterprise Application Architecture`_" из книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_ - архитектурные паттерны.
-#. «Pattern-Oriented Software Architecture Volume (POSA)» 5-volume edition, Buschmann, Meunier, Rohnert, Sommerlad, and Sta.
-#. «Pattern-Oriented Software Architecture (known as POSA) by Buschmann, Meunier, Rohnert, Sommerlad, and Sta;
+#. «Pattern-Oriented Software Architecture Volume (POSA)» 5-volume edition by Buschmann, Meunier, Rohnert, Sommerlad, and Sta.
+#. «Pattern-Oriented Software Architecture (known as POSA) by Buschmann, Meunier, Rohnert, Sommerlad, and Sta.
 #. «Enterprise Integration Patterns» by Hohpe and Woolf.
 #. «The Design of Sites: Patterns, Principles, and Processes for Crafting a Customer-Centered Web Experience» by Duyne, Landay, and Hong.
-#. «xUnit Test Patterns. Refactoring Test Code.» [#xutp]_
+#. «xUnit Test Patterns. Refactoring Test Code.» by Gerard Meszaros [#xutp]_.
 
 Систематизированная форма этих знаний легко входит в привычку, и может сделать работу всей команды согласованной при наименьших затратах времени.
 

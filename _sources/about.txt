@@ -125,6 +125,7 @@ Bibliography
     * "Test-Driven Development By Example" by Kent Beck
     * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
     * "Analysis Patterns. Reusable Object Models" by Martin Fowler
+    * "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
     * "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
     * "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
     * "An Introduction to Database Systems" by C.J. Date
