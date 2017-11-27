@@ -491,7 +491,7 @@ This article in English ":doc:`../en/javascript-and-repository-pattern`".
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
-.. update:: 04 Oct, 2017
+.. update:: 27 Nov, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
