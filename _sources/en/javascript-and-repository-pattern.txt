@@ -84,6 +84,7 @@ Hopes for this approach finally collapsed when it was revealed that each instanc
 
 Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to more more precisely, a hybrid push-pull), and at the same time there was preserved the mechanism of reactions for adding, changing or deleting objects.
 To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.
+This is similar to Object-Relational Mapping (ORM) for JavaScript, including the Data Mapper pattern (the data can be mapped between objects and a persistent data storage).
 
 
 Reactive programming paradigm
@@ -98,8 +99,8 @@ The developers of dojo are a team of highly qualified specialists whose librarie
 An example of how seriously and comprehensively they solves problems is the `history of the RequireJS library <http://requirejs.org/docs/history.html>`_.
 
 
-Examples of implementations of Repository pattern by JavaScript
-===============================================================
+Examples of implementations of Repository pattern and ORM by JavaScript
+=======================================================================
 
 Examples of the simplest implementations of the Repository pattern by JavaScript in the project `todomvc.com <http://todomvc.com/>`_:
 
@@ -116,7 +117,7 @@ Other implementations:
 - `Dojo1 Store <https://dojotoolkit.org/reference-guide/1.10/dojo/store.html>`_ - \
   Dojo1 implementation of `Repository`_ pattern.
 - `JS-Data <http://www.js-data.io/>`_ - \
-  ORM written by JavaScript for relational data. Does not support composite relations.
+  Object-Relational Mapping (ORM) written by JavaScript for relational data. Does not support composite relations.
 - `9 JavaScript Libraries for Working with Local Storage <https://www.sitepoint.com/9-javascript-libraries-working-with-local-storage/>`_ - \
   article with interesting comments.
 - `Kinvey Data Store <http://devcenter.kinvey.com/angular/guides/datastore>`_ - \

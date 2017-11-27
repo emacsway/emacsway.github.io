@@ -98,7 +98,7 @@ This responsibility is assigned to the <a class="reference external" href="http:
 <li><a class="reference internal" href="#implementation-of-repository-pattern-for-browser-s-javascript" id="id30">Implementation of Repository pattern for browser&#8217;s JavaScript</a></li>
 <li><a class="reference internal" href="#domain-model" id="id31">Domain Model</a></li>
 <li><a class="reference internal" href="#reactive-programming-paradigm" id="id32">Reactive programming paradigm</a></li>
-<li><a class="reference internal" href="#examples-of-implementations-of-repository-pattern-by-javascript" id="id33">Examples of implementations of Repository pattern by JavaScript</a></li>
+<li><a class="reference internal" href="#examples-of-implementations-of-repository-pattern-and-orm-by-javascript" id="id33">Examples of implementations of Repository pattern and ORM by JavaScript</a></li>
 <li><a class="reference internal" href="#implementation-of-relational-relations" id="id34">Implementation of relational relations</a><ul>
 <li><a class="reference internal" href="#synchronous-programming" id="id35">Synchronous programming</a></li>
 <li><a class="reference internal" href="#rejecting-relations" id="id36">Rejecting relations</a></li>
@@ -158,7 +158,8 @@ Even I could not understand the next day what a particular code fragment does, I
 This radically destroyed the principles of Domain-Driven Design, and significantly <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">reduced the speed of developing new project features</span></a>.</p>
 <p>Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).</p>
 <p>Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to more more precisely, a hybrid push-pull), and at the same time there was preserved the mechanism of reactions for adding, changing or deleting objects.
-To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.</p>
+To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.
+This is similar to Object-Relational Mapping (ORM) for JavaScript, including the Data Mapper pattern (the data can be mapped between objects and a persistent data storage).</p>
 </div>
 <div class="section" id="reactive-programming-paradigm">
 <h1><a class="toc-backref" href="#id32">Reactive programming paradigm</a><a class="headerlink" href="#reactive-programming-paradigm" title="Permalink to this headline">¶</a></h1>
@@ -168,8 +169,8 @@ Did you know that dojo developers first <a class="reference external" href="http
 <p>The developers of dojo are a team of highly qualified specialists whose libraries are used by such reputable companies as IBM.
 An example of how seriously and comprehensively they solves problems is the <a class="reference external" href="http://requirejs.org/docs/history.html">history of the RequireJS library</a>.</p>
 </div>
-<div class="section" id="examples-of-implementations-of-repository-pattern-by-javascript">
-<h1><a class="toc-backref" href="#id33">Examples of implementations of Repository pattern by JavaScript</a><a class="headerlink" href="#examples-of-implementations-of-repository-pattern-by-javascript" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="examples-of-implementations-of-repository-pattern-and-orm-by-javascript">
+<h1><a class="toc-backref" href="#id33">Examples of implementations of Repository pattern and ORM by JavaScript</a><a class="headerlink" href="#examples-of-implementations-of-repository-pattern-and-orm-by-javascript" title="Permalink to this headline">¶</a></h1>
 <p>Examples of the simplest implementations of the Repository pattern by JavaScript in the project <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
 <ul class="simple">
 <li>Angular2: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts">https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts</a></li>
@@ -181,7 +182,7 @@ An example of how seriously and comprehensively they solves problems is the <a c
 <li><a class="reference external" href="https://github.com/dojo/stores">Dojo2 Stores</a> - Excellent implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern in paradigm of <a class="reference external" href="https://en.wikipedia.org/wiki/Reactive_programming">Reactive Programming</a> for non-relational data.</li>
 <li><a class="reference external" href="http://dstorejs.io/">Dstore</a> - yet another excellent implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern.</li>
 <li><a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">Dojo1 Store</a> - Dojo1 implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern.</li>
-<li><a class="reference external" href="http://www.js-data.io/">JS-Data</a> - ORM written by JavaScript for relational data. Does not support composite relations.</li>
+<li><a class="reference external" href="http://www.js-data.io/">JS-Data</a> - Object-Relational Mapping (ORM) written by JavaScript for relational data. Does not support composite relations.</li>
 <li><a class="reference external" href="https://www.sitepoint.com/9-javascript-libraries-working-with-local-storage/">9 JavaScript Libraries for Working with Local Storage</a> - article with interesting comments.</li>
 <li><a class="reference external" href="http://devcenter.kinvey.com/angular/guides/datastore">Kinvey Data Store</a> - implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern by MBaaS Kinvey, <a class="reference external" href="https://github.com/Kinvey/js-sdk/tree/master/src/datastore/src">source code</a></li>
 <li><a class="reference external" href="https://github.com/vincentracine/pocketjs">Pocket.js</a> - a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB&#8217;s proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.</li>

@@ -113,6 +113,7 @@
 
 Впоследствии модели вернули себе свои концептуальные контуры и читаемость кода, push-алгоритм был заменен на pull-алгоритм (точнее, на hybrid push-pull), и, вместе с тем, был сохранен механизм реакций при добавлении, изменении или удалении объектов.
 Для достижения этого результата пришлось своими силами создать библиотеку реализующую паттерн Repository, так как существующих решений для реляционных данных с качественной кодовой базой я не смог найти.
+Получилось что-то вроде Object-Relational Mapping (ORM) для JavaScript, включая паттерн Data Mapper (данные могут трансформироваться (отображаться) между объектами и постоянным хранилищем данных).
 
 
 Парадигма реактивного программирования
@@ -127,8 +128,8 @@
 Примером того, насколько серьезно и комплексно они подходят к решению проблем, может служить `история библиотеки RequireJS <http://requirejs.org/docs/history.html>`_.
 
 
-Примеры реализаций паттерна Repository в JavaScript
-===================================================
+Примеры реализаций паттерна Repository и ORM в JavaScript
+=========================================================
 
 Примеры простейших реализаций паттерна Repository на JavaScript в проекте `todomvc.com <http://todomvc.com/>`_:
 
@@ -145,7 +146,7 @@
 - `Dojo1 Store <https://dojotoolkit.org/reference-guide/1.10/dojo/store.html>`_ - \
   Dojo1 implementation of `Repository`_ pattern.
 - `JS-Data <http://www.js-data.io/>`_ - \
-  ORM written by JavaScript for relational data. Does not support composite relations.
+  Object-Relational Mapping (ORM) written by JavaScript for relational data. Does not support composite relations.
 - `9 JavaScript Libraries for Working with Local Storage <https://www.sitepoint.com/9-javascript-libraries-working-with-local-storage/>`_ - \
   article with interesting comments.
 - `Kinvey Data Store <http://devcenter.kinvey.com/angular/guides/datastore>`_ - \
