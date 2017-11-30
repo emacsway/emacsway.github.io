@@ -43,6 +43,10 @@ Thus, you have a complete abstraction from the data source, whether it's REST-AP
     true.
     (Kent Beck [#fnxp]_)
 
+..
+
+    "The best architects remove architecture by figuring out how to make things shiftable." (`Martin Fowler <https://youtu.be/VjKYO6DP3fo?t=17m59s>`__)
+
 In addition, you have the opportunity to implement patterns `Identity Map`_ and `Unit of Work`_.
 The last one is very often in demand, since it allows you to save only changed objects of the finally formed aggregate of nested objects on the server, or roll back the state of local objects in case the data can not be saved (the user has changed his mind or entered invalid data).
 
