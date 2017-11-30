@@ -331,9 +331,11 @@ As Martin Fowler said:
     The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
     ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
 
+
 .. image:: /_media/en/how-to-quickly-develop-high-quality-code/designStaminaGraph.png
-   :alt: The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design.
+   :alt: The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "Design Stamina Hypothesis" by Martin Fowler.
    :align: center
+
 
 The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
 
@@ -625,6 +627,105 @@ The quality code is always simple!
     (Kent Beck [#fnxp]_)
 
 
+The sixth myth. The agile never works.
+--------------------------------------
+
+Often people understand the word "agile" as a simple set of iterations.
+But the true agile is to keep the cost of code change low, so the customer will be able to adapt the codebase for variable business requirements.
+
+
+.. image:: /_media/en/how-to-quickly-develop-high-quality-code/exponential-cost-of-change.png
+   :alt: The cost of change rising exponentially over time. The image from the book "Extreme Programming" by Kent Beck.
+   :align: center
+
+
+The cost of change rising exponentially over time. The image from the book "Extreme Programming" by Kent Beck.
+
+    At the core of understanding this argument is the software change curve.
+    The change curve says that as the project runs, it becomes exponentially more expensive to make changes.
+    The change curve is usually expressed in terms of phases "a change made in analysis for $1 would cost thousands to fix in production".
+    This is ironic as most projects still work in an ad-hoc process that doesn't have an analysis phase, but the exponentiation is still there.
+    The exponential change curve means that evolutionary design cannot possibly work.
+    It also conveys why planned design must be done carefully because any mistakes in planned design face the same exponentiation.
+
+    The fundamental assumption underlying XP is that it is possible to flatten the change curve enough to make evolutionary design work.
+    This flattening is both enabled by XP and exploited by XP.
+    This is part of the coupling of the XP practices: specifically you can't do those parts of XP that exploit the flattened curve without doing those things that enable the flattening.
+    This is a common source of the controversy over XP.
+    Many people criticize the exploitation without understanding the enabling.
+    Often the criticisms stem from critics' own experience where they didn't do the enabling practices that allow the exploiting practices to work.
+    As a result they got burned and when they see XP they remember the fire.
+    ("`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler)
+
+..
+
+    "If you're a manager or customer how can you tell if the software is well designed?
+    It matters to you because poorly designed software will be more expensive to modify in the future."
+    ("`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler)
+
+
+.. image:: /_media/en/how-to-quickly-develop-high-quality-code/asymptotic-cost-of-change.png
+   :alt: The cost of change may not rise dramatically over time. The image from the book "Extreme Programming" by Kent Beck.
+   :align: center
+
+
+The cost of change may not rise dramatically over time. The image from the book "Extreme Programming" by Kent Beck.
+
+    "This is one of the premises of XP. It is the technical premise of XP. If the cost of
+    change rose slowly over time, you would act completely differently from how you do
+    under the assumption that costs rise exponentially. You would make big decisions as
+    late in the process as possible, to defer the cost of making the decisions and to have
+    the greatest possible chance that they would be right. You would only implement
+    what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
+    true. You would introduce elements to the design only as they simplified existing
+    code or made writing the next bit of code simpler.
+
+    If a flattened change cost curve makes XP possible, a steep change cost curve makes
+    XP impossible. If change is ruinously expensive, you would be crazy to charge ahead
+    without careful forethought. But if change stays cheap, the additional value and
+    reduced risk of early concrete feedback outweighs the additional cost of early
+    change."
+    (Kent Beck [#fnxp]_)
+
+Let me repeat the words of Kent Beck, the creator of the first agile methodology "Extreme Programming": **"If a flattened change cost curve makes XP possible, a steep change cost curve makes XP impossible."**
+
+    "Extreme Programming (XP) is a software development methodology developed primarily by Kent Beck.
+    XP was one of the first agile methods, indeed XP was the dominant agile method in the late 90s and early 00s before Scrum became dominant as the noughties passed.
+    Many people (including myself) consider XP to be the primary catalyst that got attention to agile methods, and superior to Scrum as a base for starting out in agile development."
+    ("`Extreme Programming <https://martinfowler.com/bliki/ExtremeProgramming.html>`__" by Martin Fowler)
+
+..
+
+    "In its common usage, evolutionary design is a disaster.
+    The design ends up being the aggregation of a bunch of ad-hoc tactical decisions, each of which makes the code harder to alter.
+    In many ways you might argue this is no design, certainly it usually leads to a poor design.
+    As Kent puts it, design is there to enable you to keep changing the software easily in the long term.
+    As design deteriorates, so does your ability to make changes effectively.
+    You have the state of software entropy, over time the design gets worse and worse.
+    Not only does this make the software harder to change, it also makes bugs both easier to breed and harder to find and safely kill.
+    This is the "code and fix" nightmare, where the bugs become exponentially more expensive to fix as the project goes on."
+    ("`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler)
+
+..
+
+
+
+    "To make agile work, you need solid technical practices.
+    A lot of agile education under-emphasizes these, but if you skimp on this you won't gain the productivity and responsiveness benefits that agile development can give you (stranding you at level 1 of the agile fluency model.)
+    This is one of the reasons that I still think that Extreme Programming is the most valuable of the named agile methods as a core and starting point."
+    ("`Agile Software Development <https://martinfowler.com/agile.html>`__" by Martin Fowler)
+
+..
+
+    "From the very earliest days of agile methods, people have asked what role there is for architectural or design thinking.
+    A common misconception is that since agile methods drop the notion of a detailed up-front design artifact, that there is no room for architecture in an agile project.
+    In my keynote at the first-ever agile conference, I pointed out that design was every bit as important for agile projects, but it manifests itself differently, becoming an evolutionary approach."
+    ("`Agile Software Development <https://martinfowler.com/agile.html>`__" by Martin Fowler)
+
+
+In short, if your team is not experienced in software design, the agile methodology will fail anyway.
+
+
 Advices
 =======
 
@@ -822,6 +923,11 @@ Use Extreme Progrgramming (XP)
     (Kent Beck [#fnxp]_)
 
 "`Extreme Programming Explained`_" by Kent Beck is one of the most valuable books I've ever read.
+
+    "To make agile work, you need solid technical practices.
+    A lot of agile education under-emphasizes these, but if you skimp on this you won't gain the productivity and responsiveness benefits that agile development can give you (stranding you at level 1 of the agile fluency model.)
+    This is one of the reasons that I still think that Extreme Programming is the most valuable of the named agile methods as a core and starting point."
+    ("`Agile Software Development <https://martinfowler.com/agile.html>`__" by Martin Fowler)
 
 
 Further reading
