@@ -605,6 +605,8 @@ The quality code is always simple!
     "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
     ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
 
+See also the great article "`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler.
+
 
 The sixth myth. The agile never works.
 --------------------------------------
