@@ -141,7 +141,7 @@ The code is written once, but is read incommensurably many times in the developm
 
 The emphasis on "fast writing" code actually leads to a reduction in the development velocity in geometric progression. And the emphasis on "readability" of code leads to an increase in the development velocity, also in an geometric progression.
 
-If code is not readable, has a bad code navigation, a bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OC principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automated refactoring, then this code slows rate of development for 91% of time of the whole team.
+If code is not readable, has a bad code navigation, a bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OCP principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automated refactoring, then this code slows rate of development for 91% of time of the whole team.
 
 Thus, each developer in the team MUST be a senior developer.
 The best way to achieve it is the XP by Kent Beck.
