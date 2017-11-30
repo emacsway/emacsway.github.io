@@ -183,15 +183,6 @@ If your team still has a junior developer after two months, your team needs a be
     another where you program everything solo. Then you can make your own decision.
     (Kent Beck [#fnxp]_)
 
-..
-
-    It's hard to collaborate. Our whole education system is tuned to individual
-    achievement. If you work with someone on a project, the teacher calls it cheating
-    and punishes you. The reward systems in most companies, with individual
-    evaluations and raises (often cast as a zero sum game), also encourages individual thinking.
-    You will likely have to learn new people skills, interacting as closely with your team as you will in XP.
-    (Kent Beck [#fnxp]_)
-
 
 The second myth. Quality code is not suitable for hot deadline.
 ---------------------------------------------------------------
@@ -370,7 +361,7 @@ There is an opinion that pair programming reduces the velocity of development.
     percent (Jones 1996). The secondary benefit of collaborative
     construction is that it decreases development time, which in turn
     lowers development costs.
-    
+
     Early reports on pair programming suggest that it can achieve a
     code-quality level similar to formal inspections (Shull et al 2002).
     The cost of full-up pair programming is probably higher than the
@@ -568,18 +559,13 @@ The quality code is always simple!
 
 ..
 
-    "It doesn't take a Ph.D. in computer science to contribute to an XP project (in fact, the Ph.D.'s sometimes have the most trouble)."
-    (Kent Beck [#fnxp]_)
-
-..
-
-    "It's hard to do simple things. It seems crazy, but sometimes it is easier to do 
-    something more complicated than to do something simple. This is particularly true 
-    when you have been successful doing the complicated thing in the past. Learning to 
-    see the world in the simplest possible terms is a skill and a challenge. The challenge 
-    is that you may have to change your value system. Instead of being impressed when 
-    someone (like you, for instance) gets something complicated to work, you have to 
-    learn to be dissatisfied with complexity, not to rest until you can't imagine anything 
+    "It's hard to do simple things. It seems crazy, but sometimes it is easier to do
+    something more complicated than to do something simple. This is particularly true
+    when you have been successful doing the complicated thing in the past. Learning to
+    see the world in the simplest possible terms is a skill and a challenge. The challenge
+    is that you may have to change your value system. Instead of being impressed when
+    someone (like you, for instance) gets something complicated to work, you have to
+    learn to be dissatisfied with complexity, not to rest until you can't imagine anything
     simpler working."
     (Kent Beck [#fnxp]_)
 
@@ -618,13 +604,6 @@ The quality code is always simple!
 
     "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
     ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
-
-..
-
-    "Really smart programmers sometimes have a hard time with XP. Sometimes the 
-    smart people have the hardest time trading the "Guess Right" game for close 
-    communication and continuous evolution."
-    (Kent Beck [#fnxp]_)
 
 
 The sixth myth. The agile never works.
@@ -726,6 +705,92 @@ Let me repeat the words of Kent Beck, the creator of the first agile methodology
 In short, if your team is not experienced in software design, the agile methodology will fail anyway.
 
 
+The seventh myth. It is enough to hire smart developers to have rapid development.
+----------------------------------------------------------------------------------
+
+Yes, it's great to have smart developers, but there is a "problem of smart people".
+
+    "Really smart programmers sometimes have a hard time with XP. Sometimes the
+    smart people have the hardest time trading the "Guess Right" game for close
+    communication and continuous evolution."
+    (Kent Beck [#fnxp]_)
+
+..
+
+    "It doesn't take a Ph.D. in computer science to contribute to an XP project (in fact, the Ph.D.'s sometimes have the most trouble)."
+    (Kent Beck [#fnxp]_)
+
+..
+
+    XP works against many programmers' instincts. As programmers, we get in the habit
+    of anticipating problems. When they appear later, we're happy. When they don't
+    appear, we don't notice. So the design strategy will have to go sideways of this
+    "guessing at the future" behavior. Fortunately, most folks can unlearn the habit of
+    "borrowing trouble" (as my grandmother called it). Unfortunately, the smarter you
+    are, the harder it will be to unlearn.
+    (Kent Beck [#fnxp]_)
+
+..
+
+    "It's hard to collaborate. Our whole education system is tuned to individual
+    achievement. If you work with someone on a project, the teacher calls it cheating
+    and punishes you. The reward systems in most companies, with individual
+    evaluations and raises (often cast as a zero sum game), also encourages individual thinking.
+    You will likely have to learn new people skills, interacting as closely with your team as you will in XP."
+    (Kent Beck [#fnxp]_)
+
+..
+
+    When Development is in charge, they put in place all the process and technology
+    that they never had time for when "those suits" were pushing them around. They
+    install new tools, new languages, new technologies. And the tools, languages, and
+    66technologies are chosen because they are interesting and cutting edge. Cutting edge
+    implies risk. (If we haven't learned that by now, when will we?)
+    (Kent Beck [#fnxp]_)
+
+The cause of this effect is that smart people tends to think in upfront way.
+
+    "Short-term individual goals often conflict with long-term social goals."
+    (Kent Beck [#fnxp]_)
+
+The smarter developer, the longer term goals he tends to think for.
+See also article "`The Case for Slow Programming <https://ventrellathing.wordpress.com/2013/06/18/the-case-for-slow-programming/>`__".
+But the real problem is not the intellect of a developer, but the methodology of work.
+I.e. this is the management problem.
+
+    "Actually, if programmers could always make
+    decisions that carefully balanced short-term and long-term priorities, there would be
+    no need for any other technical people on the project besides programmers."
+    (Kent Beck [#fnxp]_)
+
+..
+
+    It's been tricky, designing a process where following short-term self-interest also
+    serves long-term team interest. You can expound all you want on how some practice
+    or other is in everybody's best interest long-term, but when the pressure mounts, if
+    the practice doesn't solve an immediate problem it will be discarded. If XP can't work
+    with people's short-term interest, it is doomed to the outer methodological darkness.
+    (Kent Beck [#fnxp]_)
+
+To be effective, the smart developer has to understand the economic of software development, has to have enough knowledges about design and architecture, and has to use "`Designing Through Refactoring <Use Designing Through Refactoring_>`_".
+
+    If the cost of today's decision is high, and the probability of its being right is low, and
+    the probability of knowing a better way tomorrow is high, and the cost of putting in
+    the design tomorrow is low, then we can conclude that we should never make a
+    design decision today if we don't need it today. In fact, that is what XP concludes.
+    "Sufficient to the day are the troubles thereof."
+
+    Now, several factors can make the above evaluation null and void. If the cost of
+    making the change tomorrow is very much higher, then we should make the decision
+    today on the off chance that we are right. If the inertia of the design is low enough
+    (for example, you have really, really smart people), then the benefits of just-in-time
+    design are less. If you are a really, really good guesser, then you could go ahead and
+    design everything today. For the rest of us, however, I don't see any alternative to
+    the conclusion that today's design should be done today and tomorrow's design
+    should be done tomorrow.
+    (Kent Beck [#fnxp]_)
+
+
 Advices
 =======
 
@@ -763,7 +828,7 @@ There is a few of most frequently used catalogs:
 Use Designing Through Refactoring
 ---------------------------------
 
-More info on approach of "Designing Through Refactoring" you can find in the chapter «Refactoring and Design» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler.
+More info on approach of "Designing Through Refactoring" you can find in the chapter «Refactoring and Design» of the book "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler and in the chapter "Chapter 17. Design Strategy" of the book "Extreme programming" [#fnxp]_ by Kent Beck.
 This approach is unbelievable effective when you use Type Hinting declaration (more info `here <https://github.com/python-rope/rope/blob/master/docs/overview.rst#type-hinting>`__, `here <http://jedi.readthedocs.io/en/latest/docs/features.html#type-hinting>`__ and `here <https://www.jetbrains.com/help/pycharm/type-hinting-in-pycharm.html>`__) with a tool for automated refactoring (`rope <https://github.com/python-rope/rope>`_, `refactoring tool of PyCharm <https://www.jetbrains.com/help/pycharm/refactoring-source-code.html>`_).
 
 
