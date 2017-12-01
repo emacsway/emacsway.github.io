@@ -776,7 +776,7 @@ I.e. this is the management problem.
     (Kent Beck [#fnxp]_)
 
 To be effective, the smart developer has to understand the economic of software development, has to have enough knowledges about design and architecture, and has to use "`Designing Through Refactoring <Use Designing Through Refactoring_>`_".
-Smart developers usually tend to work fast with smart managers.
+Smart developers usually tend to work fast only with smart managers.
 If a manager does not able to use potential of smart developers in iterative way, the smart developers usually tend to find a lot of non-iterative upfront things ("borrowing trouble") for their brain.
 
     If the cost of today's decision is high, and the probability of its being right is low, and
