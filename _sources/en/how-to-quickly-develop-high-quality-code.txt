@@ -611,6 +611,11 @@ See also the great article "`Is Design Dead? <https://martinfowler.com/articles/
 The sixth myth. The agile never works.
 --------------------------------------
 
+    "One pattern I see time and time again on software teams is that they adopt Scrum, pay little attention to technical practices, and they’re able to consistently increase their velocity for the first few years.
+    But after about three or four years the technical debt they’ve accumulated in their code is so great that their velocity starts to grind to a halt and they find it difficult to even get simple features implemented.
+    This is a place you do not want to get to, though I see it far too often in the software community—teams stuck there without a clue how to get out."
+    ("`How to Increase Velocity <https://www.agilealliance.org/how-to-increase-velocity/>`__" by David Bernstein)
+
 Often people understand the word "agile" as a simple set of iterations.
 But the true agile is to keep the cost of code change low, so the customer will be able to adapt the codebase for variable business requirements.
 
