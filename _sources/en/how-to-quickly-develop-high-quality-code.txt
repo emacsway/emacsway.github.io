@@ -801,7 +801,7 @@ I.e. this is the management problem.
     with people's short-term interest, it is doomed to the outer methodological darkness.
     (Kent Beck [#fnxp]_)
 
-To be effective, the smart developer has to understand the economic of software development, has to have enough knowledges about design and architecture, and has to use "`Designing Through Refactoring <Use Designing Through Refactoring_>`_".
+To be effective, the smart developer has to understand the economy of software development, has to have enough knowledges about design and architecture, and has to use "`Designing Through Refactoring <Use Designing Through Refactoring_>`_".
 Smart developers usually tend to work fast only with smart managers.
 If a manager does not able to use potential of smart developers in iterative way, the smart developers usually tend to find a lot of non-iterative upfront things ("borrowing trouble") for their brain.
 But the economy always wins.
@@ -1049,7 +1049,7 @@ Further reading
 .. [#fndp] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 
-.. update:: 30 Nov, 2017
+.. update:: 04 Dec, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
