@@ -29,18 +29,18 @@ Thus, you have a complete abstraction from the data source, whether it's REST-AP
 
 ..
 
-    A good architecture allows major decision to be deferred! (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__)
+    "A good architecture allows major decision to be deferred!" (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__)
 
-.. A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility.
+.. "A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility."
    («Clean Architecture» [#fnca]_)
 
 ..
 
-    You would make big decisions as
+    "You would make big decisions as
     late in the process as possible, to defer the cost of making the decisions and to have
     the greatest possible chance that they would be right. You would only implement
     what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
-    true.
+    true."
     (Kent Beck [#fnxp]_)
 
 ..

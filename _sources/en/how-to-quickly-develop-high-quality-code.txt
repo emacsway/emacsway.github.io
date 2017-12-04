@@ -757,6 +757,27 @@ Yes, it's great to have smart developers, but there is a "problem of smart peopl
     (Kent Beck [#fnxp]_)
 
 The cause of this effect is that smart people tends to think in upfront way.
+Furthermore, usually the developer does not have enough information to make right decisions about implementation at the moment.
+Therefore the developer has to spend a lot of time to gather necessary information.
+Often it is not possible to collect all necessary information and the developer makes a wrong decision, which must be changed in the future.
+
+    "We often forget that it is also best to postpone decisions until the last possible moment.
+    This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.
+    A premature decision is a decision made with suboptimal knowledge. We will have that
+    much less customer feedback, mental reflection on the project, and experience with our
+    implementation choices if we decide too soon."
+    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
+
+..
+
+    "You would make big decisions as
+    late in the process as possible, to defer the cost of making the decisions and to have
+    the greatest possible chance that they would be right. You would only implement
+    what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
+    true."
+    (Kent Beck [#fnxp]_)
+
+Thus, usually upfront thinking is expensive.
 
     "Short-term individual goals often conflict with long-term social goals."
     (Kent Beck [#fnxp]_)

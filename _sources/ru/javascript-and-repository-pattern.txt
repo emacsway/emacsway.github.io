@@ -35,14 +35,14 @@
 
 ..
 
-    A good architecture allows major decision to be deferred! (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__)
+    "A good architecture allows major decision to be deferred!" (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__)
 
-.. A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility.
+.. "A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility."
    («Clean Architecture» [#fnca]_)
 
 ..
 
-    Вы получаете возможность принимать важные решения настолько поздно,
+    "Вы получаете возможность принимать важные решения настолько поздно,
     насколько это возможно.
     Это делается для того, чтобы осуществлять связанные с этим
     затраты как можно позже.
@@ -52,13 +52,13 @@
     словами, сегодня вы должны реализовать только то, без чего сегодня не
     обойтись, при этом вы можете рассчитывать на то, что проблемы, решение
     которых вы отложили до завтра, развеются сами собой, то есть перестанут
-    быть актуальными.
+    быть актуальными."
 
-    You would make big decisions as
+    "You would make big decisions as
     late in the process as possible, to defer the cost of making the decisions and to have
     the greatest possible chance that they would be right. You would only implement
     what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
-    true.
+    true."
     (Kent Beck [#fnxp]_)
 
 ..
