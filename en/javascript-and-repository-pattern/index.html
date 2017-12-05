@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 27 Nov 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 25 Dec 2017 00:00:00 GMT" />
         
             <meta name="description" content="Good architecture makes you free from certain implementation. It allows you to postpone the moment of decision on implementation and begin code construction even without the decision. The most important point is that you gain the opportunity to make a decision at the time of the greatest awareness, and you can also easily replace a specific implementation with any other. This responsibility is assigned to the Repository." />
         
@@ -99,13 +99,13 @@ This responsibility is assigned to the <a class="reference external" href="http:
 <li><a class="reference internal" href="#domain-model" id="id31">Domain Model</a></li>
 <li><a class="reference internal" href="#reactive-programming-paradigm" id="id32">Reactive programming paradigm</a></li>
 <li><a class="reference internal" href="#examples-of-implementations-of-repository-pattern-and-orm-by-javascript" id="id33">Examples of implementations of Repository pattern and ORM by JavaScript</a></li>
-<li><a class="reference internal" href="#implementation-of-relational-relations" id="id34">Implementation of relational relations</a><ul>
+<li><a class="reference internal" href="#implementation-of-relationship" id="id34">Implementation of relationship</a><ul>
 <li><a class="reference internal" href="#synchronous-programming" id="id35">Synchronous programming</a></li>
-<li><a class="reference internal" href="#rejecting-relations" id="id36">Rejecting relations</a></li>
+<li><a class="reference internal" href="#rejecting-relationships" id="id36">Rejecting relationships</a></li>
 <li><a class="reference internal" href="#asynchronous-programming" id="id37">Asynchronous programming</a></li>
 <li><a class="reference internal" href="#functional-programming" id="id38">Functional Programming</a></li>
 <li><a class="reference internal" href="#minor-offtopic" id="id39">Minor offtopic</a></li>
-<li><a class="reference internal" href="#implementation-of-relations-by-assigning" id="id40">Implementation of relations by assigning</a></li>
+<li><a class="reference internal" href="#implementation-of-relationships-by-assigning" id="id40">Implementation of relationships by assigning</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#source-code" id="id41">Source code</a></li>
@@ -159,7 +159,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
 Even I could not understand the next day what a particular code fragment does, I&#8217;m not talking about the domain expert.
 This radically destroyed the principles of Domain-Driven Design, and significantly <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">reduced the speed of developing new project features</span></a>.</p>
 <p>Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).</p>
-<p>Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to more more precisely, a hybrid push-pull), and at the same time there was preserved the mechanism of reactions for adding, changing or deleting objects.
+<p>Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to be more precisely, a hybrid push-pull), and at the same time there was preserved the mechanism of reactions on adding, changing or deleting objects.
 To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.
 This is similar to Object-Relational Mapping (ORM) for JavaScript, including the Data Mapper pattern (the data can be mapped between objects and a persistent data storage).</p>
 </div>
@@ -191,14 +191,14 @@ An example of how seriously and comprehensively they solves problems is the <a c
 </ul>
 <p>I would like to add here <a class="reference external" href="https://emberjs.com/">Ember.js</a>, but it implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern.</p>
 </div>
-<div class="section" id="implementation-of-relational-relations">
-<h1><a class="toc-backref" href="#id34">Implementation of relational relations</a><a class="headerlink" href="#implementation-of-relational-relations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="implementation-of-relationship">
+<h1><a class="toc-backref" href="#id34">Implementation of relationship</a><a class="headerlink" href="#implementation-of-relationship" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="synchronous-programming">
 <h2><a class="toc-backref" href="#id35">Synchronous programming</a><a class="headerlink" href="#synchronous-programming" title="Permalink to this headline">¶</a></h2>
 <p>At the dawn of ORM, the Data Mappers retrieved from the database all related objects with a single query (see <a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">example of implementation</a>).</p>
-<p>Domain-Driven Design approaches relations more strictly, and considers relations from the point of view of conceptual contour of an aggregate of nested objects <a class="footnote-reference" href="#fnddd" id="id7">[4]</a>.
+<p>Domain-Driven Design approaches relationships more strictly, and considers relationships from the point of view of conceptual contour of an aggregate of nested objects <a class="footnote-reference" href="#fnddd" id="id7">[4]</a>.
 The object can be accessed either by reference (from the parent object to the embedded object) or through the Repository.
-It is also important the direction of relations and the principle of minimal sufficiency (&#8220;distillation of models&#8221; <a class="footnote-reference" href="#fnddd" id="id8">[4]</a>).</p>
+It is also important the direction of relationships and the principle of minimal sufficiency (&#8220;distillation of models&#8221; <a class="footnote-reference" href="#fnddd" id="id8">[4]</a>).</p>
 <blockquote>
 <div><p>In real life, there are lots of many-to-many associations, and a great number are naturally
 bidirectional. The same tends to be true of early forms of a model as we brainstorm and explore
@@ -227,19 +227,19 @@ Python community actifely uses <a class="reference external" href="https://docs.
 <p>The key is to free the Domain Model from the data access logic.
 This is required by the principle of clean architecture to reduce coupling (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), and by the principle of simplicity of testing.
 The greatest success is achieved by the principle of Cross-Cutting Concerns which completely frees the model from the service logic.</p>
-<p>With the advent of ORM the implementation of relations has become so easy that no one longer think about it.
-Where unidirectional relations are required, developers can easily apply bidirectional relations.
+<p>With the advent of ORM the implementation of relationships has become so easy that no one longer think about it.
+Where unidirectional relationships are required, developers can easily apply bidirectional relationships.
 Utilities for optimizing the selection of related objects have appeared, which implicitly preload all related objects, which significantly reduces the number of calls to the database.</p>
 </div>
-<div class="section" id="rejecting-relations">
-<h2><a class="toc-backref" href="#id36">Rejecting relations</a><a class="headerlink" href="#rejecting-relations" title="Permalink to this headline">¶</a></h2>
-<p>It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relations, and only Repository can have an exclusive right to access the object.
+<div class="section" id="rejecting-relationships">
+<h2><a class="toc-backref" href="#id36">Rejecting relationships</a><a class="headerlink" href="#rejecting-relationships" title="Permalink to this headline">¶</a></h2>
+<p>It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relationships, and only Repository can have an exclusive right to access the object.
 Some respected by me friends adhere to this point of view.</p>
 </div>
 <div class="section" id="asynchronous-programming">
 <h2><a class="toc-backref" href="#id37">Asynchronous programming</a><a class="headerlink" href="#asynchronous-programming" title="Permalink to this headline">¶</a></h2>
-<p>The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relations.
-Asynchronous access to each lazy relation of each object significantly complicates the clarity of the program code and prevents optimization.</p>
+<p>The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relationships.
+Asynchronous access to each lazy relationship of each object significantly complicates the clarity of the program code and prevents optimization.</p>
 <p>This has increased the popularity of object-oriented database in asynchronous programming that allows to save aggregates entirely.
 Increasingly, REST-frameworks began to be used to <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">transfer aggregates of nested objects to the client</a>.</p>
 <blockquote>
@@ -388,7 +388,7 @@ Here you can not ignore the wonderful book &#8220;<a class="reference external" 
 («Code Complete» <a class="footnote-reference" href="#fncodec" id="id26">[2]</a>)</div></blockquote>
 <p>I&#8217;m not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.</p>
 <p>But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of &#8220;<a class="reference external" href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221;?
-And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relation resolving?</p>
+And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relationship resolving?</p>
 <blockquote>
 <div>The bottom, bottom line here is simply this.
 OO programming is good, when you know what it is.
@@ -396,22 +396,22 @@ Functional programming is good when you know what it is.
 And functional OO programming is also good once you know what it is.
 («OO vs FP» <a class="footnote-reference" href="#fnoovsop" id="id27">[7]</a>)</div></blockquote>
 <p>It is also worth noting that not all kinds of relationships fit into the concept of aggregate.
-If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relations.
+If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relationships.
 For in this case, the interface will follow the implementation, which fundamentally destroys the fundamental principle of abstraction.
-Also, the concept of an aggregate can not be used to emulate Many-To-Many relations and cross-link hierarchies.</p>
+Also, the concept of an aggregate can not be used to emulate Many-To-Many relationships and cross-link hierarchies.</p>
 </div>
-<div class="section" id="implementation-of-relations-by-assigning">
-<h2><a class="toc-backref" href="#id40">Implementation of relations by assigning</a><a class="headerlink" href="#implementation-of-relations-by-assigning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="implementation-of-relationships-by-assigning">
+<h2><a class="toc-backref" href="#id40">Implementation of relationships by assigning</a><a class="headerlink" href="#implementation-of-relationships-by-assigning" title="Permalink to this headline">¶</a></h2>
 <p>The principle of physical assignment of related objects is <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">implemented also by the library js-data</a>.</p>
 <p>In our library, we implemented both the ability to decompose aggregates of nested objects and the ability to compose aggregates from flat data of Repositories.
 Moreover, the aggregate always keeps the actual state.
 When you add, change, delete an object in the Repository, the changes automatically propagate to the structures of the corresponding aggregates.
 The library implements this behavior as in the paradigm of reactive programming, as well as in the paradigm of event-driven programming (optional).</p>
-<p>There is also the ability to create bidirectional relations.
+<p>There is also the ability to create bidirectional relationships.
 But, despite the fact that modern interpreters able to easily collect garbage with reference cycles, it&#8217;s better when child objects are not aware of their parents from a conceptual point of view, if you don&#8217;t have a strong reason for that.</p>
 <p>Thus, the implementation of communications does not require any service data access logic for the object, that provides zero <a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a> and absolutly clear domain models.
 This means that domain model can be instance of the &#8220;class&#8221; Object.</p>
-<p>I also took into account the point of view that the domain model should not be responsible for the relations.
+<p>I also took into account the point of view that the domain model should not be responsible for the relationships.
 Therefore, there is the possibility of easy access to any object through its Repository.</p>
 </div>
 </div>
@@ -484,7 +484,7 @@ Therefore, there is the possibility of easy access to any object through its Rep
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Nov 27, 2017</p>
+<p class="first last admonition-title">Updated on Dec 25, 2017</p>
 </div>
 </div>
 
@@ -572,7 +572,7 @@ Therefore, there is the possibility of easy access to any object through its Rep
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Nov 27, 2017</li>
+    Dec 25, 2017</li>
   
 
   

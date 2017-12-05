@@ -86,7 +86,7 @@ This radically destroyed the principles of Domain-Driven Design, and significant
 
 Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).
 
-Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to more more precisely, a hybrid push-pull), and at the same time there was preserved the mechanism of reactions for adding, changing or deleting objects.
+Subsequently, the models recovered their conceptual outlines and code readability, the push algorithm was replaced by a pull-algorithm (to be more precisely, a hybrid push-pull), and at the same time there was preserved the mechanism of reactions on adding, changing or deleting objects.
 To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.
 This is similar to Object-Relational Mapping (ORM) for JavaScript, including the Data Mapper pattern (the data can be mapped between objects and a persistent data storage).
 
@@ -132,8 +132,8 @@ Other implementations:
 I would like to add here `Ember.js <https://emberjs.com/>`_, but it implements the `ActiveRecord`_ pattern.
 
 
-Implementation of relational relations
-======================================
+Implementation of relationship
+==============================
 
 
 Synchronous programming
@@ -141,9 +141,9 @@ Synchronous programming
 
 At the dawn of ORM, the Data Mappers retrieved from the database all related objects with a single query (see `example of implementation <https://bitbucket.org/emacsway/openorm/src/default/python/>`_).
 
-Domain-Driven Design approaches relations more strictly, and considers relations from the point of view of conceptual contour of an aggregate of nested objects [#fnddd]_.
+Domain-Driven Design approaches relationships more strictly, and considers relationships from the point of view of conceptual contour of an aggregate of nested objects [#fnddd]_.
 The object can be accessed either by reference (from the parent object to the embedded object) or through the Repository.
-It is also important the direction of relations and the principle of minimal sufficiency ("distillation of models" [#fnddd]_).
+It is also important the direction of relationships and the principle of minimal sufficiency ("distillation of models" [#fnddd]_).
 
     In real life, there are lots of many-to-many associations, and a great number are naturally
     bidirectional. The same tends to be true of early forms of a model as we brainstorm and explore
@@ -177,23 +177,23 @@ The key is to free the Domain Model from the data access logic.
 This is required by the principle of clean architecture to reduce coupling (`Coupling`_), and by the principle of simplicity of testing.
 The greatest success is achieved by the principle of Cross-Cutting Concerns which completely frees the model from the service logic.
 
-With the advent of ORM the implementation of relations has become so easy that no one longer think about it.
-Where unidirectional relations are required, developers can easily apply bidirectional relations.
+With the advent of ORM the implementation of relationships has become so easy that no one longer think about it.
+Where unidirectional relationships are required, developers can easily apply bidirectional relationships.
 Utilities for optimizing the selection of related objects have appeared, which implicitly preload all related objects, which significantly reduces the number of calls to the database.
 
 
-Rejecting relations
--------------------
+Rejecting relationships
+-----------------------
 
-It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relations, and only Repository can have an exclusive right to access the object.
+It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relationships, and only Repository can have an exclusive right to access the object.
 Some respected by me friends adhere to this point of view.
 
 
 Asynchronous programming
 ------------------------
 
-The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relations.
-Asynchronous access to each lazy relation of each object significantly complicates the clarity of the program code and prevents optimization.
+The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relationships.
+Asynchronous access to each lazy relationship of each object significantly complicates the clarity of the program code and prevents optimization.
 
 This has increased the popularity of object-oriented database in asynchronous programming that allows to save aggregates entirely.
 Increasingly, REST-frameworks began to be used to `transfer aggregates of nested objects to the client <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
@@ -375,7 +375,7 @@ Let's remember the chapter "Chapter 6. Working Classes: 6.1. Class Foundations: 
 I'm not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.
 
 But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of "`Anemic Domain Model`_"?
-And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relation resolving?
+And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relationship resolving?
 
     The bottom, bottom line here is simply this.
     OO programming is good, when you know what it is.
@@ -384,13 +384,13 @@ And should we sacrifice all the benefits of Domain-Driven Design for the sake of
     («OO vs FP» [#fnoovsop]_)
 
 It is also worth noting that not all kinds of relationships fit into the concept of aggregate.
-If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relations.
+If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relationships.
 For in this case, the interface will follow the implementation, which fundamentally destroys the fundamental principle of abstraction.
-Also, the concept of an aggregate can not be used to emulate Many-To-Many relations and cross-link hierarchies.
+Also, the concept of an aggregate can not be used to emulate Many-To-Many relationships and cross-link hierarchies.
 
 
-Implementation of relations by assigning
-----------------------------------------
+Implementation of relationships by assigning
+--------------------------------------------
 
 The principle of physical assignment of related objects is `implemented also by the library js-data <http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations>`__.
 
@@ -399,13 +399,13 @@ Moreover, the aggregate always keeps the actual state.
 When you add, change, delete an object in the Repository, the changes automatically propagate to the structures of the corresponding aggregates.
 The library implements this behavior as in the paradigm of reactive programming, as well as in the paradigm of event-driven programming (optional).
 
-There is also the ability to create bidirectional relations.
+There is also the ability to create bidirectional relationships.
 But, despite the fact that modern interpreters able to easily collect garbage with reference cycles, it's better when child objects are not aware of their parents from a conceptual point of view, if you don't have a strong reason for that.
 
 Thus, the implementation of communications does not require any service data access logic for the object, that provides zero `Coupling`_ and absolutly clear domain models.
 This means that domain model can be instance of the "class" Object.
 
-I also took into account the point of view that the domain model should not be responsible for the relations.
+I also took into account the point of view that the domain model should not be responsible for the relationships.
 Therefore, there is the possibility of easy access to any object through its Repository.
 
 
@@ -432,7 +432,7 @@ Source code
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
-.. update:: 27 Nov, 2017
+.. update:: 25 Dec, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
