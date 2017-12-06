@@ -434,7 +434,7 @@ This leads to the fact that in order to get the complete idea of what the method
 
 The Query Object pattern provides the unified interface for query modification, which frees the object with query state from the need to know about the needs of its clients.
 
-\8. I would like also to raise the issue of using the language syntax constructions to construct the SQL-queries.
+\8. I would like also to raise the issue of using the language syntax constructions to construct the SQL-queries in LINQ style.
 
 There is a few examples:
 
@@ -444,6 +444,9 @@ There is a few examples:
 
 I'll say subjectively, I like to use objects for this.
 Moreover, I like when the syntactic constructions of a language are represented by objects, as in Smalltalk.
+
+The simplest kind of implementation of the Query Object pattern can be a common data structure, as it's implemented by `MongoDB Query <https://docs.mongodb.com/manual/reference/operator/query/>`__.
+This approach was implemented by me in the library `Store.js <https://github.com/emacsway/store>`__ due to hot deadline.
 
 
 .. _why-datamapper-en:
