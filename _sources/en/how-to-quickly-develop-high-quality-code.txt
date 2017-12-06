@@ -712,6 +712,8 @@ Let me repeat the words of Kent Beck, the creator of the first agile methodology
 In short, if your team is not experienced in software design, the agile methodology will fail anyway.
 That's the main reason why Agile was invented and popularized by the great software architects - Kent Beck, Martin Fowler, Robert C. Martin and others, they knew how to keep the cost of code change low.
 
+See also "`Subway Map to Agile Practices <https://www.agilealliance.org/agile101/subway-map-to-agile-practices/>`__".
+
 
 The seventh myth. It is enough to hire smart developers to have rapid development.
 ----------------------------------------------------------------------------------
