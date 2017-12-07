@@ -11,7 +11,7 @@ About me
    :alt: me
    :align: right
 
-Python/FullStack Software Engineer, Software/Solution Architect
+Python/FullStack Software Engineer, Solution Architect
 
 - Ivan Zakrevskyi
 - Blog: https://emacsway.github.io/
@@ -29,11 +29,11 @@ About me
 
 An XP_ and DDD_ expert.
 
-My main interest is to make the code clean, simple, reliable, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the team skilled, successful, and having high self-motivation; the experience shared; the risks low.
+My main interest is to make the code clean, simple, reliable, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
 
 My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring, Clean Code & Clean Architecture, and others.
 
-Also I'm an Open Source developer and an adherent of `KISS principle <KISS_>`_. My philosophy is: "Do it shortly, clearly".
+Also I'm an `Open Source developer <Open Source Projects_>`__ and an adherent of `KISS principle <KISS_>`_. My philosophy is: "Do it shortly, clearly".
 
 My trend is:
 
