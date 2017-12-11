@@ -27,7 +27,7 @@ About me
 
 .. bearded developer since 2004
 
-An XP_ and a DDD_ expert.
+An XP_ and DDD_ expert.
 
 My main interest is to make the code clean, simple, reliable, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
 
