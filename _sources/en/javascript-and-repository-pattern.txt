@@ -377,6 +377,9 @@ I'm not here to rewrite all the advantages of ADT, you can read it in this chapt
 But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of "`Anemic Domain Model`_"?
 And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relationship resolving?
 
+Object-oriented `model of polymorphism does an important thing - dependency injection <https://youtu.be/TMuno5RZNeE?t=33m30s>`__.
+With the abandonment of the object-oriented model, the issue of dependency injection remains open.
+
     The bottom, bottom line here is simply this.
     OO programming is good, when you know what it is.
     Functional programming is good when you know what it is.
