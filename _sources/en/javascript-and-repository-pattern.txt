@@ -58,7 +58,7 @@ The greatest advantage of the `Domain Model`_ in the program is the ability to u
 If the Models contain only business logic, and are devoid of service logic, then they can easily be read by domain expert (ie, the customer's representative).
 This frees you from the need to create UML diagrams for discussions and allows you to achieve the highest level of mutual understanding, productivity, and quality of implementation of the models.
 
-In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming with push-algorithm, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
+In one project I tried to implement a fairly complex domain logic (which contained more than 30 interrelated domain model) in the paradigm of reactive programming with push-algorithm, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
 The bottom line is that all this reactive logic no longer belonged to the domain model itself, and was located in a different sort of `Observers <Observer_>`__ and handlers.
 
     "The whole point of objects is that they are a technique to package data with the processes used

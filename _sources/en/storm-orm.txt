@@ -98,6 +98,8 @@ It works with any number of databases.
 It implements `DataMapper`_ pattern, which means classes of models free of metadata and database access logic, as if it were `ActiveRecord`_.
 Model class can be inherited from the bare class `object`_.
 
+Storm ORM implements the `topological sort <http://bazaar.launchpad.net/~storm/storm/trunk/view/484/storm/references.py#L741>`__ (as a push data model).
+
 Due to `Identity Map`_, `Storm ORM`_ is very fast.
 On the page of one project, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM had been reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time had been reduced by half, from 0.48 seconds to 0.24 seconds.
 The number of queries to the database had been reduced from 88 to 7.
@@ -201,7 +203,6 @@ The possibilities of SQL-builder should be extended.
 Utils like prefetch_related() for OneToMany() would be useful.
 Probably, you may need to implement a cascade deletion using ORM, not a database.
 And implement an object serializer.
-Storm ORM does not implement the topological sort, but allows you to implement it easily.
 
 Class Store (which is an implementation of pattern Repository) combines also the responsibility of DataMapper_ and it's not so well.
 For example, this creates a problem for implementing the pattern `Class Table Inheritance`_.

@@ -176,6 +176,7 @@ But they can be described as &#8220;polishing&#8221;.</p>
 <p>It works with any number of databases.</p>
 <p>It implements <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern, which means classes of models free of metadata and database access logic, as if it were <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>.
 Model class can be inherited from the bare class <a class="reference external" href="https://docs.python.org/2/library/functions.html#object">object</a>.</p>
+<p>Storm ORM implements the <a class="reference external" href="http://bazaar.launchpad.net/~storm/storm/trunk/view/484/storm/references.py#L741">topological sort</a> (as a push data model).</p>
 <p>Due to <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>, <a class="reference external" href="https://storm.canonical.com/">Storm ORM</a> is very fast.
 On the page of one project, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM had been reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time had been reduced by half, from 0.48 seconds to 0.24 seconds.
 The number of queries to the database had been reduced from 88 to 7.
@@ -258,8 +259,7 @@ But you have to know this, otherwise your server will have gone down for highly 
 The possibilities of SQL-builder should be extended.
 Utils like prefetch_related() for OneToMany() would be useful.
 Probably, you may need to implement a cascade deletion using ORM, not a database.
-And implement an object serializer.
-Storm ORM does not implement the topological sort, but allows you to implement it easily.</p>
+And implement an object serializer.</p>
 <p>Class Store (which is an implementation of pattern Repository) combines also the responsibility of <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> and it&#8217;s not so well.
 For example, this creates a problem for implementing the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a>.
 Storm ORM&#8217;s core developers advice <a class="reference external" href="https://storm.canonical.com/Infoheritance">to replace Inheritance with Delegation</a> (However, postgresql <a class="reference external" href="http://www.postgresql.org/docs/9.4/static/tutorial-inheritance.html">supports inheritance</a> itself (<a class="reference external" href="http://www.postgresql.org/docs/9.4/static/ddl-inherit.html">DDL</a>)).
