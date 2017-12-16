@@ -307,6 +307,10 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     ... the activity of design is not an option. It must be given serious thought for software development to be effective.
     (Kent Beck [#fnxp]_)
 
+..
+
+    "Nothing kills speed more effectively than poor internal quality." ("Planning Extreme Programming" by Kent Beck, Martin Fowler)
+
 As Martin Fowler said:
 
     ... the true value of internal quality - that it's the enabler to speed. The purpose of internal quality is to go faster.
