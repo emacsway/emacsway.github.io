@@ -30,7 +30,7 @@ The truth is that it's enough to have at least one weak developer in the team to
 Do you know the Primary Technical Imperative of software development?
 
     Managing complexity is the most important technical topic in software development. In my view, it's so important that Software's Primary Technical Imperative has to be managing complexity.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 During code construction developer reads code for 91% of the time, and only for 9% of the time he types text from keyboard.
 
@@ -72,7 +72,7 @@ During code construction developer reads code for 91% of the time, and only for 
     depending on how hard or easy the surrounding code is to read. So if you want to go fast,
     if you want to get done quickly, if you want your code to be easy to write, make it easy to
     read.
-    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
+    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_)
 
 ..
 
@@ -100,7 +100,7 @@ During code construction developer reads code for 91% of the time, and only for 
     The bottom line is that programmers who compensate for inherent human limitations
     write code that's easier for themselves and others to understand and that has fewer
     errors."
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -109,7 +109,7 @@ During code construction developer reads code for 91% of the time, and only for 
     Simplicity is achieved in two general ways: minimizing the amount of essential
     complexity that anyone's brain has to deal with at any one time, and keeping
     accidental complexity from proliferating needlessly.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -118,7 +118,7 @@ During code construction developer reads code for 91% of the time, and only for 
     performing other tasks (Miller 1956). If a class contains more than about seven data
     members, consider whether the class should be decomposed into multiple smaller
     classes (Riel 1996).
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -246,7 +246,7 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     defect rate as the fastest group. It's not necessarily the case that writing software without
     defects takes more time than writing software with defects. As the graph shows, it can
     take less.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -263,7 +263,7 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     noncoding overhead (Cusumano et al 2003). The cost savings and productivity come
     from the fact that virtually no time is devoted to debugging on TSP or cleanroom
     projects. No time spent on debugging? That is truly a worthy goal!
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -351,7 +351,7 @@ There is an opinion that pair programming reduces the velocity of development.
     defects per hour into their designs and 5 to 8 defects per hour into
     code (Humphrey 1997), so attacking these blind spots is a key to
     effective construction.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -374,7 +374,7 @@ There is an opinion that pair programming reduces the velocity of development.
     45 percent, which in some cases may be a decisive advantage over
     solo development (Boehm and Turner 2004), although not over
     inspections which have produced similar results.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -393,7 +393,7 @@ There is an opinion that pair programming reduces the velocity of development.
     it more carefully. Thus, even when testing is done effectively,
     reviews or other kinds of collaboration are needed as part of a
     comprehensive quality program.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -417,7 +417,7 @@ There is an opinion that pair programming reduces the velocity of development.
 
     One team that used formal inspections reported that inspections quickly brought all the
     developers up to the level of the best developers (Tackett and Van Doren 1999).
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -437,7 +437,7 @@ There is an opinion that pair programming reduces the velocity of development.
     Over time we achieve cross-coverage through a combination of formal and informal
     technical reviews, pair programming when needed, and rotation of defectcorrection
     assignments.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -448,14 +448,14 @@ There is an opinion that pair programming reduces the velocity of development.
     - It shortens schedules. Pairs tend to write code faster and with fewer errors. The project team spends less time at the end of the project correcting defects.
     - It produces all the other general benefits of collaborative construction, including disseminating corporate culture, mentoring junior programmers, and fostering collective ownership.
 
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
     Pair programming typically costs about the same as inspections and produces
     similar quality code. Pair programming is especially valuable when schedule
     reduction is desired. Some developers prefer working in pairs to working solo.
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 ..
 
@@ -474,7 +474,7 @@ Also, usual Code Review does not require any preparation.
     found in preparation for the review meeting, and only about 10
     percent were found during the review itself (Votta 1991, Glass
     1999).
-    («Code Complete» [#fncodec]_)
+    ("Code Complete" [#fncodec]_)
 
 There was one real example of my practice.
 We had a ticket for 3 days of development had been assigned to the new developer.
@@ -507,11 +507,11 @@ If a developer thinks he is able to obtain the experience himself, isolated from
 
 There is 5 fundamental books which must be read by each professional:
 
-1. «Design Patterns: Elements of Reusable Object-Oriented Software» Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
-#. «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-#. «Refactoring: Improving the Design of Existing Code» Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
-#. «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
-#. «Code Complete» Steve McConnell
+1. "Design Patterns: Elements of Reusable Object-Oriented Software" Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+#. "Patterns of Enterprise Application Architecture" Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+#. "Refactoring: Improving the Design of Existing Code" Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+#. "Clean Code: A Handbook of Agile Software Craftsmanship" Robert C. Martin
+#. "Code Complete" Steve McConnell
 
 I recommend to read the books in the given order.
 
@@ -524,7 +524,7 @@ Let me open, for example, motivation of the pattern Mediator.
 
     "Mediator promotes loose **coupling** by keeping objects from referring to each other explicitly,
     and it lets you vary their interaction independently."
-    («Design Patterns: Elements of Reusable Object-Oriented Software» [#fndp]_)
+    ("Design Patterns: Elements of Reusable Object-Oriented Software" [#fndp]_)
 
 The key word in the quote is the word "Coupling_".
 The `low coupling and high cohesion <Coupling_>`__ is the most important criteria of code quality.
@@ -772,7 +772,7 @@ Often it is not possible to collect all necessary information and the developer 
     A premature decision is a decision made with suboptimal knowledge. We will have that
     much less customer feedback, mental reflection on the project, and experience with our
     implementation choices if we decide too soon."
-    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
+    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_)
 
 ..
 
@@ -837,7 +837,7 @@ Use catalog of refactorings
 
 Don't spend a lot of time for explanations at code review.
 You can simple use link to certain method of refactoring by using `Catalog of Refactorings`_.
-Pay attention, each method of refactoring has the page number of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
+Pay attention, each method of refactoring has the page number of the book "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
 
 There are also online catalogs of refactorings for database:
 
@@ -857,16 +857,16 @@ Ground your arguments on knowledge, instead of opinion, when you do code review.
 Use catalogs of Code Smells.
 There is a few of most frequently used catalogs:
 
-- Chapter 17: «Smells and Heuristics» of the book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_ Robert C. Martin
-- Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler
+- Chapter 17: "Smells and Heuristics" of the book "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ Robert C. Martin
+- Chapter 3. "Bad Smells in Code" of the book "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler
 - `Code Smell`_
-- «Refactoring To Patterns» [#fnrtp]_
+- "Refactoring To Patterns" [#fnrtp]_
 
 
 Use Designing Through Refactoring
 ---------------------------------
 
-More info on approach of "Designing Through Refactoring" you can find in the chapter «Refactoring and Design» of the book "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler and in the chapter "Chapter 17. Design Strategy" of the book "Extreme programming" [#fnxp]_ by Kent Beck.
+More info on approach of "Designing Through Refactoring" you can find in the chapter "Refactoring and Design" of the book "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler and in the chapter "Chapter 17. Design Strategy" of the book "Extreme programming" [#fnxp]_ by Kent Beck.
 This approach is unbelievable effective when you use Type Hinting declaration (more info `here <https://github.com/python-rope/rope/blob/master/docs/overview.rst#type-hinting>`__, `here <http://jedi.readthedocs.io/en/latest/docs/features.html#type-hinting>`__ and `here <https://www.jetbrains.com/help/pycharm/type-hinting-in-pycharm.html>`__) with a tool for automated refactoring (`rope <https://github.com/python-rope/rope>`_, `refactoring tool of PyCharm <https://www.jetbrains.com/help/pycharm/refactoring-source-code.html>`_).
 
 
@@ -979,7 +979,7 @@ Once I saw how the tight-knit collective with high self-motivation was destroyed
 Be fair and honest
 ------------------
 
-It worth to read chapter "33.4. Intellectual Honesty" of «Code Complete» [#fncodec]_.
+It worth to read chapter "33.4. Intellectual Honesty" of "Code Complete" [#fncodec]_.
 
     "Any fool can defend his or her mistakes—and most fools do." (Dale Carnegie)
 
@@ -987,7 +987,7 @@ It worth to read chapter "33.4. Intellectual Honesty" of «Code Complete» [#fnc
 Be courageous
 -------------
 
-It worth to read chapter "Chapter 7. Four Values: Courage" of «Extreme Programming Explained» [#fnxp]_.
+It worth to read chapter "Chapter 7. Four Values: Courage" of "Extreme Programming Explained" [#fnxp]_.
 
 ..
 
@@ -1007,7 +1007,14 @@ Ask this question to yourself and everyone in the team.
     If you aren't curious enough to keep up with the changes,
     you might find yourself down at the old-programmers' home playing cards with T-Bone
     Rex and the Brontosaurus sisters."
-    («Code Complete», Steve McConnell [#fncodec]_)
+    ("Code Complete", Steve McConnell [#fncodec]_)
+
+..
+
+    "A little reading goes a long way toward professional advancement. If you read even one
+    good programming book every two months, roughly 35 pages a week, you'll soon have
+    a firm grasp on the industry and distinguish yourself from nearly everyone around you."
+    ("Code Complete" Steve McConnell [#fncodec]_)
 
 ..
 
@@ -1047,12 +1054,12 @@ Further reading
 
 .. rubric:: Footnotes
 
-.. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» by `Robert C. Martin`_
-.. [#fncodec] «`Code Complete`_» Steve McConnell
-.. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
-.. [#fnrtp] «`Refactoring To Patterns`_» by Joshua Kerievsky
-.. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
-.. [#fndp] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+.. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fncodec] "`Code Complete`_" Steve McConnell
+.. [#fnrefactoring] "`Refactoring: Improving the Design of Existing Code`_" by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnrtp] "`Refactoring To Patterns`_" by Joshua Kerievsky
+.. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
+.. [#fndp] "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 
 .. update:: 04 Dec, 2017
