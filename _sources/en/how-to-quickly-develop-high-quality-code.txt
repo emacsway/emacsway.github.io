@@ -30,7 +30,7 @@ The truth is that it's enough to have at least one weak developer in the team to
 Do you know the Primary Technical Imperative of software development?
 
     Managing complexity is the most important technical topic in software development. In my view, it's so important that Software's Primary Technical Imperative has to be managing complexity.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 During code construction developer reads code for 91% of the time, and only for 9% of the time he types text from keyboard.
 
@@ -72,7 +72,7 @@ During code construction developer reads code for 91% of the time, and only for 
     depending on how hard or easy the surrounding code is to read. So if you want to go fast,
     if you want to get done quickly, if you want your code to be easy to write, make it easy to
     read.
-    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_)
+    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin)
 
 ..
 
@@ -100,7 +100,7 @@ During code construction developer reads code for 91% of the time, and only for 
     The bottom line is that programmers who compensate for inherent human limitations
     write code that's easier for themselves and others to understand and that has fewer
     errors."
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -109,7 +109,7 @@ During code construction developer reads code for 91% of the time, and only for 
     Simplicity is achieved in two general ways: minimizing the amount of essential
     complexity that anyone's brain has to deal with at any one time, and keeping
     accidental complexity from proliferating needlessly.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -118,7 +118,7 @@ During code construction developer reads code for 91% of the time, and only for 
     performing other tasks (Miller 1956). If a class contains more than about seven data
     members, consider whether the class should be decomposed into multiple smaller
     classes (Riel 1996).
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -134,7 +134,7 @@ During code construction developer reads code for 91% of the time, and only for 
     (it has to be at least a pair, which is already better than the usual situation where
     one smart programmer holds everyone else hostage). This further reduces project
     risk.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 Thus, when one developer writes an unreadable code for 9% of his time, this code slows down the development velocity of the whole team by 91%.
 The code is written once, but is read incommensurably many times in the development process.
@@ -162,7 +162,7 @@ If your team still has a junior developer after two months, your team needs a be
     noticeable as it was at first. The junior partner is typing more regularly. The pair
     notices that each of them has strengths and weaknesses. Productivity, quality, and
     satisfaction rise.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -181,7 +181,7 @@ If your team still has a junior developer after two months, your team needs a be
     often a sticking point for folks wanting to adopt XP. All I can say is that you should
     get good at it, then try an iteration where you pair for all production code and
     another where you program everything solo. Then you can make your own decision.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 
 The second myth. Quality code is not suitable for hot deadline.
@@ -246,7 +246,7 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     defect rate as the fastest group. It's not necessarily the case that writing software without
     defects takes more time than writing software with defects. As the graph shows, it can
     take less.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -263,7 +263,7 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     noncoding overhead (Cusumano et al 2003). The cost savings and productivity come
     from the fact that virtually no time is devoted to debugging on TSP or cleanroom
     projects. No time spent on debugging? That is truly a worthy goal!
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -284,7 +284,7 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     Eventually, though, internal quality problems will catch up with you and make your
     software prohibitively expensive to maintain, or unable to reach a competitive level
     of external quality.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -300,16 +300,24 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     45 in one part of the system doesn't always require a change in another part of the system.
     Good design ensures that every piece of logic in the system has one and only one home.
     Good design puts the logic near the data it operates allows the extension of the system with changes in only one place.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
     ... the activity of design is not an option. It must be given serious thought for software development to be effective.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
-    "Nothing kills speed more effectively than poor internal quality." ("Planning Extreme Programming" by Kent Beck, Martin Fowler)
+    "Nothing kills speed more effectively than poor internal quality."
+    ("Planning Extreme Programming" [#fnpxp]_ by Kent Beck, Martin Fowler)
+
+..
+
+    The way to go fast, and to keep the deadlines at bay, is to stay clean.
+    Professionals do not succumb to the temptation to create a mess in order to move quickly. 
+    Professionals realize that "quick and dirty" is an oxymoron. Dirty always means slow!
+    ("Clean Coder" [#fnccoder]_ by Robert Martin)
 
 As Martin Fowler said:
 
@@ -351,7 +359,7 @@ There is an opinion that pair programming reduces the velocity of development.
     defects per hour into their designs and 5 to 8 defects per hour into
     code (Humphrey 1997), so attacking these blind spots is a key to
     effective construction.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -374,7 +382,7 @@ There is an opinion that pair programming reduces the velocity of development.
     45 percent, which in some cases may be a decisive advantage over
     solo development (Boehm and Turner 2004), although not over
     inspections which have produced similar results.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -393,7 +401,7 @@ There is an opinion that pair programming reduces the velocity of development.
     it more carefully. Thus, even when testing is done effectively,
     reviews or other kinds of collaboration are needed as part of a
     comprehensive quality program.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -417,7 +425,7 @@ There is an opinion that pair programming reduces the velocity of development.
 
     One team that used formal inspections reported that inspections quickly brought all the
     developers up to the level of the best developers (Tackett and Van Doren 1999).
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -437,7 +445,7 @@ There is an opinion that pair programming reduces the velocity of development.
     Over time we achieve cross-coverage through a combination of formal and informal
     technical reviews, pair programming when needed, and rotation of defectcorrection
     assignments.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
@@ -448,20 +456,20 @@ There is an opinion that pair programming reduces the velocity of development.
     - It shortens schedules. Pairs tend to write code faster and with fewer errors. The project team spends less time at the end of the project correcting defects.
     - It produces all the other general benefits of collaborative construction, including disseminating corporate culture, mentoring junior programmers, and fostering collective ownership.
 
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
     Pair programming typically costs about the same as inspections and produces
     similar quality code. Pair programming is especially valuable when schedule
     reduction is desired. Some developers prefer working in pairs to working solo.
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 ..
 
     In my experience, pair programming is more productive than dividing the work
     between two programmers and then integrating the results.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 The main conclusion is that you can't say about affect of pair programming to velocity of development until you begin to track the time of your team for bugfixes, refactoring and debugging.
 
@@ -474,7 +482,7 @@ Also, usual Code Review does not require any preparation.
     found in preparation for the review meeting, and only about 10
     percent were found during the review itself (Votta 1991, Glass
     1999).
-    ("Code Complete" [#fncodec]_)
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
 
 There was one real example of my practice.
 We had a ticket for 3 days of development had been assigned to the new developer.
@@ -488,6 +496,12 @@ It was a talented developer, but he had a lack of knowledges for the project.
 Thus, we both spent 6 + 2 * 2 + 1 = 11 days.
 If we used "Continued Review" of XP we would spent 3 * 2 = 6 days + growing the skills of the new developer.
 Next time he would be able to solve the issue independently.
+
+    "I’m not going to quote studies at you, although there are some that could be quoted.
+    I’m not going to tell you any anecdotes, although there are many I could tell.
+    I’m not even going to tell you how much you should pair.
+    All I’m going to tell you is that professionals pair."
+    ("Clean Coder" [#fnccoder]_ by Robert Martin)
 
 
 The fourth myth. Theory and practice are two different things.
@@ -551,7 +565,7 @@ The quality code is always simple!
     that isn't valuable. If you can reduce the size of the problem enough, then you can
     afford to be careful with the work you do on what remains. Then, you are careful by
     habit."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -559,7 +573,14 @@ The quality code is always simple!
     do a better job if you have more tools in your toolbox than if you have fewer, but it
     is much more important to have a handful of tools that you know when not to use,
     than to know everything about everything and risk using too much solution."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
+
+..
+
+    "Professionals avoid getting so vested in an idea that they can’t abandon it and 
+    turn around. They keep an open mind about other ideas so that when they hit a 
+    dead end they still have other options."
+    ("Clean Coder" [#fnccoder]_ by Robert Martin)
 
 ..
 
@@ -571,7 +592,7 @@ The quality code is always simple!
     someone (like you, for instance) gets something complicated to work, you have to
     learn to be dissatisfied with complexity, not to rest until you can't imagine anything
     simpler working."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -675,7 +696,7 @@ The cost of change may not rise dramatically over time. The image from the book 
     without careful forethought. But if change stays cheap, the additional value and
     reduced risk of early concrete feedback outweighs the additional cost of early
     change."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 Let me repeat the words of Kent Beck, the creator of the first agile methodology "Extreme Programming": **"If a flattened change cost curve makes XP possible, a steep change cost curve makes XP impossible."**
 
@@ -727,12 +748,12 @@ Yes, it's great to have smart developers, but there is a "problem of smart peopl
     "Really smart programmers sometimes have a hard time with XP. Sometimes the
     smart people have the hardest time trading the "Guess Right" game for close
     communication and continuous evolution."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
     "It doesn't take a Ph.D. in computer science to contribute to an XP project (in fact, the Ph.D.'s sometimes have the most trouble)."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -742,7 +763,7 @@ Yes, it's great to have smart developers, but there is a "problem of smart peopl
     "guessing at the future" behavior. Fortunately, most folks can unlearn the habit of
     "borrowing trouble" (as my grandmother called it). Unfortunately, the smarter you
     are, the harder it will be to unlearn.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -751,7 +772,7 @@ Yes, it's great to have smart developers, but there is a "problem of smart peopl
     and punishes you. The reward systems in most companies, with individual
     evaluations and raises (often cast as a zero sum game), also encourages individual thinking.
     You will likely have to learn new people skills, interacting as closely with your team as you will in XP."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -760,7 +781,13 @@ Yes, it's great to have smart developers, but there is a "problem of smart peopl
     install new tools, new languages, new technologies. And the tools, languages, and
     66technologies are chosen because they are interesting and cutting edge. Cutting edge
     implies risk. (If we haven't learned that by now, when will we?)
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
+
+..
+
+    "You try to make the infrastructure cover everything you think you might need,
+    which leads to an overly complex infrastructure."
+    ("Planning Extreme Programming" [#fnpxp]_ by Kent Beck, Martin Fowler)
 
 The cause of this effect is that smart people tends to think in upfront way.
 Furthermore, usually the developer does not have enough information to make right decisions about implementation at the moment.
@@ -772,7 +799,7 @@ Often it is not possible to collect all necessary information and the developer 
     A premature decision is a decision made with suboptimal knowledge. We will have that
     much less customer feedback, mental reflection on the project, and experience with our
     implementation choices if we decide too soon."
-    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_)
+    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin)
 
 ..
 
@@ -781,12 +808,12 @@ Often it is not possible to collect all necessary information and the developer 
     the greatest possible chance that they would be right. You would only implement
     what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
     true."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 Thus, usually upfront thinking is expensive.
 
     "Short-term individual goals often conflict with long-term social goals."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 The smarter developer, the longer term goals he tends to think for.
 See also article "`The Case for Slow Programming <https://ventrellathing.wordpress.com/2013/06/18/the-case-for-slow-programming/>`__".
@@ -796,7 +823,7 @@ I.e. this is the management problem.
     "Actually, if programmers could always make
     decisions that carefully balanced short-term and long-term priorities, there would be
     no need for any other technical people on the project besides programmers."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -805,7 +832,7 @@ I.e. this is the management problem.
     or other is in everybody's best interest long-term, but when the pressure mounts, if
     the practice doesn't solve an immediate problem it will be discarded. If XP can't work
     with people's short-term interest, it is doomed to the outer methodological darkness.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 To be effective, the smart developer has to understand the economy of software development, has to have enough knowledges about design and architecture, and has to use "`Designing Through Refactoring <Use Designing Through Refactoring_>`_".
 Smart developers usually tend to work fast only with smart managers.
@@ -826,7 +853,7 @@ But the economy always wins.
     design everything today. For the rest of us, however, I don't see any alternative to
     the conclusion that today's design should be done today and tomorrow's design
     should be done tomorrow.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 
 Advices
@@ -846,7 +873,7 @@ There are also online catalogs of refactorings for database:
 
 ..
 
-    Change is the only constant. (Kent Beck [#fnxp]_)
+    "Change is the only constant." ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 
 Use catalogs of code smells
@@ -958,14 +985,14 @@ Once I saw how the tight-knit collective with high self-motivation was destroyed
     downgrade quality, your team might go faster at first, but soon the demoralization of
     producing crap will overwhelm any gains you temporarily made from not testing, or
     not reviewing, or not sticking to standards.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
     This points to a deeper value, one that lies below the surface of the other four —
     respect. If members of a team don't care about each other and what they are doing,
     XP is doomed.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 ..
 
@@ -973,7 +1000,7 @@ Once I saw how the tight-knit collective with high self-motivation was destroyed
     save it. Given some minimal passion, XP provides some positive feedback. This is not
     manipulative; it's just enjoying being part of something that works, instead of part of
     something that doesn't work.
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 
 Be fair and honest
@@ -1007,7 +1034,7 @@ Ask this question to yourself and everyone in the team.
     If you aren't curious enough to keep up with the changes,
     you might find yourself down at the old-programmers' home playing cards with T-Bone
     Rex and the Brontosaurus sisters."
-    ("Code Complete", Steve McConnell [#fncodec]_)
+    ("Code Complete" by Steve McConnell [#fncodec]_)
 
 ..
 
@@ -1030,7 +1057,7 @@ Use Extreme Progrgramming (XP)
 ------------------------------
 
     "XP is a lightweight, efficient, low-risk, flexible, predictable, scientific, and fun way to develop software."
-    (Kent Beck [#fnxp]_)
+    ("Extreme Programming Explained" [#fnxp]_ by Kent Beck)
 
 "`Extreme Programming Explained`_" by Kent Beck is one of the most valuable books I've ever read.
 
@@ -1055,10 +1082,12 @@ Further reading
 .. rubric:: Footnotes
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
-.. [#fncodec] "`Code Complete`_" Steve McConnell
+.. [#fnccoder] "The Clean Coder: a code of conduct for professional programmers" by `Robert C. Martin`_
+.. [#fncodec] "`Code Complete`_" by Steve McConnell
 .. [#fnrefactoring] "`Refactoring: Improving the Design of Existing Code`_" by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnrtp] "`Refactoring To Patterns`_" by Joshua Kerievsky
 .. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
+.. [#fnpxp] "Planning Extreme Programming" by Kent Beck, Martin Fowler
 .. [#fndp] "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 

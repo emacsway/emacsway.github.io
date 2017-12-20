@@ -221,7 +221,7 @@
 
     "Каждый хочет, чтобы правда была на его стороне, но не каждый хочет быть на стороне правды." (Ричард Уэйтли)
 
-    "Everyone wishes to have truth on his side, but not everyone wishes to be on the side of the truth." (Ричард Уэйтли)
+    "Everyone wishes to have truth on his side, but not everyone wishes to be on the side of the truth." (Richard Whately)
 
 Следующие строки относятся к случаю, когда Вы полностью уверены в своей компетентности.
 

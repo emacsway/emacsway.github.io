@@ -19,8 +19,6 @@ Python/FullStack Software Engineer, Solution Architect
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `Facebook <https://www.facebook.com/emacsway>`__, `Instagram <https://www.instagram.com/emacsway/>`__
 
-Current status: open for new opportunity
-
 
 About me
 --------
