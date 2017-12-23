@@ -116,3 +116,6 @@ Supervisor
     is much more important to have a handful of tools that you know when not to use,
     than to know everything about everything and risk using too much solution."
     ("Extreme Programming Explained" by Kent Beck)
+
+
+.. update:: 23 Dec, 2017
