@@ -906,6 +906,7 @@ There are several tools to track your time, for example:
 - `timescreen <https://bitbucket.org/emacsway/timescreen>`_
 
 I personally use `timescreen`_.
+Also I like to use `Pomodoro Technique <https://en.wikipedia.org/wiki/Pomodoro_Technique>`__ with the `Pomodoro timer for GNOME <http://gnomepomodoro.org/>`__.
 
 Track and analyze the inefficient time spent, and you will see how to save a lot of time.
 
