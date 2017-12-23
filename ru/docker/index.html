@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Искусство воевать &mdash; @emacsway&#39;s blog</title>
+    <title>Знакомство с Docker для Django-проекта &mdash; @emacsway&#39;s blog</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -38,16 +38,16 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sun, 21 Aug 2016 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Sat, 23 Dec 2017 00:00:00 GMT" />
         
-            <meta name="description" content="Читая книгу «Code Complete» Steve McConnell, я обнаружил интересное сходство с военным искусством." />
+            <meta name="description" content="При начале работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
             <link rel="image_src" href="../../_static/logo.jpg" />
         
 
-        <link rel="canonical" href="https://emacsway.github.io/ru/martial-way/" />
+        <link rel="canonical" href="https://emacsway.github.io/ru/docker/" />
 
         <script type="text/javascript">
             setTimeout(function() {
@@ -86,56 +86,92 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
-<h1>Искусство воевать<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Читая книгу «Code Complete» Steve McConnell, я обнаружил интересное сходство с военным искусством.</p>
-<p>Речь пойдет не о философских принципах, хотя это тоже тема заслуживающая внимания.
-Здесь невозможно не упомянуть несколько Великих цитат.</p>
+  <div class="section" id="docker-django">
+<h1>Знакомство с Docker для Django-проекта<a class="headerlink" href="#docker-django" title="Permalink to this headline">¶</a></h1>
+<p>При начале работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты.</p>
+</div>
+<div class="section" id="postgresql-docker">
+<h1>Настройка PostgreSQL в Docker<a class="headerlink" href="#postgresql-docker" title="Permalink to this headline">¶</a></h1>
+<p>Даже <a class="reference external" href="https://docs.docker.com/compose/django/#connect-the-database">официальная документация</a> предлагает приложению работать с PostgreSQL под суперюзером.
+Говорить про многочисленные статьи даже не приходится, от некоторых статей больше верда чем пользы.</p>
+<p>Чтобы корректно и безопасно настроить PostgreSQL, необходимо обратить внимание на раздел &#8220;How to extend this image&#8221; документации <a class="reference external" href="https://hub.docker.com/_/postgres/">Docker-образа PostgreSQL</a>.</p>
+<p>Иногда такого способа расширения недостаточно, и тогда нужно создать свой собственный образ на основе этого.
+Смотрите информацию в самом конце этого же раздела документации, начиная со слов &#8220;You can also extend the image with a simple Dockerfile to set a different locale.&#8221;</p>
+</div>
+<div class="section" id="docker">
+<h1>Как установить пакет в операционную систему Docker-образа?<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<p>Иногда нужно добавить какой-то пакет в операционную систему Docker-образа (например, postgis, если Вы не хотите использовать <a class="reference external" href="https://hub.docker.com/r/mdillon/postgis/">один из готовых образов на хабе</a>).
+Для этого нужно узнать тип и релиз операционной системы, и создать расширенный образ на основе существующего.
+Для получения необходимой информации можно войти внутрь запущенного Docker-контейнера.
+Обычно там используется Debian.
+Перед установкой пакета не забудьте получить новые списки пакетов, например: <code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">netcat-openbsd</span></code></p>
+</div>
+<div class="section" id="id1">
+<h1>Как зайти внутрь запущенного Docker-контейнера?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Здесь приведен простой пример <a class="reference external" href="https://stackoverflow.com/a/37766141">https://stackoverflow.com/a/37766141</a></p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">docker@default:~$</span> docker ps
+<span class="go">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span>
+<span class="go">b563764171e2        poc_web             &quot;bundle exec rails s &quot;   43 minutes ago      Up 43 minutes       0.0.0.0:3000-&gt;3000/tcp   poc_web_1</span>
+<span class="go">c6e480b0f26a        postgres            &quot;/docker-entrypoint.s&quot;   49 minutes ago      Up 49 minutes       0.0.0.0:5432-&gt;5432/tcp   poc_db_1</span>
+<span class="gp">docker@default:~$</span> docker <span class="nb">exec</span> -it c6e480b0f26a sh
+<span class="gp">#</span> su - postgres
+<span class="go">No directory, logging in with HOME=/</span>
+<span class="gp">$</span> psql
+<span class="go">psql (9.5.3)</span>
+<span class="go">Type &quot;help&quot; for help.</span>
+
+<span class="go">postgres=#</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>Инициализация служб<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>Проблема в том, что директива <a class="reference external" href="https://docs.docker.com/compose/compose-file/#depends_on">depends_on</a> контролирует порядок запуска контейнеров, но не контролирует фактического запуск служб в контейнерах.</p>
+<p>Многочисленные статьи игнорируют этот вопрос.
+В лучшем случае они предлагают хак с помощью команды sleep.
+Практически ни одна статья не описывает использования Docker для TDD, где хак с помощью команды sleep просто неприемлем.</p>
+<p>Официальная документация так же <a class="reference external" href="https://docs.docker.com/compose/startup-order/">мало полезна в этом вопросе, хотя и указывает верное направление</a>.</p>
+<p>Вскользь этот вопрос был затронут в <a class="reference external" href="https://habrahabr.ru/company/otus/blog/337688/">этой статье</a>.</p>
+<p>Более подробно проблема описана в статье &#8220;<a class="reference external" href="https://8thlight.com/blog/dariusz-pasciak/2016/10/17/docker-compose-wait-for-dependencies.html">Docker Compose: Wait for Dependencies</a>&#8221;.</p>
+<p>Я решил проблему с помощью <a class="reference external" href="https://github.com/dadarek/docker-wait-for-dependencies/blob/master/entrypoint.sh">этого скрипта</a>, используя его там, где обычно используется хак с командой sleep.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1"># Source Code:</span>
+<span class="c1"># https://github.com/dadarek/docker-wait-for-dependencies/blob/master/entrypoint.sh</span>
+
+: <span class="si">${</span><span class="nv">SLEEP_LENGTH</span><span class="p">:=2</span><span class="si">}</span>
+
+wait_for<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> Waiting <span class="k">for</span> <span class="nv">$1</span> to listen on <span class="nv">$2</span>...
+  <span class="k">while</span> ! nc -z <span class="nv">$1</span> <span class="nv">$2</span><span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> sleeping<span class="p">;</span> sleep <span class="nv">$SLEEP_LENGTH</span><span class="p">;</span> <span class="k">done</span>
+<span class="o">}</span>
+
+<span class="k">for</span> var in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="k">do</span>
+  <span class="nv">host</span><span class="o">=</span><span class="si">${</span><span class="nv">var</span><span class="p">%:*</span><span class="si">}</span>
+  <span class="nv">port</span><span class="o">=</span><span class="si">${</span><span class="nv">var</span><span class="p">#*:</span><span class="si">}</span>
+  wait_for <span class="nv">$host</span> <span class="nv">$port</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="docker-compose">
+<h1>Docker-compose<a class="headerlink" href="#docker-compose" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://docs.docker.com/compose/gettingstarted/">Docker-compose</a> - безусловно полезная надстройка, заметно облегчающая использование Docker.</p>
+</div>
+<div class="section" id="id3">
+<h1>Монтирование каталогов постоянного хранения информации<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>Не забывайте <a class="reference external" href="https://docs.docker.com/compose/compose-file/#volumes">монтировать каталоги постоянного хранения инфомрмации</a> для баз данных.
+Многие ознакомительные статьи игнорируют этот момент.</p>
+</div>
+<div class="section" id="supervisor">
+<h1>Supervisor<a class="headerlink" href="#supervisor" title="Permalink to this headline">¶</a></h1>
+<p>В более сложных случаях можно использовать Docker совместо с <a class="reference external" href="http://supervisord.org/">Supervisor</a>, но не забывайте совет Kent Beck:</p>
 <blockquote>
-<div>Всякая истина, выраженная словами, есть сила, действие которой беспредельно. (Л.Н.Толстой)</div></blockquote>
-<blockquote>
-<div>Принуждающий нас силой как бы лишает нас наших прав, и мы потому ненавидим его. Как благодетелей наших, мы любим тех, кто умеет убедить нас. Не мудрый, а грубый, непросвещенный человек прибегает к насилию. Чтобы употребить силу, надо многих соучастников; чтобы убедить, не надо никаких. Тот, кто чувствует достаточно силы в самом себе, чтобы владеть умами, не станет прибегать к насилию. Государство прибегает именно потому, что оно сознает свое бессилие убедить людей в своей необходимости. (По Сократу, из записей Л.Н.Толстого)</div></blockquote>
-<blockquote>
-<div>Настоящее Искусство Мира ­ в том, чтобы не жертвовать ни одним своим воином для разгрома врага. Побеждай врагов, всегда занимая безопасную и неуязвимую позицию; тогда никто не пострадает. Путь Воина, Искусство Политики ­ в том, чтобы остановить беду до того, как она начнется. Побеждай своих противников духовно, заставив их осознать бессмысленность их действий. Путь Воина заключается в том, чтобы устанавливать гармонию. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>Путь Воина, Искусство Политики ­ в том, чтобы остановить беду до того, как она начнется. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>Воин обязан положить конец всяким спорам и страстям. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>В АЙКИ-ДО мы овладеваем умом противника до того, как сойдемся с ним в поединке. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>Побеждай противника сначала мыслью а потом делом. (А.В.Суворов)</div></blockquote>
-<p>Но у нас речь пойдет о тактике военного искусства.
-В одном фильме (уже не помню в каком именно) было красиво сказано:</p>
-<blockquote>
-<div>Искусство воевать заключается в том, чтобы быть сильным в нужное время в нужном месте.</div></blockquote>
-<p>Различные мышцы человека различны по своей силе.
-Одни группы мышц сильнее, другие - слабее.
-Это естественно, ведь они выполняют различные функции.
-Но это также значит и то, что если мы противопоставим свои более сильные группы мышц более слабым группам мышц противника, то мы создадим силовое превосходство на данном участке тела противника. На этом принципе основаны болевые приемы Самбо и Айкидо.</p>
-<p>Искусство воевать также заключается в том, чтобы правильно расставить силы, т.е. путем перегруппировки сил обеспечить силовое превосходство на данном участке фронта над силами противника.</p>
-<p>Суть ударных техник, опять же, заключаются в том, чтобы обеспечить контакт своих менее уязвимых частей тела (ударная поверхность) против более уязвимых частей тела противника.</p>
-<p>Но вернемся к программированию.
-Как говорит Стив Макконнелл, основным императивом хорошей архитектуры, является <strong>управление сложностью</strong>.
-Пожалуй, это самая важная цитата, которую я когда-либо слышал за все годы, что занимаюсь программированием.</p>
-<p>Путем декомпозиции мы разделяем обязанности методов до такого уровня, который легко поддается нашему мозгу.
-Иными словами, следуем принципу (как это ни странно звучит) &#8220;разделяй и властвуй&#8221;.
-Стив Макконнелл обращает внимание на число 7 - количество объектов, которыми может одновременно оперировать человеческий мозг.</p>
-<p>Сходство между военным искусством и программированием заключается в том, чтобы <strong>сконцентрировать свое внимание на таком участке сложности, который человеческий мозг способен разрешить</strong>.
-Т.е. создать такую перегруппировку сил своего внимания против сложности кода.</p>
-<p>Если мы принимаем во внимание огромный кусок сложности, мы его не можем решить.
-В таком случае, следует выполнить его декомпозицию до такого уровня, при котором обеспечится &#8220;силовое превосходство&#8221; нашего мозга, чтобы на данном участке &#8220;прорвать оборону&#8221; сложности.
-Т.е. выполнить &#8220;перегруппировку сил&#8221; с помощью &#8220;<a class="reference external" href="http://www.refactoring.com/catalog/">рефакторинга</a>&#8221;.</p>
-<p>Следование такому принципу позволяет избежать &#8220;заторов&#8221; в работе и обеспечить &#8220;быстрое наступление&#8221; на код.</p>
-<p>Чем-то мне это напомнило принцип Дейла Карнеги &#8220;Живите в отсеке сегодняшнего дня&#8221;.
-Можно сказать, что основная битва человека за свое счастье - это битва с собственными мыслями.</p>
-<p>P.S.: За что я люблю KISS-принцип, так это за то, что <a class="reference external" href="https://people.apache.org/~fhanik/kiss.html">один из его принципов гласит</a>:</p>
-<blockquote>
-<div><p>Будьте Скромны, не считайте себя супер-гением, это ваша первая ошибка.
-Оставаясь Скромным вы в конечном итоге достигнете уровня супер-гения, и даже если нет, какая разница. Ваш код чертовски прост так, что вам не нужно быть гением чтобы работать с ним.</p>
-<p>Be Humble, don&#8217;t think of yourself as a super genius, this is your first mistake.
-By being humble, you will eventually achieve super genius status =), and even if you don&#8217;t, who cares! your code is stupid simple, so you don&#8217;t have to be a genius to work with it.</p>
-</div></blockquote>
+<div>&#8220;Of course, you can
+do a better job if you have more tools in your toolbox than if you have fewer, but it
+is much more important to have a handful of tools that you know when not to use,
+than to know everything about everything and risk using too much solution.&#8221;
+(&#8220;Extreme Programming Explained&#8221; by Kent Beck)</div></blockquote>
 </div>
 
   <div class="section">
@@ -147,21 +183,14 @@ By being humble, you will eventually achieve super genius status =), and even if
   <span style="float: left;">
   
   
-  <a href="../cache-dependencies/">
+  <a href="../it-hiring/">
     <i class="fa fa-arrow-circle-left"></i>
-    О проблемах инвалидации кэша. Тегирование кэша.
+    О проблемах подбора персонала в IT-индустрии
   </a>
   
   </span>
   <span>&nbsp;</span>
   <span style="float: right;">
-  
-  
-  <a href="../../en/useful-links/">
-    Usefull links
-    <i class="fa fa-arrow-circle-right"></i>
-  </a>
-  </span>
   
 </div>
 
@@ -172,9 +201,9 @@ By being humble, you will eventually achieve super genius status =), and even if
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'emacsway';
-        var disqus_identifier = '/ru/martial-way/';
-        var disqus_title = 'Искусство воевать';
-        var disqus_url = 'https://emacsway.github.io/ru/martial-way/';
+        var disqus_identifier = '/ru/docker/';
+        var disqus_title = 'Знакомство с Docker для Django-проекта';
+        var disqus_url = 'https://emacsway.github.io/ru/docker/';
 
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -215,7 +244,7 @@ By being humble, you will eventually achieve super genius status =), and even if
   <h2>
   
   <i class="fa fa-calendar"></i>
-    Aug 21, 2016
+    Dec 23, 2017
   
   </h2>
 
@@ -248,7 +277,7 @@ By being humble, you will eventually achieve super genius status =), and even if
   <li><i class="fa-fw fa fa-tag"></i>
     
       
-      <a href="../../blog/tag/programming/">programming</a>
+      <a href="../../blog/tag/docker/">Docker</a>
       
     </li>
   
@@ -267,7 +296,7 @@ By being humble, you will eventually achieve super genius status =), and even if
     }());
     </script>
     <i class="fa-fw fa fa-comments"></i>
-    <a href="#disqus_thread" data-disqus-identifier="/ru/martial-way/"> </a>
+    <a href="#disqus_thread" data-disqus-identifier="/ru/docker/"> </a>
   </li>
   
   </ul>
@@ -283,8 +312,6 @@ By being humble, you will eventually achieve super genius status =), and even if
   <ul>
     
     
-      <li><a href="../docker/">Dec 23 - Знакомство с Docker для Django-проекта</a></li>
-    
       <li><a href="../it-hiring/">Dec 15 - О проблемах подбора персонала в IT-индустрии</a></li>
     
       <li><a href="../about-quality-of-comments/">Aug 13 - О качестве комментариев в интернете</a></li>
@@ -292,6 +319,8 @@ By being humble, you will eventually achieve super genius status =), and even if
       <li><a href="../javascript-and-repository-pattern/">Aug 06 - Реализация паттерна Repository в браузерном JavaScript</a></li>
     
       <li><a href="../../en/javascript-and-repository-pattern/">Aug 06 - Implementation of Repository pattern for browser's JavaScript</a></li>
+    
+      <li><a href="../django-framework/">Jul 26 - О моем опыте использования Django Framework</a></li>
     
   </ul>
 
@@ -472,7 +501,7 @@ By being humble, you will eventually achieve super genius status =), and even if
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/ru/martial-way.txt"
+      <a href="../../_sources/ru/docker.txt"
           rel="nofollow">Page source</a>
     </div>
 
