@@ -155,13 +155,13 @@ Technologies & approaches
 * Development environment: Emacs (sometimes VIM, PyCharm).
 * Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Designing Through Refactoring, Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
-* Frameworks: Django (mainly), Flask, also used Tornado, Twisted, Ruby on Rails, etc.
+* Frameworks: Django (mainly), Flask, also used Aiohttp, Tornado, Twisted, Ruby on Rails, etc.
 * JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2-5.
 * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
 * Bug-tracking: Jira (mainly), Trac, Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
 * CVS: Mercurial (mainly), GIT, SVN, Bazar.
-* Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
+* Others: Docker, Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
 * Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
