@@ -251,6 +251,19 @@ It also has good integration with `SQLAlchemy`_ in the form of a third-party app
 See also `discussion of the integration <https://github.com/encode/django-rest-framework/issues/2439>`__.
 
 
+MongoDB and MongoEngine
+-----------------------
+
+Also, the Django REST framework has an integration application to support MongoDB and Mongoengine `django-rest-framework-mongoengine <https://github.com/umutbozkurt/django-rest-framework-mongoengine>`__.
+An example of use can be found in `django-rest-framework-mongoengine-example <https://github.com/BurkovBA/django-rest-framework-mongoengine-example>`__ with the description in the article `Django + MongoDB = Django REST Framework Mongoengine <https://medium.com/@vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a>`__.
+
+
+GIS
+---
+
+Third party application `django-rest-framework-gis <https://github.com/djangonauts/django-rest-framework-gis/tree/master/rest_framework_gis>`__ supports GeoJSON.
+
+
 OpenAPI и Swagger
 -----------------
 

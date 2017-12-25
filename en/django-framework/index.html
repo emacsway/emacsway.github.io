@@ -120,18 +120,20 @@ With a competent approach, you can use all the advantages of Django and not beco
 <li><a class="reference internal" href="#django-rest-framework" id="id29">Django REST framework</a><ul>
 <li><a class="reference internal" href="#related-fields-with-id-suffix-for-django-rest-framework" id="id30">Related fields with _id suffix for Django REST framework</a></li>
 <li><a class="reference internal" href="#id8" id="id31">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#openapi-swagger" id="id32">OpenAPI и Swagger</a></li>
-<li><a class="reference internal" href="#join-s-problem" id="id33">JOIN-s problem</a></li>
-<li><a class="reference internal" href="#generating-csv-xlsx" id="id34">Generating *.csv, *.xlsx</a></li>
+<li><a class="reference internal" href="#mongodb-and-mongoengine" id="id32">MongoDB and MongoEngine</a></li>
+<li><a class="reference internal" href="#gis" id="id33">GIS</a></li>
+<li><a class="reference internal" href="#openapi-swagger" id="id34">OpenAPI и Swagger</a></li>
+<li><a class="reference internal" href="#join-s-problem" id="id35">JOIN-s problem</a></li>
+<li><a class="reference internal" href="#generating-csv-xlsx" id="id36">Generating *.csv, *.xlsx</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphql" id="id35">Graphql</a></li>
-<li><a class="reference internal" href="#advantages-and-disadvantages-of-django-framework" id="id36">Advantages and disadvantages of Django Framework</a><ul>
-<li><a class="reference internal" href="#advantages" id="id37">Advantages</a></li>
-<li><a class="reference internal" href="#disadvantages" id="id38">Disadvantages</a></li>
+<li><a class="reference internal" href="#graphql" id="id37">Graphql</a></li>
+<li><a class="reference internal" href="#advantages-and-disadvantages-of-django-framework" id="id38">Advantages and disadvantages of Django Framework</a><ul>
+<li><a class="reference internal" href="#advantages" id="id39">Advantages</a></li>
+<li><a class="reference internal" href="#disadvantages" id="id40">Disadvantages</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#conclusion" id="id39">Conclusion</a></li>
+<li><a class="reference internal" href="#conclusion" id="id41">Conclusion</a></li>
 </ul>
 </div>
 <p>Django ORM brings the most trouble, so we&#8217;ll start with it.</p>
@@ -303,8 +305,17 @@ It has perfect interfacing with Django Models, but it can easily work with a bar
 It also has good integration with <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> in the form of a third-party application <a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> (<a class="reference external" href="http://djangorest-alchemy.readthedocs.io/en/latest/">docs</a>).
 See also <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/2439">discussion of the integration</a>.</p>
 </div>
+<div class="section" id="mongodb-and-mongoengine">
+<h2><a class="toc-backref" href="#id32">MongoDB and MongoEngine</a><a class="headerlink" href="#mongodb-and-mongoengine" title="Permalink to this headline">¶</a></h2>
+<p>Also, the Django REST framework has an integration application to support MongoDB and Mongoengine <a class="reference external" href="https://github.com/umutbozkurt/django-rest-framework-mongoengine">django-rest-framework-mongoengine</a>.
+An example of use can be found in <a class="reference external" href="https://github.com/BurkovBA/django-rest-framework-mongoengine-example">django-rest-framework-mongoengine-example</a> with the description in the article <a class="reference external" href="https://medium.com/&#64;vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a">Django + MongoDB = Django REST Framework Mongoengine</a>.</p>
+</div>
+<div class="section" id="gis">
+<h2><a class="toc-backref" href="#id33">GIS</a><a class="headerlink" href="#gis" title="Permalink to this headline">¶</a></h2>
+<p>Third party application <a class="reference external" href="https://github.com/djangonauts/django-rest-framework-gis/tree/master/rest_framework_gis">django-rest-framework-gis</a> supports GeoJSON.</p>
+</div>
 <div class="section" id="openapi-swagger">
-<h2><a class="toc-backref" href="#id32">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id34">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework allows you to <a class="reference external" href="http://www.django-rest-framework.org/api-guide/schemas/">generate scheme OpenAPI</a> and integrates with <a class="reference external" href="https://swagger.io/">swagger</a> using the <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a> library.</p>
 <p>This opens up unlimited possibilities for generating <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a> for clients and also allows using one of the existing stab generators for swagger.
 This allows you to test client-side without any server-side implementation, divide the responsibility between client-side and server-side developers, quickly find the cause of problems, freeze the communication protocol, and, most importantly, allows you to develop client-side in parallel even if server-side implementation is not finished yet.</p>
@@ -312,7 +323,7 @@ This allows you to test client-side without any server-side implementation, divi
 <p>My friend works on the <a class="reference external" href="https://bitbucket.org/sergeyglazyrindev/python-easytest">python-easytest</a> library, which eliminates the need for writing integration tests and performs the testing of the application using the OpenAPI scheme.</p>
 </div>
 <div class="section" id="join-s-problem">
-<h2><a class="toc-backref" href="#id33">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id35">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
 <p>The Django REST framework is often used together with <a class="reference external" href="https://pypi.python.org/pypi/django-filter">django-filter</a>.
 And here is a problem, which is reflected in the documentation as:</p>
 <blockquote>
@@ -327,7 +338,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the original filter() method once, passing all accumulated selection criteria to it.</p>
 </div>
 <div class="section" id="generating-csv-xlsx">
-<h2><a class="toc-backref" href="#id34">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id36">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
 <p>Django and Django REST framework has a lot of extensions.
 This is a major advantage for which it makes sense to tolerate their shortcomings.
 You can even generate *.csv, *.xlsx files:</p>
@@ -343,15 +354,15 @@ But this decision did not suit me, and I had done a complete declarative data ma
 </div>
 </div>
 <div class="section" id="graphql">
-<h1><a class="toc-backref" href="#id35">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id37">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/graphql-python/graphene-django">graphene-django</a> - a Django integration for <a class="reference external" href="https://github.com/graphql-python/graphene">graphene</a>.</li>
 </ul>
 </div>
 <div class="section" id="advantages-and-disadvantages-of-django-framework">
-<h1><a class="toc-backref" href="#id36">Advantages and disadvantages of Django Framework</a><a class="headerlink" href="#advantages-and-disadvantages-of-django-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id38">Advantages and disadvantages of Django Framework</a><a class="headerlink" href="#advantages-and-disadvantages-of-django-framework" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="advantages">
-<h2><a class="toc-backref" href="#id37">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id39">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
 <p>Django framework is written by the great programming language Python.</p>
 <p>Django has a successful <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>, which is a kind of the pattern <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, fairly successful forms and template (if you use <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Despite all the shortcomings of Django Models, its query building interface is well suited for the REST API.</p>
@@ -367,7 +378,7 @@ It is very easy to find developers (and outsourcing companies) for Django and Dj
 <p>Django can save a lot of time and financial resources if used properly.</p>
 </div>
 <div class="section" id="disadvantages">
-<h2><a class="toc-backref" href="#id38">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id40">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
 <p>The level of complexity of Django grows with each release, often outstripping the opportunities it implements, and from this its attractiveness is constantly decreasing.</p>
 <p>If you need to adapt Django ORM for your needs, then it&#8217;s probably more difficult to do this with the latest release than to adapt SQLAlchemy.
 And it needs to adapt more often than SQLAlchemy.
@@ -381,7 +392,7 @@ Highly skilled developers from my friends try to avoid working with Django.</p>
 </div>
 </div>
 <div class="section" id="conclusion">
-<h1><a class="toc-backref" href="#id39">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id41">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
 <p>Whether to use Django framework depends on what goals you set for yourself and how qualified are the teams you have.</p>
 <p>If your team is highly qualified in the field of architecture and design, you use <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">collaborative development techniques</span></a> for the dissemination of experience, have sufficient resources and finances to make the project more better without Django, then it makes sense to use another stack of technologies.</p>
 <p>Otherwise the Django framework can do you a good favor.

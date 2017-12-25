@@ -120,18 +120,20 @@
 <li><a class="reference internal" href="#django-rest-framework" id="id46">Django REST framework</a><ul>
 <li><a class="reference internal" href="#id17" id="id47">Суффиксирование внешних ключей Django REST framework</a></li>
 <li><a class="reference internal" href="#id18" id="id48">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#openapi-swagger" id="id49">OpenAPI и Swagger</a></li>
-<li><a class="reference internal" href="#join" id="id50">Проблема JOIN-ов</a></li>
-<li><a class="reference internal" href="#csv-xlsx" id="id51">Генерация *.csv, *.xlsx</a></li>
+<li><a class="reference internal" href="#mongodb-mongoengine" id="id49">MongoDB и MongoEngine</a></li>
+<li><a class="reference internal" href="#gis" id="id50">GIS</a></li>
+<li><a class="reference internal" href="#openapi-swagger" id="id51">OpenAPI и Swagger</a></li>
+<li><a class="reference internal" href="#join" id="id52">Проблема JOIN-ов</a></li>
+<li><a class="reference internal" href="#csv-xlsx" id="id53">Генерация *.csv, *.xlsx</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphql" id="id52">Graphql</a></li>
-<li><a class="reference internal" href="#id20" id="id53">Плюсы и минусы Django Framework</a><ul>
-<li><a class="reference internal" href="#id21" id="id54">Плюсы</a></li>
-<li><a class="reference internal" href="#id22" id="id55">Минусы</a></li>
+<li><a class="reference internal" href="#graphql" id="id54">Graphql</a></li>
+<li><a class="reference internal" href="#id20" id="id55">Плюсы и минусы Django Framework</a><ul>
+<li><a class="reference internal" href="#id21" id="id56">Плюсы</a></li>
+<li><a class="reference internal" href="#id22" id="id57">Минусы</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id23" id="id56">Заключение</a></li>
+<li><a class="reference internal" href="#id23" id="id58">Заключение</a></li>
 </ul>
 </div>
 <p>Больше всего хлопот доставляет Django ORM, поэтому мы начнем с него.</p>
@@ -308,8 +310,17 @@ accidental complexity from proliferating needlessly.
 Также он имеет хорошую интеграцию с <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> в виде стороннего приложения <a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> (<a class="reference external" href="http://djangorest-alchemy.readthedocs.io/en/latest/">документация</a>).
 См. <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/2439">обсуждение интеграции</a>.</p>
 </div>
+<div class="section" id="mongodb-mongoengine">
+<h2><a class="toc-backref" href="#id49">MongoDB и MongoEngine</a><a class="headerlink" href="#mongodb-mongoengine" title="Permalink to this headline">¶</a></h2>
+<p>Так же Django REST framework имеет интеграционное приложение для поддержки MongoDB и Mongoengine <a class="reference external" href="https://github.com/umutbozkurt/django-rest-framework-mongoengine">django-rest-framework-mongoengine</a>.
+Пример использования можно посмотреть в <a class="reference external" href="https://github.com/BurkovBA/django-rest-framework-mongoengine-example">django-rest-framework-mongoengine-example</a> с описанием в статье <a class="reference external" href="https://medium.com/&#64;vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a">Django + MongoDB = Django REST Framework Mongoengine</a>.</p>
+</div>
+<div class="section" id="gis">
+<h2><a class="toc-backref" href="#id50">GIS</a><a class="headerlink" href="#gis" title="Permalink to this headline">¶</a></h2>
+<p>Стороннее приложение <a class="reference external" href="https://github.com/djangonauts/django-rest-framework-gis/tree/master/rest_framework_gis">django-rest-framework-gis</a> для поддержки GeoJSON.</p>
+</div>
 <div class="section" id="openapi-swagger">
-<h2><a class="toc-backref" href="#id49">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id51">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework позволяет <a class="reference external" href="http://www.django-rest-framework.org/api-guide/schemas/">генерировать схему</a> в формате OpenAPI и интегрируется с <a class="reference external" href="https://swagger.io/">swagger</a> с помощью библиотеки <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a>.</p>
 <p>Это открывает неограниченные возможности по генерированию <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">стабов</a> для клиента и позволяет использовать один из существующих генераторов стабов для swagger.
 Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.</p>
@@ -317,7 +328,7 @@ accidental complexity from proliferating needlessly.
 <p>Мой товарищ работает над библиотекой <a class="reference external" href="https://bitbucket.org/sergeyglazyrindev/python-easytest">python-easytest</a>, которая избавляет от необходимости написания интеграционных тестов и тестирует приложение на основании схемы OpenAPI.</p>
 </div>
 <div class="section" id="join">
-<h2><a class="toc-backref" href="#id50">Проблема JOIN-ов</a><a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id52">Проблема JOIN-ов</a><a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework часто используется вместе с <a class="reference external" href="https://pypi.python.org/pypi/django-filter">django-filter</a>.
 И тут возникает проблема, которая отражена в документации как:</p>
 <blockquote>
@@ -332,7 +343,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>Решается эта проблема легко, в классе FilterSet() следует использовать обертку с ленивым вычислением  вместо реального django.db.models.query.QuerySet, которая будет полность повторять его интерфейс, но вызвать оригинальный метод filter() однократно, передавая ему все накопленные критерии выборки.</p>
 </div>
 <div class="section" id="csv-xlsx">
-<h2><a class="toc-backref" href="#id51">Генерация *.csv, *.xlsx</a><a class="headerlink" href="#csv-xlsx" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id53">Генерация *.csv, *.xlsx</a><a class="headerlink" href="#csv-xlsx" title="Permalink to this headline">¶</a></h2>
 <p>Django и Django REST framework имеет огромное количество расширений.
 Это то главное преимущество, ради которого есть смысл терпеть их недостатки.
 Можно даже генерировать *.csv, *.xlsx файлы:</p>
@@ -348,15 +359,15 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 </div>
 </div>
 <div class="section" id="graphql">
-<h1><a class="toc-backref" href="#id52">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id54">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/graphql-python/graphene-django">graphene-django</a> - a Django integration for <a class="reference external" href="https://github.com/graphql-python/graphene">graphene</a>.</li>
 </ul>
 </div>
 <div class="section" id="id20">
-<h1><a class="toc-backref" href="#id53">Плюсы и минусы Django Framework</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id55">Плюсы и минусы Django Framework</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id21">
-<h2><a class="toc-backref" href="#id54">Плюсы</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id56">Плюсы</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 <p>Django framework написан на прекрасном языке программирования Python.</p>
 <p>Джанго имеет удачный <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>,  который представляет собой разновидность паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, достаточно удачные формы и шаблонизатор (если использовать <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Несмотря на все недостатки Django Models, его интерфейс построения запросов хорошо подходит для REST API.</p>
@@ -372,7 +383,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>Django способен сэкономить много времени и финансовых ресурсов при правильном использовании.</p>
 </div>
 <div class="section" id="id22">
-<h2><a class="toc-backref" href="#id55">Минусы</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id57">Минусы</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
 <p>Уровень сложности Django растет с каждым релизом, зачастую опережая реализуемые ею возможности, и от этого ее привлекательность постоянно уменьшается.</p>
 <p>Если Вам нужно адаптировать Django ORM для своих потребностей, то сделать это с последним релизом будет, пожалуй, сложнее, чем адаптировать SQLAlchemy.
 При том что в адаптации он нуждается чаще чем SQLAlchemy.
@@ -385,7 +396,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 </div>
 </div>
 <div class="section" id="id23">
-<h1><a class="toc-backref" href="#id56">Заключение</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id58">Заключение</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h1>
 <p>Использовать или не использовать Django framework зависит от того, какие цели Вы перед собой ставите, и командой какой квалификации Вы располагаете.</p>
 <p>Если Ваша команда высоко-квалифицированная в области архитектуры и проектирования, вы используете <a class="reference internal" href="../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">методики совместной разработки</span></a> для распространения опыта, чувствуете в себе силы сделать проект более качественным без Django, и располагаете достаточными ресурсами и финансами для этого, тогда есть смысл использовать другой стэк технологий.</p>
 <p>В противном случае, Django framework может сослужить Вам хорошую пользу.
