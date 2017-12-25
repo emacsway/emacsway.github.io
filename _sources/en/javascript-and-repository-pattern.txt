@@ -129,7 +129,7 @@ Other implementations:
 - `Pocket.js <https://github.com/vincentracine/pocketjs>`_ - \
   a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB's proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.
 - `ZangoDB <https://erikolson186.github.io/zangodb/>`_ is a MongoDB-like interface for HTML5 IndexedDB that supports most of the familiar filtering, projection, sorting, updating and aggregation features of MongoDB, for usage in the web browser (`source code <https://github.com/erikolson186/zangodb>`__).
-- `JsStore <http://jsstore.net/>`_ is Sql Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__.
+- `JsStore <http://jsstore.net/>`_ is Sql Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
 
 I would like to add here `Ember.js <https://emberjs.com/>`_, but it implements the `ActiveRecord`_ pattern.
 
