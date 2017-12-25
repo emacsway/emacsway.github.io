@@ -259,7 +259,7 @@ MongoDB и MongoEngine
 ---------------------
 
 Так же Django REST framework имеет интеграционное приложение для поддержки MongoDB и Mongoengine `django-rest-framework-mongoengine <https://github.com/umutbozkurt/django-rest-framework-mongoengine>`__.
-Пример использования можно посмотреть в `django-rest-framework-mongoengine-example <https://github.com/BurkovBA/django-rest-framework-mongoengine-example>`__ с описанием в статье `Django + MongoDB = Django REST Framework Mongoengine <https://medium.com/@vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a>`__.
+Пример использования можно посмотреть в `django-rest-framework-mongoengine-example <https://github.com/BurkovBA/django-rest-framework-mongoengine-example>`__ с описанием в статье "`Django + MongoDB = Django REST Framework Mongoengine <https://medium.com/@vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a>`__".
 
 
 GIS
