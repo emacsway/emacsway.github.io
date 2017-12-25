@@ -318,6 +318,16 @@ Django has a successful `View <https://docs.djangoproject.com/en/1.11/topics/htt
 
 Despite all the shortcomings of Django Models, its query building interface is well suited for the REST API.
 
+I can also note that, despite the limited capabilities of the interface for creating SQL queries, Django ORM is designed ideally for imitating aggregates (in DDD and NoSQL this means composite of nested documents), which greatly facilitates the use of NoSQL databases such as MongoDB.
+
+There are several ORMs to deal with MongoDB, which largely reproduce the Django ORM interface, for example `MongoEngine <http://mongoengine.org/>`__.
+There are also backends for native Django ORM with MongoDB support, for example, `djongo <https://nesdis.github.io/djongo/>`__ (`source code <https://github.com/nesdis/djongo>`__).
+For other solutions, see the `MongoDB documentation <https://api.mongodb.com/python/current/tools.html>`__.
+
+For business, this means that it can relatively painlessly substitute RDBMS with MongoDB, affecting only a small part of the client code (if certain conditions were met beforehand), and any Django developer can instantly start working with MongoDB at the level of the abstract interface.
+
+However, NoSQL databases are usually used in conjunction with graphical databases or an external indexing engine, and such a bundle of different technologies should be hidden behind the Repository (or Service Layer) layer, which is usually absent in Django applications.
+
 Django has a huge community with a huge number of ready-made applications.
 It is very easy to find developers (and outsourcing companies) for Django and Django REST framework.
 

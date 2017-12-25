@@ -17,7 +17,7 @@ Welcome to @emacsway's blog!
 
 Here is a list of most recent posts:
 
-.. postlist:: 20
+.. postlist:: 40
    :excerpts:
 
 

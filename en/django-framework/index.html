@@ -355,6 +355,12 @@ But this decision did not suit me, and I had done a complete declarative data ma
 <p>Django framework is written by the great programming language Python.</p>
 <p>Django has a successful <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>, which is a kind of the pattern <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, fairly successful forms and template (if you use <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Despite all the shortcomings of Django Models, its query building interface is well suited for the REST API.</p>
+<p>I can also note that, despite the limited capabilities of the interface for creating SQL queries, Django ORM is designed ideally for imitating aggregates (in DDD and NoSQL this means composite of nested documents), which greatly facilitates the use of NoSQL databases such as MongoDB.</p>
+<p>There are several ORMs to deal with MongoDB, which largely reproduce the Django ORM interface, for example <a class="reference external" href="http://mongoengine.org/">MongoEngine</a>.
+There are also backends for native Django ORM with MongoDB support, for example, <a class="reference external" href="https://nesdis.github.io/djongo/">djongo</a> (<a class="reference external" href="https://github.com/nesdis/djongo">source code</a>).
+For other solutions, see the <a class="reference external" href="https://api.mongodb.com/python/current/tools.html">MongoDB documentation</a>.</p>
+<p>For business, this means that it can relatively painlessly substitute RDBMS with MongoDB, affecting only a small part of the client code (if certain conditions were met beforehand), and any Django developer can instantly start working with MongoDB at the level of the abstract interface.</p>
+<p>However, NoSQL databases are usually used in conjunction with graphical databases or an external indexing engine, and such a bundle of different technologies should be hidden behind the Repository (or Service Layer) layer, which is usually absent in Django applications.</p>
 <p>Django has a huge community with a huge number of ready-made applications.
 It is very easy to find developers (and outsourcing companies) for Django and Django REST framework.</p>
 <p>Django declares such a way of development, which is not exacting to the skill level of developers.</p>
