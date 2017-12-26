@@ -94,6 +94,8 @@
 <h1>Настройка PostgreSQL в Docker<a class="headerlink" href="#postgresql-docker" title="Permalink to this headline">¶</a></h1>
 <p>Даже <a class="reference external" href="https://docs.docker.com/compose/django/#connect-the-database">официальная документация</a> предлагает приложению работать с PostgreSQL под суперюзером.
 Говорить про многочисленные статьи даже не приходится, от некоторых статей больше верда чем пользы.</p>
+<p>В процессе разработки программы пользователь БД должен обладать такими же правами как и на production сервере (где в качестве базы данных нередко используется облачный сервис).
+Это позволяет отслеживать соответствующие проблемы на самой ранней стадии.</p>
 <p>Чтобы корректно и безопасно настроить PostgreSQL, необходимо обратить внимание на раздел &#8220;How to extend this image&#8221; документации <a class="reference external" href="https://hub.docker.com/_/postgres/">Docker-образа PostgreSQL</a>.</p>
 <p>Иногда такого способа расширения недостаточно, и тогда нужно создать свой собственный образ на основе этого.
 Смотрите информацию в самом конце этого же раздела документации, начиная со слов &#8220;You can also extend the image with a simple Dockerfile to set a different locale.&#8221;</p>
