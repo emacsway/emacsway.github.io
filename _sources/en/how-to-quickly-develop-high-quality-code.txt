@@ -827,6 +827,12 @@ I.e. this is the management problem.
 
 ..
 
+    "Programmers want to tackle high-risk stories first, and customers want to tackle high-value stories first.
+    There are plenty of times when these conflicting priorities have to be resolved."
+    ("Planning Extreme Programming" [#fnpxp]_ by Kent Beck, Martin Fowler)
+
+..
+
     It's been tricky, designing a process where following short-term self-interest also
     serves long-term team interest. You can expound all you want on how some practice
     or other is in everybody's best interest long-term, but when the pressure mounts, if
