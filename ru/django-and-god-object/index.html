@@ -301,7 +301,7 @@ it actually is in. The most common focus of the envy is the data.</p>
 <p>Проблема в том, что для того, чтобы запросить, объект должен быть осведомлен об интерфейсе, по которому он может это сделать.
 А это - лишнее Сопряжение (Coupling), которое снижает повторную используемость класса.
 Что если Вы захотите использовать этот класс в другом приложении, которое имеет другой интерфейс для запросов?</p>
-<p>В этом и заключается превосходство &#8220;Пассивного Внедрения Зависимостей&#8221; (&#8220;Passive Dependency Injection&#8221;) <a class="footnote-reference" href="#fnccode" id="id5">[1]</a> над &#8220;Локатором Служб&#8221; (&#8220;Service locator&#8221;), смотрите более подробно в статье &#8220;<a class="reference external" href="https://martinfowler.com/articles/injection.html">Inversion of Control Containers and the Dependency Injection pattern</a>&#8221; by Martin Fowler.</p>
+<p>В этом и заключается превосходство &#8220;Пассивного Внедрения Зависимостей&#8221; (&#8220;Passive Dependency Injection&#8221;) <a class="footnote-reference" href="#fnccode" id="id5">[1]</a> над &#8220;Локатором Служб&#8221; (&#8220;Service Locator&#8221;), смотрите более подробно в статье &#8220;<a class="reference external" href="https://martinfowler.com/articles/injection.html">Inversion of Control Containers and the Dependency Injection pattern</a>&#8221; by Martin Fowler.</p>
 <blockquote>
 <div><p>Истинное внедрение зависимостей идет еще на один шаг вперед. Класс не
 предпринимает непосредственных действий по разрешению своих зависимостей;
@@ -380,7 +380,7 @@ file or programmatically in a special-purpose construction module.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;environment&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">ENVIRONMENT</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">AVAILABLE_ENVIRONMENT</span><span class="o">.</span><span class="n">PRODUCTION</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">environment</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">AVAILABLE_ENVIRONMENT</span><span class="o">.</span><span class="n">PRODUCTION</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;robots.production.txt&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;robots.default.txt&#39;</span><span class="p">]</span>
