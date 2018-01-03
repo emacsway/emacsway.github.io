@@ -112,7 +112,7 @@
 </ul>
 </div>
 <p>Здесь уместно упомянуть, что эту проблему уже озвучивал всем известный Андрей Светлов в статье &#8220;<a class="reference external" href="http://asvetlov.blogspot.com/2015/05/global-config.html">Почему я не люблю конфигурацию в django-style</a>&#8221;. Поэтому, я просто углублюсь в эту тему.</p>
-<p>В качестве примера придумаем простейший пример для выдачи файла robots.txt с различным содержимым в зависимости от окружения (staging или production). Будем считать, что ограничить доступ к staging-сайту мы по каким-то причинам не можем, а вариант использования статического сервера не предоставляется облачным сервисом.</p>
+<p>В качестве примера выдумаем простейший пример для выдачи файла robots.txt с различным содержимым в зависимости от окружения (staging или production). Будем считать, что ограничить доступ к staging-сайту мы по каким-то причинам не можем, а вариант использования статического сервера не предоставляется облачным сервисом.</p>
 <p>Я часто наблюдаю в Django-приложениях нечто подобное:</p>
 <div class="literal-block-wrapper container" id="someproject-settings-production-py-v1">
 <div class="code-block-caption"><span class="caption-text">someproject/settings_production.py</span><a class="headerlink" href="#someproject-settings-production-py-v1" title="Permalink to this code">¶</a></div>
@@ -626,7 +626,7 @@ polymorphic objects that take the place of other such switch statements in the r
 Пример достижения чистой архитектуры Django приложений Вы можете посмотреть в статье &#8220;<a class="reference external" href="https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9">Clean Architecture in Django</a>&#8221;.</p>
 <p>В данном случае, логика класса RobotsTxtView сильно вырождена для того, чтобы выделять из нее какой-нибудь Use Case.
 Основное назначение Use Case - упростить тестирование путем отделения его обязанности от обязанности Delivery Mechanism.</p>
-<p>Конечно, Django Framework не позволяет так просто произвести изолированное тестирование класса RobotsTxtView, но предоставляет инструменты для того, чтобы это можно было сделать.</p>
+<p>Конечно, Django Framework не позволяет так просто произвести изолированное тестирование класса RobotsTxtView, но предоставляет инструменты для того, чтобы тестирования (пусть и не изолированное) можно было сделать.</p>
 <div class="literal-block-wrapper container" id="robots-tests-test-robots-py-v5">
 <div class="code-block-caption"><span class="caption-text">robots/tests/test_robots.py</span><a class="headerlink" href="#robots-tests-test-robots-py-v5" title="Permalink to this code">¶</a></div>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
