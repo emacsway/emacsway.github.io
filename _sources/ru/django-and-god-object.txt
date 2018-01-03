@@ -149,7 +149,7 @@ Django Framework и Божественный Объект
 Итак, мы должны протестировать класс RobotsTxtView для всех окружений, в том числе и для PRODUCTION-окружения, при этом находясь реально в LOCAL-окружении.
 
 Но как нам протестировать этот класс для всех окружений, не изменяя реального окружения?
-Если я переопределю значение settings.ENVIRONMENT согласно документации, используя `@override_settings(ENVIRONMENT=AVAILABLE_ENVIRONMENT.PRODUCTION) <https://docs.djangoproject.com/en/2.0/topics/testing/tools/#django.test.override_settings>`__, то где гарантия, что я не изменю поведения какой-нибудь Middleware, использующей этот же конфигурационный параметр?
+Если я переопределю значение settings.ENVIRONMENT согласно документации, используя `@override_settings(ENVIRONMENT=AVAILABLE_ENVIRONMENT.PRODUCTION) <https://docs.djangoproject.com/en/2.0/topics/testing/tools/#django.test.override_settings>`__, то где гарантия, что я не изменю поведение какой-нибудь Middleware, использующей этот же конфигурационный параметр?
 
 Да, в Django Framework есть небольшие трудности с изолированными юнит-тестами, которые решаются принципами "Чистой Архитектуры", к этому вопросу мы еще вернемся чуть позже.
 А пока нам нужно подменить значение окружения для класса, и при этом не затронуть его для всех остальных компонентов сайта.
