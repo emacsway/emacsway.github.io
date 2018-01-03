@@ -625,7 +625,7 @@ polymorphic objects that take the place of other such switch statements in the r
 <p>Внимательный читатель может заметить что такой подход нарушает принципы &#8220;<a class="reference external" href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html">Чистой Архитектуры</a>&#8221;.
 Пример достижения чистой архитектуры Django приложений Вы можете посмотреть в статье &#8220;<a class="reference external" href="https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9">Clean Architecture in Django</a>&#8221;.</p>
 <p>В данном случае, логика класса RobotsTxtView сильно вырождена для того, чтобы выделять из нее какой-нибудь Use Case.
-Основное назначение Use Case - упростить тестирование путем отделения его обязанности от обязанности Delivery Mechanism.</p>
+Одно из основных назначений Use Case - упростить тестирование путем отделения его обязанности от обязанности Delivery Mechanism.</p>
 <p>Конечно, Django Framework не позволяет так просто произвести изолированное тестирование класса RobotsTxtView, но предоставляет инструменты для того, чтобы тестирование (пусть и не изолированное) можно было сделать.</p>
 <div class="literal-block-wrapper container" id="robots-tests-test-robots-py-v5">
 <div class="code-block-caption"><span class="caption-text">robots/tests/test_robots.py</span><a class="headerlink" href="#robots-tests-test-robots-py-v5" title="Permalink to this code">¶</a></div>
