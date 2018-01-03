@@ -356,7 +356,7 @@ Code Smell "Switch Statements"
 Простое решение
 ---------------
 
-Если внимательно изучить класс ``django.views.generic.base.TemplateView``, то можно заметить, что он реализует метод "`Replace Subclass with Fields <https://www.refactoring.com/catalog/replaceSubclassWithFields.html>`__" [#fnrefactoring]_.
+Если внимательно изучить класс ``django.views.generic.base.TemplateView``, который наследует `django.views.generic.base.TemplateResponseMixin <https://github.com/django/django/blob/2.0/django/views/generic/base.py#L132>`__, то можно заметить, что он реализует метод "`Replace Subclass with Fields <https://www.refactoring.com/catalog/replaceSubclassWithFields.html>`__" [#fnrefactoring]_.
 А потому, нет причин этим не воспользоваться.
 Все что от нас требуется - это переместить условные операторы из метода объекта (т.е. его поведения) в его конструктор.
 
