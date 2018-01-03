@@ -435,7 +435,7 @@ Code Smell "Switch Statements"
        @classmethod
        def _make_template_names_accessor(cls, environment):
            assert environment in cls.AVAILABLE_ENVIRONMENT
-           if environment == AVAILABLE_ENVIRONMENT.PRODUCTION:
+           if environment == cls.AVAILABLE_ENVIRONMENT.PRODUCTION:
                return cls._make_production_template_names_accessor()
            return cls._make_default_template_names_accessor()
 
