@@ -112,7 +112,7 @@
 </ul>
 </div>
 <p>Здесь уместно упомянуть, что эту проблему уже озвучивал всем известный Андрей Светлов в статье &#8220;<a class="reference external" href="http://asvetlov.blogspot.com/2015/05/global-config.html">Почему я не люблю конфигурацию в django-style</a>&#8221;. Поэтому, я просто углублюсь в эту тему.</p>
-<p>В качестве примера рассмотрим простейший пример для выдачи файла robots.txt с различным содержимым, в зависимости от окружения (staging или production). Будем считать, что ограничить доступ к staging-сайту мы по каким-то причинам не можем, а вариант использования статического сервера не предоставляется облачным сервисом.</p>
+<p>В качестве примера придумаем простейший пример для выдачи файла robots.txt с различным содержимым в зависимости от окружения (staging или production). Будем считать, что ограничить доступ к staging-сайту мы по каким-то причинам не можем, а вариант использования статического сервера не предоставляется облачным сервисом.</p>
 <p>Я часто наблюдаю в Django-приложениях нечто подобное:</p>
 <div class="literal-block-wrapper container" id="someproject-settings-production-py-v1">
 <div class="code-block-caption"><span class="caption-text">someproject/settings_production.py</span><a class="headerlink" href="#someproject-settings-production-py-v1" title="Permalink to this code">¶</a></div>
