@@ -528,7 +528,7 @@ polymorphic objects that take the place of other such switch statements in the r
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">assert</span> <span class="s1">&#39;template_names_accessor&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">get_template_names</span> <span class="o">=</span> <span class="n">template_names_accessor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_template_names</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;template_names_accessor&#39;</span><span class="p">]</span>
 </pre></div>
 </td></tr></table></div>
 </div>

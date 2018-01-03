@@ -411,7 +411,7 @@ Code Smell "Switch Statements"
        def __init__(self, *args, **kwargs):
            super().__init__(*args, **kwargs)
            assert 'template_names_accessor' in kwargs
-           self.get_template_names = template_names_accessor
+           self.get_template_names = kwargs['template_names_accessor']
 
 
 .. code-block:: python
