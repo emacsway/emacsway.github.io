@@ -575,7 +575,7 @@ polymorphic objects that take the place of other such switch statements in the r
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_make_template_names_accessor</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">environment</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="n">environment</span> <span class="ow">in</span> <span class="n">AVAILABLE_ENVIRONMENT</span>
+        <span class="k">assert</span> <span class="n">environment</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">AVAILABLE_ENVIRONMENT</span>
         <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="n">AVAILABLE_ENVIRONMENT</span><span class="o">.</span><span class="n">PRODUCTION</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_make_production_template_names_accessor</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_make_default_template_names_accessor</span><span class="p">()</span>
