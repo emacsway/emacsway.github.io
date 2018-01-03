@@ -262,6 +262,7 @@ Django Framework и Божественный Объект
 
    class RobotsTxtView(TemplateView):
        AVAILABLE_ENVIRONMENT = AVAILABLE_ENVIRONMENT
+       environment = None
 
        def __init__(self, *args, **kwargs):
            super().__init__(*args, **kwargs)
@@ -373,6 +374,7 @@ Code Smell "Switch Statements"
    class RobotsTxtView(TemplateView):
        AVAILABLE_ENVIRONMENT = AVAILABLE_ENVIRONMENT
        template_name = 'robots.default.txt'
+       environment = None
 
        def __init__(self, *args, **kwargs):
            super().__init__(*args, **kwargs)
@@ -380,6 +382,8 @@ Code Smell "Switch Statements"
            assert kwargs['environment'] in self.AVAILABLE_ENVIRONMENT
            if kwargs['environment'] == self.AVAILABLE_ENVIRONMENT.PRODUCTION:
                self.template_name = 'robots.production.txt'
+
+Атрибут класса RobotsTxtView.environment можно было бы удалить, если бы не `одно "но" <https://github.com/django/django/blob/2.0/django/views/generic/base.py#L57>`__.
 
 
 Чистое решение
@@ -408,6 +412,8 @@ Code Smell "Switch Statements"
 
 
    class RobotsTxtView(TemplateView):
+       template_names_accessor = None
+
        def __init__(self, *args, **kwargs):
            super().__init__(*args, **kwargs)
            assert 'template_names_accessor' in kwargs

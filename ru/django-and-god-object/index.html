@@ -368,12 +368,14 @@ file or programmatically in a special-purpose construction module.</p>
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
 <span class="kn">from</span> <span class="nn">environment.constants</span> <span class="kn">import</span> <span class="n">AVAILABLE_ENVIRONMENT</span>
 
 
 <span class="k">class</span> <span class="nc">RobotsTxtView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
     <span class="n">AVAILABLE_ENVIRONMENT</span> <span class="o">=</span> <span class="n">AVAILABLE_ENVIRONMENT</span>
+    <span class="n">environment</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -469,13 +471,15 @@ polymorphic objects that take the place of other such switch statements in the r
 11
 12
 13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
 <span class="kn">from</span> <span class="nn">environment.constants</span> <span class="kn">import</span> <span class="n">AVAILABLE_ENVIRONMENT</span>
 
 
 <span class="k">class</span> <span class="nc">RobotsTxtView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
     <span class="n">AVAILABLE_ENVIRONMENT</span> <span class="o">=</span> <span class="n">AVAILABLE_ENVIRONMENT</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;robots.default.txt&#39;</span>
+    <span class="n">environment</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -486,6 +490,7 @@ polymorphic objects that take the place of other such switch statements in the r
 </pre></div>
 </td></tr></table></div>
 </div>
+<p>Атрибут класса RobotsTxtView.environment можно было бы удалить, если бы не <a class="reference external" href="https://github.com/django/django/blob/2.0/django/views/generic/base.py#L57">одно &#8220;но&#8221;</a>.</p>
 </div>
 <div class="section" id="id15">
 <h2><a class="toc-backref" href="#id31">Чистое решение</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
@@ -510,7 +515,9 @@ polymorphic objects that take the place of other such switch statements in the r
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections.abc</span>
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections.abc</span>
 <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
 
 
@@ -525,6 +532,8 @@ polymorphic objects that take the place of other such switch statements in the r
 
 
 <span class="k">class</span> <span class="nc">RobotsTxtView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="n">template_names_accessor</span> <span class="o">=</span> <span class="bp">None</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">assert</span> <span class="s1">&#39;template_names_accessor&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span>
