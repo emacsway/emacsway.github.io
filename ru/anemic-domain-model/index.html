@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Искусство воевать &mdash; @emacsway&#39;s blog</title>
+    <title>Про Anemic Domain Model &mdash; @emacsway&#39;s blog</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -38,16 +38,16 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sun, 21 Aug 2016 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Thu, 04 Jan 2018 00:00:00 GMT" />
         
-            <meta name="description" content="Читая книгу «Code Complete» Steve McConnell, я обнаружил интересное сходство с военным искусством." />
+            <meta name="description" content="Время от времени в кругу моих знакомых регулярно поднимается вопрос о том, что Anemic Domain Model - никакой вовсе и не антипаттерн, и в качестве аргументов приводятся ссылки на статью “The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design” [1]. После очередного упоминания этой статьи я решил об этом написать." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
             <link rel="image_src" href="../../_static/logo.jpg" />
         
 
-        <link rel="canonical" href="https://emacsway.github.io/ru/martial-way/" />
+        <link rel="canonical" href="https://emacsway.github.io/ru/anemic-domain-model/" />
 
         <script type="text/javascript">
             setTimeout(function() {
@@ -86,56 +86,53 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
-<h1>Искусство воевать<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Читая книгу «Code Complete» Steve McConnell, я обнаружил интересное сходство с военным искусством.</p>
-<p>Речь пойдет не о философских принципах, хотя это тоже тема заслуживающая внимания.
-Здесь невозможно не упомянуть несколько Великих цитат.</p>
-<blockquote>
-<div>Всякая истина, выраженная словами, есть сила, действие которой беспредельно. (Л.Н.Толстой)</div></blockquote>
-<blockquote>
-<div>Принуждающий нас силой как бы лишает нас наших прав, и мы потому ненавидим его. Как благодетелей наших, мы любим тех, кто умеет убедить нас. Не мудрый, а грубый, непросвещенный человек прибегает к насилию. Чтобы употребить силу, надо многих соучастников; чтобы убедить, не надо никаких. Тот, кто чувствует достаточно силы в самом себе, чтобы владеть умами, не станет прибегать к насилию. Государство прибегает именно потому, что оно сознает свое бессилие убедить людей в своей необходимости. (По Сократу, из записей Л.Н.Толстого)</div></blockquote>
-<blockquote>
-<div>Настоящее Искусство Мира ­ в том, чтобы не жертвовать ни одним своим воином для разгрома врага. Побеждай врагов, всегда занимая безопасную и неуязвимую позицию; тогда никто не пострадает. Путь Воина, Искусство Политики ­ в том, чтобы остановить беду до того, как она начнется. Побеждай своих противников духовно, заставив их осознать бессмысленность их действий. Путь Воина заключается в том, чтобы устанавливать гармонию. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>Путь Воина, Искусство Политики ­ в том, чтобы остановить беду до того, как она начнется. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>Воин обязан положить конец всяким спорам и страстям. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>В АЙКИ-ДО мы овладеваем умом противника до того, как сойдемся с ним в поединке. (Морихэй Уесиба)</div></blockquote>
-<blockquote>
-<div>Побеждай противника сначала мыслью а потом делом. (А.В.Суворов)</div></blockquote>
-<p>Но у нас речь пойдет о тактике военного искусства.
-В одном фильме (уже не помню в каком именно) было красиво сказано:</p>
-<blockquote>
-<div>Искусство воевать заключается в том, чтобы быть сильным в нужное время в нужном месте.</div></blockquote>
-<p>Различные мышцы человека различны по своей силе.
-Одни группы мышц сильнее, другие - слабее.
-Это естественно, ведь они выполняют различные функции.
-Но это также значит и то, что если мы противопоставим свои более сильные группы мышц более слабым группам мышц противника, то мы создадим силовое превосходство на данном участке тела противника. На этом принципе основаны болевые приемы Самбо и Айкидо.</p>
-<p>Искусство воевать также заключается в том, чтобы правильно расставить силы, т.е. путем перегруппировки сил обеспечить силовое превосходство на данном участке фронта над силами противника.</p>
-<p>Суть ударных техник, опять же, заключаются в том, чтобы обеспечить контакт своих менее уязвимых частей тела (ударная поверхность) против более уязвимых частей тела противника.</p>
-<p>Но вернемся к программированию.
-Как говорит Стив Макконнелл, основным императивом хорошей архитектуры, является <strong>управление сложностью</strong>.
-Пожалуй, это самая важная цитата, которую я когда-либо слышал за все годы, что занимаюсь программированием.</p>
-<p>Путем декомпозиции мы разделяем обязанности методов до такого уровня, который легко поддается нашему мозгу.
-Иными словами, следуем принципу (как это ни странно звучит) &#8220;разделяй и властвуй&#8221;.
-Стив Макконнелл обращает внимание на число 7 - количество объектов, которыми может одновременно оперировать человеческий мозг.</p>
-<p>Сходство между военным искусством и программированием заключается в том, чтобы <strong>сконцентрировать свое внимание на таком участке сложности, который человеческий мозг способен разрешить</strong>.
-Т.е. создать такую перегруппировку сил своего внимания против сложности кода.</p>
-<p>Если мы принимаем во внимание огромный кусок сложности, мы его не можем решить.
-В таком случае, следует выполнить его декомпозицию до такого уровня, при котором обеспечится &#8220;силовое превосходство&#8221; нашего мозга, чтобы на данном участке &#8220;прорвать оборону&#8221; сложности.
-Т.е. выполнить &#8220;перегруппировку сил&#8221; с помощью &#8220;<a class="reference external" href="http://www.refactoring.com/catalog/">рефакторинга</a>&#8221;.</p>
-<p>Следование такому принципу позволяет избежать &#8220;заторов&#8221; в работе и обеспечить &#8220;быстрое наступление&#8221; на код.</p>
-<p>Чем-то мне это напомнило принцип Дейла Карнеги &#8220;Живите в отсеке сегодняшнего дня&#8221;.
-Можно сказать, что основная битва человека за свое счастье - это битва с собственными мыслями.</p>
-<p>P.S.: За что я люблю KISS-принцип, так это за то, что <a class="reference external" href="https://people.apache.org/~fhanik/kiss.html">один из его принципов гласит</a>:</p>
-<blockquote>
-<div><p>Будьте Скромны, не считайте себя супер-гением, это ваша первая ошибка.
-Оставаясь Скромным вы в конечном итоге достигнете уровня супер-гения, и даже если нет, какая разница. Ваш код чертовски прост так, что вам не нужно быть гением чтобы работать с ним.</p>
-<p>Be Humble, don&#8217;t think of yourself as a super genius, this is your first mistake.
-By being humble, you will eventually achieve super genius status =), and even if you don&#8217;t, who cares! your code is stupid simple, so you don&#8217;t have to be a genius to work with it.</p>
-</div></blockquote>
+  <div class="section" id="anemic-domain-model">
+<h1>Про Anemic Domain Model<a class="headerlink" href="#anemic-domain-model" title="Permalink to this headline">¶</a></h1>
+<p>Время от времени в кругу моих знакомых регулярно поднимается вопрос о том, что Anemic Domain Model - никакой вовсе и не антипаттерн, и в качестве аргументов приводятся ссылки на статью &#8220;The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design&#8221; <a class="footnote-reference" href="#fnadminapen" id="id1">[1]</a>.
+После очередного упоминания этой статьи я решил об этом написать.</p>
+<p>Я не знаю, читал ли автор той статьи весь список перечисленной внизу статьи литературы, потому что в этом списке присутствует книга &#8220;Martin, Robert C. Agile software development: principles, patterns, and practices. Prentice Hall PTR, 2003&#8221;.</p>
+<p>А эта книга дает, на мой взгляд, лучшее представление о том, что делают методы объекта: они Внедряют Зависимости (Dependency Injection), что делает полиморфизм возможным!
+Я всем советую сперва прочесть эту книгу (именно книгу в оригинале, а не краткие выдержки из Википедии), прежде чем читать указанную статью.</p>
+<p>Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет соответствовать пятому принципу &#8220;D&#8221; в SOLID, а лишение объекта полиморфизма (да еще и в условиях отсутствия <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch">Множественной Диспетчеризации</a>) будет соответствовать третьему принципу &#8220;L&#8221; в SOLID.
+В таком случае внедрять зависимости и обеспечивать полиморфизм придется в ручную, фактически превращая программу из объектно-ориентированной в процедурную.</p>
+<p>Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, не понимая отличий межу функциональным программированием и процедурным.
+Если говорить об превосходствах функционального программирования, то Роберт Мартин уже все сказал в статье &#8220;<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>&#8221;.</p>
+<p>Кстати, я так и не смог найти имя автора той статьи на том сайте.
+Нечего и говорить, что это - весомый аргумент для авторитета статьи, которая с легкостью берется опровергать статью Мартина Фаулера(!) &#8220;<a class="reference external" href="https://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic DomainModel</a>&#8221;.
+Создается впечатление, что подобные статьи - просто способ привлечь внимание к ресурсу, используя общественную резонансность скандальных утверждений.</p>
+<p>Автор не имеет четкого понимания различий между:</p>
+<ol class="arabic simple">
+<li>Логикой уровня приложения</li>
+<li>Бизнес-логикой (причем, следует отличать предметно-ориентированную бизнес-логику от бизнес-логики, зависящей от приложения)</li>
+<li>Обязанностью доступа к данным (что не является бизнес-логикой)</li>
+</ol>
+<p>Указанная статья целиком построена на ошибках автора в проектировании.
+В своем примере он рассматривает вместо бизнес-логики - обязанность доступа к данным (да еще и в виде Active Record(!)).
+Жаль, что в его списке литературы нет книги &#8220;Clean Code&#8221; by Robert C. Martin, в которой рассказывается, как для разделения служебной логики и бизнес-логики вот уже более 10 лет используется Cross-Cutting Concerns.</p>
+<p>Уникальная способность автора всунуть в доменную модель обязанности слоя Data Mapper и Repository, - это, действительно, достаточно весомый аргумент для того, чтобы автор не наделял доменную модель вообще никакими обязанностями.
+К тому же Service Layer не предназначен для обязанностей предметно-ориентированной бизнес-логики.
+Мы можем вынести ее куда угодно, в Visitor, Strategy, Delegate, но мы должны соблюдать принципы расслоения системы, и не использовать слой уровня логики приложения для обязанностей слоя предметной области.</p>
+<p>Частично эту тему я уже затрагивал в статьях:</p>
+<ul class="simple">
+<li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8220;</li>
+<li>&#8220;<a class="reference internal" href="../javascript-and-repository-pattern/"><span class="doc">Реализация паттерна Repository в браузерном JavaScript</span></a>&#8220;</li>
+<li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8220;</li>
+</ul>
+<p>Да, бывают случаи, когда мы должны использовать структуры данных вместо объектов.
+Но это не имеет никакого отношения к тому, что написал автор.</p>
+<p>Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.</p>
+<p>Попробуйте реализовать в таком стиле паттерн <a class="reference external" href="https://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a> с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.</p>
+<p>В определенной мере эта тема относится и к этой презентации https://www.destroyallsoftware.com/talks/boundaries .</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="fnadminapen" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>&#8220;The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design&#8221; https://blog.inf.ed.ac.uk/sapm/2014/02/04/the-anaemic-domain-model-is-no-anti-pattern-its-a-solid-design/ (перевод на русский &#8220;Анемичная модель предметной области — не анти-шаблон, а архитектура по принципам SOLID&#8221; https://habrahabr.ru/post/346016/ )</td></tr>
+</tbody>
+</table>
+<div class="note update admonition">
+<p class="first last admonition-title">Updated on Nov 27, 2017</p>
+</div>
 </div>
 
   <div class="section">
@@ -147,21 +144,14 @@ By being humble, you will eventually achieve super genius status =), and even if
   <span style="float: left;">
   
   
-  <a href="../cache-dependencies/">
+  <a href="../redux-and-flux-for-oop-programmers/">
     <i class="fa fa-arrow-circle-left"></i>
-    О проблемах инвалидации кэша. Тегирование кэша.
+    Понимание Redux и Flux для ООП программистов
   </a>
   
   </span>
   <span>&nbsp;</span>
   <span style="float: right;">
-  
-  
-  <a href="../../en/useful-links/">
-    Usefull links
-    <i class="fa fa-arrow-circle-right"></i>
-  </a>
-  </span>
   
 </div>
 
@@ -172,9 +162,9 @@ By being humble, you will eventually achieve super genius status =), and even if
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'emacsway';
-        var disqus_identifier = '/ru/martial-way/';
-        var disqus_title = 'Искусство воевать';
-        var disqus_url = 'https://emacsway.github.io/ru/martial-way/';
+        var disqus_identifier = '/ru/anemic-domain-model/';
+        var disqus_title = 'Про Anemic Domain Model';
+        var disqus_url = 'https://emacsway.github.io/ru/anemic-domain-model/';
 
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -215,7 +205,7 @@ By being humble, you will eventually achieve super genius status =), and even if
   <h2>
   
   <i class="fa fa-calendar"></i>
-    Aug 21, 2016
+    Jan 04, 2018
   
   </h2>
 
@@ -245,10 +235,35 @@ By being humble, you will eventually achieve super genius status =), and even if
   
 
   
-  <li><i class="fa-fw fa fa-tag"></i>
+  <li><i class="fa-fw fa fa-tags"></i>
+      
     
       
-      <a href="../../blog/tag/programming/">programming</a>
+      <a href="../../blog/tag/orm/">ORM</a>,
+      
+    
+      
+      <a href="../../blog/tag/datamapper/">DataMapper</a>,
+      
+    
+      
+      <a href="../../blog/tag/db/">DB</a>,
+      
+    
+      
+      <a href="../../blog/tag/sql/">SQL</a>,
+      
+    
+      
+      <a href="../../blog/tag/model/">Model</a>,
+      
+    
+      
+      <a href="../../blog/tag/ddd/">DDD</a>,
+      
+    
+      
+      <a href="../../blog/tag/repository/">Repository</a>
       
     </li>
   
@@ -267,7 +282,7 @@ By being humble, you will eventually achieve super genius status =), and even if
     }());
     </script>
     <i class="fa-fw fa fa-comments"></i>
-    <a href="#disqus_thread" data-disqus-identifier="/ru/martial-way/"> </a>
+    <a href="#disqus_thread" data-disqus-identifier="/ru/anemic-domain-model/"> </a>
   </li>
   
   </ul>
@@ -283,8 +298,6 @@ By being humble, you will eventually achieve super genius status =), and even if
   <ul>
     
     
-      <li><a href="../anemic-domain-model/">Jan 04 - Про Anemic Domain Model</a></li>
-    
       <li><a href="../redux-and-flux-for-oop-programmers/">Jan 03 - Понимание Redux и Flux для ООП программистов</a></li>
     
       <li><a href="../django-and-god-object/">Jan 02 - Django Framework и Божественный Объект</a></li>
@@ -292,6 +305,8 @@ By being humble, you will eventually achieve super genius status =), and even if
       <li><a href="../docker/">Dec 23 - Знакомство с Docker для Django-проекта</a></li>
     
       <li><a href="../it-hiring/">Dec 15 - О проблемах подбора персонала в IT-индустрии</a></li>
+    
+      <li><a href="../about-quality-of-comments/">Aug 13 - О качестве комментариев в интернете</a></li>
     
   </ul>
 
@@ -491,7 +506,7 @@ By being humble, you will eventually achieve super genius status =), and even if
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/ru/martial-way.txt"
+      <a href="../../_sources/ru/anemic-domain-model.txt"
           rel="nofollow">Page source</a>
     </div>
 
