@@ -70,6 +70,7 @@ Articles in English:
 * ":doc:`en/cache-dependencies`"
 * ":doc:`en/how-to-quickly-develop-high-quality-code`"
 * ":doc:`en/storm-orm`"
+* :ref:`... all articles in English >> <language-en>`
 
 Articles in Russian:
 
@@ -78,6 +79,7 @@ Articles in Russian:
 * ":doc:`ru/service-layer`"
 * ":doc:`ru/cache-dependencies`"
 * ":doc:`ru/storm-orm`"
+* :ref:`... all articles in Russian >> <language-ru>`
 
 
 Bibliography
