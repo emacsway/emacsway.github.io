@@ -81,4 +81,4 @@ NoSQL хранилища построены вокруг идеи агретат
 
 .. [#fnadminapen] "The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design" \https://blog.inf.ed.ac.uk/sapm/2014/02/04/the-anaemic-domain-model-is-no-anti-pattern-its-a-solid-design/ (перевод на русский "Анемичная модель предметной области — не анти-шаблон, а архитектура по принципам SOLID" \https://habrahabr.ru/post/346016/ )
 
-.. update:: Jan 04, 2018
+.. update:: Jan 05, 2018
