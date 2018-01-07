@@ -100,7 +100,7 @@ NoSQL хранилища построены вокруг идеи агрегат
 
 Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.
 
-Попробуйте реализовать в таком стиле паттерн `Class Table Inheritance <https://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
+Попробуйте реализовать в таком стиле паттерн `Class Table Inheritance <https://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
 
 В определенной мере, затрагиваемая тема относится и к этой презентации \https://www.destroyallsoftware.com/talks/boundaries .
 
