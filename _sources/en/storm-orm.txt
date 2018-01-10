@@ -540,6 +540,7 @@ This is obvious for the Active Record partition on Data Mapper and Domain Model,
 The behavior object begins to "envy" the data object "G14: Feature Envy" [#fncc]_, ("Feature Envy" [#fnr]_), with signs "F2: Output Arguments" [#fncc]_, "Convert Procedural Design to Objects" [#fnr]_,  "Primitive Obsession" [#fnr]_ and "Data Class" [#fnr]_.
 
 The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowler.
+See also article ":doc:`../ru/anemic-domain-model`".
 
     "High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)

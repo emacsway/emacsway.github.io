@@ -253,7 +253,7 @@
 
 Мы должны скрывать состояние не потому что это усложняет отладку, а потому что в этом заключается сама идея ООП!
 
-Вы поймете Redux / Flux намного лучше, если начнете с прочтения этой статьи: "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__".
+Вы поймете Redux / Flux намного лучше, если начнете его изучение с прочтения этой статьи: "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__".
 
 Event Sourcing, Flux и Redux делают то же самое, что и "`Encapsulate Field <https://www.refactoring.com/catalog/encapsulateField.html>`__".
 Они скрывают состояние и предоставляют поведение!
