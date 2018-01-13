@@ -9,7 +9,7 @@
    :author: Ivan Zakrevsky
 
 
-При начинании работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты.
+При начале работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты.
 
 
 Настройка PostgreSQL в Docker
@@ -105,8 +105,82 @@ Docker-compose
 Монтирование каталогов постоянного хранения информации
 ======================================================
 
-Не забывайте `монтировать каталоги постоянного хранения инфомрмации <https://docs.docker.com/compose/compose-file/#volumes>`__ для баз данных.
+Не забывайте `монтировать каталоги постоянного хранения информации <https://docs.docker.com/compose/compose-file/#volumes>`__ для баз данных.
 Многие ознакомительные статьи игнорируют этот момент.
+
+Иногда возникает эффект "исчезающего каталога", например, ``node_modules``, который был создан в момент создания образа, но при его монтировании уже после создания образа - он исчезает.
+Более подробно эта `проблема и ее решение описаны здесь <https://stackoverflow.com/a/32785014>`__:
+
+    A workaround is to use a data volume to store all the node_modules, as data volumes copy in the data from the built docker image before the worker directory is mounted. This can be done in the docker-compose.yml like this:
+
+.. code-block:: yaml
+   :caption: docker-compose.yml
+   :name: docker-compose-yml-volumes
+
+   redis:
+       image: redis
+   worker:
+       build: ./worker
+       command: npm start
+       ports:
+           - "9730:9730"
+       volumes:
+           - worker/:/worker/
+           - /worker/node_modules
+       links:
+           - redis
+
+
+Безголовый браузер
+==================
+
+Angular использует среды Karma и Protractor для тестирования, которые используют браузер для тестирования.
+На момент написания этих строк, подробного руководства для решения этой проблемы мне найти не удалось.
+Существуют разные способы решения например, использование PhantomJS, но мне по ряду причин больше подошло `решение приведенное здесь <http://cvuorinen.net/2017/05/running-angular-tests-in-headless-chrome/>`__ (`исходный код <https://gist.github.com/cvuorinen/543c6f72f8ec917ebfd596802d387aa3>`__).
+
+`Устанавливаем <https://stackoverflow.com/a/45510099>`__ Google Chrome в Dockerfile::
+
+    RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+    RUN echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
+    RUN apt-get update && apt-get install --no-install-recommends -y google-chrome-stable
+
+Редактируем karma.conf.js::
+
+    browsers: ['Chrome_without_sandbox'],
+    customLaunchers: {
+      Chrome_without_sandbox: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9876'
+       ]  // https://developers.google.com/web/updates/2017/04/headless-chrome
+      }
+    }
+
+И редактируем protractor.conf.js::
+
+    capabilities: {
+      browserName: 'chrome',
+      chromeOptions: {
+        binary: process.env.GOOGLE_CHROME_SHIM,  // If you need
+        args: [
+          "--no-sandbox",
+          "--headless",
+          "--disable-gpu",
+          "--window-size=800x600"
+        ]  // https://developers.google.com/web/updates/2017/04/headless-chrome
+      }
+    },
+    directConnect: true,
+    chromeOnly:true,
+
+Существуют готовые образы:
+
+- `docker-ng-cli-karma <https://github.com/trion-development/docker-ng-cli-karma>`__
+- `docker-ng-cli-e2e <https://github.com/trion-development/docker-ng-cli-e2e>`__
+- `docker-ng-cli <https://github.com/trion-development/docker-ng-cli>`__
 
 
 Supervisor

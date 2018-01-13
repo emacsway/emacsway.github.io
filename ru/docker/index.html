@@ -40,7 +40,7 @@
 
         <meta http-equiv="Last-Modified" content="Sat, 23 Dec 2017 00:00:00 GMT" />
         
-            <meta name="description" content="При начинании работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты." />
+            <meta name="description" content="При начале работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
@@ -88,7 +88,7 @@
             
   <div class="section" id="docker-django">
 <h1>Знакомство с Docker для Django-проекта<a class="headerlink" href="#docker-django" title="Permalink to this headline">¶</a></h1>
-<p>При начинании работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты.</p>
+<p>При начале работы с Docker стоит обратить внимание на ряд моментов, которые освещены слабо даже в официальной документации, не говоря уже про многочисленные блог-посты.</p>
 </div>
 <div class="section" id="postgresql-docker">
 <h1>Настройка PostgreSQL в Docker<a class="headerlink" href="#postgresql-docker" title="Permalink to this headline">¶</a></h1>
@@ -162,8 +162,79 @@ wait_for<span class="o">()</span> <span class="o">{</span>
 </div>
 <div class="section" id="id3">
 <h1>Монтирование каталогов постоянного хранения информации<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
-<p>Не забывайте <a class="reference external" href="https://docs.docker.com/compose/compose-file/#volumes">монтировать каталоги постоянного хранения инфомрмации</a> для баз данных.
+<p>Не забывайте <a class="reference external" href="https://docs.docker.com/compose/compose-file/#volumes">монтировать каталоги постоянного хранения информации</a> для баз данных.
 Многие ознакомительные статьи игнорируют этот момент.</p>
+<p>Иногда возникает эффект &#8220;исчезающего каталога&#8221;, например, <code class="docutils literal"><span class="pre">node_modules</span></code>, который был создан в момент создания образа, но при его монтировании уже после создания образа - он исчезает.
+Более подробно эта <a class="reference external" href="https://stackoverflow.com/a/32785014">проблема и ее решение описаны здесь</a>:</p>
+<blockquote>
+<div>A workaround is to use a data volume to store all the node_modules, as data volumes copy in the data from the built docker image before the worker directory is mounted. This can be done in the docker-compose.yml like this:</div></blockquote>
+<div class="literal-block-wrapper container" id="docker-compose-yml-volumes">
+<div class="code-block-caption"><span class="caption-text">docker-compose.yml</span><a class="headerlink" href="#docker-compose-yml-volumes" title="Permalink to this code">¶</a></div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="l l-Scalar l-Scalar-Plain">worker</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">build</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">./worker</span>
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">npm start</span>
+    <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">&quot;9730:9730&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">worker/:/worker/</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/worker/node_modules</span>
+    <span class="l l-Scalar l-Scalar-Plain">links</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">redis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>Безголовый браузер<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<p>Angular использует среды Karma и Protractor для тестирования, которые используют браузер для тестирования.
+На момент написания этих строк, подробного руководства для решения этой проблемы мне найти не удалось.
+Существуют разные способы решения например, использование PhantomJS, но мне по ряду причин больше подошло <a class="reference external" href="http://cvuorinen.net/2017/05/running-angular-tests-in-headless-chrome/">решение приведенное здесь</a> (<a class="reference external" href="https://gist.github.com/cvuorinen/543c6f72f8ec917ebfd596802d387aa3">исходный код</a>).</p>
+<p><a class="reference external" href="https://stackoverflow.com/a/45510099">Устанавливаем</a> Google Chrome в Dockerfile:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RUN</span> <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">linux_signing_key</span><span class="o">.</span><span class="n">pub</span> <span class="o">|</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+<span class="n">RUN</span> <span class="n">echo</span> <span class="s1">&#39;deb http://dl.google.com/linux/chrome/deb/ stable main&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span>
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="o">-</span><span class="n">y</span> <span class="n">google</span><span class="o">-</span><span class="n">chrome</span><span class="o">-</span><span class="n">stable</span>
+</pre></div>
+</div>
+<p>Редактируем karma.conf.js:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">browsers</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Chrome_without_sandbox&#39;</span><span class="p">],</span>
+<span class="n">customLaunchers</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">Chrome_without_sandbox</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">base</span><span class="p">:</span> <span class="s1">&#39;ChromeHeadless&#39;</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s1">&#39;--no-sandbox&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;--headless&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;--disable-gpu&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;--remote-debugging-port=9876&#39;</span>
+   <span class="p">]</span>  <span class="o">//</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">web</span><span class="o">/</span><span class="n">updates</span><span class="o">/</span><span class="mi">2017</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">headless</span><span class="o">-</span><span class="n">chrome</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>И редактируем protractor.conf.js:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">capabilities</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">browserName</span><span class="p">:</span> <span class="s1">&#39;chrome&#39;</span><span class="p">,</span>
+  <span class="n">chromeOptions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">binary</span><span class="p">:</span> <span class="n">process</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">GOOGLE_CHROME_SHIM</span><span class="p">,</span>  <span class="o">//</span> <span class="n">If</span> <span class="n">you</span> <span class="n">need</span>
+    <span class="n">args</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;--no-sandbox&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;--headless&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;--disable-gpu&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;--window-size=800x600&quot;</span>
+    <span class="p">]</span>  <span class="o">//</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">web</span><span class="o">/</span><span class="n">updates</span><span class="o">/</span><span class="mi">2017</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">headless</span><span class="o">-</span><span class="n">chrome</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+<span class="n">directConnect</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+<span class="n">chromeOnly</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Существуют готовые образы:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/trion-development/docker-ng-cli-karma">docker-ng-cli-karma</a></li>
+<li><a class="reference external" href="https://github.com/trion-development/docker-ng-cli-e2e">docker-ng-cli-e2e</a></li>
+<li><a class="reference external" href="https://github.com/trion-development/docker-ng-cli">docker-ng-cli</a></li>
+</ul>
 </div>
 <div class="section" id="supervisor">
 <h1>Supervisor<a class="headerlink" href="#supervisor" title="Permalink to this headline">¶</a></h1>
