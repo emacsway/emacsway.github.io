@@ -636,6 +636,10 @@ See also the great article "`Is Design Dead? <https://martinfowler.com/articles/
 The sixth myth. The agile never works.
 --------------------------------------
 
+    "Scrum is ok if you do it right." (`Robert Martin <https://youtu.be/0oGpWmS0aYQ>`__)
+
+..
+
     "One pattern I see time and time again on software teams is that they adopt Scrum, pay little attention to technical practices, and they’re able to consistently increase their velocity for the first few years.
     But after about three or four years the technical debt they’ve accumulated in their code is so great that their velocity starts to grind to a halt and they find it difficult to even get simple features implemented.
     This is a place you do not want to get to, though I see it far too often in the software community—teams stuck there without a clue how to get out."
@@ -788,6 +792,15 @@ Yes, it's great to have smart developers, but there is a "problem of smart peopl
     "You try to make the infrastructure cover everything you think you might need,
     which leads to an overly complex infrastructure."
     ("Planning Extreme Programming" [#fnpxp]_ by Kent Beck, Martin Fowler)
+
+..
+
+    "In teaching TDD, I see this situation all the time—excellent software engineers 
+    spending 5 to 10 minutes reasoning about a question that the computer could answer in 15 
+    seconds. Without the tests you have no choice, you have to reason. With the tests you can 
+    decide whether an experiment would answer the question faster. Sometimes you should just 
+    ask the computer."
+    ("Test-Driven Development By Example" [#fntdd]_ by Kent Beck)
 
 The cause of this effect is that smart people tends to think in upfront way.
 Furthermore, usually the developer does not have enough information to make right decisions about implementation at the moment.
@@ -1095,6 +1108,7 @@ Further reading
 .. [#fnrtp] "`Refactoring To Patterns`_" by Joshua Kerievsky
 .. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
 .. [#fnpxp] "Planning Extreme Programming" by Kent Beck, Martin Fowler
+.. [#fntdd] "Test-Driven Development By Example" by Kent Beck
 .. [#fndp] "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 
