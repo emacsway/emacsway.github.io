@@ -141,6 +141,10 @@ The code is written once, but is read incommensurably many times in the developm
 
 The emphasis on "fast writing" code actually leads to a reduction in the development velocity in geometric progression. And the emphasis on "readability" of code leads to an increase in the development velocity, also in an geometric progression.
 
+The number of objects an average human can hold in `working memory is 7 ± 2 <https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two>`__.
+That's why good `decomposition is important <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__.
+That's why good encapsulation and abstraction are important.
+
 If code is not readable, has a bad code navigation, a bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OCP principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automated refactoring, then this code slows rate of development for 91% of time of the whole team.
 
 Thus, each developer in the team MUST be a senior developer.
