@@ -26,6 +26,8 @@
 Иногда такого способа расширения недостаточно, и тогда нужно создать свой собственный образ на основе этого.
 Смотрите информацию в самом конце этого же раздела документации, начиная со слов "You can also extend the image with a simple Dockerfile to set a different locale."
 
+При монтировании каталога данных на Windows может возникнуть `проблема <https://forums.docker.com/t/data-directory-var-lib-postgresql-data-pgdata-has-wrong-ownership/17963/12>`__, решение которой описано `здесь <https://forums.docker.com/t/trying-to-get-postgres-to-work-on-persistent-windows-mount-two-issues/12456/5?u=friism>`__:
+
 
 Как установить пакет в операционную систему Docker-образа?
 ==========================================================
@@ -56,6 +58,12 @@
     Type "help" for help.
 
     postgres=#
+
+Для отладки проблемного конейнера:
+
+.. code-block:: console
+
+    docker logs --tail 500 --follow --timestamps my_container_name_1
 
 
 Инициализация служб

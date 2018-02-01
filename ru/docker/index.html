@@ -99,6 +99,7 @@
 <p>Чтобы корректно и безопасно настроить PostgreSQL, необходимо обратить внимание на раздел &#8220;How to extend this image&#8221; документации <a class="reference external" href="https://hub.docker.com/_/postgres/">Docker-образа PostgreSQL</a>.</p>
 <p>Иногда такого способа расширения недостаточно, и тогда нужно создать свой собственный образ на основе этого.
 Смотрите информацию в самом конце этого же раздела документации, начиная со слов &#8220;You can also extend the image with a simple Dockerfile to set a different locale.&#8221;</p>
+<p>При монтировании каталога данных на Windows может возникнуть <a class="reference external" href="https://forums.docker.com/t/data-directory-var-lib-postgresql-data-pgdata-has-wrong-ownership/17963/12">проблема</a>, решение которой описано <a class="reference external" href="https://forums.docker.com/t/trying-to-get-postgres-to-work-on-persistent-windows-mount-two-issues/12456/5?u=friism">здесь</a>:</p>
 </div>
 <div class="section" id="docker">
 <h1>Как установить пакет в операционную систему Docker-образа?<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
@@ -123,6 +124,10 @@
 <span class="go">Type &quot;help&quot; for help.</span>
 
 <span class="go">postgres=#</span>
+</pre></div>
+</div>
+<p>Для отладки проблемного конейнера:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">docker logs --tail 500 --follow --timestamps my_container_name_1</span>
 </pre></div>
 </div>
 </div>
