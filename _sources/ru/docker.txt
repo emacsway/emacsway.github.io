@@ -28,6 +28,27 @@
 
 При монтировании каталога данных на Windows может возникнуть `проблема <https://forums.docker.com/t/data-directory-var-lib-postgresql-data-pgdata-has-wrong-ownership/17963/12>`__, решение которой описано `здесь <https://forums.docker.com/t/trying-to-get-postgres-to-work-on-persistent-windows-mount-two-issues/12456/5?u=friism>`__:
 
+.. code-block:: console
+
+   docker volume create --name gitlab-postgresql -d local
+
+..
+
+.. code-block:: yaml
+   :caption: docker-compose.yml
+   :name: docker-compose-yml-postgresql-volume
+
+   services:
+     postgresql:
+       restart: always
+       image: postgres:10.1
+       volumes:
+         - postgresql-volume:/var/lib/postgresql:Z
+
+     volumes:
+       postgresql-volume:
+         external: true
+
 
 Как установить пакет в операционную систему Docker-образа?
 ==========================================================
