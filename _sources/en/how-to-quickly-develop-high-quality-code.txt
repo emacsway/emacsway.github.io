@@ -353,6 +353,11 @@ There is only one way to develop a software quickly: to do it in the right way f
     | (`Randy Shoup <https://www.infoq.com/presentations/microservices-data-centric>`_, VP Engineering at Stitch Fix in San Francisco)
 
 
+.. image:: /_media/en/how-to-quickly-develop-high-quality-code/do-it-right.png
+   :alt: Do it right!
+   :align: center
+
+
 The third myth. Pair programming reduces the velocity of development.
 ---------------------------------------------------------------------
 
