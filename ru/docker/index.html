@@ -118,6 +118,17 @@
 </pre></div>
 </div>
 </div>
+<p>Обратите внимание на суффикс :Z, который означает что <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/run/#mount-volumes-from-container-volumes-from">раздел может быть использован несколькими контейнерами</a>.</p>
+</div>
+<div class="section" id="ssh-key">
+<h1>SSH-Key<a class="headerlink" href="#ssh-key" title="Permalink to this headline">¶</a></h1>
+<p>Увы, с Windows тут <a class="reference external" href="https://stackoverflow.com/questions/34932490/inject-hosts-ssh-keys-into-docker-machine-with-docker-compose">тоже будут проблемы</a>.
+Есть три решения:</p>
+<ol class="arabic simple">
+<li>Использовать директиву <a class="reference external" href="https://docs.docker.com/compose/compose-file/#secrets">secrets</a> (больше информации <a class="reference external" href="https://docs.docker.com/engine/swarm/secrets/">здесь</a>).</li>
+<li>Послать содержимое ключа в контейнер через переменную окружения, например, export PRIVATE_KEY=$(cat ~/.ssh/id_rsa)</li>
+<li>Монтировать каталог с префиксом/суффиксом, и перед использованием копировать его содержимое в реальную директорию и корректировать права на файл.</li>
+</ol>
 </div>
 <div class="section" id="docker">
 <h1>Как установить пакет в операционную систему Docker-образа?<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>

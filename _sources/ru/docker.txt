@@ -49,6 +49,19 @@
        postgresql-volume:
          external: true
 
+Обратите внимание на суффикс :Z, который означает что `раздел может быть использован несколькими контейнерами <https://docs.docker.com/engine/reference/commandline/run/#mount-volumes-from-container-volumes-from>`__.
+
+
+SSH-Key
+=======
+
+Увы, с Windows тут `тоже будут проблемы <https://stackoverflow.com/questions/34932490/inject-hosts-ssh-keys-into-docker-machine-with-docker-compose>`__.
+Есть три решения:
+
+#. Использовать директиву `secrets <https://docs.docker.com/compose/compose-file/#secrets>`__ (больше информации `здесь <https://docs.docker.com/engine/swarm/secrets/>`__).
+#. Послать содержимое ключа в контейнер через переменную окружения, например, export PRIVATE_KEY=$(cat ~/.ssh/id_rsa)
+#. Монтировать каталог с префиксом/суффиксом, и перед использованием копировать его содержимое в реальную директорию и корректировать права на файл.
+
 
 Как установить пакет в операционную систему Docker-образа?
 ==========================================================
