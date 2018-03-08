@@ -586,6 +586,14 @@ The quality code is always simple!
 
 ..
 
+    Mastery - The spirit of xUnit is simplicity. Martin Fowler said, "Never in the annals of 
+    software engineering was so much owed by so many to so few lines of code." Some of 
+    the implementations have gotten a little complicated for my taste. Rolling your own 
+    will give you a tool over which you have a feeling of mastery.
+    ("Test-Driven Development By Example" [#fntdd]_ by Kent Beck)
+
+..
+
     "Professionals avoid getting so vested in an idea that they can’t abandon it and 
     turn around. They keep an open mind about other ideas so that when they hit a 
     dead end they still have other options."
