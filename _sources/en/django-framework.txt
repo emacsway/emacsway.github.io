@@ -376,7 +376,7 @@ Whether to use Django framework depends on what goals you set for yourself and h
 If your team is highly qualified in the field of architecture and design, you use :doc:`collaborative development techniques <../en/how-to-quickly-develop-high-quality-code>` for the dissemination of experience, have sufficient resources and finances to make the project more better without Django, then it makes sense to use another stack of technologies.
 
 Otherwise the Django framework can do you a good favor.
-A lot of overconfident teams could not make without Django their projects better than they would have make with it.
+A lot of overconfident teams have not been able to improve their projects by excluding Django Framework.
 
 Nobody obliges you to use Django anytime and anywhere.
 Django REST framework allows you to abstract from Django ORM and even from its serializer.
