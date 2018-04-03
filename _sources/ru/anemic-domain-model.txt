@@ -69,6 +69,9 @@ NoSQL хранилища построены вокруг идеи агрегат
 Более чистым решением является наложение ответственного за связи аспекта на экземпляр Domain Model, сразу после его создания (обычно посредством Dependency Injection).
 Тогда при тестировании Вы просто подменяете реализацию этого аспекта.
 
+Классический же вариант реализации доступа к связанным объектам, в условиях отсутствия AOP и Дескрипторов, можно увидеть в подразделе "Example: Separating the Finders (Java) in Data Mapper" главы "Data Mapper" книги "Patterns of Enterprise Application Architecture" [#fnpoeaa]_.
+Но даже в этом случае Доменная модель не превращается в Active Record.
+
 Частично эту тему я уже затрагивал в статьях:
 
 - ":doc:`storm-orm`"
@@ -107,5 +110,6 @@ NoSQL хранилища построены вокруг идеи агрегат
 .. rubric:: Footnotes
 
 .. [#fnadminapen] "The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design" \https://blog.inf.ed.ac.uk/sapm/2014/02/04/the-anaemic-domain-model-is-no-anti-pattern-its-a-solid-design/ (перевод на русский "Анемичная модель предметной области — не анти-шаблон, а архитектура по принципам SOLID" \https://habrahabr.ru/post/346016/ )
+.. [#fnpoeaa] "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 
 .. update:: Jan 05, 2018
