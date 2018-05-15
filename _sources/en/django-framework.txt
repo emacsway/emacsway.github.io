@@ -209,6 +209,44 @@ Django 1.9 and above allows you to use `transaction.on_commit() <https://docs.dj
 I use the library `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, as I wrote in the article ":doc:`cache-dependencies`".
 
 
+Model Versioning and Audit Log
+------------------------------
+
+Django has a lot of libraries for model versioning, see, for example, "`Model Auditing and History <https://djangopackages.org/grids/g/model-audit/>`__" and "`Versioning <https://djangopackages.org/grids/g/versioning/>`__".
+However, I did not succeed in finding such a mature and perfect solution as `sqlalchemy-continuum <https://github.com/kvesteri/sqlalchemy-continuum>`_ among Django-libraries.
+
+As a result, I had to write a library for versioning myself (it is not public, since all rights belong to the company), which allows you to restore the state of the `aggregate <https://martinfowler.com/bliki/DDD_Aggregate.html>`__ (i.e. the structure of interrelated objects) for the specified version, even if some of the objects of the aggregate has been removed.
+Since the boundaries of the aggregate are also the boundaries of the transaction, the implementation of versioned relations was easily solved with already mentioned library `django-composite-foreignkey`_, which allows you to organize composite (including the version stamp of the object) relations between model instances.
+
+The following libraries and articles helped me with information:
+
+- `Automating an audit trail <https://code.djangoproject.com/wiki/AuditTrail>`__
+- `django-audit-log <https://github.com/vvangelovski/django-audit-log>`_
+- `cleanerversion <https://github.com/swisscom/cleanerversion>`_
+- `sqlalchemy-continuum`_
+- `Audit Log <https://martinfowler.com/eaaDev/AuditLog.html>`__
+- `Slowly changing dimension <https://en.wikipedia.org/wiki/Slowly_changing_dimension>`__
+- `Change data capture <https://en.wikipedia.org/wiki/Change_data_capture>`__
+- `Anchor modeling <https://en.wikipedia.org/wiki/Anchor_Modeling>`__
+- `Shadow table <https://en.wikipedia.org/wiki/Shadow_table>`__
+- `Audit trigger <https://wiki.postgresql.org/wiki/Audit_trigger>`__
+- `Audit trigger 91plus <https://wiki.postgresql.org/wiki/Audit_trigger_91plus>`__
+- `How to Implement Audit Functionality In PostgreSQL <http://kosalads.blogspot.fi/2014/06/implement-audit-functionality-in.html>`__
+- `PostgreSQL Audit Extension <https://github.com/2ndQuadrant/pgaudit>`__
+
+As an alternative to versioning an aggregate, you can use JSON-patch at the level of serializer of Django REST Framework.
+However, serializers can have different versions, and in this case you will need to create a separate serializer for versioning.
+In this case, however, the question arises how to create a diff for a list with a changed order of objects, so that the contents of the moved objects are not included in the diff.
+
+See also:
+
+- `drf-json-patch <https://pypi.org/project/drf-json-patch/>`_
+- `jsonpatch <https://pypi.org/project/jsonpatch/>`_
+- `python-json-patch <https://github.com/stefankoegl/python-json-patch>`_
+- `jsondiff <https://pypi.org/project/jsondiff/>`_
+- `json-delta <https://pypi.org/project/json-delta/>`_
+
+
 Django REST framework
 =====================
 
@@ -404,7 +442,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 14 Aug, 2017
+.. update:: 16 May, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884

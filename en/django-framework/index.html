@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 14 Aug 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 16 May 2018 00:00:00 GMT" />
         
             <meta name="description" content="Django framework by Python allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings." />
         
@@ -115,25 +115,26 @@ With a competent approach, you can use all the advantages of Django and not beco
 </ul>
 </li>
 <li><a class="reference internal" href="#cache-invalidation" id="id28">Cache invalidation</a></li>
+<li><a class="reference internal" href="#model-versioning-and-audit-log" id="id29">Model Versioning and Audit Log</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#django-rest-framework" id="id29">Django REST framework</a><ul>
-<li><a class="reference internal" href="#related-fields-with-id-suffix-for-django-rest-framework" id="id30">Related fields with _id suffix for Django REST framework</a></li>
-<li><a class="reference internal" href="#id8" id="id31">SQLAlchemy</a></li>
-<li><a class="reference internal" href="#mongodb-and-mongoengine" id="id32">MongoDB and MongoEngine</a></li>
-<li><a class="reference internal" href="#gis" id="id33">GIS</a></li>
-<li><a class="reference internal" href="#openapi-swagger" id="id34">OpenAPI и Swagger</a></li>
-<li><a class="reference internal" href="#join-s-problem" id="id35">JOIN-s problem</a></li>
-<li><a class="reference internal" href="#generating-csv-xlsx" id="id36">Generating *.csv, *.xlsx</a></li>
+<li><a class="reference internal" href="#django-rest-framework" id="id30">Django REST framework</a><ul>
+<li><a class="reference internal" href="#related-fields-with-id-suffix-for-django-rest-framework" id="id31">Related fields with _id suffix for Django REST framework</a></li>
+<li><a class="reference internal" href="#id8" id="id32">SQLAlchemy</a></li>
+<li><a class="reference internal" href="#mongodb-and-mongoengine" id="id33">MongoDB and MongoEngine</a></li>
+<li><a class="reference internal" href="#gis" id="id34">GIS</a></li>
+<li><a class="reference internal" href="#openapi-swagger" id="id35">OpenAPI и Swagger</a></li>
+<li><a class="reference internal" href="#join-s-problem" id="id36">JOIN-s problem</a></li>
+<li><a class="reference internal" href="#generating-csv-xlsx" id="id37">Generating *.csv, *.xlsx</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphql" id="id37">Graphql</a></li>
-<li><a class="reference internal" href="#advantages-and-disadvantages-of-django-framework" id="id38">Advantages and disadvantages of Django Framework</a><ul>
-<li><a class="reference internal" href="#advantages" id="id39">Advantages</a></li>
-<li><a class="reference internal" href="#disadvantages" id="id40">Disadvantages</a></li>
+<li><a class="reference internal" href="#graphql" id="id38">Graphql</a></li>
+<li><a class="reference internal" href="#advantages-and-disadvantages-of-django-framework" id="id39">Advantages and disadvantages of Django Framework</a><ul>
+<li><a class="reference internal" href="#advantages" id="id40">Advantages</a></li>
+<li><a class="reference internal" href="#disadvantages" id="id41">Disadvantages</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#conclusion" id="id41">Conclusion</a></li>
+<li><a class="reference internal" href="#conclusion" id="id42">Conclusion</a></li>
 </ul>
 </div>
 <p>Django ORM brings the most trouble, so we&#8217;ll start with it.</p>
@@ -274,9 +275,43 @@ This is not quite the right way, since Django ORM does not use the <a class="ref
 Django 1.9 and above allows you to use <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/db/transactions/#django.db.transaction.on_commit">transaction.on_commit()</a>, which partially solves the problem if you do not use replication.</p>
 <p>I use the library <a class="reference external" href="https://bitbucket.org/emacsway/cache-dependencies">cache-dependencies</a>, as I wrote in the article &#8220;<a class="reference internal" href="../cache-dependencies/"><span class="doc">About problems of cache invalidation. Cache tagging.</span></a>&#8221;.</p>
 </div>
+<div class="section" id="model-versioning-and-audit-log">
+<h2><a class="toc-backref" href="#id29">Model Versioning and Audit Log</a><a class="headerlink" href="#model-versioning-and-audit-log" title="Permalink to this headline">¶</a></h2>
+<p>Django has a lot of libraries for model versioning, see, for example, &#8220;<a class="reference external" href="https://djangopackages.org/grids/g/model-audit/">Model Auditing and History</a>&#8221; and &#8220;<a class="reference external" href="https://djangopackages.org/grids/g/versioning/">Versioning</a>&#8221;.
+However, I did not succeed in finding such a mature and perfect solution as <a class="reference external" href="https://github.com/kvesteri/sqlalchemy-continuum">sqlalchemy-continuum</a> among Django-libraries.</p>
+<p>As a result, I had to write a library for versioning myself (it is not public, since all rights belong to the company), which allows you to restore the state of the <a class="reference external" href="https://martinfowler.com/bliki/DDD_Aggregate.html">aggregate</a> (i.e. the structure of interrelated objects) for the specified version, even if some of the objects of the aggregate has been removed.
+Since the boundaries of the aggregate are also the boundaries of the transaction, the implementation of versioned relations was easily solved with already mentioned library <a class="reference external" href="https://pypi.python.org/pypi/django-composite-foreignkey">django-composite-foreignkey</a>, which allows you to organize composite (including the version stamp of the object) relations between model instances.</p>
+<p>The following libraries and articles helped me with information:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://code.djangoproject.com/wiki/AuditTrail">Automating an audit trail</a></li>
+<li><a class="reference external" href="https://github.com/vvangelovski/django-audit-log">django-audit-log</a></li>
+<li><a class="reference external" href="https://github.com/swisscom/cleanerversion">cleanerversion</a></li>
+<li><a class="reference external" href="https://github.com/kvesteri/sqlalchemy-continuum">sqlalchemy-continuum</a></li>
+<li><a class="reference external" href="https://martinfowler.com/eaaDev/AuditLog.html">Audit Log</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Slowly_changing_dimension">Slowly changing dimension</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Change_data_capture">Change data capture</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Anchor_Modeling">Anchor modeling</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Shadow_table">Shadow table</a></li>
+<li><a class="reference external" href="https://wiki.postgresql.org/wiki/Audit_trigger">Audit trigger</a></li>
+<li><a class="reference external" href="https://wiki.postgresql.org/wiki/Audit_trigger_91plus">Audit trigger 91plus</a></li>
+<li><a class="reference external" href="http://kosalads.blogspot.fi/2014/06/implement-audit-functionality-in.html">How to Implement Audit Functionality In PostgreSQL</a></li>
+<li><a class="reference external" href="https://github.com/2ndQuadrant/pgaudit">PostgreSQL Audit Extension</a></li>
+</ul>
+<p>As an alternative to versioning an aggregate, you can use JSON-patch at the level of serializer of Django REST Framework.
+However, serializers can have different versions, and in this case you will need to create a separate serializer for versioning.
+In this case, however, the question arises how to create a diff for a list with a changed order of objects, so that the contents of the moved objects are not included in the diff.</p>
+<p>See also:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.org/project/drf-json-patch/">drf-json-patch</a></li>
+<li><a class="reference external" href="https://pypi.org/project/jsonpatch/">jsonpatch</a></li>
+<li><a class="reference external" href="https://github.com/stefankoegl/python-json-patch">python-json-patch</a></li>
+<li><a class="reference external" href="https://pypi.org/project/jsondiff/">jsondiff</a></li>
+<li><a class="reference external" href="https://pypi.org/project/json-delta/">json-delta</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="django-rest-framework">
-<h1><a class="toc-backref" href="#id29">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id30">Django REST framework</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h1>
 <p>If we have previously considered the shortcomings of Django ORM, the <a class="reference external" href="http://www.django-rest-framework.org/">Django REST framework</a> surprisingly turns its disadvantages into advantages, because the interface for building Django ORM queries is great for REST.</p>
 <p>If you were lucky enough to use <a class="reference external" href="http://dstorejs.io/">Dstore</a> on the client side, then you can use <a class="reference external" href="https://pypi.python.org/pypi/django-rql-filter">django-rql-filter</a> or <a class="reference external" href="https://pypi.python.org/pypi/rql">rql</a> on the server side.</p>
 <p>Frankly, the Django REST framework requires a lot of time for the debugger to help researching it, and this, of course, characterizes its design solutions not from the best side.
@@ -293,29 +328,29 @@ accidental complexity from proliferating needlessly.
 <p>You just have to take into account that there is a certain entry barrier, which requires certain costs to overcome it, and you need to understand what benefit you can get from this, because not always this benefit is worth the effort to overcome the entrance barrier.</p>
 <p>I will not dwell on the criticism of the design decisions, the Django REST framework does not restrict me in anything constructively, and this is most important.</p>
 <div class="section" id="related-fields-with-id-suffix-for-django-rest-framework">
-<h2><a class="toc-backref" href="#id30">Related fields with _id suffix for Django REST framework</a><a class="headerlink" href="#related-fields-with-id-suffix-for-django-rest-framework" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">Related fields with _id suffix for Django REST framework</a><a class="headerlink" href="#related-fields-with-id-suffix-for-django-rest-framework" title="Permalink to this headline">¶</a></h2>
 <p>When you use client-side tools to handle foreign keys, you might want to use *_id suffix for the fields with foreign key values.
 Here is an <a class="reference external" href="https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6">implementation example</a> how this can be achieved.
 The same example on the <a class="reference external" href="https://gist.github.com/ostcar/eb78515a41ab41d1755b">gist</a> and <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/3121">discussion</a>.</p>
 </div>
 <div class="section" id="id8">
-<h2><a class="toc-backref" href="#id31">SQLAlchemy</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id32">SQLAlchemy</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>The huge advantage of Django REST framework is that it is ORM agnostic.
 It has perfect interfacing with Django Models, but it can easily work with a bare implementation of the Data Mapper pattern which returns a <a class="reference external" href="https://docs.python.org/2/library/collections.html#collections.namedtuple">namedtuple</a> collection for some <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a>.
 It also has good integration with <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> in the form of a third-party application <a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> (<a class="reference external" href="http://djangorest-alchemy.readthedocs.io/en/latest/">docs</a>).
 See also <a class="reference external" href="https://github.com/encode/django-rest-framework/issues/2439">discussion of the integration</a>.</p>
 </div>
 <div class="section" id="mongodb-and-mongoengine">
-<h2><a class="toc-backref" href="#id32">MongoDB and MongoEngine</a><a class="headerlink" href="#mongodb-and-mongoengine" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id33">MongoDB and MongoEngine</a><a class="headerlink" href="#mongodb-and-mongoengine" title="Permalink to this headline">¶</a></h2>
 <p>Also, the Django REST framework has an integration application to support MongoDB and Mongoengine <a class="reference external" href="https://github.com/umutbozkurt/django-rest-framework-mongoengine">django-rest-framework-mongoengine</a>.
 An example of use can be found in <a class="reference external" href="https://github.com/BurkovBA/django-rest-framework-mongoengine-example">django-rest-framework-mongoengine-example</a> with the description in the article &#8220;<a class="reference external" href="https://medium.com/&#64;vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a">Django + MongoDB = Django REST Framework Mongoengine</a>&#8221;.</p>
 </div>
 <div class="section" id="gis">
-<h2><a class="toc-backref" href="#id33">GIS</a><a class="headerlink" href="#gis" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id34">GIS</a><a class="headerlink" href="#gis" title="Permalink to this headline">¶</a></h2>
 <p>Third party application <a class="reference external" href="https://github.com/djangonauts/django-rest-framework-gis/tree/master/rest_framework_gis">django-rest-framework-gis</a> supports GeoJSON.</p>
 </div>
 <div class="section" id="openapi-swagger">
-<h2><a class="toc-backref" href="#id34">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id35">OpenAPI и Swagger</a><a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
 <p>Django REST framework allows you to <a class="reference external" href="http://www.django-rest-framework.org/api-guide/schemas/">generate scheme OpenAPI</a> and integrates with <a class="reference external" href="https://swagger.io/">swagger</a> using the <a class="reference external" href="https://django-rest-swagger.readthedocs.io/en/latest/">django-rest-swagger</a> library.</p>
 <p>This opens up unlimited possibilities for generating <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a> for clients and also allows using one of the existing stab generators for swagger.
 This allows you to test client-side without any server-side implementation, divide the responsibility between client-side and server-side developers, quickly find the cause of problems, freeze the communication protocol, and, most importantly, allows you to develop client-side in parallel even if server-side implementation is not finished yet.</p>
@@ -323,7 +358,7 @@ This allows you to test client-side without any server-side implementation, divi
 <p>My friend works on the <a class="reference external" href="https://bitbucket.org/sergeyglazyrindev/python-easytest">python-easytest</a> library, which eliminates the need for writing integration tests and performs the testing of the application using the OpenAPI scheme.</p>
 </div>
 <div class="section" id="join-s-problem">
-<h2><a class="toc-backref" href="#id35">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id36">JOIN-s problem</a><a class="headerlink" href="#join-s-problem" title="Permalink to this headline">¶</a></h2>
 <p>The Django REST framework is often used together with <a class="reference external" href="https://pypi.python.org/pypi/django-filter">django-filter</a>.
 And here is a problem, which is reflected in the documentation as:</p>
 <blockquote>
@@ -338,7 +373,7 @@ not necessarily those objects that were selected by an earlier filter() call.&#8
 <p>To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the original filter() method once, passing all accumulated selection criteria to it.</p>
 </div>
 <div class="section" id="generating-csv-xlsx">
-<h2><a class="toc-backref" href="#id36">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id37">Generating *.csv, *.xlsx</a><a class="headerlink" href="#generating-csv-xlsx" title="Permalink to this headline">¶</a></h2>
 <p>Django and Django REST framework has a lot of extensions.
 This is a major advantage for which it makes sense to tolerate their shortcomings.
 You can even generate *.csv, *.xlsx files:</p>
@@ -354,15 +389,15 @@ But this decision did not suit me, and I had done a complete declarative data ma
 </div>
 </div>
 <div class="section" id="graphql">
-<h1><a class="toc-backref" href="#id37">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id38">Graphql</a><a class="headerlink" href="#graphql" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/graphql-python/graphene-django">graphene-django</a> - a Django integration for <a class="reference external" href="https://github.com/graphql-python/graphene">graphene</a>.</li>
 </ul>
 </div>
 <div class="section" id="advantages-and-disadvantages-of-django-framework">
-<h1><a class="toc-backref" href="#id38">Advantages and disadvantages of Django Framework</a><a class="headerlink" href="#advantages-and-disadvantages-of-django-framework" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id39">Advantages and disadvantages of Django Framework</a><a class="headerlink" href="#advantages-and-disadvantages-of-django-framework" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="advantages">
-<h2><a class="toc-backref" href="#id39">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id40">Advantages</a><a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h2>
 <p>Django framework is written by the great programming language Python.</p>
 <p>Django has a successful <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/http/views/">View</a>, which is a kind of the pattern <a class="reference external" href="https://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>, fairly successful forms and template (if you use <a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader">django.template.loaders.cached.Loader</a>).</p>
 <p>Despite all the shortcomings of Django Models, its query building interface is well suited for the REST API.</p>
@@ -378,7 +413,7 @@ It is very easy to find developers (and outsourcing companies) for Django and Dj
 <p>Django can save a lot of time and financial resources if used properly.</p>
 </div>
 <div class="section" id="disadvantages">
-<h2><a class="toc-backref" href="#id40">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id41">Disadvantages</a><a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h2>
 <p>The level of complexity of Django grows with each release, often outstripping the opportunities it implements, and from this its attractiveness is constantly decreasing.</p>
 <p>If you need to adapt Django ORM for your needs, then it&#8217;s probably more difficult to do this with the latest release than to adapt SQLAlchemy.
 And it needs to adapt more often than SQLAlchemy.
@@ -392,7 +427,7 @@ Highly skilled developers from my friends try to avoid working with Django.</p>
 </div>
 </div>
 <div class="section" id="conclusion">
-<h1><a class="toc-backref" href="#id41">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id42">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
 <p>Whether to use Django framework depends on what goals you set for yourself and how qualified are the teams you have.</p>
 <p>If your team is highly qualified in the field of architecture and design, you use <a class="reference internal" href="../how-to-quickly-develop-high-quality-code/"><span class="doc">collaborative development techniques</span></a> for the dissemination of experience, have sufficient resources and finances to make the project more better without Django, then it makes sense to use another stack of technologies.</p>
 <p>Otherwise the Django framework can do you a good favor.
@@ -433,7 +468,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Aug 14, 2017</p>
+<p class="first last admonition-title">Updated on May 16, 2018</p>
 </div>
 </div>
 
@@ -521,7 +556,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Aug 14, 2017</li>
+    May 16, 2018</li>
   
 
   

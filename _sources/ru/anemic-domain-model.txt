@@ -104,6 +104,8 @@ NoSQL хранилища построены вокруг идеи агрегат
 Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.
 
 Попробуйте реализовать в таком стиле паттерн `Class Table Inheritance <https://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
+То же самое справедливо и к случаю использования паттерна `Special Case <https://martinfowler.com/eaaCatalog/specialCase.html>`__, известного так же как метод рефакторинга `Introduce Null Object <https://www.refactoring.com/catalog/introduceNullObject.html>`__.
+Смотрите так же `Replace Conditional with Polymorphism <https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__, `Replace Type Code With Polymorphism <https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html>`__ и `Replace Type Code with State/Strategy <https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html>`__ (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).
 
 В определенной мере, затрагиваемая тема относится и к этой презентации \https://www.destroyallsoftware.com/talks/boundaries .
 
@@ -112,4 +114,4 @@ NoSQL хранилища построены вокруг идеи агрегат
 .. [#fnadminapen] "The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design" \https://blog.inf.ed.ac.uk/sapm/2014/02/04/the-anaemic-domain-model-is-no-anti-pattern-its-a-solid-design/ (перевод на русский "Анемичная модель предметной области — не анти-шаблон, а архитектура по принципам SOLID" \https://habrahabr.ru/post/346016/ )
 .. [#fnpoeaa] "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 
-.. update:: Jan 05, 2018
+.. update:: May 16, 2018

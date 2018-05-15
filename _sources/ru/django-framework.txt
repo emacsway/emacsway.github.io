@@ -206,6 +206,44 @@ Django 1.9 и выше позволяет использовать `transaction.
 Я использую библиотеку `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, о чем я писал в статье ":doc:`cache-dependencies`".
 
 
+Версионирование данных
+----------------------
+
+Для Django существует множество библиотек для версионирования объектов, смотрите "`Model Auditing and History <https://djangopackages.org/grids/g/model-audit/>`__" и "`Versioning <https://djangopackages.org/grids/g/versioning/>`__".
+Однако, такого зрелого и совершенного решения как `sqlalchemy-continuum <https://github.com/kvesteri/sqlalchemy-continuum>`_ мне отыскать среди Django-библиотек так и не удалось.
+
+В результате пришлось писать библиотеку для версионинга самостоятельно (её нет в открытом доступе, так как все права принадлежат компании), которая позволила бы воссоздавать состояние `агрегата <https://martinfowler.com/bliki/DDD_Aggregate.html>`__ (т.е. структуру взаимосвязанных объектов) для заданной версии, даже если какой-то из объектов агрегата был удален.
+Поскольку границы агрегата одновременно являются и границами транзакции, вопрос реализации версионированных связей был легко решен с помощью уже упомянутой библиотеки `django-composite-foreignkey`_, которая позволяет организовать композитные (включая номер версии объекта) связи между экземплярами моделей.
+
+Информационно мне помогли библиотеки и статьи:
+
+- `Automating an audit trail <https://code.djangoproject.com/wiki/AuditTrail>`__
+- `django-audit-log <https://github.com/vvangelovski/django-audit-log>`_
+- `cleanerversion <https://github.com/swisscom/cleanerversion>`_
+- `sqlalchemy-continuum`_
+- `Audit Log <https://martinfowler.com/eaaDev/AuditLog.html>`__
+- `Slowly changing dimension <https://en.wikipedia.org/wiki/Slowly_changing_dimension>`__
+- `Change data capture <https://en.wikipedia.org/wiki/Change_data_capture>`__
+- `Anchor modeling <https://en.wikipedia.org/wiki/Anchor_Modeling>`__
+- `Shadow table <https://en.wikipedia.org/wiki/Shadow_table>`__
+- `Audit trigger <https://wiki.postgresql.org/wiki/Audit_trigger>`__
+- `Audit trigger 91plus <https://wiki.postgresql.org/wiki/Audit_trigger_91plus>`__
+- `How to Implement Audit Functionality In PostgreSQL <http://kosalads.blogspot.fi/2014/06/implement-audit-functionality-in.html>`__
+- `PostgreSQL Audit Extension <https://github.com/2ndQuadrant/pgaudit>`__
+
+Как вариант, для версионирования агрегата можно использовать JSON-patch на уровне сериализатора Django REST Framework.
+Однако, сериализаторы могут иметь разные версии, и тогда для версионирования потребуется создать отдельный сериализатор.
+В таком случае, правда, возникает вопрос относительно создания diff для списка с измененным порядком следования объектов, чтобы в diff не попадало содержимое перемещенных объектов целиком.
+
+Смотрите так же:
+
+- `drf-json-patch <https://pypi.org/project/drf-json-patch/>`_
+- `jsonpatch <https://pypi.org/project/jsonpatch/>`_
+- `python-json-patch <https://github.com/stefankoegl/python-json-patch>`_
+- `jsondiff <https://pypi.org/project/jsondiff/>`_
+- `json-delta <https://pypi.org/project/json-delta/>`_
+
+
 Django REST framework
 =====================
 
@@ -406,7 +444,7 @@ This article in English ":doc:`../en/django-framework`".
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 14 Aug, 2017
+.. update:: 16 May, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
