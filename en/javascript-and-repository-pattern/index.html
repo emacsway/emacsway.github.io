@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 25 Dec 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Sat, 26 May 2018 00:00:00 GMT" />
         
             <meta name="description" content="Good architecture makes you free from certain implementation. It allows you to postpone the moment of decision on implementation and begin code construction even without the decision. The most important point is that you gain the opportunity to make a decision at the time of the greatest awareness, and you can also easily replace a specific implementation with any other. This responsibility is assigned to the Repository." />
         
@@ -167,7 +167,7 @@ This is similar to Object-Relational Mapping (ORM) for JavaScript, including the
 <h1><a class="toc-backref" href="#id32">Reactive programming paradigm</a><a class="headerlink" href="#reactive-programming-paradigm" title="Permalink to this headline">¶</a></h1>
 <p>Today it is fashionable to get involved in reactive programming.
 Did you know that dojo developers first <a class="reference external" href="https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35">applied reactive programming</a> in their implementation of the Repository pattern as early as September 13, 2010?</p>
-<p>Reactive programming complements (rather than contrasts) the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern, as it&#8217;s evidenced by the experience of <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a>, <a class="reference external" href="http://dstorejs.io/">Dstore</a> and the new <a class="reference external" href="https://github.com/dojo/stores">Dojo 2 - data stores</a>.</p>
+<p>Reactive programming complements (rather than contrasts) the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern, as it&#8217;s evidenced by the experience of <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a> and <a class="reference external" href="http://dstorejs.io/">Dstore</a>.</p>
 <p>The developers of dojo are a team of highly qualified specialists whose libraries are used by such reputable companies as IBM.
 An example of how seriously and comprehensively they solves problems is the <a class="reference external" href="http://requirejs.org/docs/history.html">history of the RequireJS library</a>.</p>
 </div>
@@ -178,12 +178,9 @@ An example of how seriously and comprehensively they solves problems is the <a c
 <li>Angular2+: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/angular2/app/services/store.ts">https://github.com/tastejs/todomvc/blob/master/examples/angular2/app/services/store.ts</a></li>
 <li>Angular2+: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/angular2_es2015/app/services/todo-store.service.js">https://github.com/tastejs/todomvc/blob/master/examples/angular2_es2015/app/services/todo-store.service.js</a></li>
 <li>AngularJS: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/angularjs/js/services/todoStorage.js">https://github.com/tastejs/todomvc/blob/master/examples/angularjs/js/services/todoStorage.js</a></li>
-<li>React: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js">https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js</a></li>
-<li>React+Alt: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js">https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js</a></li>
 </ul>
 <p>Other implementations:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/dojo/stores">Dojo2 Stores</a> - Excellent implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern in paradigm of <a class="reference external" href="https://en.wikipedia.org/wiki/Reactive_programming">Reactive Programming</a> for non-relational data.</li>
 <li><a class="reference external" href="http://dstorejs.io/">Dstore</a> - yet another excellent implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern.</li>
 <li><a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">Dojo1 Store</a> - Dojo1 implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern.</li>
 <li><a class="reference external" href="http://www.js-data.io/">JS-Data</a> - Object-Relational Mapping (ORM) written by JavaScript for relational data. Does not support composite relations.</li>
@@ -191,9 +188,19 @@ An example of how seriously and comprehensively they solves problems is the <a c
 <li><a class="reference external" href="http://devcenter.kinvey.com/angular/guides/datastore">Kinvey Data Store</a> - implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> pattern by MBaaS Kinvey, <a class="reference external" href="https://github.com/Kinvey/js-sdk/tree/master/src/datastore/src">source code</a></li>
 <li><a class="reference external" href="https://github.com/vincentracine/pocketjs">Pocket.js</a> - a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB&#8217;s proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.</li>
 <li><a class="reference external" href="https://erikolson186.github.io/zangodb/">ZangoDB</a> is a MongoDB-like interface for HTML5 IndexedDB that supports most of the familiar filtering, projection, sorting, updating and aggregation features of MongoDB, for usage in the web browser (<a class="reference external" href="https://github.com/erikolson186/zangodb">source code</a>).</li>
-<li><a class="reference external" href="http://jsstore.net/">JsStore</a> is Sql Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (<a class="reference external" href="https://github.com/ujjwalguptaofficial/JsStore">source code</a>).</li>
+<li><a class="reference external" href="http://jsstore.net/">JsStore</a> is SQL Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (<a class="reference external" href="https://github.com/ujjwalguptaofficial/JsStore">source code</a>).</li>
 </ul>
-<p>I would like to add here <a class="reference external" href="https://emberjs.com/">Ember.js</a>, but it implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern.</p>
+<p>I can not mention <a class="reference external" href="https://emberjs.com/">Ember.js</a> here, because it implements the <a class="reference external" href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a> pattern.</p>
+<p>It is worth also to mention the library <a class="reference external" href="https://github.com/persvr/rql">rql</a>, which makes it easy the implementing of the patterns <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a> and <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>.
+A lot of implementetions you can find in the projects of <a class="reference external" href="https://github.com/persvr">persvr</a> and <a class="reference external" href="https://github.com/kriszyp">kriszyp</a>.</p>
+<p>The current article does not consider examples of implementation of the patterns <a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a> and <a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a> (which are discussed at the article &#8220;<a class="reference internal" href="../../ru/redux-and-flux-for-oop-programmers/"><span class="doc">Понимание Redux и Flux для ООП программистов</span></a>&#8221;):</p>
+<ul class="simple">
+<li>React: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js">https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js</a></li>
+<li>React+Alt: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js">https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js</a></li>
+<li><a class="reference external" href="https://github.com/dojo/stores">Dojo2 Stores</a> - a predictable, consistent state container for Javascript applications with inspiration from Redux and Flux architectures.</li>
+</ul>
+<p>These patterns are used for distributed computing and for systems recreating different states of the system, but their advantages at the frontend are not so obvious, especially given the fact that the implementation of business logic can be most demanded namely at the frontend.</p>
+<p>We should also mention the implementation of reactive storage based on the state and using RxJS libraries, see, for example, <a class="reference external" href="https://github.com/ng-book/angular2-rxjs-chat">angular2-rxjs-chat</a>.</p>
 </div>
 <div class="section" id="implementation-of-relationship">
 <h1><a class="toc-backref" href="#id34">Implementation of relationship</a><a class="headerlink" href="#implementation-of-relationship" title="Permalink to this headline">¶</a></h1>
@@ -491,7 +498,7 @@ Therefore, there is the possibility of easy access to any object through its Rep
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Dec 25, 2017</p>
+<p class="first last admonition-title">Updated on May 26, 2018</p>
 </div>
 </div>
 
@@ -579,7 +586,7 @@ Therefore, there is the possibility of easy access to any object through its Rep
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Dec 25, 2017</li>
+    May 26, 2018</li>
   
 
   

@@ -97,7 +97,7 @@ Reactive programming paradigm
 Today it is fashionable to get involved in reactive programming.
 Did you know that dojo developers first `applied reactive programming <https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35>`__ in their implementation of the Repository pattern as early as September 13, 2010?
 
-Reactive programming complements (rather than contrasts) the `Repository`_ pattern, as it's evidenced by the experience of `dojo.store`_, `Dstore`_ and the new `Dojo 2 - data stores <https://github.com/dojo/stores>`_.
+Reactive programming complements (rather than contrasts) the `Repository`_ pattern, as it's evidenced by the experience of `dojo.store`_ and `Dstore`_.
 
 The developers of dojo are a team of highly qualified specialists whose libraries are used by such reputable companies as IBM.
 An example of how seriously and comprehensively they solves problems is the `history of the RequireJS library <http://requirejs.org/docs/history.html>`_.
@@ -111,13 +111,9 @@ Examples of the simplest implementations of the Repository pattern by JavaScript
 - Angular2+: https://github.com/tastejs/todomvc/blob/master/examples/angular2/app/services/store.ts
 - Angular2+: https://github.com/tastejs/todomvc/blob/master/examples/angular2_es2015/app/services/todo-store.service.js
 - AngularJS: https://github.com/tastejs/todomvc/blob/master/examples/angularjs/js/services/todoStorage.js
-- React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
-- React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js
 
 Other implementations:
 
-- `Dojo2 Stores <https://github.com/dojo/stores>`_ - \
-  Excellent implementation of `Repository`_ pattern in paradigm of `Reactive Programming`_ for non-relational data.
 - `Dstore <http://dstorejs.io/>`_ - \
   yet another excellent implementation of `Repository`_ pattern.
 - `Dojo1 Store <https://dojotoolkit.org/reference-guide/1.10/dojo/store.html>`_ - \
@@ -131,9 +127,22 @@ Other implementations:
 - `Pocket.js <https://github.com/vincentracine/pocketjs>`_ - \
   a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB's proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.
 - `ZangoDB <https://erikolson186.github.io/zangodb/>`_ is a MongoDB-like interface for HTML5 IndexedDB that supports most of the familiar filtering, projection, sorting, updating and aggregation features of MongoDB, for usage in the web browser (`source code <https://github.com/erikolson186/zangodb>`__).
-- `JsStore <http://jsstore.net/>`_ is Sql Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
+- `JsStore <http://jsstore.net/>`_ is SQL Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
 
-I would like to add here `Ember.js <https://emberjs.com/>`_, but it implements the `ActiveRecord`_ pattern.
+I can not mention `Ember.js <https://emberjs.com/>`_ here, because it implements the `ActiveRecord`_ pattern.
+
+It is worth also to mention the library `rql <https://github.com/persvr/rql>`__, which makes it easy the implementing of the patterns `Service Stub`_ and Repository_.
+A lot of implementetions you can find in the projects of `persvr <https://github.com/persvr>`_ and `kriszyp <https://github.com/kriszyp>`_.
+
+The current article does not consider examples of implementation of the patterns `Event Sourcing`_ and CQRS_ (which are discussed at the article ":doc:`../ru/redux-and-flux-for-oop-programmers`"):
+
+- React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
+- React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js
+- `Dojo2 Stores <https://github.com/dojo/stores>`_ - a predictable, consistent state container for Javascript applications with inspiration from Redux and Flux architectures.
+
+These patterns are used for distributed computing and for systems recreating different states of the system, but their advantages at the frontend are not so obvious, especially given the fact that the implementation of business logic can be most demanded namely at the frontend.
+
+We should also mention the implementation of reactive storage based on the state and using RxJS libraries, see, for example, `angular2-rxjs-chat <https://github.com/ng-book/angular2-rxjs-chat>`_.
 
 
 Implementation of relationship
@@ -440,7 +449,7 @@ Source code
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
-.. update:: 25 Dec, 2017
+.. update:: 26 May, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
@@ -462,6 +471,8 @@ Source code
 .. _Service Stub: http://martinfowler.com/eaaCatalog/serviceStub.html
 .. _Unit of Work: http://martinfowler.com/eaaCatalog/unitOfWork.html
 .. _Anemic Domain Model: http://www.martinfowler.com/bliki/AnemicDomainModel.html
+.. _Event Sourcing: https://martinfowler.com/eaaDev/EventSourcing.html
+.. _CQRS: https://martinfowler.com/bliki/CQRS.html
 
 .. _Coupling: http://wiki.c2.com/?CouplingAndCohesion
 .. _Cohesion: http://wiki.c2.com/?CouplingAndCohesion

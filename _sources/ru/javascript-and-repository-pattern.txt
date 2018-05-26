@@ -126,7 +126,7 @@
 Сегодня модно увлекаться реактивным программированием.
 Знаете ли Вы, что разработчики dojo впервые `применили реактивное программирование <https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35>`__ в своей реализации паттерна Repository еще 13 сентября 2010?
 
-Реактивное программирование дополняет (а не противопоставляет) паттерн `Repository`_, о чем красноречиво свидетельствует опыт `dojo.store`_, `Dstore`_ и нового `Dojo 2 - data stores <https://github.com/dojo/stores>`_.
+Реактивное программирование дополняет (а не противопоставляет) паттерн `Repository`_, о чем красноречиво свидетельствует опыт `dojo.store`_ и `Dstore`_.
 
 Разработчики dojo - команда высококвалифицированных специалистов, чьи библиотеки используют такие серьезные компании как IBM.
 Примером того, насколько серьезно и комплексно они подходят к решению проблем, может служить `история библиотеки RequireJS <http://requirejs.org/docs/history.html>`_.
@@ -140,13 +140,9 @@
 - Angular2+: https://github.com/tastejs/todomvc/blob/master/examples/angular2/app/services/store.ts
 - Angular2+: https://github.com/tastejs/todomvc/blob/master/examples/angular2_es2015/app/services/todo-store.service.js
 - AngularJS: https://github.com/tastejs/todomvc/blob/master/examples/angularjs/js/services/todoStorage.js
-- React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
-- React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js
 
 Другие реализации:
 
-- `Dojo2 Stores <https://github.com/dojo/stores>`_ - \
-  Excellent implementation of `Repository`_ pattern in paradigm of `Reactive Programming`_ for non-relational data.
 - `Dstore <http://dstorejs.io/>`_ - \
   yet another excellent implementation of `Repository`_ pattern.
 - `Dojo1 Store <https://dojotoolkit.org/reference-guide/1.10/dojo/store.html>`_ - \
@@ -160,9 +156,22 @@
 - `Pocket.js <https://github.com/vincentracine/pocketjs>`_ - \
   a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB's proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.
 - `ZangoDB <https://erikolson186.github.io/zangodb/>`_ is a MongoDB-like interface for HTML5 IndexedDB that supports most of the familiar filtering, projection, sorting, updating and aggregation features of MongoDB, for usage in the web browser (`source code <https://github.com/erikolson186/zangodb>`__).
-- `JsStore <http://jsstore.net/>`_ is Sql Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
+- `JsStore <http://jsstore.net/>`_ is SQL Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
 
-Я хотел бы добавить сюда и `Ember.js <https://emberjs.com/>`_, но он реализует паттерн `ActiveRecord`_.
+Я не могу добавить сюда `Ember.js <https://emberjs.com/>`_, так как он реализует паттерн `ActiveRecord`_.
+
+Отдельно стоит упомянуть библиотеку `rql <https://github.com/persvr/rql>`__, которая позволяет легко реализовывать паттерны `Service Stub`_ и Repository_.
+Много наработок можно увидеть в проектах `persvr <https://github.com/persvr>`_ и `kriszyp <https://github.com/kriszyp>`_.
+
+В текущей статье не рассматриваются примеры реализаций паттернов `Event Sourcing`_ и CQRS_ (о чем ведется речь в статье ":doc:`../ru/redux-and-flux-for-oop-programmers`"):
+
+- React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
+- React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js
+- `Dojo2 Stores <https://github.com/dojo/stores>`_ - a predictable, consistent state container for Javascript applications with inspiration from Redux and Flux architectures.
+
+Данные паттерны используется в распределенных вычислениях и в системах воссоздающих разные состояния системы, но их преимущества на фронтенде не столь очевидны, особенно учитывая тот факт, что именно на фронтенде реализация бизнес-логики бывает наиболее востребованной.
+
+Отдельно стоит упомянуть реализацию реактивных хранилищ основанных на состоянии с использованием библиотеки RxJS, смотрите, например, `angular2-rxjs-chat <https://github.com/ng-book/angular2-rxjs-chat>`_.
 
 
 Реализация реляционных связей
@@ -228,7 +237,7 @@ Domain-Driven Design подходит к связям более строго, �
 Рост популярности асинхронных приложений заставил пересмотреть устоявшиеся представления о ленивой реализации связей.
 Асинхронное обращение к каждой ленивой связи каждого объекта значительно усложняет ясность программного кода, и препятствует оптимизации.
 
-Это привело к росту популярности объекто-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
+Это привело к росту популярности объектно-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
 Все чаще REST-frameworks стали использоваться для передачи клиенту `агрегатов вложенных объектов <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
 
     To do anything with an object, you have to hold a reference to it. How do you get that reference?
@@ -503,7 +512,7 @@ This article in English ":doc:`../en/javascript-and-repository-pattern`".
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
-.. update:: 27 Nov, 2017
+.. update:: 26 May, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
@@ -525,6 +534,8 @@ This article in English ":doc:`../en/javascript-and-repository-pattern`".
 .. _Service Stub: http://martinfowler.com/eaaCatalog/serviceStub.html
 .. _Unit of Work: http://martinfowler.com/eaaCatalog/unitOfWork.html
 .. _Anemic Domain Model: http://www.martinfowler.com/bliki/AnemicDomainModel.html
+.. _Event Sourcing: https://martinfowler.com/eaaDev/EventSourcing.html
+.. _CQRS: https://martinfowler.com/bliki/CQRS.html
 
 .. _Coupling: http://wiki.c2.com/?CouplingAndCohesion
 .. _Cohesion: http://wiki.c2.com/?CouplingAndCohesion
