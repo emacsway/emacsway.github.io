@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 14 Aug 2017 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 28 May 2018 00:00:00 GMT" />
         
             <meta name="description" content="This article is devoted to the issues of designing Service Layer and considers the widespread mistakes." />
         
@@ -101,7 +101,8 @@
 <li><a class="reference internal" href="#taming-of-swollen-models" id="id36">Taming of swollen models</a></li>
 <li><a class="reference internal" href="#problems-of-django-annotation" id="id37">Problems of Django annotation</a></li>
 <li><a class="reference internal" href="#services-of-infrastructure-layer" id="id38">Services of infrastructure layer</a></li>
-<li><a class="reference internal" href="#further-reading" id="id39">Further Reading</a></li>
+<li><a class="reference internal" href="#peculiar-properties-of-service-layer-on-client-side" id="id39">Peculiar properties of Service Layer on client side</a></li>
+<li><a class="reference internal" href="#further-reading" id="id40">Further Reading</a></li>
 </ul>
 </div>
 </div>
@@ -426,8 +427,22 @@ the pattern of interactions between the four layers through an
 architectural framework.
 («Domain-Driven Design: Tackling Complexity in the Heart of Software» <a class="footnote-reference" href="#fnddd" id="id25">[3]</a>)</div></blockquote>
 </div>
+<div class="section" id="peculiar-properties-of-service-layer-on-client-side">
+<h1><a class="toc-backref" href="#id39">Peculiar properties of Service Layer on client side</a><a class="headerlink" href="#peculiar-properties-of-service-layer-on-client-side" title="Permalink to this headline">¶</a></h1>
+<p>Using the <a class="reference external" href="https://martinfowler.com/bliki/DDD_Aggregate.html">Aggregate</a> concept and reactive programming libraries, such as <a class="reference external" href="https://github.com/ReactiveX/rxjs">RxJS</a>, allows us to implement Service Layer using a simplest pattern like <a class="reference external" href="https://martinfowler.com/eaaCatalog/gateway.html">Gateway</a>, see, for example, <a class="reference external" href="https://angular.io/tutorial/toh-pt6">the tutorial of Angular documentation</a>.
+In this case, <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> is usually implemented as a simple dictionary, which is then converted to a list of GET parameters for the URL.
+Such service usually communicates with a server either through JSON-RPC, or through <a class="reference external" href="http://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions">REST-API Actions</a>.</p>
+<p>Everything works well until you need to express prioritized queries, for example, using the logical operator &#8220;OR&#8221; which has a lower priority than the logical operator &#8220;AND&#8221;.
+This raises the question of who should be responsible for building the query, the Service Layer of the client or the Service Layer of the server?</p>
+<p>On the one hand, the server should not make assumptions about its clients, and must limit its interface through the interface <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a>.
+But this dramatically increases the level of complexity of the client, in particular, the implementation of <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>.
+To facilitate implementation, you can use the library <a class="reference external" href="https://github.com/persvr/rql">rql</a> mentioned in the article &#8220;<a class="reference internal" href="../javascript-and-repository-pattern/"><span class="doc">Implementation of Repository pattern for browser&#8217;s JavaScript</span></a>&#8221;.</p>
+<p>On the other hand, the Service Layer, albeit a remote call, is designed to serve clients, so it can concentrate the logic of query building.
+If the client does not contain complex logic, allowing to interpret the prioritized queries for Service Stub, then no need to complicate it.
+In this case, it&#8217;s easier to add a new method to the remote call service, and get rid of the need for prioritized queries.</p>
+</div>
 <div class="section" id="further-reading">
-<h1><a class="toc-backref" href="#id39">Further Reading</a><a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id40">Further Reading</a><a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h1>
 <ul>
 <li><dl class="first docutils">
 <dt>«Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin <a class="footnote-reference" href="#fnccode" id="id26">[1]</a>, chapters:</dt>
@@ -495,7 +510,7 @@ architectural framework.
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Aug 14, 2017</p>
+<p class="first last admonition-title">Updated on May 28, 2018</p>
 </div>
 </div>
 
@@ -583,7 +598,7 @@ architectural framework.
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Aug 14, 2017</li>
+    May 28, 2018</li>
   
 
   

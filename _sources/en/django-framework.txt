@@ -252,7 +252,7 @@ Django REST framework
 
 If we have previously considered the shortcomings of Django ORM, the `Django REST framework`_ surprisingly turns its disadvantages into advantages, because the interface for building Django ORM queries is great for REST.
 
-If you were lucky enough to use `Dstore`_ on the client side, then you can use `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ or `rql <https://pypi.python.org/pypi/rql>`__ on the server side.
+If you were lucky enough to use `Dstore`_ on the client side, then you can use `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ or `pyrql <https://pypi.org/project/pyrql/>`__ on the server side.
 
 Frankly, the Django REST framework requires a lot of time for the debugger to help researching it, and this, of course, characterizes its design solutions not from the best side.
 A good program should be read, not understood, and even more so without the help of a debugger.

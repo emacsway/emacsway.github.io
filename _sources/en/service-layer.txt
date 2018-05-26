@@ -390,6 +390,25 @@ You have to distinguish the Service Layer from infrastructure layer services.
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
+Peculiar properties of Service Layer on client side
+===================================================
+
+Using the Aggregate_ concept and reactive programming libraries, such as `RxJS <https://github.com/ReactiveX/rxjs>`_, allows us to implement Service Layer using a simplest pattern like Gateway_, see, for example, `the tutorial of Angular documentation <https://angular.io/tutorial/toh-pt6>`__.
+In this case, `Query Object`_ is usually implemented as a simple dictionary, which is then converted to a list of GET parameters for the URL.
+Such service usually communicates with a server either through JSON-RPC, or through `REST-API Actions <http://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions>`__.
+
+Everything works well until you need to express prioritized queries, for example, using the logical operator "OR" which has a lower priority than the logical operator "AND".
+This raises the question of who should be responsible for building the query, the Service Layer of the client or the Service Layer of the server?
+
+On the one hand, the server should not make assumptions about its clients, and must limit its interface through the interface `Query Object`_.
+But this dramatically increases the level of complexity of the client, in particular, the implementation of `Service Stub`_.
+To facilitate implementation, you can use the library `rql <https://github.com/persvr/rql>`__ mentioned in the article ":doc:`./javascript-and-repository-pattern`".
+
+On the other hand, the Service Layer, albeit a remote call, is designed to serve clients, so it can concentrate the logic of query building.
+If the client does not contain complex logic, allowing to interpret the prioritized queries for Service Stub, then no need to complicate it.
+In this case, it's easier to add a new method to the remote call service, and get rid of the need for prioritized queries.
+
+
 Further Reading
 ===============
 
@@ -418,7 +437,7 @@ Further Reading
 .. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 
 
-.. update:: 14 Aug, 2017
+.. update:: 28 May, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
@@ -439,6 +458,8 @@ Further Reading
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html
 .. _Service Layer: https://martinfowler.com/eaaCatalog/serviceLayer.html
 .. _Service Stub: https://martinfowler.com/eaaCatalog/serviceStub.html
+.. _Gateway: https://martinfowler.com/eaaCatalog/gateway.html
+.. _Aggregate: https://martinfowler.com/bliki/DDD_Aggregate.html
 
 .. _Extract Method: https://www.refactoring.com/catalog/extractMethod.html
 .. _Replace Method with Method Object: https://www.refactoring.com/catalog/replaceMethodWithMethodObject.html

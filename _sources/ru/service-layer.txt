@@ -529,6 +529,25 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
+Особенности сервисного слоя на стороне клиента
+==============================================
+
+Использование концепции `агрегата <Aggregate_>`__ и библиотек реактивного программирования, таких как `RxJS <https://github.com/ReactiveX/rxjs>`_, позволяет реализовывать Сервисный Слой с помощью простейшего паттерна Gateway_, смотрите, например, `учебный пример из документации Angular <https://angular.io/tutorial/toh-pt6>`__.
+В таком случае, `Query Object`_ обычно реализуется в виде простого словаря, который преобразуется в список GET-параметров URL.
+Общается такой Сервис с сервером обычно либо посредством JSON-RPC, либо посредством `REST-API Actions <http://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions>`__.
+
+Все работает хорошо до тех пор, пока не возникает необходимость выражать приоритезированные запросы, например, использующие логический оператор OR, который использует меньший приоритет чем логический оператор AND.
+Это порождает вопрос, кто должен отвечать за построение запроса, Сервисный Слой клиента или Сервисный Слой сервера?
+
+С одной стороны, сервер не должен делать предположений о своих клиентах, и должен ограничивать свой интерфейс посредством интерфейса `Query Object`_.
+Но это резко увеличивает уровень сложности клиента, в частности, при реализации `Service Stub`_.
+Для облегчения реализации можно использовать библиотеку `rql <https://github.com/persvr/rql>`__, упомянутую в статье ":doc:`./javascript-and-repository-pattern`".
+
+С другой стороны, Сервисный Слой, пусть и удаленного вызова, предназначен для обслуживания клиентов, а значит, может концентрировать в себе логику построения запросов.
+Если клиент не содержит сложной логики, позволяющей интерпретировать приоритезированные запросы для Service Stub, то нет необходимости его усложнять этим.
+В таком случае проще добавить новый метод в сервисе удаленного вызова, и избавиться от необходимости в приоритезированных запросах.
+
+
 Что почитать
 ============
 
@@ -558,7 +577,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 
 
-.. update:: 14 Aug, 2017
+.. update:: 28 May, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
@@ -579,6 +598,8 @@ This article in English ":doc:`../en/service-layer`".
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html
 .. _Service Layer: https://martinfowler.com/eaaCatalog/serviceLayer.html
 .. _Service Stub: https://martinfowler.com/eaaCatalog/serviceStub.html
+.. _Gateway: https://martinfowler.com/eaaCatalog/gateway.html
+.. _Aggregate: https://martinfowler.com/bliki/DDD_Aggregate.html
 
 .. _Extract Method: https://www.refactoring.com/catalog/extractMethod.html
 .. _Replace Method with Method Object: https://www.refactoring.com/catalog/replaceMethodWithMethodObject.html
