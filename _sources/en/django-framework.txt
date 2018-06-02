@@ -215,7 +215,7 @@ Model Versioning and Audit Log
 Django has a lot of libraries for model versioning, see, for example, "`Model Auditing and History <https://djangopackages.org/grids/g/model-audit/>`__" and "`Versioning <https://djangopackages.org/grids/g/versioning/>`__".
 However, I did not succeed in finding such a mature and perfect solution as `sqlalchemy-continuum <https://github.com/kvesteri/sqlalchemy-continuum>`_ among Django-libraries.
 
-As a result, I had to write a library for versioning myself (it is not public, since all rights belong to the company), which allows you to restore the state of the `aggregate <https://martinfowler.com/bliki/DDD_Aggregate.html>`__ (i.e. the structure of interrelated objects) for the specified version, even if some of the objects of the aggregate has been removed.
+As a result, I had to write a library for versioning (implementing Slowly Changing Dimensions (SCD) - Type 4) by myself (it is not public, since all rights belong to the company), which allows you to restore the state of the `aggregate <https://martinfowler.com/bliki/DDD_Aggregate.html>`__ (i.e. the structure of interrelated objects) for the specified version, even if some of the objects of the aggregate has been removed.
 Since the boundaries of the aggregate are also the boundaries of the transaction, the implementation of versioned relations was easily solved with already mentioned library `django-composite-foreignkey`_, which allows you to organize composite (including the version stamp of the object) relations between model instances.
 
 The following libraries and articles helped me with information:
