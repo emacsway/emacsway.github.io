@@ -9,6 +9,8 @@ How to quickly develop high-quality code. Team work.
    :author: Ivan Zakrevsky
 
 This article is about how to write high-quality code quickly.
+This article focuses mainly on architects and managers, so there's a lot of quotes of famous architects.
+
 
 .. contents:: Contents
 
