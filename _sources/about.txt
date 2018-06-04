@@ -155,7 +155,7 @@ Bibliography
 Technologies & approaches
 -------------------------
 
-* Programming languages: Python (primary, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
+* Programming languages: Python (primary, since 2008), JavaScript/TypeScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
 * Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Designing Through Refactoring, Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
