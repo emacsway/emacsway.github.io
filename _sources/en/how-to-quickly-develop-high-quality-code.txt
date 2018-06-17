@@ -4,7 +4,7 @@ How to quickly develop high-quality code. Team work.
 
 .. post:: Jul 10, 2017
    :language: en
-   :tags:
+   :tags: Agile, XP, Extreme Programming
    :category:
    :author: Ivan Zakrevsky
 
