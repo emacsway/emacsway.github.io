@@ -29,7 +29,7 @@ An XP_ and DDD_ expert.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
 
-My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring, Clean Code & Clean Architecture, and others.
+My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring (`Evolutionary Design`_), Clean Code & Clean Architecture, and others.
 
 Also I'm an `Open Source developer <Open Source Projects_>`__ and an adherent of `KISS principle <KISS_>`_. My philosophy is: "Do it shortly, clearly".
 
@@ -94,7 +94,7 @@ Bibliography
     * "Code Complete" by Steve McConnell
     * "Domain-Driven Design" by Eric Evans
     * "Test-Driven Development By Example" by Kent Beck
-    * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
+    * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 * Programming languages:
     * "Learning Python" by Mark Lutz
     * "Python Tutorial" and "Python HOWTOs" (official)
@@ -138,7 +138,7 @@ Bibliography
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
     * "Development of Further Patterns of Enterprise Application Architecture" by Martin Fowler
     * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
-    * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+    * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
     * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
     * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
@@ -157,10 +157,10 @@ Technologies & approaches
 
 * Programming languages: Python (primary, since 2008), JavaScript/TypeScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
-* Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Designing Through Refactoring, Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP etc.
+* Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Designing Through Refactoring (Evolutionary Design), Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Flask, also used Aiohttp, Tornado, Twisted, Ruby on Rails, etc.
-* JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2-5.
+* JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2-6+.
 * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
 * Bug-tracking: Jira (mainly), Trac, Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
@@ -213,6 +213,7 @@ Technologies & approaches
 .. _Software Architectural Design: https://en.wikipedia.org/wiki/Software_architecture
 .. _Database Architecture: https://en.wikipedia.org/wiki/Data_architecture
 .. _Unit Of Work: https://martinfowler.com/eaaCatalog/unitOfWork.html
+.. _Evolutionary Design: https://martinfowler.com/tags/evolutionary%20design.html
 .. _XP: https://martinfowler.com/bliki/ExtremeProgramming.html
 
 .. _Coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
