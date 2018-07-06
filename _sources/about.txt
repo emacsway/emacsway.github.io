@@ -29,7 +29,7 @@ An XP_ and DDD_ expert.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
 
-My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring (`Evolutionary Design`_), Clean Code & Clean Architecture, and others.
+My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, `Evolutionary Design`_ (aka Designing Through Refactoring), Clean Code & Clean Architecture, and others.
 
 Also I'm an `Open Source developer <Open Source Projects_>`__ and an adherent of `KISS principle <KISS_>`_. My philosophy is: "Do it shortly, clearly".
 
@@ -157,7 +157,7 @@ Technologies & approaches
 
 * Programming languages: Python (primary, since 2008), JavaScript/TypeScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
-* Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Designing Through Refactoring (Evolutionary Design), Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP, Microservices etc.
+* Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Evolutionary Design (aka Designing Through Refactoring), Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP, Microservices etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Flask, also used Aiohttp, Tornado, Twisted, Ruby on Rails, etc.
 * JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2+.
