@@ -23,7 +23,7 @@ There are several myths:
 The first myth. Horizontal stratification of team.
 --------------------------------------------------
 
-There is an opinion that a team should be broken by three layers: junior, middle and senior.
+There is the opinion that a team should be broken by three layers: junior, middle and senior.
 
 The truth is that it's enough to have at least one weak developer in the team to lose a lot of time for the whole team.
 
@@ -147,10 +147,10 @@ The number of objects an average human can hold in `working memory is 7 ± 2 <ht
 That's why good `decomposition is important <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__.
 That's why good encapsulation and abstraction are important.
 
-If code is not readable, has a bad code navigation, a bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OCP principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automated refactoring, then this code slows rate of development for 91% of time of the whole team.
+If the code is not readable, has bad code navigation, bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OCP principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automated refactoring, then this code slows rate of development for 91% of time of the whole team.
 
 Thus, each developer in the team MUST be a senior developer.
-The best way to achieve it is the XP by Kent Beck.
+The best way to achieve it is to use XP of Kent Beck.
 
 Experience sharing is the rule №1 for the high-skilled team.
 If your team still has a junior developer after two months, your team needs a better manager.
@@ -363,7 +363,7 @@ There is only one way to develop a software quickly: to do it in the right way f
 The third myth. Pair programming reduces the velocity of development.
 ---------------------------------------------------------------------
 
-There is an opinion that pair programming reduces the velocity of development.
+There is the opinion that pair programming reduces the velocity of development.
 
     Studies at the Software Engineering
     Institute have found that developers insert an average of 1 to 3
@@ -518,7 +518,7 @@ Next time he would be able to solve the issue independently.
 The fourth myth. Theory and practice are two different things.
 --------------------------------------------------------------
 
-There is an opinion that theory and practice are two different things.
+There is the opinion that theory and practice are two different things.
 
 In reality the theory is the research of the practice.
 Do you want to solder own processor, or write own assembler to create own website?
