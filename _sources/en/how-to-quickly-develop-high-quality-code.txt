@@ -141,7 +141,7 @@ During code construction developer reads code for 91% of the time, and only for 
 Thus, when one developer writes an unreadable code for 9% of his time, this code slows down the development velocity of the whole team by 91%.
 The code is written once, but is read incommensurably many times in the development process.
 
-The emphasis on "fast writing" code actually leads to a reduction in the development velocity in geometric progression. And the emphasis on "readability" of code leads to an increase in the development velocity, also in an geometric progression.
+The emphasis on "fast writing" code actually leads to reduction in the development velocity in geometric progression. And the emphasis on "readability" of code leads to an increase in the development velocity, also in an geometric progression.
 
 The number of objects an average human can hold in `working memory is 7 ± 2 <https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two>`__.
 That's why good `decomposition is important <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__.
@@ -153,7 +153,7 @@ Thus, each developer in the team MUST be a senior developer.
 The best way to achieve it is to use XP of Kent Beck.
 
 Experience sharing is the rule №1 for the high-skilled team.
-If your team still has a junior developer after two months, your team needs a better manager.
+If your team still has the junior developer after two months, your team needs a better manager.
 
     Pair programming is also not a tutoring session. Sometimes pairs contain one
     partner with much more experience than the other partner. When this is true, the
@@ -917,7 +917,7 @@ There are also online catalogs of refactorings for database:
 Use catalogs of code smells
 ---------------------------
 
-Do you want to avoid a war of opinions and save a lot of team's time?
+Do you want to avoid the war of opinions and save a lot of team's time?
 Ground your arguments on knowledge, instead of opinion, when you do code review.
 Use catalogs of Code Smells.
 There is a few of most frequently used catalogs:
