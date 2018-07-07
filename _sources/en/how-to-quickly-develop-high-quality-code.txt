@@ -23,7 +23,7 @@ There are several myths:
 The first myth. Horizontal stratification of team.
 --------------------------------------------------
 
-There is the opinion that a team should be broken by three layers: junior, middle and senior.
+There is an opinion that a team should be broken by three layers: junior, middle and senior.
 
 The truth is that it's enough to have at least one weak developer in the team to lose a lot of time for the whole team.
 
@@ -363,7 +363,7 @@ There is only one way to develop a software quickly: to do it in the right way f
 The third myth. Pair programming reduces the velocity of development.
 ---------------------------------------------------------------------
 
-There is the opinion that pair programming reduces the velocity of development.
+There is an opinion that pair programming reduces the velocity of development.
 
     Studies at the Software Engineering
     Institute have found that developers insert an average of 1 to 3
@@ -518,7 +518,7 @@ Next time he would be able to solve the issue independently.
 The fourth myth. Theory and practice are two different things.
 --------------------------------------------------------------
 
-There is the opinion that theory and practice are two different things.
+There is an opinion that theory and practice are two different things.
 
 In reality the theory is the research of the practice.
 Do you want to solder own processor, or write own assembler to create own website?
