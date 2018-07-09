@@ -140,6 +140,8 @@ Bibliography
     * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
     * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
     * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
+    * "Implementing Domain-Driven Design" by Vaughn Vernon
+    * "Working Effectively with Legacy Code" by Michael C. Feathers
     * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
     * "PostgreSQL: Up and Running" by Regina Obe and Leo Hsu
