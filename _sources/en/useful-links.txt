@@ -32,6 +32,8 @@ Sites
 - `Refactoring Databases <http://www.databaserefactoring.com/>`__
 - `XUnit Test Patterns <http://xunitpatterns.com/>`__
 - `Microsoft Application Architecture Guide, 2nd Edition <https://msdn.microsoft.com/en-us/library/ff650706.aspx>`__
+- `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
+- `Azure Architecture Center | Microsoft Docs <https://docs.microsoft.com/en-us/azure/>`__
 - `Agile Alliance <https://www.agilealliance.org/>`__
 - `Passionate about data <https://www.sadalage.com/>`__
 - `PlanningPoker.com - Estimates Made Easy. Sprints Made Simple. <https://www.planningpoker.com/>`__
