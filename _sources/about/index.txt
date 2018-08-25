@@ -32,9 +32,9 @@ Real experience of establishing economically successful Agile development.
 
 Was participated in development of software for various domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
 
-The main value for me is to make the code clean, simple and maintainable; the implementation of new features :doc:`rapid and cheap <../en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (as opposed to exponential); the risks low; the team successful.
+The main my objective is to make the code clean, simple and maintainable; the implementation of new features :doc:`rapid and cheap <../en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (as opposed to exponential); the risks low; the team successful.
 
-Deep understanding of economic of software development, internal code quality, XP, TDD, DDD, Design Patterns, Code Smells, Refactoring, Evolutionary Design, Clean Code/Architecture, Microservices etc. Extensive :doc:`bibliography <./bibliography>`.
+Deep knowledge of economic of software development, internal code quality, XP, TDD, DDD, Design Patterns, Code Smells, Refactoring, Evolutionary Design, Clean Code/Architecture, Microservices etc. Extensive :doc:`bibliography <./bibliography>`.
 
 Open Source `developer <Open Source Projects_>`__. Adherent of `KISS principle <KISS_>`_ with personal philosophy "Do it shortly, clearly".
 
