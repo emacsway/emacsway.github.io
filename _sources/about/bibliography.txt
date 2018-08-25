@@ -8,6 +8,9 @@
 Bibliography
 ============
 
+The list of literature read by me:
+
+
 * Architecture & Design:
     * "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
     * "Pattern Hatching: Design Patterns Applied" by John Vlissides

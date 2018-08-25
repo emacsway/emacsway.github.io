@@ -28,17 +28,13 @@ About me
 
 An XP and DDD expert.
 
-Real experience of establishing economically successful Agile development.
+.. Was participated in development of software for various domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
 
-Was participated in development of software for various domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
+My main objective is to make the code clean, simple and maintainable; the implementation of new features :doc:`rapid and cheap <../en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
 
-The main my objective is to make the code clean, simple and maintainable; the implementation of new features :doc:`rapid and cheap <../en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (as opposed to exponential); the risks low; the team successful.
+Real experience of establishing economically successful Agile development. Deep background in internal code quality, XP, TDD, DDD, Design Patterns, Code Smells, Refactoring, Evolutionary Design, Clean Code/Architecture, Microservices and others. Extensive :doc:`bibliography <./bibliography>`.
 
-Deep knowledge of economic of software development, internal code quality, XP, TDD, DDD, Design Patterns, Code Smells, Refactoring, Evolutionary Design, Clean Code/Architecture, Microservices etc. Extensive :doc:`bibliography <./bibliography>`.
-
-Open Source `developer <Open Source Projects_>`__. Adherent of `KISS principle <KISS_>`_ with personal philosophy "Do it shortly, clearly".
-
-The basic personal trend is: "High internal quality of software allows us to develop features faster and cheaper." ("`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__" by Martin Fowler)
+Also I'm an Open Source `developer <Open Source Projects_>`__ and an adherent of `KISS <KISS_>`_ principle. My philosophy is: "Do it shortly, clearly".
 
 
 Open Source Projects
@@ -125,7 +121,18 @@ Articles in Russian:
 
     "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
 
+    In most contexts higher quality ⇒ expensive. But high internal quality of software allows us to develop features faster and cheaper. ("`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__" by Martin Fowler)
+
+    The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size. ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
+
     "Clean code - is ability of code to express the truth about itself, and not misleading."
+
+
+Afterword
+---------
+
+    The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
+    ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
 
 
 .. _KISS: https://people.apache.org/~fhanik/kiss.html
