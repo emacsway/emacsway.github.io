@@ -26,27 +26,19 @@ Python/FullStack Software Engineer, XP coach, Solution/Application Architect
 About me
 --------
 
-.. bearded developer since 2004
+An XP and DDD expert.
 
-An XP_ and DDD_ expert.
+Real experience of establishing economically successful Agile development.
 
-My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
+Was participated in development of software for various domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
 
-My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, `Evolutionary Design`_ (aka Designing Through Refactoring), Clean Code & Clean Architecture, and others.
+The main value is to make the code clean, simple and maintainable; the implementation of new features :doc:`rapid and cheap <../en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (as opposed to exponential); the risks low; the team successful.
 
-Also I'm an `Open Source developer <Open Source Projects_>`__ and an adherent of `KISS principle <KISS_>`_. My philosophy is: "Do it shortly, clearly".
+Deep understanding of XP, TDD, DDD, SOLID, Design Patterns, Refactoring, Evolutionary Design, Clean Code/Architecture etc. Extensive :doc:`bibliography <./bibliography>`.
 
-My trend is:
+Open Source `developer <Open Source Projects_>`__. Adherent of `KISS principle <KISS_>`_ with personal philosophy "Do it shortly, clearly".
 
-    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
-
-
-Education
----------
-
-.. 1994-1999 - 
-
-The Dnepropetrovsk State Technical University of Railway Transportation
+The basic personal trend is: "High internal quality of software allows us to develop features faster and cheaper." ("`Tradable Quality Hypothesis <https://martinfowler.com/bliki/TradableQualityHypothesis.html>`__" by Martin Fowler)
 
 
 Open Source Projects
@@ -67,114 +59,43 @@ Articles
 
 Articles in English:
 
-* ":doc:`en/javascript-and-repository-pattern`"
-* ":doc:`en/django-framework`"
-* ":doc:`en/service-layer`"
-* ":doc:`en/cache-dependencies`"
-* ":doc:`en/how-to-quickly-develop-high-quality-code`"
-* ":doc:`en/storm-orm`"
+* ":doc:`../en/javascript-and-repository-pattern`"
+* ":doc:`../en/django-framework`"
+* ":doc:`../en/service-layer`"
+* ":doc:`../en/cache-dependencies`"
+* ":doc:`../en/how-to-quickly-develop-high-quality-code`"
+* ":doc:`../en/storm-orm`"
 * :ref:`... all articles in English >> <language-en>`
 
 Articles in Russian:
 
-* ":doc:`ru/javascript-and-repository-pattern`"
-* ":doc:`ru/django-framework`"
-* ":doc:`ru/service-layer`"
-* ":doc:`ru/cache-dependencies`"
-* ":doc:`ru/storm-orm`"
+* ":doc:`../ru/javascript-and-repository-pattern`"
+* ":doc:`../ru/django-framework`"
+* ":doc:`../ru/service-layer`"
+* ":doc:`../ru/cache-dependencies`"
+* ":doc:`../ru/storm-orm`"
 * :ref:`... all articles in Russian >> <language-ru>`
 
 
-Bibliography
-------------
-
-* Architecture & Design:
-    * "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
-    * "Pattern Hatching: Design Patterns Applied" by John Vlissides
-    * "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-    * "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
-    * "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
-    * "Code Complete" by Steve McConnell
-    * "Domain-Driven Design" by Eric Evans
-    * "Test-Driven Development By Example" by Kent Beck
-    * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
-* Programming languages:
-    * "Learning Python" by Mark Lutz
-    * "Python Tutorial" and "Python HOWTOs" (official)
-    * "JavaScript: The Definitive Guide" by David Flanagan
-    * "JavaScript Patterns" by Stoyan Stefanov
-    * "ng-book 2: The Complete Guide to Angular" by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda
-* Databases:
-    * "PostgreSQL" by Korry Douglas, Susan Douglas
-    * "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
-* Algorithms:
-    * "Algorithms and Data Structures" by N.Wirth
-* Compilers & Parsers:
-    * "Compiler Construction" by N.Wirth
-* Methodologies:
-    * "Extreme Programming Explained" by Kent Beck
-    * "Planning Extreme Programming" by Kent Beck, Martin Fowler
-    * "The Clean Coder" by Robert C. Martin
-* Operational system:
-    * "Unix and Linux System Administration Handbook" by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
-    * "The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures" by Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
-    * "Digital computers and microprocessors" by Aliyev / "Цифровая вычислительная техника и микропроцессоры" М.М.Алиев
-* English:
-    * "Friendly meetings with the English language" by Maria A. Kolpakchi
-    * "English. Reference materials." by Ksenia A. Guzeeva, Tamara G. Troshko
-
-
 ..
-    In the queue
-    ------------
+    Technologies & approaches
+    -------------------------
 
-    * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
-    * "Analysis Patterns. Reusable Object Models" by Martin Fowler
-    * "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
-    * "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
-    * "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
-    * "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
-    * "An Introduction to Database Systems" by C.J. Date
-    * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
-    * "Implementation Patterns" by Kent Beck
-    * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
-    * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
-    * "Development of Further Patterns of Enterprise Application Architecture" by Martin Fowler
-    * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
-    * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
-    * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
-    * "Implementing Domain-Driven Design" by Vaughn Vernon
-    * "Working Effectively with Legacy Code" by Michael C. Feathers
-    * "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
-    * "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
-    * "PostgreSQL: Up and Running" by Regina Obe and Leo Hsu
-    * "PostgreSQL 9.0 High Performance" by Gregory Smith
-    * "Refactoring To Patterns" by Joshua Kerievsky
-    * "Pattern-Oriented Software Architecture: A System of Patterns, Volume 1" by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
-    * "Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2" by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
-    * "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
-    * "Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing, Volume 4" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
-    * "Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
+    * Programming languages: Python (primary, since 2008), JavaScript/TypeScript (strong), Ruby (sometimes),  PHP (in the past).
+    * Development environment: Emacs (sometimes VIM, PyCharm).
+    * Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Evolutionary Design (aka Designing Through Refactoring), Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP, Microservices etc.
+    * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
+    * Frameworks: Django (mainly), Flask, also used Aiohttp, Tornado, Twisted, Ruby on Rails, etc.
+    * JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2+.
+    * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
+    * Bug-tracking: Jira (mainly), Trac, Redmine, Pivotal Tracker.
+    * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
+    * CVS: Mercurial (mainly), GIT, SVN, Bazar.
+    * Services: New Relic, Heroku, AWS, Atlassian.
+    * Others: Docker, Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
+    * Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
-Technologies & approaches
--------------------------
-
-* Programming languages: Python (primary, since 2008), JavaScript/TypeScript (strong), Ruby (sometimes),  PHP (in the past).
-* Development environment: Emacs (sometimes VIM, PyCharm).
-* Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Evolutionary Design (aka Designing Through Refactoring), Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP, Microservices etc.
-* DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
-* Frameworks: Django (mainly), Flask, also used Aiohttp, Tornado, Twisted, Ruby on Rails, etc.
-* JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2+.
-* OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
-* Bug-tracking: Jira (mainly), Trac, Redmine, Pivotal Tracker.
-* HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
-* CVS: Mercurial (mainly), GIT, SVN, Bazar.
-* Services: New Relic, Heroku, AWS, Atlassian.
-* Others: Docker, Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
-* Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
-
-..
     Experience
     ----------
 
@@ -201,6 +122,8 @@ Technologies & approaches
     "programmers will have to wrestle with the messy real world." (Steve McConnel)
 
     "We become authorities and experts in the practical and scientific spheres by so many separate acts and hours of work. If a person keeps faithfully busy each hour of the working day, he can count on waking up some morning to find himself one of the competent ones of his generation." (William James)
+
+    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
 
     "Clean code - is ability of code to express the truth about itself, and not misleading."
 
