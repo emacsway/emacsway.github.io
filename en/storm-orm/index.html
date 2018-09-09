@@ -431,8 +431,8 @@ Your method can accept Raw-SQL as arguments, but this approach has the signs &#8
 The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of implementation of the mechanism for this modification.
 This entails the emergence of a logical dependence and a violation of encapsulation.</p>
 <p>To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should contain all methods to create any query required by each client.
-But an object should not make assumptions about clients!</p>
-<p>Otherwise, we receive a God object which is aware of the needs of all potential clients.</p>
+But an object should not make assumptions about clients!
+Otherwise, we receive a God object which is aware of the needs of all potential clients.</p>
 <p>This violates OCP and entails the emergence of &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id18">[2]</a> and &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id19">[2]</a>.
 Often there is garbage in the form of unclaimed methods, after removing objects using them.
 Very large classes are usually broken up using inheritance or composition.

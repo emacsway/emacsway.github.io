@@ -425,7 +425,6 @@ This entails the emergence of a logical dependence and a violation of encapsulat
 
 To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should contain all methods to create any query required by each client.
 But an object should not make assumptions about clients!
-
 Otherwise, we receive a God object which is aware of the needs of all potential clients.
 
 This violates OCP and entails the emergence of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
