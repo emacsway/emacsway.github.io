@@ -68,3 +68,7 @@ P.P.S.: ropemacs-mode должен быть выключен, если он ус
 .. update:: Feb 16, 2016
 
    Форк принят в мастер (`bd89775 <https://github.com/python-rope/rope/commit/d2496d25a1301dfc17e2173683e45d44c013c290>`__).
+
+.. update:: Nov 29, 2016
+
+   Реализация Type Hinting существенно `переработана <https://github.com/python-rope/rope/tree/master/rope/base/oi/type_hinting>`__.

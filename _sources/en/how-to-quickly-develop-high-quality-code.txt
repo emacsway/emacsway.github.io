@@ -4,7 +4,7 @@ How to quickly develop high-quality code. Team work.
 
 .. post:: Jul 10, 2017
    :language: en
-   :tags: Agile, XP, Extreme Programming
+   :tags: Agile, XP, Extreme Programming, Refactoring, Architecture
    :category:
    :author: Ivan Zakrevsky
 
@@ -13,6 +13,7 @@ This article focuses mainly on architects and managers, so there's a lot of quot
 
 
 .. contents:: Contents
+
 
 Myths
 =====
