@@ -124,7 +124,7 @@
 <div>Our command processing objects in the various autonomous components actually make up our service layer.</div></blockquote>
 <p>Разница между <a class="reference internal" href="../service-layer/"><span class="doc">классическим Сервисом</span></a> и событийно-ориентированным Сервисом в виде обработчика команды примерно такая же, как и между <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Оркестровым</a> (request/response) и <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Хореографическим</a> (event-based) способами взаимодействия микросервисов.</p>
 <p>Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.</p>
-<p>Таким образом, имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой попытка связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - скрыть их от самого же себя).</p>
+<p>Таким образом, имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой попытка связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - помочь приложению скрыть их от самого же себя).</p>
 <blockquote>
 <div>Each command is independent of the other, so why should we allow the objects which handle them to depend on each other?</div></blockquote>
 <p>Тут, правда, возникает вопрос осведомленности обработчиков команды и самого приложения об интерфейсе конкретной реализации CQRS.
@@ -153,8 +153,8 @@ conceptual objects, the code no longer reveals the model.</p>
 it all up, the domain developers lose their ability to chunk the model into meaningful pieces.&#8221;
 - &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</p>
 </div></blockquote>
-<p>Когда приложение имеет мало бизнес-логики, или лишен ее полностью, что часто бывает на практике, то данная проблема не возникает.</p>
-<p>Но в приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний <a class="footnote-reference" href="#fnddd" id="id4">[3]</a>.
+<p>Когда приложение имеет мало бизнес-логики, или лишено ее полностью, что часто бывает на практике, то данная проблема не возникает.</p>
+<p>Но в приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования, и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний <a class="footnote-reference" href="#fnddd" id="id4">[3]</a>.
 Также такой код обретает признаки &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id5">[1]</a> и &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id6">[1]</a>, что сильно затруднят исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
 В конечном итоге это приводит к стремительному росту стоимости изменения программы, но это уже отдельная тема.</p>
 <p>Одно время я тоже, как и многие другие, думал что такая фрагментация бизнес-логики является недостатком CQRS.
