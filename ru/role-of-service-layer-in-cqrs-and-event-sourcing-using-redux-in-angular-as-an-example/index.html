@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular &mdash; @emacsway&#39;s blog</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="@emacsway&#39;s blog" href="../../" />
+  
+
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+    
+
+        <meta http-equiv="Last-Modified" content="Sun, 16 Sep 2018 00:00:00 GMT" />
+        
+            <meta name="description" content="Нужно ли скрывать посредством Сервисного Слоя обращения к реализациям CQRS и Event Sourcing ? Периодически мне попадаются примеры и неуверенная аргументация о том, что лучше - скрывать. Однако, когда вопрос мог коснуться меня лично, я решил во всем разобраться сам." />
+        
+        
+            <meta property="og:image" content="../../_static/logo.jpg" />
+            <link rel="image_src" href="../../_static/logo.jpg" />
+        
+
+        <link rel="canonical" href="https://emacsway.github.io/ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/" />
+
+        <script type="text/javascript">
+            setTimeout(function() {
+                $.toast({
+                    text: 'If you like this site, please support it with an external link or share it with an social nerwork. Thanks!',
+                    position: 'bottom-right',
+                    hideAfter: 7000
+                });
+            }, 30000);
+        </script>
+
+    
+
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="@emacsway's blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cqrs-event-sourcing-redux-angular">
+<h1><a class="toc-backref" href="#id11">Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</a><a class="headerlink" href="#cqrs-event-sourcing-redux-angular" title="Permalink to this headline">¶</a></h1>
+<p>Нужно ли скрывать посредством Сервисного Слоя обращения к реализациям <a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a> и <a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a> ?
+Периодически мне попадаются примеры и неуверенная аргументация о том, что лучше - скрывать.
+Однако, когда вопрос мог коснуться меня лично, я решил во всем разобраться сам.</p>
+<div class="contents topic" id="id1">
+<p class="topic-title first">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#cqrs-event-sourcing-redux-angular" id="id11">Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</a></li>
+<li><a class="reference internal" href="#redux-angular" id="id12">Использование Redux в Angular приложениях</a></li>
+<li><a class="reference internal" href="#id2" id="id13">Логика приложения</a></li>
+<li><a class="reference internal" href="#id3" id="id14">Бизнес-логика</a></li>
+<li><a class="reference internal" href="#id7" id="id15">Проблематика</a></li>
+<li><a class="reference internal" href="#id8" id="id16">Пример использования</a></li>
+<li><a class="reference internal" href="#id9" id="id17">Другие ссылки по теме</a></li>
+<li><a class="reference internal" href="#id10" id="id18">Благодарности</a></li>
+</ul>
+</div>
+<p>Что такое CQRS - лучше всего <a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">узнать от самого Greg Young</a>.</p>
+</div>
+<div class="section" id="redux-angular">
+<h1><a class="toc-backref" href="#id12">Использование Redux в Angular приложениях</a><a class="headerlink" href="#redux-angular" title="Permalink to this headline">¶</a></h1>
+<p>Одним из популярных примеров реализации CQRS является Redux, см. <a class="reference external" href="https://redux.js.org/introduction/motivation">раз</a>, <a class="reference external" href="https://github.com/reduxjs/redux/issues/2295#issuecomment-316117112">два</a> и <a class="reference external" href="https://github.com/reduxjs/redux/issues/351">три</a>.</p>
+<a class="reference internal image-reference" href="../../_images/redux-sqrs-event-sourcing-screenshot_20180915.jpg"><img alt="Скриншот официального сайта Redux о CQRS и Event Sourcing" class="align-center" src="../../_images/redux-sqrs-event-sourcing-screenshot_20180915.jpg" style="width: 70%;" /></a>
+<p>Еще одной из известных реализаций, имеющей меньше путаницы в терминологии, но созданной под влиянием Redux, является <a class="reference external" href="https://github.com/dojo/stores">dojo/stores</a>.</p>
+<p>При использовании этих технологий в Angular, широко использующего концепцию классического Сервисного Слоя, и возникает этот вопрос.</p>
+</div>
+<div class="section" id="id2">
+<h1><a class="toc-backref" href="#id13">Логика приложения</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>Есть интересная статья &#8220;<a class="reference external" href="http://udidahan.com/2009/12/09/clarified-cqrs/">Clarified CQRS</a>&#8221; by Udi Dahan, на которую ссылается Martin Fowler в своей статье &#8220;<a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>&#8221;.</p>
+<p>И в этой статье есть интересный момент.</p>
+<blockquote>
+<div>The reason you don’t see this layer explicitly represented in CQRS is that it isn’t really there...</div></blockquote>
+<p>На самом деле, обработчик команды - это и есть Сервис, только событийно-ориентированный, который следует заданному интерфейсу.
+А значит, он должен содержать логику уровня приложения (а не бизнес-логику).</p>
+<blockquote>
+<div>Our command processing objects in the various autonomous components actually make up our service layer.</div></blockquote>
+<p>Разница между <a class="reference internal" href="../service-layer/"><span class="doc">классическим Сервисом</span></a> и событийно-ориентированным Сервисом в виде обработчика команды примерно такая же, как и между <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Оркестровым</a> (request/response) и <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Хореографическим</a> (event-based) способами взаимодействия микросервисов.</p>
+<p>Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.</p>
+<p>Таким образом, имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой попытка связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - скрыть их от самого же себя).</p>
+<blockquote>
+<div>Each command is independent of the other, so why should we allow the objects which handle them to depend on each other?</div></blockquote>
+<p>Тут, правда, возникает вопрос осведомленности обработчиков команды и самого приложения об интерфейсе конкретной реализации CQRS.
+Для выравнивания интерфейсов служит паттерн Adapter, которому можно предусмотреть место.</p>
+</div>
+<div class="section" id="id3">
+<h1><a class="toc-backref" href="#id14">Бизнес-логика</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>Не менее интересным, нежели управление application logic, являются вопросы управления business logic, обращение со связями и агрегатами.
+Эти вопросы также затрагивает Udi Dahan.</p>
+<p>Тут я должен сделать небольшое отступление, и упрощенно сказать о том, чем отличается бизнес-логика от логики приложения, т.к. это для многих не всегда понятно.</p>
+<p>Бизнес-логика (деловые регламенты, доменные модели) -  это моделирование объектов и процессов предметной области (т.е. реального мира).
+Это то, что программа должна делать (от слова &#8220;дело&#8221; - именно так переводится слово &#8220;business&#8221;), и ради чего она создается.</p>
+<p>А логика приложения - это то, что обеспечивает и координирует работу бизнес-логики.</p>
+<p>Качественная бизнес-логика должна быть не осведомлена о приложении и инфраструктуре, и может быть легко перенесена из одного приложения в другое.
+Хотя, надо заметить, что существуют еще и application-specific business rules.</p>
+<p>Распространенными ошибками являются разрушение целостности Агрегатов (декомпозиция, которая часто встречается в redux-приложениях), отказ от использования связей между Моделями (вопрос дискуссионный, я согласен), и искусственное вырождение поведения Моделей с выносом всей бизнес-логики в обработчики команд, т.е. в Сервисы.</p>
+<p>Вопрос некорректного разделения бизнес-логики и логики приложения - очень тонкий, и на практике часто нарушается в силу непонимания этих отличий разработчиками.</p>
+<p>Это приводит к появлению проблемы, о которой говорил Eric Evans:</p>
+<blockquote>
+<div><p>&#8220;Если требования архитектурной среды к распределению обязанностей таковы, что элементы, реализующие концептуальные объекты, оказываются физически разделенными, то код больше не выражает модель.</p>
+<p>Нельзя разделять до бесконечности, у человеческого ума есть свои пределы, до которых он еще способен соединять разделенное;
+если среда выходит за эти пределы, разработчики предметной области теряют способность расчленять модель на осмысленные фрагменты.&#8221;</p>
+<p>&#8220;If the framework&#8217;s partitioning conventions pull apart the elements implementing the
+conceptual objects, the code no longer reveals the model.</p>
+<p>There is only so much partitioning a mind can stitch back together, and if the framework uses
+it all up, the domain developers lose their ability to chunk the model into meaningful pieces.&#8221;
+- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</p>
+</div></blockquote>
+<p>Когда приложение имеет мало бизнес-логики, или лишен ее полностью, что часто бывает на практике, то данная проблема не возникает.</p>
+<p>Но в приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний <a class="footnote-reference" href="#fnddd" id="id4">[3]</a>.
+Также такой код обретает признаки &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id5">[1]</a> и &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id6">[1]</a>, что сильно затруднят исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
+В конечном итоге это приводит к стремительному росту стоимости изменения программы, но это уже отдельная тема.</p>
+<p>Одно время я тоже, как и многие другие, думал что такая фрагментация бизнес-логики является недостатком CQRS.
+К счастью, это проблема не CQRS, а некачественного разделения бизнес-логики и логики приложения.
+Я признателен Udi Dahan за то, что он внес ясность в этот вопрос.</p>
+<p>Должен заметить, что Udi Dahan в своей статье допускает и использование <a class="reference external" href="https://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a> для организации бизнес-логики.
+В таком случае, выбор между Transaction Script и <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> подробно рассмотрен в &#8220;Patterns of Enterprise Application Architecture&#8221; by M. Fowler and others.</p>
+<p>Для многих проектов Transaction Script вполне подойдет.
+Но у меня был один проект, где около 80% клиентского кода была бизнес-логика.</p>
+<p>Затрагиваемый Udi Dahan вопрос организации связей между Domain Model я уже частично разбирал в своих постах, и в обозримом будущем планирую обобщить все в одной статье.
+Этот вопрос действительно, является одним из наиболее острых в бизнес-моделировании, но для клиентского кода его актуальность смягчается возможностью использования <a class="reference external" href="https://martinfowler.com/bliki/DDD_Aggregate.htm">Aggregate</a>.</p>
+</div>
+<div class="section" id="id7">
+<h1><a class="toc-backref" href="#id15">Проблематика</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
+<p>И тем не менее, недостатки у CQRS есть, и их сформулировал Martin Fowler в статьях &#8220;<a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>&#8221; и &#8220;<a class="reference external" href="https://martinfowler.com/articles/201701-event-driven.html">What do you mean by &#8220;Event-Driven&#8221;?</a>&#8221;.
+Их нужно учитывать при выборе технологии.</p>
+<p>Я стараюсь избегать использования Redux в Angular приложениях в пользу классического подхода, так как это упрощает приложение и лучше соответствует принципам Agile разработки, но должен заметить, что использование Redux помогает осознавать Event-Driven принципы, которые могут стать первой ступенькой к пониманию микросервисной архитектуры, т.е. помогает выполнять задачи образования.</p>
+</div>
+<div class="section" id="id8">
+<h1><a class="toc-backref" href="#id16">Пример использования</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
+<p>Хороший пример использования Redux в Angular приложении приводится в книге &#8220;ng-book 2: The Complete Guide to Angular&#8221; by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda, который можно посмотреть <a class="reference external" href="https://github.com/ng-book/angular2-redux-chat">здесь</a>.
+Он не использует никаких дополнительных Сервисов Оркестрового типа (приложение вызывает методы хранилища напрямую), использует Агрегаты (Thread -&gt; Message) и связи (Message -&gt; User).
+К сожалению, я не смог обнаружить в этом примере демонстрацию обращения с бизнес-логикой, вероятно, потому что пример просто не содержит ее.</p>
+</div>
+<div class="section" id="id9">
+<h1><a class="toc-backref" href="#id17">Другие ссылки по теме</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/heynickc/awesome-ddd">Awesome Domain-Driven Design</a> - a curated list of Domain-Driven Design (DDD), Command Query Responsibility Segregation (CQRS), Event Sourcing, and Event Storming resources</li>
+<li><a class="reference external" href="https://reimagined.github.io/resolve/#documentation">resolve</a> - build reactive apps with functional JavaScript, CQRS and Event Sourcing</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h1><a class="toc-backref" href="#id18">Благодарности</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h1>
+<p>Спасибо моему бывшему коллеге и замечательному специалисту с обширным опытом в области фронтент-разработки, <a class="reference external" href="https://abyr.github.io/">Александру Денисенко</a>, за предварительный обзор этой статьи.</p>
+<p>P.S.: Изложенное мнение пока еще находится в процессе формирования, и содержимое данного поста может изменяться.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="fnr" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> &#8220;Refactoring: Improving the Design of Existing Code&#8221; by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>&#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fnddd" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>«Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans</td></tr>
+</tbody>
+</table>
+<div class="note update admonition">
+<p class="first last admonition-title">Updated on Sep 16, 2018</p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../easily-about-agile-way-to-rapid-development/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Про Agile на пальцах. Путь к быстрой разработке.
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'emacsway';
+        var disqus_identifier = '/ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/';
+        var disqus_title = 'Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular';
+        var disqus_url = 'https://emacsway.github.io/ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+    <h1 class="logo logo-name">@emacsway's blog</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    Sep 16, 2018
+  
+  </h2>
+
+  <ul>
+    
+
+  
+  <li><i class="fa-fw fa fa-user"></i>
+    
+      
+      <a href="../../blog/author/ivan-zakrevsky/">Ivan Zakrevsky</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-language"></i>
+    
+      
+      <a href="../../blog/language/russian/">Russian</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-tags"></i>
+      
+    
+      
+      <a href="../../blog/tag/design/">Design</a>,
+      
+    
+      
+      <a href="../../blog/tag/architecture/">Architecture</a>,
+      
+    
+      
+      <a href="../../blog/tag/service-layer/">Service Layer</a>,
+      
+    
+      
+      <a href="../../blog/tag/angular/">Angular</a>,
+      
+    
+      
+      <a href="../../blog/tag/redux/">Redux</a>,
+      
+    
+      
+      <a href="../../blog/tag/flux/">Flux</a>,
+      
+    
+      
+      <a href="../../blog/tag/javascript/">JavaScript</a>,
+      
+    
+      
+      <a href="../../blog/tag/model/">Model</a>,
+      
+    
+      
+      <a href="../../blog/tag/cqrs/">CQRS</a>,
+      
+    
+      
+      <a href="../../blog/tag/event-sourcing/">Event Sourcing</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'emacsway'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About me</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../easily-about-agile-way-to-rapid-development/">Sep 15 - Про Agile на пальцах. Путь к быстрой разработке.</a></li>
+    
+      <li><a href="../anemic-domain-model/">Jan 04 - Про Anemic Domain Model</a></li>
+    
+      <li><a href="../redux-and-flux-for-oop-programmers/">Jan 03 - Понимание Redux и Flux для ООП программистов</a></li>
+    
+      <li><a href="../django-and-god-object/">Jan 02 - Django Framework и Божественный Объект</a></li>
+    
+      <li><a href="../docker/">Dec 23 - Знакомство с Docker для Django-проекта</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/agile/">Agile</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/angular/">Angular</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/architecture/">Architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cqrs/">CQRS</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/db/">DB</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/ddd/">DDD</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/datamapper/">DataMapper</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/dependency-injection/">Dependency Injection</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/design/">Design</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/django/">Django</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/django-model/">Django Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/docker/">Docker</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/emacs/">Emacs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/event-sourcing/">Event Sourcing</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/extreme-programming/">Extreme Programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/flux/">Flux</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/fowler/">Fowler</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/hr/">HR</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/hiring/">Hiring</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/javascript/">JavaScript</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/model/">Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/oop/">OOP</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/orm/">ORM</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-4">
+        <a href="../../blog/tag/python/">Python</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/redux/">Redux</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/refactoring/">Refactoring</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/repository/">Repository</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/sql/">SQL</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/scrum/">Scrum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/service-layer/">Service Layer</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/storm-orm/">Storm ORM</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/xp/">XP</a></li>
+      
+    
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/autocomplete/">autocomplete</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cache/">cache</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/programming/">programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/refactoring/">refactoring</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2018/">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017/">2017 (10)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016/">2016 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2015/">2015 (6)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer">
+      &copy;2018, Ivan Zakrevsky.
+      
+      |
+      Powered by <a href="http://ablog.readthedocs.org/">ABlog</a> &amp; <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+
+
+    
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-597ba7fb5af2ef1e"></script>
+
+    
+
+
+<!-- google.com/analytics counter -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69288289-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /google.com/analytics counter -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32948409 = new Ya.Metrika({
+                    id:32948409,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/32948409" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+  </body>
+</html>

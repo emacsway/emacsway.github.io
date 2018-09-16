@@ -4,7 +4,7 @@
 
 .. post:: Jul 17, 2017
    :language: ru
-   :tags: Design, Architecture, ORM, Django Model
+   :tags: Design, Architecture, ORM, Django Model, Service Layer
    :category:
    :author: Ivan Zakrevsky
 
