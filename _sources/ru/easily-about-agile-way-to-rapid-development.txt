@@ -4,8 +4,8 @@
 
 .. post:: Sep 15, 2018
    :language: ru
-   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python, Django Model, Model, DDD
-   :category: Agile, XP, Scrum, Extreme Programming, Refactoring, Architecture
+   :tags: Agile, XP, Scrum, Extreme Programming, Refactoring, Architecture
+   :category:
    :author: Ivan Zakrevsky
 
 
