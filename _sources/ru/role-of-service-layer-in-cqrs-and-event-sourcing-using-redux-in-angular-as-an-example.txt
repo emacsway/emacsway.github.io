@@ -9,7 +9,7 @@
    :author: Ivan Zakrevsky
 
 
-Нужно ли скрывать посредством Сервисного Слоя обращения к реализациям `CQRS <https://martinfowler.com/bliki/CQRS.html>`__ и `Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__ ?
+Нужно ли скрывать посредством Сервисного Слоя обращения к реализациям `CQRS <https://martinfowler.com/bliki/CQRS.html>`__ и `Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__?
 Периодически мне попадаются примеры и неуверенная аргументация о том, что лучше - скрывать.
 Однако, когда вопрос мог коснуться меня лично, я решил во всем разобраться сам.
 

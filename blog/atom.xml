@@ -15,7 +15,7 @@
     <author>
       <name>Ivan Zakrevsky</name>
     </author>
-    <content type="html">&lt;p&gt;Нужно ли скрывать посредством Сервисного Слоя обращения к реализациям &lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/bliki/CQRS.html&quot;&gt;CQRS&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/eaaDev/EventSourcing.html&quot;&gt;Event Sourcing&lt;/a&gt; ?
+    <content type="html">&lt;p&gt;Нужно ли скрывать посредством Сервисного Слоя обращения к реализациям &lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/bliki/CQRS.html&quot;&gt;CQRS&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/eaaDev/EventSourcing.html&quot;&gt;Event Sourcing&lt;/a&gt;?
 Периодически мне попадаются примеры и неуверенная аргументация о том, что лучше - скрывать.
 Однако, когда вопрос мог коснуться меня лично, я решил во всем разобраться сам.&lt;/p&gt;
 </content>
