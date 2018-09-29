@@ -326,6 +326,16 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     Professionals realize that "quick and dirty" is an oxymoron. Dirty always means slow!
     ("Clean Coder" [#fnccoder]_ by Robert Martin)
 
+..
+
+    In most successful software projects, the expert developers working on that project have
+    a shared understanding of the system design. This shared understanding is called ‘architecture.’
+    This understanding includes how the system is divided into components and how the components interact through interfaces.
+    These components are usually composed of smaller components, but the architecture only
+    includes the components and interfaces that are understood by all the developers.
+    (`Ralph Johnson <https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf>`__)
+
+
 As Martin Fowler said:
 
     ... the true value of internal quality - that it's the enabler to speed. The purpose of internal quality is to go faster.

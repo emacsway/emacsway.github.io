@@ -161,7 +161,9 @@ it all up, the domain developers lose their ability to chunk the model into mean
 К счастью, это проблема не CQRS, а неверного разделения и размещения бизнес-логики и логики приложения.
 Я признателен Udi Dahan за то, что он внес ясность в этот вопрос.</p>
 <p>Должен заметить, что Udi Dahan в своей статье допускает и использование <a class="reference external" href="https://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a> для организации бизнес-логики.
-В таком случае, выбор между Transaction Script и <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> подробно рассмотрен в &#8220;Patterns of Enterprise Application Architecture&#8221; by M. Fowler and others.</p>
+В таком случае, выбор между Transaction Script и <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> подробно рассмотрен в &#8220;Patterns of Enterprise Application Architecture&#8221; by M. Fowler and others.
+Transaction Script может быть уместным при сочетании Redux и GraphQL для минимизации сетевого трафика.
+При использовании же REST-API, и наличии бизнес-логики, более уместным будет использование Domain Model и DDD.</p>
 <p>Для многих проектов Transaction Script вполне подойдет.
 Но у меня был один проект, где около 80% клиентского кода была бизнес-логика.</p>
 <p>Затрагиваемый Udi Dahan вопрос организации связей между Domain Models я уже частично разбирал в своих постах, и в обозримом будущем планирую обобщить все в одной статье.

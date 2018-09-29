@@ -111,6 +111,8 @@
 
 Должен заметить, что Udi Dahan в своей статье допускает и использование `Transaction Script <https://martinfowler.com/eaaCatalog/transactionScript.html>`__ для организации бизнес-логики.
 В таком случае, выбор между Transaction Script и `Domain Model <https://martinfowler.com/eaaCatalog/domainModel.html>`__ подробно рассмотрен в "Patterns of Enterprise Application Architecture" by M. Fowler and others.
+Transaction Script может быть уместным при сочетании Redux и GraphQL для минимизации сетевого трафика.
+При использовании же REST-API, и наличии бизнес-логики, более уместным будет использование Domain Model и DDD.
 
 Для многих проектов Transaction Script вполне подойдет.
 Но у меня был один проект, где около 80% клиентского кода была бизнес-логика.
