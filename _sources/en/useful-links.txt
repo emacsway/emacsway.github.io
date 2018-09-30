@@ -29,6 +29,8 @@ Sites
 - `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
 - `Microservice Patterns <https://www.manning.com/books/microservice-patterns>`__
 - `Domain Driven Design Community <http://dddcommunity.org/>`__
+- `Domain Driven Design Weekly <http://dddweekly.com/>`__
+- `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
 - `Refactoring Databases <http://www.databaserefactoring.com/>`__
 - `XUnit Test Patterns <http://xunitpatterns.com/>`__
 - `Microsoft Application Architecture Guide, 2nd Edition <https://msdn.microsoft.com/en-us/library/ff650706.aspx>`__
@@ -57,7 +59,6 @@ Articles
 - `Concurrency model and Event Loop <https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop>`__
 - `Clean architectures in Python: a step-by-step example <http://blog.thedigitalcatonline.com/blog/2016/11/14/clean-architectures-in-python-a-step-by-step-example/>`__
 - `Designing a DDD-oriented microservice <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/ddd-oriented-microservice>`__
-- `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
 
 
 
