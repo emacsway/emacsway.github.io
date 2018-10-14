@@ -157,13 +157,14 @@
   a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB's proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.
 - `ZangoDB <https://erikolson186.github.io/zangodb/>`_ is a MongoDB-like interface for HTML5 IndexedDB that supports most of the familiar filtering, projection, sorting, updating and aggregation features of MongoDB, for usage in the web browser (`source code <https://github.com/erikolson186/zangodb>`__).
 - `JsStore <http://jsstore.net/>`_ is SQL Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
+- `ODATA libraries <https://www.odata.org/libraries/>`_ - multiple implementations of Open Data Protocol (ODATA).
 
 Я не могу добавить сюда `Ember.js <https://emberjs.com/>`_, так как он реализует паттерн `ActiveRecord`_.
 
 Отдельно стоит упомянуть библиотеку `rql <https://github.com/persvr/rql>`__, которая позволяет легко реализовывать паттерны `Service Stub`_ и Repository_.
 Много наработок можно увидеть в проектах `persvr <https://github.com/persvr>`_ и `kriszyp <https://github.com/kriszyp>`_.
 
-В текущей статье не рассматриваются примеры реализаций паттернов `Event Sourcing`_ и CQRS_ (о чем ведется речь в статье ":doc:`../ru/redux-and-flux-for-oop-programmers`"):
+В текущей статье не рассматриваются примеры реализаций паттернов `Event Sourcing`_ и CQRS_ (о чем ведется речь в статье ":doc:`../ru/redux-and-flux-for-oop-programmers`" и ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"):
 
 - React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
 - React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js

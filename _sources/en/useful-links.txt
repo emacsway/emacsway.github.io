@@ -31,6 +31,7 @@ Sites
 - `Domain Driven Design Community <http://dddcommunity.org/>`__
 - `Domain Driven Design Weekly <http://dddweekly.com/>`__
 - `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
+- `About DDD on the site of Ward Cunningham <http://ddd.fed.wiki.org/>`__
 - `Refactoring Databases <http://www.databaserefactoring.com/>`__
 - `XUnit Test Patterns <http://xunitpatterns.com/>`__
 - `Microsoft Application Architecture Guide, 2nd Edition <https://msdn.microsoft.com/en-us/library/ff650706.aspx>`__
