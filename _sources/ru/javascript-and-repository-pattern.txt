@@ -158,6 +158,7 @@
 - `ZangoDB <https://erikolson186.github.io/zangodb/>`_ is a MongoDB-like interface for HTML5 IndexedDB that supports most of the familiar filtering, projection, sorting, updating and aggregation features of MongoDB, for usage in the web browser (`source code <https://github.com/erikolson186/zangodb>`__).
 - `JsStore <http://jsstore.net/>`_ is SQL Like IndexedDb Wrapper. It provides simple api to store, retrieve, delete, remove, and for other advanced Database functionalities (`source code <https://github.com/ujjwalguptaofficial/JsStore>`__).
 - `ODATA libraries <https://www.odata.org/libraries/>`_ - multiple implementations of Open Data Protocol (ODATA).
+- `Minimongo <https://github.com/mWater/minimongo>`_ - A client-side MongoDB implementation which supports basic queries, including some geospatial ones.
 
 Я не могу добавить сюда `Ember.js <https://emberjs.com/>`_, так как он реализует паттерн `ActiveRecord`_.
 
