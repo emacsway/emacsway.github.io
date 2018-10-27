@@ -65,7 +65,7 @@ Articles in English:
 
 Articles in Russian:
 
-* ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"
+* ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
 * ":doc:`../ru/javascript-and-repository-pattern`"
 * ":doc:`../ru/django-framework`"
 * ":doc:`../ru/service-layer`"
