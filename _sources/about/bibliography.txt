@@ -52,18 +52,19 @@ The list of literature read by me:
     In the queue
     ------------
 
-    * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
-    * "Analysis Patterns. Reusable Object Models" by Martin Fowler
+    * "Cloud Design Patterns. Prescriptive architecture guidance for cloud applications" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
     * "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
     * "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
-    * "Cloud Design Patterns. Prescriptive architecture guidance for cloud applications" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
+    * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
+    * "Analysis Patterns. Reusable Object Models" by Martin Fowler
+    * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
+    * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+    * "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
+    * "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
     * "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
     * "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
     * "An Introduction to Database Systems" by C.J. Date
-    * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
     * "Implementation Patterns" by Kent Beck
-    * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
-    * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
     * "Development of Further Patterns of Enterprise Application Architecture" by Martin Fowler
     * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
     * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
@@ -76,6 +77,7 @@ The list of literature read by me:
     * "PostgreSQL: Up and Running" by Regina Obe and Leo Hsu
     * "PostgreSQL 9.0 High Performance" by Gregory Smith
     * "Refactoring To Patterns" by Joshua Kerievsky
+    * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
     * "Pattern-Oriented Software Architecture: A System of Patterns, Volume 1" by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
     * "Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2" by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
     * "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
