@@ -22,8 +22,6 @@ Python/FullStack Software Engineer, XP coach, Solution/Application Architect
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `Facebook <https://www.facebook.com/emacsway>`__, `Instagram <https://www.instagram.com/emacsway/>`__
 
-Talk to me at facebook group "`Software Craftsmanship <https://www.facebook.com/groups/software.craftsmanship/>`__"
-
 
 About me
 --------
