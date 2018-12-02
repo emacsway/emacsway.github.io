@@ -94,7 +94,7 @@
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
 <li><a class="reference internal" href="#mvc-use-case-service-layer-cqrs-event-sourcing" id="id5">Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</a></li>
-<li><a class="reference internal" href="#business-rules" id="id6">Что такое Business Rules (Бизнес Логика)</a></li>
+<li><a class="reference internal" href="#business-rules" id="id6">Что такое Business Rules (Бизнес-Логика)?</a></li>
 <li><a class="reference internal" href="#business-rules-application-logic" id="id7">Почему важно отделять Business Rules от Application Logic?</a></li>
 <li><a class="reference internal" href="#application-logic" id="id8">Способы организации Application Logic (Логики Приложения)</a></li>
 <li><a class="reference internal" href="#id2" id="id9">Проблема параллельного обновления</a></li>
@@ -107,7 +107,7 @@
 <p>Не так давно у меня состоялась весьма конструктивная дискуссия с одним довольно грамотным парнем - <a class="reference external" href="https://twitter.com/koorchik">Viktor Turskyi (&#64;koorchik)</a>.
 Эта дискуссия позволила мне систематизировать и обобщить свои знания.
 Выводы этой систематизации оказались заслуживающими отдельного блог-поста.</p>
-<p>Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Application Logic (Логика Приложения) и чем она отличается от Business Logic (Бизнес-Логики).</p>
+<p>Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Application Logic (Логика Приложения) и чем она отличается от Business Rules (Business Logic, Бизнес-Логики).</p>
 <p>Одно из наиболее часто-цитируемых определений:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -145,7 +145,7 @@ architectural framework.</dd>
 В это трудно поверить, но большинство разработчиков этого не понимают.</p>
 </div>
 <div class="section" id="business-rules">
-<h1><a class="toc-backref" href="#id6">Что такое Business Rules (Бизнес Логика)</a><a class="headerlink" href="#business-rules" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id6">Что такое Business Rules (Бизнес-Логика)?</a><a class="headerlink" href="#business-rules" title="Permalink to this headline">¶</a></h1>
 <p>Самое авторитетное пояснение термина <a class="reference external" href="http://wiki.c2.com/?CategoryBusiness">Business</a> можно найти, как обычно, на сайте Ward Cunningham:</p>
 <blockquote>
 <div>Software intersects with the Real World. Imagine that.</div></blockquote>
@@ -199,7 +199,7 @@ architectural framework.</dd>
 </div>
 <div class="section" id="business-rules-application-logic">
 <h1><a class="toc-backref" href="#id7">Почему важно отделять Business Rules от Application Logic?</a><a class="headerlink" href="#business-rules-application-logic" title="Permalink to this headline">¶</a></h1>
-<p>Поскольку целью создания приложения является реализация именно Business Logic - критически важно обеспечить их переносимость, и отделить их от Application Logic.
+<p>Поскольку целью создания приложения является реализация именно Business Rules - критически важно обеспечить их переносимость, и отделить их от Application Logic.
 Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.</p>
 </div>
 <div class="section" id="application-logic">
