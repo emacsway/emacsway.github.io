@@ -39,7 +39,7 @@
 
         <meta http-equiv="Last-Modified" content="Sun, 02 Dec 2018 00:00:00 GMT" />
         
-            <meta name="description" content="В свое время Гради Буч сказал, что “Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений”. Одним из важных таких решений является управление логикой приложения. В этом посте мы попытаемся разобраться с тем, почему это важно, как управлять логикой приложения, и как это может снизить стоимость изменений." />
+            <meta name="description" content="В свое время Гради Буч сказал, что “Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений”. Одним из важных таких решений является управление логикой приложения. В этом посте мы попытаемся разобраться с тем, почему это важно, как управлять Логикой Приложения, и как это может снизить стоимость изменений." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
@@ -89,7 +89,7 @@
 <h1><a class="toc-backref" href="#id5">Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</a><a class="headerlink" href="#mvc-use-case-service-layer-cqrs-event-sourcing" title="Permalink to this headline">¶</a></h1>
 <p>В свое время Гради Буч сказал, что &#8220;Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений&#8221;.
 Одним из важных таких решений является управление логикой приложения.
-В этом посте мы попытаемся разобраться с тем, почему это важно, как управлять логикой приложения, и как это может снизить стоимость изменений.</p>
+В этом посте мы попытаемся разобраться с тем, почему это важно, как управлять Логикой Приложения, и как это может снизить стоимость изменений.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
@@ -176,11 +176,11 @@ architectural framework.</dd>
 <div>In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.</div></blockquote>
 <p>Резюмируя, я обобщу все своими словами:</p>
 <dl class="docutils">
-<dt>Бизнес-логика (деловые регламенты, доменные модели)</dt>
+<dt>Бизнес-Логика (деловые регламенты, доменные модели)</dt>
 <dd>- это моделирование объектов и процессов предметной области (т.е. реального мира).
 Это то, что программа должна делать (от слова &#8220;дело&#8221; - именно так переводится слово &#8220;business&#8221;), и ради чего она создается.</dd>
 <dt>Логика приложения</dt>
-<dd>- это то, что обеспечивает и координирует работу бизнес-логики.</dd>
+<dd>- это то, что обеспечивает и координирует работу Бизнес-Логики.</dd>
 </dl>
 <p>Надо заметить, что существуют еще и application-specific Business Rules.</p>
 <p>Robert Martin в Clean Architecture разделяет бизнес-правила на два вида:</p>
@@ -195,7 +195,7 @@ architectural framework.</dd>
 </div></blockquote>
 </li>
 </ul>
-<p>Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы бизнес-правил.</p>
+<p>Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.</p>
 </div>
 <div class="section" id="business-rules-application-logic">
 <h1><a class="toc-backref" href="#id7">Почему важно отделять Business Rules от Application Logic?</a><a class="headerlink" href="#business-rules-application-logic" title="Permalink to this headline">¶</a></h1>
@@ -206,8 +206,8 @@ architectural framework.</dd>
 <h1><a class="toc-backref" href="#id8">Способы организации Application Logic (Логики Приложения)</a><a class="headerlink" href="#application-logic" title="Permalink to this headline">¶</a></h1>
 <p>Широко распространены три способа организации Application Logic:</p>
 <p>1. <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer (сервисный слой)</a>.
-Который, в свою очередь, делится на оркестровый (&#8220;запрос-ответ&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и хореографический (event-driven, т.е. loosely coupled).</p>
-<p>Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (редьюсеры в редаксе - наглядный пример).</p>
+Который, в свою очередь, делится на Оркестровый (&#8220;запрос-ответ&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и Хореографический (Event-Driven, т.е. loosely coupled).</p>
+<p>Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).</p>
 <p>Подробней оркестровые Сервисные Слои рассматриваются в статье</p>
 <ul class="simple">
 <li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8221;,</li>
@@ -217,7 +217,7 @@ architectural framework.</dd>
 <li>&#8220;<a class="reference internal" href="../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/"><span class="doc">Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</span></a>&#8221;.</li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><a class="reference external" href="https://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a> и <a class="reference external" href="https://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a> (которые тоже, по сути, является разновидностью паттерна Команда).</li>
+<li><a class="reference external" href="https://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a> и <a class="reference external" href="https://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a> (которые тоже, по сути, является разновидностью паттерна Command).</li>
 </ol>
 <blockquote>
 <div><p>&#8220;A Front Controller handles all calls for a Web site, and is usually structured in two parts: a Web handler and a command hierarchy.&#8221;</p>
@@ -228,14 +228,14 @@ architectural framework.</dd>
 A Command [Gang of Four] is a good choice, since it allows it to easily get hold of and run a block of code.&#8221;</p>
 <p>- &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler and others.</p>
 </div></blockquote>
-<p>3. <a class="reference external" href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html">Use Case</a>, который также, является разновидностью паттерна Команда.
+<p>3. <a class="reference external" href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html">Use Case</a>, который также, является разновидностью паттерна Command.
 На 15:50 Robert C. Martin проводит <a class="reference external" href="https://youtu.be/Nsjsiz2A9mg?t=15m45s">параллель между Use Case и паттерном Command</a>.</p>
 <p>Собственно говоря, производной паттерна Command является даже <a class="reference external" href="https://refactoring.com/catalog/replaceFunctionWithCommand.html">Method Object</a>.</p>
 <p>Use Case обязан своим существованием именно наличию Бизнес-Логики, которая  application specific, и не имеет смысла вне контекста приложения.
 Его задача сводится к освобождению этих application specific Business Rules от зависимостей от приложения путем инверсии контроля (IoC).</p>
 <p>Если бы Use Case не содержал Бизнес-Логики, то не было бы и смысла отделять его от Page Controller, иначе приложение пыталось бы абстрагироваться от самого себя же.</p>
 <p>Но, в любом случае, это все способы организации в первую очередь Логики Приложения, и лишь во вторую очередь, Бизнес-Логики, которая не обязательно должна присутствовать, кроме случая Use Case, иначе он утратил бы причины для существования.</p>
-<p>При правильной организации Бизнес-Логики, и при использовании качественного ORM, зависимость Бизнес-Логики от приложения будет минимально.
+<p>При правильной организации Бизнес-Логики, и при использовании качественного ORM, зависимость Бизнес-Логики от приложения будет минимальна.
 Здесь основная проблема заключается в том, чтобы организовать доступ к связанным объектам, но не подмешивать Логику Приложения (и логику доступа к данным) в Domain Models, эту темы мы подробно рассмотрим в одном из следующих постов.</p>
 </div>
 <div class="section" id="id2">
@@ -282,7 +282,7 @@ The processing of commands and queries is fundamentally asymmetrical, and scalin
 </div>
 <div class="section" id="id4">
 <h1><a class="toc-backref" href="#id13">Заключение</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
-<p>Понимание общих признаков в способах управления Логикой Приложения позволяет проектировать более гибкие приложения, и, как результат, более безболезненно заменять архитектурный шаблон, например, из Layered в Event-driven.
+<p>Понимание общих признаков в способах управления Логикой Приложения позволяет проектировать более гибкие приложения, и, как результат, более безболезненно заменять архитектурный шаблон, например, из Layered в Event-Driven.
 Частично эта тема затрагивается в Chapter 16 Independence of &#8220;Clean Architecture&#8221; by Robert C. Martin и в разделе &#8220;Premature Decomposition&#8221; of Chapter 3 &#8220;How to Model Services&#8221; of &#8220;Building Microservices&#8221; by Sam Newman.</p>
 </div>
 
