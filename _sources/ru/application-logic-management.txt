@@ -110,14 +110,14 @@
 
 Надо заметить, что существуют еще и application-specific Business Rules.
 
-Robert Martin в Clean Architecture разделяет бизнес-правила на два вида:
+Robert Martin в Clean Architecture разделяет Бизнес-Правила на два вида:
 
 - application-specific Business Rules
 - application-independent Business Rules
 
     Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
 
-    То есть систему можно разделить на горизонтальные уровни: пользовательский интерфейс, бизнес-правила, характерные для приложения, бизнес-правила, не зависящие от приложения, и база данных — кроме всего прочего.
+    То есть систему можно разделить на горизонтальные уровни: пользовательский интерфейс, Бизнес-Правила, характерные для приложения, Бизнес-Правила, не зависящие от приложения, и база данных — кроме всего прочего.
 
     \- Clean Architecture by Robert Martin
 
