@@ -142,11 +142,11 @@ Robert Martin в Clean Architecture разделяет Бизнес-Правил
 
 Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).
 
-Подробней оркестровые Сервисные Слои рассматриваются в статье
+Подробней Оркестровые Сервисные Слои рассматриваются в статье
 
 - ":doc:`./service-layer`",
 
-а хореографические - в статье
+а Хореографические - в статье
 
 - ":doc:`./role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`".
 
