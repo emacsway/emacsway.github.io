@@ -199,10 +199,10 @@ CQRS
 Проблему параллельного обновления в значительной мере можно уменьшить наложением ограничения на двунаправленные изменения состояния путем введения однонаправленных изменений, т.е. путем отделения чтения от записи.
 Именно такой подход используется в Redux.
 
-    it allows us to host the two services differently eg: we can host the read service on 25 servers and the write service on two.
-    The processing of commands and queries is fundamentally asymmetrical, and scaling the services symmetrically does not make a lot of sense.
+    "it allows us to host the two services differently eg: we can host the read service on 25 servers and the write service on two.
+    The processing of commands and queries is fundamentally asymmetrical, and scaling the services symmetrically does not make a lot of sense."
 
-    \- `CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__ by Greg Young
+    \- "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 
 Управление Логикой Приложения и Бизнес-Логикой хорошо раскрывается в статье "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan.
 
@@ -234,9 +234,9 @@ Event Sourcing
 Другие ссылки по теме
 =====================
 
-- `CQRS <https://martinfowler.com/bliki/CQRS.html>`__
-- `Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__
-- `What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__
+- "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
+- "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
+- "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
 
 
 Заключение
