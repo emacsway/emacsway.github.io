@@ -26,7 +26,7 @@ Python/FullStack Software Engineer, XP coach, Solution/Application Architect
 About me
 --------
 
-An XP and DDD expert.
+A Software Design and Agile expert.
 
 .. Was participated in development of software for various business domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
 
@@ -68,6 +68,7 @@ Articles in Russian:
 * ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
 * ":doc:`../ru/javascript-and-repository-pattern`"
 * ":doc:`../ru/django-framework`"
+* ":doc:`../ru/application-logic-management`"
 * ":doc:`../ru/service-layer`"
 * ":doc:`../ru/cache-dependencies`"
 * ":doc:`../ru/storm-orm`"
