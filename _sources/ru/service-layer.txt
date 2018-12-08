@@ -568,6 +568,10 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
 
 This article in English ":doc:`../en/service-layer`".
 
+Статьи по теме:
+
+* ":doc:`../ru/application-logic-management`"
+* ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"
 
 .. rubric:: Footnotes
 
