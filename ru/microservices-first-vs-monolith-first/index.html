@@ -1,0 +1,718 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Microservices First vs Monolith First &mdash; @emacsway&#39;s blog</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="@emacsway&#39;s blog" href="../../" />
+  
+
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+    
+
+        <meta http-equiv="Last-Modified" content="Sun, 16 Dec 2018 21:10:45 GMT" />
+        
+            <meta name="description" content="Существует два кслассических подхода к созданию микросервисных приложений - Microservices First и Monolith First. И если превосходства последнего широко освещены рядом известных авторитетов в области архитектуры, такими как Sam Newman, Robert Martin, Martin Fowler и др., то об освещенности превосходств первого этого не скажешь. Именно эта причина и побудила меня разобраться в этом вопросе." />
+        
+        
+            <meta property="og:image" content="../../_static/logo.jpg" />
+            <link rel="image_src" href="../../_static/logo.jpg" />
+        
+
+        <link rel="canonical" href="https://emacsway.github.io/ru/microservices-first-vs-monolith-first/" />
+
+        <script type="text/javascript">
+            setTimeout(function() {
+                $.toast({
+                    text: 'If you like this site, please support it with an external link or share it with an social nerwork. Thanks!',
+                    position: 'bottom-right',
+                    hideAfter: 7000
+                });
+            }, 30000);
+        </script>
+
+    
+
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="@emacsway's blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="microservices-first-vs-monolith-first">
+<h1><a class="toc-backref" href="#id15">Microservices First vs Monolith First</a><a class="headerlink" href="#microservices-first-vs-monolith-first" title="Permalink to this headline">¶</a></h1>
+<p>Существует два кслассических подхода к созданию микросервисных приложений - <a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Microservices First</a> и <a class="reference external" href="https://martinfowler.com/bliki/MonolithFirst.html">Monolith First</a>.
+И если превосходства последнего широко освещены рядом известных авторитетов в области архитектуры, такими как Sam Newman, Robert Martin, Martin Fowler и др., то об освещенности превосходств первого этого не скажешь.
+Именно эта причина и побудила меня разобраться в этом вопросе.</p>
+<div class="contents topic" id="id1">
+<p class="topic-title first">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#microservices-first-vs-monolith-first" id="id15">Microservices First vs Monolith First</a></li>
+<li><a class="reference internal" href="#monolith-first" id="id16">Monolith First</a></li>
+<li><a class="reference internal" href="#microservices-first" id="id17">Microservices First</a></li>
+<li><a class="reference internal" href="#the-brooks-s-law" id="id18">The Brooks&#8217;s Law (Закон Брукса)</a></li>
+<li><a class="reference internal" href="#id6" id="id19">Продуктивность</a></li>
+<li><a class="reference internal" href="#id13" id="id20">Особенность утверждений Брукса</a></li>
+<li><a class="reference internal" href="#agile" id="id21">Agile?</a></li>
+<li><a class="reference internal" href="#id14" id="id22">Другие ссылки по теме</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="monolith-first">
+<h1><a class="toc-backref" href="#id16">Monolith First</a><a class="headerlink" href="#monolith-first" title="Permalink to this headline">¶</a></h1>
+<p>Monolith First представляет собой двухфазную разработку микросервисного приложения, в первой фазе которого приложение имеет особую форму монолита, с низким сопряжением компонентов (loosely coupled), в котором изначально определены швы для &#8220;распила&#8221;.
+Обычно такой монолит активно использует концепцию DDD (см. Chapter 3 &#8220;How to Model Services&#8221; (&#8220;Premature Decomposition&#8221;) of &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id2">[1]</a> by Sam Newman) или Use Case (см. Chapter 16 &#8220;Independence&#8221; (&#8220;Operation&#8221;, &#8220;Decoupling mode&#8221;, &#8220;Decoupling modes (againe)&#8221;) of &#8220;Clean Architecture&#8221; <a class="footnote-reference" href="#fncarch" id="id3">[2]</a> by Robert C. Martin).
+Такой подход позволяет удешевить процесс Model Distilling, и подразумевает вывод Bounded Contexts в независимые сервисы после стабилизации контуров бизнес-моделей и границ контекстов, по мере назревания в этом реальной необходимости.</p>
+<p>Отсюда вырисовывается первый мотив использования Monolith First - потребность в Crunching Knowledge (переработке знаний), которая не позволяет сразу очертить стабильные контуры бизнес-моделей.
+Можно назвать этот момент &#8220;слабостью архитектуры&#8221;.
+Это не означает низкий уровень компетентности архитектора (скорее - наоборот).
+Просто это означает, что предпосылок для стабильной архитектуры сразу не существует.</p>
+<p>Ожидание и реальность. Изображение со статьи &#8220;<a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Don’t start with a monolith</a>&#8221; by Stefan Tilkov:</p>
+<a class="reference internal image-reference" href="../../_images/monolith-theory-practice.svg"><div align="center" class="align-center"><img alt="Ожидание и реальность. Изображение со статьи &quot;Don’t start with a monolith&quot; by Stefan Tilkov https://martinfowler.com/articles/dont-start-monolith.html" src="../../_images/monolith-theory-practice.svg" width="90%" /></div>
+</a>
+<p>Другим существенным мотивом в пользу Monolith First является потребность в достижении скорейшего выпуска в production первой работающей версии продукта при лимитированном количестве разработчиков.</p>
+<p>Влияние микросервисной архитектуры на продуктивность. Изображение со статьи &#8220;<a class="reference external" href="https://martinfowler.com/bliki/MicroservicePremium.html">Microservice Premium</a>&#8221; by Martin Fowler:</p>
+<a class="reference internal image-reference" href="../../_images/productivity.png"><img alt="Влияние микросервисной архитектуры на продуктивность. Изображение со статьи &quot;Microservice Premium&quot; by Martin Fowler https://martinfowler.com/bliki/MicroservicePremium.html" class="align-center" src="../../_images/productivity.png" style="width: 90%;" /></a>
+<p>Недостатком Monolith First является высокая чувствительность к качеству реализации (конструирования), которая требует от разработчиков высокой компетентности и дисциплины, что означает удорожание разработки, поскольку привлечь разработчиков среднего и начального уровня без ущерба изоляции компонентов не получится (creeping coupling).
+А нанять одного опытного архитектора всегда выгоднее, чем укомплектовать всю команду опытными разработчиками.
+Таким образом, слабость архитектуры в таком случае мы должны компенсировать сильным качеством разработки.</p>
+</div>
+<div class="section" id="microservices-first">
+<h1><a class="toc-backref" href="#id17">Microservices First</a><a class="headerlink" href="#microservices-first" title="Permalink to this headline">¶</a></h1>
+<p>Исходя из мотивов в пользу Monolith First, становятся очевидны и мотивы в пользу Microservices First.</p>
+<p>Первым существенным мотивом является сильная архитектура и слабое качество разработки.
+Например, архитектор уже обладает опытом в данной предметной области, и потребности в переработке знаний нет.
+Возможность достигнуть стабильную архитектуру приложения сразу, позволяет широко привлекать для ее реализации разработчиков среднего и начального уровня.</p>
+<blockquote>
+<div><p>Обмен данными между самими сервисами ведется через сетевые вызовы, чтобы упрочить обособленность сервисов и избежать рисков, сопряженных с тесными связями.</p>
+<p>All communication between the services themselves are via network calls, to enforce separation between the services and avoid the perils of tight coupling.</p>
+<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id4">[1]</a> by Sam Newman</p>
+</div></blockquote>
+<p>Вторым ключевым мотивом является потребность в привлечении большого количества людей как на начальной, так и на финальной стадии разработки.
+Т.е. когда нет ограниченности в ресурсах, но есть ограниченность в сроках разработки.
+Это позволяет обойти <a class="reference external" href="https://en.wikipedia.org/wiki/Brooks%27s_law">Brooks&#8217;s Law (Закон Брукса)</a>, к которому мы вскоре вернемся.
+Frederick P. Brooks еще много лет назад предвосхитил это достоинство микросервсиной архитектуры.</p>
+<p>В целом, превосходства Microservices First проявляются в следующих случаях:</p>
+<ol class="arabic simple">
+<li>Когда нет ограниченности в ресурсах, но есть ограниченность по времени.</li>
+<li>Когда есть опытный в данной предметной области архитектор, но малоопытные разработчики (сетевые границы сервисов изолируют низкий уровень дисциплины и опыта разработчиков, и сдерживают ползучие зависимости (creeping coupling)).</li>
+<li>Когда изначально требуется гетерогенность технологий. Например, для решения различных задач в рамках одного приложения требуется использовать различные языки программирования, хранилища данных, фреймворки и т.д.</li>
+<li>Когда необходимо соблюсти требования местных Законов (например, база персональных данных должна физически храниться у локального провайдера в пределах страны).</li>
+<li>Когда команда разработчиков неоднородна и распределена.</li>
+<li>Когда огромный объем обрабатываемых данных изначально требует широкого масштабирования (например, скраперы).</li>
+</ol>
+</div>
+<div class="section" id="the-brooks-s-law">
+<h1><a class="toc-backref" href="#id18">The Brooks&#8217;s Law (Закон Брукса)</a><a class="headerlink" href="#the-brooks-s-law" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Если проект не укладывается в сроки, то добавление рабочей силы задержит его ещё больше.</p>
+<p>Adding manpower to a late software project makes it later.</p>
+<p>- The Brooks&#8217;s Law</p>
+</div></blockquote>
+<blockquote>
+<div><p>Brooks’ law is based on the idea that communications overhead is a significant factor on software projects, and that work on a software project is not easily partitioned into isolated, independent tasks.
+Ten people can pick cotton ten times as fast as one person because the work is almost perfectly partitionable, requiring little communication or coordination.
+But nine women can’t have a baby any faster than one woman can because the work is not partitionable.
+Brooks argues that work on a software project is more like having a baby than picking cotton.
+When new staff are brought into a late project, they aren’t immediately productive, and they must be trained.
+The staff who must train them are already productive, but they lose productivity while they’re training new staff.
+Brooks argues that, on balance, more effort is lost to training and additional coordination and communications overhead than is gained when the new staff eventually becomes productive.</p>
+<p>- Steve McConnell, &#8220;<a class="reference external" href="https://stevemcconnell.com/articles/brooks-law-repealed/">Brooks’ Law Repealed?</a>&#8220;</p>
+</div></blockquote>
+<p>Решение этой проблемы предлагает сам Брукс:</p>
+<blockquote>
+<div><p>Число занятых и число месяцев являются взаимозаменяемыми величинами лишь тогда, когда задачу можно распределить среди ряда работников, которые не имеют между собой взаимосвязи.</p>
+<p>Men and months are interchangeable commodities only when a task can be partitioned among many workers with no communication among them.</p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id5">[3]</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h1><a class="toc-backref" href="#id19">Продуктивность</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<p>Существует две противоречащие друг другу проблемы, сформулированные Frederick Brooks.
+С одной стороны:</p>
+<blockquote>
+<div><p>Выше я доказал, что само число разработчиков, действия которых нужно согласовывать, оказывает влияние на стоимость проекта, поскольку значительная часть издержек вызвана необходимостью общения и устранения отрицательных последствий разобщенности (системная отладка).
+Это также наводит на мысль, что <strong>желательно разрабатывать системы возможно меньшим числом людей</strong>.
+Действительно, опыт разработки больших программных систем, как правило, показывает, что подход с позиций грубой силы влечет удорожание, замедленность, неэффективность, а создаваемые в результате системы не являются концептуально целостными.
+Список, иллюстрирующий это, бесконечен: OS/360, Exec 8, Scop 6600, Multics, TSS, SAGE и другие.</p>
+<p>I have earlier argued that the sheer number of minds to be coordinated affects the cost of the effort, for a major part of the cost is communication and correcting the ill effects of miscommunication (system debugging).
+This, too, suggests that one wants the system to be built by <strong>as few minds as possible</strong>.
+Indeed, most experience with large programming systems shows that the brute-force approach is costly, slow, inefficient, and produces systems that are not conceptually integrated.
+OS/360, Exec 8, Scope 6600, Multics, TSS, SAGE, etc.—the list goes on and on.</p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id7">[3]</a></p>
+</div></blockquote>
+<p>Но с другой стороны:</p>
+<blockquote>
+<div><p>В этом и состоит изъян идеи маленькой активной команды: для создания по-настоящему крупных систем ей потребуется слишком много времени.
+Посмотрим, как разработка OS/360 осуществлялась бы маленькой активной командой, допустим, из 10 человек.
+Положим, что они в семь раз более продуктивны средних программистов (что далеко от истины).
+Допустим, что уменьшение объема общения благодаря малочисленности команды позволило еще в семь раз повысить производительность.
+Допустим, что на протяжении всего проекта работает одна и та же команда.
+Таким образом, 5000/(10*7*7)=10, т.е. работу в 5000 человеко-лет они выполнят за 10 лет.
+Будет ли продукт представлять интерес через 10 лет после начала разработки или устареет благодаря стремительному развитию программных технологий?</p>
+<p>This then is the problem with the small, sharp team concept: it is too slow for really big systems.
+Consider the OS/360 job as it might be tackled with a small, sharp team.
+Postulate a 10-man team.
+As a bound, let them be seven times as productive as mediocre programmers in both programming and documentation, because they are sharp.
+Assume OS/360 was built only by mediocre programmers (which is far from the truth).
+As a bound, assume that another productivity improvement factor of seven comes from reduced communication on the part of the smaller team.
+Assume the same team stays on the entire job.
+Well, 5000/(10 X 7 X 7 ) = 10; they can do the 5000 man-year job in 10 years.
+Will the product be interesting 10 years after its initial design? Or will it have been made obsolete by the rapidly developing software technology?</p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id8">[3]</a></p>
+</div></blockquote>
+<p>Возникает противоречие:</p>
+<blockquote>
+<div><p>Дилемма представляется жестокой.
+Для эффективности и концептуальной целостности предпочтительнее, чтобы проектирование и создание системы осуществили несколько светлых голов.
+Однако для больших систем желательно поставить под ружье значительный контингент, чтобы продукт мог увидеть свет вовремя.
+Как можно примирить эти два желания?</p>
+<p>The dilemma is a cruel one.
+For efficiency and conceptual integrity, one prefers a few good minds doing design and construction.
+Yet for large systems one wants a way to bring considerable manpower to bear, so that the product can make a timely appearance.
+How can these two needs be reconciled?</p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id9">[3]</a></p>
+</div></blockquote>
+<p>Решение этой проблемы становится возможным с качественным отделением архитектуры от реализации (с чем отлично справляются сетевые границы микросервисов):</p>
+<blockquote>
+<div><p>Архитектура и разработка должны быть тщательно разделены.
+Как сказал Блау (Blaauw), «архитектура говорит, что должно произойти, а разработка - как сделать, чтобы это произошло».
+В качестве простого примера он приводит часы, архитектура которых состоит из циферблата, стрелок и заводной головки.
+Ребенок, освоивший это архитектуру, с одинаковой легкостью может узнать время и по ручным часам, и по часам на колокольне.
+Исполнение же и его реализация описывают, что происходит внутри: передача усилий и управление точностью каждым из многих механизмов.</p>
+<p>Architecture must be carefully distinguished from implementation.
+As Blaauw has said, &#8220;Where architecture tells what happens, implementation tells how it is made to happen.&#8221;
+He gives as a simple example a clock, whose architecture consists of the face, the hands, and the winding knob.
+When a child has learned this architecture, he can tell time as easily from a wristwatch as from a church tower.
+The implementation, however, and its realization, describe what goes on inside the case—powering by any of many mechanisms and accuracy control by any of many.</p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id10">[3]</a></p>
+</div></blockquote>
+<p>Mills&#8217;s Proposal (Предложение Миллза):</p>
+<blockquote>
+<div><p>Предложение Харлана Миллза дает свежее и творческое решение.
+Миллз предложил, чтобы на каждом участке работы была команда разработчиков, организованная наподобие бригады хирургов, а не мясников.
+Имеется в виду, что не каждый участник группы будет врезаться в задачу, но резать будет один, а остальные оказывать ему всевозможную поддержку, повышая его производительность и плодотворность.</p>
+<p>При некотором размышлении ясно, что <strong>эта идея приведет к желаемому, если ее удастся осуществить</strong>.
+Лишь несколько голов занято проектированием и разработкой, и в то же время много работников находится на подхвате.
+Будет ли такая организация работать? Кто играет роль анестезиологов и операционных сестер в группе программистов, а как осуществляется разделение труда?
+Чтобы нарисовать картину работы такой команды с включением всех мыслимых видов поддержки, я позволю себе вольное обращение к  метафорам.</p>
+<p>A proposal by Harlan Mills offers a fresh and creative solution.
+Mills proposes that each segment of a large job be tackled by a team, but that the team be organized like a surgical team rather than a hog-butchering team.
+That is, instead of each member cutting away on the problem, one does the cutting and the others give him every support that will enhance his effectiveness and productivity.</p>
+<p>A little thought shows that <strong>this concept meets the desiderata, if it can be made to work</strong>.
+Few minds are involved in design and construction, yet many hands are brought to bear.
+Can it work?
+Who are the anesthesiologists and nurses on a programming team, and how is the work divided?
+Let me freely mix metaphors to suggest how such a team might work if enlarged to include all conceivable support.</p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id11">[3]</a></p>
+</div></blockquote>
+<p>Обратите внимание на слова &#8220;эта идея приведет к желаемому, если ее удастся осуществить&#8221;.
+Именно эту задачу успешно решает микросервисная архитектура, позволяя объединить вместе большой размер команды и продуктивность, т.е., осуществить масштабирование команды без ущерба производительности.</p>
+<blockquote>
+<div><p>Smaller teams working on smaller codebases tend to be more productive!</p>
+<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id12">[1]</a> by Sam Newman</p>
+</div></blockquote>
+<blockquote>
+<div><p>&#8220;Microservices’ main benefit, in my view, is enabling parallel development by establishing a hard-to-cross boundary between different parts of your system.</p>
+<p>- Stefan Tilkov, a co-founder and principal consultant at innoQ, &#8220;<a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Don’t start with a monolith</a>&#8220;</p>
+</div></blockquote>
+<blockquote>
+<div><p>One case study was particularly interesting.
+The team had made the wrong choice, using microservices on a system that wasn&#8217;t complex enough to cover the Microservice Premium.
+The project got in trouble and needed to be rescued, so lots more people were thrown onto the project.
+At this point the microservice architecture became helpful, because <strong>the system was able to absorb the rapid influx of developers</strong> and <strong>the team was able to leverage the larger team numbers much more easily than is typical with a monolith</strong>.
+As a result the project accelerated to a productivity greater than would have been expected with a monolith, enabling the team to catch up.
+The result was still a net negative, in that the software cost more staff-hours than it would have done if they had gone with a monolith, but the <strong>microservices architecture did support ramp up</strong>.</p>
+<p>- &#8220;<a class="reference external" href="https://martinfowler.com/articles/microservice-trade-offs.html">Microservice Trade-Offs</a>&#8221; by MartiFowler</p>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h1><a class="toc-backref" href="#id20">Особенность утверждений Брукса</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<p>Брукс интересен тем, что умудрился доказать важность строго разделенной (распределенной) архитектуры (по сути - микросервисов), важность наличия в проекте единоначалия архитектора и… как это не удивительно для 1995 года - важность итеративной разработки (Agile).</p>
+</div>
+<div class="section" id="agile">
+<h1><a class="toc-backref" href="#id21">Agile?</a><a class="headerlink" href="#agile" title="Permalink to this headline">¶</a></h1>
+<p>В основе возможности осуществления итеративной разработки лежит эволюционирующая (инкрементальная) архитектура - Evolutionary Architecture.
+Вопреки широко распространенному мнению, Микросервисная Архитектура хорошо сочетается с Evolutionary Architecture, что прекрасно раскрывается в статье &#8220;<a class="reference external" href="https://www.thoughtworks.com/insights/blog/microservices-evolutionary-architecture">Microservices as an Evolutionary Architecture</a>&#8221; by Neal Ford, Rebecca Parsons.
+Это ставит точку в спорах о том, сочетается ли Микросервисная Архитектура с Agile.</p>
+</div>
+<div class="section" id="id14">
+<h1><a class="toc-backref" href="#id22">Другие ссылки по теме</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>&#8220;<a class="reference external" href="https://martinfowler.com/articles/microservice-trade-offs.html">Microservice Trade-Offs</a>&#8220;</li>
+</ul>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="fnbmicro" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id12">3</a>)</em> &#8220;Building Microservices. Designing Fine-Grained Systems&#8221; by Sam Newman</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fncarch" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>&#8220;Clean Architecture: A Craftsman&#8217;s Guide to Software Structure and Design&#8221; by Robert C. Martin</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fnmmonth" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id8">3</a>, <a class="fn-backref" href="#id9">4</a>, <a class="fn-backref" href="#id10">5</a>, <a class="fn-backref" href="#id11">6</a>)</em> &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; by Frederick P. Brooks</td></tr>
+</tbody>
+</table>
+</div>
+
+  <div class="section">
+  
+    
+
+
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+    <h1 class="logo logo-name">@emacsway's blog</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+    <i class="fa fa-pencil"></i>
+     Draft 
+  
+  </h2>
+
+  <ul>
+    
+
+  
+  <li><i class="fa-fw fa fa-user"></i>
+    
+      
+      <a href="../../blog/author/ivan-zakrevsky/">Ivan Zakrevsky</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-language"></i>
+    
+      
+      <a href="../../blog/language/russian/">Russian</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-tags"></i>
+      
+    
+      
+      <a href="../../blog/tag/design/">Design</a>,
+      
+    
+      
+      <a href="../../blog/tag/architecture/">Architecture</a>,
+      
+    
+      Microservices
+    </li>
+  
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About me</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../application-logic-management/">Dec 02 - Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</a></li>
+    
+      <li><a href="../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">Sep 16 - Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</a></li>
+    
+      <li><a href="../easily-about-agile-way-to-rapid-development/">Sep 15 - Про Agile на пальцах. Путь к быстрой разработке.</a></li>
+    
+      <li><a href="../anemic-domain-model/">Jan 04 - Про Anemic Domain Model</a></li>
+    
+      <li><a href="../redux-and-flux-for-oop-programmers/">Jan 03 - Понимание Redux и Flux для ООП программистов</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/agile/">Agile</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/angular/">Angular</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/architecture/">Architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cqrs/">CQRS</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/db/">DB</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/ddd/">DDD</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/datamapper/">DataMapper</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/dependency-injection/">Dependency Injection</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/design/">Design</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/django/">Django</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/django-model/">Django Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/docker/">Docker</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/emacs/">Emacs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/event-sourcing/">Event Sourcing</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/extreme-programming/">Extreme Programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/flux/">Flux</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/fowler/">Fowler</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/hr/">HR</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/hiring/">Hiring</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/javascript/">JavaScript</a></li>
+      
+    
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/model/">Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/oop/">OOP</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/orm/">ORM</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-4">
+        <a href="../../blog/tag/python/">Python</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/redux/">Redux</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/refactoring/">Refactoring</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/repository/">Repository</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/sql/">SQL</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/scrum/">Scrum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/service-layer/">Service Layer</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/storm-orm/">Storm ORM</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/xp/">XP</a></li>
+      
+    
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/autocomplete/">autocomplete</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cache/">cache</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/programming/">programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/refactoring/">refactoring</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2018/">2018 (6)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017/">2017 (10)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016/">2016 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2015/">2015 (6)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer">
+      &copy;2018, Ivan Zakrevsky.
+      
+      |
+      Powered by <a href="http://ablog.readthedocs.org/">ABlog</a> &amp; <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/ru/microservices-first-vs-monolith-first.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+
+
+    
+
+
+<!-- google.com/analytics counter -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69288289-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /google.com/analytics counter -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32948409 = new Ya.Metrika({
+                    id:32948409,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/32948409" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+  </body>
+</html>
