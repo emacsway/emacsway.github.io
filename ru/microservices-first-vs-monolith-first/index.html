@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Thu, 20 Dec 2018 07:22:46 GMT" />
+        <meta http-equiv="Last-Modified" content="Thu, 20 Dec 2018 10:10:01 GMT" />
         
             <meta name="description" content="Существует два классических подхода к созданию микросервисных приложений - Microservices First и Monolith First. И если превосходства последнего широко освещены рядом известных авторитетов в области архитектуры, такими как Sam Newman, Robert Martin, Martin Fowler и др., то освещенность превосходств первого оставляет желать лучшего. Именно эта причина и побудила меня разобраться в этом вопросе." />
         
@@ -86,26 +86,27 @@
           <div class="body" role="main">
             
   <div class="section" id="microservices-first-vs-monolith-first">
-<h1><a class="toc-backref" href="#id15">Microservices First vs Monolith First</a><a class="headerlink" href="#microservices-first-vs-monolith-first" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id18">Microservices First vs Monolith First</a><a class="headerlink" href="#microservices-first-vs-monolith-first" title="Permalink to this headline">¶</a></h1>
 <p>Существует два классических подхода к созданию микросервисных приложений - <a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Microservices First</a> и <a class="reference external" href="https://martinfowler.com/bliki/MonolithFirst.html">Monolith First</a>.
 И если превосходства последнего широко освещены рядом известных авторитетов в области архитектуры, такими как Sam Newman, Robert Martin, Martin Fowler и др., то освещенность превосходств первого оставляет желать лучшего.
 Именно эта причина и побудила меня разобраться в этом вопросе.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#microservices-first-vs-monolith-first" id="id15">Microservices First vs Monolith First</a></li>
-<li><a class="reference internal" href="#monolith-first" id="id16">Monolith First</a></li>
-<li><a class="reference internal" href="#microservices-first" id="id17">Microservices First</a></li>
-<li><a class="reference internal" href="#the-brooks-s-law" id="id18">The Brooks&#8217;s Law (Закон Брукса)</a></li>
-<li><a class="reference internal" href="#id6" id="id19">Продуктивность</a></li>
-<li><a class="reference internal" href="#id13" id="id20">Особенность утверждений Брукса</a></li>
-<li><a class="reference internal" href="#agile" id="id21">Agile?</a></li>
-<li><a class="reference internal" href="#id14" id="id22">Другие ссылки по теме</a></li>
+<li><a class="reference internal" href="#microservices-first-vs-monolith-first" id="id18">Microservices First vs Monolith First</a></li>
+<li><a class="reference internal" href="#monolith-first" id="id19">Monolith First</a></li>
+<li><a class="reference internal" href="#microservices-first" id="id20">Microservices First</a></li>
+<li><a class="reference internal" href="#the-brooks-s-law" id="id21">The Brooks&#8217;s Law (Закон Брукса)</a></li>
+<li><a class="reference internal" href="#id7" id="id22">Продуктивность</a></li>
+<li><a class="reference internal" href="#id16" id="id23">Особенность утверждений Брукса</a></li>
+<li><a class="reference internal" href="#agile" id="id24">Agile?</a></li>
+<li><a class="reference internal" href="#id17" id="id25">Другие ссылки по теме</a></li>
 </ul>
 </div>
+<p>Данный пост не рассматривает превосходств микросервисной или монолитной архитектуры, а рассматривает только два разных способа достижения микросервисной архитектуры. Я исхожу из предположения, что вы уже знакомы с постпредствами обоих видов архитектур, и сделали свой выбор в пользу микросервисной.</p>
 </div>
 <div class="section" id="monolith-first">
-<h1><a class="toc-backref" href="#id16">Monolith First</a><a class="headerlink" href="#monolith-first" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id19">Monolith First</a><a class="headerlink" href="#monolith-first" title="Permalink to this headline">¶</a></h1>
 <p>Monolith First представляет собой двухфазную разработку микросервисного приложения, в первой фазе которого приложение имеет особую форму монолита, с низким сопряжением компонентов (loosely coupled), в котором изначально определены швы для &#8220;распила&#8221;.
 Обычно такой монолит активно использует концепцию DDD (см. Chapter 3 &#8220;How to Model Services&#8221; (&#8220;Premature Decomposition&#8221;) of &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id2">[1]</a> by Sam Newman) или Use Case (см. Chapter 16 &#8220;Independence&#8221; (&#8220;Operation&#8221;, &#8220;Decoupling mode&#8221;, &#8220;Decoupling modes (againe)&#8221;) of &#8220;Clean Architecture&#8221; <a class="footnote-reference" href="#fncarch" id="id3">[2]</a> by Robert C. Martin).
 Такой подход позволяет удешевить процесс Model Distillation, и подразумевает вывод Bounded Contexts в независимые сервисы после стабилизации контуров бизнес-моделей и границ контекстов, по мере назревания в этом реальной необходимости.</p>
@@ -113,10 +114,12 @@
 Можно назвать этот момент &#8220;слабостью архитектуры&#8221;.
 Это не означает низкий уровень компетентности архитектора (скорее - наоборот).
 Просто это означает, что предпосылок для стабильной архитектуры сразу не существует.</p>
+<a class="reference internal image-reference" href="../../_images/architecture-strengths-vs-developments-strengths.png"><img alt="Предпочтение способа реализации микросервисного приложения в зависимости от отношения преобладания силы архитектуры и силы разработки" class="align-center" src="../../_images/architecture-strengths-vs-developments-strengths.png" style="width: 90%;" /></a>
 <p>Ожидание и реальность. Изображение со статьи &#8220;<a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Don’t start with a monolith</a>&#8221; by Stefan Tilkov:</p>
 <a class="reference internal image-reference" href="../../_images/monolith-theory-practice.svg"><div align="center" class="align-center"><img alt="Ожидание и реальность. Изображение со статьи &quot;Don’t start with a monolith&quot; by Stefan Tilkov https://martinfowler.com/articles/dont-start-monolith.html" src="../../_images/monolith-theory-practice.svg" width="90%" /></div>
 </a>
 <p>Другим существенным мотивом в пользу Monolith First является потребность в достижении скорейшего выпуска в production первой работающей версии продукта при лимитированном количестве разработчиков.</p>
+<a class="reference internal image-reference" href="../../_images/time-vs-resources.png"><img alt="Предпочтение способа реализации микросервисного приложения в зависимости от отношения преобладания времени и ресурсов на разработку" class="align-center" src="../../_images/time-vs-resources.png" style="width: 90%;" /></a>
 <p>Влияние микросервисной архитектуры на продуктивность. Изображение со статьи &#8220;<a class="reference external" href="https://martinfowler.com/bliki/MicroservicePremium.html">Microservice Premium</a>&#8221; by Martin Fowler:</p>
 <a class="reference internal image-reference" href="../../_images/productivity.png"><img alt="Влияние микросервисной архитектуры на продуктивность. Изображение со статьи &quot;Microservice Premium&quot; by Martin Fowler https://martinfowler.com/bliki/MicroservicePremium.html" class="align-center" src="../../_images/productivity.png" style="width: 90%;" /></a>
 <p>Недостатком Monolith First является высокая чувствительность к качеству реализации (конструирования), которая требует от разработчиков высокой компетентности и дисциплины, что означает удорожание разработки, ведь привлечение разработчиков среднего и начального уровня нанесет урон изоляции компонентов (creeping coupling).
@@ -124,7 +127,7 @@
 В то время как всегда выгоднее нанять одного опытного архитектора, нежели укомплектовать всю команду опытными разработчиками.</p>
 </div>
 <div class="section" id="microservices-first">
-<h1><a class="toc-backref" href="#id17">Microservices First</a><a class="headerlink" href="#microservices-first" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id20">Microservices First</a><a class="headerlink" href="#microservices-first" title="Permalink to this headline">¶</a></h1>
 <p>Исходя из мотивов в пользу Monolith First, становятся очевидны и мотивы в пользу Microservices First.</p>
 <p>Первым существенным мотивом является сильная архитектура и слабое качество разработки.
 Например, архитектор уже обладает опытом в данной предметной области, и потребности в переработке знаний нет.
@@ -139,17 +142,30 @@
 Это позволяет обойти <a class="reference external" href="https://en.wikipedia.org/wiki/Brooks%27s_law">Brooks&#8217;s Law (Закон Брукса)</a>, к которому мы вскоре вернемся.
 Frederick P. Brooks еще много лет назад предвосхитил это достоинство микросервсиной архитектуры.</p>
 <p>В целом, превосходства Microservices First проявляются в следующих случаях:</p>
-<ol class="arabic simple">
-<li>Когда нет ограниченности в ресурсах, но есть ограниченность по времени.</li>
-<li>Когда есть опытный в данной предметной области архитектор, но малоопытные разработчики (сетевые границы сервисов изолируют низкий уровень дисциплины и опыта разработчиков, и сдерживают ползучие зависимости (creeping coupling)).</li>
-<li>Когда изначально требуется гетерогенность технологий. Например, для решения различных задач в рамках одного приложения требуется использовать различные языки программирования, хранилища данных, фреймворки и т.д.</li>
-<li>Когда необходимо соблюсти требования местных Законов (например, база персональных данных должна физически храниться у локального провайдера в пределах страны).</li>
-<li>Когда команда разработчиков неоднородна и распределена.</li>
-<li>Когда огромный объем обрабатываемых данных изначально требует широкого масштабирования (например, скраперы).</li>
+<ol class="arabic">
+<li><p class="first">Когда нет ограниченности в ресурсах, но есть ограниченность по времени.</p>
+</li>
+<li><p class="first">Когда есть опытный в данной предметной области архитектор, но малоопытные разработчики (сетевые границы сервисов изолируют низкий уровень дисциплины и опыта разработчиков, и сдерживают ползучие зависимости (creeping coupling)).</p>
+</li>
+<li><p class="first">Когда изначально требуется гетерогенность технологий. Например, для решения различных задач в рамках одного приложения требуется использовать различные языки программирования, хранилища данных, фреймворки и т.д.</p>
+</li>
+<li><p class="first">Когда необходимо соблюсти требования местных Законов (например, база персональных данных должна физически храниться у локального провайдера в пределах страны).</p>
+<blockquote>
+<div><p>...наличие системы, разбитой на узкоспециализированные сервисы, дает нам множество вариантов решения проблемы.
+Возможность использования микросервисов не только позволяет уменьшить влияние любой отдельной бреши в системе безопасности, но и дает нам больше возможностей найти компромиссы в отношении издержек, связанных с более сложными и безопасными подходами в работе с конфиденциальными данными, и выбрать менее сложные подходы в тех случаях, когда риски оцениваются значительно ниже.</p>
+<p>...having a system decomposed into finer-grained services gives us many more options as to how to solve a problem.
+Not only can having microservices potentially reduce the impact of any given breach, but it also gives us more ability to trade off the overhead of more complex and secure approaches where data is sensitive, and a lighter-weight approach when the risks are lower.</p>
+<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id5">[1]</a> by Sam Newman</p>
+</div></blockquote>
+</li>
+<li><p class="first">Когда команда разработчиков неоднородна и распределена.</p>
+</li>
+<li><p class="first">Когда огромный объем обрабатываемых данных изначально требует широкого масштабирования (например, скраперы).</p>
+</li>
 </ol>
 </div>
 <div class="section" id="the-brooks-s-law">
-<h1><a class="toc-backref" href="#id18">The Brooks&#8217;s Law (Закон Брукса)</a><a class="headerlink" href="#the-brooks-s-law" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id21">The Brooks&#8217;s Law (Закон Брукса)</a><a class="headerlink" href="#the-brooks-s-law" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Если проект не укладывается в сроки, то добавление рабочей силы задержит его ещё больше.</p>
 <p>Adding manpower to a late software project makes it later.</p>
@@ -169,11 +185,15 @@ Brooks argues that, on balance, more effort is lost to training and additional c
 <blockquote>
 <div><p>Число занятых и число месяцев являются взаимозаменяемыми величинами лишь тогда, когда задачу можно распределить среди ряда работников, которые не имеют между собой взаимосвязи.</p>
 <p>Men and months are interchangeable commodities only when a task can be partitioned among many workers with no communication among them.</p>
-<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id5">[3]</a></p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id6">[3]</a></p>
+</div></blockquote>
+<blockquote>
+<div><p>&#8220;Microservices’ main benefit, in my view, is enabling parallel development by establishing a hard-to-cross boundary between different parts of your system.</p>
+<p>- Stefan Tilkov, a co-founder and principal consultant at innoQ, &#8220;<a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Don’t start with a monolith</a>&#8220;</p>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h1><a class="toc-backref" href="#id19">Продуктивность</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id7">
+<h1><a class="toc-backref" href="#id22">Продуктивность</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
 <p>Существует две противоречащие друг другу проблемы, сформулированные Frederick Brooks.
 С одной стороны:</p>
 <blockquote>
@@ -185,18 +205,18 @@ Brooks argues that, on balance, more effort is lost to training and additional c
 This, too, suggests that one wants the system to be built by <strong>as few minds as possible</strong>.
 Indeed, most experience with large programming systems shows that the brute-force approach is costly, slow, inefficient, and produces systems that are not conceptually integrated.
 OS/360, Exec 8, Scope 6600, Multics, TSS, SAGE, etc.—the list goes on and on.</p>
-<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id7">[3]</a></p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id8">[3]</a></p>
 </div></blockquote>
 <p>Но с другой стороны:</p>
 <blockquote>
-<div><p>В этом и состоит изъян идеи маленькой активной команды: для создания по-настоящему крупных систем ей потребуется слишком много времени.
+<div><p>В этом и состоит <strong>изъян идеи маленькой активной команды: для создания по-настоящему крупных систем ей потребуется слишком много времени</strong>.
 Посмотрим, как разработка OS/360 осуществлялась бы маленькой активной командой, допустим, из 10 человек.
 Положим, что они в семь раз более продуктивны средних программистов (что далеко от истины).
 Допустим, что уменьшение объема общения благодаря малочисленности команды позволило еще в семь раз повысить производительность.
 Допустим, что на протяжении всего проекта работает одна и та же команда.
 Таким образом, 5000/(10*7*7)=10, т.е. работу в 5000 человеко-лет они выполнят за 10 лет.
 Будет ли продукт представлять интерес через 10 лет после начала разработки или устареет благодаря стремительному развитию программных технологий?</p>
-<p>This then is the problem with the small, sharp team concept: it is too slow for really big systems.
+<p>This then is <strong>the problem with the small, sharp team concept: it is too slow for really big systems</strong>.
 Consider the OS/360 job as it might be tackled with a small, sharp team.
 Postulate a 10-man team.
 As a bound, let them be seven times as productive as mediocre programmers in both programming and documentation, because they are sharp.
@@ -205,7 +225,7 @@ As a bound, assume that another productivity improvement factor of seven comes f
 Assume the same team stays on the entire job.
 Well, 5000/(10 X 7 X 7 ) = 10; they can do the 5000 man-year job in 10 years.
 Will the product be interesting 10 years after its initial design? Or will it have been made obsolete by the rapidly developing software technology?</p>
-<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id8">[3]</a></p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id9">[3]</a></p>
 </div></blockquote>
 <p>Возникает противоречие:</p>
 <blockquote>
@@ -217,21 +237,21 @@ Will the product be interesting 10 years after its initial design? Or will it ha
 For efficiency and conceptual integrity, one prefers a few good minds doing design and construction.
 Yet for large systems one wants a way to bring considerable manpower to bear, so that the product can make a timely appearance.
 How can these two needs be reconciled?</p>
-<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id9">[3]</a></p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id10">[3]</a></p>
 </div></blockquote>
 <p>Решение этой проблемы становится возможным с качественным отделением архитектуры от реализации (с чем отлично справляются сетевые границы микросервисов):</p>
 <blockquote>
-<div><p>Архитектура и разработка должны быть тщательно разделены.
+<div><p><strong>Архитектура и разработка должны быть тщательно разделены.</strong>
 Как сказал Блау (Blaauw), «архитектура говорит, что должно произойти, а разработка - как сделать, чтобы это произошло».
 В качестве простого примера он приводит часы, архитектура которых состоит из циферблата, стрелок и заводной головки.
 Ребенок, освоивший это архитектуру, с одинаковой легкостью может узнать время и по ручным часам, и по часам на колокольне.
 Исполнение же и его реализация описывают, что происходит внутри: передача усилий и управление точностью каждым из многих механизмов.</p>
-<p>Architecture must be carefully distinguished from implementation.
+<p><strong>Architecture must be carefully distinguished from implementation.</strong>
 As Blaauw has said, &#8220;Where architecture tells what happens, implementation tells how it is made to happen.&#8221;
 He gives as a simple example a clock, whose architecture consists of the face, the hands, and the winding knob.
 When a child has learned this architecture, he can tell time as easily from a wristwatch as from a church tower.
 The implementation, however, and its realization, describe what goes on inside the case—powering by any of many mechanisms and accuracy control by any of many.</p>
-<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id10">[3]</a></p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id11">[3]</a></p>
 </div></blockquote>
 <p>Mills&#8217;s Proposal (Предложение Миллза):</p>
 <blockquote>
@@ -250,17 +270,18 @@ Few minds are involved in design and construction, yet many hands are brought to
 Can it work?
 Who are the anesthesiologists and nurses on a programming team, and how is the work divided?
 Let me freely mix metaphors to suggest how such a team might work if enlarged to include all conceivable support.</p>
-<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id11">[3]</a></p>
+<p>- Frederick P. Brooks, &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; <a class="footnote-reference" href="#fnmmonth" id="id12">[3]</a></p>
 </div></blockquote>
 <p>Обратите внимание на слова &#8220;эта идея приведет к желаемому, если ее удастся осуществить&#8221;.
 Именно эту задачу успешно решает микросервисная архитектура, позволяя объединить вместе большой размер команды и продуктивность, т.е., осуществить масштабирование команды без ущерба производительности.</p>
 <blockquote>
 <div><p>Smaller teams working on smaller codebases tend to be more productive!</p>
-<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id12">[1]</a> by Sam Newman</p>
+<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id13">[1]</a> by Sam Newman</p>
 </div></blockquote>
 <blockquote>
-<div><p>&#8220;Microservices’ main benefit, in my view, is enabling parallel development by establishing a hard-to-cross boundary between different parts of your system.</p>
-<p>- Stefan Tilkov, a co-founder and principal consultant at innoQ, &#8220;<a class="reference external" href="https://martinfowler.com/articles/dont-start-monolith.html">Don’t start with a monolith</a>&#8220;</p>
+<div><p>...мы стремимся к тому, чтобы сервисы создавались в результате разбиения системы на такие части, при которых <strong>темпы развития внутри сервисов были намного выше темпов развития между сервисами</strong>.</p>
+<p>...we aim to ensure our services are decomposed such that the <strong>pace of change inside a service is much higher than the pace of change between services</strong>.</p>
+<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id14">[1]</a> by Sam Newman</p>
 </div></blockquote>
 <blockquote>
 <div><p>One case study was particularly interesting.
@@ -271,19 +292,44 @@ As a result the project accelerated to a productivity greater than would have be
 The result was still a net negative, in that the software cost more staff-hours than it would have done if they had gone with a monolith, but the <strong>microservices architecture did support ramp up</strong>.</p>
 <p>- &#8220;<a class="reference external" href="https://martinfowler.com/articles/microservice-trade-offs.html">Microservice Trade-Offs</a>&#8221; by MartiFowler</p>
 </div></blockquote>
+<blockquote>
+<div><p>Netflix и Amazon</p>
+<p>Наверное, идея обязательной согласованности организации и архитектуры может быть неплохо проиллюстрирована на примере Amazon и Netflix.
+В Amazon довольно рано начали понимать преимущества владения командами полным жизненным циклом управляемых ими систем.
+Там решили, что команды должны всецело распоряжаться теми системами, за которые они отвечают, управляя всем жизненным циклом этих систем.
+Но в Amazon также знали, что <strong>небольшие команды могут работать быстрее больших</strong>.
+Это привело к созданию команд, которые можно было бы накормить двумя пиццами.
+Это стремление к созданию небольших команд, владеющих полным жизненным циклом своих сервисов, и стало основной причиной того, что в Amazon была разработана платформа Amazon Web Services.
+Для обеспечения самодостаточности своих команд компании понадобилось создать соответствующий инструментарий.
+Этот пример был взят на вооружение компанией Netflix и с самого начала определил формирование ее структуры вокруг небольших независимых команд, образуемых с прицелом на то, что создаваемые ими сервисы также будут независимы друг от друга.
+Тем самым обеспечивалась оптимизация скорости изменения архитектуры систем.
+Фактически в Netflix разработали организационную структуру для желаемой архитектуры создаваемых систем.</p>
+<p>Netflix and Amazon</p>
+<p>Probably the two poster children for the idea that organizations and architecture should be aligned are Amazon and Netflix.
+Early on, Amazon started to understand the benefits of teams owning the whole lifecycle of the systems they managed.
+It wanted teams to own and operate the systems they looked after, managing the entire lifecycle.
+But Amazon also knew that <strong>small teams can work faster than large teams</strong>.
+This led famously to its two-pizza teams, where no team should be so big that it could not be fed with two pizzas.
+This driver for small teams owning the whole lifecycle of their services is a major reason why Amazon developed Amazon Web Services.
+It needed to create the tooling to allow its teams to be self-sufficient.
+Netflix learned from this example, and ensured that from the beginning it structured itself around small, independent teams, so that the services they created would also be independent from each other.
+This ensured that the architecture of the system was optimized for speed of change.
+Effectively, Netflix designed the organizational structure for the system architecture it wanted.</p>
+<p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id15">[1]</a> by Sam Newman</p>
+</div></blockquote>
 </div>
-<div class="section" id="id13">
-<h1><a class="toc-backref" href="#id20">Особенность утверждений Брукса</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id16">
+<h1><a class="toc-backref" href="#id23">Особенность утверждений Брукса</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h1>
 <p>Брукс интересен тем, что умудрился доказать важность строго разделенной (распределенной) архитектуры (по сути - микросервисов), важность наличия в проекте единоначалия архитектора и… как это не удивительно для 1995 года - важность итеративной разработки (Agile).</p>
 </div>
 <div class="section" id="agile">
-<h1><a class="toc-backref" href="#id21">Agile?</a><a class="headerlink" href="#agile" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id24">Agile?</a><a class="headerlink" href="#agile" title="Permalink to this headline">¶</a></h1>
 <p>В основе возможности осуществления итеративной разработки лежит эволюционирующая (инкрементальная) архитектура - Evolutionary Architecture.
 Вопреки широко распространенному мнению, Микросервисная Архитектура хорошо сочетается с Evolutionary Architecture, что прекрасно раскрывается в статье &#8220;<a class="reference external" href="https://www.thoughtworks.com/insights/blog/microservices-evolutionary-architecture">Microservices as an Evolutionary Architecture</a>&#8221; by Neal Ford, Rebecca Parsons.
 Это ставит точку в спорах о том, сочетается ли Микросервисная Архитектура с Agile.</p>
 </div>
-<div class="section" id="id14">
-<h1><a class="toc-backref" href="#id22">Другие ссылки по теме</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id17">
+<h1><a class="toc-backref" href="#id25">Другие ссылки по теме</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>&#8220;<a class="reference external" href="https://martinfowler.com/articles/microservice-trade-offs.html">Microservice Trade-Offs</a>&#8220;</li>
 </ul>
@@ -291,7 +337,7 @@ The result was still a net negative, in that the software cost more staff-hours 
 <table class="docutils footnote" frame="void" id="fnbmicro" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id12">3</a>)</em> &#8220;Building Microservices. Designing Fine-Grained Systems&#8221; by Sam Newman</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>, <a class="fn-backref" href="#id13">4</a>, <a class="fn-backref" href="#id14">5</a>, <a class="fn-backref" href="#id15">6</a>)</em> &#8220;Building Microservices. Designing Fine-Grained Systems&#8221; by Sam Newman</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fncarch" rules="none">
@@ -303,7 +349,7 @@ The result was still a net negative, in that the software cost more staff-hours 
 <table class="docutils footnote" frame="void" id="fnmmonth" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id8">3</a>, <a class="fn-backref" href="#id9">4</a>, <a class="fn-backref" href="#id10">5</a>, <a class="fn-backref" href="#id11">6</a>)</em> &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; by Frederick P. Brooks</td></tr>
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id8">2</a>, <a class="fn-backref" href="#id9">3</a>, <a class="fn-backref" href="#id10">4</a>, <a class="fn-backref" href="#id11">5</a>, <a class="fn-backref" href="#id12">6</a>)</em> &#8220;The Mythical Man-Month Essays on Software Engineering&#8221; by Frederick P. Brooks</td></tr>
 </tbody>
 </table>
 </div>

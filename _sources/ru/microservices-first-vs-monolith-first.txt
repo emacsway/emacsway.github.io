@@ -17,6 +17,8 @@ Microservices First vs Monolith First
 
 .. contents:: Содержание
 
+Данный пост не рассматривает превосходств микросервисной или монолитной архитектуры, а рассматривает только два разных способа достижения микросервисной архитектуры. Я исхожу из предположения, что вы уже знакомы с постпредствами обоих видов архитектур, и сделали свой выбор в пользу микросервисной.
+
 
 Monolith First
 ==============
@@ -30,6 +32,11 @@ Monolith First представляет собой двухфазную разр
 Это не означает низкий уровень компетентности архитектора (скорее - наоборот).
 Просто это означает, что предпосылок для стабильной архитектуры сразу не существует.
 
+.. image:: /_media/en/microservices-first-vs-monolith-first/architecture-strengths-vs-developments-strengths.png
+   :alt: Предпочтение способа реализации микросервисного приложения в зависимости от отношения преобладания силы архитектуры и силы разработки
+   :align: center
+   :width: 90%
+
 Ожидание и реальность. Изображение со статьи "`Don’t start with a monolith <https://martinfowler.com/articles/dont-start-monolith.html>`__" by Stefan Tilkov:
 
 .. image:: /_media/en/microservices-first-vs-monolith-first/monolith-theory-practice.svg
@@ -38,6 +45,11 @@ Monolith First представляет собой двухфазную разр
    :width: 90%
 
 Другим существенным мотивом в пользу Monolith First является потребность в достижении скорейшего выпуска в production первой работающей версии продукта при лимитированном количестве разработчиков.
+
+.. image:: /_media/en/microservices-first-vs-monolith-first/time-vs-resources.png
+   :alt: Предпочтение способа реализации микросервисного приложения в зависимости от отношения преобладания времени и ресурсов на разработку
+   :align: center
+   :width: 90%
 
 Влияние микросервисной архитектуры на продуктивность. Изображение со статьи "`Microservice Premium <https://martinfowler.com/bliki/MicroservicePremium.html>`__" by Martin Fowler:
 
@@ -77,6 +89,15 @@ Frederick P. Brooks еще много лет назад предвосхитил
 2. Когда есть опытный в данной предметной области архитектор, но малоопытные разработчики (сетевые границы сервисов изолируют низкий уровень дисциплины и опыта разработчиков, и сдерживают ползучие зависимости (creeping coupling)).
 3. Когда изначально требуется гетерогенность технологий. Например, для решения различных задач в рамках одного приложения требуется использовать различные языки программирования, хранилища данных, фреймворки и т.д.
 4. Когда необходимо соблюсти требования местных Законов (например, база персональных данных должна физически храниться у локального провайдера в пределах страны).
+
+    ...наличие системы, разбитой на узкоспециализированные сервисы, дает нам множество вариантов решения проблемы.
+    Возможность использования микросервисов не только позволяет уменьшить влияние любой отдельной бреши в системе безопасности, но и дает нам больше возможностей найти компромиссы в отношении издержек, связанных с более сложными и безопасными подходами в работе с конфиденциальными данными, и выбрать менее сложные подходы в тех случаях, когда риски оцениваются значительно ниже.
+
+    ...having a system decomposed into finer-grained services gives us many more options as to how to solve a problem.
+    Not only can having microservices potentially reduce the impact of any given breach, but it also gives us more ability to trade off the overhead of more complex and secure approaches where data is sensitive, and a lighter-weight approach when the risks are lower.
+
+    \- "Building Microservices" [#fnbmicro]_ by Sam Newman
+
 5. Когда команда разработчиков неоднородна и распределена.
 6. Когда огромный объем обрабатываемых данных изначально требует широкого масштабирования (например, скраперы).
 
@@ -110,6 +131,12 @@ The Brooks's Law (Закон Брукса)
 
     \- Frederick P. Brooks, "The Mythical Man-Month Essays on Software Engineering" [#fnmmonth]_
 
+..
+
+    "Microservices’ main benefit, in my view, is enabling parallel development by establishing a hard-to-cross boundary between different parts of your system.
+
+    \- Stefan Tilkov, a co-founder and principal consultant at innoQ, "`Don’t start with a monolith <https://martinfowler.com/articles/dont-start-monolith.html>`__"
+
 
 Продуктивность
 ==============
@@ -131,7 +158,7 @@ The Brooks's Law (Закон Брукса)
 
 Но с другой стороны:
 
-    В этом и состоит изъян идеи маленькой активной команды: для создания по-настоящему крупных систем ей потребуется слишком много времени.
+    В этом и состоит **изъян идеи маленькой активной команды: для создания по-настоящему крупных систем ей потребуется слишком много времени**.
     Посмотрим, как разработка OS/360 осуществлялась бы маленькой активной командой, допустим, из 10 человек.
     Положим, что они в семь раз более продуктивны средних программистов (что далеко от истины).
     Допустим, что уменьшение объема общения благодаря малочисленности команды позволило еще в семь раз повысить производительность.
@@ -139,7 +166,7 @@ The Brooks's Law (Закон Брукса)
     Таким образом, 5000/(10\*7\*7)=10, т.е. работу в 5000 человеко-лет они выполнят за 10 лет.
     Будет ли продукт представлять интерес через 10 лет после начала разработки или устареет благодаря стремительному развитию программных технологий?
 
-    This then is the problem with the small, sharp team concept: it is too slow for really big systems.
+    This then is **the problem with the small, sharp team concept: it is too slow for really big systems**.
     Consider the OS/360 job as it might be tackled with a small, sharp team.
     Postulate a 10-man team.
     As a bound, let them be seven times as productive as mediocre programmers in both programming and documentation, because they are sharp.
@@ -167,13 +194,13 @@ The Brooks's Law (Закон Брукса)
 
 Решение этой проблемы становится возможным с качественным отделением архитектуры от реализации (с чем отлично справляются сетевые границы микросервисов):
 
-    Архитектура и разработка должны быть тщательно разделены.
+    **Архитектура и разработка должны быть тщательно разделены.**
     Как сказал Блау (Blaauw), «архитектура говорит, что должно произойти, а разработка - как сделать, чтобы это произошло».
     В качестве простого примера он приводит часы, архитектура которых состоит из циферблата, стрелок и заводной головки.
     Ребенок, освоивший это архитектуру, с одинаковой легкостью может узнать время и по ручным часам, и по часам на колокольне.
     Исполнение же и его реализация описывают, что происходит внутри: передача усилий и управление точностью каждым из многих механизмов.
 
-    Architecture must be carefully distinguished from implementation.
+    **Architecture must be carefully distinguished from implementation.**
     As Blaauw has said, "Where architecture tells what happens, implementation tells how it is made to happen."
     He gives as a simple example a clock, whose architecture consists of the face, the hands, and the winding knob.
     When a child has learned this architecture, he can tell time as easily from a wristwatch as from a church tower.
@@ -214,9 +241,11 @@ Mills's Proposal (Предложение Миллза):
 
 ..
 
-    "Microservices’ main benefit, in my view, is enabling parallel development by establishing a hard-to-cross boundary between different parts of your system.
+    ...мы стремимся к тому, чтобы сервисы создавались в результате разбиения системы на такие части, при которых **темпы развития внутри сервисов были намного выше темпов развития между сервисами**.
 
-    \- Stefan Tilkov, a co-founder and principal consultant at innoQ, "`Don’t start with a monolith <https://martinfowler.com/articles/dont-start-monolith.html>`__"
+    ...we aim to ensure our services are decomposed such that the **pace of change inside a service is much higher than the pace of change between services**.
+
+    \- "Building Microservices" [#fnbmicro]_ by Sam Newman
 
 ..
 
@@ -228,6 +257,37 @@ Mills's Proposal (Предложение Миллза):
     The result was still a net negative, in that the software cost more staff-hours than it would have done if they had gone with a monolith, but the **microservices architecture did support ramp up**.
 
     \- "`Microservice Trade-Offs <https://martinfowler.com/articles/microservice-trade-offs.html>`__" by MartiFowler
+
+..
+
+    Netflix и Amazon
+
+    Наверное, идея обязательной согласованности организации и архитектуры может быть неплохо проиллюстрирована на примере Amazon и Netflix.
+    В Amazon довольно рано начали понимать преимущества владения командами полным жизненным циклом управляемых ими систем.
+    Там решили, что команды должны всецело распоряжаться теми системами, за которые они отвечают, управляя всем жизненным циклом этих систем.
+    Но в Amazon также знали, что **небольшие команды могут работать быстрее больших**.
+    Это привело к созданию команд, которые можно было бы накормить двумя пиццами.
+    Это стремление к созданию небольших команд, владеющих полным жизненным циклом своих сервисов, и стало основной причиной того, что в Amazon была разработана платформа Amazon Web Services.
+    Для обеспечения самодостаточности своих команд компании понадобилось создать соответствующий инструментарий.
+    Этот пример был взят на вооружение компанией Netflix и с самого начала определил формирование ее структуры вокруг небольших независимых команд, образуемых с прицелом на то, что создаваемые ими сервисы также будут независимы друг от друга.
+    Тем самым обеспечивалась оптимизация скорости изменения архитектуры систем.
+    Фактически в Netflix разработали организационную структуру для желаемой архитектуры создаваемых систем.
+
+
+    Netflix and Amazon
+
+    Probably the two poster children for the idea that organizations and architecture should be aligned are Amazon and Netflix.
+    Early on, Amazon started to understand the benefits of teams owning the whole lifecycle of the systems they managed.
+    It wanted teams to own and operate the systems they looked after, managing the entire lifecycle.
+    But Amazon also knew that **small teams can work faster than large teams**.
+    This led famously to its two-pizza teams, where no team should be so big that it could not be fed with two pizzas.
+    This driver for small teams owning the whole lifecycle of their services is a major reason why Amazon developed Amazon Web Services.
+    It needed to create the tooling to allow its teams to be self-sufficient.
+    Netflix learned from this example, and ensured that from the beginning it structured itself around small, independent teams, so that the services they created would also be independent from each other.
+    This ensured that the architecture of the system was optimized for speed of change.
+    Effectively, Netflix designed the organizational structure for the system architecture it wanted.
+
+    \- "Building Microservices" [#fnbmicro]_ by Sam Newman
 
 
 Особенность утверждений Брукса
