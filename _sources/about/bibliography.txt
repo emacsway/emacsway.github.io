@@ -8,7 +8,7 @@
 Bibliography
 ============
 
-The list of literature read by me:
+The list of software literature read by me:
 
 
 * Architecture & Design:

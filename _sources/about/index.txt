@@ -34,7 +34,7 @@ My main interest is to make the code clean, simple and maintainable; the impleme
 
 Real experience of establishing economically successful Agile development. Deep background in XP, TDD, DDD, Refactoring, Evolutionary Design, Clean Code/Architecture, Microservices and others. Extensive :doc:`bibliography <./bibliography>`.
 
-Also I'm an Open Source `developer <Open Source Projects_>`__ and an adherent of `KISS <KISS_>`_ principle. My philosophy is: "Do it shortly, clearly".
+Also I'm an Open Source `developer <Open Source Projects_>`__ and an adherent of `KISS <https://people.apache.org/~fhanik/kiss.html>`_ principle. My philosophy is: "Do it shortly, clearly".
 
 
 Open Source Projects
@@ -74,38 +74,6 @@ Articles in Russian:
 * ":doc:`../ru/storm-orm`"
 * :ref:`... all articles in Russian >> <language-ru>`
 
-
-..
-    Technologies & approaches
-    -------------------------
-
-    * Programming languages: Python (primary, since 2008), JavaScript/TypeScript (strong), Ruby (sometimes),  PHP (in the past).
-    * Development environment: Emacs (sometimes VIM, PyCharm).
-    * Approaches: XP, TDD, DDD, SOLID, OOP, OOD, Design Patterns, DIP, Refactoring, Evolutionary Design (aka Designing Through Refactoring), Clean Code & Clean Architecture, Software Architectural Design, Database Architecture, Low Coupling & High Cohesion, SRP, OCP, GRASP, Microservices etc.
-    * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
-    * Frameworks: Django (mainly), Flask, also used Aiohttp, Tornado, Twisted, Ruby on Rails, etc.
-    * JavaScript Frameworks: Dojo, Dojo2, jQuery, AngularJS, Angular2+.
-    * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
-    * Bug-tracking: Jira (mainly), Trac, Redmine, Pivotal Tracker.
-    * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
-    * CVS: Mercurial (mainly), GIT, SVN, Bazar.
-    * Services: New Relic, Heroku, AWS, Atlassian.
-    * Others: Docker, Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
-    * Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
-
-
-    Experience
-    ----------
-
-    * Jul 2017 - present - Solution Architect and XP coach at Business Technologies www.biz-tek.ru. Introduced best practices of Software Design and Agile software development (TDD, XP, CI, CD, DDD, SOA, Microservices, Designing Through Refactoring etc.). Keeping the flattened change cost curve of the project. Clean architecture and rapid development. Quick MVP creation. Created proprietary library for Django model audit which implements Slowly Changing Dimensions (SCD) - Type 4 and supports versioned relationships. Technology stack and approaches: Python, JavaScript, PostgreSQL, RESTful API, Django, Django-rest-framework, Angular5+, AWS, Heroku, Docker, Scrum, Jira etc. About the project :doc:`in Russian <ru/medplus>`.
-    * Nov 2016 - Jul 2017 - Senior Full Stack Software Engineer (remote) at jooraccess.com, the global wholesale marketplace where the biggest brands and best retailers do business online. Introduced TDD (and some other practices of XP), DDD, Designing Through Refactoring, code review based on catalog of refactorings and catalogs of code smells, continuous review, monitoring with New Relic. Solved a lot of issues of architecture and design. Improved quality of the codebase. Reduced time of implementation of new features due to the introduced design approaches. Performed some duties of Solution Architect. Created the high-level library `Store.js <https://github.com/emacsway/store>`__ to handle data on client-side. Technology stack and approaches: Python, JavaScript, PHP, Bash, Django, PostgreSQL, jQuery, AngularJS, Dojo, RESTful API, CORS, JWT, Django-rest-framework, CakePHP, Redis, Celery, Pl/SQL, AWS, Ubuntu, Scrum, etc.
-    * Feb 2013 - Jul 2016 - Senior Backend Developer (remote) at rebelmouse.com, the best online CMS for social websites. Actively used Designing Through Refactoring, TDD, code review based on catalog of refactorings and catalogs of code smells. Debugging on production and low-level debugging with GDB. Backend/SQL high performance optimization. Monitoring with New Relic. Implemented social networks integration, polymorphic relations, ACL, statistics, data analytics. Technology stack and approaches:  Python, Bash, Django, MySQL, MongoDB, RESTful API, Redis, Celery, Memcached, Eventlet, Ubuntu, replication, clustering, document-oriented data storage, Kanban, etc.
-    * Aug 2011 - Mar 2013 - Senior Full Stack Software Engineer (remote) at tripster.ru, the Russian travel portal and FAQ for independent travelers. Technology stack and approaches: Python, JavaScript, Bash, Django, GIS, jQuery, MySQL, RESTful API, Solr, Nginx, Memcached, Debian, sub-processing, threading, Queue, Async, 3-d SQL Builders, morphology, fast compiled template engine wheezy.template, automatic text processing, etc. Implemented a lot of basic features, social networks integration, HTML5 API History for legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax UI widgets, cache dependencies, phased cache (with nocache fragments), cache cleaning synchronization with DB transactions. Backend/SQL high performance optimization.
-    * Jul 2010 - Jun 2011 - Team Leader at Soft-Ukraine. Developed an online corporative brainstorm system. Technology stack and approaches: Python, JavaScript, Bash, Django, Dojo, jQuery, PostgreSQL, RESTful API, MVVM, dojox.data.JsonRestStore, Ajax UI, Ruby On Rails, Pinax, Debian, Multilingual, etc. System Administration.
-    * Oct 2009 - Jul 2010 - Co-founder and CTO at Dstudio. Organized mass production of business card site using Drupal. Developed a city portal using Django and Pinax. Organized infrastructure and team training. System Administration. Technology stack and approaches: Python, JavaScript, PHP, Bash, Drupal, Django, Pinax, Redmine, Trac, Debian, etc.
-    * Jan 2004 - Oct 2009 - Zakrevskyi Entrepreneur. Web-development using PHP, Python, JavaScript. Development and maintenance of an industrial business portal. Technology stack and approaches: Python, JavaScript, PHP, Bash, Django, PostgreSQL, MySQL, Dojo, jQuery, Zend Framework, Pinax, Debian, etc.
-
-
 ..
     "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
 
@@ -136,27 +104,3 @@ Afterword
     The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
     ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
 
-
-.. _KISS: https://people.apache.org/~fhanik/kiss.html
-
-.. _TDD: https://en.wikipedia.org/wiki/Test-driven_development
-.. _OOP: https://en.wikipedia.org/wiki/Object-oriented_programming
-.. _OOD: https://en.wikipedia.org/wiki/Object-oriented_design
-.. _DDD: https://en.wikipedia.org/wiki/Domain-driven_design
-.. _DIP: http://martinfowler.com/articles/injection.html
-.. _Inversion Of Control: http://martinfowler.com/articles/injection.html
-.. _Design Patterns: https://en.wikipedia.org/wiki/Software_design_pattern
-.. _Refactoring: http://www.refactoring.com/catalog/
-.. _Software Architectural Design: https://en.wikipedia.org/wiki/Software_architecture
-.. _Database Architecture: https://en.wikipedia.org/wiki/Data_architecture
-.. _Unit Of Work: https://martinfowler.com/eaaCatalog/unitOfWork.html
-.. _Evolutionary Design: https://martinfowler.com/tags/evolutionary%20design.html
-.. _XP: https://martinfowler.com/bliki/ExtremeProgramming.html
-
-.. _Coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
-.. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)
-.. _Coupling And Cohesion: http://wiki.c2.com/?CouplingAndCohesion
-.. _SRP: https://en.wikipedia.org/wiki/Single_responsibility_principle
-.. _OCP: https://en.wikipedia.org/wiki/Open/closed_principle
-.. _SOLID: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
-.. _GRASP: https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)
