@@ -15,37 +15,39 @@ The list of software literature read by me:
     * "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
     * "Pattern Hatching: Design Patterns Applied" by John Vlissides
     * "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-    * "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+    * "Refactoring: Improving the Design of Existing Code" 1st edition by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
     * "Code Complete" by Steve McConnell
-    * "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
+    * "Clean Code: A Handbook of Agile Software Craftsmanship" 2nd edition by Robert C. Martin
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
     * "Domain-Driven Design" by Eric Evans
     * "Test-Driven Development By Example" by Kent Beck
     * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 * Programming languages:
-    * "Learning Python" by Mark Lutz
+    * "Learning Python" 4th edition by Mark Lutz
     * "Python Tutorial" and "Python HOWTOs" (official)
-    * "JavaScript: The Definitive Guide" by David Flanagan
+    * "JavaScript: The Definitive Guide" 6th edition by David Flanagan
     * "JavaScript Patterns" by Stoyan Stefanov
-    * "ng-book 2: The Complete Guide to Angular" by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda
+    * "ng-book2. The Complete Book on Angular 6" by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda
 * Databases:
-    * "PostgreSQL" by Korry Douglas, Susan Douglas
+    * "PostgreSQL" 2nd edition by Korry Douglas, Susan Douglas
     * "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 * Algorithms:
-    * "Algorithms and Data Structures" by N.Wirth
+    * "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
 * Compilers & Parsers:
     * "Compiler Construction" by N.Wirth
 * Methodologies:
-    * "Extreme Programming Explained" by Kent Beck
+    * "Extreme Programming Explained" 1st edition by Kent Beck
+    * "Extreme Programming Explained" 2nd edition by Kent Beck
     * "Planning Extreme Programming" by Kent Beck, Martin Fowler
     * "The Clean Coder" by Robert C. Martin
-    * "Scrum and XP from the Trenches: How We Do Scrum" by Henrik Kniberg
+    * "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
+    * "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
 * Operational system:
-    * "Unix and Linux System Administration Handbook" by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
+    * "Unix and Linux System Administration Handbook" 4th edition by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
     * "The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures" by Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
     * "Digital computers and microprocessors" by Aliyev / "Цифровая вычислительная техника и микропроцессоры" М.М.Алиев
 * English:
-    * "Friendly meetings with the English language" by Maria A. Kolpakchi
+    * "Friendly meetings with the English language" 3d edition by Maria A. Kolpakchi
     * "English. Reference materials." by Ksenia A. Guzeeva, Tamara G. Troshko
 
 
@@ -62,7 +64,7 @@ The order of the list is unstable.
 * "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
 * "Analysis Patterns. Reusable Object Models" by Martin Fowler
 * "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
-* "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+* "Microsoft Application Architecture Guide" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
 * "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
 * "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
 * "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
