@@ -47,7 +47,7 @@ Open Source Projects
     * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (author) - a lightweight Python DataMapper ORM (the project is incomplete).
 
 * JavaScript
-    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming. (`canonical repo <https://github.com/joor/store-js-external>`__).
+    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming.
 
 
 Articles
@@ -74,6 +74,14 @@ Articles in Russian:
 * ":doc:`../ru/storm-orm`"
 * :ref:`... all articles in Russian >> <language-ru>`
 
+
+Afterword
+---------
+
+    The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
+    ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
+
+
 ..
     "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
 
@@ -96,11 +104,3 @@ Articles in Russian:
     The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size. ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
 
     "Clean code - is ability of code to express the truth about itself, and not misleading."
-
-
-Afterword
----------
-
-    The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
-    ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
-
