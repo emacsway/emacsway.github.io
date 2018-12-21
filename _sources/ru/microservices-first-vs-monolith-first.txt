@@ -17,7 +17,7 @@ Microservices First vs Monolith First
 
 .. contents:: Содержание
 
-Данный пост не рассматривает превосходств микросервисной или монолитной архитектуры, а рассматривает только два разных способа достижения микросервисной архитектуры. Я исхожу из предположения, что вы уже знакомы с постпредствами обоих видов архитектур, и сделали свой выбор в пользу микросервисной.
+Данный пост не рассматривает превосходств микросервисной или монолитной архитектуры, а рассматривает только два разных способа достижения микросервисной архитектуры. Я исхожу из предположения, что вы уже знакомы с превосходствами обоих видов архитектур, и сделали свой выбор в пользу микросервисной.
 
 
 Monolith First
@@ -25,40 +25,35 @@ Monolith First
 
 Monolith First представляет собой двухфазную разработку микросервисного приложения, в первой фазе которого приложение имеет особую форму монолита, с низким сопряжением компонентов (loosely coupled), в котором изначально определены швы для "распила".
 Обычно такой монолит активно использует концепцию DDD (см. Chapter 3 "How to Model Services" ("Premature Decomposition") of "Building Microservices" [#fnbmicro]_ by Sam Newman) или Use Case (см. Chapter 16 "Independence" ("Operation", "Decoupling mode", "Decoupling modes (againe)") of "Clean Architecture" [#fncarch]_ by Robert C. Martin).
-Такой подход позволяет удешевить процесс Model Distillation, и подразумевает вывод Bounded Contexts в независимые сервисы после стабилизации контуров бизнес-моделей и границ контекстов, по мере назревания в этом реальной необходимости.
+Такой подход позволяет удешевить процесс Model Distillation, и подразумевает вывод компонентов Bounded Contexts в самостоятельно разворачиваемые процессы после стабилизации контуров бизнес-моделей и границ контекстов, по мере назревания в этом реальной необходимости.
 
 Отсюда вырисовывается первый мотив в пользу Monolith First - это потребность в Crunching Knowledge (переработке знаний), которая не позволяет сразу очертить стабильные контуры бизнес-моделей.
 Можно назвать этот момент "слабостью архитектуры".
 Это не означает низкий уровень компетентности архитектора (скорее - наоборот).
-Просто это означает, что предпосылок для стабильной архитектуры сразу не существует.
+Просто это означает, что предпосылок для достижения стабильной архитектуры сразу не существует.
 
 .. image:: /_media/en/microservices-first-vs-monolith-first/architecture-strengths-vs-developments-strengths.png
    :alt: Предпочтение способа реализации микросервисного приложения в зависимости от отношения преобладания силы архитектуры и силы разработки
    :align: center
    :width: 90%
 
-Ожидание и реальность. Изображение со статьи "`Don’t start with a monolith <https://martinfowler.com/articles/dont-start-monolith.html>`__" by Stefan Tilkov:
-
-.. image:: /_media/en/microservices-first-vs-monolith-first/monolith-theory-practice.svg
-   :alt: Ожидание и реальность. Изображение со статьи "Don’t start with a monolith" by Stefan Tilkov https://martinfowler.com/articles/dont-start-monolith.html
-   :align: center
-   :width: 90%
-
-Другим существенным мотивом в пользу Monolith First является потребность в достижении скорейшего выпуска в production первой работающей версии продукта при лимитированном количестве разработчиков.
+Другим существенным мотивом в пользу Monolith First является потребность в достижении скорейшего выпуска на рынок первой работающей версии продукта при лимитированном количестве разработчиков.
 
 .. image:: /_media/en/microservices-first-vs-monolith-first/time-vs-resources.png
    :alt: Предпочтение способа реализации микросервисного приложения в зависимости от отношения преобладания времени и ресурсов на разработку
    :align: center
    :width: 90%
 
-Влияние микросервисной архитектуры на продуктивность. Изображение со статьи "`Microservice Premium <https://martinfowler.com/bliki/MicroservicePremium.html>`__" by Martin Fowler:
+Недостатком Monolith First является высокая чувствительность к качеству реализации (конструирования), которая требует от разработчиков высокой компетентности и дисциплины.
+Это означает удорожание разработки, ведь привлечение разработчиков среднего и начального уровня нанесет урон изоляции компонентов (creeping coupling).
 
-.. image:: /_media/en/microservices-first-vs-monolith-first/productivity.png
-   :alt: Влияние микросервисной архитектуры на продуктивность. Изображение со статьи "Microservice Premium" by Martin Fowler https://martinfowler.com/bliki/MicroservicePremium.html
+.. image:: /_media/en/microservices-first-vs-monolith-first/monolith-theory-practice.svg
+   :alt: Ожидаемое и реальное сопряжение (coupling) монолита при недостаточном уровне качества разработки. Изображение со статьи "Don’t start with a monolith" by Stefan Tilkov https://martinfowler.com/articles/dont-start-monolith.html
    :align: center
    :width: 90%
 
-Недостатком Monolith First является высокая чувствительность к качеству реализации (конструирования), которая требует от разработчиков высокой компетентности и дисциплины, что означает удорожание разработки, ведь привлечение разработчиков среднего и начального уровня нанесет урон изоляции компонентов (creeping coupling).
+На изображении - ожидаемое и реальное сопряжение (coupling) монолита при недостаточном уровне качества разработки. Изображение со статьи "`Don’t start with a monolith <https://martinfowler.com/articles/dont-start-monolith.html>`__" by Stefan Tilkov.
+
 В таком случае, слабость архитектуры должна компенсироваться сильным качеством разработки.
 В то время как всегда выгоднее нанять одного опытного архитектора, нежели укомплектовать всю команду опытными разработчиками.
 
@@ -69,7 +64,7 @@ Microservices First
 Исходя из мотивов в пользу Monolith First, становятся очевидны и мотивы в пользу Microservices First.
 
 Первым существенным мотивом является сильная архитектура и слабое качество разработки.
-Например, архитектор уже обладает опытом в данной предметной области, и потребности в переработке знаний нет.
+Например, архитектор уже обладает опытом в данной предметной области, и потребность в переработке знаний отсутствует.
 Возможность достигнуть стабильную архитектуру приложения сразу, позволяет широко привлекать для ее реализации разработчиков среднего и начального уровня.
 
     Обмен данными между самими сервисами ведется через сетевые вызовы, чтобы упрочить обособленность сервисов и избежать рисков, сопряженных с тесными связями.
@@ -79,9 +74,20 @@ Microservices First
     \- "Building Microservices" [#fnbmicro]_ by Sam Newman
 
 Вторым ключевым мотивом является потребность в привлечении большого количества людей как на начальной, так и на финальной стадии разработки.
-Т.е. когда нет ограниченности в ресурсах, но есть ограниченность в сроках разработки.
+Т.е. в случаях, когда нет ограниченности в ресурсах, но есть ограниченность в сроках разработки.
 Это позволяет обойти `Brooks's Law (Закон Брукса) <https://en.wikipedia.org/wiki/Brooks%27s_law>`__, к которому мы вскоре вернемся.
 Frederick P. Brooks еще много лет назад предвосхитил это достоинство микросервсиной архитектуры.
+
+Хотя такой подход и накладывает дополнительные накладные расходы на начальном этапе разработки, но он компенсируется возможностью задействовать большее количество людей одновременно в параллельном режиме.
+Т.е. выходит дороже, но быстрее.
+И если накладные расходы для достижения раннего выпуска продукта на рынок не превышают упущенной выгоды, которой удалось избежать, то такой подход является выгодным для бизнеса.
+
+.. image:: /_media/en/microservices-first-vs-monolith-first/productivity.png
+   :alt: Влияние микросервисной архитектуры на продуктивность. Изображение со статьи "Microservice Premium" by Martin Fowler https://martinfowler.com/bliki/MicroservicePremium.html
+   :align: center
+   :width: 90%
+
+На изображении - влияние микросервисной архитектуры на продуктивность. Изображение со статьи "`Microservice Premium <https://martinfowler.com/bliki/MicroservicePremium.html>`__" by Martin Fowler.
 
 
 В целом, превосходства Microservices First проявляются в следующих случаях:
@@ -93,10 +99,10 @@ Frederick P. Brooks еще много лет назад предвосхитил
 5. Когда в силу бизнес-требований требуется реиспользование сервисов несколькими приложениями (общая база пользователей для нескольких проектов)
 6. Когда требуется разнородность решений по безопасности.
 
-    ...наличие системы, разбитой на узкоспециализированные сервисы, дает нам множество вариантов решения проблемы.
+    ... наличие системы, разбитой на узкоспециализированные сервисы, дает нам множество вариантов решения проблемы.
     Возможность использования микросервисов не только позволяет уменьшить влияние любой отдельной бреши в системе безопасности, но и дает нам больше возможностей найти компромиссы в отношении издержек, связанных с более сложными и безопасными подходами в работе с конфиденциальными данными, и выбрать менее сложные подходы в тех случаях, когда риски оцениваются значительно ниже.
 
-    ...having a system decomposed into finer-grained services gives us many more options as to how to solve a problem.
+    ... having a system decomposed into finer-grained services gives us many more options as to how to solve a problem.
     Not only can having microservices potentially reduce the impact of any given breach, but it also gives us more ability to trade off the overhead of more complex and secure approaches where data is sensitive, and a lighter-weight approach when the risks are lower.
 
     \- "Building Microservices" [#fnbmicro]_ by Sam Newman
@@ -105,7 +111,7 @@ Frederick P. Brooks еще много лет назад предвосхитил
 8. Когда огромный объем обрабатываемых данных изначально требует широкого и гибкого масштабирования (например, скраперы).
 
 
-Сравнительная таблица
+Сравнительная таблица:
 
 +------------------------------------------------------------+-----------------------------------------------------------+
 | Microservices First                                        | Monolith First                                            |
@@ -181,6 +187,14 @@ The Brooks's Law (Закон Брукса)
 
     \- Frederick P. Brooks, "The Mythical Man-Month Essays on Software Engineering" [#fnmmonth]_
 
+..
+
+    ... небольшие команды, работающие с небольшим объемом исходного кода, как правило, показывают более высокую продуктивность.
+
+    ... smaller teams working on smaller codebases tend to be more productive!
+
+    \- "Building Microservices" [#fnbmicro]_ by Sam Newman
+
 Но с другой стороны:
 
     В этом и состоит **изъян идеи маленькой активной команды: для создания по-настоящему крупных систем ей потребуется слишком много времени**.
@@ -236,7 +250,7 @@ The Brooks's Law (Закон Брукса)
 Mills's Proposal (Предложение Миллза):
 
     Предложение Харлана Миллза дает свежее и творческое решение.
-    Миллз предложил, чтобы на каждом участке работы была команда разработчиков, организованная наподобие бригады хирургов, а не мясников.
+    Миллз предложил, чтобы на каждом участке работы была **команда разработчиков, организованная наподобие бригады хирургов, а не мясников**.
     Имеется в виду, что не каждый участник группы будет врезаться в задачу, но резать будет один, а остальные оказывать ему всевозможную поддержку, повышая его производительность и плодотворность.
 
     При некотором размышлении ясно, что **эта идея приведет к желаемому, если ее удастся осуществить**.
@@ -245,7 +259,7 @@ Mills's Proposal (Предложение Миллза):
     Чтобы нарисовать картину работы такой команды с включением всех мыслимых видов поддержки, я позволю себе вольное обращение к  метафорам.
 
     A proposal by Harlan Mills offers a fresh and creative solution.
-    Mills proposes that each segment of a large job be tackled by a team, but that the team be organized like a surgical team rather than a hog-butchering team.
+    Mills proposes that each segment of a large job be tackled by a team, but that **the team be organized like a surgical team rather than a hog-butchering team**.
     That is, instead of each member cutting away on the problem, one does the cutting and the others give him every support that will enhance his effectiveness and productivity.
 
     A little thought shows that **this concept meets the desiderata, if it can be made to work**.
@@ -259,16 +273,9 @@ Mills's Proposal (Предложение Миллза):
 Обратите внимание на слова "эта идея приведет к желаемому, если ее удастся осуществить".
 Именно эту задачу успешно решает микросервисная архитектура, позволяя объединить вместе большой размер команды и продуктивность, т.е., осуществить масштабирование команды без ущерба производительности.
 
+    ... мы стремимся к тому, чтобы сервисы создавались в результате разбиения системы на такие части, при которых **темпы развития внутри сервисов были намного выше темпов развития между сервисами**.
 
-    Smaller teams working on smaller codebases tend to be more productive!
-
-    \- "Building Microservices" [#fnbmicro]_ by Sam Newman
-
-..
-
-    ...мы стремимся к тому, чтобы сервисы создавались в результате разбиения системы на такие части, при которых **темпы развития внутри сервисов были намного выше темпов развития между сервисами**.
-
-    ...we aim to ensure our services are decomposed such that the **pace of change inside a service is much higher than the pace of change between services**.
+    ... we aim to ensure our services are decomposed such that the **pace of change inside a service is much higher than the pace of change between services**.
 
     \- "Building Microservices" [#fnbmicro]_ by Sam Newman
 
