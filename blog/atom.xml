@@ -2,10 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">@emacsway's blog</title>
   <id>https://emacsway.github.io/blog/atom.xml</id>
-  <updated>2018-12-02T00:00:00Z</updated>
+  <updated>2018-12-21T00:00:00Z</updated>
   <link href="https://emacsway.github.io/" />
   <link href="https://emacsway.github.io/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.3">ABlog</generator>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Microservices First vs Monolith First</title>
+    <id>https://emacsway.github.io/ru/microservices-first-vs-monolith-first/</id>
+    <updated>2018-12-21T00:00:00Z</updated>
+    <published>2018-12-21T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/microservices-first-vs-monolith-first/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Существует два классических подхода к созданию микросервисных приложений - &lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/articles/dont-start-monolith.html&quot;&gt;Microservices First&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://martinfowler.com/bliki/MonolithFirst.html&quot;&gt;Monolith First&lt;/a&gt;.
+И если превосходства последнего широко освещены рядом известных авторитетов в области архитектуры, такими как Sam Newman, Robert Martin, Martin Fowler и др., то освещенность превосходств первого оставляет желать лучшего.
+Именно эта причина и побудила меня разобраться в этом вопросе.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="https://emacsway.github.io/blog/atom.xml">
     <title type="text">Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</title>
     <id>https://emacsway.github.io/ru/application-logic-management/</id>
