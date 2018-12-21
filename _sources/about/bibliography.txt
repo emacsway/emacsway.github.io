@@ -65,6 +65,7 @@ The order of the list is unstable.
 * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
 * "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
 * "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
+* "The Site Reliability Workbook" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 * "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
 * "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
 * "An Introduction to Database Systems" by C.J. Date
