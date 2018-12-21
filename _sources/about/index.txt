@@ -26,7 +26,7 @@ Python/FullStack Software Engineer, XP coach, Solution/Application Architect
 About me
 --------
 
-A Software Design and Agile expert.
+An expert in Software Design and Agile.
 
 .. Was participated in development of software for various business domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
 
