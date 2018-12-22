@@ -13,15 +13,15 @@ The list of software literature read by me:
 
 * Architecture & Design:
     * "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
-    * "Pattern Hatching: Design Patterns Applied" by John Vlissides
     * "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
     * "Refactoring: Improving the Design of Existing Code" 1st edition by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
-    * "Code Complete" by Steve McConnell
-    * "Clean Code: A Handbook of Agile Software Craftsmanship" 2nd edition by Robert C. Martin
+    * "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
+    * "Code Complete" 2nd edition by Steve McConnell
     * "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
     * "Domain-Driven Design" by Eric Evans
     * "Test-Driven Development By Example" by Kent Beck
     * "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+    * "Pattern Hatching: Design Patterns Applied" by John Vlissides
 * Programming languages:
     * "Learning Python" 4th edition by Mark Lutz
     * "Python Tutorial" and "Python HOWTOs" (official)
