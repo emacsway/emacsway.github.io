@@ -2,7 +2,9 @@
 Microservices First vs Monolith First
 =====================================
 
-.. post:: Dec 21, 2018
+.. Dec 21, 2018
+
+.. post:: 
    :language: ru
    :tags: Design, Architecture, Microservices
    :category:
