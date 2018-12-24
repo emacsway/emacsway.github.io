@@ -292,7 +292,7 @@ Mills's Proposal (Предложение Миллза):
     Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market.
     Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.
 
-    \- `Go kit. A toolkit for microservices.` <https://gokit.io/>`__
+    \- `Go kit. A toolkit for microservices. <https://gokit.io/>`__
 
 ..
 
