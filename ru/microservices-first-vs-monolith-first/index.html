@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 24 Dec 2018 15:00:53 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 24 Dec 2018 15:15:19 GMT" />
         
             <meta name="description" content="Существует два классических подхода к созданию микросервисных приложений - Microservices First и Monolith First. И если превосходства последнего широко освещены рядом известных авторитетов в области архитектуры, такими как Sam Newman, Robert Martin, Martin Fowler и др., то освещенность превосходств первого оставляет желать лучшего. Именно эта причина и побудила меня разобраться в этом вопросе." />
         
@@ -146,6 +146,15 @@ Frederick P. Brooks еще много лет назад предвосхитил
 К тому же, как видно из приведенного ниже графика, накладные расходы начального этапа окупаются удешевлением разработки на более поздних этапах развития продукта.</p>
 <a class="reference internal image-reference" href="../../_images/productivity.png"><img alt="Влияние микросервисной архитектуры на продуктивность. Изображение со статьи &quot;Microservice Premium&quot; by Martin Fowler https://martinfowler.com/bliki/MicroservicePremium.html" class="align-center" src="../../_images/productivity.png" style="width: 90%;" /></a>
 <p>На изображении - влияние микросервисной архитектуры на продуктивность. Изображение со статьи &#8220;<a class="reference external" href="https://martinfowler.com/bliki/MicroservicePremium.html">Microservice Premium</a>&#8221; by Martin Fowler.</p>
+<blockquote>
+<div><p>Почему микросервисы?</p>
+<p>Практически вся современная разработка программного обеспечения ориентирована на единственную цель - улучшить время выхода на рынок.
+Микросервисы представляют собой эволюцию модели сервис-ориентированной архитектуры, которая элегантно устраняет организационные противоречия, предоставляя вашим инженерам и командам автономию, необходимую им для непрерывной доставки, итерации и улучшения.</p>
+<p>Why microservices?</p>
+<p>Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market.
+Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.</p>
+<p>- <a class="reference external" href="https://gokit.io/">Go kit. A toolkit for microservices.</a></p>
+</div></blockquote>
 <p>В целом, превосходства Microservices First проявляются в следующих случаях:</p>
 <ol class="arabic">
 <li><p class="first">Когда нет ограниченности в ресурсах, но есть ограниченность по времени.</p>
@@ -328,15 +337,6 @@ Let me freely mix metaphors to suggest how such a team might work if enlarged to
 <div><p>... мы стремимся к тому, чтобы сервисы создавались в результате разбиения системы на такие части, при которых <strong>темпы развития внутри сервисов были намного выше темпов развития между сервисами</strong>.</p>
 <p>... we aim to ensure our services are decomposed such that the <strong>pace of change inside a service is much higher than the pace of change between services</strong>.</p>
 <p>- &#8220;Building Microservices&#8221; <a class="footnote-reference" href="#fnbmicro" id="id14">[1]</a> by Sam Newman</p>
-</div></blockquote>
-<blockquote>
-<div><p>Почему микросервисы?</p>
-<p>Практически вся современная разработка программного обеспечения ориентирована на единственную цель - улучшить время выхода на рынок.
-Микросервисы представляют собой эволюцию модели сервис-ориентированной архитектуры, которая элегантно устраняет организационные противоречия, предоставляя вашим инженерам и командам автономию, необходимую им для непрерывной доставки, итерации и улучшения.</p>
-<p>Why microservices?</p>
-<p>Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market.
-Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.</p>
-<p>- <a class="reference external" href="https://gokit.io/">Go kit. A toolkit for microservices.</a></p>
 </div></blockquote>
 <blockquote>
 <div><p>One case study was particularly interesting.

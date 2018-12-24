@@ -90,6 +90,17 @@ Frederick P. Brooks еще много лет назад предвосхитил
 
 На изображении - влияние микросервисной архитектуры на продуктивность. Изображение со статьи "`Microservice Premium <https://martinfowler.com/bliki/MicroservicePremium.html>`__" by Martin Fowler.
 
+    Почему микросервисы?
+
+    Практически вся современная разработка программного обеспечения ориентирована на единственную цель - улучшить время выхода на рынок.
+    Микросервисы представляют собой эволюцию модели сервис-ориентированной архитектуры, которая элегантно устраняет организационные противоречия, предоставляя вашим инженерам и командам автономию, необходимую им для непрерывной доставки, итерации и улучшения.
+
+    Why microservices?
+
+    Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market.
+    Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.
+
+    \- `Go kit. A toolkit for microservices. <https://gokit.io/>`__
 
 В целом, превосходства Microservices First проявляются в следующих случаях:
 
@@ -279,20 +290,6 @@ Mills's Proposal (Предложение Миллза):
     ... we aim to ensure our services are decomposed such that the **pace of change inside a service is much higher than the pace of change between services**.
 
     \- "Building Microservices" [#fnbmicro]_ by Sam Newman
-
-..
-
-    Почему микросервисы?
-
-    Практически вся современная разработка программного обеспечения ориентирована на единственную цель - улучшить время выхода на рынок.
-    Микросервисы представляют собой эволюцию модели сервис-ориентированной архитектуры, которая элегантно устраняет организационные противоречия, предоставляя вашим инженерам и командам автономию, необходимую им для непрерывной доставки, итерации и улучшения.
-
-    Why microservices?
-
-    Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market.
-    Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.
-
-    \- `Go kit. A toolkit for microservices. <https://gokit.io/>`__
 
 ..
 
