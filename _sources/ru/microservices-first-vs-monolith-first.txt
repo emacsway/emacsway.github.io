@@ -282,6 +282,20 @@ Mills's Proposal (Предложение Миллза):
 
 ..
 
+    Почему микросервисы?
+
+    Практически вся современная разработка программного обеспечения ориентирована на единственную цель - улучшить время выхода на рынок.
+    Микросервисы представляют собой эволюцию модели сервис-ориентированной архитектуры, которая элегантно устраняет организационные противоречия, предоставляя вашим инженерам и командам автономию, необходимую им для непрерывной доставки, итерации и улучшения.
+
+    Why microservices?
+
+    Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market.
+    Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.
+
+    \- `Go kit. A toolkit for microservices.` <https://gokit.io/>`__
+
+..
+
     One case study was particularly interesting.
     The team had made the wrong choice, using microservices on a system that wasn't complex enough to cover the Microservice Premium.
     The project got in trouble and needed to be rescued, so lots more people were thrown onto the project.
