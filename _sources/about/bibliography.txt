@@ -62,6 +62,8 @@ The order of the list is unstable.
 * "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 * "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
 * "`Performance Antipatterns <https://docs.microsoft.com/en-us/azure/architecture/antipatterns>`__" by Microsoft Corporation and community
+* "`Azure Application Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/guide/>`__ by Microsoft Corporation and community
+* "`Azure Data Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/data-guide/>`__ by Microsoft Corporation and community
 * "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" by Cesar de la Torre, Bill Wagner, Mike Rousos
 * "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 * "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
