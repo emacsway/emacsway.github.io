@@ -59,6 +59,9 @@ So, it is public for now.
 The order of the list is unstable.
 
 * "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
+* "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
+* "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
+* "`Performance Antipatterns <https://docs.microsoft.com/en-us/azure/architecture/antipatterns>`__" by Microsoft Corporation and community
 * "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" by Cesar de la Torre, Bill Wagner, Mike Rousos
 * "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 * "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
@@ -75,6 +78,7 @@ The order of the list is unstable.
 * "Implementation Patterns" by Kent Beck
 * "Development of Further Patterns of Enterprise Application Architecture" by Martin Fowler
 * "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
+* "Software Architecture in Practice" 3d Edition by Len Bass, Paul Clements, Rick Kazman
 * "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 * "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
 * "Object-Oriented Software Construction" 2nd Edition by Bertrand Meyer
