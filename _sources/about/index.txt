@@ -28,7 +28,7 @@ About me
 
 An expert in Software Design and Agile.
 
-.. Was participated in development of software for various business domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, brainstorm tools etc.
+Was participated in development of software for various business domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, intracorporate portals etc.
 
 My main interest is to make the code clean, simple and maintainable; the implementation of new features :doc:`rapid and cheap <../en/how-to-quickly-develop-high-quality-code>`; the curve of cost of code change asymptotic (instead of exponential); the risks low; the team successful.
 
