@@ -14,7 +14,7 @@ About me
    :alt: me
    :align: right
 
-Python/FullStack Software Engineer, XP coach, Solution/Application Architect
+Solution/Application Architect, XP coach, Python/FullStack Software Engineer
 
 - Ivan Zakrevskyi
 - Blog: https://emacsway.github.io/
@@ -40,14 +40,14 @@ Also I'm an Open Source `developer <Open Source Projects_>`__ and an adherent of
 Open Source Projects
 --------------------
 
-* Python
-    * `rope <https://github.com/python-rope/rope>`_ (contributor) - a python refactoring library.
-    * `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ (author) - a lightweight Python SQLBuilder. Can be integrated with Django.
-    * `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_ (author). Cache-dependencies (former Cache-tagging) allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
-    * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (author) - a lightweight Python DataMapper ORM (the project is incomplete).
+- Python
+    - `rope <https://github.com/python-rope/rope>`_ (contributor) - a python refactoring library.
+    - `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ (author) - a lightweight Python SQLBuilder. Can be integrated with Django.
+    - `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_ (author). Cache-dependencies (former Cache-tagging) allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
+    - `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (author) - a lightweight Python DataMapper ORM (the project is incomplete).
 
-* JavaScript
-    * `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming.
+- JavaScript
+    - `Store.js <https://github.com/emacsway/store>`_ (lead contributor) - a super lightweight implementation of Repository pattern for relational data and aggregates. The library allows you to use Domain-Driven Design (DDD) on client-side as well as reactive programming.
 
 
 Articles
@@ -55,24 +55,24 @@ Articles
 
 Articles in English:
 
-* ":doc:`../en/javascript-and-repository-pattern`"
-* ":doc:`../en/django-framework`"
-* ":doc:`../en/service-layer`"
-* ":doc:`../en/cache-dependencies`"
-* ":doc:`../en/how-to-quickly-develop-high-quality-code`"
-* ":doc:`../en/storm-orm`"
-* :ref:`... all articles in English >> <language-en>`
+- ":doc:`../en/javascript-and-repository-pattern`"
+- ":doc:`../en/django-framework`"
+- ":doc:`../en/service-layer`"
+- ":doc:`../en/cache-dependencies`"
+- ":doc:`../en/how-to-quickly-develop-high-quality-code`"
+- ":doc:`../en/storm-orm`"
+- :ref:`... all articles in English >> <language-en>`
 
 Articles in Russian:
 
-* ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
-* ":doc:`../ru/javascript-and-repository-pattern`"
-* ":doc:`../ru/django-framework`"
-* ":doc:`../ru/application-logic-management`"
-* ":doc:`../ru/service-layer`"
-* ":doc:`../ru/cache-dependencies`"
-* ":doc:`../ru/storm-orm`"
-* :ref:`... all articles in Russian >> <language-ru>`
+- ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
+- ":doc:`../ru/javascript-and-repository-pattern`"
+- ":doc:`../ru/django-framework`"
+- ":doc:`../ru/application-logic-management`"
+- ":doc:`../ru/service-layer`"
+- ":doc:`../ru/cache-dependencies`"
+- ":doc:`../ru/storm-orm`"
+- :ref:`... all articles in Russian >> <language-ru>`
 
 
 Afterword
