@@ -67,6 +67,7 @@ The order of the list is unstable.
 - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" by Cesar de la Torre, Bill Wagner, Mike Rousos
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
+- "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard 
 - "Analysis Patterns. Reusable Object Models" by Martin Fowler
 - "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
 - "Microsoft Application Architecture Guide" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
