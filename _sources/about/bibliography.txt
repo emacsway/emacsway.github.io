@@ -58,6 +58,7 @@ My friends are interested in the list of books which I plan to read.
 So, it is public for now.
 The order of the list is unstable.
 
+- "Algorithms Unlocked" 3d edition by Thomas H. Cormen
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 - "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
@@ -94,6 +95,7 @@ The order of the list is unstable.
 - "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
+- "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Pattern-Oriented Software Architecture: A System of Patterns, Volume 1" by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
 - "Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2" by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
 - "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
