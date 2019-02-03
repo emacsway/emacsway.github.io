@@ -43,7 +43,7 @@
     <author>
       <name>Ivan Zakrevsky</name>
     </author>
-    <content type="html">&lt;p&gt;Я уже писал &amp;#8220;&lt;a class=&quot;reference internal&quot; href=&quot;../en/how-to-quickly-develop-high-quality-code/&quot;&gt;&lt;span class=&quot;doc&quot;&gt;на тему Agile шпаргалку&lt;/span&gt;&lt;/a&gt;&amp;#8221;, более чем наполовину состоящую из цитат выдающихся архитекторов.
+    <content type="html">&lt;p&gt;Я уже писал &amp;#8220;&lt;a class=&quot;reference internal&quot; href=&quot;../en/how-to-quickly-develop-high-quality-code/&quot;&gt;&lt;span class=&quot;doc&quot;&gt;на тему Agile-разработки шпаргалку&lt;/span&gt;&lt;/a&gt;&amp;#8221;, более чем наполовину состоящую из цитат выдающихся архитекторов.
 Проблема в том, что она ориентирована на осведомленных людей (как правило, на менеджеров и архитекторов), и малопонятна тем, кто сталкивается с этим впервые.
 Поэтому я решил написать упрощенную версию своими словами.
 Вы не сможете использовать фрагменты этой статьи для аргументации перед заказчиком, так как она не содержит цитат праотцов архитекторы, но я надеюсь, что она будет легче для понимания ключевых моментов экономики разработки программного обеспечения.&lt;/p&gt;
