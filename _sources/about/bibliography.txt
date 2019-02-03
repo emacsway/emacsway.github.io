@@ -32,6 +32,7 @@ The list of software literature read by me:
     - "PostgreSQL" 2nd edition by Korry Douglas, Susan Douglas
     - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 - Algorithms:
+    - "Algorithms Unlocked" 3d edition by Thomas H. Cormen
     - "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
 - Compilers & Parsers:
     - "Compiler Construction" by N.Wirth
@@ -58,7 +59,13 @@ My friends are interested in the list of books which I plan to read.
 So, it is public for now.
 The order of the list is unstable.
 
-- "Algorithms Unlocked" 3d edition by Thomas H. Cormen
+- "An Introduction to Database Systems" by C.J. Date
+- "Analysis Patterns. Reusable Object Models" by Martin Fowler
+- "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
+- "Implementation Patterns" by Kent Beck
+- "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
+- "Software Architecture in Practice" 3d Edition by Len Bass, Paul Clements, Rick Kazman
+- "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 - "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
@@ -68,34 +75,28 @@ The order of the list is unstable.
 - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" by Cesar de la Torre, Bill Wagner, Mike Rousos
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
-- "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard 
-- "Analysis Patterns. Reusable Object Models" by Martin Fowler
-- "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
+- "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
 - "Microsoft Application Architecture Guide" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
-- "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
-- "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
-- "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
 - "The Site Reliability Workbook" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
 - "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
-- "An Introduction to Database Systems" by C.J. Date
-- "Implementation Patterns" by Kent Beck
 - "Development of Further Patterns of Enterprise Application Architecture" by Martin Fowler
 - "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
-- "Software Architecture in Practice" 3d Edition by Len Bass, Paul Clements, Rick Kazman
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
 - "Object-Oriented Software Construction" 2nd Edition by Bertrand Meyer
 - "Implementing Domain-Driven Design" by Vaughn Vernon
 - "Working Effectively with Legacy Code" by Michael C. Feathers
-- "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
 - "PostgreSQL 10 High Performance" by Ibrar Ahmed, Gregory Smith, Enrico Pirozzi
 - "Refactoring To Patterns" by Joshua Kerievsky
 - "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
+- "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
+- "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
+- "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
+- "REST API Design Rulebook" by Mark Massé
 - "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
-- "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Pattern-Oriented Software Architecture: A System of Patterns, Volume 1" by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
 - "Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2" by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
 - "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
