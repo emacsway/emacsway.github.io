@@ -753,8 +753,6 @@ Let me repeat the words of Kent Beck, the creator of the first agile methodology
 
 ..
 
-
-
     "To make agile work, you need solid technical practices.
     A lot of agile education under-emphasizes these, but if you skimp on this you won't gain the productivity and responsiveness benefits that agile development can give you (stranding you at level 1 of the agile fluency model.)
     This is one of the reasons that I still think that Extreme Programming is the most valuable of the named agile methods as a core and starting point."
@@ -766,6 +764,17 @@ Let me repeat the words of Kent Beck, the creator of the first agile methodology
     A common misconception is that since agile methods drop the notion of a detailed up-front design artifact, that there is no room for architecture in an agile project.
     In my keynote at the first-ever agile conference, I pointed out that design was every bit as important for agile projects, but it manifests itself differently, becoming an evolutionary approach."
     ("`Agile Software Development <https://martinfowler.com/agile.html>`__" by Martin Fowler)
+
+..
+
+    McConnell writes, "In ten years the pendulum has swung from 'design everything' to 'design nothing.'
+    But the alternative to BDUF [Big Design Up Front] isn't no design up front, it's a Little Design Up Front (LDUF) or Enough Design Up Front (ENUF)."
+    This is a strawman argument.
+    The alternative to designing before implementing is designing after implementing.
+    Some design up-front is necessary, but just enough to get the initial implementation.
+    Further design takes place once the implementation is in place and the real constraints on the design are obvious.
+    Far from "design nothing," the XP strategy is "design always."
+    ("Extreme Programming Explained" [#fnxp]_ 2nd edition by Kent Beck)
 
 
 In short, if your team is not experienced in software design, the agile methodology will fail anyway.
