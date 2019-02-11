@@ -67,6 +67,7 @@ The order of the list is unstable.
 - "Software Architecture in Practice" 3d Edition by Len Bass, Paul Clements, Rick Kazman
 - "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
+- "Domain Specific Languages" by Martin Fowler (with Rebecca Parsons)
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 - "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
