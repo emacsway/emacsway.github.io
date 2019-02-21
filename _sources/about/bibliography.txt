@@ -68,6 +68,8 @@ The order of the list is unstable.
 - "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
 - "Domain Specific Languages" by Martin Fowler (with Rebecca Parsons)
+- "Implementing Domain-Driven Design" by Vaughn Vernon
+- "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 - "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
@@ -87,7 +89,6 @@ The order of the list is unstable.
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
 - "Object-Oriented Software Construction" 2nd Edition by Bertrand Meyer
-- "Implementing Domain-Driven Design" by Vaughn Vernon
 - "Working Effectively with Legacy Code" by Michael C. Feathers
 - "PostgreSQL 10 High Performance" by Ibrar Ahmed, Gregory Smith, Enrico Pirozzi
 - "Refactoring To Patterns" by Joshua Kerievsky
