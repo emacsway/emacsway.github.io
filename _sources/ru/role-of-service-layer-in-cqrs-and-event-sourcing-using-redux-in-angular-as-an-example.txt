@@ -23,7 +23,7 @@
 Использование Redux в Angular приложениях
 =========================================
 
-Одним из популярных примеров реализации CQRS является Redux, см. `раз <https://redux.js.org/introduction/motivation>`__, `два <https://github.com/reduxjs/redux/issues/2295#issuecomment-316117112>`__ и `три  <https://github.com/reduxjs/redux/issues/351>`__.
+Одним из популярных примеров реализации CQRS является Redux, см. `раз <https://redux.js.org/introduction/motivation>`__, `два <https://github.com/reduxjs/redux/issues/2295#issuecomment-316117112>`__, `три  <https://github.com/reduxjs/redux/issues/351>`__, `четыре <https://twitter.com/dan_abramov/status/896410889930362880>`__, `пять <https://twitter.com/dan_abramov/status/750688455143854080>`__, `шесть <https://github.com/gaearon/ama/issues/110#issuecomment-230331314>`__.
 
 .. image:: /_media/en/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/redux-sqrs-event-sourcing-screenshot_20180915.jpg
    :alt: Скриншот официального сайта Redux о CQRS и Event Sourcing
