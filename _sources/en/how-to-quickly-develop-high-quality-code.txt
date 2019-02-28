@@ -328,8 +328,13 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
 
 ..
 
+    A six-month study conducted by IBM found that maintenance programmers "most often said that **understanding the original programmer's intent was the most difficult problem**" (Fjelstad and Hamlen 1979).
+    ("Code Complete" [#fncodec]_ by Steve McConnell)
+
+..
+
     In most successful software projects, the expert developers working on that project have
-    a shared understanding of the system design. This shared understanding is called ‘architecture.’
+    a shared understanding of the system design. **This shared understanding is called ‘architecture.’**
     This understanding includes how the system is divided into components and how the components interact through interfaces.
     These components are usually composed of smaller components, but the architecture only
     includes the components and interfaces that are understood by all the developers.
