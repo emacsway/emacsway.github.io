@@ -77,6 +77,7 @@ The order of the list is unstable.
 - "`Azure Application Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/guide/>`__" by Microsoft Corporation and community
 - "`Azure Data Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/data-guide/>`__" by Microsoft Corporation and community
 - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" by Cesar de la Torre, Bill Wagner, Mike Rousos
+- "`A CQRS and ES Deep Dive <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj591577%28v%3dpandp.10%29>`__"
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
