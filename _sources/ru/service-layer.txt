@@ -148,6 +148,73 @@
     are few things that are less logical than business logic.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
+Тем более, что Eric Evans явно разделяет Сервисы на три уровня логики:
+
+    Partitioning Services into Layers
+
+    Application
+        Funds Transfer App Service
+
+        - Digests input (such as an XML request).
+        - Sends message to domain service for fulfillment.
+        - Listens for confirmation.
+        - Decides to send notification using infrastructure service.
+    Domain
+        Funds Transfer Domain Service
+
+        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
+        - Supplies confirmation of result (transfer allowed or not, and so on).
+    Infrastructure Send Notification Service
+        Sends e-mails, letters, and other communications as directed by the application.
+
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+..
+
+    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
+    Domain and application SERVICES collaborate with these infrastructure SERVICES.
+    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
+    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
+
+    It can be harder to distinguish application SERVICES from domain SERVICES.
+    The application layer is responsible for ordering the notification.
+    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
+    That banking application could be responsible for funds transfers.
+    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
+    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
+    Technical SERVICES should lack any business meaning at all.
+
+    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
+    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
+    Here we encounter a very fine line between the domain layer and the application layer.
+    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
+    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
+
+    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
+    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
+    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
+
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+Более подробно тему Сервисов Предметной области и причины их существования раскрывает Vaughn Vernon:
+
+    Further, don’t confuse a Domain Service with an Application Service.
+    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
+    If you are confused about the difference, compare with Application.
+    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
+    You’ll see that demonstrated later in the chapter.
+    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
+
+    ...
+
+    You can use a Domain Service to
+
+    - Perform a significant business process
+    - Transform a domain object from one composition to another
+    - Calculate a Value requiring input from more than one domain object
+
+    («Implementing Domain-Driven Design» by Vaughn Vernon)
+
 Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:
 
 - Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзакции, или откатить все назад).
@@ -482,6 +549,13 @@ Martin Fowler говорит что:
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
 Поскольку Martin Fowler прекрасно понимает отличие между "`Domain Model`_" и "`DataMapper`_", эта цитата сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
+
+Похожую идею выражает и Eric Evans:
+
+    We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
+    What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
+    But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
 Проблема Django-аннотаций

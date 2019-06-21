@@ -134,6 +134,10 @@ NoSQL хранилища построены вокруг идеи агрегат
 И хотя это обычно никак не усложняет тестирование (потому что дескрипторы способны кэшировать в памяти явно установленные клиентом связанные объекты), но все-таки привносит в Domain Model служебную логику доступа к данным, пусть она и хорошо инкапсулирована за интерфейсом дескриптора.
 Более чистым решением является наложение ответственного за связи аспекта на экземпляр Domain Model, сразу после его создания (обычно посредством Dependency Injection).
 Тогда при тестировании Вы просто подменяете реализацию этого аспекта.</p>
+<blockquote>
+<div>If the framework wants you to derive your business objects from its base classes, say no!
+Derive proxies instead, and keep those proxies in components that are plugins to your business rules.
+- Robert Martin, &#8220;Clean Architecture&#8221;.</div></blockquote>
 <p>Классический же вариант реализации доступа к связанным объектам, основанный на IoC, в условиях отсутствия AOP и Дескрипторов, можно увидеть в подразделе &#8220;Example: Separating the Finders (Java)&#8221; главы &#8220;Data Mapper&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id2">[2]</a>.
 Но даже в этом случае Доменная модель не превращается в Active Record.</p>
 <p>Частично эту тему я уже затрагивал в статьях:</p>
