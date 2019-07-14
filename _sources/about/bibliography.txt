@@ -21,10 +21,11 @@ The list of software literature read by me:
     - "Domain-Driven Design" by Eric Evans
     - "Test-Driven Development By Example" by Kent Beck
     - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+    - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
     - "Pattern Hatching: Design Patterns Applied" by John Vlissides
 - Programming languages:
     - "Learning Python" 4th edition by Mark Lutz
-    - "Python Tutorial" and "Python HOWTOs" (official)
+    - "`Python Tutorial <https://docs.python.org/3/tutorial/>`__" and "`Python HOWTOs <https://docs.python.org/3/howto/index.html>`__" (official)
     - "JavaScript: The Definitive Guide" 6th edition by David Flanagan
     - "JavaScript Patterns" by Stoyan Stefanov
     - "ng-book2. The Complete Book on Angular 6" by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda
@@ -76,7 +77,6 @@ The order of the list is unstable.
 - "`Performance Antipatterns <https://docs.microsoft.com/en-us/azure/architecture/antipatterns>`__" by Microsoft Corporation and community
 - "`Azure Application Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/guide/>`__" by Microsoft Corporation and community
 - "`Azure Data Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/data-guide/>`__" by Microsoft Corporation and community
-- "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" by Cesar de la Torre, Bill Wagner, Mike Rousos
 - "`A CQRS and ES Deep Dive <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj591577%28v%3dpandp.10%29>`__"
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
