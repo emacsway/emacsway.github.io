@@ -30,6 +30,11 @@
    :align: center
    :width: 70%
 
+..
+
+    "How many have heard of Flux? Does it sound familiar? It's Event Sourcing. This isn't new ideas."
+    \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1163>`__"
+
 Еще одной из известных реализаций, имеющей меньше путаницы в терминологии, но созданной под влиянием Redux, является `dojo/stores <https://github.com/dojo/stores>`__.
 
 При использовании этих технологий в Angular, широко использующего концепцию классического Сервисного Слоя, и возникает этот вопрос.
