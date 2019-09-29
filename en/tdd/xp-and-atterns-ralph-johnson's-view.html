@@ -1,0 +1,365 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en">
+
+
+  <head>
+    <meta http-equiv="Content-Type"
+          content="text/html;charset=utf-8" />
+
+    <title>XP and Patterns Ralph Johnson's View</title>
+  </head>
+  <body>
+    <h1>XP and Patterns Ralph Johnson's View</h1>
+
+        <div class="plain">
+            <center>
+<table border="0" width="600px" cellspacing="0px" cellpadding="0px" bgcolor="#ffffff">
+<tr><td bgcolor="#ffcc66" align="center">
+<table width="90%" border="0" cellpadding="0" cellspacing="0">
+<tr><hr></hr></tr>
+<tr>
+  <td align="left">
+<p>XP and Patterns Ralph Johnson's View<br>
+              <div align=right class="mini1">
+Ralph Johnson&nbsp;&nbsp;<a href=http://st-www.cs.uiuc.edu/users/johnson/>
+http://st-www.cs.uiuc.edu/users/johnson/
+</a><br>
+(edited by Kenji Hiranabe)
+	  <br />
+      Date：2002, 12/7</div></p>
+
+<div class="mini1">
+Very often, questions like;
+<p>
+<blockquote>
+<i><font size=+1>"Are there any links between XP(Extreme Programming) and Patterns?"</font></i>
+</blockquote>
+</p>
+are asked. The following two articles are Ralph Johnson(one of the GoF ... authors of <i>Design Patterns</i>)'s 
+view in response to those
+questions. They are originally discussed in the 'pattern-discussion@cs.uiuc.edu'mailing
+list <small>(edited Kenji Hiranabe)</small>.
+</div>
+</td>
+</tr>
+<tr><td><hr></hr></td></tr>
+</table>
+  </td>
+    </tr>
+	
+	<tr><td><hr></hr></td></tr>
+
+	<tr>
+      <td bgcolor="#ffcc66" class="middle_t">&nbsp;&nbsp;&nbsp;Re: Patterns, QWAN and Extreme Programming</td>
+    </tr>
+	<tr><td align="left">
+<br />
+<span class="mini1">Subject:</span> Re: Patterns, QWAN and Extreme Programming<br>
+<span class="mini1">From:</span> Ralph Johnson &lt; johnson@cs.uiuc.edu &gt; <br>
+<span class="mini1">To:</span> Michael.Pont@tesco.net, patterns-discussion@cs.uiuc.edu <br>
+<span class="mini1">Date:</span> Tue, 12 Feb 2002 06:13:39 -0600 (CST)<br>
+<div class="bun">
+
+<p>&gt; <span class="kwd">From:</span> "Michael Pont" &lt; Michael.Pont@tesco.net &gt;</p>
+
+<p>
+&gt; Can anyone recommend any (good) papers, etc, that discuss the links between<br>
+&gt; XP and patterns?<br>
+</p>
+
+<p>
+As far as I know, there are none.  The closest is one by Joshua
+Kerievsky<a href=#ref1>(*1)</a>that argues that patterns and XP go together, but it
+isn't really about the links.  There are extremely strong links,
+which isn't surprising if you realize that the same people invented
+both of them, that they both grew out of the same little corner of
+the programming community.  So, there are VERY strong social connections,
+and there are also strong philosophical connections.  I think the latter
+are due to the former.</p>
+
+<p>
+The way I tell the story, Kent Beck invented both XP and patterns. 
+"Invented" is too strong a word, since all his good ideas were learned
+with Ward Cunningham.  But Kent is the salesman/publicist, and he got
+other people involved.  Ward and Kent discovered Christopher Alexander
+in the mid 80's, and spent several years trying to get other people
+to take him seriously.  I read A Timeless Way of Building
+
+<a href=#ref2>(*2)</a>
+
+ and A
+Pattern Language
+
+<a href=#ref3>(*3)</a>
+
+ in 1988 or 1989, and thought it was interesting,
+but couldn't see how to apply it.  At OOPSLA'90, Kent and I worked
+on a pattern language for Hotdraw 
+
+<a href=#ref4>(*4)</a>
+
+and I was converted into an
+Alexander fan.  Kent had a workshop in Colorado in 1993 where he
+convinced Jim Coplien and Grady Booch that patterns were important.
+As far as I know, all the early XP leaders were either from the patterns
+community or from the Smalltalk community. </p> 
+
+<p>
+Kent took a different approach to marketing XP than he did to 
+marketing patterns.  One of the many differences was that none
+of his XP literature depends on Chistopher Alexander.  I think
+that he thought that pointing typical software developers to
+Alexander was a mistake, because they wouldn't understand him
+and talking about Alexander's ideas tended to make people go
+off-topic very fast.  He wanted people to stick to talking
+about software.  He figured that the people who would get a lot
+out of Alexander would read him anyway because of the patterns
+literature.  Nevertheless, XP is based on Alexander's ideas
+just as much as patterns are.  (Note that software patterns
+are certainly not 100% Alexanderian)</p>
+
+<p>
+When I read Alexander the first three or four times, the ideas
+that caught my attention were extreme incremental design and
+the evil of master plans.  He claimed that the best places
+were designed by a lot of people over time and that their
+coherency proved that these people shared a common set of 
+patterns, since they did not share a master plan.  Alexander
+thought of patterns as transformations to a design. </p>
+
+<p>
+Kent thought that the patterns in Design Patterns
+
+<a href=#ref5>(*5)</a>
+
+ were too
+big.  (See "Smalltalk Best Practice Patterns"
+
+<a href=#ref6>(*6)</a>
+
+).  His idea
+of patterns were more like the catalog of refactorings that
+Martin Fowler eventually wrote
+
+<a href=#ref7>(*7)</a>.
+
+ But XP itself is a sort of
+pattern language.  I think Kent was influenced by Jim Coplien's
+process patterns.  Patterns in "Design Patterns" and "Smalltalk
+Best Practice Patterns" are product patterns.  XP is a set of
+process patterns
+
+<a href=#ref8>(*8)</a>.
+
+But if you think of XP as a set of process
+patterns, it is a very well defined pattern language that is
+Alexanderian in many ways.  In particular, it is generative.
+There are no patterns for reliability or ease of understanding,
+but the "practices" work together to generate systems that are
+reliable and easily understood.  Like patterns, each practice
+has a name and can be learned on its own.  Like patterns, practices
+work together and the whole is greater than the sum of its parts.
+It is extremely iterative, and plans as little as possible.  </p>
+
+<p>
+So, in my opinion, XP is a pattern language for software development
+that shows how to use Alexander's style of development for software.</p>
+
+<p>-Ralph</p>
+ </div>
+ <br />
+</td></tr>
+</table>
+</center>
+
+<center>
+<table border="0" width="600px" cellpadding="0px" cellspacing="0px" bgcolor="#ffffff">
+<tr><td bgcolor="#ffcc66" class="middle_t">&nbsp;&nbsp;&nbsp;Re: Do design sequences make sense for software?</td></tr>
+<tr><td align="left">
+<br>
+<p>
+<span class="mini1">Subject:</span> Re: Do design sequences make sense for software?<br>
+<span class="mini1">From:</span> Ralph Johnson &lt; johnson@cs.uiuc.edu &gt;<br>
+<span class="mini1">To:</span> Mike Beedle &lt; beedlem@e-architects.com &gt;, &lt patterns-discussion@cs.uiuc.edu &gt;<br>
+<span class="mini1">Date:</span> Wed, 04 Dec 2002 07:16:45 -0600<br>
+</p>
+
+<div class="bun">
+<p>On 11/28/02 7:12 AM, "Mike Beedle" &lt; beedlem@e-architects.com &gt; wrote:</p>
+
+<p>
+&gt; Some of the most important overlap between Agile processes and<br>
+&gt;  the Alexanderian style of building things is in the nature of its<br>
+&gt;  underlying process:<br>
+&gt;  <br>
+&gt;  - teams of self-organized individuals create<br>
+&gt;  high quality emergent products by fostering dense social<br>
+&gt;      interactions, based on cycles of inspection and adaptation,<br>
+&gt;  through piecemeal growth.<br>
+</p>
+
+<p>
+I am amused when people say that XP conflicts with the QWAN, or that
+patterns are incompatible with XP.  As far as I am concerned, patterns and
+XP are "the first try" and "the second try" of Kent Beck to put Christopher
+Alexander's ideas into practice.  Both of them are derivatives of the
+Alexanderian philosophy.  XP is more derived from Christopher Alexander's
+work than "Design Patterns"
+
+<a href=#ref5>(*5)</a>,
+
+
+because Kent was more strongly influenced by
+Alexander than any of the gang of four.
+</p>
+
+<p>
+When I read "A Timeless Way of Building"
+
+<a href=#ref2>(*2)</a>
+
+
+ back in 87 or 88, I was most
+attracted by its emphasis on piecemeal growth.  Peacemeal growth is the way
+nature works, it is how you get the QWAN, it is the ideal.  Software
+engineering tends to denigrate piecemeal growth.  I'm a fan of refactoring
+
+<a href=#ref9>(*9)</a>,
+
+so I resonated with it right away.  XP emphasizes this more than the pattern
+literature.  A lot of people read "Design Patterns" and think that they are
+supposed to use the patterns in up-front design.  We didn't say that, but
+they are reading their assumptions into it.  The GOF are fans of piecemeal
+growth, but we didn't make that point in our book, and few pattern writers
+do.  When it comes to piecemeal growth, XP is more Alexanderian than most
+patterns literature.
+</p>
+
+<p>
+Kent thought that "Design Patterns" did not emphasize emergent properties
+enough, that they weren't "generative" enough.  XP emphasizes this much
+more.  XP is propagated by a dozen patterns (there are actually a lot more)
+that do not mention things like "ease of change" or "reliability" but that
+are supposed to generate these properties if you follow the patterns.  XP
+proponents claim that XP projects are more predictable and more likely to
+deliver software on time, even though XP downplays long-term schedules.
+</p>
+
+<p>
+On Kent's second try, he very carefully avoided mentioning Alexander.
+Perhaps he thought that Alexander just confused people, and that it was
+better to avoid ideas like the QWAN.  So, he invented a whole bunch of new
+vocabulary to convey these ideas, things like "code smell" and "do the
+simplest thing that could possibly work".  It reminds me of what Gregor
+Kiczales has done repackaging reflection and calling it aspect-oriented
+programming
+
+<a href=#ref10>(*10)</a>.
+
+If your ideas aren't selling in one package, repackage them
+and see if you can reach a different market with them.  It is a good
+strategy.
+</p>
+
+<p>
+So, as far as I am concerned, Kent started two movements that are based on
+Alexaderian philosophy, and the fact that we talk about Alexander more than
+the XP crowd doesn't mean that we are closer to Alexander than they are.
+</p>
+
+<p>-Ralph</p>
+</div><br>
+</td></tr>
+</table>
+</center>
+
+<center>
+<table border="0" width="600px" cellpadding="0px" cellspacing="0px" bgcolor="#ffffff">
+<tr><td bgcolor="#ffcc66" class="middle_t">&nbsp;&nbsp;&nbsp;References(by editor)</td></tr>
+<tr><td align="left">
+<br>
+<div class="bun">
+<ul>
+
+<li>
+<a name=ref1>(*1)</a>
+Joshua Kerievsky, <i>Patterns &amp; XP</i>
+<a href= http://www.industriallogic.com/xp/PatternsAndXP.pdf>
+[pdf]</a>, 
+<a href=http://www.amazon.com/exec/obidos/ASIN/0201710404/>
+Extreme Programming Examined</a>(Chapter 13)</li>
+
+<li>
+<a name=ref2>(*2)</a>
+Christopher Alexander, 
+<a href=http://www.amazon.com/exec/obidos/ASIN/0195024028/>
+<i>The Timeless Way of Building</i></a></li>
+
+<li>
+<a name=ref3>(*3)</a>
+Christopher Alexander, 
+<a href=http://www.amazon.com/exec/obidos/ASIN/0195019199/>
+<i>A Pattern Language</i></a></li>
+
+<li>
+<a name=ref4>(*4)</a>
+Kent Beck, Ralph Johnson
+<i>Patterns Generates Architectures</i>
+<a href=ftp://st.cs.uiuc.edu/pub/papers/patterns/patterns-generate-archs.ps>
+[PostScript]</a></li>
+
+<li>
+<a name=ref5>(*5)</a>
+Erich Gamma/Richard Helm/Ralph Johnson/John Vlissides, 
+<a href=http://www.amazon.com/exec/obidos/ASIN/0201633612/>
+<i>Design Patterns</i></a></li>
+
+<li>
+<a name=ref6>(*6)</a>
+Kent Beck, 
+<a href=http://www.amazon.co.jp/exec/obidos/ASIN/013476904X/xpjp-22>
+<i>Smalltalk Best Practice Patterns</i></a></li>
+
+<li>
+<a name=ref7>(*7)</a>
+Martin Fowler, 
+<a href=http://www.amazon.com/exec/obidos/ASIN/0201485672/>
+<i>Refactoring: Improving the Design of Existing Code</i></a></li>
+
+<li>
+<a name=ref8>(*8)</a>
+James Coplien,
+<i>A Generative Development-Process Pattern Language</i>,
+<a href=http://www.amazon.com/exec/obidos/ASIN/0201607344/>
+Pattern Language of Program Design</a>(Chapter13)</li>
+
+<li>
+<a name=ref9>(*9)</a>
+<a href=http://wiki.cs.uiuc.edu/RefactoringBrowser>
+<i>Refactoring Browser</i></a></li>
+
+<li>
+<a name=ref10>(*10)</a>
+Gregor Kiczales,
+<a href=http://www.cs.ucsd.edu/Events/dist_lecture_series/kiczales.html>
+<i>Aspect-Oriented Programming, Crosscutting Program Modularity and New
+Foudations for the Engineering of Software</i></a></li>
+
+</ul>
+
+
+
+<hr color=pink>
+<address><a href=mailto:hiranabe@esm.co.jp>Kenji Hiranabe &lt;hiranabe@esm.co.jp&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Tue Jan 28 09:16:37 2003
+<!-- hhmts end -->
+<p>Source: <a href="http://objectclub.jp/community/XP-jp/xp_relate/xp_patterns">http://objectclub.jp/community/XP-jp/xp_relate/xp_patterns</a></p>
+</div>
+</td></tr>
+</table>
+</center>
+</div>
+
+  </body>
+</html>
