@@ -134,8 +134,8 @@ transaction control and security. This gives you a simple model of taking each m
 choice for this, but .NET&#8217;s attributes provide a nice way of doing it directly in the code.
 («Patterns of Enterprise Application Architecture» <a class="footnote-reference" href="#fnpoeaa" id="id4">[2]</a>)</p>
 </div></blockquote>
-<p>The most important thing to understand is that the <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> is an Application layer logic.
-This is important because this implies that the Service Layer is over the Domain Layer (i.e. layer of real world objects, which is also called &#8220;business rules&#8221;).
+<p>Traditionally <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> is an Application layer logic.
+This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called &#8220;business rules&#8221;).
 This means that the objects of the Domain Layer should not be aware of the Service Layer.</p>
 <p>Note that Eric Evans understands the logic of the Domain Layer under the term &#8220;business rules&#8221;:</p>
 <blockquote>

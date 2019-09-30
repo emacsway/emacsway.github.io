@@ -50,8 +50,8 @@ Purpose of Service Layer
     choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-The most important thing to understand is that the `Service Layer`_ is an Application layer logic.
-This is important because this implies that the Service Layer is over the Domain Layer (i.e. layer of real world objects, which is also called "business rules").
+Traditionally `Service Layer`_ is an Application layer logic.
+This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
 This means that the objects of the Domain Layer should not be aware of the Service Layer.
 
 Note that Eric Evans understands the logic of the Domain Layer under the term "business rules":
