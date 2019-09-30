@@ -87,7 +87,7 @@ TDD - это способ управления сложностью.
 
     The obvious answer comes from the notion of factoring in mathematics. You can take an expressions such as x^2 + 5x + 6 and factor it into (x+2)(x+3). By factoring it you can make a number of mathematical operations much easier. Obviously this is much the same as representing 18 as 2*3^2. I've certainly often heard of people talking about a program as well factored once it's broken out into similarly logical chunks.
 
-    \- "Etymology Of Refactoring <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__ by Martin Fowler
+    \- "`Etymology Of Refactoring <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__" by Martin Fowler
 
 ..
 
