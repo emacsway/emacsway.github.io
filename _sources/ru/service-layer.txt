@@ -14,6 +14,125 @@
 .. contents:: Содержание
 
 
+Виды логики
+===========
+
+Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Application Logic (Логика Приложения) и чем она отличается от Business Rules (Business Logic, Бизнес-Логики).
+
+
+Layered Architecture
+--------------------
+
+Одно из наиболее часто-цитируемых определений основных концептуальных слоев дает Eric Evans:
+
+    User Interface (or Presentation Layer)
+        Responsible for showing information to the user and interpreting the user's
+        commands. The external actor might sometimes be another computer
+        system rather than a human user.
+    Application Layer
+        Defines the jobs the software is supposed to do and directs the expressive
+        domain objects to work out problems. The tasks this layer is responsible
+        for are meaningful to the business or necessary for interaction with the
+        application layers of other systems.
+        This layer is kept thin. It **does not contain business rules** or knowledge, but
+        only coordinates tasks and delegates work to collaborations of domain
+        objects in the next layer down. It does not have state reflecting the
+        business situation, but it can have state that reflects the progress of a task
+        for the user or the program.
+    Domain Layer (or Model Layer)
+        Responsible for representing concepts of the business, information about
+        the **business situation, and business rules**. State that reflects the business
+        situation is controlled and used here, even though the technical details of
+        storing it are delegated to the infrastructure. This layer is the heart of
+        business software.
+    Infrastructure Layer
+        Provides generic technical capabilities that support the higher layers:
+        message sending for the application, persistence for the domain, drawing
+        widgets for the UI, and so on. The infrastructure layer may also support
+        the pattern of interactions between the four layers through an
+        architectural framework.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+
+Но что означает сам термин Business?
+Непонимание этого термина часто приводит к серьезным проблемам проектирования.
+В это трудно поверить, но большинство разработчиков, даже с многолетним стажем, этого не понимают, и полагают что это что-то связанное с финансами.
+
+
+Что такое Business Rules (Бизнес-Логика)?
+-----------------------------------------
+
+Самое авторитетное пояснение термина `Business <http://wiki.c2.com/?CategoryBusiness>`__ можно найти, как обычно, на сайте Ward Cunningham:
+
+    Software intersects with the Real World. Imagine that.
+
+
+Там же можно найти и определение термина `Business Rule <http://wiki.c2.com/?BusinessRule>`__:
+
+    A Business Rule (in a programming context) is knowledge that gets applied to a set of data to create new value. Or it may be a rule about how to create, modify, or remove data. Or perhaps it is a rule that specifies when certain processes occur.
+
+    For example, we have a rule about email addresses -- when the Driver Name field on our object identifier changes, we erase the email address. When we receive a new email address, we make sure that it contains an "@" sign and a valid domain not on our blacklist.
+
+
+`Business Logic Definition <http://wiki.c2.com/?BusinessLogicDefinition>`__:
+
+    Business logic is that portion of an enterprise system which determines how data is:
+
+    - Transformed and/or calculated. For example, business logic determines how a tax total is calculated from invoice line items.
+    - Routed to people or software systems, aka workflow.
+
+
+Следует отличать термин Business (по сути - синоним слова Domain) от термина `Business Domain <http://wiki.c2.com/?CategoryBusinessDomain>`__:
+
+    A category about the business domain, such as accounting, finance, inventory, marketing, tracking, billing, reporting, charting, taxes, etc.
+
+
+Также следует отличать Business и от `Business Process <http://wiki.c2.com/?BusinessProcess>`__:
+
+    A Business Process is some reproduceable process within an organization. Often it is a something that you want to setup once and reuse over and over again.
+
+    Companies spend a lot of time and money identifying Business Processes, designing the software that captures a Business Process and then testing and documenting these processes.
+
+    One example of a Business Process is "Take an order on my web site". It might involve a customer, items from a catalog and a credit card. Each of these things is represented by business objects and together they represent a Business Process.
+
+
+Википедия `дает следующее определение термину Business Logic <https://en.wikipedia.org/wiki/Business_logic>`__:
+
+    In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program. 
+
+
+Резюмируя, я обобщу все своими словами:
+
+Бизнес-Логика (деловые регламенты, доменные модели)
+    \- это моделирование объектов и процессов предметной области (т.е. реального мира).
+    Это то, что программа должна делать (от слова "дело" - именно так переводится слово "business"), и ради чего она создается.
+Логика приложения
+    \- это то, что обеспечивает и координирует работу Бизнес-Логики.
+
+
+Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
+
+- application-specific Business Rules
+- application-independent Business Rules
+
+    То есть систему можно разделить на горизонтальные уровни: пользовательский интерфейс, Бизнес-Правила, характерные для приложения, Бизнес-Правила, не зависящие от приложения, и база данных — кроме всего прочего.
+
+    Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
+
+    \- Clean Architecture by Robert Martin
+
+Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
+
+И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Layer.
+
+
+Почему важно отделять Business Rules от Application Logic?
+----------------------------------------------------------
+
+Поскольку целью создания приложения является реализация именно Business Rules - критически важно обеспечить их переносимость, и отделить их от Application Logic.
+Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.
+
+
 Назначение Сервисного Слоя
 ==========================
 
@@ -83,38 +202,7 @@
 Т.е. Сервисный Слой имеет более низкий уровень, чем слой предметной области (domain logic), именуемый так же деловыми регламентами (business rules).
 Из этого также следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.
 
-Следует обратить внимание на тот факт, что под термином "business rules" Eric Evans понимает логику предметной области:
-
-    User Interface (or Presentation Layer)
-        Responsible for showing information to the user and interpreting the user's
-        commands. The external actor might sometimes be another computer
-        system rather than a human user.
-    Application Layer
-        Defines the jobs the software is supposed to do and directs the expressive
-        domain objects to work out problems. The tasks this layer is responsible
-        for are meaningful to the business or necessary for interaction with the
-        application layers of other systems.
-        This layer is kept thin. It **does not contain business rules** or knowledge, but
-        only coordinates tasks and delegates work to collaborations of domain
-        objects in the next layer down. It does not have state reflecting the
-        business situation, but it can have state that reflects the progress of a task
-        for the user or the program.
-    Domain Layer (or Model Layer)
-        Responsible for representing concepts of the business, information about
-        the **business situation, and business rules**. State that reflects the business
-        situation is controlled and used here, even though the technical details of
-        storing it are delegated to the infrastructure. This layer is the heart of
-        business software.
-    Infrastructure Layer
-        Provides generic technical capabilities that support the higher layers:
-        message sending for the application, persistence for the domain, drawing
-        widgets for the UI, and so on. The infrastructure layer may also support
-        the pattern of interactions between the four layers through an
-        architectural framework.
-
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-В то время как Martin Fowler понимает под термином "business logic" не только логику предметной области:
+Следует обратить внимание на тот факт, что под термином "business rules" Eric Evans понимает логику предметной области (см. выше), в то время как Martin Fowler понимает под термином "business logic" не только логику предметной области:
 
     Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
     (Domain Model, 140), слой служб представляет собой типовое решение по организации
