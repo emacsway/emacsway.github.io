@@ -230,6 +230,21 @@ Event Sourcing
 
 Наиболее ясно эта тема раскрывается в Chapter 6 "Functional Programming" of "Clean Architecture" by Robert C. Martin.
 
+    Event Sourcing is naturally functional.
+    It's an append only log of facts that have happened in the past.
+    You can say that any projection any state is a left fold over your previous history.
+
+    \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1004>`__" at 16:44
+
+..
+
+    I have always said that Event Sourcing is "Functional Data Storage".
+    In this talk we will try migrating to a idiomatic functional way of looking at Event Sourcing.
+    Come and watch all the code disappear!
+    By the time you leave you will never want an "Event Sourcing Framework (TM)" ever again!
+
+    \- Greg Young, "`Functional Data <https://vimeo.com/131636650>`__", NDC Conferences
+
 
 Другие ссылки по теме
 =====================

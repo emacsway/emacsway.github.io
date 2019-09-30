@@ -8,7 +8,7 @@ Reference Applications implementing Event-Driven Architecture
    :category:
    :author: Ivan Zakrevsky
 
-There are two excellent reference applications implementing Event-Driven Architecture:
+There are two excellent reference applications implementing Event-Driven Architecture, every developer should be aware of:
 
 1. https://github.com/dotnet-architecture/eShopOnContainers (CQRS, DDD, Microservices)
 2. https://github.com/microsoftarchive/cqrs-journey (Event Sourcing, SAGA transactions)
