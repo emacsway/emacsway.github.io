@@ -115,8 +115,8 @@ Layered Architecture
 
 Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
 
-- application-specific Business Rules
-- application-independent Business Rules
+- Application-specific Business Rules
+- Application-independent Business Rules
 
     То есть систему можно разделить на горизонтальные уровни: пользовательский интерфейс, Бизнес-Правила, характерные для приложения, Бизнес-Правила, не зависящие от приложения, и база данных — кроме всего прочего.
 
@@ -455,7 +455,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Инверсия Управления
 ===================
 
-Используйте инверсию управления, желательно в виде "Пассивного внедрения зависимостей" [#fnccode]_, `Dependency Injection`_ Principle (DIP).
+Используйте инверсию управления, желательно в виде "Пассивного внедрения зависимостей" [#fnccode]_, `Dependency Injection`_ (DI).
 
     Истинное внедрение зависимостей идет еще на один шаг вперед. Класс не
     предпринимает непосредственных действий по разрешению своих зависимостей;

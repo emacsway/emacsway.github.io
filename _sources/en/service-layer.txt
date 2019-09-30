@@ -289,7 +289,7 @@ There is a few examples of Service Layer implementations:
 Inversion of control
 ====================
 
-Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Dependency Injection`_ Principle" (DIP).
+Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Dependency Injection`_" (DI).
 
     True Dependency Injection goes one step further. The class takes no direct steps to
     resolve its dependencies; it is completely passive. Instead, it provides setter methods or
