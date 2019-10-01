@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Tue, 01 Oct 2019 09:06:46 GMT" />
+        <meta http-equiv="Last-Modified" content="Tue, 01 Oct 2019 09:10:30 GMT" />
         
             <meta name="description" content="Вокруг Test-Driven Development сложилось немало мифов и заблуждений, и здесь я попытаюсь восстановить изначальный смысл его практик. Для этого придется обратиться к первоисточникам." />
         
@@ -271,15 +271,14 @@ I prefer the term continuous design because it emphasizes the core of the proces
 <span class="c1">// генерирует исключение, если status равен Offered</span>
 </pre></div>
 </td></tr></table></div>
-<p>Я признаю, что пытаюсь плыть против течения, когда настаиваю на том, что все тесты должны быть написаны только с использованием публичного (public) протокола.</p>
-</div></blockquote>
-<p>Существует специальный пакет JXUnit, который является расширением JUnit и позволяет тестировать значения переменных, даже тех, которые объявлены как закрытые.</p>
-<blockquote>
-<div>Желание протестировать объект в рамках концепции белого ящика — это не проблема тестирования, это проблема проектирования. Каждый раз, когда у меня возникает желание протестировать значение переменной-члена для того, чтобы убедиться в работоспособности кода, я получаю возможность улучшить дизайн системы.</div></blockquote>
-<p>Если я забываю о своих опасениях и просто проверяю значение переменной, я теряю такую возможность. Иначе говоря, если идея об улучшении дизайна не приходит мне в голову, ничего не поделаешь.
+<p>Я признаю, что пытаюсь плыть против течения, когда настаиваю на том, что все тесты должны быть написаны только с использованием публичного (public) протокола.
+Существует специальный пакет JXUnit, который является расширением JUnit и позволяет тестировать значения переменных, даже тех, которые объявлены как закрытые.</p>
+<p>Желание протестировать объект в рамках концепции белого ящика — это не проблема тестирования, это проблема проектирования.
+Каждый раз, когда у меня возникает желание протестировать значение переменной-члена для того, чтобы убедиться в работоспособности кода, я получаю возможность улучшить дизайн системы.
+Если я забываю о своих опасениях и просто проверяю значение переменной, я теряю такую возможность.
+Иначе говоря, если идея об улучшении дизайна не приходит мне в голову, ничего не поделаешь.
 Я проверяю значение переменной, смахиваю непрошеную слезу, вношу соответствующую отметку в список задач и продолжаю двигаться вперед, надеясь, что наступит день, когда смогу найти подходящее решение.</p>
-<blockquote>
-<div><p>Thinking about objects as black boxes is hard. If I have a Contract with a Status that can be an instance of either Offered or Running , I might feel like writing a test based on my expected implementation:</p>
+<p>Thinking about objects as black boxes is hard. If I have a Contract with a Status that can be an instance of either Offered or Running , I might feel like writing a test based on my expected implementation:</p>
 <div class="highlight-java" id="code-1-en"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -291,7 +290,9 @@ I prefer the term continuous design because it emphasizes the core of the proces
 <span class="n">assertEquals</span><span class="o">(</span><span class="n">Running</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">contract</span><span class="o">.</span><span class="na">status</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </pre></div>
 </td></tr></table></div>
-<p>This test is too dependent on the current implementation of status . The test should pass even if the representation of status changed to a boolean. Perhaps once the status changes to Running, it is possible to ask for the actual start date.</p>
+<p>This test is too dependent on the current implementation of status.
+The test should pass even if the representation of status changed to a boolean.
+Perhaps once the status changes to Running, it is possible to ask for the actual start date.</p>
 <div class="highlight-java" id="code-2-en"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">assertEquals</span><span class="o">(...,</span> <span class="n">contract</span><span class="o">.</span><span class="na">startDate</span><span class="o">());</span>
 <span class="c1">// Throws an exception if the status is Offered</span>
