@@ -2,13 +2,12 @@
 Test-Driven Development
 =======================
 
-.. post:: 
+.. post:: Sep 30, 2019
    :language: ru
    :tags: TDD, Refactoring, Clean Code, Architecture, XP, Extreme Programming
    :category:
    :author: Ivan Zakrevsky
 
-.. Sep 30, 2019
 
 Вокруг Test-Driven Development сложилось немало мифов и заблуждений, и здесь я попытаюсь восстановить изначальный смысл его практик.
 Для этого придется обратиться к первоисточникам.
@@ -502,5 +501,5 @@ TDD и Design Patterns
 .. [#fnrefactoring] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 
 
-.. .. update:: Sep 30, 2019
+.. update:: Sep 30, 2019
 

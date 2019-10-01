@@ -66,6 +66,7 @@ Articles in English:
 Articles in Russian:
 
 - ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
+- ":doc:`../ru/tdd`"
 - ":doc:`../ru/javascript-and-repository-pattern`"
 - ":doc:`../ru/django-framework`"
 - ":doc:`../ru/application-logic-management`"
