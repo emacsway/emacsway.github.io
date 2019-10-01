@@ -165,7 +165,7 @@
 Отдельно стоит упомянуть библиотеку `rql <https://github.com/persvr/rql>`__, которая позволяет легко реализовывать паттерны `Service Stub`_ и Repository_.
 Много наработок можно увидеть в проектах `persvr <https://github.com/persvr>`_ и `kriszyp <https://github.com/kriszyp>`_.
 
-В текущей статье не рассматриваются примеры реализаций паттернов `Event Sourcing`_ и CQRS_ (о чем ведется речь в статье ":doc:`../ru/redux-and-flux-for-oop-programmers`" и ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"):
+В текущей статье не рассматриваются примеры реализаций паттернов `Event Sourcing`_ и CQRS_ (о чем ведется речь в статье ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"):
 
 - React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
 - React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js

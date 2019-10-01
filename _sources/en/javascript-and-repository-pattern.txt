@@ -136,7 +136,7 @@ I can not mention `Ember.js <https://emberjs.com/>`_ here, because it implements
 It is worth also to mention the library `rql <https://github.com/persvr/rql>`__, which makes it easy the implementing of the patterns `Service Stub`_ and Repository_.
 A lot of implementetions you can find in the projects of `persvr <https://github.com/persvr>`_ and `kriszyp <https://github.com/kriszyp>`_.
 
-The current article does not consider examples of implementation of the patterns `Event Sourcing`_ and CQRS_ (which are discussed at the articles ":doc:`../ru/redux-and-flux-for-oop-programmers`" and ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"):
+The current article does not consider examples of implementation of the patterns `Event Sourcing`_ and CQRS_ (which are discussed at the article ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"):
 
 - React: https://github.com/tastejs/todomvc/blob/master/examples/react/js/todoModel.js
 - React+Alt: https://github.com/tastejs/todomvc/blob/master/examples/react-alt/js/stores/todoStore.js
