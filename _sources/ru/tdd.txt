@@ -485,7 +485,7 @@ TDD и Design Patterns
 
     I think XP should emphasize learning about patterns more. I'm not sure how I would fit that into XP's practices, but I'm sure Kent can come up with a way.
 
-    \- "`Is Design Dead? <https://martinfowler.com/articles/designDead.html#PatternsAndXp>`__ by Martin Fowler
+    \- "`Is Design Dead? <https://martinfowler.com/articles/designDead.html#PatternsAndXp>`__" by Martin Fowler
 
 Смотрите так же:
 
