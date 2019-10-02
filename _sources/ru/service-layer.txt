@@ -17,7 +17,7 @@
 Виды логики
 ===========
 
-Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Application Logic (Логика Приложения) и чем она отличается от Business Rules (Business Logic, Бизнес-Логики).
+Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Логика Приложения (Application Logic) и чем она отличается от Бизнес-Логики (Business Logic).
 
 
 Layered Architecture
@@ -54,13 +54,13 @@ Layered Architecture
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
 
-Но что означает сам термин Business?
+Но что означает сам термин Бизнес (Business)?
 Непонимание этого термина часто приводит к серьезным проблемам проектирования.
 В это трудно поверить, но большинство разработчиков, даже с многолетним стажем, этого не понимают, и полагают что это что-то связанное с финансами.
 
 
-Что такое Business Rules (Бизнес-Логика)?
------------------------------------------
+Что такое Бизнес-Логика (Business Logic)?
+------------------------------------------
 
 Самое авторитетное пояснение термина `Business <http://wiki.c2.com/?CategoryBusiness>`__ можно найти, как обычно, на сайте Ward Cunningham:
 
@@ -110,8 +110,8 @@ Layered Architecture
     это то, что обеспечивает и координирует работу Бизнес-Логики.
 
 
-Подвиды Business Rules
-----------------------
+Подвиды Бизнес-Правил (Business Rules)
+--------------------------------------
 
 Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
 
@@ -126,8 +126,8 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
 Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
 
-И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Layer.
-Так, например, Martin Fowler разделяет "business logic" на два вида - логика домена (domain logic) и логика приложения (application logic):
+И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для Application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Logic.
+Так, например, Martin Fowler разделяет "Business Logic" на два вида - Логика Домена (Domain Logic) и Логика Приложения (Application Logic):
 
     Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
     (Domain Model, 140), слой служб представляет собой типовое решение по организации
@@ -150,7 +150,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
-Там же он склонен относить "business rules" к доменой логике (domain logic):
+Там же он склонен относить "Business Rules" к Доменой Логике (Domain Logic):
 
     Проблемы возникли с усложнением доменой логики - бизнес-правил, алгоритмов вычислений, условий проверок и т.д.
 
@@ -176,203 +176,12 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.
 
 
-Назначение Сервисного Слоя
-==========================
-
-    Слой служб определяет границы приложения и множество операций, предоставляемых
-    им для интерфейсных клиентских слоев кода. Он инкапсулирует бизнес-логику
-    приложения, управляет транзакциями и координирует реакции надействия.
-
-    Defines an application's boundary with a layer of services that establishes a set of available
-    operations and coordinates the application's response in each operation.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-..
+Что такое Сервис?
+=================
 
     SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
-..
-
-    Преимуществом использования слоя служб является возможность определения набора
-    общих операций, доступных для применения многими категориями клиентов, и координация
-    откликов приложения на выполнение каждой операции. В сложных случаях
-    отклики могут включать в себя логику приложения, передаваемую в рамках атомарных
-    транзакций с использованием нескольких ресурсов. Таким образом, если у бизнес-логики
-    приложения есть более одной категории клиентов, а отклики на варианты
-    использования передаются через несколько ресурсов транзакций, использование слоя
-    служб с транзакциями, управляемыми на уровне контейнера, становится просто необходимым,
-    даже если архитектура приложения не является распределенной.
-
-    The benefit of Service Layer is that it defines a common set of application operations available to many kinds
-    of clients and it coordinates an application's response in each operation. The response may involve application
-    logic that needs to be transacted atomically across multiple transactional resources. Thus, in an application
-    with more than one kind of client of its business logic, and complex responses in its use cases involving
-    multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
-    transactions, even in an undistributed architecture.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-..
-
-    Один из общих подходов к реализации бизнес-логики состоит в расщеплении слоя
-    предметной области на два самостоятельных слоя: "поверх" модели предметной области
-    или модуля таблицы располагается слой служб (Service Layer, 156). Обычно это целесообразно
-    только при использовании модели предметной области или модуля таблицы, поскольку
-    слой домена, включающий лишь сценарий транзакции, не настолько сложен,
-    чтобы заслужить право на создание дополнительного слоя. Логика слоя представления
-    взаимодействует с бизнес-логикой исключительно при посредничестве слоя служб, который
-    действует как API приложения.
-
-    Поддерживая внятный интерфейс приложения (API), слой служб подходит также для
-    размещения логики управления транзакциями и обеспечения безопасности. Это дает
-    возможность снабдить подобными характеристиками каждый метод слоя служб. Для таких
-    целей обычно применяются файлы свойств, но атрибуты .NET предоставляют удобный
-    способ описания параметров непосредственно в коде.
-
-    A common approach in handling domain logic is to split the domain layer in two. A Service Layer (133) is
-    placed over an underlying Domain Model (116) or Table Module (125). Usually you only get this with a
-    Domain Model (116) or Table Module (125) since a domain layer that uses only Transaction Script (110) isn't
-    complex enough to warrant a separate layer. The presentation logic interacts with the domain purely through
-    the Service Layer (133), which acts as an API for the application.
-
-    As well as providing a clear API, the Service Layer (133) is also a good spot to place such things as
-    transaction control and security. This gives you a simple model of taking each method in the Service Layer
-    (133) and describing its transactional and security characteristics. A separate properties file is a common
-    choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-Традиционно Сервисный Слой относится к логике уровня Приложения.
-Т.е. Сервисный Слой имеет более низкий уровень, чем слой предметной области (domain logic), именуемый так же деловыми регламентами (business rules).
-Из этого также следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.
-
-Тем более, что Eric Evans явно разделяет Сервисы на три уровня логики:
-
-    Partitioning Services into Layers
-
-    Application
-        Funds Transfer App Service
-
-        - Digests input (such as an XML request).
-        - Sends message to domain service for fulfillment.
-        - Listens for confirmation.
-        - Decides to send notification using infrastructure service.
-    Domain
-        Funds Transfer Domain Service
-
-        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
-        - Supplies confirmation of result (transfer allowed or not, and so on).
-    Infrastructure Send Notification Service
-        Sends e-mails, letters, and other communications as directed by the application.
-
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-..
-
-    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
-    Domain and application SERVICES collaborate with these infrastructure SERVICES.
-    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
-    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
-
-    It can be harder to distinguish application SERVICES from domain SERVICES.
-    The application layer is responsible for ordering the notification.
-    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
-    That banking application could be responsible for funds transfers.
-    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
-    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
-    Technical SERVICES should lack any business meaning at all.
-
-    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
-    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
-    Here we encounter a very fine line between the domain layer and the application layer.
-    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
-    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
-
-    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
-    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
-    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
-
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-Более подробно тему Сервисов Предметной области и причины их существования раскрывает Vaughn Vernon:
-
-    Further, don’t confuse a Domain Service with an Application Service.
-    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
-    If you are confused about the difference, compare with Application.
-    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
-    You’ll see that demonstrated later in the chapter.
-    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
-
-    ...
-
-    You can use a Domain Service to
-
-    - Perform a significant business process
-    - Transform a domain object from one composition to another
-    - Calculate a Value requiring input from more than one domain object
-
-    («Implementing Domain-Driven Design» by Vaughn Vernon)
-
-Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:
-
-- Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзакции, или откатить все назад).
-- Сокрытия источника данных (здесь он дублирует функции паттерна `Repository`_) и может быть опущен, если нет других причин.
-- Компоновки реиспользуемых операций уровня приложения (например, некая часть логики уровня приложения используется в нескольких различных контроллерах).
-- Как основа для реализации `Интерфейса удаленного доступа <Remote Facade_>`__.
-- Когда контроллер имеет какой-то большой метод, он нуждается в декомпозиции, и к нему применяется `Extract Method`_ для вычленения обязанностей в отдельные методы. При этом растет количество методов класса, что влечет за собой падение его сфокусированности или `Связанности <Cohesion_>`__ (т.е. коэффициент совместного использования свойств класса его методами). Чтобы восстановить связанность, эти методы выделяются в отдельный класс, образуя `Method Object <Replace Method with Method Object_>`__. И вот этот метод-объект и может быть преобразован в сервисный слой.
-- Сервисный слой можно использовать в качестве концентратора запросов, если он стоит поверх паттерна `Repository`_ и использует паттерн `Query object`_. Дело в том, что паттерн Repository ограничивает свой интерфейс посредством интерфейса Query Object. А так как класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе `Repository`_ нельзя, ибо он не может владеть потребностями всех клиентов. Клиенты должны сами заботиться о себе. А сервисный слой как раз и создан для обслуживания клиентов.
-
-В остальных случаях логику сервисного слоя можно размещать прямо на уровне приложения (обычно - контроллер).
-
-    Гораздо легче ответить на вопрос, когда слой служб не нужно использовать. Скорее
-    всего, вам не понадобится слой служб, если у логики приложения есть только одна категория
-    клиентов, например пользовательский интерфейс, отклики которого на варианты
-    использования не охватывают несколько ресурсов транзакций. В этом случае управление
-    транзакциями и выбор откликов можно возложить на контроллеры страниц (Page
-    Controller, 350), которые будут обращаться непосредственно к слою источника данных.
-    Тем не менее, как только у вас появится вторая категория клиентов или начнет
-    использоваться второй ресурс транзакции, вам неизбежно придется ввести слой служб, что
-    потребует полной переработки приложения.
-
-    The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
-    application's business logic will only have one kind of client say, a user interface and its use case responses
-    don't involve multiple transactional resources. In this case your Page Controllers can manually control
-    transactions and coordinate whatever response is required, perhaps delegating directly to the Data Source
-    layer.
-    But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
-    pays to design in a Service Layer from the beginning.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-Тем не менее, широко распространена точка зрения, что доступ к модели должен всегда производиться через сервисный слой:
-
-    Таким образом, на вашем месте я предпочел бы самый тонкий слой служб, какой
-    только возможен (если он вообще нужен). Обычно же я добавляю его только тогда, когда
-    он действительно необходим. Впрочем, мне знакомы хорошие специалисты, которые
-    всегда применяют слой служб, содержащий взвешенную долю бизнес-логики, так что
-    этим моим советом вы можете благополучно пренебречь.
-
-    My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
-    approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
-    know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
-    me on this one.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-..
-
-    Идея вычленения слоя служб из слоя предметной области основана на подходе, пред-
-    полагающем возможность отмежевания логики процесса от "чистой" бизнес-логики.
-    Уровень служб обычно охватывает логику, которая относится к конкретному варианту
-    использования системы или обеспечивает взаимодействие с другими инфраструктурами
-    (например, с помощью механизма сообщений). Стоит ли иметь отдельные слои служб и
-    предметной области — вопрос, достойный обсуждения. Я склоняюсь к мысли о том, что
-    подобное решение может оказаться полезным, хотя и не всегда, но некоторые уважае-
-    мые мною коллеги эту точку зрения не разделяют.
-
-    The idea of splitting a services layer from a domain layer is based on a separation of workflow logic from
-    pure domain logic. The services layer typically includes logic that's particular to a single use case and also
-    some communication with other infrastructures, such as messaging. Whether to have separate services and
-    domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
-    designers I respect disagree with me on this.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 ..
 
@@ -420,7 +229,355 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
     standalone interface declared as a SERVICE . Define the interface in terms of the
     language of the model and make sure the operation name is part of the UBIQUITOUS
     LANGUAGE . Make the SERVICE stateless.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Организация Сервисов по уровням логики
+======================================
+
+Eric Evans разделяет Сервисы на три уровня логики:
+
+    Partitioning Services into Layers
+
+    Application
+        Funds Transfer App Service
+
+        - Digests input (such as an XML request).
+        - Sends message to domain service for fulfillment.
+        - Listens for confirmation.
+        - Decides to send notification using infrastructure service.
+    Domain
+        Funds Transfer Domain Service
+
+        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
+        - Supplies confirmation of result (transfer allowed or not, and so on).
+    Infrastructure Send Notification Service
+        Sends e-mails, letters, and other communications as directed by the application.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
+    Domain and application SERVICES collaborate with these infrastructure SERVICES.
+    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
+    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
+
+    It can be harder to distinguish application SERVICES from domain SERVICES.
+    The application layer is responsible for ordering the notification.
+    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
+    That banking application could be responsible for funds transfers.
+    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
+    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
+    Technical SERVICES should lack any business meaning at all.
+
+    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
+    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
+    Here we encounter a very fine line between the domain layer and the application layer.
+    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
+    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
+
+    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
+    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
+    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Сервисы уровня Доменной Логики (Domain Logic)
+---------------------------------------------
+
+Политика самого высокого уровня принадлежит Доменной Логике (Domain Logic), поэтому, с нее и начнем.
+К счастью, это самый немногочисленный представитель Сервисов.
+
+Подробно тему Сервисов Логики Предметной Области и причины их существования раскрывает Vaughn Vernon:
+
+    Further, don’t confuse a Domain Service with an Application Service.
+    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
+    If you are confused about the difference, compare with Application.
+    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
+    You’ll see that demonstrated later in the chapter.
+    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
+
+    ...
+
+    You can use a Domain Service to
+
+    - Perform a significant business process
+    - Transform a domain object from one composition to another
+    - Calculate a Value requiring input from more than one domain object
+
+    \- "Implementing Domain-Driven Design" by Vaughn Vernon
+
+
+Сервисы уровня Логики Приложения (Application Logic)
+----------------------------------------------------
+
+Это самый многочисленный представитель Сервисов.
+Именно его часто называют Сервисный Слой (Service Layer).
+
+
+Подвиды Сервисов Логики Приложения (Application Logic)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Сервисы Логики Приложения, в свою очередь, разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. loosely coupled).
+Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
+Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).
+
+
+Оркестровые Сервисы
+"""""""""""""""""""
+
+Оркестровые Сервисы являются представителями классического Сервисного Слоя, и подробнее рассматриваются ниже по тексту.
+
+
+Хореографические Сервисы
+""""""""""""""""""""""""
+
+Существует интересная статья "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan, на которую ссылается Martin Fowler в своей статье "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__".
+
+И в этой статье есть интересный момент.
+
+    The reason you don’t see this layer explicitly represented in CQRS is that it isn’t really there...
+
+    \- "Clarified CQRS" by Udi Dahan
+
+На самом деле, обработчик команды - это и есть Сервис, только событийно-ориентированный, который следует заданному интерфейсу.
+Он должен содержать логику уровня приложения (а не бизнес-логику).
+
+    Our command processing objects in the various autonomous components actually make up our service layer.
+
+    \- "Clarified CQRS" by Udi Dahan
+
+
+Частые ошибки проектирования Хореографических Сервисов
+******************************************************
+
+Иногда, особенно у frontend-разработчиков, можно наблюдать как они проксируют Оркестровыми Сервисами обращения к Хореографическим Сервисам.
+Имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой пытаться связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - помочь Логике Приложения скрыть их от самой же себя).
+
+   Each command is independent of the other, so why should we allow the objects which handle them to depend on each other?
+
+   \- "Clarified CQRS" by Udi Dahan
+
+
+Тут, правда, возникает вопрос осведомленности обработчиков команды и самого приложения об интерфейсе конкретной реализации CQRS.
+Для выравнивания интерфейсов служит паттерн Adapter, которому, при необходимости, можно предусмотреть место.
+
+Другой распространенной ошибкой является размещение Бизнес-Логики в Хореографических Сервисах и искусственное вырождение поведения Доменных Моделей с выносом всей бизнес-логики в обработчики команд, т.е. в Сервисы.
+
+Это приводит к появлению проблемы, о которой говорил Eric Evans:
+
+    "Если требования архитектурной среды к распределению обязанностей таковы, что элементы, реализующие концептуальные объекты, оказываются физически разделенными, то код больше не выражает модель.
+
+    Нельзя разделять до бесконечности, у человеческого ума есть свои пределы, до которых он еще способен соединять разделенное;
+    если среда выходит за эти пределы, разработчики предметной области теряют способность расчленять модель на осмысленные фрагменты."
+
+    "If the framework's partitioning conventions pull apart the elements implementing the
+    conceptual objects, the code no longer reveals the model.
+
+    There is only so much partitioning a mind can stitch back together, and if the framework uses 
+    it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+
+В приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования, и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний [#fnddd]_.
+Также такой код обретает признаки "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_, что сильно затруднят исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
+В конечном итоге это приводит к стремительному росту стоимости изменения программы.
+
+Должен заметить, что Udi Dahan в своей статье допускает и использование `Transaction Script <https://martinfowler.com/eaaCatalog/transactionScript.html>`__ для организации бизнес-логики.
+В таком случае, выбор между Transaction Script и `Domain Model <https://martinfowler.com/eaaCatalog/domainModel.html>`__ подробно рассмотрен в "Patterns of Enterprise Application Architecture" by M. Fowler and others.
+Transaction Script может быть уместным при сочетании Redux и GraphQL для минимизации сетевого трафика.
+При использовании же REST-API, и наличии обширной бизнес-логики, более уместным будет использование Domain Model и DDD.
+
+
+Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer)
+------------------------------------------------------------
+
+Отдельно следует выделять Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer).
+
+    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
+    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
+    technical capabilities are most often offered as SERVICES . For example, if an application needs to
+    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
+    application layer elements can request the transmission of the message. This decoupling gives
+    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
+    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
+    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
+    how.
+
+    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
+    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
+    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
+
+    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
+    technical components are designed to directly support the basic functions of other layers (such as
+    providing an abstract base class for all domain objects) and provide the mechanisms for them to
+    relate (such as implementations of MVC and the like). Such an "architectural framework" has
+    much more impact on the design of the other parts of the program.
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
+    message sending for the application, persistence for the domain, drawing
+    widgets for the UI, and so on. The infrastructure layer may also support
+    the pattern of interactions between the four layers through an
+    architectural framework.
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Назначение Сервисного Слоя
+==========================
+
+    Слоя служб устанавливает множество доступных действий и координирует отклик приложения на каждое действие.
+
+    Defines an application's boundary with a layer of services that establishes a set of available
+    operations and coordinates the application's response in each operation.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    Корпоративные приложения обычно подразумевают применение разного рода интерфейсов к хранимым данным и реализуемой логике — загрузчиков данных, интерфейсов пользователя, шлюзов интеграции и т.д.
+    Несмотря на различия в назначении, подобные интерфейсы часто нуждаются в одних и тех же функциях взаимодействия с приложением для манипулирования данными и выполнения бизнес-логики.
+    Функции могут быть весьма сложными и способны включать транзакции, охватывающие многочисленные ресурсы, а также операции по координации реакций на действия.
+    Описание логики взаимодействия в каждом отдельно взятом интерфейсе сопряжено с многократным повторением одних и тех же фрагментов кода.
+
+    Слой служб определяет границы приложения и множество операций, предоставляемых им для интерфейсных клиентских слоев кода.
+    Он инкапсулирует бизнес-логику приложения, управляет транзакциями и координирует реакции надействия.
+
+    Enterprise applications typically require different kinds of interfaces to the data they store and the logic they implement: data loaders, user interfaces, integration gateways, and others.
+    Despite their different purposes, these interfaces often need common interactions with the application to access and manipulate its data and invoke its business logic.
+    The interactions may be complex, involving transactions across multiple resources and the coordination of several responses to an action.
+    Encoding the logic of the interactions separately in each interface causes a lot of duplication.
+
+    A Service Layer defines an application's boundary and its set of available operations from the perspective of interfacing client layers.
+    It encapsulates the application's business logic, controlling transactions and coordinating responses in the implementation of its operations.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    Преимуществом использования слоя служб является возможность определения набора
+    общих операций, доступных для применения многими категориями клиентов, и координация
+    откликов приложения на выполнение каждой операции. В сложных случаях
+    отклики могут включать в себя логику приложения, передаваемую в рамках атомарных
+    транзакций с использованием нескольких ресурсов. Таким образом, если у бизнес-логики
+    приложения есть более одной категории клиентов, а отклики на варианты
+    использования передаются через несколько ресурсов транзакций, использование слоя
+    служб с транзакциями, управляемыми на уровне контейнера, становится просто необходимым,
+    даже если архитектура приложения не является распределенной.
+
+    The benefit of Service Layer is that it defines a common set of application operations available to many kinds
+    of clients and it coordinates an application's response in each operation. The response may involve application
+    logic that needs to be transacted atomically across multiple transactional resources. Thus, in an application
+    with more than one kind of client of its business logic, and complex responses in its use cases involving
+    multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
+    transactions, even in an undistributed architecture.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    Один из общих подходов к реализации бизнес-логики состоит в расщеплении слоя
+    предметной области на два самостоятельных слоя: "поверх" модели предметной области
+    или модуля таблицы располагается слой служб (Service Layer, 156). Обычно это целесообразно
+    только при использовании модели предметной области или модуля таблицы, поскольку
+    слой домена, включающий лишь сценарий транзакции, не настолько сложен,
+    чтобы заслужить право на создание дополнительного слоя. Логика слоя представления
+    взаимодействует с бизнес-логикой исключительно при посредничестве слоя служб, который
+    действует как API приложения.
+
+    Поддерживая внятный интерфейс приложения (API), слой служб подходит также для
+    размещения логики управления транзакциями и обеспечения безопасности. Это дает
+    возможность снабдить подобными характеристиками каждый метод слоя служб. Для таких
+    целей обычно применяются файлы свойств, но атрибуты .NET предоставляют удобный
+    способ описания параметров непосредственно в коде.
+
+    A common approach in handling domain logic is to split the domain layer in two. A Service Layer (133) is
+    placed over an underlying Domain Model (116) or Table Module (125). Usually you only get this with a
+    Domain Model (116) or Table Module (125) since a domain layer that uses only Transaction Script (110) isn't
+    complex enough to warrant a separate layer. The presentation logic interacts with the domain purely through
+    the Service Layer (133), which acts as an API for the application.
+
+    As well as providing a clear API, the Service Layer (133) is also a good spot to place such things as
+    transaction control and security. This gives you a simple model of taking each method in the Service Layer
+    (133) and describing its transactional and security characteristics. A separate properties file is a common
+    choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+Традиционно Сервисный Слой относится к логике уровня Приложения.
+Т.е. Сервисный Слой имеет более низкий уровень, чем слой предметной области (domain logic), именуемый так же деловыми регламентами (business rules).
+Из этого также следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.
+
+Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:
+
+- Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзакции, или откатить все назад).
+- Сокрытия источника данных (здесь он дублирует функции паттерна `Repository`_) и может быть опущен, если нет других причин.
+- Компоновки реиспользуемых операций уровня приложения (например, некая часть логики уровня приложения используется в нескольких различных контроллерах).
+- Как основа для реализации `Интерфейса удаленного доступа <Remote Facade_>`__.
+- Когда контроллер имеет какой-то большой метод, он нуждается в декомпозиции, и к нему применяется `Extract Method`_ для вычленения обязанностей в отдельные методы. При этом растет количество методов класса, что влечет за собой падение его сфокусированности или `Связанности <Cohesion_>`__ (т.е. коэффициент совместного использования свойств класса его методами). Чтобы восстановить связанность, эти методы выделяются в отдельный класс, образуя `Method Object <Replace Method with Method Object_>`__. И вот этот метод-объект и может быть преобразован в сервисный слой.
+- Сервисный слой можно использовать в качестве концентратора запросов, если он стоит поверх паттерна `Repository`_ и использует паттерн `Query object`_. Дело в том, что паттерн Repository ограничивает свой интерфейс посредством интерфейса Query Object. А так как класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе `Repository`_ нельзя, ибо он не может владеть потребностями всех клиентов. Клиенты должны сами заботиться о себе. А сервисный слой как раз и создан для обслуживания клиентов.
+
+В остальных случаях логику сервисного слоя можно размещать прямо на уровне приложения (обычно - контроллер).
+
+Когда Сервисный Слой не нужен?
+==============================
+
+    Гораздо легче ответить на вопрос, когда слой служб не нужно использовать. Скорее
+    всего, вам не понадобится слой служб, если у логики приложения есть только одна категория
+    клиентов, например пользовательский интерфейс, отклики которого на варианты
+    использования не охватывают несколько ресурсов транзакций. В этом случае управление
+    транзакциями и выбор откликов можно возложить на контроллеры страниц (Page
+    Controller, 350), которые будут обращаться непосредственно к слою источника данных.
+    Тем не менее, как только у вас появится вторая категория клиентов или начнет
+    использоваться второй ресурс транзакции, вам неизбежно придется ввести слой служб, что
+    потребует полной переработки приложения.
+
+    The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
+    application's business logic will only have one kind of client say, a user interface and its use case responses
+    don't involve multiple transactional resources. In this case your Page Controllers can manually control
+    transactions and coordinate whatever response is required, perhaps delegating directly to the Data Source
+    layer.
+    But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
+    pays to design in a Service Layer from the beginning.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+Тем не менее, широко распространена точка зрения, что доступ к модели должен всегда производиться через сервисный слой:
+
+    Таким образом, на вашем месте я предпочел бы самый тонкий слой служб, какой
+    только возможен (если он вообще нужен). Обычно же я добавляю его только тогда, когда
+    он действительно необходим. Впрочем, мне знакомы хорошие специалисты, которые
+    всегда применяют слой служб, содержащий взвешенную долю бизнес-логики, так что
+    этим моим советом вы можете благополучно пренебречь.
+
+    My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
+    approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
+    know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
+    me on this one.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    Идея вычленения слоя служб из слоя предметной области основана на подходе, предполагающем возможность отмежевания логики процесса от "чистой" бизнес-логики.
+    Уровень служб обычно охватывает логику, которая относится к конкретному варианту
+    использования системы или обеспечивает взаимодействие с другими инфраструктурами
+    (например, с помощью механизма сообщений).
+    Стоит ли иметь отдельные слои служб и предметной области — вопрос, достойный обсуждения.
+    Я склоняюсь к мысли о том, что подобное решение может оказаться полезным, хотя и не всегда, но некоторые уважаемые мною коллеги эту точку зрения не разделяют.
+
+    The idea of splitting a services layer from a domain layer is based on a separation of workflow logic from
+    pure domain logic. The services layer typically includes logic that's particular to a single use case and also
+    some communication with other infrastructures, such as messaging. Whether to have separate services and
+    domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
+    designers I respect disagree with me on this.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Сервис - не обертка для DataMapper
@@ -664,42 +821,6 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
 Если Вам все-таки пришлось работать с Django Model, воздержитесь от использования механизма Django аннотаций в пользу голого паттерна `DataMapper`_.
 
 
-Сервисы инфраструктурного уровня
-================================
-
-От сервисного слоя следует отличать сервисы инфраструктурного уровня.
-
-    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
-    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
-    technical capabilities are most often offered as SERVICES . For example, if an application needs to
-    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
-    application layer elements can request the transmission of the message. This decoupling gives
-    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
-    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
-    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
-    how.
-
-    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
-    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
-    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
-
-    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
-    technical components are designed to directly support the basic functions of other layers (such as
-    providing an abstract base class for all domain objects) and provide the mechanisms for them to
-    relate (such as implementations of MVC and the like). Such an "architectural framework" has
-    much more impact on the design of the other parts of the program.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-..
-
-    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
-    message sending for the application, persistence for the domain, drawing
-    widgets for the UI, and so on. The infrastructure layer may also support
-    the pattern of interactions between the four layers through an
-    architectural framework.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-
 Особенности сервисного слоя на стороне клиента
 ==============================================
 
@@ -750,6 +871,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fnpoeaa] «`Patterns of Enterprise Application Architecture`_» by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 .. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
+.. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 
 
 .. update:: 28 May, 2018
