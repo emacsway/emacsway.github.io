@@ -19,12 +19,12 @@ Purpose of Service Layer
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 ..
 
     SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 ..
 
@@ -34,7 +34,7 @@ Purpose of Service Layer
     with more than one kind of client of its business logic, and complex responses in its use cases involving
     multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
     transactions, even in an undistributed architecture.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 ..
 
@@ -48,7 +48,7 @@ Purpose of Service Layer
     transaction control and security. This gives you a simple model of taking each method in the Service Layer
     (133) and describing its transactional and security characteristics. A separate properties file is a common
     choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 Traditionally `Service Layer`_ is an Application layer logic.
 This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
@@ -83,7 +83,7 @@ Note that Eric Evans understands the logic of the Domain Layer under the term "b
         the pattern of interactions between the four layers through an
         architectural framework.
 
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 While Martin Fowler understands by the term "business logic" not only the logic of the Domain Layer:
 
@@ -94,19 +94,19 @@ While Martin Fowler understands by the term "business logic" not only the logic 
     administrators, and integrated applications, of revenue recognition calculations). Application logic is
     sometimes referred to as "workflow logic," although different people have different interpretations of
     "workflow."
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 We will understand by the term "business rules" only the logic of the Domain Layer, especially since Martin Fowler indirectly indicates this:
 
     The problem came with domain logic: business rules, validations, calculations, and
     the like.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 ..
 
     Then there's the matter of what comes under the term "business logic." I find this a curious term because there
     are few things that are less logical than business logic.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 Moreover, Eric Evans clearly divides the Services into three levels of logic:
 
@@ -127,7 +127,7 @@ Moreover, Eric Evans clearly divides the Services into three levels of logic:
     Infrastructure Send Notification Service
         Sends e-mails, letters, and other communications as directed by the application.
 
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 ..
 
@@ -154,7 +154,7 @@ Moreover, Eric Evans clearly divides the Services into three levels of logic:
     In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
     But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
 
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 In more detail, the topic of the Domain Services and the reasons for their existence are revealed by Vaughn Vernon:
 
@@ -173,7 +173,7 @@ In more detail, the topic of the Domain Services and the reasons for their exist
     - Transform a domain object from one composition to another
     - Calculate a Value requiring input from more than one domain object
 
-    («Implementing Domain-Driven Design» by Vaughn Vernon)
+    ("Implementing Domain-Driven Design" by Vaughn Vernon)
 
 In addition to the above, the Service Layer can carry the following responsibilities:
 
@@ -193,7 +193,7 @@ In other cases, the logic of the Service Layer can be placed directly at the app
     layer.
     But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
     pays to design in a Service Layer from the beginning.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 However, the widely held view that access to the model should always be made through the Service Layer:
 
@@ -201,7 +201,7 @@ However, the widely held view that access to the model should always be made thr
     approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
     know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
     me on this one.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 ..
 
@@ -210,7 +210,7 @@ However, the widely held view that access to the model should always be made thr
     some communication with other infrastructures, such as messaging. Whether to have separate services and
     domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
     designers I respect disagree with me on this.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 ..
 
@@ -258,7 +258,7 @@ However, the widely held view that access to the model should always be made thr
     standalone interface declared as a SERVICE . Define the interface in terms of the
     language of the model and make sure the operation name is part of the UBIQUITOUS
     LANGUAGE . Make the SERVICE stateless.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 
 Service is not a wrapper for Data Mapper
@@ -272,7 +272,7 @@ Therefore, the Service's methods usually contain the name of the returned Domain
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 
 Implementation of Service Layer
@@ -298,7 +298,7 @@ Use Inversion of control, desirable in the form of Passive [#fnccode]_ "`Depende
     and uses the constructor arguments or setter methods provided to wire together the depen-
     dencies. Which dependent objects are actually used is specified through a configuration
     file or programmatically in a special-purpose construction module.
-    «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_
+    "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
 
 One of the main responsibilities of Service Layer is the hiding of data source.
 It allows you to use `Service Stub`_ for testing.
@@ -319,7 +319,7 @@ Checking permissions is also the logic of Application Layer.
 The lower layer should not be aware of the higher layer.
 Domain-level logic should not be aware of application-level logic.
 
-The class django.db.models.Manager corresponds most closely to the class Finder described in «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
+The class django.db.models.Manager corresponds most closely to the class Finder described in "Patterns of Enterprise Application Architecture" [#fnpoeaa]_.
 
     With a Row Data Gateway you're faced with the questions of where to put the find operations that generate this
     pattern. You can use static find methods, but they preclude polymorphism should you want to substitute
@@ -329,7 +329,7 @@ The class django.db.models.Manager corresponds most closely to the class Finder 
     It's often hard to tell the difference between a Row Data Gateway and an Active Record (160). The crux of the
     matter is whether there's any domain logic present; if there is, you have an Active Record (160). A Row Data
     Gateway should contain only database access logic and no domain logic.
-    (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", «Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", "Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in the form similar to the `Query Object`_ pattern.
 Like the Repository pattern, the model class (`ActiveRecord`_) limits its interface using the Query Object interface.
@@ -353,7 +353,7 @@ This will allow painless ORM replace if necessary.
     application's use case responsibilities. Second, encapsulating application logic in a "higher" layer
     dedicated to that purpose (which the data source layer isn't) facilitates changing the implementation of that
     layer perhaps to use a workflow engine.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 
 Taming of swollen models
@@ -368,29 +368,12 @@ But what to do with other methods?
 Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
 You can not assign them to the responsibility of the client, as this would lead to "G14: Feature Envy" [#fnccode]_.
 
-As mentioned previously, Service Layer is usually implemented as a stateless object.
-If the client belongs to the Application level logic, the solution may be to create a Service Layer.
-
-    Domain Models (116) are preferable to Transaction Scripts (110) for avoiding domain logic duplication and
-    for managing complexity using classical design patterns. But putting application logic into pure domain object
-    classes has a couple of undesirable consequences. First, domain object classes are less reusable across
-    applications if they implement application-specific logic and depend on application-specific packages.
-    Second, commingling both kinds of logic in the same classes makes it harder to reimplement the application
-    logic in, say, a workflow tool if that should ever become desirable. For these reasons Service Layer factors
-    each kind of business logic into a separate layer, yielding the usual benefits of layering and rendering the pure
-    domain object classes more reusable from application to application.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-But if the client belongs to the Domain layer, then this client may not be aware of the Application Layer logic.
-But Service Layer is the logic of the Application Layer.
-
 In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
-For interface equalization we have to use the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_ for more info.
+For interface equalization we have to use the pattern Adapter (aka Wrapper), see "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_ for more info.
 
 In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
 Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.
 
-Let's return to the case when the client belongs to the Application logic.
 Is it possible to use the Adapter pattern in this case?
 
 Martin Fowler says:
@@ -407,7 +390,7 @@ Martin Fowler says:
     defining a subject area of related logic. Each such class forms an application "service," and it's common for
     service type names to end with "Service." A Service Layer is comprised of these application service classes,
     which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
 
@@ -416,7 +399,7 @@ Eric Evans expresses a similar idea:
     We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
     What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
     But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 
 Problems of Django annotation
@@ -452,7 +435,7 @@ You have to distinguish the Service Layer from infrastructure layer services.
     providing an abstract base class for all domain objects) and provide the mechanisms for them to
     relate (such as implementations of MVC and the like). Such an "architectural framework" has
     much more impact on the design of the other parts of the program.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 ..
 
@@ -461,7 +444,7 @@ You have to distinguish the Service Layer from infrastructure layer services.
     widgets for the UI, and so on. The infrastructure layer may also support
     the pattern of interactions between the four layers through an
     architectural framework.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 
 Peculiar properties of Service Layer on client side
@@ -486,18 +469,18 @@ In this case, it's easier to add a new method to the remote call service, and ge
 Further Reading
 ===============
 
-- «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, chapters:
+- "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin [#fnccode]_, chapters:
     - Dependency Injection ... 157
     - Cross-Cutting Concerns ... 160
     - Java Proxies ... 161
     - Pure Java AOP Frameworks ... 163
-- «Patterns of Enterprise Application Architecture» by Martin Fowler [#fnpoeaa]_, главы:
+- "Patterns of Enterprise Application Architecture" by Martin Fowler [#fnpoeaa]_, главы:
     - Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer
     - Part 1. The Narratives : Chapter 8. Putting It All Together
     - Part 2. The Patterns : Chapter 9. Domain Logic Patterns : Service Layer
-- «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans [#fnddd]_, глава:
+- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans [#fnddd]_, глава:
     - Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
-- «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma [#fngof]_, главы:
+- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, главы:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 
@@ -505,10 +488,10 @@ Further Reading
 
 .. rubric:: Footnotes
 
-.. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» by `Robert C. Martin`_
-.. [#fnpoeaa] «`Patterns of Enterprise Application Architecture`_» by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-.. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
-.. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
+.. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+.. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+.. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 
 
 .. update:: 28 May, 2018
