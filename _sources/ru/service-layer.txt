@@ -7,6 +7,7 @@
    :tags: Design, Architecture, ORM, Django Model, Service Layer
    :category:
    :author: Ivan Zakrevsky
+   :redirect: ru/redux-and-flux-for-oop-programmers
 
 Эта статья посвящена вопросам проeктирования Сервисного Слоя (`Service Layer`_) и рассматривает широко распространенные ошибки.
 
