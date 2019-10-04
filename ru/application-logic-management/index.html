@@ -94,116 +94,17 @@
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
 <li><a class="reference internal" href="#mvc-use-case-service-layer-cqrs-event-sourcing" id="id5">Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</a></li>
-<li><a class="reference internal" href="#business-rules" id="id6">Что такое Business Rules (Бизнес-Логика)?</a></li>
-<li><a class="reference internal" href="#business-rules-application-logic" id="id7">Почему важно отделять Business Rules от Application Logic?</a></li>
-<li><a class="reference internal" href="#application-logic" id="id8">Способы организации Application Logic (Логики Приложения)</a></li>
-<li><a class="reference internal" href="#id2" id="id9">Проблема параллельного обновления</a></li>
-<li><a class="reference internal" href="#cqrs" id="id10">CQRS</a></li>
-<li><a class="reference internal" href="#event-sourcing" id="id11">Event Sourcing</a></li>
-<li><a class="reference internal" href="#id3" id="id12">Другие ссылки по теме</a></li>
-<li><a class="reference internal" href="#id4" id="id13">Заключение</a></li>
+<li><a class="reference internal" href="#application-logic" id="id6">Способы организации Логики Приложения (Application Logic)</a></li>
+<li><a class="reference internal" href="#id2" id="id7">Проблема параллельного обновления</a></li>
+<li><a class="reference internal" href="#cqrs" id="id8">CQRS</a></li>
+<li><a class="reference internal" href="#event-sourcing" id="id9">Event Sourcing</a></li>
+<li><a class="reference internal" href="#id3" id="id10">Другие ссылки по теме</a></li>
+<li><a class="reference internal" href="#id4" id="id11">Заключение</a></li>
 </ul>
 </div>
-<p>Не так давно у меня состоялась весьма конструктивная дискуссия с одним довольно грамотным парнем - <a class="reference external" href="https://twitter.com/koorchik">Viktor Turskyi (&#64;koorchik)</a>.
-Эта дискуссия позволила мне систематизировать и обобщить свои знания.
-Выводы этой систематизации оказались заслуживающими отдельного блог-поста.</p>
-<p>Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Application Logic (Логика Приложения) и чем она отличается от Business Rules (Business Logic, Бизнес-Логики).</p>
-<p>Одно из наиболее часто-цитируемых определений:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>User Interface (or Presentation Layer)</dt>
-<dd>Responsible for showing information to the user and interpreting the user&#8217;s
-commands. The external actor might sometimes be another computer
-system rather than a human user.</dd>
-<dt>Application Layer</dt>
-<dd>Defines the jobs the software is supposed to do and directs the expressive
-domain objects to work out problems. The tasks this layer is responsible
-for are meaningful to the business or necessary for interaction with the
-application layers of other systems.
-This layer is kept thin. It <strong>does not contain Business Rules</strong> or knowledge, but
-only coordinates tasks and delegates work to collaborations of domain
-objects in the next layer down. It does not have state reflecting the
-business situation, but it can have state that reflects the progress of a task
-for the user or the program.</dd>
-<dt>Domain Layer (or Model Layer)</dt>
-<dd>Responsible for representing concepts of the business, information about
-the <strong>business situation, and Business Rules</strong>. State that reflects the business
-situation is controlled and used here, even though the technical details of
-storing it are delegated to the infrastructure. This layer is the heart of
-business software.</dd>
-<dt>Infrastructure Layer</dt>
-<dd>Provides generic technical capabilities that support the higher layers:
-message sending for the application, persistence for the domain, drawing
-widgets for the UI, and so on. The infrastructure layer may also support
-the pattern of interactions between the four layers through an
-architectural framework.</dd>
-</dl>
-<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</p>
-</div></blockquote>
-<p>Но что означает сам термин Business?
-Непонимание этого термина часто приводит к серьезным проблемам проектирования.
-В это трудно поверить, но большинство разработчиков этого не понимают.</p>
-</div>
-<div class="section" id="business-rules">
-<h1><a class="toc-backref" href="#id6">Что такое Business Rules (Бизнес-Логика)?</a><a class="headerlink" href="#business-rules" title="Permalink to this headline">¶</a></h1>
-<p>Самое авторитетное пояснение термина <a class="reference external" href="http://wiki.c2.com/?CategoryBusiness">Business</a> можно найти, как обычно, на сайте Ward Cunningham:</p>
-<blockquote>
-<div>Software intersects with the Real World. Imagine that.</div></blockquote>
-<p>Термина <a class="reference external" href="http://wiki.c2.com/?BusinessRule">Business Rule</a>:</p>
-<blockquote>
-<div><p>A Business Rule (in a programming context) is knowledge that gets applied to a set of data to create new value. Or it may be a rule about how to create, modify, or remove data. Or perhaps it is a rule that specifies when certain processes occur.</p>
-<p>For example, we have a rule about email addresses &#8211; when the Driver Name field on our object identifier changes, we erase the email address. When we receive a new email address, we make sure that it contains an &#8220;&#64;&#8221; sign and a valid domain not on our blacklist.</p>
-</div></blockquote>
-<p><a class="reference external" href="http://wiki.c2.com/?BusinessLogicDefinition">Business Logic Definition</a>:</p>
-<blockquote>
-<div><p>Business logic is that portion of an enterprise system which determines how data is:</p>
-<ul class="simple">
-<li>Transformed and/or calculated. For example, business logic determines how a tax total is calculated from invoice line items.</li>
-<li>Routed to people or software systems, aka workflow.</li>
-</ul>
-</div></blockquote>
-<p>Следует отличать термин Business (по сути - синоним слова Domain) от термина <a class="reference external" href="http://wiki.c2.com/?CategoryBusinessDomain">Business Domain</a>:</p>
-<blockquote>
-<div>A category about the business domain, such as accounting, finance, inventory, marketing, tracking, billing, reporting, charting, taxes, etc.</div></blockquote>
-<p>Также следует отличать Business и от <a class="reference external" href="http://wiki.c2.com/?BusinessProcess">Business Process</a>:</p>
-<blockquote>
-<div><p>A Business Process is some reproduceable process within an organization. Often it is a something that you want to setup once and reuse over and over again.</p>
-<p>Companies spend a lot of time and money identifying Business Processes, designing the software that captures a Business Process and then testing and documenting these processes.</p>
-<p>One example of a Business Process is &#8220;Take an order on my web site&#8221;. It might involve a customer, items from a catalog and a credit card. Each of these things is represented by business objects and together they represent a Business Process.</p>
-</div></blockquote>
-<p>Википедия <a class="reference external" href="https://en.wikipedia.org/wiki/Business_logic">дает следующее определение термину Business Logic</a>:</p>
-<blockquote>
-<div>In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.</div></blockquote>
-<p>Резюмируя, я обобщу все своими словами:</p>
-<dl class="docutils">
-<dt>Бизнес-Логика (деловые регламенты, доменные модели)</dt>
-<dd>- это моделирование объектов и процессов предметной области (т.е. реального мира).
-Это то, что программа должна делать (от слова &#8220;дело&#8221; - именно так переводится слово &#8220;business&#8221;), и ради чего она создается.</dd>
-<dt>Логика приложения</dt>
-<dd>- это то, что обеспечивает и координирует работу Бизнес-Логики.</dd>
-</dl>
-<p>Надо заметить, что существуют еще и application-specific Business Rules.</p>
-<p>Robert Martin в Clean Architecture разделяет Бизнес-Правила на два вида:</p>
-<ul>
-<li><p class="first">application-specific Business Rules</p>
-</li>
-<li><p class="first">application-independent Business Rules</p>
-<blockquote>
-<div><p>Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.</p>
-<p>То есть систему можно разделить на горизонтальные уровни: пользовательский интерфейс, Бизнес-Правила, характерные для приложения, Бизнес-Правила, не зависящие от приложения, и база данных — кроме всего прочего.</p>
-<p>- Clean Architecture by Robert Martin</p>
-</div></blockquote>
-</li>
-</ul>
-<p>Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.</p>
-</div>
-<div class="section" id="business-rules-application-logic">
-<h1><a class="toc-backref" href="#id7">Почему важно отделять Business Rules от Application Logic?</a><a class="headerlink" href="#business-rules-application-logic" title="Permalink to this headline">¶</a></h1>
-<p>Поскольку целью создания приложения является реализация именно Business Rules - критически важно обеспечить их переносимость, и отделить их от Application Logic.
-Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.</p>
 </div>
 <div class="section" id="application-logic">
-<h1><a class="toc-backref" href="#id8">Способы организации Application Logic (Логики Приложения)</a><a class="headerlink" href="#application-logic" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id6">Способы организации Логики Приложения (Application Logic)</a><a class="headerlink" href="#application-logic" title="Permalink to this headline">¶</a></h1>
 <p>Широко распространены три способа организации Application Logic:</p>
 <p>1. <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer (сервисный слой)</a>.
 Который, в свою очередь, делится на Оркестровый (&#8220;request/response&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и Хореографический (Event-Driven, т.е. loosely coupled).</p>
@@ -239,7 +140,7 @@ A Command [Gang of Four] is a good choice, since it allows it to easily get hold
 Здесь основная проблема заключается в том, чтобы организовать доступ к связанным объектам, но не подмешивать Логику Приложения (и логику доступа к данным) в Domain Models, эту темы мы подробно рассмотрим в одном из следующих постов.</p>
 </div>
 <div class="section" id="id2">
-<h1><a class="toc-backref" href="#id9">Проблема параллельного обновления</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id7">Проблема параллельного обновления</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
 <p>Интернет открыл доступ к огромному количеству данных, которое несопоставимо велико с возможностями одного сервера.
 Возникла необходимость в масштабировании и в распределенном хранении и обработке данных.</p>
 <p>Одна из самых острых проблем - это проблема параллельного обновления данных.
@@ -247,7 +148,7 @@ A Command [Gang of Four] is a good choice, since it allows it to easily get hold
 <p>Любой порядок выражается в правильном наложении ограничений.</p>
 </div>
 <div class="section" id="cqrs">
-<h1><a class="toc-backref" href="#id10">CQRS</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">CQRS</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h1>
 <p>Проблему параллельного обновления в значительной мере можно уменьшить наложением ограничения на двунаправленные изменения состояния путем введения однонаправленных изменений, т.е. путем отделения чтения от записи.
 Именно такой подход используется в Redux.</p>
 <blockquote>
@@ -264,7 +165,7 @@ The processing of commands and queries is fundamentally asymmetrical, and scalin
 <p>В распределенных системах решением этой проблемы обычно является замена CRUD (Create, Read, Update, Delete) на CR, т.е. наложение ограничения на изменение (Update) и удаление (Delete) записей в хранилище, что получило распространение под термином Event Sourcing (существуют специализированные хранилища реализующие его, но он реализуется не обязательно специализированными инструментами).</p>
 </div>
 <div class="section" id="event-sourcing">
-<h1><a class="toc-backref" href="#id11">Event Sourcing</a><a class="headerlink" href="#event-sourcing" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id9">Event Sourcing</a><a class="headerlink" href="#event-sourcing" title="Permalink to this headline">¶</a></h1>
 <p>Если CQRS выражает принцип Императивного Программирования и отделяет действия (побочный эффект) от запроса (чтения) данных, то Event Sourcing идет еще дальше, и накладывает ограничение на изменение и удаление данных, превращая CRUD в CR.
 Такой подход выражает принципы парадигмы Функционального Программирования при хранении данных, и предоставляет такие же выгоды: нет изменяемого состояния - нет проблемы параллельного обновления.
 И такие же недостатки: потребность в большом количестве памяти и процессорной мощности.
@@ -286,7 +187,7 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 </div></blockquote>
 </div>
 <div class="section" id="id3">
-<h1><a class="toc-backref" href="#id12">Другие ссылки по теме</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id10">Другие ссылки по теме</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>&#8220;<a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>&#8220;</li>
 <li>&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>&#8220;</li>
@@ -294,7 +195,7 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 </ul>
 </div>
 <div class="section" id="id4">
-<h1><a class="toc-backref" href="#id13">Заключение</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id11">Заключение</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
 <p>Понимание общих признаков в способах управления Логикой Приложения позволяет проектировать более гибкие приложения, и, как результат, более безболезненно заменять архитектурный шаблон, например, из Layered в Event-Driven.
 Частично эта тема затрагивается в Chapter 16 Independence of &#8220;Clean Architecture&#8221; by Robert C. Martin и в разделе &#8220;Premature Decomposition&#8221; of Chapter 3 &#8220;How to Model Services&#8221; of &#8220;Building Microservices&#8221; by Sam Newman.</p>
 </div>
