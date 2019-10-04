@@ -494,7 +494,7 @@ Perhaps pattern copying is a third monological mode to go with test-first and re
 И это интересно, потому что Кент Бек этому правилу не очень-то и следует, что заставило меня найти первоисточник этого убеждения.
 Источник я нашел, и он, действительно, авторитетный - это &#8220;xUnit Test Patterns. Refactoring Test Code.&#8221; by Gerard Meszaros, глава &#8220;Principle: Verify One Condition per Test&#8221;, но там есть кое-что еще, о чем это широко распространенное убеждение умалчивает:</p>
 <blockquote>
-<div>One possibly contentious aspect of <em>Verify One Condition per Test</em> is what we mean by &#8220;one condition.&#8221;
+<div><p>One possibly contentious aspect of <em>Verify One Condition per Test</em> is what we mean by &#8220;one condition.&#8221;
 Some test drivers insist on one assertion per test.
 This insistence may be based on using a <em>Testcase Class per Fixture</em> organization
 of the <em>Test Methods</em> and naming each test based on what the one assertion is verifying.
@@ -503,7 +503,9 @@ Having one assertion per test makes such naming very easy but also leads to many
 Of course, we can often comply with this interpretation by extracting a <em>Custom Assertion</em> (page 474)
 or <em>Verification Method</em> (see <em>Custom Assertion</em>) that allows us to reduce the multiple assertion method calls to a single call.
 Sometimes that approach makes the test more readable.
-When it doesn’t, I wouldn’t be too dogmatic about insisting on a single assertion.</div></blockquote>
+When it doesn’t, I wouldn’t be too dogmatic about insisting on a single assertion.</p>
+<p>- &#8220;xUnit Test Patterns. Refactoring Test Code.&#8221; by Gerard Meszaros</p>
+</div></blockquote>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fntdd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
