@@ -84,13 +84,13 @@ TDD именно именно это и делает - декомпозируе�
 
     \- Martin Fowler, the key author of "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_
 
-По основной версии, слово "refactoring" происходит от математического термина "factoring", и дословно переводится как "факторизация" или "декомпозиция", о чем говорит ключевой автор известной книги "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ на своем сайте:
+По основной версии, слово "refactoring" происходит от математического термина "factoring", и дословно переводится как "факторизация" или "декомпозиция", о чем говорит на своем сайте ключевой автор известной книги "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ (благодаря которой, рефакторинг, собственно, и стал популярным):
 
     The obvious answer comes from the notion of factoring in mathematics. You can take an expressions such as x^2 + 5x + 6 and factor it into (x+2)(x+3). By factoring it you can make a number of mathematical operations much easier. Obviously this is much the same as representing 18 as 2*3^2. I've certainly often heard of people talking about a program as well factored once it's broken out into similarly logical chunks.
 
     \- "`Etymology Of Refactoring <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__" by Martin Fowler
 
-Такого же мнения придерживается и Ward Cunningham:
+Такое же мнение можно увидеть и на сайте Ward Cunningham:
 
     Refactoring is a kind of reorganization. Technically, it comes from mathematics when you factor an expression into an equivalence - the factors are cleaner ways of expressing the same statement. Refactoring implies equivalence; the beginning and end products must be functionally identical. You can view refactoring as a special case of reworking (see WhatIsReworking).
 
@@ -102,9 +102,25 @@ TDD именно именно это и делает - декомпозируе�
 
     For an example of efficiency, count the terms and operators: (x - 1) * (x + 1) = x^2 - 1. Four terms versus three. Three operators versus two. However, the left hand side expression is (arguably) simpler to understand because it uses simpler operations. Also, it provides you more information about the structure of the function f(x) = x^2 - 1, like the roots are +/- 1, that would be difficult to determine just by "looking" at the right hand side.
 
-    \- "`What Is Refactoring <http://wiki.c2.com/?WhatIsRefactoring>`__"
+    \- "`What Is Refactoring <http://wiki.c2.com/?WhatIsRefactoring>`__" on c2.com
 
-..
+Если кому-то имя Ward Cunningham ни о чем не говорит, то вот как представил его сам Kent Beck в книге "Test-Driven Development By Example" [#fntdd]_:
+
+    Я начал свою жизнь настоящего программиста благодаря наставничеству и в рамках постоянного сотрудничества с Уордом Каннингэмом (Ward Cunningham).
+    Иногда я рассматриваю разработку, основанную на тестах, как попытку предоставить каждому программисту, работающему в произвольной среде, ощущение комфорта и тесной дружбы, которое было у нас с Уордом, когда мы вместе разрабатывали программы Smalltalk в среде Smalltalk.
+    He существует способа определить первоначальный источник идей, если два человека обладают одним общим мозгом.
+    Если вы предположите, что все хорошие идеи на самом деле изначально придумал Уорд, вы не будете далеки от истины.
+
+    My life as a real programmer started with patient mentoring from and continuing collaboration
+    with Ward Cunningham. Sometimes I see Test-Driven Development (TDD) as an attempt to
+    give any software engineer, working in any environment, the sense of comfort and intimacy
+    we had with our Smalltalk environment and our Smalltalk programs. There is no way to sort
+    out the source of ideas once two people have shared a brain. If you assume that all of the
+    good ideas here are Ward's, then you won't be far wrong.
+
+    \- "Test-Driven Development By Example" [#fntdd]_ by Kent Beck
+
+Ну и Википедия о факторизации:
 
     Factorization may also refer to more general decompositions of a mathematical object into the product of smaller or simpler objects. For example, every function may be factored into the composition of a surjective function with an injective function.
 
@@ -124,6 +140,14 @@ TDD именно именно это и делает - декомпозируе�
 
 
 Таким образом, рефакторинг - это способ управления сложностью программы, который делает программу более читаемой и понимаемой за счет декомпозиции сложности, что позволяет снизить нагрузку на человеческую память.
+Процесс рефакторинга подобен факторизации математического выражения, в результате которого выводится более простое эквивалентное выражение, т.е. сохраняется функциональная идентичность.
+Именно поэтому рефакторинг оставляет неизменным внешнее поведение системы:
+
+    Рефакторинг представляет собой процесс такого изменения программной системы, при котором не меняется внешнее поведение кода, но улучшается его внутренняя структура.
+
+    Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure.
+
+    \- Martin Fowler in "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_
 
 TDD, как и рефакторинг, расщепляет сложность таким образом, чтобы минимизировать объем сложности, рассматриваемый разработчиком в единицу времени.
 Это как песочные часы - одна песчинка в единицу времени.
