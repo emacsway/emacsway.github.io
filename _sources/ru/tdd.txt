@@ -84,13 +84,19 @@ TDD именно именно это и делает - декомпозируе�
 
     \- Martin Fowler, the key author of "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_
 
-Слово "рефакторинг" происходит от математического термина "фактор", и дословно переводится как "декомпозиция".
+По основной версии, слово "refactoring" происходит от математического термина "factoring", и дословно переводится как "факторизация" или "декомпозиция", о чем говорит ключевой автор известной книги "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ на своем сайте:
 
     The obvious answer comes from the notion of factoring in mathematics. You can take an expressions such as x^2 + 5x + 6 and factor it into (x+2)(x+3). By factoring it you can make a number of mathematical operations much easier. Obviously this is much the same as representing 18 as 2*3^2. I've certainly often heard of people talking about a program as well factored once it's broken out into similarly logical chunks.
 
     \- "`Etymology Of Refactoring <https://martinfowler.com/bliki/EtymologyOfRefactoring.html>`__" by Martin Fowler
 
-..
+Такого же мнения придерживается и Ward Cunningham:
+
+    Refactoring is a kind of reorganization. Technically, it comes from mathematics when you factor an expression into an equivalence - the factors are cleaner ways of expressing the same statement. Refactoring implies equivalence; the beginning and end products must be functionally identical. You can view refactoring as a special case of reworking (see WhatIsReworking).
+
+    Practically, refactoring means making code clearer and cleaner and simpler and elegant. Or, in other words, clean up after yourself when you code. Examples would run the range from renaming a variable to introducing a method into a third-party class that you don't have source for.
+
+    Refactoring is not rewriting, although many people think they are the same. There are many good reasons to distinguish them, such as regression test requirements and knowledge of system functionality. The technical difference between the two is that refactoring, as stated above, doesn't change the functionality (or information content) of the system whereas rewriting does. Rewriting is reworking. See WhatIsReworking.
 
     Refactoring is a good thing because complex expressions are typically built from simpler, more grokable components. Refactoring either exposes those simpler components or reduces them to the more efficient complex expression (depending on which way you are going).
 
@@ -98,7 +104,26 @@ TDD именно именно это и делает - декомпозируе�
 
     \- "`What Is Refactoring <http://wiki.c2.com/?WhatIsRefactoring>`__"
 
-Это способ управления сложностью программы, который делает программу более читаемой и понимаемой за счет декомпозиции сложности, что позволяет снизить нагрузку на человеческую память.
+..
+
+    Factorization may also refer to more general decompositions of a mathematical object into the product of smaller or simpler objects. For example, every function may be factored into the composition of a surjective function with an injective function.
+
+    \- "`Factorization <https://en.wikipedia.org/wiki/Factorization>`__", Wikipedia
+
+..
+
+    Decomposition in computer science, also known as factoring, is breaking a complex problem or system into parts that are easier to conceive, understand, program, and maintain.
+
+    \- "`Decomposition <https://en.wikipedia.org/wiki/Decomposition_(computer_science)>`__", Wikipedia
+
+..
+
+    В математике факториза́ция или фа́кторинг — это декомпозиция объекта (например, числа, полинома или матрицы) в произведение других объектов или факторов, которые, будучи перемноженными, дают исходный объект. Например, число 15 факторизуется на простые числа 3 и 5, а полином x2 − 4 факторизуется на (x − 2)(x + 2). В результате факторизации во всех случаях получается произведение более простых объектов, чем исходный.
+
+    \- "`Факторизация <https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F>`__", Wikipedia
+
+
+Таким образом, рефакторинг - это способ управления сложностью программы, который делает программу более читаемой и понимаемой за счет декомпозиции сложности, что позволяет снизить нагрузку на человеческую память.
 
 TDD, как и рефакторинг, расщепляет сложность таким образом, чтобы минимизировать объем сложности, рассматриваемый разработчиком в единицу времени.
 Это как песочные часы - одна песчинка в единицу времени.
