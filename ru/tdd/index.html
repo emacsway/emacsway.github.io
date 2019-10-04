@@ -494,14 +494,14 @@ Perhaps pattern copying is a third monological mode to go with test-first and re
 И это интересно, потому что Кент Бек этому правилу не очень-то и следует, что заставило меня найти первоисточник этого убеждения.
 Источник я нашел, и он, действительно, авторитетный - это &#8220;xUnit Test Patterns. Refactoring Test Code.&#8221; by Gerard Meszaros, глава &#8220;Principle: Verify One Condition per Test&#8221;, но там есть кое-что еще, о чем это широко распространенное убеждение умалчивает:</p>
 <blockquote>
-<div><p>One possibly contentious aspect of <em>Verify One Condition per Test</em> is what we mean by &#8220;one condition.&#8221;
+<div><p>One possibly contentious aspect of <strong>Verify One Condition per Test</strong> is what we mean by &#8220;one condition.&#8221;
 Some test drivers insist on one assertion per test.
-This insistence may be based on using a <em>Testcase Class per Fixture</em> organization
-of the <em>Test Methods</em> and naming each test based on what the one assertion is verifying.
+This insistence may be based on using a <strong>Testcase Class per Fixture</strong> organization
+of the <strong>Test Methods</strong> and naming each test based on what the one assertion is verifying.
 (For example, AwaitingApprovalFlight.validApproverRequestShouldBeApproved.)
 Having one assertion per test makes such naming very easy but also leads to many more test methods if we have to assert on many output fi elds.
-Of course, we can often comply with this interpretation by extracting a <em>Custom Assertion</em> (page 474)
-or <em>Verification Method</em> (see <em>Custom Assertion</em>) that allows us to reduce the multiple assertion method calls to a single call.
+Of course, we can often comply with this interpretation by extracting a <strong>Custom Assertion</strong> (page 474)
+or <strong>Verification Method</strong> (see <strong>Custom Assertion</strong>) that allows us to reduce the multiple assertion method calls to a single call.
 Sometimes that approach makes the test more readable.
 When it doesn’t, I wouldn’t be too dogmatic about insisting on a single assertion.</p>
 <p>- &#8220;xUnit Test Patterns. Refactoring Test Code.&#8221; by Gerard Meszaros</p>

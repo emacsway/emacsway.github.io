@@ -505,14 +505,14 @@ One assertion per test?
 И это интересно, потому что Кент Бек этому правилу не очень-то и следует, что заставило меня найти первоисточник этого убеждения.
 Источник я нашел, и он, действительно, авторитетный - это "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros, глава "Principle: Verify One Condition per Test", но там есть кое-что еще, о чем это широко распространенное убеждение умалчивает:
 
-    One possibly contentious aspect of *Verify One Condition per Test* is what we mean by "one condition."
+    One possibly contentious aspect of **Verify One Condition per Test** is what we mean by "one condition."
     Some test drivers insist on one assertion per test.
-    This insistence may be based on using a *Testcase Class per Fixture* organization
-    of the *Test Methods* and naming each test based on what the one assertion is verifying.
+    This insistence may be based on using a **Testcase Class per Fixture** organization
+    of the **Test Methods** and naming each test based on what the one assertion is verifying.
     (For example, AwaitingApprovalFlight.validApproverRequestShouldBeApproved.)
     Having one assertion per test makes such naming very easy but also leads to many more test methods if we have to assert on many output fi elds.
-    Of course, we can often comply with this interpretation by extracting a *Custom Assertion* (page 474)
-    or *Verification Method* (see *Custom Assertion*) that allows us to reduce the multiple assertion method calls to a single call.
+    Of course, we can often comply with this interpretation by extracting a **Custom Assertion** (page 474)
+    or **Verification Method** (see **Custom Assertion**) that allows us to reduce the multiple assertion method calls to a single call.
     Sometimes that approach makes the test more readable.
     When it doesn’t, I wouldn’t be too dogmatic about insisting on a single assertion.
 
