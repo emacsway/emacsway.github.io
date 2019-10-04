@@ -92,11 +92,11 @@ TDD именно именно это и делает - декомпозируе�
 
 Такое же мнение можно увидеть и на сайте Ward Cunningham:
 
-    Refactoring is a kind of reorganization. Technically, it comes from mathematics when you factor an expression into an equivalence - the factors are cleaner ways of expressing the same statement. Refactoring implies equivalence; the beginning and end products must be functionally identical. You can view refactoring as a special case of reworking (see WhatIsReworking).
+    Refactoring is a kind of reorganization. **Technically, it comes from mathematics when you factor an expression into an equivalence - the factors are cleaner ways of expressing the same statement.** Refactoring implies equivalence; the beginning and end products must be functionally identical. You can view refactoring as a special case of reworking (see WhatIsReworking).
 
     Practically, refactoring means making code clearer and cleaner and simpler and elegant. Or, in other words, clean up after yourself when you code. Examples would run the range from renaming a variable to introducing a method into a third-party class that you don't have source for.
 
-    Refactoring is not rewriting, although many people think they are the same. There are many good reasons to distinguish them, such as regression test requirements and knowledge of system functionality. The technical difference between the two is that refactoring, as stated above, doesn't change the functionality (or information content) of the system whereas rewriting does. Rewriting is reworking. See WhatIsReworking.
+    **Refactoring is not rewriting, although many people think they are the same.** There are many good reasons to distinguish them, such as regression test requirements and knowledge of system functionality. The technical difference between the two is that refactoring, as stated above, doesn't change the functionality (or information content) of the system whereas rewriting does. Rewriting is reworking. See WhatIsReworking.
 
     Refactoring is a good thing because complex expressions are typically built from simpler, more grokable components. Refactoring either exposes those simpler components or reduces them to the more efficient complex expression (depending on which way you are going).
 
