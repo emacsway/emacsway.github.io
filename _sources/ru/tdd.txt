@@ -36,6 +36,16 @@ TDD - это о Software Design
 Классическое заблуждение заключается в том, что TDD - это методика тестирования.
 На самом же деле, TDD - это, прежде всего, методика разработки и проектирования:
 
+    Ирония TDD состоит в том, что это вовсе не методика тестирования.
+    Это методика анализа, методика проектирования, фактически методика структурирования всей деятельности, связанной с разработкой программного кода.
+
+    One of the ironies of TDD is that it isn't a testing technique (the Cunningham Koan).
+    It's an analysis technique, a design technique, really a technique for structuring all the activities of development.
+
+    \- "Test-Driven Development By Example" [#fntdd]_ by Kent Beck
+
+..
+
     Если сравнивать со средним уровнем индустрии разработки программного обеспечения, методика TDD позволяет вам писать код, содержащий значительно меньше дефектов и формировать значительно более чистый дизайн. Те, кто стремится к изяществу, могут найти в TDD средство для достижения цели.
 
     It lets you write code with far fewer defects and a much cleaner design than is common in the industry. However, those whose souls are healed by the balm of elegance can find in TDD a way to do well by doing good.
@@ -162,6 +172,31 @@ TDD, как и рефакторинг, расщепляет сложность �
     Now, we could have long arguments over whether this abstraction of a person to a lower left quadrant abdomen leads to good health care, but at the moment of surgery, I'm kind of glad the surgeon can focus.
 
     \- "Test-Driven Development By Example" [#fntdd]_ by Kent Beck
+
+..
+
+    Несмотря на множество появившихся в последнее время мощных инструментов, программирование по-прежнему остается сложной работой.
+    Я часто ощущаю себя в ситуации, когда мне кажется, что я жонглирую шариками, и мне приходится следить за несколькими шариками в воздухе в одно и то же время: малейшая потеря внимания, и все сыпется на пол.
+    Методика TDD позволяет избавиться от этого ощущения.
+
+    Когда вы работаете в стиле TDD, в воздухе постоянно находится лишь один шарик.
+    Вы можете сконцентрироваться на нем, а значит, хорошо справиться со своей работой.
+    Когда я добавляю в программу новую функциональность, я не думаю о том, какой дизайн должен быть реализован в данной функции.
+    Я просто пытаюсь добиться срабатывания тестов самым простым из доступных мне способов.
+    Когда я переключаюсь в режим рефакторинга, я не беспокоюсь о добавлении в программу новых функций, я думаю только о правильном дизайне.
+    На каждом из этих этапов я концентрируюсь на единственной задаче, благодаря этому мое внимание не распыляется.
+
+    Despite all the fancy tools that we have, programming is still hard.
+    I can remember many programming times when I feel like I was trying to keep several balls in the air at once, any lapse of concentration and everything would come tumbling down.
+    Test-driven development helps reduce that feeling, and as a result you get this rapid unhurriedness.
+
+    I think the reason for this is that working in a test-driven development style gives you this sense of keeping just one ball in the air at once, so you can concentrate on that ball properly and do a really good job with it.
+    When I'm trying to add some new functionality, I'm not worried about what really makes a good design for this piece of function, I'm just trying to get a test to pass as easily as I can.
+    When I switch to refactoring mode, I'm not worried about adding some new function, I'm just worried about getting the right design.
+    With both of these I'm just focused on one thing at a time, and as a result I can concentrate better on that one
+    thing.
+
+    \- Martin Fowler, Afterword, "Test-Driven Development By Example" [#fntdd]_
 
 Jason Gorman публиковал свою статистику прохождения кат как по TDD, так и без TDD (см. "Clean Architecture: A Craftsman’s Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin).
 TDD всегда оказывался существенно быстрее, причем, даже при многократном прохождении одних и тех же кат.
@@ -516,7 +551,7 @@ TDD и Design Patterns
     Clearly the XP community is in favor of patterns, after all there is huge intersection between XP advocates and patterns advocates — Ward and Kent were leaders in both.
     Perhaps pattern copying is a third monological mode to go with test-first and refactoring, and like those two is dangerous on its own but powerful in concert.
 
-    \- "Test-Driven Development By Example" [#fntdd]_ by Kent Beck
+    \- Martin Fowler, Afterword, "Test-Driven Development By Example" [#fntdd]_
 
 ..
 
