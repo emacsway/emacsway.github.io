@@ -69,7 +69,6 @@ Articles in Russian:
 - ":doc:`../ru/tdd`"
 - ":doc:`../ru/javascript-and-repository-pattern`"
 - ":doc:`../ru/django-framework`"
-- ":doc:`../ru/application-logic-management`"
 - ":doc:`../ru/service-layer`"
 - ":doc:`../ru/cache-dependencies`"
 - ":doc:`../ru/storm-orm`"

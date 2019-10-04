@@ -2,15 +2,14 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др. &mdash; @emacsway&#39;s blog</title>
+    <title> &mdash; @emacsway&#39;s blog</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -24,57 +23,15 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="top" title="@emacsway&#39;s blog" href="../../" />
   
-
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-
-    
-
-        <meta http-equiv="Last-Modified" content="Sun, 02 Dec 2018 00:00:00 GMT" />
-        
-            <meta name="description" content="В свое время Гради Буч сказал, что “Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений”. Одним из важных таких решений является управление Логикой Приложения. В этом посте мы попытаемся разобраться с тем, почему это важно, как управлять Логикой Приложения, и как это может снизить стоимость изменений." />
-        
-        
-            <meta property="og:image" content="../../_static/logo.jpg" />
-            <link rel="image_src" href="../../_static/logo.jpg" />
-        
-
-        <link rel="canonical" href="https://emacsway.github.io/ru/application-logic-management/" />
-
-        <script type="text/javascript">
-            setTimeout(function() {
-                $.toast({
-                    text: 'If you like this site, please support it with an external link or share it with an social nerwork. Thanks!',
-                    position: 'bottom-right',
-                    hideAfter: 7000
-                });
-            }, 30000);
-        </script>
-
-    
-
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="@emacsway's blog">
-  
-  
-  <link href="True" rel="stylesheet">
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+  <meta http-equiv="refresh" content="5; url=../service-layer/" />
 
   </head>
   <body role="document">
@@ -85,170 +42,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="mvc-use-case-service-layer-cqrs-event-sourcing">
-<h1><a class="toc-backref" href="#id5">Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</a><a class="headerlink" href="#mvc-use-case-service-layer-cqrs-event-sourcing" title="Permalink to this headline">¶</a></h1>
-<p>В свое время Гради Буч сказал, что &#8220;Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений&#8221;.
-Одним из важных таких решений является управление Логикой Приложения.
-В этом посте мы попытаемся разобраться с тем, почему это важно, как управлять Логикой Приложения, и как это может снизить стоимость изменений.</p>
-<div class="contents topic" id="id1">
-<p class="topic-title first">Содержание</p>
-<ul class="simple">
-<li><a class="reference internal" href="#mvc-use-case-service-layer-cqrs-event-sourcing" id="id5">Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.</a></li>
-<li><a class="reference internal" href="#application-logic" id="id6">Способы организации Логики Приложения (Application Logic)</a></li>
-<li><a class="reference internal" href="#id2" id="id7">Проблема параллельного обновления</a></li>
-<li><a class="reference internal" href="#cqrs" id="id8">CQRS</a></li>
-<li><a class="reference internal" href="#event-sourcing" id="id9">Event Sourcing</a></li>
-<li><a class="reference internal" href="#id3" id="id10">Другие ссылки по теме</a></li>
-<li><a class="reference internal" href="#id4" id="id11">Заключение</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="application-logic">
-<h1><a class="toc-backref" href="#id6">Способы организации Логики Приложения (Application Logic)</a><a class="headerlink" href="#application-logic" title="Permalink to this headline">¶</a></h1>
-<p>Широко распространены три способа организации Application Logic:</p>
-<p>1. <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer (сервисный слой)</a>.
-Который, в свою очередь, делится на Оркестровый (&#8220;request/response&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и Хореографический (Event-Driven, т.е. loosely coupled).</p>
-<p>Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).</p>
-<p>Подробней Оркестровые Сервисные Слои рассматриваются в статье</p>
-<ul class="simple">
-<li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8221;,</li>
-</ul>
-<p>а Хореографические - в статье</p>
-<ul class="simple">
-<li>&#8220;<a class="reference internal" href="../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/"><span class="doc">Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</span></a>&#8221;.</li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><a class="reference external" href="https://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a> и <a class="reference external" href="https://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a> (которые тоже, по сути, является разновидностью паттерна Command).</li>
-</ol>
-<blockquote>
-<div><p>&#8220;A Front Controller handles all calls for a Web site, and is usually structured in two parts: a Web handler and a command hierarchy.&#8221;</p>
-<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler and others.</p>
-</div></blockquote>
-<blockquote>
-<div><p>&#8220;For both the domain commands and the view, the application controller needs a way to store something it can invoke.
-A Command [Gang of Four] is a good choice, since it allows it to easily get hold of and run a block of code.&#8221;</p>
-<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler and others.</p>
-</div></blockquote>
-<p>3. <a class="reference external" href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html">Use Case</a>, который также, является разновидностью паттерна Command.
-На 15:50 Robert C. Martin проводит <a class="reference external" href="https://youtu.be/Nsjsiz2A9mg?t=15m45s">параллель между Use Case и паттерном Command</a>.</p>
-<p>Собственно говоря, производной паттерна Command является даже <a class="reference external" href="https://refactoring.com/catalog/replaceFunctionWithCommand.html">Method Object</a>.</p>
-<p>Use Case обязан своим существованием именно наличию Бизнес-Логики, которая  application specific, и не имеет смысла вне контекста приложения.
-Его задача сводится к освобождению этих application specific Business Rules от зависимостей от приложения путем инверсии контроля (IoC).</p>
-<p>Если бы Use Case не содержал Бизнес-Логики, то не было бы и смысла отделять его от Page Controller, иначе приложение пыталось бы абстрагироваться от самого себя же.</p>
-<p>Но, в любом случае, это все способы организации в первую очередь Логики Приложения, и лишь во вторую очередь, Бизнес-Логики, которая не обязательно должна присутствовать, кроме случая Use Case, иначе он утратил бы причины для существования.</p>
-<p>При правильной организации Бизнес-Логики, и при использовании качественного ORM, зависимость Бизнес-Логики от приложения будет минимальна.
-Здесь основная проблема заключается в том, чтобы организовать доступ к связанным объектам, но не подмешивать Логику Приложения (и логику доступа к данным) в Domain Models, эту темы мы подробно рассмотрим в одном из следующих постов.</p>
-</div>
-<div class="section" id="id2">
-<h1><a class="toc-backref" href="#id7">Проблема параллельного обновления</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
-<p>Интернет открыл доступ к огромному количеству данных, которое несопоставимо велико с возможностями одного сервера.
-Возникла необходимость в масштабировании и в распределенном хранении и обработке данных.</p>
-<p>Одна из самых острых проблем - это проблема параллельного обновления данных.
-Все состояния гонки (race condition), взаимоблокировки (deadlocks) и другие проблемы параллельного обновления обусловлены изменяемостью переменных.</p>
-<p>Любой порядок выражается в правильном наложении ограничений.</p>
-</div>
-<div class="section" id="cqrs">
-<h1><a class="toc-backref" href="#id8">CQRS</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h1>
-<p>Проблему параллельного обновления в значительной мере можно уменьшить наложением ограничения на двунаправленные изменения состояния путем введения однонаправленных изменений, т.е. путем отделения чтения от записи.
-Именно такой подход используется в Redux.</p>
-<blockquote>
-<div><p>&#8220;it allows us to host the two services differently eg: we can host the read service on 25 servers and the write service on two.
-The processing of commands and queries is fundamentally asymmetrical, and scaling the services symmetrically does not make a lot of sense.&#8221;</p>
-<p>- &#8220;<a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">CQRS, Task Based UIs, Event Sourcing agh!</a>&#8221; by Greg Young</p>
-</div></blockquote>
-<p>Управление Логикой Приложения и Бизнес-Логикой хорошо раскрывается в статье &#8220;<a class="reference external" href="http://udidahan.com/2009/12/09/clarified-cqrs/">Clarified CQRS</a>&#8221; by Udi Dahan.</p>
-<p>Использование CQRS для хранения данных приближает нас к использованию парадигмы Функционального Программирования в коде (как, например, при использовании Redux).</p>
-<p>Функциональное Программирование по своей сути не может порождать побочных эффектов (т.к. Функциональное Программирование накладывает ограничение на присваивание (изменяемость)), и именно этим обусловлен рост его популярности в эпоху распределенных вычислений.
-Нет изменяемого состояния - нет проблем параллельного обновления.</p>
-<p>Следует отличать парадигму Функционального Программирования от языков, поддерживающих эту парадигму, поскольку нередко языки, поддерживающие эту парадигму, позволяют ей не следовать.</p>
-<p>Однако, несмотря на открывшиеся возможности использовать Функциональное Программирование в коде, само хранилище данных (IO-устройство) все еще подвержено проблемам параллельного обновления, поскольку имеет изменяемые записи, а значит, имеет побочный эффект.</p>
-<p>В распределенных системах решением этой проблемы обычно является замена CRUD (Create, Read, Update, Delete) на CR, т.е. наложение ограничения на изменение (Update) и удаление (Delete) записей в хранилище, что получило распространение под термином Event Sourcing (существуют специализированные хранилища реализующие его, но он реализуется не обязательно специализированными инструментами).</p>
-</div>
-<div class="section" id="event-sourcing">
-<h1><a class="toc-backref" href="#id9">Event Sourcing</a><a class="headerlink" href="#event-sourcing" title="Permalink to this headline">¶</a></h1>
-<p>Если CQRS выражает принцип Императивного Программирования и отделяет действия (побочный эффект) от запроса (чтения) данных, то Event Sourcing идет еще дальше, и накладывает ограничение на изменение и удаление данных, превращая CRUD в CR.
-Такой подход выражает принципы парадигмы Функционального Программирования при хранении данных, и предоставляет такие же выгоды: нет изменяемого состояния - нет проблемы параллельного обновления.
-И такие же недостатки: потребность в большом количестве памяти и процессорной мощности.
-Именно поэтому, данный шаблон широко используется в распределенных системах, где остро проявляется потребность в его достоинствах, и, вместе с тем, не проявляются его недостатки (ведь распределенные системы не лимитированы ни в памяти, ни в процессорной мощности).</p>
-<p>Примером Event Sourcing может быть принцип организации банковского счета в базе данных, когда счет не является источником истины, а просто отражает совокупное значение всех транзакций (т.е. событий).</p>
-<p>Наиболее ясно эта тема раскрывается в Chapter 6 &#8220;Functional Programming&#8221; of &#8220;Clean Architecture&#8221; by Robert C. Martin.</p>
-<blockquote>
-<div><p>Event Sourcing is naturally functional.
-It&#8217;s an append only log of facts that have happened in the past.
-You can say that any projection any state is a left fold over your previous history.</p>
-<p>- Greg Young, &#8220;<a class="reference external" href="https://youtu.be/LDW0QWie21s?t=1004">A Decade of DDD, CQRS, Event Sourcing</a>&#8221; at 16:44</p>
-</div></blockquote>
-<blockquote>
-<div><p>I have always said that Event Sourcing is &#8220;Functional Data Storage&#8221;.
-In this talk we will try migrating to a idiomatic functional way of looking at Event Sourcing.
-Come and watch all the code disappear!
-By the time you leave you will never want an &#8220;Event Sourcing Framework (TM)&#8221; ever again!</p>
-<p>- Greg Young, &#8220;<a class="reference external" href="https://vimeo.com/131636650">Functional Data</a>&#8221;, NDC Conferences</p>
-</div></blockquote>
-</div>
-<div class="section" id="id3">
-<h1><a class="toc-backref" href="#id10">Другие ссылки по теме</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>&#8220;<a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>&#8220;</li>
-<li>&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>&#8220;</li>
-<li>&#8220;<a class="reference external" href="https://martinfowler.com/articles/201701-event-driven.html">What do you mean by &#8220;Event-Driven&#8221;?</a>&#8220;</li>
-</ul>
-</div>
-<div class="section" id="id4">
-<h1><a class="toc-backref" href="#id11">Заключение</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
-<p>Понимание общих признаков в способах управления Логикой Приложения позволяет проектировать более гибкие приложения, и, как результат, более безболезненно заменять архитектурный шаблон, например, из Layered в Event-Driven.
-Частично эта тема затрагивается в Chapter 16 Independence of &#8220;Clean Architecture&#8221; by Robert C. Martin и в разделе &#8220;Premature Decomposition&#8221; of Chapter 3 &#8220;How to Model Services&#8221; of &#8220;Building Microservices&#8221; by Sam Newman.</p>
-</div>
-
-  <div class="section">
-  
-    
-
-
-<div class="section">
-  <span style="float: left;">
-  
-  
-  <a href="../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">
-    <i class="fa fa-arrow-circle-left"></i>
-    Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular
-  </a>
-  
-  </span>
-  <span>&nbsp;</span>
-  <span style="float: right;">
-  
-  
-  <a href="../../en/eda-reference-applications/">
-    Reference Applications implementing Event-Driven Architecture
-    <i class="fa fa-arrow-circle-right"></i>
-  </a>
-  </span>
-  
-</div>
-
-  
-  
-    <div class="section">
-    <h2>Comments</h2>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'emacsway';
-        var disqus_identifier = '/ru/application-logic-management/';
-        var disqus_title = 'Управление логикой приложения. Про MVC, Use Case, Service Layer, CQRS, Event Sourcing и др.';
-        var disqus_url = 'https://emacsway.github.io/ru/application-logic-management/';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </div>
-  
-  </div>
+  You are being redirected to <a href="../service-layer/">Проектирование Сервисного Слоя</a> in 5 seconds;
 
           </div>
         </div>
@@ -271,97 +65,6 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 
 
 
-
-  
-  
-  <h2>
-  
-  <i class="fa fa-calendar"></i>
-    Dec 02, 2018
-  
-  </h2>
-
-  <ul>
-    
-
-  
-  <li><i class="fa-fw fa fa-user"></i>
-    
-      
-      <a href="../../blog/author/ivan-zakrevsky/">Ivan Zakrevsky</a>
-      
-    </li>
-  
-
-  
-
-  
-  <li><i class="fa-fw fa fa-language"></i>
-    
-      
-      <a href="../../blog/language/russian/">Russian</a>
-      
-    </li>
-  
-
-  
-
-  
-  <li><i class="fa-fw fa fa-tags"></i>
-      
-    
-      
-      <a href="../../blog/tag/design/">Design</a>,
-      
-    
-      
-      <a href="../../blog/tag/architecture/">Architecture</a>,
-      
-    
-      
-      <a href="../../blog/tag/service-layer/">Service Layer</a>,
-      
-    
-      
-      <a href="../../blog/tag/redux/">Redux</a>,
-      
-    
-      
-      <a href="../../blog/tag/flux/">Flux</a>,
-      
-    
-      
-      <a href="../../blog/tag/model/">Model</a>,
-      
-    
-      
-      <a href="../../blog/tag/cqrs/">CQRS</a>,
-      
-    
-      
-      <a href="../../blog/tag/event-sourcing/">Event Sourcing</a>
-      
-    </li>
-  
-  
-  <li>
-    <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'emacsway'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
-    <i class="fa-fw fa fa-comments"></i>
-    <a href="#disqus_thread" data-disqus-identifier="/ru/application-logic-management/"> </a>
-  </li>
-  
-  </ul>
 
 
 <h3>Navigation</h3>
@@ -445,7 +148,7 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
       
     
       
-      <li class="ablog-cloud ablog-cloud-2">
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="../../blog/tag/design/">Design</a></li>
       
     
@@ -606,7 +309,7 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
     
   
     
-    <li><a href="../../blog/2018/">2018 (5)</a></li>
+    <li><a href="../../blog/2018/">2018 (4)</a></li>
     
   
     
@@ -637,76 +340,17 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
       </div>
       <div class="clearer"></div>
     </div>
-
     <div class="footer">
       &copy;2019, Ivan Zakrevsky.
       
       |
-      Powered by <a href="http://ablog.readthedocs.org/">ABlog</a> &amp; <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
-      |
-      <a href="../../_sources/ru/application-logic-management.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     
 
     
-
-
-    
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-597ba7fb5af2ef1e"></script>
-
-    
-
-
-<!-- google.com/analytics counter -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-69288289-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<!-- /google.com/analytics counter -->
-
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter32948409 = new Ya.Metrika({
-                    id:32948409,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true
-                });
-            } catch(e) { }
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/32948409" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-
   </body>
 </html>

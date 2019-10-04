@@ -25,14 +25,18 @@ Thus, you have a complete abstraction from the data source, whether it's REST-AP
     A premature decision is a decision made with suboptimal knowledge. We will have that
     much less customer feedback, mental reflection on the project, and experience with our
     implementation choices if we decide too soon."
-    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
+
+    \- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
 
 ..
 
-    "A good architecture allows major decision to be deferred!" (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__)
+    "A good architecture allows major decision to be deferred!"
+
+    \- `Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__
 
 .. "A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility."
-   («Clean Architecture» [#fnca]_)
+
+   \- "Clean Architecture" [#fnca]_
 
 ..
 
@@ -41,11 +45,14 @@ Thus, you have a complete abstraction from the data source, whether it's REST-AP
     the greatest possible chance that they would be right. You would only implement
     what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
     true."
-    (Kent Beck [#fnxp]_)
+
+    \- Kent Beck [#fnxp]_
 
 ..
 
-    "The best architects remove architecture by figuring out how to make things shiftable." (`Martin Fowler <https://youtu.be/VjKYO6DP3fo?t=17m59s>`__)
+    "The best architects remove architecture by figuring out how to make things shiftable."
+
+    \- `Martin Fowler <https://youtu.be/VjKYO6DP3fo?t=17m59s>`__
 
 In addition, you have the opportunity to implement patterns `Identity Map`_ and `Unit of Work`_.
 The last one is very often in demand, since it allows you to save only changed objects of the finally formed aggregate of nested objects on the server, or roll back the state of local objects in case the data can not be saved (the user has changed his mind or entered invalid data).
@@ -64,12 +71,14 @@ The bottom line is that all this reactive logic no longer belonged to the domain
     "The whole point of objects is that they are a technique to package data with the processes used
     on that data. A classic smell is a method that seems more interested in a class other than the one
     it actually is in. The most common focus of the envy is the data."
-    («Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_)
+
+    \- "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_
 
 ..
 
     "Good design puts the logic near the data it operates on."
-    (Kent Beck [#fnxp]_)
+
+    \- Kent Beck [#fnxp]_
 
 ..
 
@@ -78,7 +87,8 @@ The bottom line is that all this reactive logic no longer belonged to the domain
 
     There is only so much partitioning a mind can stitch back together, and if the framework uses 
     it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 This led to such a huge number of intricacies of listeners that the superiority in performance was lost, but before that was lost readability.
 Even I could not understand the next day what a particular code fragment does, I'm not talking about the domain expert.
@@ -175,7 +185,8 @@ It is also important the direction of relationships and the principle of minimal
     that both objects can be understood only together. When application requirements do not call for
     traversal in both directions, adding a traversal direction reduces interdependence and simplifies
     the design. Understanding the domain may reveal a natural directional bias.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 ..
 
@@ -183,7 +194,8 @@ It is also important the direction of relationships and the principle of minimal
     somewhat, but most business domains are so interconnected that we still end up tracing long,
     deep paths through object references. In a way, this tangle reflects the realities of the world,
     which seldom obliges us with sharp boundaries. It is a problem in a software design.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 With the advent of ORM, lazy evaluation actively began to use to resolve ties synchronous programming.
 Python community actifely uses `Descriptors <https://docs.python.org/3/howto/descriptor.html>`__ for this purpose, but Java - AOP and Cross-Cutting Concerns [#fnccode]_.
@@ -233,7 +245,8 @@ Increasingly, REST-frameworks began to be used to `transfer aggregates of nested
     This storage technology makes it natural to use the third way
     of getting a reference: Execute a query to find the object in a database based on its attributes, or
     find the constituents of an object and then reconstitute it.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 The need for processing aggregates has intensified interest in functional programming, especially in combination with reactive programming paradigm.
 
@@ -252,13 +265,15 @@ This often leads to unreadable code that expresses not "what" it does, but "how"
     The language takes care to initialize them, and marshal them, and call all the functions through them.
 
     ... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
-    («OO vs FP» [#fnoovsop]_)
+
+    \- "OO vs FP" [#fnoovsop]_
 
 ..
 
     However, my experience is that the cost of change rises
     more steeply without objects than with objects.
-    (Kent Beck [#fnxp]_)
+
+    \- Kent Beck [#fnxp]_
 
 And yet, not clear intentions and objectives of the author - is a key issue when reading someone else's code.
 
@@ -266,7 +281,8 @@ And yet, not clear intentions and objectives of the author - is a key issue when
     conducted by IBM found that maintenance programmers "most
     often said that understanding the original programmer's intent was
     the most difficult problem" (Fjelstad and Hamlen 1979).
-    («Code Complete» [#fncodec]_)
+
+    \- "Code Complete" [#fncodec]_
 
 As it mentioned in the article ":doc:`../en/how-to-quickly-develop-high-quality-code`", the developer reads the code 91% of the time while constructing the code, and only 9% of the time he enters the characters with keyboard.
 And this means that poorly readable code affects 91% of the development velocity.
@@ -295,7 +311,8 @@ This is because reactive programming is based on the propagation of changes, i.e
     without the program having to re-execute the sentence ``a := b + c`` to determine the presently assigned value of ``a``.
 
     ... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
-    ("`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia)
+
+    \- "`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia
 
 That is why reactive programming paradigm `can be combined with different paradigms <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, imperative, object-oriented and functional.
 
@@ -310,7 +327,8 @@ However, the whole point of the matter is that in the canonical form of function
     ... The point is that a functional language imposes some kind of ceremony or discipline on changes of state. You have to jump through the right hoops in order to do it.
 
     And so, for the most part, you don’t.
-    («OO vs FP» [#fnoovsop]_)
+
+    \- "OO vs FP" [#fnoovsop]_
 
 Therefore, the use of functional programming techniques does not make the program functional until the program has a variable state - it's just procedural programming.
 And if so, then the rejection of Domain-Driven Design just takes away the superiority of both approaches (neither object-oriented programming polymorphism nor the immutability of functional programming), and combines the all worst, similar to hybrid objects [#fnccode]_, and does not make program really functional.
@@ -326,7 +344,8 @@ And if so, then the rejection of Domain-Driven Design just takes away the superi
     structures. They are the worst of both worlds. Avoid creating them. They are indicative of a
     muddled design whose authors are unsure of—or worse, ignorant of—whether they need
     protection from functions or types.
-    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
+
+    \- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
 
 Canonical functional programming has no state and therefore ideally suited for distributed computing and data flow processing.
 
@@ -338,7 +357,8 @@ Canonical functional programming has no state and therefore ideally suited for d
     Those sections are inherently safe from multiple threads and multiple cores.
 
     The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
-    («OO vs FP» [#fnoovsop]_)
+
+    \- "OO vs FP" [#fnoovsop]_
 
 Does this mean that the object-oriented programming paradigm is opposed to the functional programming programming?
 
@@ -350,7 +370,8 @@ Despite the fact that the OOP paradigm is traditionally considered as a kind of 
     From the outside looking in you cannot see any state.
     All you can see are functions.
     Therefore Objects are about functions not about state."
-    («OO vs FP» [#fnoovsop]_)
+
+    \- "OO vs FP" [#fnoovsop]_
 
 That's why some classical functional programming languages support OOP:
 
@@ -365,27 +386,31 @@ That's why some classical functional programming languages support OOP:
     It means that you can write OO-Functional programs.
 
     It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
-    («OO vs FP» [#fnoovsop]_)
+
+    \- "OO vs FP" [#fnoovsop]_
 
 Of course, objects in functional programming `must be immutable <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
 
 Objects can be emulated even by functional programming languages using closures, see article "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
 Here you can not ignore the wonderful book "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
 
-Let's remember the chapter "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги «Code Complete» [#fncodec]_.
+Let's remember the chapter "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги "Code Complete" [#fncodec]_.
 
     An abstract data type is a collection of data and operations that work on that data.
-    («Code Complete» [#fncodec]_)
+
+    \- "Code Complete" [#fncodec]_
 
 ..
 
     Abstract data types form the foundation for the concept of classes.
-    («Code Complete» [#fncodec]_)
+
+    \- "Code Complete" [#fncodec]_
 
 ..
 
     Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
-    («Code Complete» [#fncodec]_)
+
+    \- "Code Complete" [#fncodec]_
 
 I'm not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.
 
@@ -400,16 +425,36 @@ With the abandonment of the object-oriented model, the issue of dependency injec
     OO programming is good, when you know what it is.
     Functional programming is good when you know what it is.
     And functional OO programming is also good once you know what it is.
-    («OO vs FP» [#fnoovsop]_)
 
-It is also worth noting that not all kinds of relationships fit into the concept of aggregate.
-If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relationships.
-For in this case, the interface will follow the implementation, which fundamentally destroys the fundamental principle of abstraction.
-Also, the concept of an aggregate can not be used to emulate Many-To-Many relationships and cross-link hierarchies.
+    \- "OO vs FP" [#fnoovsop]_
 
 
 Implementation of relationships by assigning
 --------------------------------------------
+
+Although an aggregate is not compatible with Many-To-Many relationships and cross-link hierarchies, it can still refer to the root of another aggregate:
+
+    Objects within the AGGREGATE can hold references to other AGGREGATE roots.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+
+..
+
+    Since one Aggregate instance can reference other Aggregate instances, can the associations be navigated deeply, modifying various objects along the way?
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+
+..
+
+    When designing Aggregates, we may desire a compositional structure that allows for traversal through deep object graphs, but that is not the motivation of the pattern. [Evans] states that one Aggregate may hold references to the Root of other Aggregates. However, we must keep in mind that this does not place the referenced Aggregate inside the consistency boundary of the one referencing it. The reference does not cause the formation of just one whole Aggregate. There are still two (or more), as shown in Figure 10.5.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+
+..
+
+    Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service. However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go. The Aggregate can then double-dispatch to the Domain Service to resolve references. Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
 
 The principle of physical assignment of related objects is `implemented also by the library js-data <http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations>`__.
 
@@ -439,16 +484,17 @@ Source code
 
 .. rubric:: Footnotes
 
-.. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» by `Robert C. Martin`_
-.. [#fncodec] «`Code Complete`_» Steve McConnell
-.. [#fnpoeaa] «`Patterns of Enterprise Application Architecture`_» by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-.. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
-.. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
-.. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
-.. [#fnoovsop] «`OO vs FP`_» by Robert C. Martin
-.. [#fnca] «`Clean Architecture`_» by Robert C. Martin
-.. [#fntca] «`The Clean Architecture`_» by Robert C. Martin
-.. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
+.. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fncodec] "`Code Complete`_" Steve McConnell
+.. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+.. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+.. [#fniddd] "Implementing Domain-Driven Design" by Vaughn Vernon
+.. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
+.. [#fnrefactoring] "`Refactoring: Improving the Design of Existing Code`_" by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnoovsop] "`OO vs FP`_" by Robert C. Martin
+.. [#fnca] "`Clean Architecture`_" by Robert C. Martin
+.. [#fntca] "`The Clean Architecture`_" by Robert C. Martin
+.. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
 
 
 .. update:: 26 May, 2018

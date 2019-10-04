@@ -4,12 +4,12 @@
 
 .. post:: Jul 17, 2017
    :language: ru
-   :tags: Design, Architecture, ORM, Django Model, Service Layer
+   :tags: Design, Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
-   :redirect: ru/redux-and-flux-for-oop-programmers
+   :redirect: ru/redux-and-flux-for-oop-programmers, ru/application-logic-management
 
-Эта статья посвящена вопросам проeктирования Сервисного Слоя (`Service Layer`_) и рассматривает широко распространенные ошибки.
+Эта статья посвящена вопросам управления Логикой Приложения и проектированию Сервисного Слоя (`Service Layer`_), Use Case, CQRS, Event Sourcing, MVC и др.
 
 
 .. contents:: Содержание
@@ -175,6 +175,52 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
 Поскольку целью создания приложения является реализация именно Business Rules - критически важно обеспечить их переносимость, и отделить их от Application Logic.
 Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.
+В свое время Гради Буч сказал, что "Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений".
+
+
+Способы организации Логики Приложения (Application Logic)
+=========================================================
+
+Широко распространены четыре способа организации Логики Приложения (Application Logic):
+
+1. Оркестровый Сервис ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов), он же - Сервисный Слой (Service Layer).
+
+2. Хореографический Сервис (Event-Driven, т.е. loosely coupled), который является разновидностью паттерна Command, и используется, как правило, в CQRS-приложениях.
+
+3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ и `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (которые тоже, по сути, является разновидностью паттерна Command).
+
+..
+
+    "A Front Controller handles all calls for a Web site, and is usually structured in two parts: a Web handler and a command hierarchy."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+..
+
+    "For both the domain commands and the view, the application controller needs a way to store something it can invoke.
+    A Command [Gang of Four] is a good choice, since it allows it to easily get hold of and run a block of code."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+4. `Use Case <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__, который также, является разновидностью паттерна Command.
+На 15:50 Robert C. Martin проводит `параллель между Use Case и паттерном Command <https://youtu.be/Nsjsiz2A9mg?t=15m45s>`__.
+
+Собственно говоря, производной паттерна Command является даже `Method Object <https://refactoring.com/catalog/replaceFunctionWithCommand.html>`__.
+
+Use Case обязан своим существованием именно наличию Бизнес-Логики, которая  application specific, и не имеет смысла вне контекста приложения.
+Его задача сводится к освобождению этих application specific Business Rules от зависимостей от приложения путем инверсии контроля (IoC).
+
+Если бы Use Case не содержал Бизнес-Логики, то не было бы и смысла отделять его от Page Controller, иначе приложение пыталось бы абстрагироваться от самого себя же.
+
+Мы видим, что в орагнизации Логики Приложения широко применяются разновидности паттерна Команда (Command).
+
+Рассмотренные способы организовывают, в первую очередь, Логику Приложения, и лишь во вторую очередь, Бизнес-Логику, которая не обязательно должна присутствовать, кроме случая Use Case, т.к. иначе он утратил бы причины для существования.
+
+При правильной организации Бизнес-Логики, и высоком качестве ORM (в случае его использования, конечно же), зависимость Бизнес-Логики от приложения будет минимальна.
+Основная сложность любого ORM заключается в том, чтобы организовать доступ к связанным объектам не подмешивая Логику Приложения (и логику доступа к данным) в Domain Models, - эту тему мы подробно рассмотрим в одном из следующих постов.
+
+Понимание общих признаков в способах управления Логикой Приложения позволяет проектировать более гибкие приложения, и, как результат, более безболезненно заменять архитектурный шаблон, например, из Layered в Event-Driven.
+Частично эта тема затрагивается в Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin и в разделе "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
 
 
 Что такое Сервис?
@@ -859,6 +905,71 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
 В таком случае проще добавить новый метод в сервисе удаленного вызова, и избавиться от необходимости в приоритезированных запросах.
 
 
+Проблема параллельного обновления
+=================================
+
+Интернет открыл доступ к огромному количеству данных, которое несопоставимо велико с возможностями одного сервера.
+Возникла необходимость в масштабировании и в распределенном хранении и обработке данных.
+
+Одна из самых острых проблем - это проблема параллельного обновления данных.
+Все состояния гонки (race condition), взаимоблокировки (deadlocks) и другие проблемы параллельного обновления обусловлены изменяемостью переменных.
+
+Любой порядок выражается в правильном наложении ограничений.
+
+
+CQRS
+====
+
+Проблему параллельного обновления в значительной мере можно уменьшить наложением ограничения на двунаправленные изменения состояния путем введения однонаправленных изменений, т.е. путем отделения чтения от записи.
+Именно такой подход используется в Redux.
+
+    "it allows us to host the two services differently eg: we can host the read service on 25 servers and the write service on two.
+    The processing of commands and queries is fundamentally asymmetrical, and scaling the services symmetrically does not make a lot of sense."
+
+    \- "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+
+Управление Логикой Приложения и Бизнес-Логикой хорошо раскрывается в статье "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan.
+
+Использование CQRS для хранения данных приближает нас к использованию парадигмы Функционального Программирования в коде (как, например, при использовании Redux).
+
+Функциональное Программирование по своей сути не может порождать побочных эффектов (т.к. Функциональное Программирование накладывает ограничение на присваивание (изменяемость)), и именно этим обусловлен рост его популярности в эпоху распределенных вычислений.
+Нет изменяемого состояния - нет проблем параллельного обновления.
+
+Следует отличать парадигму Функционального Программирования от языков, поддерживающих эту парадигму, поскольку нередко языки, поддерживающие эту парадигму, позволяют ей не следовать.
+
+Однако, несмотря на открывшиеся возможности использовать Функциональное Программирование в коде, само хранилище данных (IO-устройство) все еще подвержено проблемам параллельного обновления, поскольку имеет изменяемые записи, а значит, имеет побочный эффект.
+
+В распределенных системах решением этой проблемы обычно является замена CRUD (Create, Read, Update, Delete) на CR, т.е. наложение ограничения на изменение (Update) и удаление (Delete) записей в хранилище, что получило распространение под термином Event Sourcing (существуют специализированные хранилища реализующие его, но он реализуется не обязательно специализированными инструментами).
+
+
+Event Sourcing
+==============
+
+Если CQRS выражает принцип Императивного Программирования и отделяет действия (побочный эффект) от запроса (чтения) данных, то Event Sourcing идет еще дальше, и накладывает ограничение на изменение и удаление данных, превращая CRUD в CR.
+Такой подход выражает принципы парадигмы Функционального Программирования при хранении данных, и предоставляет такие же выгоды: нет изменяемого состояния - нет проблемы параллельного обновления.
+И такие же недостатки: потребность в большом количестве памяти и процессорной мощности.
+Именно поэтому, данный шаблон широко используется в распределенных системах, где остро проявляется потребность в его достоинствах, и, вместе с тем, не проявляются его недостатки (ведь распределенные системы не лимитированы ни в памяти, ни в процессорной мощности).
+
+Примером Event Sourcing может быть принцип организации банковского счета в базе данных, когда счет не является источником истины, а просто отражает совокупное значение всех транзакций (т.е. событий).
+
+Наиболее ясно эта тема раскрывается в Chapter 6 "Functional Programming" of "Clean Architecture" by Robert C. Martin.
+
+    Event Sourcing is naturally functional.
+    It's an append only log of facts that have happened in the past.
+    You can say that any projection any state is a left fold over your previous history.
+
+    \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1004>`__" at 16:44
+
+..
+
+    I have always said that Event Sourcing is "Functional Data Storage".
+    In this talk we will try migrating to a idiomatic functional way of looking at Event Sourcing.
+    Come and watch all the code disappear!
+    By the time you leave you will never want an "Event Sourcing Framework (TM)" ever again!
+
+    \- Greg Young, "`Functional Data <https://vimeo.com/131636650>`__", NDC Conferences
+
+
 Что почитать
 ============
 
@@ -876,13 +987,13 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
 - "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, главы:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
+- "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
+- "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
+- "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
+- "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+- "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 
 This article in English ":doc:`../en/service-layer`".
-
-Статьи по теме:
-
-* ":doc:`../ru/application-logic-management`"
-* ":doc:`../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example`"
 
 .. rubric:: Footnotes
 
@@ -893,8 +1004,9 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 .. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+.. [#fnnetmsa] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
-.. update:: 28 May, 2018
+.. update:: 04 Oct, 2019
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
