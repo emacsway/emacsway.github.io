@@ -103,6 +103,7 @@
 <li><a class="reference internal" href="#black-box-or-white-box" id="id25">Black Box or White Box?</a></li>
 <li><a class="reference internal" href="#sociable-or-solitary" id="id26">Sociable or Solitary?</a></li>
 <li><a class="reference internal" href="#tdd-design-patterns" id="id27">TDD и Design Patterns</a></li>
+<li><a class="reference internal" href="#one-assertion-per-test" id="id28">One assertion per test?</a></li>
 </ul>
 </div>
 <div class="section" id="tdd">
@@ -486,6 +487,23 @@ Perhaps pattern copying is a third monological mode to go with test-first and re
 <li>XP and Patterns Ralph Johnson&#8217;s View:  <a class="reference external" href="http://objectclub.jp/community/XP-jp/xp_relate/xp_patterns">http://objectclub.jp/community/XP-jp/xp_relate/xp_patterns</a></li>
 <li>Joshua Kerievsky, Patterns &amp; XP: <a class="reference external" href="http://www.industriallogic.com/xp/PatternsAndXP.pdf">http://www.industriallogic.com/xp/PatternsAndXP.pdf</a></li>
 </ul>
+</div>
+<div class="section" id="one-assertion-per-test">
+<h1><a class="toc-backref" href="#id28">One assertion per test?</a><a class="headerlink" href="#one-assertion-per-test" title="Permalink to this headline">¶</a></h1>
+<p>Я часто слышу это распространенное убеждение, что один тестовый метод должен содержать только одно утверждение (assertion) и не больше.
+И это интересно, потому что Кент Бек этому правилу не очень-то и следует, что заставило меня найти первоисточник этого убеждения.
+Источник я нашел, и он, действительно, авторитетный - это &#8220;xUnit Test Patterns. Refactoring Test Code.&#8221; by Gerard Meszaros, глава &#8220;Principle: Verify One Condition per Test&#8221;, но там есть кое-что еще, о чем это широко распространенное убеждение умалчивает:</p>
+<blockquote>
+<div>One possibly contentious aspect of <em>Verify One Condition per Test</em> is what we mean by &#8220;one condition.&#8221;
+Some test drivers insist on one assertion per test.
+This insistence may be based on using a <em>Testcase Class per Fixture</em> organization
+of the <em>Test Methods</em> and naming each test based on what the one assertion is verifying.
+(For example, AwaitingApprovalFlight.validApproverRequestShouldBeApproved.)
+Having one assertion per test makes such naming very easy but also leads to many more test methods if we have to assert on many output fi elds.
+Of course, we can often comply with this interpretation by extracting a <em>Custom Assertion</em> (page 474)
+or <em>Verification Method</em> (see <em>Custom Assertion</em>) that allows us to reduce the multiple assertion method calls to a single call.
+Sometimes that approach makes the test more readable.
+When it doesn’t, I wouldn’t be too dogmatic about insisting on a single assertion.</div></blockquote>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fntdd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
