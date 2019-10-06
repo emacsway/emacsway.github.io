@@ -243,183 +243,184 @@ Increasingly, REST-frameworks began to be used to `transfer aggregates of nested
 
 The need of processing nested data structures has intensified interest in functional programming, especially in combination with reactive programming paradigm.
 
-However, the solution to one problem creates another problem.
-
-
-Functional Programming
-----------------------
-
-Functional programming is more difficult to use for domain objects, since it is more difficult to structure logically (especially if programming language does not support `multiple dispatching <https://en.wikipedia.org/wiki/Multiple_dispatch>`__).
-This often leads to unreadable code that expresses not "what" it does, but "how" it does something incomprehensible.
-
-    If you wanted polymophism in C, you’d have to manage those pointers yourself;
-    and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
-    But in an OO language, those pointers are managed for you.
-    The language takes care to initialize them, and marshal them, and call all the functions through them.
-
-    ... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
-
-    \- "OO vs FP" [#fnoovsop]_
-
 ..
-
-    However, my experience is that the cost of change rises
-    more steeply without objects than with objects.
-
-    \- Kent Beck [#fnxp]_
-
-And yet, not clear intentions and objectives of the author - is a key issue when reading someone else's code.
-
-    A six-month study
-    conducted by IBM found that maintenance programmers "most
-    often said that understanding the original programmer's intent was
-    the most difficult problem" (Fjelstad and Hamlen 1979).
-
-    \- "Code Complete" [#fncodec]_
-
-As it mentioned in the article ":doc:`../en/how-to-quickly-develop-high-quality-code`", the developer reads the code 91% of the time while constructing the code, and only 9% of the time he enters the characters with keyboard.
-And this means that poorly readable code affects 91% of the development velocity.
-
-Also, this approach destroys all the benefits of using Domain-Driven Design and pull apart the elements implementing the conceptual objects, which leads to the code that no longer expresses the model.
-
-All this `contributed to the appearance <https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J>`__ in the ReactJS community of such libraries as:
-
-- `Normalizr <https://github.com/paularmstrong/normalizr>`_ - \
-  Normalizes (decomposes) nested JSON according to a schema.
-- `Denormalizr <https://github.com/gpbl/denormalizr>`_ - \
-  Denormalize data normalized with normalizr.
+    However, the solution to one problem creates another problem.
 
 
-Minor offtopic
---------------
+    Functional Programming
+    ----------------------
 
-Despite the fact that functional programming techniques are often used together with the paradigm of reactive programming, in their essence these paradigms are not always suitable for combination in the canonical form for web development.
+    Functional programming is more difficult to use for domain objects, since it is more difficult to structure logically (especially if programming language does not support `multiple dispatching <https://en.wikipedia.org/wiki/Multiple_dispatch>`__).
+    This often leads to unreadable code that expresses not "what" it does, but "how" it does something incomprehensible.
 
-This is because reactive programming is based on the propagation of changes, i.e. it implies the existence of variables and assignment.
+        If you wanted polymophism in C, you’d have to manage those pointers yourself;
+        and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
+        But in an OO language, those pointers are managed for you.
+        The language takes care to initialize them, and marshal them, and call all the functions through them.
 
-    This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.
+        ... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
 
-    For example, in an imperative programming setting, ``a := b + c`` would mean that ``a`` is being assigned the result of ``b + c`` in the instant the expression is evaluated, and later, the values of ``b`` and/or ``c`` can be changed with no effect on the value of ``a``.
-    However, in reactive programming, the value of ``a`` is automatically updated whenever the values of ``b`` and/or ``c`` change;
-    without the program having to re-execute the sentence ``a := b + c`` to determine the presently assigned value of ``a``.
+        \- "OO vs FP" [#fnoovsop]_
 
-    ... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
+    ..
 
-    \- "`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia
+        However, my experience is that the cost of change rises
+        more steeply without objects than with objects.
 
-That is why reactive programming paradigm `can be combined with different paradigms <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, imperative, object-oriented and functional.
+        \- Kent Beck [#fnxp]_
 
-However, the whole point of the matter is that in the canonical form of functional programming does not has variables (from the word "vary"), i.e. changeable state:
+    And yet, not clear intentions and objectives of the author - is a key issue when reading someone else's code.
 
-    A true functional programming language has no assignment operator.
-    You cannot change the state of a variable.
-    Indeed, the word “variable” is a misnomer in a functional language because you cannot vary them.
+        A six-month study
+        conducted by IBM found that maintenance programmers "most
+        often said that understanding the original programmer's intent was
+        the most difficult problem" (Fjelstad and Hamlen 1979).
 
-    ...The overriding difference between a functional language and a non-functional language is that functional languages don’t have assignment statements.
+        \- "Code Complete" [#fncodec]_
 
-    ... The point is that a functional language imposes some kind of ceremony or discipline on changes of state. You have to jump through the right hoops in order to do it.
+    As it mentioned in the article ":doc:`../en/how-to-quickly-develop-high-quality-code`", the developer reads the code 91% of the time while constructing the code, and only 9% of the time he enters the characters with keyboard.
+    And this means that poorly readable code affects 91% of the development velocity.
 
-    And so, for the most part, you don’t.
+    Also, this approach destroys all the benefits of using Domain-Driven Design and pull apart the elements implementing the conceptual objects, which leads to the code that no longer expresses the model.
 
-    \- "OO vs FP" [#fnoovsop]_
+    All this `contributed to the appearance <https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J>`__ in the ReactJS community of such libraries as:
 
-Therefore, the use of functional programming techniques does not make the program functional until the program has a variable state - it's just procedural programming.
-And if so, then the rejection of Domain-Driven Design just takes away the superiority of both approaches (neither object-oriented programming polymorphism nor the immutability of functional programming), and combines the all worst, similar to hybrid objects [#fnccode]_, and does not make program really functional.
+    - `Normalizr <https://github.com/paularmstrong/normalizr>`_ - \
+      Normalizes (decomposes) nested JSON according to a schema.
+    - `Denormalizr <https://github.com/gpbl/denormalizr>`_ - \
+      Denormalize data normalized with normalizr.
 
-    Hybrids
 
-    This confusion sometimes leads to unfortunate hybrid structures that are half object and
-    half data structure. They have functions that do significant things, and they also have either
-    public variables or public accessors and mutators that, for all intents and purposes, make
-    the private variables public, tempting other external functions to use those variables the
-    way a procedural program would use a data structure (this is sometimes called Feature Envy from "Refactoring" [#fnrefactoring]_).
-    Such hybrids make it hard to add new functions but also make it hard to add new data
-    structures. They are the worst of both worlds. Avoid creating them. They are indicative of a
-    muddled design whose authors are unsure of—or worse, ignorant of—whether they need
-    protection from functions or types.
+    Minor offtopic
+    --------------
 
-    \- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
+    Despite the fact that functional programming techniques are often used together with the paradigm of reactive programming, in their essence these paradigms are not always suitable for combination in the canonical form for web development.
 
-Canonical functional programming has no state and therefore ideally suited for distributed computing and data flow processing.
+    This is because reactive programming is based on the propagation of changes, i.e. it implies the existence of variables and assignment.
 
-    The benefit of not using assignment statements should be obvious.
-    You can’t have concurrent update problems if you never update anything.
+        This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.
 
-    Since functional programming languages do not have assignment statements, programs written in those languages don’t change the state of very many variables.
-    Mutation is reserved for very specific sections of the system that can tolerate the high ceremony required.
-    Those sections are inherently safe from multiple threads and multiple cores.
+        For example, in an imperative programming setting, ``a := b + c`` would mean that ``a`` is being assigned the result of ``b + c`` in the instant the expression is evaluated, and later, the values of ``b`` and/or ``c`` can be changed with no effect on the value of ``a``.
+        However, in reactive programming, the value of ``a`` is automatically updated whenever the values of ``b`` and/or ``c`` change;
+        without the program having to re-execute the sentence ``a := b + c`` to determine the presently assigned value of ``a``.
 
-    The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
+        ... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
 
-    \- "OO vs FP" [#fnoovsop]_
+        \- "`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia
 
-Does this mean that the object-oriented programming paradigm is opposed to the functional programming programming?
+    That is why reactive programming paradigm `can be combined with different paradigms <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, imperative, object-oriented and functional.
 
-Despite the fact that the OOP paradigm is traditionally considered as a kind of imperative paradigm, i.e. based on the state of the program, Robert C. Martin makes an amazing conclusion - as objects provide their interface, i.e. behavior, and hide their state, they do not contradict the functional programming paradigm.
+    However, the whole point of the matter is that in the canonical form of functional programming does not has variables (from the word "vary"), i.e. changeable state:
 
-    "Objects are not data structures.
-    Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
-    This is why data fields are private.
-    From the outside looking in you cannot see any state.
-    All you can see are functions.
-    Therefore Objects are about functions not about state."
+        A true functional programming language has no assignment operator.
+        You cannot change the state of a variable.
+        Indeed, the word “variable” is a misnomer in a functional language because you cannot vary them.
 
-    \- "OO vs FP" [#fnoovsop]_
+        ...The overriding difference between a functional language and a non-functional language is that functional languages don’t have assignment statements.
 
-That's why some classical functional programming languages support OOP:
+        ... The point is that a functional language imposes some kind of ceremony or discipline on changes of state. You have to jump through the right hoops in order to do it.
 
-- `Enhanced Implementation of Emacs Interpreted Objects <https://www.gnu.org/software/emacs/manual/html_mono/eieio.html>`_
-- `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
+        And so, for the most part, you don’t.
 
-    Are these two disciplines mutually exclusive?
-    Can you have a language that imposes discipline on both assignment and pointers to functions?
-    Of course you can.
-    These two things don’t have anything to do with each other.
-    And that means that OO and FP are not mutually exclusive at all.
-    It means that you can write OO-Functional programs.
+        \- "OO vs FP" [#fnoovsop]_
 
-    It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
+    Therefore, the use of functional programming techniques does not make the program functional until the program has a variable state - it's just procedural programming.
+    And if so, then the rejection of Domain-Driven Design just takes away the superiority of both approaches (neither object-oriented programming polymorphism nor the immutability of functional programming), and combines the all worst, similar to hybrid objects [#fnccode]_, and does not make program really functional.
 
-    \- "OO vs FP" [#fnoovsop]_
+        Hybrids
 
-Of course, objects in functional programming `must be immutable <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
+        This confusion sometimes leads to unfortunate hybrid structures that are half object and
+        half data structure. They have functions that do significant things, and they also have either
+        public variables or public accessors and mutators that, for all intents and purposes, make
+        the private variables public, tempting other external functions to use those variables the
+        way a procedural program would use a data structure (this is sometimes called Feature Envy from "Refactoring" [#fnrefactoring]_).
+        Such hybrids make it hard to add new functions but also make it hard to add new data
+        structures. They are the worst of both worlds. Avoid creating them. They are indicative of a
+        muddled design whose authors are unsure of—or worse, ignorant of—whether they need
+        protection from functions or types.
 
-Objects can be emulated even by functional programming languages using closures, see article "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
-Here you can not ignore the wonderful book "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
+        \- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
 
-Let's remember the chapter "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги "Code Complete" [#fncodec]_.
+    Canonical functional programming has no state and therefore ideally suited for distributed computing and data flow processing.
 
-    An abstract data type is a collection of data and operations that work on that data.
+        The benefit of not using assignment statements should be obvious.
+        You can’t have concurrent update problems if you never update anything.
 
-    \- "Code Complete" [#fncodec]_
+        Since functional programming languages do not have assignment statements, programs written in those languages don’t change the state of very many variables.
+        Mutation is reserved for very specific sections of the system that can tolerate the high ceremony required.
+        Those sections are inherently safe from multiple threads and multiple cores.
 
-..
+        The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
 
-    Abstract data types form the foundation for the concept of classes.
+        \- "OO vs FP" [#fnoovsop]_
 
-    \- "Code Complete" [#fncodec]_
+    Does this mean that the object-oriented programming paradigm is opposed to the functional programming programming?
 
-..
+    Despite the fact that the OOP paradigm is traditionally considered as a kind of imperative paradigm, i.e. based on the state of the program, Robert C. Martin makes an amazing conclusion - as objects provide their interface, i.e. behavior, and hide their state, they do not contradict the functional programming paradigm.
 
-    Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
+        "Objects are not data structures.
+        Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
+        This is why data fields are private.
+        From the outside looking in you cannot see any state.
+        All you can see are functions.
+        Therefore Objects are about functions not about state."
 
-    \- "Code Complete" [#fncodec]_
+        \- "OO vs FP" [#fnoovsop]_
 
-I'm not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.
+    That's why some classical functional programming languages support OOP:
 
-But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of "`Anemic Domain Model`_"?
-And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relationship resolving?
-See also article ":doc:`../ru/anemic-domain-model`".
+    - `Enhanced Implementation of Emacs Interpreted Objects <https://www.gnu.org/software/emacs/manual/html_mono/eieio.html>`_
+    - `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
 
-Object-oriented `model of polymorphism does an important thing - dependency injection <https://youtu.be/TMuno5RZNeE?t=33m30s>`__.
-With the abandonment of the object-oriented model, the issue of dependency injection remains open.
+        Are these two disciplines mutually exclusive?
+        Can you have a language that imposes discipline on both assignment and pointers to functions?
+        Of course you can.
+        These two things don’t have anything to do with each other.
+        And that means that OO and FP are not mutually exclusive at all.
+        It means that you can write OO-Functional programs.
 
-    The bottom, bottom line here is simply this.
-    OO programming is good, when you know what it is.
-    Functional programming is good when you know what it is.
-    And functional OO programming is also good once you know what it is.
+        It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
 
-    \- "OO vs FP" [#fnoovsop]_
+        \- "OO vs FP" [#fnoovsop]_
+
+    Of course, objects in functional programming `must be immutable <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
+
+    Objects can be emulated even by functional programming languages using closures, see article "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
+    Here you can not ignore the wonderful book "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
+
+    Let's remember the chapter "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги "Code Complete" [#fncodec]_.
+
+        An abstract data type is a collection of data and operations that work on that data.
+
+        \- "Code Complete" [#fncodec]_
+
+    ..
+
+        Abstract data types form the foundation for the concept of classes.
+
+        \- "Code Complete" [#fncodec]_
+
+    ..
+
+        Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
+
+        \- "Code Complete" [#fncodec]_
+
+    I'm not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.
+
+    But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of "`Anemic Domain Model`_"?
+    And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relationship resolving?
+    See also article ":doc:`../ru/anemic-domain-model`".
+
+    Object-oriented `model of polymorphism does an important thing - dependency injection <https://youtu.be/TMuno5RZNeE?t=33m30s>`__.
+    With the abandonment of the object-oriented model, the issue of dependency injection remains open.
+
+        The bottom, bottom line here is simply this.
+        OO programming is good, when you know what it is.
+        Functional programming is good when you know what it is.
+        And functional OO programming is also good once you know what it is.
+
+        \- "OO vs FP" [#fnoovsop]_
 
 
 Implementation of relationships by assigning

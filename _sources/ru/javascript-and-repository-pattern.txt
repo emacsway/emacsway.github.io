@@ -269,218 +269,219 @@ Domain-Driven Design подходит к связям более строго, �
 
 Необходимость обхода вложенных структур данных активизировала интерес к функциональному программированию, особенно в сочетании с парадигмой реактивного программирования.
 
-Однако, решение одной проблемы порождало другую проблему.
-
-
-Функциональное программирование
--------------------------------
-
-Функциональное программирование сложнее использовать для объектов предметной области, так как его сложнее структурировать логически (особенно при отсутствии поддержки `множественной диспетчеризации <https://ru.wikipedia.org/wiki/%D0%9C%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D0%BC%D0%B5%D1%82%D0%BE%D0%B4>`__), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, "что" он делает, а то, "как" он делает непонятно что.
-
-    If you wanted polymophism in C, you’d have to manage those pointers yourself;
-    and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
-    But in an OO language, those pointers are managed for you.
-    The language takes care to initialize them, and marshal them, and call all the functions through them.
-
-    ... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
-
-    \- "OO vs FP" [#fnoovsop]_
-
 ..
+    Однако, решение одной проблемы порождало другую проблему.
 
-    Все же мой опыт подсказывает
-    мне, что стоимость изменений увеличивается в большей степени в случае,
-    если вы не используете объекты, чем в случае, если вы основываете
-    свой проект на объектно-ориентированном подходе.
 
-    However, my experience is that the cost of change rises
-    more steeply without objects than with objects.
-    \- Kent Beck [#fnxp]_
+    Функциональное программирование
+    -------------------------------
 
-А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.
+    Функциональное программирование сложнее использовать для объектов предметной области, так как его сложнее структурировать логически (особенно при отсутствии поддержки `множественной диспетчеризации <https://ru.wikipedia.org/wiki/%D0%9C%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D0%BC%D0%B5%D1%82%D0%BE%D0%B4>`__), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, "что" он делает, а то, "как" он делает непонятно что.
 
-    Шестимесячное исследование, проведенное в IBM, показало, что программисты,
-    отвечавшие за сопровождение программы, "чаще всего говорили, что
-    труднее всего было понять цель автора кода" (Fjelstad and Hamlen, 1979).
+        If you wanted polymophism in C, you’d have to manage those pointers yourself;
+        and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
+        But in an OO language, those pointers are managed for you.
+        The language takes care to initialize them, and marshal them, and call all the functions through them.
 
-    A six-month study
-    conducted by IBM found that maintenance programmers "most
-    often said that understanding the original programmer's intent was
-    the most difficult problem" (Fjelstad and Hamlen 1979).
+        ... There really is only one benefit to Polymorphism; but it’s a big one. It is the inversion of source code and run time dependencies.
 
-    \- "Code Complete" [#fncodec]_
+        \- "OO vs FP" [#fnoovsop]_
 
-Как упоминалось в статье ":doc:`../en/how-to-quickly-develop-high-quality-code`", в процессе конструирования кода разработчик 91% времени читает код, и только 9% времени он вводит символы с клавиатуры.
-А это значит, что плохо читаемый код на 91% влияет на темпы разработки.
+    ..
 
-Также такой подход разрушает все выгоды использования Domain-Driven Design, и разделяет элементы, реализующие концептуальные объекты, которые оказываются физически разделенными, что приводит к появлению кода, который больше не выражает модель.
+        Все же мой опыт подсказывает
+        мне, что стоимость изменений увеличивается в большей степени в случае,
+        если вы не используете объекты, чем в случае, если вы основываете
+        свой проект на объектно-ориентированном подходе.
 
-Все `это способствовало появлению <https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J>`__ в сообществе ReactJS таких библиотек как:
+        However, my experience is that the cost of change rises
+        more steeply without objects than with objects.
+        \- Kent Beck [#fnxp]_
 
-- `Normalizr <https://github.com/paularmstrong/normalizr>`_ - \
-  Normalizes (decomposes) nested JSON according to a schema.
-- `Denormalizr <https://github.com/gpbl/denormalizr>`_ - \
-  Denormalize data normalized with normalizr.
+    А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.
 
+        Шестимесячное исследование, проведенное в IBM, показало, что программисты,
+        отвечавшие за сопровождение программы, "чаще всего говорили, что
+        труднее всего было понять цель автора кода" (Fjelstad and Hamlen, 1979).
 
-Лирическое отступление
-----------------------
+        A six-month study
+        conducted by IBM found that maintenance programmers "most
+        often said that understanding the original programmer's intent was
+        the most difficult problem" (Fjelstad and Hamlen 1979).
 
-Несмотря на то, что приемы функционального программирования часто используются совместно с парадигмой реактивного программирования, в своей сути эти парадигмы не всегда сочетаемы в каноническом виде в веб-разработке.
+        \- "Code Complete" [#fncodec]_
 
-Это потому, что реактивное программирование основано на распространении изменений, т.е. подразумевает наличие переменных и присваивания.
+    Как упоминалось в статье ":doc:`../en/how-to-quickly-develop-high-quality-code`", в процессе конструирования кода разработчик 91% времени читает код, и только 9% времени он вводит символы с клавиатуры.
+    А это значит, что плохо читаемый код на 91% влияет на темпы разработки.
 
-    Это означает, что должна существовать возможность легко выражать статические и динамические потоки данных, а также то, что нижележащая модель исполнения должна автоматически распространять изменения благодаря потоку данных.
+    Также такой подход разрушает все выгоды использования Domain-Driven Design, и разделяет элементы, реализующие концептуальные объекты, которые оказываются физически разделенными, что приводит к появлению кода, который больше не выражает модель.
 
-    К примеру, в императивном программировании присваивание a := b + c будет означать, что переменной a будет присвоен результат выполнения операции b + c, используя текущие (на момент вычисления) значения переменных.
-    Позже значения переменных b и c могут быть изменены без какого-либо влияния на значение переменной a.
-    В реактивном же программировании значение a будет автоматически пересчитано, основываясь на новых значениях.
+    Все `это способствовало появлению <https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J>`__ в сообществе ReactJS таких библиотек как:
 
-    ... К примеру, в MVC архитектуре с помощью реактивного программирования можно реализовать автоматическое отражение изменений из Model в View и наоборот из View в Model.
+    - `Normalizr <https://github.com/paularmstrong/normalizr>`_ - \
+      Normalizes (decomposes) nested JSON according to a schema.
+    - `Denormalizr <https://github.com/gpbl/denormalizr>`_ - \
+      Denormalize data normalized with normalizr.
 
-    This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.
 
-    For example, in an imperative programming setting, ``a := b + c`` would mean that ``a`` is being assigned the result of ``b + c`` in the instant the expression is evaluated, and later, the values of ``b`` and/or ``c`` can be changed with no effect on the value of ``a``.
-    However, in reactive programming, the value of ``a`` is automatically updated whenever the values of ``b`` and/or ``c`` change;
-    without the program having to re-execute the sentence ``a := b + c`` to determine the presently assigned value of ``a``.
+    Лирическое отступление
+    ----------------------
 
-    ... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
+    Несмотря на то, что приемы функционального программирования часто используются совместно с парадигмой реактивного программирования, в своей сути эти парадигмы не всегда сочетаемы в каноническом виде в веб-разработке.
 
-    \- "`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia
+    Это потому, что реактивное программирование основано на распространении изменений, т.е. подразумевает наличие переменных и присваивания.
 
-Именно поэтому парадигма реактивного программирования `может сочетаться с различными парадигмами <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, императивной, объектно-ориентированной и функциональной.
+        Это означает, что должна существовать возможность легко выражать статические и динамические потоки данных, а также то, что нижележащая модель исполнения должна автоматически распространять изменения благодаря потоку данных.
 
-Однако, вся суть вопроса заключается в том, что в каноническом виде функциональное программирование не имеет переменных (от слова "переменчивость", изменяемость). т.е. изменяемого состояния:
+        К примеру, в императивном программировании присваивание a := b + c будет означать, что переменной a будет присвоен результат выполнения операции b + c, используя текущие (на момент вычисления) значения переменных.
+        Позже значения переменных b и c могут быть изменены без какого-либо влияния на значение переменной a.
+        В реактивном же программировании значение a будет автоматически пересчитано, основываясь на новых значениях.
 
-    A true functional programming language has no assignment operator.
-    You cannot change the state of a variable.
-    Indeed, the word “variable” is a misnomer in a functional language because you cannot vary them.
+        ... К примеру, в MVC архитектуре с помощью реактивного программирования можно реализовать автоматическое отражение изменений из Model в View и наоборот из View в Model.
 
-    ...The overriding difference between a functional language and a non-functional language is that functional languages don’t have assignment statements.
+        This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.
 
-    ... The point is that a functional language imposes some kind of ceremony or discipline on changes of state. You have to jump through the right hoops in order to do it.
+        For example, in an imperative programming setting, ``a := b + c`` would mean that ``a`` is being assigned the result of ``b + c`` in the instant the expression is evaluated, and later, the values of ``b`` and/or ``c`` can be changed with no effect on the value of ``a``.
+        However, in reactive programming, the value of ``a`` is automatically updated whenever the values of ``b`` and/or ``c`` change;
+        without the program having to re-execute the sentence ``a := b + c`` to determine the presently assigned value of ``a``.
 
-    And so, for the most part, you don’t.
+        ... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
 
-    \- "OO vs FP" [#fnoovsop]_
+        \- "`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia
 
-Поэтому, использование подходов функционального программирования не делает программу функциональной до тех пор, пока программа имеет изменяемое состояние, - это просто процедурное программирование.
-А если это так, то отказ от Domain-Driven Design просто отнимает превосходства обоих подходов (ни полиморфизма объектно-ориентированного программирования, ни неизменяемости функционального программирования), объединяя все худшее, подобно объектам-гибридам [#fnccode]_, так и не делая программу по настоящему функциональной.
+    Именно поэтому парадигма реактивного программирования `может сочетаться с различными парадигмами <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, императивной, объектно-ориентированной и функциональной.
 
-    Гибриды
+    Однако, вся суть вопроса заключается в том, что в каноническом виде функциональное программирование не имеет переменных (от слова "переменчивость", изменяемость). т.е. изменяемого состояния:
 
-    Вся эта неразбериха иногда приводит к появлению гибридных структур — 
-    наполовину объектов, наполовину структур данных. Гибриды содержат как функции
-    для выполнения важных операций, так и открытые переменные или открытые
-    методы чтения/записи, которые во всех отношениях делают приватные 
-    переменные открытыми. Другим внешним функциям предлагается использовать эти 
-    переменные так, как в процедурных программах используются структуры данных
-    (иногда это называется "функциональной завистью" (Feature Envy) — из "Refactoring" [#fnrefactoring]_).
-    Подобные гибриды усложняют как добавление новых функций, так и новых
-    структур данных. Они объединяют все худшее из обеих категорий. Не 
-    используйте гибриды. Они являются признаком сумбурного проектирования, авторы
-    которого не уверены (или еще хуже, не знают), что они собираются защищать:
-    функции или типы.
+        A true functional programming language has no assignment operator.
+        You cannot change the state of a variable.
+        Indeed, the word “variable” is a misnomer in a functional language because you cannot vary them.
 
-    Hybrids
+        ...The overriding difference between a functional language and a non-functional language is that functional languages don’t have assignment statements.
 
-    This confusion sometimes leads to unfortunate hybrid structures that are half object and
-    half data structure. They have functions that do significant things, and they also have either
-    public variables or public accessors and mutators that, for all intents and purposes, make
-    the private variables public, tempting other external functions to use those variables the
-    way a procedural program would use a data structure (this is sometimes called Feature Envy from "Refactoring" [#fnrefactoring]_).
-    Such hybrids make it hard to add new functions but also make it hard to add new data
-    structures. They are the worst of both worlds. Avoid creating them. They are indicative of a
-    muddled design whose authors are unsure of—or worse, ignorant of—whether they need
-    protection from functions or types.
+        ... The point is that a functional language imposes some kind of ceremony or discipline on changes of state. You have to jump through the right hoops in order to do it.
 
-    \- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
+        And so, for the most part, you don’t.
 
-Каноническое функциональное программирование не имеет состояния, и поэтому идеально подходит для распределенных вычислений и обработки потоков данных.
+        \- "OO vs FP" [#fnoovsop]_
 
-    The benefit of not using assignment statements should be obvious.
-    You can’t have concurrent update problems if you never update anything.
+    Поэтому, использование подходов функционального программирования не делает программу функциональной до тех пор, пока программа имеет изменяемое состояние, - это просто процедурное программирование.
+    А если это так, то отказ от Domain-Driven Design просто отнимает превосходства обоих подходов (ни полиморфизма объектно-ориентированного программирования, ни неизменяемости функционального программирования), объединяя все худшее, подобно объектам-гибридам [#fnccode]_, так и не делая программу по настоящему функциональной.
 
-    Since functional programming languages do not have assignment statements, programs written in those languages don’t change the state of very many variables.
-    Mutation is reserved for very specific sections of the system that can tolerate the high ceremony required.
-    Those sections are inherently safe from multiple threads and multiple cores.
+        Гибриды
 
-    The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
+        Вся эта неразбериха иногда приводит к появлению гибридных структур — 
+        наполовину объектов, наполовину структур данных. Гибриды содержат как функции
+        для выполнения важных операций, так и открытые переменные или открытые
+        методы чтения/записи, которые во всех отношениях делают приватные 
+        переменные открытыми. Другим внешним функциям предлагается использовать эти 
+        переменные так, как в процедурных программах используются структуры данных
+        (иногда это называется "функциональной завистью" (Feature Envy) — из "Refactoring" [#fnrefactoring]_).
+        Подобные гибриды усложняют как добавление новых функций, так и новых
+        структур данных. Они объединяют все худшее из обеих категорий. Не 
+        используйте гибриды. Они являются признаком сумбурного проектирования, авторы
+        которого не уверены (или еще хуже, не знают), что они собираются защищать:
+        функции или типы.
 
-    \- "OO vs FP" [#fnoovsop]_
+        Hybrids
 
-Но значит ли это то, что парадигма объектно-ориентированного программирования противостоит парадигме функционального программирования?
+        This confusion sometimes leads to unfortunate hybrid structures that are half object and
+        half data structure. They have functions that do significant things, and they also have either
+        public variables or public accessors and mutators that, for all intents and purposes, make
+        the private variables public, tempting other external functions to use those variables the
+        way a procedural program would use a data structure (this is sometimes called Feature Envy from "Refactoring" [#fnrefactoring]_).
+        Such hybrids make it hard to add new functions but also make it hard to add new data
+        structures. They are the worst of both worlds. Avoid creating them. They are indicative of a
+        muddled design whose authors are unsure of—or worse, ignorant of—whether they need
+        protection from functions or types.
 
-Несмотря на то, что парадигма ООП традиционно считается разновидностью императивной парадигмы, т.е. основанной на состоянии программы, Robert C. Martin делает поразительный вывод - так как объекты предоставляют свой интерфейс, т.е. поведение, и скрывают свое состояние, то они не противоречат парадигме функционального программирования.
+        \- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
 
-    "Objects are not data structures.
-    Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
-    This is why data fields are private.
-    From the outside looking in you cannot see any state.
-    All you can see are functions.
-    Therefore Objects are about functions not about state."
+    Каноническое функциональное программирование не имеет состояния, и поэтому идеально подходит для распределенных вычислений и обработки потоков данных.
 
-    \- "OO vs FP" [#fnoovsop]_
+        The benefit of not using assignment statements should be obvious.
+        You can’t have concurrent update problems if you never update anything.
 
-Поэтому некоторые классические функциональные языки программирования имеют поддержку ООП:
+        Since functional programming languages do not have assignment statements, programs written in those languages don’t change the state of very many variables.
+        Mutation is reserved for very specific sections of the system that can tolerate the high ceremony required.
+        Those sections are inherently safe from multiple threads and multiple cores.
 
-- `Enhanced Implementation of Emacs Interpreted Objects <https://www.gnu.org/software/emacs/manual/html_mono/eieio.html>`_
-- `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
+        The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
 
-    Are these two disciplines mutually exclusive?
-    Can you have a language that imposes discipline on both assignment and pointers to functions?
-    Of course you can.
-    These two things don’t have anything to do with each other.
-    And that means that OO and FP are not mutually exclusive at all.
-    It means that you can write OO-Functional programs.
+        \- "OO vs FP" [#fnoovsop]_
 
-    It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
+    Но значит ли это то, что парадигма объектно-ориентированного программирования противостоит парадигме функционального программирования?
 
-    \- "OO vs FP" [#fnoovsop]_
+    Несмотря на то, что парадигма ООП традиционно считается разновидностью императивной парадигмы, т.е. основанной на состоянии программы, Robert C. Martin делает поразительный вывод - так как объекты предоставляют свой интерфейс, т.е. поведение, и скрывают свое состояние, то они не противоречат парадигме функционального программирования.
 
-Разумеется, объекты в функциональном программировании `должны быть неизменяемым <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
+        "Objects are not data structures.
+        Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
+        This is why data fields are private.
+        From the outside looking in you cannot see any state.
+        All you can see are functions.
+        Therefore Objects are about functions not about state."
 
-Эмулировать объекты можно даже в функциональных языках программирования с помощью замыканий, см. статью "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
-Тут нельзя обойти вниманием замечательную книгу "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
+        \- "OO vs FP" [#fnoovsop]_
 
-Давайте вспомним главу "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги "Code Complete" [#fncodec]_.
+    Поэтому некоторые классические функциональные языки программирования имеют поддержку ООП:
 
-    Абстрактный тип данных (АТД) — это набор, включающий данные и выполняемые над ними операции.
+    - `Enhanced Implementation of Emacs Interpreted Objects <https://www.gnu.org/software/emacs/manual/html_mono/eieio.html>`_
+    - `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
 
-    An abstract data type is a collection of data and operations that work on that data.
+        Are these two disciplines mutually exclusive?
+        Can you have a language that imposes discipline on both assignment and pointers to functions?
+        Of course you can.
+        These two things don’t have anything to do with each other.
+        And that means that OO and FP are not mutually exclusive at all.
+        It means that you can write OO-Functional programs.
 
-    \- "Code Complete" [#fncodec]_
+        It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
 
-..
+        \- "OO vs FP" [#fnoovsop]_
 
-    Абстрактные типы данных лежат в основе концепции классов.
+    Разумеется, объекты в функциональном программировании `должны быть неизменяемым <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
 
-    Abstract data types form the foundation for the concept of classes.
+    Эмулировать объекты можно даже в функциональных языках программирования с помощью замыканий, см. статью "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
+    Тут нельзя обойти вниманием замечательную книгу "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
 
-    \- "Code Complete" [#fncodec]_
+    Давайте вспомним главу "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги "Code Complete" [#fncodec]_.
 
-..
+        Абстрактный тип данных (АТД) — это набор, включающий данные и выполняемые над ними операции.
 
-    Размышление в первую очередь об АТД (Абстрактный Тип Данных) и только во вторую о классах является примером программирования с использованием языка в отличии от программирования на языке.
+        An abstract data type is a collection of data and operations that work on that data.
 
-    Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
+        \- "Code Complete" [#fncodec]_
 
-    \- "Code Complete" [#fncodec]_
+    ..
 
-Я не буду переписывать сюда достоинства АТД, их можно прочитать в указанной главе этой книги.
+        Абстрактные типы данных лежат в основе концепции классов.
 
-Но ведь изначально вопрос состоял в том, стоит ли отказываться от АТД в объектно-ориентированном языке при проектировании объектов предметной области в пользу "`Anemic Domain Model`_", и стоит ли приносить в жертву все выгоды Domain-Driven Design в угоду удобства конкретной реализации обработки связей?
-Смотрите так же статью ":doc:`../ru/anemic-domain-model`".
+        Abstract data types form the foundation for the concept of classes.
 
-Объектно-ориентированная `модель полиморфизма осуществляет одну важную вещь - внедрение зависимостей <https://youtu.be/TMuno5RZNeE?t=33m30s>`__.
-При отказе от объектно-ориентированной модели, вопрос внедрения зависимостей остается открытым.
+        \- "Code Complete" [#fncodec]_
 
-    The bottom, bottom line here is simply this.
-    OO programming is good, when you know what it is.
-    Functional programming is good when you know what it is.
-    And functional OO programming is also good once you know what it is.
+    ..
 
-    \- "OO vs FP" [#fnoovsop]_
+        Размышление в первую очередь об АТД (Абстрактный Тип Данных) и только во вторую о классах является примером программирования с использованием языка в отличии от программирования на языке.
+
+        Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
+
+        \- "Code Complete" [#fncodec]_
+
+    Я не буду переписывать сюда достоинства АТД, их можно прочитать в указанной главе этой книги.
+
+    Но ведь изначально вопрос состоял в том, стоит ли отказываться от АТД в объектно-ориентированном языке при проектировании объектов предметной области в пользу "`Anemic Domain Model`_", и стоит ли приносить в жертву все выгоды Domain-Driven Design в угоду удобства конкретной реализации обработки связей?
+    Смотрите так же статью ":doc:`../ru/anemic-domain-model`".
+
+    Объектно-ориентированная `модель полиморфизма осуществляет одну важную вещь - внедрение зависимостей <https://youtu.be/TMuno5RZNeE?t=33m30s>`__.
+    При отказе от объектно-ориентированной модели, вопрос внедрения зависимостей остается открытым.
+
+        The bottom, bottom line here is simply this.
+        OO programming is good, when you know what it is.
+        Functional programming is good when you know what it is.
+        And functional OO programming is also good once you know what it is.
+
+        \- "OO vs FP" [#fnoovsop]_
 
 
 Реализация связей путем присваивания
