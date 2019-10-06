@@ -120,7 +120,7 @@
 <p>Очень часто можно наблюдать разбухшие модели, которые выполняют очень много несвойственных ее предметной области обязанностей, в т.ч. и уровня приложения (управление транзакциями, проверка привилегий и т.п.).
 Domain Model должна моделировать только поведение объекта предметной области (реального мира).
 Если Domain Model имеет несколько десятков методов, которые не выражают поведение объекта реального мира, не имеют общего применения, а используются только одним клиентом, то мы должны их разместить либо непосредственно внутри клиента, либо в классе, который обслуживает клиента (для обслуживания клиентов уровня приложения существует Sevice Layer, для обслуживания клиентов уровня предметной области и выравнивания интерфейсов существует паттерн Wrapper).
-Более подробно эта тема уже рассматривалась в статье &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8221;.</p>
+Более подробно эта тема уже рассматривалась в статье &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8221;.</p>
 <p>Domain Model может быть представлена в виде агрегата, т.е. композиции связанных объектов, что характерно для DDD и NoSQL.
 Domain Model может иметь методы, изменяющие ее состояние или композицию, но она не должна заботиться о сохранении этой композиции в базе данных.
 Предположим, Вы осознали что NoSQL-хранилище Вам подходит лучше, чем RDBMS, и решили заменить реализацию класса ответственного за сохранение объекта.
@@ -144,7 +144,7 @@ Derive proxies instead, and keep those proxies in components that are plugins to
 <ul class="simple">
 <li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8220;</li>
 <li>&#8220;<a class="reference internal" href="../javascript-and-repository-pattern/"><span class="doc">Реализация паттерна Repository в браузерном JavaScript</span></a>&#8220;</li>
-<li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8220;</li>
+<li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8220;</li>
 </ul>
 <p>Вы можете подумать, зачем возиться с разделением обязанностей?
 Ведь можно просто откатиться до времен процедурного программирования (или даже до ассемблера) и не использовать ООП вовсе.
@@ -401,7 +401,7 @@ Derive proxies instead, and keep those proxies in components that are plugins to
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/cqrs/">CQRS</a></li>
       
     
@@ -456,7 +456,7 @@ Derive proxies instead, and keep those proxies in components that are plugins to
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/event-sourcing/">Event Sourcing</a></li>
       
     
@@ -501,7 +501,7 @@ Derive proxies instead, and keep those proxies in components that are plugins to
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/model/">Model</a></li>
       
     

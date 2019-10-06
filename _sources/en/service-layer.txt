@@ -1,17 +1,148 @@
 
-Design of Service Layer
-=======================
+Design of Service Layer and Application Logic
+=============================================
 
 .. post:: Jul 17, 2017
    :language: en
-   :tags: Design, Architecture, ORM, Django Model
+   :tags: Design, Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
 
-This article is devoted to the issues of designing `Service Layer`_ and considers the widespread mistakes.
+.. ru-revision: 112e1f639ad2
+
+This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
 
 .. contents:: Contents
+
+
+Types of logic
+==============
+
+Before digging deep into it, it would be nice to understand what Application Logic is and how it differs from Business Logic.
+
+
+Layered Architecture
+--------------------
+
+One of the most cited definitions of key conceptual layers gives Eric Evans:
+
+    **User Interface (or Presentation Layer)**
+        Responsible for showing information to the user and interpreting the user's
+        commands. The external actor might sometimes be another computer
+        system rather than a human user.
+    **Application Layer**
+        Defines the jobs the software is supposed to do and directs the expressive
+        domain objects to work out problems. The tasks this layer is responsible
+        for are meaningful to the business or necessary for interaction with the
+        application layers of other systems.
+        This layer is kept thin. It **does not contain business rules** or knowledge, but
+        only coordinates tasks and delegates work to collaborations of domain
+        objects in the next layer down. It does not have state reflecting the
+        business situation, but it can have state that reflects the progress of a task
+        for the user or the program.
+    **Domain Layer (or Model Layer)**
+        Responsible for representing concepts of the business, information about
+        the **business situation, and business rules**. State that reflects the business
+        situation is controlled and used here, even though the technical details of
+        storing it are delegated to the infrastructure. This layer is the heart of
+        business software.
+    **Infrastructure Layer**
+        Provides generic technical capabilities that support the higher layers:
+        message sending for the application, persistence for the domain, drawing
+        widgets for the UI, and so on. The infrastructure layer may also support
+        the pattern of interactions between the four layers through an
+        architectural framework.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+
+But what does the term Business itself mean?
+Misunderstanding of this term often leads to significant design problems.
+
+
+What Business Logic is about?
+-----------------------------
+
+The most authoritative explanation of the term `Business <http://wiki.c2.com/?CategoryBusiness>`__ can be found, as usual, on the Ward Cunningham website:
+
+    Software intersects with the Real World. Imagine that.
+
+There you can find a definition of `Business Rule <http://wiki.c2.com/?BusinessRule>`__:
+
+    A Business Rule (in a programming context) is knowledge that gets applied to a set of data to create new value. Or it may be a rule about how to create, modify, or remove data. Or perhaps it is a rule that specifies when certain processes occur.
+
+    For example, we have a rule about email addresses -- when the Driver Name field on our object identifier changes, we erase the email address. When we receive a new email address, we make sure that it contains an "@" sign and a valid domain not on our blacklist.
+
+
+`Business Logic Definition <http://wiki.c2.com/?BusinessLogicDefinition>`__:
+
+    Business logic is that portion of an enterprise system which determines how data is:
+
+    - Transformed and/or calculated. For example, business logic determines how a tax total is calculated from invoice line items.
+    - Routed to people or software systems, aka workflow.
+
+The term Business should be distinguished from the term `Business Domain <http://wiki.c2.com/?CategoryBusinessDomain>`__:
+
+    A category about the business domain, such as accounting, finance, inventory, marketing, tracking, billing, reporting, charting, taxes, etc.
+
+You should also distinguish Business from `Business Process <http://wiki.c2.com/?BusinessProcess>`__:
+
+    A Business Process is some reproduceable process within an organization. Often it is a something that you want to setup once and reuse over and over again.
+
+    Companies spend a lot of time and money identifying Business Processes, designing the software that captures a Business Process and then testing and documenting these processes.
+
+    One example of a Business Process is "Take an order on my web site". It might involve a customer, items from a catalog and a credit card. Each of these things is represented by business objects and together they represent a Business Process.
+
+Wikipedia `gives us the following definition of the term Business Logic <https://en.wikipedia.org/wiki/Business_logic>`__:
+
+    In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program. 
+
+Let me summarize this in my own words:
+
+**Business Logic**
+    is a modeling of objects and processes of the domain (i.e., the real world).
+**Application Logic**
+    is what provides and coordinates the operation of the business logic.
+
+
+Subtypes of Business Rules
+--------------------------
+
+In "Clean Architecture," Robert Martin divides Business Rules into two types:
+
+- Application-specific Business Rules
+- Application-independent Business Rules
+
+    Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
+
+    \- "Clean Architecture" by Robert Martin
+
+Chapters 16, 20 and 22 of Clean Architecture explain in detail the types of Business Rules.
+Although, Robert Martin allocate the separate category UseCase (Interactor) classes for Application-specific Business Rules, in practice, this level is often rounded to Application Logic level.
+For example, Martin Fowler and Randy Stafford divide Business Logic into two types - Domain Logic and Application Logic:
+
+    Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing **business logic**.
+    Many designers, including me, like to divide "**business logic**" into two kinds: "domain logic," having to
+    do purely with the problem domain (such as strategies for calculating revenue recognition on a contract), and
+    "application logic," having to do with application responsibilities [Cockburn UC] (such as notifying contract
+    administrators, and integrated applications, of revenue recognition calculations). Application logic is
+    sometimes referred to as "workflow logic," although different people have different interpretations of
+    "workflow."
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, Randy Stafford
+
+In some places, he is inclined to refer "Business Rules" to Domain Logic:
+
+    The problem came with domain logic: business rules, validations, calculations, and the like.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
+
+And even he admits the presence of a certain vagueness:
+
+    Then there's the matter of what comes under the term "business logic."
+    I find this a curious term because there are few things that are less logical than business logic.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
 
 Purpose of Service Layer
@@ -54,61 +185,7 @@ Traditionally `Service Layer`_ is an Application layer logic.
 This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
 This means that the objects of the Domain Layer should not be aware of the Service Layer.
 
-Note that Eric Evans understands the logic of the Domain Layer under the term "business rules":
-
-    User Interface (or Presentation Layer)
-        Responsible for showing information to the user and interpreting the user's
-        commands. The external actor might sometimes be another computer
-        system rather than a human user.
-    Application Layer
-        Defines the jobs the software is supposed to do and directs the expressive
-        domain objects to work out problems. The tasks this layer is responsible
-        for are meaningful to the business or necessary for interaction with the
-        application layers of other systems.
-        This layer is kept thin. It **does not contain business rules** or knowledge, but
-        only coordinates tasks and delegates work to collaborations of domain
-        objects in the next layer down. It does not have state reflecting the
-        business situation, but it can have state that reflects the progress of a task
-        for the user or the program.
-    Domain Layer (or Model Layer)
-        Responsible for representing concepts of the business, information about
-        the **business situation, and business rules**. State that reflects the business
-        situation is controlled and used here, even though the technical details of
-        storing it are delegated to the infrastructure. This layer is the heart of
-        business software.
-    Infrastructure Layer
-        Provides generic technical capabilities that support the higher layers:
-        message sending for the application, persistence for the domain, drawing
-        widgets for the UI, and so on. The infrastructure layer may also support
-        the pattern of interactions between the four layers through an
-        architectural framework.
-
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
-
-While Martin Fowler understands by the term "business logic" not only the logic of the Domain Layer:
-
-    Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing **business logic**.
-    Many designers, including me, like to divide "**business logic**" into two kinds: "domain logic," having to
-    do purely with the problem domain (such as strategies for calculating revenue recognition on a contract), and
-    "application logic," having to do with application responsibilities [Cockburn UC] (such as notifying contract
-    administrators, and integrated applications, of revenue recognition calculations). Application logic is
-    sometimes referred to as "workflow logic," although different people have different interpretations of
-    "workflow."
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-We will understand by the term "business rules" only the logic of the Domain Layer, especially since Martin Fowler indirectly indicates this:
-
-    The problem came with domain logic: business rules, validations, calculations, and
-    the like.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-..
-
-    Then there's the matter of what comes under the term "business logic." I find this a curious term because there
-    are few things that are less logical than business logic.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-Moreover, Eric Evans clearly divides the Services into three levels of logic:
+Eric Evans divides the Services into three levels of logic:
 
     Partitioning Services into Layers
 

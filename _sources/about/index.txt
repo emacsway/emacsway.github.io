@@ -55,11 +55,10 @@ Articles
 
 Articles in English:
 
-- ":doc:`../en/javascript-and-repository-pattern`"
-- ":doc:`../en/django-framework`"
-- ":doc:`../en/service-layer`"
-- ":doc:`../en/cache-dependencies`"
 - ":doc:`../en/how-to-quickly-develop-high-quality-code`"
+- ":doc:`../en/service-layer`"
+- ":doc:`../en/django-framework`"
+- ":doc:`../en/cache-dependencies`"
 - ":doc:`../en/storm-orm`"
 - :ref:`... all articles in English >> <language-en>`
 
@@ -67,9 +66,8 @@ Articles in Russian:
 
 - ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
 - ":doc:`../ru/tdd`"
-- ":doc:`../ru/javascript-and-repository-pattern`"
-- ":doc:`../ru/django-framework`"
 - ":doc:`../ru/service-layer`"
+- ":doc:`../ru/django-framework`"
 - ":doc:`../ru/cache-dependencies`"
 - ":doc:`../ru/storm-orm`"
 - :ref:`... all articles in Russian >> <language-ru>`

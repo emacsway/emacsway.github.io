@@ -154,7 +154,7 @@ You can solve this problem technically, but usually it&#8217;s enough just to fo
 This pattern mixes business logic and data access logic in one class.
 Unfortunately, this simplicity is appropriate only in simple cases.
 In a more serious application, there are more problems than advantages.</p>
-<p>Since Django does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> layer, it would be desirable to hide the implementation of access to the data source by the Service Layer, see the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.
+<p>Since Django does not use the <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a> layer, it would be desirable to hide the implementation of access to the data source by the Service Layer, see the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer and Application Logic</span></a>&#8221;.
 This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models, and you have to replace Django ORM with third-party tools or a bare implementation of <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a> pattern (we will return to this issue a little later).
 In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.</p>
 <p>In the article &#8220;<a class="reference external" href="https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9">Clean Architecture in Django</a>&#8221; you can find an example of using the Repository pattern to hide the data source for Django-application.</p>
@@ -188,7 +188,7 @@ Unskilful use of transactions can lead to the loss of parallel changes, and skil
 <div class="section" id="service-layer-and-django-db-models-manager">
 <h2><a class="toc-backref" href="#id19">Service Layer and django.db.models.Manager</a><a class="headerlink" href="#service-layer-and-django-db-models-manager" title="Permalink to this headline">¶</a></h2>
 <p>A common mistake is using the django.db.models.Manager class as a Service Layer.
-This question was considered in detail in the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer</span></a>&#8221;.</p>
+This question was considered in detail in the article &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Design of Service Layer and Application Logic</span></a>&#8221;.</p>
 </div>
 <div class="section" id="composite-foreign-keys-and-django-models">
 <h2><a class="toc-backref" href="#id20">Composite foreign keys and Django Models</a><a class="headerlink" href="#composite-foreign-keys-and-django-models" title="Permalink to this headline">¶</a></h2>
@@ -482,7 +482,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
   
   <a href="../../ru/service-layer/">
     <i class="fa fa-arrow-circle-left"></i>
-    Проектирование Сервисного Слоя
+    Проектирование Сервисного Слоя и Логики Приложения
   </a>
   
   </span>
@@ -673,7 +673,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/cqrs/">CQRS</a></li>
       
     
@@ -728,7 +728,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/event-sourcing/">Event Sourcing</a></li>
       
     
@@ -773,7 +773,7 @@ Among the alternatives, I advise you to pay attention to the web-framework that 
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/model/">Model</a></li>
       
     

@@ -1,6 +1,6 @@
 
-Проектирование Сервисного Слоя
-==============================
+Проектирование Сервисного Слоя и Логики Приложения
+==================================================
 
 .. post:: Jul 17, 2017
    :language: ru
@@ -114,7 +114,7 @@ Layered Architecture
 Подвиды Бизнес-Правил (Business Rules)
 --------------------------------------
 
-Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
+Robert Martin в "Clean Architecture" подразделяет Бизнес-Правила на два вида:
 
 - Application-specific Business Rules
 - Application-independent Business Rules
@@ -151,7 +151,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, Randy Stafford
 
-Там же он склонен относить "Business Rules" к Доменой Логике (Domain Logic):
+Местами он склонен относить "Business Rules" к Доменой Логике (Domain Logic):
 
     Проблемы возникли с усложнением доменой логики - бизнес-правил, алгоритмов вычислений, условий проверок и т.д.
 
@@ -159,7 +159,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
-И даже признает наличие определенной расплывчатости.
+И даже признает наличие определенной расплывчатости:
 
     Не стоит забывать и о том, что принято обозначать расплывчатым термином бизнес-логика.
     Я нахожу его забавным, поскольку могу припомнить только несколько вещей, менее логичных, нежели так называемая бизнес-логика.

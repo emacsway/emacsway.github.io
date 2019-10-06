@@ -55,7 +55,7 @@ Thus, you have a complete abstraction from the data source, whether it's REST-AP
     \- `Martin Fowler <https://youtu.be/VjKYO6DP3fo?t=17m59s>`__
 
 In addition, you have the opportunity to implement patterns `Identity Map`_ and `Unit of Work`_.
-The last one is very often in demand, since it allows you to save only changed objects of the finally formed aggregate of nested objects on the server, or roll back the state of local objects in case the data can not be saved (the user has changed his mind or entered invalid data).
+The last one is very often in demand, since it allows you to roll back the state of local objects in case the data can not be saved (the user has changed his mind or entered invalid data).
 
 
 Domain Model
@@ -167,7 +167,7 @@ Synchronous programming
 At the dawn of ORM, the Data Mappers retrieved from the database all related objects with a single query (see `example of implementation <https://bitbucket.org/emacsway/openorm/src/default/python/>`_).
 
 Domain-Driven Design approaches relationships more strictly, and considers relationships from the point of view of conceptual contour of an aggregate of nested objects [#fnddd]_.
-The object can be accessed either by reference (from the parent object to the embedded object) or through the Repository.
+The object can be accessed either by reference (from a parent object to an embedded object or to another aggregate root) or through the Repository (to an aggregate root).
 It is also important the direction of relationships and the principle of minimal sufficiency ("distillation of models" [#fnddd]_).
 
     In real life, there are lots of many-to-many associations, and a great number are naturally
@@ -209,20 +209,13 @@ Where unidirectional relationships are required, developers can easily apply bid
 Utilities for optimizing the selection of related objects have appeared, which implicitly preload all related objects, which significantly reduces the number of calls to the database.
 
 
-Rejecting relationships
------------------------
-
-It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relationships, and only Repository can have an exclusive right to access the object.
-Some respected by me friends adhere to this point of view.
-
-
 Asynchronous programming
 ------------------------
 
 The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relationships.
 Asynchronous access to each lazy relationship of each object significantly complicates the clarity of the program code and prevents optimization.
 
-This has increased the popularity of object-oriented database in asynchronous programming that allows to save aggregates entirely.
+This facilitated the popularity of object-oriented database in asynchronous programming that allows to save aggregates entirely.
 Increasingly, REST-frameworks began to be used to `transfer aggregates of nested objects to the client <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
 
     To do anything with an object, you have to hold a reference to it. How do you get that reference?
@@ -248,7 +241,7 @@ Increasingly, REST-frameworks began to be used to `transfer aggregates of nested
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
-The need for processing aggregates has intensified interest in functional programming, especially in combination with reactive programming paradigm.
+The need of processing nested data structures has intensified interest in functional programming, especially in combination with reactive programming paradigm.
 
 However, the solution to one problem creates another problem.
 
@@ -458,9 +451,9 @@ Although an aggregate is not compatible with Many-To-Many relationships and cros
 
 The principle of physical assignment of related objects is `implemented also by the library js-data <http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations>`__.
 
-In our library, we implemented both the ability to decompose aggregates of nested objects and the ability to compose aggregates from flat data of Repositories.
-Moreover, the aggregate always keeps the actual state.
-When you add, change, delete an object in the Repository, the changes automatically propagate to the structures of the corresponding aggregates.
+In our library, we implemented both the ability to decompose nested objects and the ability to compose dested objects from flat lists of data in Repositories.
+Moreover, selected collections always keeps the actual state.
+When you add, change, delete an object in the Repository, the changes automatically propagate to the selected collections.
 The library implements this behavior as in the paradigm of reactive programming, as well as in the paradigm of event-driven programming (optional).
 
 There is also the ability to create bidirectional relationships.
@@ -468,9 +461,6 @@ But, despite the fact that modern interpreters able to easily collect garbage wi
 
 Thus, the implementation of communications does not require any service data access logic for the object, that provides zero `Coupling`_ and absolutly clear domain models.
 This means that domain model can be instance of the "class" Object.
-
-I also took into account the point of view that the domain model should not be responsible for the relationships.
-Therefore, there is the possibility of easy access to any object through its Repository.
 
 
 Source code

@@ -154,7 +154,7 @@
 Этот паттерн смешивает в одном классе бизнес-логику и служебную логику доступа к данным.
 К сожалению, эта простота уместна только в простых случаях.
 В более-менее серьезном приложении от этого больше проблем, чем достоинств.</p>
-<p>Поскольку Django не использует слоя <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, было бы желательно сокрыть реализацию доступа к источнику данных посредством Сервисного Слоя, см. статью &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8221;.
+<p>Поскольку Django не использует слоя <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, было бы желательно сокрыть реализацию доступа к источнику данных посредством Сервисного Слоя, см. статью &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8221;.
 Это необходимо потому, что возможностей Django ORM не всегда достаточно для построения сложных запросов или для создания сложных моделей.
 Тогда приходится подменять Django ORM сторонними инструментами или реализацией в голом виде паттерна <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>, к этому вопросу мы еще вернемся.
 В любом случае, реализация доступа к данным должна быть сокрыта от приложения, и это одна из обязанностей Сервисного Слоя.</p>
@@ -187,7 +187,7 @@
 <div class="section" id="django-db-models-manager">
 <h2><a class="toc-backref" href="#id37">Сервисный слой и django.db.models.Manager</a><a class="headerlink" href="#django-db-models-manager" title="Permalink to this headline">¶</a></h2>
 <p>Широко распространенная ошибка - использование класса django.db.models.Manager в качестве сервисного слоя.
-Этот вопрос детально был рассмотрен в статье &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя</span></a>&#8221;.</p>
+Этот вопрос детально был рассмотрен в статье &#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8221;.</p>
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id38">Композитные внешние ключи и Django Models</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
@@ -676,7 +676,7 @@ Django REST framework позволяет Вам абстрагироваться
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/cqrs/">CQRS</a></li>
       
     
@@ -731,7 +731,7 @@ Django REST framework позволяет Вам абстрагироваться
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/event-sourcing/">Event Sourcing</a></li>
       
     
@@ -776,7 +776,7 @@ Django REST framework позволяет Вам абстрагироваться
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/model/">Model</a></li>
       
     

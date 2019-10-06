@@ -350,7 +350,26 @@ TDD - основной катализатор Clean Code
 Black Box or White Box?
 =======================
 
-Тесты по возможности должны быть черным ящиком, т.е. тестируем поведение, а не реализацию. Это позволяет безболезненно подменять реализацию при рефакторинге. Опускаться в глубь реализации нужно тогда, когда это требуется для сокращения комбинаций условий тестирования, например, класс использует несколько подключаемых стратегий, и нам проще протестировать стратегии по одной. Но при этом мы должны минимизировать зависимость от реализации. Эту тему раскрывает Бек в первой и второй серии сериала "`Is TDD dead? <https://martinfowler.com/articles/is-tdd-dead/>`__".
+Тесты по возможности должны быть черным ящиком, т.е. тестируем поведение, а не реализацию.
+Это позволяет безболезненно подменять реализацию при рефакторинге.
+Опускаться в глубь реализации нужно тогда, когда это требуется для сокращения комбинаций условий тестирования, например, класс использует несколько подключаемых стратегий, и нам проще протестировать стратегии по одной.
+Но при этом мы должны минимизировать зависимость от реализации.
+Нарушение этого принципа, в сочетании со стремлением к высокому уровню покрытия кода тестами, накладывает на код оковы и ставит крест на дальнейшей эволюции программы.
+Эту тему раскрывает Бек в первой и второй серии сериала "`Is TDD dead? <https://martinfowler.com/articles/is-tdd-dead/>`__".
+
+..
+
+    My personal practice - I mock almost nothing.
+    If I can't figure out how to test efficiently with the real stuff, I find another way of creating a feedback loop for myself.
+    I have to have feedback loop and the feedback loop has to be repeatable, but like I just don't go very far down the mock path.
+    I look at a code where you have mocks returning mocks returning mocks and my experience is if I use TDD I can refactor stuff.
+    And then I heard these stories people say well I use TDD and now I can't refactor anything and I feel like I couldn't understand that and I started looking at their tests well.
+    If you have mocks returning mocks returning mocks your test is completely coupled to the implementation, not the interface, but the exact implementation of some object you know three streets away.
+    Of course you can't change anything without breaking the test.
+    So that for me is too high a price to pay.
+    That's not a trade-off I'm willing to make just to get piecemeal development.
+
+    \- Kent Beck, "`Is TDD Dead? Part 1 at 21:10 <https://youtu.be/z9quxZsLcfo>`__
 
 ..
 
@@ -423,16 +442,20 @@ Black Box or White Box?
 
 ..
 
-    Взгляд на тестирование в рамках TDD прагматичен. В TDD тесты являются средством достижения цели. Целью является код, в корректности которого мы в достаточной степени уверены.
+    Взгляд на тестирование в рамках TDD прагматичен.
+    В TDD тесты являются средством достижения цели.
+    Целью является код, в корректности которого мы в достаточной степени уверены.
     Если знание особенностей реализации без какого-либо теста дает нам уверенность в том, что код работает правильно, мы не будем писать тест.
     Тестирование черного ящика (когда мы намеренно игнорируем реализацию) обладает рядом преимуществ.
     Если мы игнорируем код, мы наблюдаем другую систему ценностей: тесты сами по себе представляют для нас ценность.
     В некоторых ситуациях это вполне оправданный подход, однако он отличается от TDD.
 
     TDD's view of testing is pragmatic.
-    In TDD, the tests are a means to an end—the end being code in which we have great confidence. If our knowledge of the implementation gives us confidence even without a test, then we will not write that test.
+    In TDD, the tests are a means to an end—the end being code in which we have great confidence.
+    If our knowledge of the implementation gives us confidence even without a test, then we will not write that test.
     Black box testing, where we deliberately choose to ignore the implementation, has some advantages.
-    By ignoring the code, it demonstrates a different value system—the tests are valuable alone. It's an appropriate attitude to take in some circumstances, but that is different from TDD.
+    By ignoring the code, it demonstrates a different value system—the tests are valuable alone.
+    It's an appropriate attitude to take in some circumstances, but that is different from TDD.
 
     \- "Test-Driven Development By Example" [#fntdd]_ by Kent Beck
 
@@ -451,20 +474,6 @@ Black Box or White Box?
     I need to find a new way to separate the two levels of thinking while still providing rapid feedback between them.
 
     \- Kent Beck, "`RIP TDD <https://www.facebook.com/notes/kent-beck/rip-tdd/750840194948847/>`__"
-
-..
-
-    My personal practice - I mock almost nothing.
-    If I can't figure out how to test efficiently with the real stuff, I find another way of creating a feedback loop for myself.
-    I have to have feedback loop and the feedback loop has to be repeatable, but like I just don't go very far down the mock path.
-    I look at a code where you have mocks returning mocks returning mocks and my experience is if I use TDD I can refactor stuff.
-    And then I heard these stories people say well I use TDD and now I can't refactor anything and I feel like I couldn't understand that and I started looking at their tests well.
-    If you have mocks returning mocks returning mocks your test is completely coupled to the implementation, not the interface, but the exact implementation of some object you know three streets away.
-    Of course you can't change anything without breaking the test.
-    So that for me is too high a price to pay.
-    That's not a trade-off I'm willing to make just to get piecemeal development.
-
-    \- Kent Beck, "`Is TDD Dead? Part 1 at 21:10 <https://youtu.be/z9quxZsLcfo>`__
 
 ..
 
