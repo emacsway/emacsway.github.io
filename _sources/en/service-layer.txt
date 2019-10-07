@@ -255,8 +255,8 @@ What is Service?
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
-Classification of Services by layers of logic
-=============================================
+Service types  by layers of logic
+=================================
 
 Eric Evans divides Services into three layers of logic:
 
@@ -390,8 +390,45 @@ Infrastructure Service should be separate of other types of Service.
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
-Purpose of Service Layer
-========================
+Service types by collaboration
+==============================
+
+By collaboration of interaction the Services are divided into
+`Orchestration <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ Service ("request/response", i.e. the service is aware of the interface of other Services) and `Choreography <https://en.wikipedia.org/wiki/Service_choreography>`__ Service (Event-Driven, т.е. loosely coupled) [#fnbm]_.
+Them are two idiomatic styles of collaboration.
+The main drawback of the first one is a high awareness of the interface of other Services, i.e. High coupling, which reduces its reuse.
+The last one is a variation of the Command pattern, and is used in CQRS applications (reducers in Redux are a good example).
+
+
+Orchestration Service
+---------------------
+
+Orchestration Service is known as Service Layer and is cosidered in more detail below.
+
+
+Choreography Service
+---------------------
+
+There is an interesting article "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan, cited by Martin Fowler in his article "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__".
+
+And this article has an interesting point.
+
+    The reason you don’t see this layer explicitly represented in CQRS is that it isn’t really there...
+
+    \- "Clarified CQRS" by Udi Dahan
+
+In fact, a command handler is a Service, but an event-driven one that follows a given interface.
+It should contain Application Logic (not Business Logic).
+
+    Our command processing objects in the various autonomous components actually make up our service layer.
+
+    \- "Clarified CQRS" by Udi Dahan
+
+Choreography Services can only be at Application Logic, even if it is subscribed to a Domain Event.
+
+
+Destination of Service Layer
+============================
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
