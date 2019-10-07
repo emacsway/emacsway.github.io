@@ -60,8 +60,8 @@ But what does the term Business itself mean?
 Misunderstanding of this term often leads to significant design problems.
 
 
-What Business Logic is about?
------------------------------
+What is Business Logic?
+-----------------------
 
 The most authoritative explanation of the term `Business <http://wiki.c2.com/?CategoryBusiness>`__ can be found, as usual, on the Ward Cunningham website:
 
@@ -198,8 +198,8 @@ Understanding the common features of the methods of managing the Application Log
 This topic is covered in part in Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin, and in section "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
 
 
-What is Service about?
-======================
+What is Service?
+================
 
     SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.
 
