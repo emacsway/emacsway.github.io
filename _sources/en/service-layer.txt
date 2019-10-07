@@ -145,149 +145,65 @@ And even he admits the presence of a certain vagueness:
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
 
-Purpose of Service Layer
-========================
+Why is separation of Business Rules from Application Logic so important?
+------------------------------------------------------------------------
 
-    Defines an application's boundary with a layer of services that establishes a set of available
-    operations and coordinates the application's response in each operation.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+Since the purpose of creating an application is precisely the implementation of Business Rules, it is important to ensure their portability and to separate them from the Application Logic.
+These two different kinds of rules will change  at different times, at different rates, and for different reasons - so they should be separated so that they can be independently changed [#fncarch]_ .
+Grady Booch said that "Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change [#fncarch]_ ."
+
+
+Ways to Organize Application Logic
+==================================
+
+Four ways to organize Application Logic are widespread:
+
+1. Orchestration Service ("request/response", i.e. the service is aware of the interface of other services) aka Service Layer.
+
+2. Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is and used commonly in CQRS applications.
+
+3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ and `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (which are also kinds of Command pattern).
 
 ..
+
+    "A Front Controller handles all calls for a Web site, and is usually structured in two parts: a Web handler and a command hierarchy."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+..
+
+    "For both the domain commands and the view, the application controller needs a way to store something it can invoke.
+    A Command [Gang of Four] is a good choice, since it allows it to easily get hold of and run a block of code."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+4. `Use Case <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__, which also is a kind of Command pattern.
+At 15:50 Robert C. Martin points to a `parallel between Use Case and Command pattern <https://youtu.be/Nsjsiz2A9mg?t=15m45s>`__.
+
+In fact, even `Method Object <https://refactoring.com/catalog/replaceFunctionWithCommand.html>`__ is a derivative of Command pattern.
+
+Use Case is necessary because there is Application-specific Business Logic which does not make sense outside the context of the application.
+It ensures that these application-specific Business Rules are independent of the Application Logic using inverse control (IoC).
+
+If the Use Case did not contain Business Logic, then there would be no sense in separating it from Page Controller, otherwise the application would try to abstract itself from itself.
+
+As you can see, varieties of the Command pattern are widely used to organize the Application Logic.
+
+The listed methods organize, first of all, Application Logic, and only then - Business Logic, which is not obligatory for them, except for Use Case, because otherwise it would have no reason to exist.
+
+With proper organization of the Business Logic, and high quality of ORM (if used, of course), the dependence of the Business Logic of the application will be minimal.
+The main difficulty of any ORM is to provide access to related objects without mixing Application Logic (and data access logic) into Domain Models, this topic we will discuss in one of the next posts.
+
+Understanding the common features of the methods of managing the Application Logic allows us to design more flexible applications, and, as a result, more painlessly change the architectural style, for example, from Layered to Event-Driven.
+This topic is covered in part in Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin, and in section "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
+
+
+What is Service about?
+======================
 
     SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
-..
-
-    The benefit of Service Layer is that it defines a common set of application operations available to many kinds
-    of clients and it coordinates an application's response in each operation. The response may involve application
-    logic that needs to be transacted atomically across multiple transactional resources. Thus, in an application
-    with more than one kind of client of its business logic, and complex responses in its use cases involving
-    multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
-    transactions, even in an undistributed architecture.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-..
-
-    A common approach in handling domain logic is to split the domain layer in two. A Service Layer (133) is
-    placed over an underlying Domain Model (116) or Table Module (125). Usually you only get this with a
-    Domain Model (116) or Table Module (125) since a domain layer that uses only Transaction Script (110) isn't
-    complex enough to warrant a separate layer. The presentation logic interacts with the domain purely through
-    the Service Layer (133), which acts as an API for the application.
-
-    As well as providing a clear API, the Service Layer (133) is also a good spot to place such things as
-    transaction control and security. This gives you a simple model of taking each method in the Service Layer
-    (133) and describing its transactional and security characteristics. A separate properties file is a common
-    choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-Traditionally `Service Layer`_ is an Application layer logic.
-This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
-This means that the objects of the Domain Layer should not be aware of the Service Layer.
-
-Eric Evans divides the Services into three levels of logic:
-
-    Partitioning Services into Layers
-
-    Application
-        Funds Transfer App Service
-
-        - Digests input (such as an XML request).
-        - Sends message to domain service for fulfillment.
-        - Listens for confirmation.
-        - Decides to send notification using infrastructure service.
-    Domain
-        Funds Transfer Domain Service
-
-        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
-        - Supplies confirmation of result (transfer allowed or not, and so on).
-    Infrastructure Send Notification Service
-        Sends e-mails, letters, and other communications as directed by the application.
-
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
-
-..
-
-    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
-    Domain and application SERVICES collaborate with these infrastructure SERVICES.
-    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
-    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
-
-    It can be harder to distinguish application SERVICES from domain SERVICES.
-    The application layer is responsible for ordering the notification.
-    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
-    That banking application could be responsible for funds transfers.
-    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
-    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
-    Technical SERVICES should lack any business meaning at all.
-
-    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
-    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
-    Here we encounter a very fine line between the domain layer and the application layer.
-    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
-    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
-
-    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
-    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
-    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
-
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
-
-In more detail, the topic of the Domain Services and the reasons for their existence are revealed by Vaughn Vernon:
-
-    Further, don’t confuse a Domain Service with an Application Service.
-    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
-    If you are confused about the difference, compare with Application.
-    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
-    You’ll see that demonstrated later in the chapter.
-    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
-
-    ...
-
-    You can use a Domain Service to
-
-    - Perform a significant business process
-    - Transform a domain object from one composition to another
-    - Calculate a Value requiring input from more than one domain object
-
-    ("Implementing Domain-Driven Design" by Vaughn Vernon)
-
-In addition to the above, the Service Layer can carry the following responsibilities:
-
-- To combine the parts of an atomic operation (for example, application should save the data to several storages, e.g. database, redis, file system within a single business transaction or should roll back all).
-- To hide the data source (here it duplicates the responsibility of the pattern `Repository`_) and can be omitted if there are no other reasons.
-- To aggregate the application level operations that are being reused by several clients (for example, some part of application-level logic is used in several different controllers).
-- As basis for implementation of `Remote Facade`_.
-- When you have a large controller method, you have to do decomposition. Thus, you apply `Extract Method`_ to separate each responsibility into own method. When you did it, you found that the class lost its focus. The quantity of methods has been increased that means the `Cohesion`_ (i.e. coefficient of sharing the class' properties by the class' methods) has been reduced. To restore the `Cohesion`_ you have to extraсt these methods into separate `Method Object <Replace Method with Method Object_>`__, which can be used as a Service Layer.
-- The Service Layer can be used as an aggregator for queries if it is over the `Repository`_ pattern and uses the `Query object`_ pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the Service Layer was created for client service. Therefore, it's a responsibility of the Service Layer.
-
-In other cases, the logic of the Service Layer can be placed directly at the application level (usually a controller).
-
-    The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
-    application's business logic will only have one kind of client say, a user interface and its use case responses
-    don't involve multiple transactional resources. In this case your Page Controllers can manually control
-    transactions and coordinate whatever response is required, perhaps delegating directly to the Data Source
-    layer.
-    But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
-    pays to design in a Service Layer from the beginning.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-However, the widely held view that access to the model should always be made through the Service Layer:
-
-    My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
-    approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
-    know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
-    me on this one.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-..
-
-    The idea of splitting a services layer from a domain layer is based on a separation of workflow logic from
-    pure domain logic. The services layer typically includes logic that's particular to a single use case and also
-    some communication with other infrastructures, such as messaging. Whether to have separate services and
-    domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
-    designers I respect disagree with me on this.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 ..
 
@@ -335,7 +251,226 @@ However, the widely held view that access to the model should always be made thr
     standalone interface declared as a SERVICE . Define the interface in terms of the
     language of the model and make sure the operation name is part of the UBIQUITOUS
     LANGUAGE . Make the SERVICE stateless.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Classification of Services by layers of logic
+=============================================
+
+Eric Evans divides Services into three layers of logic:
+
+    Partitioning Services into Layers
+
+    Application
+        Funds Transfer App Service
+
+        - Digests input (such as an XML request).
+        - Sends message to domain service for fulfillment.
+        - Listens for confirmation.
+        - Decides to send notification using infrastructure service.
+    Domain
+        Funds Transfer Domain Service
+
+        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
+        - Supplies confirmation of result (transfer allowed or not, and so on).
+    Infrastructure Send Notification Service
+        Sends e-mails, letters, and other communications as directed by the application.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
+    Domain and application SERVICES collaborate with these infrastructure SERVICES.
+    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
+    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
+
+    It can be harder to distinguish application SERVICES from domain SERVICES.
+    The application layer is responsible for ordering the notification.
+    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
+    That banking application could be responsible for funds transfers.
+    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
+    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
+    Technical SERVICES should lack any business meaning at all.
+
+    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
+    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
+    Here we encounter a very fine line between the domain layer and the application layer.
+    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
+    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
+
+    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
+    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
+    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Domain Models (116) are preferable to Transaction Scripts (110) for avoiding domain logic duplication and
+    for managing complexity using classical design patterns.
+    But putting application logic into pure domain object classes has a couple of undesirable consequences.
+    First, domain object classes are less reusable across applications if they implement application-specific logic and depend on application-specific packages.
+    Second, commingling both kinds of logic in the same classes makes it harder to reimplement the application
+    logic in, say, a workflow tool if that should ever become desirable.
+    For these reasons Service Layer factors each kind of business logic into a separate layer, yielding the usual benefits of layering and rendering the pure domain object classes more reusable from application to application.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+
+Domain Service
+--------------
+
+Higher-level policies belong to Domain Logic, so we start with it.
+Fortunately, this is not the most numerous type of Services.
+
+In detail, the topic of Domain Services and the reasons for their existence  are revealed Vaughn Vernon:
+
+    Further, don’t confuse a Domain Service with an Application Service.
+    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
+    If you are confused about the difference, compare with Application.
+    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
+    You’ll see that demonstrated later in the chapter.
+    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
+
+    ...
+
+    You can use a Domain Service to
+
+    - Perform a significant business process
+    - Transform a domain object from one composition to another
+    - Calculate a Value requiring input from more than one domain object
+
+    \- "Implementing Domain-Driven Design" by Vaughn Vernon
+
+
+Application Service
+-------------------
+
+This is the most numerous type of Services.
+Application Services are also known as Service Layer.
+
+
+Infrastructure Service
+----------------------
+
+Infrastructure Service should be separate of other types of Service.
+
+    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
+    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
+    technical capabilities are most often offered as SERVICES . For example, if an application needs to
+    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
+    application layer elements can request the transmission of the message. This decoupling gives
+    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
+    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
+    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
+    how.
+
+    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
+    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
+    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
+
+    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
+    technical components are designed to directly support the basic functions of other layers (such as
+    providing an abstract base class for all domain objects) and provide the mechanisms for them to
+    relate (such as implementations of MVC and the like). Such an "architectural framework" has
+    much more impact on the design of the other parts of the program.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
+    message sending for the application, persistence for the domain, drawing
+    widgets for the UI, and so on. The infrastructure layer may also support
+    the pattern of interactions between the four layers through an
+    architectural framework.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Purpose of Service Layer
+========================
+
+    Defines an application's boundary with a layer of services that establishes a set of available
+    operations and coordinates the application's response in each operation.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    The benefit of Service Layer is that it defines a common set of application operations available to many kinds
+    of clients and it coordinates an application's response in each operation. The response may involve application
+    logic that needs to be transacted atomically across multiple transactional resources. Thus, in an application
+    with more than one kind of client of its business logic, and complex responses in its use cases involving
+    multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
+    transactions, even in an undistributed architecture.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    A common approach in handling domain logic is to split the domain layer in two. A Service Layer (133) is
+    placed over an underlying Domain Model (116) or Table Module (125). Usually you only get this with a
+    Domain Model (116) or Table Module (125) since a domain layer that uses only Transaction Script (110) isn't
+    complex enough to warrant a separate layer. The presentation logic interacts with the domain purely through
+    the Service Layer (133), which acts as an API for the application.
+
+    As well as providing a clear API, the Service Layer (133) is also a good spot to place such things as
+    transaction control and security. This gives you a simple model of taking each method in the Service Layer
+    (133) and describing its transactional and security characteristics. A separate properties file is a common
+    choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+Traditionally `Service Layer`_ is an Application layer logic.
+This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
+This means that the objects of the Domain Layer should not be aware of the Service Layer.
+
+In addition to the above, the Service Layer can carry the following responsibilities:
+
+- To combine the parts of an atomic operation (for example, application should save the data to several storages, e.g. database, redis, file system within a single business transaction or should roll back all).
+- To hide the data source (here it duplicates the responsibility of the pattern `Repository`_) and can be omitted if there are no other reasons.
+- To aggregate the application level operations that are being reused by several clients (for example, some part of application-level logic is used in several different controllers).
+- As basis for implementation of `Remote Facade`_.
+- When you have a large controller method, you have to do decomposition. Thus, you apply `Extract Method`_ to separate each responsibility into own method. When you did it, you found that the class lost its focus. The quantity of methods has been increased that means the `Cohesion`_ (i.e. coefficient of sharing the class' properties by the class' methods) has been reduced. To restore the `Cohesion`_ you have to extraсt these methods into separate `Method Object <Replace Method with Method Object_>`__, which can be used as a Service Layer.
+- The Service Layer can be used as an aggregator for queries if it is over the `Repository`_ pattern and uses the `Query object`_ pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the Service Layer was created for client service. Therefore, it's a responsibility of the Service Layer.
+
+In other cases, the logic of the Service Layer can be placed directly at the application level (usually a controller).
+
+
+When not to use Service Layer?
+==============================
+
+    The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
+    application's business logic will only have one kind of client say, a user interface and its use case responses
+    don't involve multiple transactional resources. In this case your Page Controllers can manually control
+    transactions and coordinate whatever response is required, perhaps delegating directly to the Data Source
+    layer.
+    But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
+    pays to design in a Service Layer from the beginning.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+However, the widely held view that access to the model should always be made through the Service Layer:
+
+    My preference is thus to have the thinnest Service Layer (133) you can, if you even need one. My usual
+    approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
+    know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
+    me on this one.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    The idea of splitting a services layer from a domain layer is based on a separation of workflow logic from
+    pure domain logic. The services layer typically includes logic that's particular to a single use case and also
+    some communication with other infrastructures, such as messaging. Whether to have separate services and
+    domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
+    designers I respect disagree with me on this.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Service is not a wrapper for Data Mapper
@@ -349,7 +484,8 @@ Therefore, Service's methods usually contain name of the returned Domain Model a
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Implementation of Service Layer
@@ -406,7 +542,8 @@ The class django.db.models.Manager corresponds most closely to the class Finder 
     It's often hard to tell the difference between a Row Data Gateway and an Active Record (160). The crux of the
     matter is whether there's any domain logic present; if there is, you have an Active Record (160). A Row Data
     Gateway should contain only database access logic and no domain logic.
-    (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", "Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in the form similar to the `Query Object`_ pattern.
 Like the Repository pattern, the model class (`ActiveRecord`_) limits its interface using the Query Object interface.
@@ -430,7 +567,8 @@ This will allow painless ORM replace if necessary.
     application's use case responsibilities. Second, encapsulating application logic in a "higher" layer
     dedicated to that purpose (which the data source layer isn't) facilitates changing the implementation of that
     layer perhaps to use a workflow engine.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Taming of swollen models
@@ -467,7 +605,8 @@ Martin Fowler says:
     defining a subject area of related logic. Each such class forms an application "service," and it's common for
     service type names to end with "Service." A Service Layer is comprised of these application service classes,
     which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
 
@@ -476,7 +615,8 @@ Eric Evans expresses a similar idea:
     We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
     What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
     But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
 Problems of Django annotation
@@ -486,42 +626,6 @@ I often observed the problem when a new field was added to the Django Model, and
 Also, the implementation of annotations by Django ORM makes it impossible to use the pattern `Identity Map`_.
 Storm ORM / SQLAlchemy implement annotations more successfully.
 If you still had to work with Django Model, refrain from using Django annotation mechanism in favor of bare pattern `DataMapper`_.
-
-
-Services of infrastructure layer
-================================
-
-You have to distinguish the Service Layer from infrastructure layer services.
-
-    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
-    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
-    technical capabilities are most often offered as SERVICES . For example, if an application needs to
-    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
-    application layer elements can request the transmission of the message. This decoupling gives
-    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
-    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
-    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
-    how.
-
-    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
-    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
-    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
-
-    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
-    technical components are designed to directly support the basic functions of other layers (such as
-    providing an abstract base class for all domain objects) and provide the mechanisms for them to
-    relate (such as implementations of MVC and the like). Such an "architectural framework" has
-    much more impact on the design of the other parts of the program.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
-
-..
-
-    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
-    message sending for the application, persistence for the domain, drawing
-    widgets for the UI, and so on. The infrastructure layer may also support
-    the pattern of interactions between the four layers through an
-    architectural framework.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 
 Peculiar properties of Service Layer on client side
@@ -566,10 +670,13 @@ Further Reading
 .. rubric:: Footnotes
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
 .. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
-
+.. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+.. [#fnnetmsa] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
 .. update:: 28 May, 2018
 
