@@ -8,7 +8,7 @@ Design of Service Layer and Application Logic
    :category:
    :author: Ivan Zakrevsky
 
-.. ru-revision: 2851df7bffc2
+.. ru-revision: f85d6d2f9c6b
 
 This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
@@ -16,8 +16,8 @@ This article is about managing Application Logic and designing the `Service Laye
 .. contents:: Contents
 
 
-Types of logic
-==============
+Layers of logic
+===============
 
 Before digging deep into it, it would be nice to understand what Application Logic is and how it differs from Business Logic.
 
@@ -715,7 +715,7 @@ Further Reading
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 .. [#fnnetmsa] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
-.. update:: 28 May, 2018
+.. update:: 08 Oct, 2019
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
