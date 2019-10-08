@@ -8,7 +8,7 @@ Design of Service Layer and Application Logic
    :category:
    :author: Ivan Zakrevsky
 
-.. ru-revision: 01fe827ef705
+.. ru-revision: e23b8c164e4d
 
 This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
@@ -474,15 +474,15 @@ Service types by state
 ======================
 
 
-Stateless Services
-------------------
+Stateless Service
+-----------------
 
 Typically, most Services are stateless.
 They are well known, and there is nothing to add.
 
 
-Statefull Services
-------------------
+Statefull Service
+-----------------
 
 The UseCases/Interactors [#fncarch]_ classes are a variation of the Command pattern, and can be considered as a Statefull Service.
 
@@ -511,44 +511,22 @@ And Randy Stafford with Martin Fowler too:
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, Randy Stafford
 
-..
-    It is often possible to find models with a large number of methods (I met several hundred).
-    If you analyze such models, you can often find outside responsibilities in the class.
-    As you know, the size of the class is measured by the amount of its responsibilities.
-    All responsibilities that are not related to the Domain Layer should be moved to the Service Layer.
-    But what to do with other methods?
+Notice, he used the term "`Domain Model`_".
+These guys are the last of those who can confuse "`Domain Model`_" and "`DataMapper`_", especially with so many editors and reviewers.
+A client expects an interface from the domain model that it does not implement and should not implement for some reason (usually the Single Responsibility Principle).
+On the other hand, the client can not implement this behavior itself, as this would lead to "G14: Feature Envy" [#fnccode]_.
+There is an Adapter (aka Wrapper) pattern for interface alignment, see "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_.
+Statefull Service differs from the usual Adapter pattern only in that it contains lower-level logic, i.e. Application Logic, rather than Business Logic of Domain Model.
 
-    Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
-    You can not assign them to the responsibility of the client, as this would lead to "G14: Feature Envy" [#fnccode]_.
+This approach reminds me of "Cross-Cutting Concerns" [#fnccode]_, with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object (delegate), while domain facade complements it.
+When a wrapper implements the interface of the original object, it is usually called Aspect or Decorator.
+Often in such cases the term Proxy is used, but, in fact, the Proxy pattern has a slightly different purpose.
+This approach is often used to provide the Domain Model with the logic of access to related objects, while keeping the Domain Model completely "clean", i.e. separated from the behavior of lower level logic.
 
-    In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
-    For interface equalization we have to use the pattern Adapter (aka Wrapper), see "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_ for more info.
-
-    In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
-    Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.
-
-    Is it possible to use the Adapter pattern in this case?
-
-    Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
-
-..
-    Обратите внимание на использование термина "`Domain Model`_".
-    Эти ребята - последние из числа тех, кто может спутать "`Domain Model`_" и "`DataMapper`_", особенно, при таком количестве редакторов и рецензентов.
-    Т.е. клиент ожидает от доменной модели интерфейс, который она, по какой-то причине (обычно это Single Responsibility Principle), не реализует и не должна реализовать.
-    С другой стороны, клиент не может реализовать это поведение сам, так как это привело бы к появлению "G14: Feature Envy" [#fnccode]_.
-    Для выравнивания интерфейсов служит паттерн Adapter (aka Wrapper), см. "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_.
-    Отличается Statefull Services от обычного Adapter только тем, что он содержит логику более низкого уровня, т.е. Логику Приложения (Application Logic), нежели Доменная Модель.
-
-    Этот подход сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
-    Когда объект-обертка реализует интерфейс оригинального объекта, то его обычно называют Aspect или Decorator.
-    Часто в таких случаях можно услышать термин Proxy, но, на самом деле паттерн Proxy имеет немного другое назначение.
-    Такой подход часто используется для того, чтобы добавить в Доменную Модель логику доступа к связанным объектам, при этом оставляя доменные модели совершенно "чистыми" (т.е. без примесей поведения другого уровня логики).
-
-    При работе с унаследованным кодом мне доводилось встречать разбухшие Доменные Модели с огромным числом методов (я встречал до нескольких сотен методов).
-    При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
-    Statefull Сервисы и паттерн Adapter - хорошая альтернатива для того, чтобы вынести из модели несвойственные ей обязанности, и заставить похудеть разбухшие модели.
-
-.. TODO: complete the chapter
+When I was working with legacy code, I saw swollen Domain Models with a huge number of methods (I met up to several hundred methods).
+If you analyze such models, you can often find extrinsical responsibilities in the class.
+As you know, size of a class is measured by amount of its responsibilities.
+Statefull Service and Adapter pattern are a good alternative to remove extrinsical responsibilities from a model and make swollen models lose weight.
 
 
 Destination of Service Layer
