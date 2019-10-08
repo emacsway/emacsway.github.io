@@ -273,10 +273,10 @@ Use Case обязан своим существованием именно на�
     domain objects do.
 
     When a significant process or transformation in the domain is not a natural
-    responsibility of an ENTITY or VALUE OBJECT , add an operation to the model as a
-    standalone interface declared as a SERVICE . Define the interface in terms of the
+    responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as a
+    standalone interface declared as a SERVICE. Define the interface in terms of the
     language of the model and make sure the operation name is part of the UBIQUITOUS
-    LANGUAGE . Make the SERVICE stateless.
+    LANGUAGE. Make the SERVICE stateless.
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
@@ -499,7 +499,7 @@ Eric Evans разделяет Сервисы на три уровня логик
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
 
 В приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования, и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний [#fnddd]_.
-Также такой код обретает признаки "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_, что сильно затруднят исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
+Также такой код обретает признаки "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_, что сильно затрудняет исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
 В конечном итоге это приводит к стремительному росту стоимости изменения программы.
 
 Должен заметить, что Udi Dahan в своей статье допускает и использование `Transaction Script <https://martinfowler.com/eaaCatalog/transactionScript.html>`__ для организации бизнес-логики.
@@ -521,14 +521,14 @@ Transaction Script может быть уместным при сочетани�
 Stateless Services
 ------------------
 
-Как правило большинство сервисов являются stateless, т.е. не имеют состояния.
+Как правило, большинство сервисов являются stateless, т.е. не имеют состояния.
 Они хорошо изучены, и добавить по ним нечего.
 
 
 Statefull Services
 ------------------
 
-Классы UseCases/Interactors [#fncarch]_ являются Statefull разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
+Классы UseCases/Interactors [#fncarch]_ являются разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
 
 Похожую идею выражает и Eric Evans:
 

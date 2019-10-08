@@ -345,10 +345,10 @@ accessible globally, and may even change that global information (that is, it ma
 effects). But the SERVICE does not hold state of its own that affects its own behavior, as most
 domain objects do.</p>
 <p>When a significant process or transformation in the domain is not a natural
-responsibility of an ENTITY or VALUE OBJECT , add an operation to the model as a
-standalone interface declared as a SERVICE . Define the interface in terms of the
+responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as a
+standalone interface declared as a SERVICE. Define the interface in terms of the
 language of the model and make sure the operation name is part of the UBIQUITOUS
-LANGUAGE . Make the SERVICE stateless.</p>
+LANGUAGE. Make the SERVICE stateless.</p>
 <p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id14">[4]</a></p>
 </div></blockquote>
 </div>
@@ -533,7 +533,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
 <p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</p>
 </div></blockquote>
 <p>В приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования, и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний <a class="footnote-reference" href="#fnddd" id="id27">[4]</a>.
-Также такой код обретает признаки &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id28">[6]</a> и &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id29">[6]</a>, что сильно затруднят исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
+Также такой код обретает признаки &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id28">[6]</a> и &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id29">[6]</a>, что сильно затрудняет исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
 В конечном итоге это приводит к стремительному росту стоимости изменения программы.</p>
 <p>Должен заметить, что Udi Dahan в своей статье допускает и использование <a class="reference external" href="https://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a> для организации бизнес-логики.
 В таком случае, выбор между Transaction Script и <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> подробно рассмотрен в &#8220;Patterns of Enterprise Application Architecture&#8221; by M. Fowler and others.
@@ -550,12 +550,12 @@ Transaction Script может быть уместным при сочетани�
 <h1><a class="toc-backref" href="#id82">Классификация Сервисов по состоянию</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="stateless-services">
 <h2><a class="toc-backref" href="#id83">Stateless Services</a><a class="headerlink" href="#stateless-services" title="Permalink to this headline">¶</a></h2>
-<p>Как правило большинство сервисов являются stateless, т.е. не имеют состояния.
+<p>Как правило, большинство сервисов являются stateless, т.е. не имеют состояния.
 Они хорошо изучены, и добавить по ним нечего.</p>
 </div>
 <div class="section" id="statefull-services">
 <h2><a class="toc-backref" href="#id84">Statefull Services</a><a class="headerlink" href="#statefull-services" title="Permalink to this headline">¶</a></h2>
-<p>Классы UseCases/Interactors <a class="footnote-reference" href="#fncarch" id="id32">[2]</a> являются Statefull разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.</p>
+<p>Классы UseCases/Interactors <a class="footnote-reference" href="#fncarch" id="id32">[2]</a> являются разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.</p>
 <p>Похожую идею выражает и Eric Evans:</p>
 <blockquote>
 <div><p>We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
