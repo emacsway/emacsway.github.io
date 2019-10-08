@@ -253,7 +253,7 @@ Grady Booch said that &#8220;Architecture represents the significant design deci
 <p>Four ways to organize Application Logic are widespread:</p>
 <ol class="arabic simple">
 <li>Orchestration Service (&#8220;request/response&#8221;, i.e. the service is aware of the interface of other services) aka Service Layer.</li>
-<li>Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is and used commonly in CQRS applications.</li>
+<li>Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).</li>
 <li><a class="reference external" href="https://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a> and <a class="reference external" href="https://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a> (which are also kinds of Command pattern).</li>
 </ol>
 <blockquote>
@@ -449,7 +449,7 @@ architectural framework.</p>
 <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Orchestration</a> Service (&#8220;request/response&#8221;, i.e. the service is aware of the interface of other Services) and <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Choreography</a> Service (Event-Driven, т.е. loosely coupled) <a class="footnote-reference" href="#fnbm" id="id16">[7]</a>.
 Them are two idiomatic styles of collaboration.
 The main drawback of the first one is a high awareness of the interface of other Services, i.e. High coupling, which reduces its reuse.
-The last one is a variation of the Command pattern, and is used in CQRS applications (reducers in Redux are a good example).</p>
+The last one is a variation of the Command pattern, and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).</p>
 <div class="section" id="orchestration-service">
 <h2><a class="toc-backref" href="#id52">Orchestration Service</a><a class="headerlink" href="#orchestration-service" title="Permalink to this headline">¶</a></h2>
 <p>Orchestration Service is known as Service Layer and is cosidered in more detail below.</p>

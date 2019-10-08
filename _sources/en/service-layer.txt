@@ -8,7 +8,7 @@ Design of Service Layer and Application Logic
    :category:
    :author: Ivan Zakrevsky
 
-.. ru-revision: f85d6d2f9c6b
+.. ru-revision: 1bf08ceefed2
 
 This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
@@ -160,7 +160,7 @@ Four ways to organize Application Logic are widespread:
 
 1. Orchestration Service ("request/response", i.e. the service is aware of the interface of other services) aka Service Layer.
 
-2. Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is and used commonly in CQRS applications.
+2. Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).
 
 3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ and `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (which are also kinds of Command pattern).
 
@@ -397,7 +397,7 @@ By collaboration of interaction the Services are divided into
 `Orchestration <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ Service ("request/response", i.e. the service is aware of the interface of other Services) and `Choreography <https://en.wikipedia.org/wiki/Service_choreography>`__ Service (Event-Driven, т.е. loosely coupled) [#fnbm]_.
 Them are two idiomatic styles of collaboration.
 The main drawback of the first one is a high awareness of the interface of other Services, i.e. High coupling, which reduces its reuse.
-The last one is a variation of the Command pattern, and is used in CQRS applications (reducers in Redux are a good example).
+The last one is a variation of the Command pattern, and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).
 
 
 Orchestration Service

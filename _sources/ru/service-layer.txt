@@ -186,7 +186,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
 
 1. Оркестровый Сервис ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов), он же - Сервисный Слой (Service Layer).
 
-2. Хореографический Сервис (Event-Driven, т.е. loosely coupled), который является разновидностью паттерна Command, и используется, как правило, в CQRS-приложениях.
+2. Хореографический Сервис (Event-Driven, т.е. loosely coupled), который является разновидностью паттерна Command, и используется, как правило, в Event-Driven Architecture (в частности, в CQRS и Event Sourcing приложениях, наглядный пример - reducer в Redux), и в DDD-приложениях (обработчик Domain/Integration Event).
 
 3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ и `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (которые тоже, по сути, является разновидностью паттерна Command).
 
@@ -436,7 +436,7 @@ Eric Evans разделяет Сервисы на три уровня логик
 По способу взаимодействия Сервисы разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. loosely coupled) [#fnbm]_.
 Их еще называют идиоматическими стилями взаимодействия.
 Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
-Последний же является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).
+Последний же является разновидностью паттерна Command, и используется, как правило, в Event-Driven Architecture (в частности, в CQRS и Event Sourcing приложениях, наглядный пример - reducer в Redux), и в DDD-приложениях (обработчик Domain/Integration Event).
 
 
 Оркестровые Сервисы

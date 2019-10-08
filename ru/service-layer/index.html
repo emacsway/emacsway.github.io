@@ -281,7 +281,7 @@ I find this a curious term because there are few things that are less logical th
 <p>Широко распространены четыре способа организации Логики Приложения (Application Logic):</p>
 <ol class="arabic simple">
 <li>Оркестровый Сервис (&#8220;request/response&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов), он же - Сервисный Слой (Service Layer).</li>
-<li>Хореографический Сервис (Event-Driven, т.е. loosely coupled), который является разновидностью паттерна Command, и используется, как правило, в CQRS-приложениях.</li>
+<li>Хореографический Сервис (Event-Driven, т.е. loosely coupled), который является разновидностью паттерна Command, и используется, как правило, в Event-Driven Architecture (в частности, в CQRS и Event Sourcing приложениях, наглядный пример - reducer в Redux), и в DDD-приложениях (обработчик Domain/Integration Event).</li>
 <li><a class="reference external" href="https://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a> и <a class="reference external" href="https://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a> (которые тоже, по сути, является разновидностью паттерна Command).</li>
 </ol>
 <blockquote>
@@ -489,7 +489,7 @@ architectural framework.</p>
 <p>По способу взаимодействия Сервисы разделяются на <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Оркестровые</a> (&#8220;request/response&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Хореографические</a> (Event-Driven, т.е. loosely coupled) <a class="footnote-reference" href="#fnbm" id="id23">[7]</a>.
 Их еще называют идиоматическими стилями взаимодействия.
 Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
-Последний же является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).</p>
+Последний же является разновидностью паттерна Command, и используется, как правило, в Event-Driven Architecture (в частности, в CQRS и Event Sourcing приложениях, наглядный пример - reducer в Redux), и в DDD-приложениях (обработчик Domain/Integration Event).</p>
 <div class="section" id="id24">
 <h2><a class="toc-backref" href="#id78">Оркестровые Сервисы</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
 <p>Оркестровые Сервисы являются представителями классического Сервисного Слоя, и подробнее рассматриваются ниже по тексту.</p>
