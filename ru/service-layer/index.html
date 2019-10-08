@@ -512,6 +512,7 @@ architectural framework.</p>
 <div class="section" id="id26">
 <h3><a class="toc-backref" href="#id80">Частые ошибки проектирования Хореографических Сервисов</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <p>Иногда, особенно у frontend-разработчиков, можно наблюдать как они проксируют Оркестровыми Сервисами обращения к Хореографическим Сервисам.
+Часто это происходит при использовании Redux/NgRx в Angular-приложении, в котором широко используются Сервисы.
 Имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой пытаться связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - помочь Логике Приложения скрыть их от самой же себя).</p>
 <blockquote>
 <div><p>Each command is independent of the other, so why should we allow the objects which handle them to depend on each other?</p>
