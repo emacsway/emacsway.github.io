@@ -8,7 +8,7 @@ Design of Service Layer and Application Logic
    :category:
    :author: Ivan Zakrevsky
 
-.. ru-revision: e23b8c164e4d
+.. ru-revision: ba2fc0f88c1b
 
 This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
@@ -532,8 +532,20 @@ Statefull Service and Adapter pattern are a good alternative to remove extrinsic
 Destination of Service Layer
 ============================
 
-    Defines an application's boundary with a layer of services that establishes a set of available
+    A Service Layer defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    Enterprise applications typically require different kinds of interfaces to the data they store and the logic they implement: data loaders, user interfaces, integration gateways, and others.
+    Despite their different purposes, these interfaces often need common interactions with the application to access and manipulate its data and invoke its business logic.
+    The interactions may be complex, involving transactions across multiple resources and the coordination of several responses to an action.
+    Encoding the logic of the interactions separately in each interface causes a lot of duplication.
+
+    A Service Layer defines an application's boundary and its set of available operations from the perspective of interfacing client layers.
+    It encapsulates the application's business logic, controlling transactions and coordinating responses in the implementation of its operations.
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 

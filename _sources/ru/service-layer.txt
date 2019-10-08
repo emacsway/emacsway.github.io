@@ -596,9 +596,9 @@ Statefull Сервисы и паттерн Adapter - хорошая альтер
 Назначение Сервисного Слоя
 ==========================
 
-    Слоя служб устанавливает множество доступных действий и координирует отклик приложения на каждое действие.
+    Слой служб устанавливает множество доступных действий и координирует отклик приложения на каждое действие.
 
-    Defines an application's boundary with a layer of services that establishes a set of available
+    A Service Layer defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
