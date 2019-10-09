@@ -39,7 +39,7 @@
 
         <meta http-equiv="Last-Modified" content="Tue, 08 Oct 2019 00:00:00 GMT" />
         
-            <meta name="description" content="This article is about managing Application Logic and designing the Service Layer, Use Case, CQRS, Event Sourcing, MVC, etc." />
+            <meta name="description" content="This article is about organizing Application Logic and designing the Service Layer, Use Case, CQRS, Event Sourcing, MVC, etc." />
         
         
             <meta property="og:image" content="../../_static/logo.jpg" />
@@ -87,7 +87,7 @@
             
   <div class="section" id="design-of-service-layer-and-application-logic">
 <h1><a class="toc-backref" href="#id44">Design of Service Layer and Application Logic</a><a class="headerlink" href="#design-of-service-layer-and-application-logic" title="Permalink to this headline">¶</a></h1>
-<p>This article is about managing Application Logic and designing the <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>, Use Case, CQRS, Event Sourcing, MVC, etc.</p>
+<p>This article is about organizing Application Logic and designing the <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>, Use Case, CQRS, Event Sourcing, MVC, etc.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
@@ -283,7 +283,7 @@ It ensures that these application-specific Business Rules are independent of the
 <p>The listed methods organize, first of all, Application Logic, and only then - Business Logic, which is not obligatory for them, except for Use Case, because otherwise it would have no reason to exist.</p>
 <p>With proper organization of the Business Logic, and high quality of ORM (if used, of course), the dependence of the Business Logic of the application will be minimal.
 The main difficulty of any ORM is to provide access to related objects without mixing Application Logic (and data access logic) into Domain Models, this topic we will discuss in one of the next posts.</p>
-<p>Understanding the common features of the methods of managing the Application Logic allows us to design more flexible applications, and, as a result, more painlessly change the architectural style, for example, from Layered to Event-Driven.
+<p>Understanding the common features of the methods of organizing Application Logic allows us to design more flexible applications, and, as a result, more painlessly change the architectural style, for example, from Layered to Event-Driven.
 This topic is covered in part in Chapter 16 &#8220;Independence&#8221; of &#8220;Clean Architecture&#8221; by Robert C. Martin, and in section &#8220;Premature Decomposition&#8221; of Chapter 3 &#8220;How to Model Services&#8221; of &#8220;Building Microservices&#8221; by Sam Newman.</p>
 </div>
 <div class="section" id="what-is-service">

@@ -10,7 +10,7 @@ Design of Service Layer and Application Logic
 
 .. ru-revision: ba2fc0f88c1b
 
-This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
+This article is about organizing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
 
 .. contents:: Contents
@@ -194,7 +194,7 @@ The listed methods organize, first of all, Application Logic, and only then - Bu
 With proper organization of the Business Logic, and high quality of ORM (if used, of course), the dependence of the Business Logic of the application will be minimal.
 The main difficulty of any ORM is to provide access to related objects without mixing Application Logic (and data access logic) into Domain Models, this topic we will discuss in one of the next posts.
 
-Understanding the common features of the methods of managing the Application Logic allows us to design more flexible applications, and, as a result, more painlessly change the architectural style, for example, from Layered to Event-Driven.
+Understanding the common features of the methods of organizing Application Logic allows us to design more flexible applications, and, as a result, more painlessly change the architectural style, for example, from Layered to Event-Driven.
 This topic is covered in part in Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin, and in section "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
 
 
