@@ -179,7 +179,7 @@
 
 - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
-К этой книге существует демонстрационной приложение, которое демонстрирует на практике использование изложенной в книге информации:
+К этой книге существует эталонное приложение, которое наглядно демонстрирует практическое применение изложенной в книге информации:
 
 - https://github.com/dotnet-architecture/eShopOnContainers
 
@@ -187,7 +187,7 @@
 
 - "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
 
-К ней так же существует демонстрационной приложение:
+К ней также существует демонстрационное приложение:
 
 - https://github.com/microsoftarchive/cqrs-journey
 
