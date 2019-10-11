@@ -276,6 +276,8 @@ POSA
 - "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
 
+Хорошая подборка книг по алгоритмам: http://e-maxx.ru/bookz/
+
 
 Тестирование
 ============
