@@ -1041,7 +1041,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 .. [#fnnetmsa] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
-.. update:: 04 Oct, 2019
+.. update:: 12 Oct, 2019
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
