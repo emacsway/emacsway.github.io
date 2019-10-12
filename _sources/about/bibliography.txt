@@ -18,6 +18,7 @@ The list of software literature read by me:
     - "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
     - "Code Complete" 2nd edition by Steve McConnell
     - "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
+    - "UML Distilled. A Brief Guide to the Standard Object Modeling Language" 3d edition by Martin Fowler
     - "Domain-Driven Design" by Eric Evans
     - "Test-Driven Development By Example" by Kent Beck
     - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
