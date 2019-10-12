@@ -784,7 +784,7 @@ The use of CQRS facilitates the use of Functional Programming paradigm.
 
 Functional Programming inherently cannot produce side effects (since Functional Programming imposes a restriction on assignment (mutability)).
 This is the reason for its popularity growth in the era of distributed computing.
-No mutability - concurrent update issues.
+No mutability - no concurrent update issues.
 
 It is necessary to distinguish the Functional Programming paradigm from the languages supporting this paradigm, since quite often the languages supporting this paradigm allow not to follow it.
 
@@ -792,6 +792,45 @@ However, despite the new opportunities to use Functional Programming in code, th
 
 The solution to this problem is usually to replace CRUD (Create, Read, Update, Delete) with CR, i.e. imposing restrictions on Update and Delete rows in the storage, that is widespread with the name Event Sourcing.
 There are specialized storages that implement Event Sourcing, but it can also be implemented without specialized tools.
+
+
+Event Sourcing
+==============
+
+If CQRS allows working with data storages in the Imperative style, and separates a command (side effect) from a query (reading) data, then Event Sourcing goes even further and imposes a restriction on changing and deleting data, turning CRUD into CR.
+This pattern allows working with data storages in the Functional style, and provides the same benefits: no mutable state - no concurrent update issues.
+And the same disadvantages - high memory and processor consumption.
+This is the reason why this pattern is widely used in distributed systems, where there is an acute need for its advantages, and at the same time, its weaknesses do not appear (since distributed systems are not limited either in memory or in processor power).
+
+A good example of Event Sourcing can be the principle of organizing a bank account in a database, when the account is not a source of truth, but simply reflects the aggregate value of all transactions (i.e. events).
+
+This topic is well covered in Chapter 6 "Functional Programming" of "Clean Architecture" by Robert C. Martin.
+
+    More importantly, nothing ever gets deleted or updated from such a data store.
+    As a consequence, our applications are not CRUD; they are just CR. Also, because neither updates nor deletions occur in the data store, there cannot be any concurrent update issues.
+
+    If we have enough storage and enough processor power, we can make our applications entirely immutable—and, therefore, **entirely functional**.
+
+    If this still sounds absurd, it might help if you remembered that this is precisely the way your source code control system works.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+
+..
+
+    **Event Sourcing is naturally functional.**
+    It's an append only log of facts that have happened in the past.
+    You can say that any projection any state is a left fold over your previous history.
+
+    \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1004>`__" at 16:44
+
+..
+
+    I have always said that Event Sourcing is "Functional Data Storage".
+    In this talk we will try migrating to a idiomatic functional way of looking at Event Sourcing.
+    Come and watch all the code disappear!
+    By the time you leave you will never want an "Event Sourcing Framework (TM)" ever again!
+
+    \- Greg Young, "`Functional Data <https://vimeo.com/131636650>`__", NDC Conferences
 
 
 Further Reading
