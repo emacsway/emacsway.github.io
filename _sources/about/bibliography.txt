@@ -87,7 +87,7 @@ The order of the list is unstable.
 - "The Site Reliability Workbook" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
 - "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
-- "Development of Further Patterns of Enterprise Application Architecture" by Martin Fowler
+- "`Development of Further Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaDev/>`__" by Martin Fowler
 - "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
