@@ -96,10 +96,10 @@
 - "The Clean Coder" by Robert C. Martin
 
 
-Изучаем синтаксис языка программирования
+Изучаем основную используемую технологию
 ========================================
 
-Следующая книга должна быть посвящена синтаксическим возможностям языка программирования.
+Следующая книга должна быть посвящена основной используемой технологии, т.е. синтаксическим возможностям языка программирования.
 Если вы работаете с Python, то хорошим выбором была бы книга:
 
 - "Learning Python" 5th edition by Mark Lutz
@@ -314,7 +314,16 @@ POSA
 - "Compiler Construction" by N.Wirth
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
 
+
 Изучаем архитектору
 ===================
 
 - "Software Architecture in Practice" 3d Edition by Len Bass, Paul Clements, Rick Kazman
+
+
+Изучаем оценивание задач
+========================
+
+- "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell (я встречал в интернете `краткий конспект <http://igorshevchenko.ru/blog/entries/software-estimation>`__)
+- "Agile Estimating and Planning" by Mike Cohn
+

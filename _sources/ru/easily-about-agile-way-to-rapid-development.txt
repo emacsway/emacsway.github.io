@@ -312,7 +312,7 @@ TDD позволяет "развязать" реализуемые обязан�
 Существует несколько превосходных книг, посвященных вопросам estimates.
 Например:
 
-- "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell (я встречал в интернете `краткий конспект <igorshevchenko.ru/blog/entries/software-estimation>`__)
+- "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell (я встречал в интернете `краткий конспект <http://igorshevchenko.ru/blog/entries/software-estimation>`__)
 - "Agile Estimating and Planning" by Mike Cohn
 
 Но я не вижу смысла уделять внимания изучению оценки предмета больше, чем изучению самого предмета.
