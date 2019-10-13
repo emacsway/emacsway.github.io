@@ -189,6 +189,7 @@
 
 - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+- "`All Things Distributed <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
 
 
 Изучаем распределенные системы. Углубляем навыки.
