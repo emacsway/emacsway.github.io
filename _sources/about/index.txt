@@ -67,6 +67,7 @@ Articles in Russian:
 - ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
 - ":doc:`../ru/tdd`"
 - ":doc:`../ru/service-layer`"
+- ":doc:`../ru/self-learning-for-software-engineer"
 - ":doc:`../ru/django-framework`"
 - ":doc:`../ru/cache-dependencies`"
 - ":doc:`../ru/storm-orm`"
