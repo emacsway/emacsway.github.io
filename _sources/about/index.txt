@@ -60,7 +60,8 @@ Articles in English:
 - ":doc:`../en/django-framework`"
 - ":doc:`../en/cache-dependencies`"
 - ":doc:`../en/storm-orm`"
-- :ref:`... all articles in English >> <language-en>`
+
+... all :ref:`articles in English >> <language-en>`
 
 Articles in Russian:
 
@@ -71,7 +72,8 @@ Articles in Russian:
 - ":doc:`../ru/django-framework`"
 - ":doc:`../ru/cache-dependencies`"
 - ":doc:`../ru/storm-orm`"
-- :ref:`... all articles in Russian >> <language-ru>`
+
+... all :ref:`articles in Russian >> <language-ru>`
 
 
 Afterword
