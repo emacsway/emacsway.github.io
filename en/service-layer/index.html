@@ -86,61 +86,61 @@
           <div class="body" role="main">
             
   <div class="section" id="design-of-service-layer-and-application-logic">
-<h1><a class="toc-backref" href="#id46">Design of Service Layer and Application Logic</a><a class="headerlink" href="#design-of-service-layer-and-application-logic" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id48">Design of Service Layer and Application Logic</a><a class="headerlink" href="#design-of-service-layer-and-application-logic" title="Permalink to this headline">¶</a></h1>
 <p>This article is about organizing Application Logic and designing the <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>, Use Case, CQRS, Event Sourcing, MVC, etc.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#design-of-service-layer-and-application-logic" id="id46">Design of Service Layer and Application Logic</a></li>
-<li><a class="reference internal" href="#layers-of-logic" id="id47">Layers of logic</a><ul>
-<li><a class="reference internal" href="#layered-architecture" id="id48">Layered Architecture</a></li>
-<li><a class="reference internal" href="#what-is-business-logic" id="id49">What is Business Logic?</a></li>
-<li><a class="reference internal" href="#subtypes-of-business-rules" id="id50">Subtypes of Business Rules</a></li>
-<li><a class="reference internal" href="#why-is-separation-of-business-rules-from-application-logic-so-important" id="id51">Why is separation of Business Rules from Application Logic so important?</a></li>
+<li><a class="reference internal" href="#design-of-service-layer-and-application-logic" id="id48">Design of Service Layer and Application Logic</a></li>
+<li><a class="reference internal" href="#layers-of-logic" id="id49">Layers of logic</a><ul>
+<li><a class="reference internal" href="#layered-architecture" id="id50">Layered Architecture</a></li>
+<li><a class="reference internal" href="#what-is-business-logic" id="id51">What is Business Logic?</a></li>
+<li><a class="reference internal" href="#subtypes-of-business-rules" id="id52">Subtypes of Business Rules</a></li>
+<li><a class="reference internal" href="#why-is-separation-of-business-rules-from-application-logic-so-important" id="id53">Why is separation of Business Rules from Application Logic so important?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#ways-to-organize-application-logic" id="id52">Ways to Organize Application Logic</a></li>
-<li><a class="reference internal" href="#what-is-service" id="id53">What is Service?</a></li>
-<li><a class="reference internal" href="#service-types-by-layers-of-logic" id="id54">Service types  by layers of logic</a><ul>
-<li><a class="reference internal" href="#domain-service" id="id55">Domain Service</a></li>
-<li><a class="reference internal" href="#application-service" id="id56">Application Service</a></li>
-<li><a class="reference internal" href="#infrastructure-service" id="id57">Infrastructure Service</a></li>
+<li><a class="reference internal" href="#ways-to-organize-application-logic" id="id54">Ways to Organize Application Logic</a></li>
+<li><a class="reference internal" href="#what-is-service" id="id55">What is Service?</a></li>
+<li><a class="reference internal" href="#service-types-by-layers-of-logic" id="id56">Service types  by layers of logic</a><ul>
+<li><a class="reference internal" href="#domain-service" id="id57">Domain Service</a></li>
+<li><a class="reference internal" href="#application-service" id="id58">Application Service</a></li>
+<li><a class="reference internal" href="#infrastructure-service" id="id59">Infrastructure Service</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#service-types-by-collaboration" id="id58">Service types by collaboration</a><ul>
-<li><a class="reference internal" href="#orchestration-service" id="id59">Orchestration Service</a></li>
-<li><a class="reference internal" href="#choreography-service" id="id60">Choreography Service</a><ul>
-<li><a class="reference internal" href="#common-mistakes-of-design-choreography-service" id="id61">Common mistakes of design Choreography Service</a></li>
+<li><a class="reference internal" href="#service-types-by-collaboration" id="id60">Service types by collaboration</a><ul>
+<li><a class="reference internal" href="#orchestration-service" id="id61">Orchestration Service</a></li>
+<li><a class="reference internal" href="#choreography-service" id="id62">Choreography Service</a><ul>
+<li><a class="reference internal" href="#common-mistakes-of-design-choreography-service" id="id63">Common mistakes of design Choreography Service</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#service-types-by-communication" id="id62">Service types by communication</a></li>
-<li><a class="reference internal" href="#service-types-by-state" id="id63">Service types by state</a><ul>
-<li><a class="reference internal" href="#stateless-service" id="id64">Stateless Service</a></li>
-<li><a class="reference internal" href="#statefull-service" id="id65">Statefull Service</a></li>
+<li><a class="reference internal" href="#service-types-by-communication" id="id64">Service types by communication</a></li>
+<li><a class="reference internal" href="#service-types-by-state" id="id65">Service types by state</a><ul>
+<li><a class="reference internal" href="#stateless-service" id="id66">Stateless Service</a></li>
+<li><a class="reference internal" href="#statefull-service" id="id67">Statefull Service</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#destination-of-service-layer" id="id66">Destination of Service Layer</a></li>
-<li><a class="reference internal" href="#when-not-to-use-service-layer" id="id67">When not to use Service Layer?</a></li>
-<li><a class="reference internal" href="#service-is-not-a-wrapper-for-data-mapper" id="id68">Service is not a wrapper for Data Mapper</a></li>
-<li><a class="reference internal" href="#implementation-of-service-layer" id="id69">Implementation of Service Layer</a></li>
-<li><a class="reference internal" href="#inversion-of-control" id="id70">Inversion of control</a></li>
-<li><a class="reference internal" href="#widespread-problem-of-django-applications" id="id71">Widespread problem of Django applications</a></li>
-<li><a class="reference internal" href="#problems-of-django-annotation" id="id72">Problems of Django annotation</a></li>
-<li><a class="reference internal" href="#peculiar-properties-of-service-layer-on-client-side" id="id73">Peculiar properties of Service Layer on client side</a></li>
-<li><a class="reference internal" href="#concurrent-update-issue" id="id74">Concurrent update issue</a></li>
-<li><a class="reference internal" href="#cqrs" id="id75">CQRS</a></li>
-<li><a class="reference internal" href="#event-sourcing" id="id76">Event Sourcing</a></li>
-<li><a class="reference internal" href="#further-reading" id="id77">Further Reading</a></li>
+<li><a class="reference internal" href="#destination-of-service-layer" id="id68">Destination of Service Layer</a></li>
+<li><a class="reference internal" href="#when-not-to-use-service-layer" id="id69">When not to use Service Layer?</a></li>
+<li><a class="reference internal" href="#service-is-not-a-wrapper-for-data-mapper" id="id70">Service is not a wrapper for Data Mapper</a></li>
+<li><a class="reference internal" href="#implementation-of-service-layer" id="id71">Implementation of Service Layer</a></li>
+<li><a class="reference internal" href="#inversion-of-control" id="id72">Inversion of control</a></li>
+<li><a class="reference internal" href="#widespread-problem-of-django-applications" id="id73">Widespread problem of Django applications</a></li>
+<li><a class="reference internal" href="#problems-of-django-annotation" id="id74">Problems of Django annotation</a></li>
+<li><a class="reference internal" href="#peculiar-properties-of-service-layer-on-client-side" id="id75">Peculiar properties of Service Layer on client side</a></li>
+<li><a class="reference internal" href="#concurrent-update-issue" id="id76">Concurrent update issue</a></li>
+<li><a class="reference internal" href="#cqrs" id="id77">CQRS</a></li>
+<li><a class="reference internal" href="#event-sourcing" id="id78">Event Sourcing</a></li>
+<li><a class="reference internal" href="#further-reading" id="id79">Further Reading</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="layers-of-logic">
-<h1><a class="toc-backref" href="#id47">Layers of logic</a><a class="headerlink" href="#layers-of-logic" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id49">Layers of logic</a><a class="headerlink" href="#layers-of-logic" title="Permalink to this headline">¶</a></h1>
 <p>Before digging deep into it, it would be nice to understand what Application Logic is and how it differs from Business Logic.</p>
 <div class="section" id="layered-architecture">
-<h2><a class="toc-backref" href="#id48">Layered Architecture</a><a class="headerlink" href="#layered-architecture" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id50">Layered Architecture</a><a class="headerlink" href="#layered-architecture" title="Permalink to this headline">¶</a></h2>
 <p>One of the most cited definitions of key conceptual layers gives Eric Evans:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -177,7 +177,7 @@ architectural framework.</dd>
 Misunderstanding of this term often leads to significant design problems.</p>
 </div>
 <div class="section" id="what-is-business-logic">
-<h2><a class="toc-backref" href="#id49">What is Business Logic?</a><a class="headerlink" href="#what-is-business-logic" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id51">What is Business Logic?</a><a class="headerlink" href="#what-is-business-logic" title="Permalink to this headline">¶</a></h2>
 <p>The most authoritative explanation of the term <a class="reference external" href="http://wiki.c2.com/?CategoryBusiness">Business</a> can be found, as usual, on the Ward Cunningham website:</p>
 <blockquote>
 <div>Software intersects with the Real World. Imagine that.</div></blockquote>
@@ -215,7 +215,7 @@ Misunderstanding of this term often leads to significant design problems.</p>
 </dl>
 </div>
 <div class="section" id="subtypes-of-business-rules">
-<h2><a class="toc-backref" href="#id50">Subtypes of Business Rules</a><a class="headerlink" href="#subtypes-of-business-rules" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id52">Subtypes of Business Rules</a><a class="headerlink" href="#subtypes-of-business-rules" title="Permalink to this headline">¶</a></h2>
 <p>In &#8220;Clean Architecture,&#8221; Robert Martin divides Business Rules into two types:</p>
 <ul>
 <li><p class="first">Application-specific Business Rules</p>
@@ -253,14 +253,14 @@ I find this a curious term because there are few things that are less logical th
 </div></blockquote>
 </div>
 <div class="section" id="why-is-separation-of-business-rules-from-application-logic-so-important">
-<h2><a class="toc-backref" href="#id51">Why is separation of Business Rules from Application Logic so important?</a><a class="headerlink" href="#why-is-separation-of-business-rules-from-application-logic-so-important" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id53">Why is separation of Business Rules from Application Logic so important?</a><a class="headerlink" href="#why-is-separation-of-business-rules-from-application-logic-so-important" title="Permalink to this headline">¶</a></h2>
 <p>Since the purpose of creating an application is precisely the implementation of Business Rules, it is important to ensure their portability and to separate them from the Application Logic.
 These two different kinds of rules will change  at different times, at different rates, and for different reasons - so they should be separated so that they can be independently changed <a class="footnote-reference" href="#fncarch" id="id5">[2]</a> .
 Grady Booch said that &#8220;Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change <a class="footnote-reference" href="#fncarch" id="id6">[2]</a> .&#8221;</p>
 </div>
 </div>
 <div class="section" id="ways-to-organize-application-logic">
-<h1><a class="toc-backref" href="#id52">Ways to Organize Application Logic</a><a class="headerlink" href="#ways-to-organize-application-logic" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id54">Ways to Organize Application Logic</a><a class="headerlink" href="#ways-to-organize-application-logic" title="Permalink to this headline">¶</a></h1>
 <p>Four ways to organize Application Logic are widespread:</p>
 <ol class="arabic simple">
 <li>Orchestration Service (&#8220;request/response&#8221;, i.e. the service is aware of the interface of other services) aka Service Layer.</li>
@@ -290,7 +290,7 @@ The main difficulty of any ORM is to provide access to related objects without m
 This topic is covered in part in Chapter 16 &#8220;Independence&#8221; of &#8220;Clean Architecture&#8221; by Robert C. Martin, and in section &#8220;Premature Decomposition&#8221; of Chapter 3 &#8220;How to Model Services&#8221; of &#8220;Building Microservices&#8221; by Sam Newman.</p>
 </div>
 <div class="section" id="what-is-service">
-<h1><a class="toc-backref" href="#id53">What is Service?</a><a class="headerlink" href="#what-is-service" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id55">What is Service?</a><a class="headerlink" href="#what-is-service" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.</p>
 <p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id9">[4]</a></p>
@@ -336,7 +336,7 @@ LANGUAGE. Make the SERVICE stateless.</p>
 </div></blockquote>
 </div>
 <div class="section" id="service-types-by-layers-of-logic">
-<h1><a class="toc-backref" href="#id54">Service types  by layers of logic</a><a class="headerlink" href="#service-types-by-layers-of-logic" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id56">Service types  by layers of logic</a><a class="headerlink" href="#service-types-by-layers-of-logic" title="Permalink to this headline">¶</a></h1>
 <p>Eric Evans divides Services into three layers of logic:</p>
 <blockquote>
 <div><p>Partitioning Services into Layers</p>
@@ -395,7 +395,7 @@ For these reasons Service Layer factors each kind of business logic into a separ
 <p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id13">[3]</a></p>
 </div></blockquote>
 <div class="section" id="domain-service">
-<h2><a class="toc-backref" href="#id55">Domain Service</a><a class="headerlink" href="#domain-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id57">Domain Service</a><a class="headerlink" href="#domain-service" title="Permalink to this headline">¶</a></h2>
 <p>Higher-level policies belong to Domain Logic, so we start with it.
 Fortunately, this is not the most numerous type of Services.</p>
 <p>In detail, the topic of Domain Services and the reasons for their existence  are revealed Vaughn Vernon:</p>
@@ -417,12 +417,12 @@ Just because a Domain Service has the word service in its name does not mean tha
 </div></blockquote>
 </div>
 <div class="section" id="application-service">
-<h2><a class="toc-backref" href="#id56">Application Service</a><a class="headerlink" href="#application-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id58">Application Service</a><a class="headerlink" href="#application-service" title="Permalink to this headline">¶</a></h2>
 <p>This is the most numerous type of Services.
 Application Services are also known as Service Layer.</p>
 </div>
 <div class="section" id="infrastructure-service">
-<h2><a class="toc-backref" href="#id57">Infrastructure Service</a><a class="headerlink" href="#infrastructure-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id59">Infrastructure Service</a><a class="headerlink" href="#infrastructure-service" title="Permalink to this headline">¶</a></h2>
 <p>Infrastructure Service should be separate of other types of Service.</p>
 <blockquote>
 <div><p>The infrastructure layer usually does not initiate action in the domain layer. Being &#8220;below&#8221; the
@@ -455,17 +455,17 @@ architectural framework.</p>
 </div>
 </div>
 <div class="section" id="service-types-by-collaboration">
-<h1><a class="toc-backref" href="#id58">Service types by collaboration</a><a class="headerlink" href="#service-types-by-collaboration" title="Permalink to this headline">¶</a></h1>
-<p>By collaboration of interaction the Services are divided into <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Orchestration</a> Service (&#8220;request/response&#8221;, i.e. the service is aware of the interface of other Services) and <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Choreography</a> Service (Event-Driven, т.е. loosely coupled) <a class="footnote-reference" href="#fnbm" id="id16">[7]</a>.
+<h1><a class="toc-backref" href="#id60">Service types by collaboration</a><a class="headerlink" href="#service-types-by-collaboration" title="Permalink to this headline">¶</a></h1>
+<p>By collaboration of interaction the Services are divided into <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Orchestration</a> Service (&#8220;request/response&#8221;, i.e. the service is aware of the interface of other Services) and <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Choreography</a> Service (Event-Driven, т.е. loosely coupled) <a class="footnote-reference" href="#fnbm" id="id16">[8]</a>.
 Them are two idiomatic styles of collaboration.
 The main drawback of the first one is a high awareness of the interface of other Services, i.e. High coupling, which reduces its reuse.
 The last one is a variation of the Command pattern, and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).</p>
 <div class="section" id="orchestration-service">
-<h2><a class="toc-backref" href="#id59">Orchestration Service</a><a class="headerlink" href="#orchestration-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id61">Orchestration Service</a><a class="headerlink" href="#orchestration-service" title="Permalink to this headline">¶</a></h2>
 <p>Orchestration Service is known as Service Layer and is cosidered in more detail below.</p>
 </div>
 <div class="section" id="choreography-service">
-<h2><a class="toc-backref" href="#id60">Choreography Service</a><a class="headerlink" href="#choreography-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id62">Choreography Service</a><a class="headerlink" href="#choreography-service" title="Permalink to this headline">¶</a></h2>
 <p>There is an interesting article &#8220;<a class="reference external" href="http://udidahan.com/2009/12/09/clarified-cqrs/">Clarified CQRS</a>&#8221; by Udi Dahan, cited by Martin Fowler in his article &#8220;<a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>&#8221;.</p>
 <p>And this article has an interesting point.</p>
 <blockquote>
@@ -480,7 +480,7 @@ It should contain Application Logic (not Business Logic).</p>
 </div></blockquote>
 <p>Choreography Services can only be at Application Logic, even if it is subscribed to a Domain Event.</p>
 <div class="section" id="common-mistakes-of-design-choreography-service">
-<h3><a class="toc-backref" href="#id61">Common mistakes of design Choreography Service</a><a class="headerlink" href="#common-mistakes-of-design-choreography-service" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id63">Common mistakes of design Choreography Service</a><a class="headerlink" href="#common-mistakes-of-design-choreography-service" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes, Orchestration Services proxy calls to Choreographic Services.
 This often happens with frontend-developers, for example, when Redux/NgRx is used together with an Angular based application, which uses Services a lot.</p>
 <p>Having Low Coupling Event-Driven Choreography Services as Command handlers, it would be a design mistake to try to bind them with the High Coupling classic Orchestration Service (with the only purpose of helping the Application Logic hide them from itself).</p>
@@ -500,7 +500,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
 <p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</p>
 </div></blockquote>
 <p>In an application with extensive Business Logic, this can significantly degrade the quality of business modeling, and complicate the process of Model Distillation in a process of Knowledge Crunching <a class="footnote-reference" href="#fnddd" id="id17">[4]</a>.
-Also, such code acquires signs of &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id18">[6]</a> and &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id19">[6]</a>, which greatly complicates elimination of domain modeling mistakes in a process of Evolutionary Design.
+Also, such code acquires signs of &#8220;Divergent Change&#8221; <a class="footnote-reference" href="#fnr" id="id18">[7]</a> and &#8220;Shotgun Surgery&#8221; <a class="footnote-reference" href="#fnr" id="id19">[7]</a>, which greatly complicates elimination of domain modeling mistakes in a process of Evolutionary Design.
 Ultimately, this leads to a rapid increase in the cost of code change.</p>
 <p>Udi Dahan in his article allows the use of <a class="reference external" href="https://martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a> to organize Business Logic.
 In this case, the choice between Transaction Script и <a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a> is considered in detail in &#8220;Patterns of Enterprise Application Architecture&#8221; by M. Fowler and others.
@@ -510,18 +510,18 @@ If an application uses the REST-API and has extensive Business Logic, the use of
 </div>
 </div>
 <div class="section" id="service-types-by-communication">
-<h1><a class="toc-backref" href="#id62">Service types by communication</a><a class="headerlink" href="#service-types-by-communication" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id64">Service types by communication</a><a class="headerlink" href="#service-types-by-communication" title="Permalink to this headline">¶</a></h1>
 <p>By communication, Services are divided into Synchronous and Asynchronous.</p>
 </div>
 <div class="section" id="service-types-by-state">
-<h1><a class="toc-backref" href="#id63">Service types by state</a><a class="headerlink" href="#service-types-by-state" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id65">Service types by state</a><a class="headerlink" href="#service-types-by-state" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="stateless-service">
-<h2><a class="toc-backref" href="#id64">Stateless Service</a><a class="headerlink" href="#stateless-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id66">Stateless Service</a><a class="headerlink" href="#stateless-service" title="Permalink to this headline">¶</a></h2>
 <p>Typically, most Services are stateless.
 They are well known, and there is nothing to add.</p>
 </div>
 <div class="section" id="statefull-service">
-<h2><a class="toc-backref" href="#id65">Statefull Service</a><a class="headerlink" href="#statefull-service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id67">Statefull Service</a><a class="headerlink" href="#statefull-service" title="Permalink to this headline">¶</a></h2>
 <p>The UseCases/Interactors <a class="footnote-reference" href="#fncarch" id="id20">[2]</a> classes are a variation of the Command pattern, and can be considered as a Statefull Service.</p>
 <p>Eric Evans has a similar idea:</p>
 <blockquote>
@@ -549,7 +549,7 @@ which should extend a Layer Supertype (475), abstracting their responsibilities 
 These guys are the last of those who can confuse &#8220;<a class="reference external" href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model</a>&#8221; and &#8220;<a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>&#8221;, especially with so many editors and reviewers.
 A client expects an interface from the domain model that it does not implement and should not implement for some reason (usually the Single Responsibility Principle).
 On the other hand, the client can not implement this behavior itself, as this would lead to &#8220;G14: Feature Envy&#8221; <a class="footnote-reference" href="#fnccode" id="id23">[1]</a>.
-There is an Adapter (aka Wrapper) pattern for interface alignment, see &#8220;Design Patterns Elements of Reusable Object-Oriented Software&#8221; <a class="footnote-reference" href="#fngof" id="id24">[5]</a>.
+There is an Adapter (aka Wrapper) pattern for interface alignment, see &#8220;Design Patterns Elements of Reusable Object-Oriented Software&#8221; <a class="footnote-reference" href="#fngof" id="id24">[6]</a>.
 Statefull Service differs from the usual Adapter pattern only in that it contains lower-level logic, i.e. Application Logic, rather than Business Logic of Domain Model.</p>
 <p>This approach reminds me of &#8220;Cross-Cutting Concerns&#8221; <a class="footnote-reference" href="#fnccode" id="id25">[1]</a>, with the only difference being that &#8220;Cross-Cutting Concerns&#8221; implements the interface of the original object (delegate), while domain facade complements it.
 When a wrapper implements the interface of the original object, it is usually called Aspect or Decorator.
@@ -562,7 +562,7 @@ Statefull Service and Adapter pattern are a good alternative to remove extrinsic
 </div>
 </div>
 <div class="section" id="destination-of-service-layer">
-<h1><a class="toc-backref" href="#id66">Destination of Service Layer</a><a class="headerlink" href="#destination-of-service-layer" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id68">Destination of Service Layer</a><a class="headerlink" href="#destination-of-service-layer" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>A Service Layer defines an application&#8217;s boundary with a layer of services that establishes a set of available
 operations and coordinates the application&#8217;s response in each operation.</p>
@@ -613,7 +613,7 @@ This means that the objects of the Domain Layer should not be aware of the Servi
 <p>In other cases, the logic of the Service Layer can be placed directly at the application level (usually a controller).</p>
 </div>
 <div class="section" id="when-not-to-use-service-layer">
-<h1><a class="toc-backref" href="#id67">When not to use Service Layer?</a><a class="headerlink" href="#when-not-to-use-service-layer" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id69">When not to use Service Layer?</a><a class="headerlink" href="#when-not-to-use-service-layer" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>The easier question to answer is probably when not to use it. You probably don&#8217;t need a Service Layer if your
 application&#8217;s business logic will only have one kind of client say, a user interface and its use case responses
@@ -642,10 +642,10 @@ designers I respect disagree with me on this.</p>
 </div></blockquote>
 </div>
 <div class="section" id="service-is-not-a-wrapper-for-data-mapper">
-<h1><a class="toc-backref" href="#id68">Service is not a wrapper for Data Mapper</a><a class="headerlink" href="#service-is-not-a-wrapper-for-data-mapper" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id70">Service is not a wrapper for Data Mapper</a><a class="headerlink" href="#service-is-not-a-wrapper-for-data-mapper" title="Permalink to this headline">¶</a></h1>
 <p>Often <a class="reference external" href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a> is mistakenly made in the for of wrapper over <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>.
 This is not quite the right decision.
-A Data Mapper serves a Domain Model, a Repository serves an Aggregate <a class="footnote-reference" href="#fnnetmsa" id="id33">[8]</a>, but a Service serves a client (or a client group).
+A Data Mapper serves a Domain Model, a Repository serves an Aggregate <a class="footnote-reference" href="#fnnetmsa" id="id33">[9]</a>, but a Service serves a client (or a client group).
 The Service Layer can manipulate multiple Data Mappers, Repositories, other Services within a business transaction and in favour of a client.
 Therefore, Service&#8217;s methods usually contain name of the returned Domain Model as a suffix (for example, getUser()), while methods of a Data Mapper (or a Repository) do not need such suffix (since the Domain name is already present in name of the Data Mapper class, and the Data Mapper serves only one Domain Model).</p>
 <blockquote>
@@ -655,7 +655,7 @@ by the needs of Service Layer clients, the most significant (and first) of which
 </div></blockquote>
 </div>
 <div class="section" id="implementation-of-service-layer">
-<h1><a class="toc-backref" href="#id69">Implementation of Service Layer</a><a class="headerlink" href="#implementation-of-service-layer" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id71">Implementation of Service Layer</a><a class="headerlink" href="#implementation-of-service-layer" title="Permalink to this headline">¶</a></h1>
 <p>There is a few examples of Service Layer implementations:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/in2it/zfdemo/blob/master/application/modules/user/services/User.php">https://github.com/in2it/zfdemo/blob/master/application/modules/user/services/User.php</a></li>
@@ -665,7 +665,7 @@ by the needs of Service Layer clients, the most significant (and first) of which
 </ul>
 </div>
 <div class="section" id="inversion-of-control">
-<h1><a class="toc-backref" href="#id70">Inversion of control</a><a class="headerlink" href="#inversion-of-control" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id72">Inversion of control</a><a class="headerlink" href="#inversion-of-control" title="Permalink to this headline">¶</a></h1>
 <p>Use Inversion of control, desirable in the form of Passive <a class="footnote-reference" href="#fnccode" id="id35">[1]</a> &#8220;<a class="reference external" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a>&#8221; (DI).</p>
 <blockquote>
 <div>True Dependency Injection goes one step further. The class takes no direct steps to
@@ -683,7 +683,7 @@ Sometimes it is useful to replace the Service with a fake data generator.
 In general, the Service Layer will be of little use if it is not possible to substitute it (or to substitute the dependencies used by it).</p>
 </div>
 <div class="section" id="widespread-problem-of-django-applications">
-<h1><a class="toc-backref" href="#id71">Widespread problem of Django applications</a><a class="headerlink" href="#widespread-problem-of-django-applications" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id73">Widespread problem of Django applications</a><a class="headerlink" href="#widespread-problem-of-django-applications" title="Permalink to this headline">¶</a></h1>
 <p>A common mistake is to use the django.db.models.Manager class (and even django.db.models.Model) as a Service Layer.
 Often you can see how some method of the class django.db.models.Model takes as an argument the HTTP-request object django.http.request.HttpRequest, for example, to check the permissions.</p>
 <p>The HTTP request object is the Application Layer logic, while the model class is the logic of the Domain Layer, i.e. objects of the real world, which are also called business rules.
@@ -725,14 +725,14 @@ layer perhaps to use a workflow engine.</p>
 </div></blockquote>
 </div>
 <div class="section" id="problems-of-django-annotation">
-<h1><a class="toc-backref" href="#id72">Problems of Django annotation</a><a class="headerlink" href="#problems-of-django-annotation" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id74">Problems of Django annotation</a><a class="headerlink" href="#problems-of-django-annotation" title="Permalink to this headline">¶</a></h1>
 <p>I often observed the problem when a new field was added to the Django Model, and multiple problems started to occur, since this name was already used either with the annotation interface or with Raw-SQL.
 Also, the implementation of annotations by Django ORM makes it impossible to use the pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/identityMap.html">Identity Map</a>.
 Storm ORM / SQLAlchemy implement annotations more successfully.
 If you still had to work with Django Model, refrain from using Django annotation mechanism in favor of bare pattern <a class="reference external" href="http://martinfowler.com/eaaCatalog/dataMapper.html">DataMapper</a>.</p>
 </div>
 <div class="section" id="peculiar-properties-of-service-layer-on-client-side">
-<h1><a class="toc-backref" href="#id73">Peculiar properties of Service Layer on client side</a><a class="headerlink" href="#peculiar-properties-of-service-layer-on-client-side" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id75">Peculiar properties of Service Layer on client side</a><a class="headerlink" href="#peculiar-properties-of-service-layer-on-client-side" title="Permalink to this headline">¶</a></h1>
 <p>Using the <a class="reference external" href="https://martinfowler.com/bliki/DDD_Aggregate.html">Aggregate</a> concept and reactive programming libraries, such as <a class="reference external" href="https://github.com/ReactiveX/rxjs">RxJS</a>, allows us to implement Service Layer using a simplest pattern like <a class="reference external" href="https://martinfowler.com/eaaCatalog/gateway.html">Gateway</a>, see, for example, <a class="reference external" href="https://angular.io/tutorial/toh-pt6">the tutorial of Angular documentation</a>.
 In this case, <a class="reference external" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> is usually implemented as a simple dictionary, which is then converted to a list of GET parameters for the URL.
 Such service usually communicates with a server either through JSON-RPC, or through <a class="reference external" href="http://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions">REST-API Actions</a>.</p>
@@ -746,7 +746,7 @@ If the client does not contain complex logic, allowing to interpret the prioriti
 In this case, it&#8217;s easier to add a new method to the remote call service, and get rid of the need for prioritized queries.</p>
 </div>
 <div class="section" id="concurrent-update-issue">
-<h1><a class="toc-backref" href="#id74">Concurrent update issue</a><a class="headerlink" href="#concurrent-update-issue" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id76">Concurrent update issue</a><a class="headerlink" href="#concurrent-update-issue" title="Permalink to this headline">¶</a></h1>
 <p>The advent of the Internet has provided access to a huge amount of data that is excessively large with the capabilities of the server.
 There was a need for scalability and distributed storage and processing of data.</p>
 <p>One of the most acute problems is the concurrent update issue.</p>
@@ -759,7 +759,7 @@ You cannot have deadlocks without mutable locks.</p>
 <p>An order is a correct imposition of restrictions.</p>
 </div>
 <div class="section" id="cqrs">
-<h1><a class="toc-backref" href="#id75">CQRS</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id77">CQRS</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h1>
 <p>The concurrent update issue can be significantly reduced by restricting bidirectional state changes by introducing unidirectional changes, i.e. by separating reading from writing.
 This is exactly the approach used by Redux.</p>
 <blockquote>
@@ -778,7 +778,7 @@ No mutability - no concurrent update issues.</p>
 There are specialized storages that implement Event Sourcing, but it can also be implemented without specialized tools.</p>
 </div>
 <div class="section" id="event-sourcing">
-<h1><a class="toc-backref" href="#id76">Event Sourcing</a><a class="headerlink" href="#event-sourcing" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id78">Event Sourcing</a><a class="headerlink" href="#event-sourcing" title="Permalink to this headline">¶</a></h1>
 <p>If CQRS allows working with data storages in the Imperative style, and separates a command (side effect) from a query (reading) data, then Event Sourcing goes even further and imposes a restriction on changing and deleting data, turning CRUD into CR.
 This pattern allows working with data storages in the Functional style, and provides the same benefits: no mutable state - no concurrent update issues.
 And the same disadvantages - high memory and processor consumption.
@@ -807,7 +807,7 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 </div></blockquote>
 </div>
 <div class="section" id="further-reading">
-<h1><a class="toc-backref" href="#id77">Further Reading</a><a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id79">Further Reading</a><a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h1>
 <ul>
 <li><dl class="first docutils">
 <dt>&#8220;Clean Code: A Handbook of Agile Software Craftsmanship&#8221; by Robert C. Martin <a class="footnote-reference" href="#fnccode" id="id42">[1]</a>, chapters:</dt>
@@ -821,7 +821,20 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>&#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler <a class="footnote-reference" href="#fnpoeaa" id="id43">[3]</a>, главы:</dt>
+<dt>&#8220;Clean Architecture: A Craftsman&#8217;s Guide to Software Structure and Design&#8221; <a class="footnote-reference" href="#fncarch" id="id43">[2]</a> by Robert C. Martin</dt>
+<dd><ul class="first last simple">
+<li>Chapter 6 Functional Programming : Event Sourcing</li>
+<li>Chapter 16 Independence</li>
+<li>Chapter 18 Boundary Anatomy : Services</li>
+<li>Chapter 20 Business Rules</li>
+<li>Chapter 22 The Clean Architecture</li>
+<li>Chapter 34 The Missing Chapter</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler <a class="footnote-reference" href="#fnpoeaa" id="id44">[3]</a>, chapters:</dt>
 <dd><ul class="first last simple">
 <li>Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer</li>
 <li>Part 1. The Narratives : Chapter 8. Putting It All Together</li>
@@ -831,21 +844,95 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>&#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans <a class="footnote-reference" href="#fnddd" id="id44">[4]</a>, глава:</dt>
+<dt>&#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans <a class="footnote-reference" href="#fnddd" id="id45">[4]</a>, chapters:</dt>
 <dd><ul class="first last simple">
+<li>Part II: The Building Blocks of a Model-Driven Design : Chapter Four. Isolating the Domain : Layered Architecture</li>
 <li>Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>&#8220;Design Patterns Elements of Reusable Object-Oriented Software&#8221; by Erich Gamma <a class="footnote-reference" href="#fngof" id="id45">[5]</a>, главы:</dt>
+<dt>&#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id46">[5]</a> by Vaughn Vernon</dt>
+<dd><ul class="first last simple">
+<li>Chapter 7 Services</li>
+<li>Chapter 14 Application : Application Services</li>
+<li>Appendix A Aggregates and Event Sourcing: A+ES : Inside an Application Service</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;Design Patterns Elements of Reusable Object-Oriented Software&#8221; by Erich Gamma <a class="footnote-reference" href="#fngof" id="id47">[6]</a>, chapters:</dt>
 <dd><ul class="first last simple">
 <li>Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139</li>
 <li>Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175</li>
 </ul>
 </dd>
 </dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;Building Microservices. Designing Fine-Grained Systems&#8221; by Sam Newman, chapters:</dt>
+<dd><ul class="first last simple">
+<li>Chapter 3 How to Model Services : Premature Decomposition</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/">Cloud Design Patterns. Prescriptive architecture guidance for cloud applications</a>&#8221; by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs">Command and Query Responsibility Segregation (CQRS) pattern</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing">Event Sourcing pattern</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index">.NET Microservices: Architecture for Containerized .NET Applications</a>&#8221; edition v2.2.1 (<a class="reference external" href="https://aka.ms/microservicesebook">mirror</a>) by Cesar de la Torre, Bill Wagner, Mike Rousos, chapters:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/">Tackle Business Complexity in a Microservice with DDD and CQRS Patterns</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/apply-simplified-microservice-cqrs-ddd-patterns">Apply simplified CQRS and DDD patterns in a microservice</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/eshoponcontainers-cqrs-ddd-microservice">Apply CQRS and CQS approaches in a DDD microservice in eShopOnContainers</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/cqrs-microservice-reads">Implement reads/queries in a CQRS microservice</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;<a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)">CQRS Journey</a>&#8221; by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, chapters:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591560(v=pandp.10)">Reference 1: CQRS in Context</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591573(v=pandp.10)">Reference 2: Introducing the Command Query Responsibility Segregation Pattern</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591559(v=pandp.10)">Reference 3: Introducing Event Sourcing</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591577(v=pandp.10)">Reference 4: A CQRS and ES Deep Dive</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591569(v=pandp.10)">Reference 6: A Saga on Sagas</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions&#8221; by Gregor Hohpe, Bobby Woolf, chapters:</dt>
+<dd><ul class="first last simple">
+<li><ol class="first arabic" start="7">
+<li>Message routing : Process manager</li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>&#8220;</p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/bliki/CommandQuerySeparation.html">Command Query Separation</a></p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>&#8220;</p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/articles/201701-event-driven.html">What do you mean by &#8220;Event-Driven&#8221;?</a>&#8220;</p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">CQRS, Task Based UIs, Event Sourcing agh!</a>&#8221; by Greg Young</p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="http://udidahan.com/2009/12/09/clarified-cqrs/">Clarified CQRS</a>&#8221; by Udi Dahan</p>
 </li>
 </ul>
 <p>Эта статья на Русском языке &#8220;<a class="reference internal" href="../../ru/service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8221;.</p>
@@ -859,43 +946,49 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 <table class="docutils footnote" frame="void" id="fncarch" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id6">2</a>, <a class="fn-backref" href="#id20">3</a>, <a class="fn-backref" href="#id40">4</a>, <a class="fn-backref" href="#id41">5</a>)</em> &#8220;Clean Architecture: A Craftsman&#8217;s Guide to Software Structure and Design&#8221; by Robert C. Martin</td></tr>
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id6">2</a>, <a class="fn-backref" href="#id20">3</a>, <a class="fn-backref" href="#id40">4</a>, <a class="fn-backref" href="#id41">5</a>, <a class="fn-backref" href="#id43">6</a>)</em> &#8220;Clean Architecture: A Craftsman&#8217;s Guide to Software Structure and Design&#8221; by Robert C. Martin</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id7">4</a>, <a class="fn-backref" href="#id8">5</a>, <a class="fn-backref" href="#id13">6</a>, <a class="fn-backref" href="#id22">7</a>, <a class="fn-backref" href="#id26">8</a>, <a class="fn-backref" href="#id27">9</a>, <a class="fn-backref" href="#id28">10</a>, <a class="fn-backref" href="#id29">11</a>, <a class="fn-backref" href="#id30">12</a>, <a class="fn-backref" href="#id31">13</a>, <a class="fn-backref" href="#id32">14</a>, <a class="fn-backref" href="#id34">15</a>, <a class="fn-backref" href="#id37">16</a>, <a class="fn-backref" href="#id38">17</a>, <a class="fn-backref" href="#id39">18</a>, <a class="fn-backref" href="#id43">19</a>)</em> &#8220;<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>&#8221; by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id7">4</a>, <a class="fn-backref" href="#id8">5</a>, <a class="fn-backref" href="#id13">6</a>, <a class="fn-backref" href="#id22">7</a>, <a class="fn-backref" href="#id26">8</a>, <a class="fn-backref" href="#id27">9</a>, <a class="fn-backref" href="#id28">10</a>, <a class="fn-backref" href="#id29">11</a>, <a class="fn-backref" href="#id30">12</a>, <a class="fn-backref" href="#id31">13</a>, <a class="fn-backref" href="#id32">14</a>, <a class="fn-backref" href="#id34">15</a>, <a class="fn-backref" href="#id37">16</a>, <a class="fn-backref" href="#id38">17</a>, <a class="fn-backref" href="#id39">18</a>, <a class="fn-backref" href="#id44">19</a>)</em> &#8220;<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>&#8221; by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id9">2</a>, <a class="fn-backref" href="#id10">3</a>, <a class="fn-backref" href="#id11">4</a>, <a class="fn-backref" href="#id12">5</a>, <a class="fn-backref" href="#id14">6</a>, <a class="fn-backref" href="#id15">7</a>, <a class="fn-backref" href="#id17">8</a>, <a class="fn-backref" href="#id21">9</a>, <a class="fn-backref" href="#id44">10</a>)</em> &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id9">2</a>, <a class="fn-backref" href="#id10">3</a>, <a class="fn-backref" href="#id11">4</a>, <a class="fn-backref" href="#id12">5</a>, <a class="fn-backref" href="#id14">6</a>, <a class="fn-backref" href="#id15">7</a>, <a class="fn-backref" href="#id17">8</a>, <a class="fn-backref" href="#id21">9</a>, <a class="fn-backref" href="#id45">10</a>)</em> &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fniddd" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id46">[5]</a></td><td>&#8220;Implementing Domain-Driven Design&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngof" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id45">2</a>)</em> &#8220;Design Patterns Elements of Reusable Object-Oriented Software&#8221; by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994</td></tr>
+<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id47">2</a>)</em> &#8220;Design Patterns Elements of Reusable Object-Oriented Software&#8221; by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnr" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id19">2</a>)</em> &#8220;Refactoring: Improving the Design of Existing Code&#8221; by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
+<tr><td class="label">[7]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id19">2</a>)</em> &#8220;Refactoring: Improving the Design of Existing Code&#8221; by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnbm" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[7]</a></td><td>&#8220;Building Microservices. Designing Fine-Grained Systems&#8221; by Sam Newman</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id16">[8]</a></td><td>&#8220;Building Microservices. Designing Fine-Grained Systems&#8221; by Sam Newman</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnnetmsa" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id33">[8]</a></td><td>&#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index">.NET Microservices: Architecture for Containerized .NET Applications</a>&#8221; edition v2.2.1 (<a class="reference external" href="https://aka.ms/microservicesebook">mirror</a>) by Cesar de la Torre, Bill Wagner, Mike Rousos</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id33">[9]</a></td><td>&#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index">.NET Microservices: Architecture for Containerized .NET Applications</a>&#8221; edition v2.2.1 (<a class="reference external" href="https://aka.ms/microservicesebook">mirror</a>) by Cesar de la Torre, Bill Wagner, Mike Rousos</td></tr>
 </tbody>
 </table>
 <div class="note update admonition">

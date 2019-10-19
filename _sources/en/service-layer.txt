@@ -841,15 +841,51 @@ Further Reading
     - Cross-Cutting Concerns ... 160
     - Java Proxies ... 161
     - Pure Java AOP Frameworks ... 163
-- "Patterns of Enterprise Application Architecture" by Martin Fowler [#fnpoeaa]_, главы:
+- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+    - Chapter 6 Functional Programming : Event Sourcing
+    - Chapter 16 Independence
+    - Chapter 18 Boundary Anatomy : Services
+    - Chapter 20 Business Rules
+    - Chapter 22 The Clean Architecture
+    - Chapter 34 The Missing Chapter
+- "Patterns of Enterprise Application Architecture" by Martin Fowler [#fnpoeaa]_, chapters:
     - Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer
     - Part 1. The Narratives : Chapter 8. Putting It All Together
     - Part 2. The Patterns : Chapter 9. Domain Logic Patterns : Service Layer
-- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans [#fnddd]_, глава:
+- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans [#fnddd]_, chapters:
+    - Part II: The Building Blocks of a Model-Driven Design : Chapter Four. Isolating the Domain : Layered Architecture
     - Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
-- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, главы:
+- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+    - Chapter 7 Services
+    - Chapter 14 Application : Application Services
+    - Appendix A Aggregates and Event Sourcing: A+ES : Inside an Application Service
+- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
+- "Building Microservices. Designing Fine-Grained Systems" by Sam Newman, chapters:
+    - Chapter 3 How to Model Services : Premature Decomposition
+- "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
+    - `Command and Query Responsibility Segregation (CQRS) pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs>`__
+    - `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
+- "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos, chapters:
+    - `Tackle Business Complexity in a Microservice with DDD and CQRS Patterns <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/>`__
+    - `Apply simplified CQRS and DDD patterns in a microservice <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/apply-simplified-microservice-cqrs-ddd-patterns>`__
+    - `Apply CQRS and CQS approaches in a DDD microservice in eShopOnContainers <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/eshoponcontainers-cqrs-ddd-microservice>`__
+    - `Implement reads/queries in a CQRS microservice <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/cqrs-microservice-reads>`__
+- "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, chapters:
+    - `Reference 1: CQRS in Context <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591560(v=pandp.10)>`__
+    - `Reference 2: Introducing the Command Query Responsibility Segregation Pattern <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591573(v=pandp.10)>`__
+    - `Reference 3: Introducing Event Sourcing <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591559(v=pandp.10)>`__
+    - `Reference 4: A CQRS and ES Deep Dive <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591577(v=pandp.10)>`__
+    - `Reference 6: A Saga on Sagas <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591569(v=pandp.10)>`__
+- "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf, chapters:
+    - 7. Message routing : Process manager
+- "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
+- "`Command Query Separation <https://martinfowler.com/bliki/CommandQuerySeparation.html>`__
+- "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
+- "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
+- "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+- "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 
 Эта статья на Русском языке ":doc:`../ru/service-layer`".
 
@@ -859,6 +895,7 @@ Further Reading
 .. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+.. [#fniddd] "Implementing Domain-Driven Design" by Vaughn Vernon
 .. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 .. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
