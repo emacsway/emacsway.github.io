@@ -1028,14 +1028,22 @@ Event Sourcing
     - Part II: The Building Blocks of a Model-Driven Design : Chapter Four. Isolating the Domain : Layered Architecture
     - Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
 - "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+    - Chapter 4 Architecture : Command-Query Responsibility Segregation, or CQRS
+    - Chapter 4 Architecture : Event-Driven Architecture : Long-Running Processes, aka Sagas
+    - Chapter 4 Architecture : Event-Driven Architecture : Event Sourcing
     - Chapter 7 Services
     - Chapter 14 Application : Application Services
     - Appendix A Aggregates and Event Sourcing: A+ES : Inside an Application Service
+- "`Microsoft Application Architecture Guide <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff650706(v=pandp.10)?redirectedfrom=MSDN>`__" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat), chapters:
+    - Chapter 5: Layered Application Guidelines : Services and Layers ... 58
+    - Chapter 9: Service Layer Guidelines ... 115
+    - Chapter 21: Designing Web Applications : Service Layer ... 288
+    - Chapter 25: Designing Service Applications : Service Layer ... 371
 - "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman, chapters:
-    - Chapter 3 How to Model Services : Premature Decomposition
+    - Chapter 3 How to Model Services : Premature Decomposition ... 33
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
     - `Command and Query Responsibility Segregation (CQRS) pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs>`__
     - `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
@@ -1051,7 +1059,7 @@ Event Sourcing
     - `Reference 4: A CQRS and ES Deep Dive <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591577(v=pandp.10)>`__
     - `Reference 6: A Saga on Sagas <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591569(v=pandp.10)>`__
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf, chapters:
-    - 7. Message routing : Process manager
+    - 7. Message routing : Process manager ... 278
 - "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
 - "`Command Query Separation <https://martinfowler.com/bliki/CommandQuerySeparation.html>`__
 - "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
