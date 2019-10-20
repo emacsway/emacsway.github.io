@@ -43,7 +43,8 @@ Sites
 - `Passionate about data <https://www.sadalage.com/>`__
 - `PlanningPoker.com - Estimates Made Easy. Sprints Made Simple. <https://www.planningpoker.com/>`__
 - `Awesome Microservices <https://github.com/mfornos/awesome-microservices>`__
-
+- `Microservice Weekly <https://microserviceweekly.com/>`__
+- `Solution Architecture links, articles, books, video lessons, etc. <https://github.com/unlight/solution-architecture>`__
 
 Tools
 -----
