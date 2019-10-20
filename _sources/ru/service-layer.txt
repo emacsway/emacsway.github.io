@@ -1048,7 +1048,7 @@ Event Sourcing
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
     - `Command and Query Responsibility Segregation (CQRS) pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs>`__
     - `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
-    - `Compensating Transaction pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction>"__
+    - `Compensating Transaction pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction>`__
 - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos, chapters:
     - `Tackle Business Complexity in a Microservice with DDD and CQRS Patterns <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/>`__
     - `Apply simplified CQRS and DDD patterns in a microservice <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/apply-simplified-microservice-cqrs-ddd-patterns>`__
@@ -1072,7 +1072,7 @@ Event Sourcing
 - "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
-- "CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>"__ by Greg Young
+- "`CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>`__" by Greg Young
 - "`Sagas <http://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf>`__" by Hector Garcia-Molina and Kenneth Salem
 
 This article in English ":doc:`../en/service-layer`".
