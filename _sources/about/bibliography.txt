@@ -73,6 +73,7 @@ The order of the list is unstable.
 - "Domain Specific Languages" by Martin Fowler (with Rebecca Parsons)
 - "Implementing Domain-Driven Design" by Vaughn Vernon
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
+- "Microsoft .NET: Architecting Applications for the Enterprise" 2nd Edition by Dino Esposito, Andrea Saltarello
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 - "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
