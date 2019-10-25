@@ -868,15 +868,15 @@ Further Reading
     - `Chapter 9: Service Layer Guidelines <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658090%28v%3dpandp.10%29>`__ ... 115
     - `Chapter 21: Designing Web Applications : Service Layer <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658099%28v%3dpandp.10%29#service-layer>`__ ... 288
     - `Chapter 25: Designing Service Applications : Service Layer <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658114%28v%3dpandp.10%29#service-layer>`__ ... 371
-- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
-    - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
-    - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 - "Microsoft .NET: Architecting Applications for the Enterprise" 2nd Edition by Dino Esposito, Andrea Saltarello, chapters:
     - Chapter 5 Discovering the domain architecture : The layered architecture ... 129
     - Chapter 10 Introducing CQRS ... 255
     - Chapter 11 Implementing CQRS ... 291
     - Chapter 12 Introducing event sourcing ... 311
     - Chapter 13 Implementing event sourcing ... 325
+- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
+    - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
+    - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman, chapters:
     - Chapter 3 How to Model Services : Premature Decomposition ... 33
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
