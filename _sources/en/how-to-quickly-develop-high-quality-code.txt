@@ -951,7 +951,7 @@ Ground your arguments on knowledge, instead of opinion, when you do code review.
 Use catalogs of Code Smells.
 There is a few of most frequently used catalogs:
 
-- Chapter 17: "Smells and Heuristics" of the book "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ Robert C. Martin
+- Chapter 17: "Smells and Heuristics" of the book "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin
 - Chapter 3. "Bad Smells in Code" of the book "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler
 - `Code Smell`_
 - "Refactoring To Patterns" [#fnrtp]_

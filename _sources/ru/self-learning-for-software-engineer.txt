@@ -14,6 +14,7 @@
 
 .. contents:: Содержание
 
+
 Предисловие
 ===========
 
@@ -203,7 +204,7 @@
 
 К этой книге существует эталонное приложение, которое наглядно демонстрирует практическое применение изложенной в книге информации:
 
-- https://github.com/dotnet-architecture/eShopOnContainers
+- https://github.com/dotnet-architecture/eShopOnContainers (CQRS, DDD, Microservices)
 
 И можно сюда включить еще и книгу:
 
@@ -211,7 +212,7 @@
 
 К ней также существует демонстрационное приложение:
 
-- https://github.com/microsoftarchive/cqrs-journey
+- https://github.com/microsoftarchive/cqrs-journey (Event Sourcing, SAGA transactions)
 
 
 Учимся делать команду эффективной. Углубляем навыки.
@@ -284,6 +285,7 @@
 - "Working Effectively with Legacy Code" by Michael C. Feathers
 - "Refactoring To Patterns" by Joshua Kerievsky
 
+
 POSA
 ====
 
@@ -330,4 +332,72 @@ POSA
 
 - "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell (я встречал в интернете `краткий конспект <http://igorshevchenko.ru/blog/entries/software-estimation>`__)
 - "Agile Estimating and Planning" by Mike Cohn
+
+
+Online-каталоги
+===============
+
+- `Catalog of Refactorings <http://www.refactoring.com/catalog/>`__
+- `Code Smell <http://c2.com/cgi/wiki?CodeSmell>`__
+- `Anti Patterns Catalog <http://c2.com/cgi/wiki?AntiPatternsCatalog>`__
+- `Enterprise Integration Patterns <http://www.enterpriseintegrationpatterns.com/>`__
+- `Service Design Patterns <http://servicedesignpatterns.com>`__
+- `SOAPatterns.org <http://soapatterns.org/>`__
+- `CloudPatterns.org <http://www.cloudpatterns.org/>`__
+- `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
+- `Microservice Patterns <https://www.manning.com/books/microservice-patterns>`__
+- `Microservices Patterns from Sam Newman <https://samnewman.io/patterns/>`__
+- `About DDD on the site of Ward Cunningham <http://ddd.fed.wiki.org/>`__
+- `Refactoring Databases <http://www.databaserefactoring.com/>`__
+- `XUnit Test Patterns <http://xunitpatterns.com/>`__
+- `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
+- `Refactoring Databases <https://databaserefactoring.com/>`__
+- `Catalog of Database Refactorings <http://www.agiledata.org/essays/databaseRefactoringCatalog.html>`__
+
+
+Code Smell catalogs
+===================
+
+- Chapter 17: "Smells and Heuristics" of the book "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
+- Chapter 3. "Bad Smells in Code" of the book "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+- `Code Smell <http://c2.com/cgi/wiki?CodeSmell>`__ catalog on the site of Ward Cunningham
+- "Refactoring To Patterns" by Joshua Kerievsky
+
+
+Другие подборки литературы
+==========================
+
+- `Awesome lists <https://github.com/sindresorhus/awesome>`__
+- `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
+- `Awesome Microservices <https://github.com/mfornos/awesome-microservices>`__
+- `Solution Architecture links, articles, books, video lessons, etc. <https://github.com/unlight/solution-architecture>`__
+- `Awesome Algorithms <https://github.com/tayllan/awesome-algorithms>`__
+- `Awesome Algorithms Education <https://github.com/gaerae/awesome-algorithms-education>`__
+- `List of awesome university courses for learning Computer Science <https://github.com/prakhar1989/awesome-courses>`__
+- `MAXimal :: bookz - электронные версии различных книг по алгоритмам <http://e-maxx.ru/bookz/>`__
+- `Programming and design learning resources by Kamil Grzybek <http://www.kamilgrzybek.com/programming-and-design-resources/>`__
+- `Список книг от Сергея Теплякова <https://sergeyteplyakov.blogspot.com/2013/08/blog-post.html>`__
+
+
+Почтовые рассылки и сообщества
+==============================
+
+- `Domain Driven Design Community <http://dddcommunity.org/>`__
+- `Domain Driven Design Weekly <http://dddweekly.com/>`__
+- `Microservice Weekly <https://microserviceweekly.com/>`__
+
+
+Эталонные демонстрационные приложения
+=====================================
+
+- `eShopOnContainers <https://github.com/dotnet-architecture/eShopOnContainers>`__ (CQRS, DDD, Microservices)
+- `Microsoft patterns & pratices CQRS Journey sample application <https://github.com/microsoftarchive/cqrs-journey>`__ (CQRS, DDD, Event Sourcing, SAGA transactions)
+- `Full Modular Monolith application with Domain-Driven Design approach <https://github.com/kgrzybek/modular-monolith-with-ddd>`__ by Kamil Grzybek
+- `Sample .NET Core REST API CQRS implementation with raw SQL and DDD using Clean Architecture <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api>`__ by Kamil Grzybek
+- `Refactoring from anemic to rich Domain Model example <https://github.com/kgrzybek/refactoring-from-anemic-to-rich-domain-model-example>`__ by Kamil Grzybek
+- `Sample Bounded Contexts for C#.NET from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples_NET>`__ by Vaughn Vernon
+- `Sample Bounded Contexts from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples>`__ by Vaughn Vernon
+- `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
+
+.. update:: 27 OCt, 2019
 
