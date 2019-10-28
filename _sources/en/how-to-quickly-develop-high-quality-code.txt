@@ -669,6 +669,11 @@ The quality code is always simple!
     "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
     ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
 
+..
+
+    "I'm not a great programmer; I'm just a good programmer with great habits."
+    - Kent Beck
+
 See also the great article "`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler.
 
 
