@@ -369,7 +369,7 @@ Black Box or White Box?
     So that for me is too high a price to pay.
     That's not a trade-off I'm willing to make just to get piecemeal development.
 
-    \- Kent Beck, "`Is TDD Dead? Part 1 at 21:10 <https://youtu.be/z9quxZsLcfo>`__
+    \- Kent Beck, "`Is TDD Dead? Part 1 at 21:10 <https://youtu.be/z9quxZsLcfo?t=1269>`__
 
 ..
 
@@ -539,7 +539,7 @@ Sociable or Solitary?
 
     "My personal practice - I mock almost nothing."
 
-    \- Kent Beck, "`Is TDD Dead? Part 1 at 21:10 <https://youtu.be/z9quxZsLcfo>`__
+    \- Kent Beck, "`Is TDD Dead? Part 1 at 21:10 <https://youtu.be/z9quxZsLcfo?t=1269>`__
 
 Лично я считаю что нужно ограничивать использование современных средства мокирования, активно эксплуатирующих Monkey Patch,  поскольку они позволяют создавать и тестировать низкокачественный код.
 
