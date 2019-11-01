@@ -365,14 +365,14 @@ As Martin Fowler said:
 
     We usually perceive that it costs more to get higher quality, but software internal quality actually reduces costs.
 
-    - Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
+    \- Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
 
 ..
 
     The fundamental role of internal quality is that it lowers the cost of future change.
     But there is some extra effort required to write good software, which does impose some cost in the short term.
 
-    - Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
+    \- Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
 
 ..
 
@@ -391,7 +391,7 @@ As Martin Fowler said:
     Because the relationship between cost and internal quality is an unusual and counter-intuitive relationship, it's usually hard to absorb.
     But understanding it is critical to developing software at maximum efficiency.
 
-    - Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
+    \- Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
 
 The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
 
@@ -703,7 +703,7 @@ The quality code is always simple!
 ..
 
     "I'm not a great programmer; I'm just a good programmer with great habits."
-    - Kent Beck
+    \- Kent Beck
 
 See also the great article "`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler.
 
