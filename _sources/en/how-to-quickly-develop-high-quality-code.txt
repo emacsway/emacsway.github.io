@@ -361,6 +361,37 @@ As Martin Fowler said:
    :alt: The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "Design Stamina Hypothesis" by Martin Fowler.
    :align: center
 
+..
+
+    We usually perceive that it costs more to get higher quality, but software internal quality actually reduces costs.
+
+    - Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
+
+..
+
+    The fundamental role of internal quality is that it lowers the cost of future change.
+    But there is some extra effort required to write good software, which does impose some cost in the short term.
+
+    - Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
+
+..
+
+    Sadly, software developers usually don't do a good job of explaining this situation.
+    Countless times I've talked to development teams who say "they (management) won't let us write good quality code because it takes too long".
+    Developers often justify attention to quality by justifying through the need for proper professionalism.
+    But this moralistic argument implies that this quality comes at a cost - dooming their argument.
+    The annoying thing is that the resulting crufty code both makes developers' lives harder, and costs the customer money.
+    When thinking about internal quality, I stress that we should only approach it as an economic argument.
+    High internal quality reduces the cost of future features, meaning that putting the time into writing good code actually reduces cost.
+
+    This is why the question that heads this article misses the point.
+    The "cost" of high internal quality software is negative.
+    The usual trade-off between cost and quality, one that we are used to for most decisions in our life, does not make sense with the internal quality of software.
+    (It does for external quality, such as a carefully crafted user-experience.)
+    Because the relationship between cost and internal quality is an unusual and counter-intuitive relationship, it's usually hard to absorb.
+    But understanding it is critical to developing software at maximum efficiency.
+
+    - Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
 
 The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
 
