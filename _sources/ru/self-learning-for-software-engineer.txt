@@ -340,6 +340,7 @@ Online-каталоги
 - `Catalog of Refactorings <http://www.refactoring.com/catalog/>`__
 - `Code Smell <http://c2.com/cgi/wiki?CodeSmell>`__
 - `Anti Patterns Catalog <http://c2.com/cgi/wiki?AntiPatternsCatalog>`__
+- `Catalog of Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaCatalog/>`__
 - `Enterprise Integration Patterns <http://www.enterpriseintegrationpatterns.com/>`__
 - `Service Design Patterns <http://servicedesignpatterns.com>`__
 - `SOAPatterns.org <http://soapatterns.org/>`__
