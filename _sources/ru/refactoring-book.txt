@@ -4,7 +4,7 @@
 
 .. post:: Nov 01, 2015
    :language: ru
-   :tags: Python, refactoring, Fowler
+   :tags: Python, Refactoring, Fowler
    :category:
    :author: Ivan Zakrevsky
 

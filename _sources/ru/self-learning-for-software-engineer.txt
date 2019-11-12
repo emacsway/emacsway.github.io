@@ -5,9 +5,9 @@
 .. post:: Oct 11, 2019
    :language: ru
    :tags:
-   :category:
+   :category:  Architecture, DDD, Clean Architecture, Clean Code, Event-Driven, Microservices, CQRS, Event Sourcing, Extreme Programming, TDD, XP, Refactoring, programming
    :author: Ivan Zakrevsky
-
+   :redirect: en/eda-reference-applications
 
 Один из частых вопросов, который я слышу регулярно, - это "посоветуйте список литературы в области разработки программного обеспечения".
 В этом посте я изложу свое видение самообучения и приведу список тематической литературы, с учетом моего личного опыта.
@@ -395,6 +395,13 @@ Code Smell catalogs
 
 - `eShopOnContainers <https://github.com/dotnet-architecture/eShopOnContainers>`__ (CQRS, DDD, Microservices)
 - `Microsoft patterns & pratices CQRS Journey sample application <https://github.com/microsoftarchive/cqrs-journey>`__ (CQRS, DDD, Event Sourcing, SAGA transactions)
+
+..
+
+    "A perfect example of this [you can see] if you go look at the CQRS and Event Sourcing by Microsoft Patterns and Practices, which is heavily focused on doing this inside of Azure using their toolkits."
+
+    \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1092>`__" at 18:15
+
 - `Full Modular Monolith application with Domain-Driven Design approach <https://github.com/kgrzybek/modular-monolith-with-ddd>`__ by Kamil Grzybek
 - `Sample .NET Core REST API CQRS implementation with raw SQL and DDD using Clean Architecture <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api>`__ by Kamil Grzybek
 - `Refactoring from anemic to rich Domain Model example <https://github.com/kgrzybek/refactoring-from-anemic-to-rich-domain-model-example>`__ by Kamil Grzybek
@@ -402,5 +409,5 @@ Code Smell catalogs
 - `Sample Bounded Contexts from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples>`__ by Vaughn Vernon
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
 
-.. update:: 27 OCt, 2019
+.. update:: 12 Nov, 2019
 
