@@ -23,6 +23,7 @@ The list of software literature read by me:
     - "Test-Driven Development By Example" by Kent Beck
     - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
     - "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
+    - "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
     - "Pattern Hatching: Design Patterns Applied" by John Vlissides
 - Programming languages:
     - "Learning Python" 4th edition by Mark Lutz
@@ -61,7 +62,6 @@ My friends are interested in the list of books which I plan to read.
 So, it is public for now.
 The order of the list is unstable.
 
-- "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
 - "An Introduction to Database Systems" by C.J. Date
 - "Analysis Patterns. Reusable Object Models" by Martin Fowler
 - "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
