@@ -446,7 +446,7 @@
     If the framework wants you to derive your business objects from its base classes, say no!
     Derive proxies instead, and keep those proxies in components that are plugins to your business rules.
 
-    \- .. "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
 
 
 Эмуляция Объектных Ссылок (Object References)
