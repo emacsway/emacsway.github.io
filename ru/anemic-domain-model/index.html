@@ -116,6 +116,12 @@
 <p>Для того чтобы завуалировать неразбериху, автор вводит лишнее понятие Rich Domain Model, вводя тем самым читателя в заблуждение относительно присутствия некой дифференцированности в реализации Domain Model.
 Нет никаких Rich Domain Model.
 Есть Domain Model (объект моделирующий поведение объекта реального мира (предметной области)), а есть Anemic Domain Model (т.е. структура данных, выраженная объектами без поведения).</p>
+<p>В целом, основной мотив сторонников Anemic Domain Model сводится к тому, что, поскольку они не умеют обеспечить разделение реализаций служебной Логики Доступа к Данным и Бизнес-Логики Доменной Модели, т.е. отделить разного рода (Инфраструктурные) Сервисы от Доменной Модели, то, поэтому, они предлагают вынести всю Бизнес-Логику из Доменной Модели к служебной логике в Сервисы.
+Ну... хорошо... а что это решает?
+В Сервисах их разделять не нужно?
+Это же все-таки политики разного уровня...
+Получаются те же яйца, только в процедурном стиле.
+От перестановки мест слагаемых проблема не решается.</p>
 <p>Все что не относится к логике предметной области, - это новая обязанность, которая должна быть вынесена за пределы Domain Model, или, по крайней мере, не рассматриваться как бизнес-логика, если Domain Model реализована в виде паттерна Active Record (как в той статье).</p>
 <p>Очень часто можно наблюдать разбухшие модели, которые выполняют очень много несвойственных ее предметной области обязанностей, в т.ч. и уровня приложения (управление транзакциями, проверка привилегий и т.п.).
 Domain Model должна моделировать только поведение объекта предметной области (реального мира).
@@ -160,8 +166,8 @@ NoSQL хранилища построены вокруг идеи агрегат
 Но это не имеет никакого отношения к тому, что написал автор.</p>
 <p>Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.</p>
 <p>Попробуйте реализовать в таком стиле паттерн <a class="reference external" href="https://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a> для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
-То же самое справедливо и к случаю использования паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/specialCase.html">Special Case</a>, известного так же как метод рефакторинга <a class="reference external" href="https://www.refactoring.com/catalog/introduceNullObject.html">Introduce Null Object</a>.
-Смотрите так же <a class="reference external" href="https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html">Replace Conditional with Polymorphism</a>, <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html">Replace Type Code With Polymorphism</a> и <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html">Replace Type Code with State/Strategy</a> (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).</p>
+То же самое справедливо и к случаю использования паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/specialCase.html">Special Case</a>, известного также как метод рефакторинга <a class="reference external" href="https://www.refactoring.com/catalog/introduceNullObject.html">Introduce Null Object</a>.
+Смотрите также <a class="reference external" href="https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html">Replace Conditional with Polymorphism</a>, <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html">Replace Type Code With Polymorphism</a> и <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html">Replace Type Code with State/Strategy</a> (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnadminapen" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
