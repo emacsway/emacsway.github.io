@@ -239,4 +239,4 @@ Supervisor
     ("Extreme Programming Explained" by Kent Beck)
 
 
-.. update:: 13 Jan, 2018
+.. update:: Jan 13, 2018

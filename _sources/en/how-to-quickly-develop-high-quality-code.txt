@@ -1196,7 +1196,7 @@ Further reading
 .. [#fndp] "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
 
-.. update:: 04 Dec, 2017
+.. update:: Dec 04, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884

@@ -2,7 +2,7 @@
 Implementation of Repository pattern for browser's JavaScript
 =============================================================
 
-.. post:: 06 Aug, 2017
+.. post:: Aug 06, 2017
    :language: en
    :tags: Repository, ORM, JavaScript, Model, DDD
    :category:
@@ -490,7 +490,7 @@ Source code
 .. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
 
 
-.. update:: 26 May, 2018
+.. update:: May 26, 2018
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884

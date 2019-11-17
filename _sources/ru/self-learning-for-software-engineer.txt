@@ -409,5 +409,5 @@ Code Smell catalogs
 - `Sample Bounded Contexts from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples>`__ by Vaughn Vernon
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
 
-.. update:: 12 Nov, 2019
+.. update:: Nov 12, 2019
 

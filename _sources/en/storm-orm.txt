@@ -586,7 +586,7 @@ Storm ORM is the tool for highly skilled professionals who understand its superi
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 
 
-.. update:: 31 Jul, 2017
+.. update:: Jul 31, 2017
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html

@@ -85,4 +85,4 @@ Articles in Russian
 
 - `Разница менталитетов и национальных деловых культур. <http://bulochnikov.livejournal.com/2326301.html>`__
 
-.. update:: 14 Aug, 2017
+.. update:: Aug 14, 2017

@@ -2,7 +2,7 @@
 Реализация паттерна Repository в браузерном JavaScript
 ======================================================
 
-.. post:: 06 Aug, 2017
+.. post:: Aug 06, 2017
    :language: ru
    :tags: Repository, ORM, JavaScript, Model, DDD
    :category:
@@ -712,7 +712,7 @@ This article in English ":doc:`../en/javascript-and-repository-pattern`".
 .. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
 
 
-.. update:: 26 May, 2018
+.. update:: Nov 16, 2019
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
