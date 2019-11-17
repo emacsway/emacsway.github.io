@@ -443,6 +443,11 @@
 
 книги "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin.
 
+    If the framework wants you to derive your business objects from its base classes, say no!
+    Derive proxies instead, and keep those proxies in components that are plugins to your business rules.
+
+    \- .. "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+
 
 Эмуляция Объектных Ссылок (Object References)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -691,6 +696,7 @@ This article in English ":doc:`../en/javascript-and-repository-pattern`".
 .. rubric:: Footnotes
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
 .. [#fncodec] "`Code Complete`_" Steve McConnell
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
