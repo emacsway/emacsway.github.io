@@ -129,22 +129,14 @@ NoSQL хранилища построены вокруг идеи агрегат
 Границами транзакции NoSQL-хранилища являются границы агрегата.
 Если у Вас детали реализации сохранения агрегата скрыты за интерфейсом ответственного за это объекта (обычно это Repository + DataMapper), то такой рефакторинг не затронет реализацию самой Доменной Модели.
 Если Вы вынуждены изменять реализацию Domain Model, то это значит, что Ваша программа не имеет независимости от IO-устройства, что нарушает Single Responsibility Principle (в виде Code Smell &#8220;Shotgun Surgery&#8221;).</p>
-<p>Иногда случается, что Domain Model не представлена агрегатом, но должна знать о связанных объектах для реализации своей бизнес-логики.
-В Python для этого обычно используются дескрипторы, которые осуществляют ленивый доступ к связанным объектам.
-И хотя это обычно никак не усложняет тестирование (потому что дескрипторы способны кэшировать в памяти явно установленные клиентом связанные объекты), но все-таки привносит в Domain Model служебную логику доступа к данным, пусть она и хорошо инкапсулирована за интерфейсом дескриптора.
-Более чистым решением является наложение ответственного за связи аспекта на экземпляр Domain Model, сразу после его создания (обычно посредством Dependency Injection).
-Тогда при тестировании Вы просто подменяете реализацию этого аспекта.</p>
-<blockquote>
-<div>If the framework wants you to derive your business objects from its base classes, say no!
-Derive proxies instead, and keep those proxies in components that are plugins to your business rules.
-- Robert Martin, &#8220;Clean Architecture&#8221;.</div></blockquote>
-<p>Классический же вариант реализации доступа к связанным объектам, основанный на IoC, в условиях отсутствия AOP и Дескрипторов, можно увидеть в подразделе &#8220;Example: Separating the Finders (Java)&#8221; главы &#8220;Data Mapper&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id2">[2]</a>.
-Но даже в этом случае Доменная модель не превращается в Active Record.</p>
-<p>Частично эту тему я уже затрагивал в статьях:</p>
+<p>Иногда случается, что Бизнес-Логика Доменной Модели нуждается в доступе к экземпляру связанной Доменной Модели, или даже в доступе к корню другого Агрегата.
+Недостаточное понимание способов разделения политики разных уровней (Бизнес-Логики и Логики Доступа к Данным) часто приводит к оправданию Anemic Domain Model.
+Между тем, существует целый <a class="reference internal" href="../javascript-and-repository-pattern/#domain-model-relationship-ru"><span class="std std-ref">ряд способов решения этой проблемы</span></a>.</p>
+<p>Эта тема уже затрагивалась в статьях:</p>
 <ul class="simple">
-<li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8220;</li>
 <li>&#8220;<a class="reference internal" href="../javascript-and-repository-pattern/"><span class="doc">Реализация паттерна Repository в браузерном JavaScript</span></a>&#8220;</li>
 <li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8220;</li>
+<li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8220;</li>
 </ul>
 <p>Вы можете подумать, зачем возиться с разделением обязанностей?
 Ведь можно просто откатиться до времен процедурного программирования (или даже до ассемблера) и не использовать ООП вовсе.
@@ -179,7 +171,7 @@ Derive proxies instead, and keep those proxies in components that are plugins to
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>&#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+<tr><td class="label">[2]</td><td>&#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
 </tbody>
 </table>
 <div class="note update admonition">

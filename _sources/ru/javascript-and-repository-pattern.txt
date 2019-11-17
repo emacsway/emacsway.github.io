@@ -183,6 +183,8 @@
 Отдельно стоит упомянуть реализацию реактивных хранилищ основанных на состоянии с использованием библиотеки RxJS, смотрите, например, `angular2-rxjs-chat <https://github.com/ng-book/angular2-rxjs-chat>`_.
 
 
+.. _domain-model-relationship-ru:
+
 Реализация реляционных связей
 =============================
 
@@ -328,7 +330,7 @@
 Классическая реализация создания агрегатов
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Для построения агрегатов часто используется паттерн "`Dependent Mapping <https://martinfowler.com/eaaCatalog/dependentMapping.html>`__", смотрите "Chapter 12. Object-Relational Structural Patterns :: Dependent Mapping" книги "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford. В этом случае один DataMapper ответственен за создание агрегата.
+Для построения агрегатов часто используется паттерн "`Dependent Mapping <https://martinfowler.com/eaaCatalog/dependentMapping.html>`__", смотрите "Chapter 12. Object-Relational Structural Patterns :: Dependent Mapping" книги "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford. В этом случае один DataMapper ответственен за создание всего агрегата.
 
     Главная идея, лежащая в основе типового решения отображение зависимых объектов, состоит в том, что один класс (зависимый объект) передает другому классу (владельцу) все свои полномочия по взаимодействию с базой данных.
     При этом у каждого зависимого объекта должен быть один и только один владелец.
@@ -352,7 +354,7 @@
 Создание Объектных Ссылок на уровне инфраструктуры
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Для сохранения агрегата целиком часто используются агрегато-ориентированные NoSQL хранилища данных и `Application Database <https://martinfowler.com/bliki/ApplicationDatabase.html>`__ и `REST-API endpoints <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
+Для сохранения агрегата целиком часто используются агрегато-ориентированные NoSQL хранилища данных, `Application Database <https://martinfowler.com/bliki/ApplicationDatabase.html>`__ и `REST-API endpoints <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
 
 
 Создание Объектных Ссылок на уровне приложения
@@ -425,6 +427,8 @@
 
 При этом Доменная Модель осведомлена об интерфейсе доступа к данным, который объявляется на этом же уровне логики, но реализуется на инфраструктурном уровне.
 
+
+.. _domain-model-relationship-implementing-aop-ru:
 
 Реализация посредством AOP (Cross-Cutting Concerns)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

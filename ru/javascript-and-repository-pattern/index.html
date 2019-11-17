@@ -98,7 +98,7 @@
 <li><a class="reference internal" href="#domain-model" id="id42">Модель предметной области (Domain Model)</a></li>
 <li><a class="reference internal" href="#id8" id="id43">Парадигма реактивного программирования</a></li>
 <li><a class="reference internal" href="#repository-orm-javascript" id="id44">Примеры реализаций паттерна Repository и ORM в JavaScript</a></li>
-<li><a class="reference internal" href="#id9" id="id45">Реализация реляционных связей</a></li>
+<li><a class="reference internal" href="#domain-model-relationship-ru" id="id45">Реализация реляционных связей</a></li>
 <li><a class="reference internal" href="#id10" id="id46">Виды связей по осведомленности</a><ul>
 <li><a class="reference internal" href="#id11" id="id47">Однонаправленные ассоциации</a></li>
 <li><a class="reference internal" href="#id12" id="id48">Двунаправленные ассоциации</a></li>
@@ -254,8 +254,8 @@ it all up, the domain developers lose their ability to chunk the model into mean
 <p>Данные паттерны используется в распределенных вычислениях и в системах воссоздающих разные состояния системы, но их преимущества на фронтенде не столь очевидны, особенно учитывая тот факт, что именно на фронтенде реализация бизнес-логики бывает наиболее востребованной.</p>
 <p>Отдельно стоит упомянуть реализацию реактивных хранилищ основанных на состоянии с использованием библиотеки RxJS, смотрите, например, <a class="reference external" href="https://github.com/ng-book/angular2-rxjs-chat">angular2-rxjs-chat</a>.</p>
 </div>
-<div class="section" id="id9">
-<h1><a class="toc-backref" href="#id45">Реализация реляционных связей</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="domain-model-relationship-ru">
+<span id="id9"></span><h1><a class="toc-backref" href="#id45">Реализация реляционных связей</a><a class="headerlink" href="#domain-model-relationship-ru" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="section" id="id10">
 <h1><a class="toc-backref" href="#id46">Виды связей по осведомленности</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h1>
@@ -363,7 +363,7 @@ A set of consistency rules applies within the AGGREGATE&#8217;S boundaries.</p>
 </div>
 <div class="section" id="id23">
 <h3><a class="toc-backref" href="#id56">Классическая реализация создания агрегатов</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
-<p>Для построения агрегатов часто используется паттерн &#8220;<a class="reference external" href="https://martinfowler.com/eaaCatalog/dependentMapping.html">Dependent Mapping</a>&#8221;, смотрите &#8220;Chapter 12. Object-Relational Structural Patterns :: Dependent Mapping&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford. В этом случае один DataMapper ответственен за создание агрегата.</p>
+<p>Для построения агрегатов часто используется паттерн &#8220;<a class="reference external" href="https://martinfowler.com/eaaCatalog/dependentMapping.html">Dependent Mapping</a>&#8221;, смотрите &#8220;Chapter 12. Object-Relational Structural Patterns :: Dependent Mapping&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford. В этом случае один DataMapper ответственен за создание всего агрегата.</p>
 <blockquote>
 <div><p>Главная идея, лежащая в основе типового решения отображение зависимых объектов, состоит в том, что один класс (зависимый объект) передает другому классу (владельцу) все свои полномочия по взаимодействию с базой данных.
 При этом у каждого зависимого объекта должен быть один и только один владелец.</p>
@@ -381,7 +381,7 @@ You can have a whole hierarchy of dependents controlled by a single primary owne
 </div>
 <div class="section" id="id24">
 <h3><a class="toc-backref" href="#id57">Создание Объектных Ссылок на уровне инфраструктуры</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
-<p>Для сохранения агрегата целиком часто используются агрегато-ориентированные NoSQL хранилища данных и <a class="reference external" href="https://martinfowler.com/bliki/ApplicationDatabase.html">Application Database</a> и <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">REST-API endpoints</a>.</p>
+<p>Для сохранения агрегата целиком часто используются агрегато-ориентированные NoSQL хранилища данных, <a class="reference external" href="https://martinfowler.com/bliki/ApplicationDatabase.html">Application Database</a> и <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">REST-API endpoints</a>.</p>
 </div>
 <div class="section" id="id25">
 <h3><a class="toc-backref" href="#id58">Создание Объектных Ссылок на уровне приложения</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
@@ -440,7 +440,7 @@ You can have a whole hierarchy of dependents controlled by a single primary owne
 <p>При этом Доменная Модель осведомлена об интерфейсе доступа к данным, который объявляется на этом же уровне логики, но реализуется на инфраструктурном уровне.</p>
 </div>
 <div class="section" id="aop-cross-cutting-concerns">
-<h3><a class="toc-backref" href="#id61">Реализация посредством AOP (Cross-Cutting Concerns)</a><a class="headerlink" href="#aop-cross-cutting-concerns" title="Permalink to this headline">¶</a></h3>
+<span id="domain-model-relationship-implementing-aop-ru"></span><h3><a class="toc-backref" href="#id61">Реализация посредством AOP (Cross-Cutting Concerns)</a><a class="headerlink" href="#aop-cross-cutting-concerns" title="Permalink to this headline">¶</a></h3>
 <p>В отличии от только что рассмотренного варианта классической реализации, использующей IoC, реализация посредством AOP (Cross-Cutting Concerns) позволяет освободить Доменную Модель от осведомленности об интерфейсе доступа к данным.
 Доменная Модель просто объявляет методы, ответственные за доступ к связанным объектам, но не реализует их.</p>
 <p>Когда Repository создает экземпляр доменной модели, он накладывает на этот экземпляр аспект, ответственный за доступ к данным и реализующий все методы, которые были объявлены, но не реализованы, Доменной Моделью.
