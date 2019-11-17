@@ -86,7 +86,7 @@
           <div class="body" role="main">
             
   <div class="section" id="repository-javascript">
-<h1><a class="toc-backref" href="#id28">Реализация паттерна Repository в браузерном JavaScript</a><a class="headerlink" href="#repository-javascript" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id40">Реализация паттерна Repository в браузерном JavaScript</a><a class="headerlink" href="#repository-javascript" title="Permalink to this headline">¶</a></h1>
 <p>Хорошая архитектура освобождает Вас от привязки к конкретной реализации.
 Она позволяет Вам отложить момент принятия решения о реализации, и <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">начать конструирование кода еще не имея этого решения</a>.
 Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а также всегда можете легко подменить конкретную реализацию на любую другую.
@@ -94,17 +94,41 @@
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#repository-javascript" id="id28">Реализация паттерна Repository в браузерном JavaScript</a></li>
-<li><a class="reference internal" href="#domain-model" id="id29">Модель предметной области (Domain Model)</a></li>
-<li><a class="reference internal" href="#id8" id="id30">Парадигма реактивного программирования</a></li>
-<li><a class="reference internal" href="#repository-orm-javascript" id="id31">Примеры реализаций паттерна Repository и ORM в JavaScript</a></li>
-<li><a class="reference internal" href="#id9" id="id32">Реализация реляционных связей</a><ul>
-<li><a class="reference internal" href="#id10" id="id33">Синхронное программирование</a></li>
-<li><a class="reference internal" href="#id17" id="id34">Асинхронное программирование</a></li>
-<li><a class="reference internal" href="#id20" id="id35">Реализация связей путем присваивания</a></li>
+<li><a class="reference internal" href="#repository-javascript" id="id40">Реализация паттерна Repository в браузерном JavaScript</a></li>
+<li><a class="reference internal" href="#domain-model" id="id41">Модель предметной области (Domain Model)</a></li>
+<li><a class="reference internal" href="#id8" id="id42">Парадигма реактивного программирования</a></li>
+<li><a class="reference internal" href="#repository-orm-javascript" id="id43">Примеры реализаций паттерна Repository и ORM в JavaScript</a></li>
+<li><a class="reference internal" href="#id9" id="id44">Реализация реляционных связей</a></li>
+<li><a class="reference internal" href="#id10" id="id45">Виды связей по осведомленности</a><ul>
+<li><a class="reference internal" href="#id11" id="id46">Однонаправленные ассоциации</a></li>
+<li><a class="reference internal" href="#id12" id="id47">Двунаправленные ассоциации</a></li>
+<li><a class="reference internal" href="#id13" id="id48">Проектирование ассоциаций</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id25" id="id36">Исходный код</a></li>
+<li><a class="reference internal" href="#id17" id="id49">Виды связей по владению</a><ul>
+<li><a class="reference internal" href="#id18" id="id50">Ассоциация</a></li>
+<li><a class="reference internal" href="#id19" id="id51">Агрегация</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21" id="id52">Виды связей по способу доступа</a><ul>
+<li><a class="reference internal" href="#object-references" id="id53">Объектные Ссылки (Object References)</a><ul>
+<li><a class="reference internal" href="#id22" id="id54">Классическая реализация создания объектных ссылок</a></li>
+<li><a class="reference internal" href="#id23" id="id55">Классическая реализация создания агрегатов</a></li>
+<li><a class="reference internal" href="#id24" id="id56">Создание Объектных Ссылок на уровне инфраструктуры</a></li>
+<li><a class="reference internal" href="#id25" id="id57">Создание Объектных Ссылок на уровне приложения</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lazy-load" id="id58">Ленивая Загрузка (Lazy Load)</a><ul>
+<li><a class="reference internal" href="#ioc" id="id59">Классическая реализация с использованием IoC</a></li>
+<li><a class="reference internal" href="#aop-cross-cutting-concerns" id="id60">Реализация посредством AOP (Cross-Cutting Concerns)</a></li>
+<li><a class="reference internal" href="#id33" id="id61">Эмуляция Объектных Ссылок (Object References)</a></li>
+<li><a class="reference internal" href="#id34" id="id62">Оптимизация и пакетная загрузка</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id35" id="id63">Как реализует связи библиотека?</a></li>
+<li><a class="reference internal" href="#id36" id="id64">Исходный код</a></li>
 </ul>
 </div>
 <p>Таким образом, у Вас появляется полная абстракция от источника данных, будь то REST-API, MBaaS, SaaS, IndexedDB, HTML, сторонний сервис по протоколу JSON-RPC или <a class="reference external" href="http://martinfowler.com/eaaCatalog/serviceStub.html">Service Stub</a>.</p>
@@ -151,7 +175,7 @@ true.&#8221;</p>
 Последний часто востребован, так как позволяет выполнить откат состояния локальных объектов в случае, если сохранить данные невозможно (пользователь передумал или ввел невалидные данные).</p>
 </div>
 <div class="section" id="domain-model">
-<h1><a class="toc-backref" href="#id29">Модель предметной области (Domain Model)</a><a class="headerlink" href="#domain-model" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id41">Модель предметной области (Domain Model)</a><a class="headerlink" href="#domain-model" title="Permalink to this headline">¶</a></h1>
 <p>Наибольшим преимуществом полноценных <a class="reference external" href="http://martinfowler.com/eaaCatalog/domainModel.html">Моделей предметной области</a> в программе является возможность использования принципов Domain-Driven Design (DDD) <a class="footnote-reference" href="#fnddd" id="id4">[4]</a>.
 Если Модели содержат исключительно бизнес-логику, и освобождены от служебной логики, то они могут легко читаться специалистами предметной области (т.е. представителем заказчика).
 Это освобождает Вас от необходимости создания UML-диаграмм для обсуждений и позволяет добиться максимально высокого уровня взаимопонимания, продуктивности, и качества реализации моделей.</p>
@@ -190,7 +214,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
 Получилось что-то вроде Object-Relational Mapping (ORM) для JavaScript, включая паттерн Data Mapper (данные могут трансформироваться (отображаться) между объектами и постоянным хранилищем данных).</p>
 </div>
 <div class="section" id="id8">
-<h1><a class="toc-backref" href="#id30">Парадигма реактивного программирования</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id42">Парадигма реактивного программирования</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
 <p>Сегодня модно увлекаться реактивным программированием.
 Знаете ли Вы, что разработчики dojo впервые <a class="reference external" href="https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35">применили реактивное программирование</a> в своей реализации паттерна Repository еще 13 сентября 2010?</p>
 <p>Реактивное программирование дополняет (а не противопоставляет) паттерн <a class="reference external" href="http://martinfowler.com/eaaCatalog/repository.html">Repository</a>, о чем красноречиво свидетельствует опыт <a class="reference external" href="https://dojotoolkit.org/reference-guide/1.10/dojo/store.html">dojo.store</a> и <a class="reference external" href="http://dstorejs.io/">Dstore</a>.</p>
@@ -198,7 +222,7 @@ it all up, the domain developers lose their ability to chunk the model into mean
 Примером того, насколько серьезно и комплексно они подходят к решению проблем, может служить <a class="reference external" href="http://requirejs.org/docs/history.html">история библиотеки RequireJS</a>.</p>
 </div>
 <div class="section" id="repository-orm-javascript">
-<h1><a class="toc-backref" href="#id31">Примеры реализаций паттерна Repository и ORM в JavaScript</a><a class="headerlink" href="#repository-orm-javascript" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id43">Примеры реализаций паттерна Repository и ORM в JavaScript</a><a class="headerlink" href="#repository-orm-javascript" title="Permalink to this headline">¶</a></h1>
 <p>Примеры простейших реализаций паттерна Repository на JavaScript в проекте <a class="reference external" href="http://todomvc.com/">todomvc.com</a>:</p>
 <ul class="simple">
 <li>Angular2+: <a class="reference external" href="https://github.com/tastejs/todomvc/blob/master/examples/angular2/app/services/store.ts">https://github.com/tastejs/todomvc/blob/master/examples/angular2/app/services/store.ts</a></li>
@@ -231,13 +255,26 @@ it all up, the domain developers lose their ability to chunk the model into mean
 <p>Отдельно стоит упомянуть реализацию реактивных хранилищ основанных на состоянии с использованием библиотеки RxJS, смотрите, например, <a class="reference external" href="https://github.com/ng-book/angular2-rxjs-chat">angular2-rxjs-chat</a>.</p>
 </div>
 <div class="section" id="id9">
-<h1><a class="toc-backref" href="#id32">Реализация реляционных связей</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id44">Реализация реляционных связей</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
+</div>
 <div class="section" id="id10">
-<h2><a class="toc-backref" href="#id33">Синхронное программирование</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>На заре появления ORM, мапперы делали таким образом, чтобы они извлекали из базы данных все связанные объекты одним запросом (см. <a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">пример реализации</a>).</p>
-<p>Domain-Driven Design подходит к связям более строго, и рассматривает связи с позиции концептуальных контуров агрегата вложенных объектов <a class="footnote-reference" href="#fnddd" id="id12">[4]</a>.
-Доступ к объекту осуществлялся либо по ссылке (от родительского объекта к вложеному или к другому агрегату), либо через Repository (к корню агрегата).
-Здесь также особую роль играет направление связей, и соблюдение принципа минимальной достаточности (&#8220;дистиляция моделей&#8221; <a class="footnote-reference" href="#fnddd" id="id13">[4]</a>).</p>
+<h1><a class="toc-backref" href="#id45">Виды связей по осведомленности</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id46">Однонаправленные ассоциации</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>Однонаправленные связи (unidirectional associations).</p>
+</div>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id47">Двунаправленные ассоциации</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>Двунаправленные ассоциации (Bidirectional Associations)</p>
+<blockquote>
+<div><p>Двунаправленная ассоциация – это пара свойств, связанных в противоположных направлениях. Класс Car (Автомобиль) имеет свойство owner:Person[1], а класс Person (Личность) имеет свойство cars:Car[*].</p>
+<p>A bidirectional association is a pair of properties that are linked together as inverses. The Car class has property owner:Person[1], and the Person class has a property cars:Car[*].</p>
+<p>- &#8220;UML Distilled. A Brief Guide to the Standard Object Modeling Language&#8221; 3d edition by Martin Fowler</p>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h2><a class="toc-backref" href="#id48">Проектирование ассоциаций</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>В DDD важную роль играет направление связей, и соблюдение принципа минимальной достаточности (&#8220;дистилляция моделей&#8221;  <a class="footnote-reference" href="#fnddd" id="id14">[4]</a>).</p>
 <blockquote>
 <div><p>In real life, there are lots of many-to-many associations, and a great number are naturally
 bidirectional. The same tends to be true of early forms of a model as we brainstorm and explore
@@ -253,84 +290,188 @@ Furthermore, they communicate very little about the nature of the relationship.<
 that both objects can be understood only together. When application requirements do not call for
 traversal in both directions, adding a traversal direction reduces interdependence and simplifies
 the design. Understanding the domain may reveal a natural directional bias.</p>
-<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id14">[4]</a></p>
+<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id15">[4]</a></p>
 </div></blockquote>
 <blockquote>
 <div><p>Minimalist design of associations helps simplify traversal and limit the explosion of relationships
 somewhat, but most business domains are so interconnected that we still end up tracing long,
 deep paths through object references. In a way, this tangle reflects the realities of the world,
 which seldom obliges us with sharp boundaries. It is a problem in a software design.</p>
-<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id15">[4]</a></p>
+<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id16">[4]</a></p>
 </div></blockquote>
-<p>С появлением ORM, в синхронном программировании активно начали применяться ленивые вычисления для разрешения связей.
-В Python для этого активно используются <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html">Descriptors</a>, а в Java - AOP и Cross-Cutting Concerns <a class="footnote-reference" href="#fnccode" id="id16">[1]</a>.</p>
-<p>Ключевым моментом является освобождение Domain Model от логики доступа к источнику данных.
-Это необходимо как из принципа чистоты архитектуры и проектных решений, чтобы снизить сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), так и из принципа простоты тестирования.
-Наибольших успехов позволяет достигнуть принцип Cross-Cutting Concerns, который полностью освобождает модель от служебной логики.</p>
-<p>С появлением ОРМ, организация связей стала настолько легкой, что о ней перестали задумываться.
-Там где требуются однонаправленные связи, разработчики с легкостью применяют двунаправленные связи.
-Появились механизмы оптимизации выборки связанных объектов, которые неявно предзагружают все связанные объекты, что значительно сокращает количество обращений в базу данных.</p>
+</div>
 </div>
 <div class="section" id="id17">
-<h2><a class="toc-backref" href="#id34">Асинхронное программирование</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
-<p>Рост популярности асинхронных приложений заставил пересмотреть устоявшиеся представления о ленивой реализации связей.
-Асинхронное обращение к каждой ленивой связи каждого объекта значительно усложняет ясность программного кода, и препятствует оптимизации.</p>
-<p>Это способствовало росту популярности объектно-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
-Все чаще REST-frameworks стали использоваться для передачи клиенту <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">агрегатов вложенных объектов</a>.</p>
-<blockquote>
-<div><p>To do anything with an object, you have to hold a reference to it. How do you get that reference?
-One way is to create the object, as the creation operation will return a reference to the new
-object. A second way is to traverse an association. You start with an object you already know and
-ask it for an associated object. Any object-oriented program is going to do a lot of this, and these
-links give object models much of their expressive power. But you have to get that first object.</p>
-<p>I actually encountered a project once in which the team was attempting, in an enthusiastic
-embrace of MODEL-DRIVEN DESIGN , to do all object access by creation or traversal! Their objects
-resided in an object database, and they reasoned that existing conceptual relationships would
-provide all necessary associations. They needed only to analyze them enough, making their entire
-domain model cohesive. This self-imposed limitation forced them to create just the kind of endless
-tangle that we have been trying to avert over the last few chapters, with careful implementation of
-ENTITIES and application of AGGREGATES . The team members didn&#8217;t stick with this strategy long, but
-they never replaced it with another coherent approach. They cobbled together ad hoc solutions
-and became less ambitious.</p>
-<p>Few would even think of this approach, much less be tempted by it, because they store most oftheir objects in relational databases.
-This storage technology makes it natural to use the third way
-of getting a reference: Execute a query to find the object in a database based on its attributes, or
-find the constituents of an object and then reconstitute it.</p>
-<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id19">[4]</a></p>
-</div></blockquote>
-<p>Необходимость обхода вложенных структур данных активизировала интерес к функциональному программированию, особенно в сочетании с парадигмой реактивного программирования.</p>
+<h1><a class="toc-backref" href="#id49">Виды связей по владению</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id50">Ассоциация</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id20">
-<h2><a class="toc-backref" href="#id35">Реализация связей путем присваивания</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
-<p>Хотя агрегат не совместим со связями типа Many-To-Many и перекрестными иерархиями связей, все-же он может ссылаться на корень другого агрегата:</p>
+<div class="section" id="id19">
+<h2><a class="toc-backref" href="#id51">Агрегация</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<p>Сперва рассмотрим агрегацию с позиции UML:</p>
 <blockquote>
-<div><p>Objects within the AGGREGATE can hold references to other AGGREGATE roots.</p>
-<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id21">[4]</a> by Eric Evans</p>
+<div><p>Агрегация (aggregation) – это отношение типа &#8220;часть целого&#8221;. Точно так же можно сказать, что двигатель и колеса представляют собой части автомобиля.</p>
+<p>One of the most frequent sources of confusion in the UML is aggregation and composition. It&#8217;s easy to explain glibly: Aggregation is the part-of relationship. It&#8217;s like saying that a car has an engine and wheels as its parts.</p>
+<p>- &#8220;UML Distilled. A Brief Guide to the Standard Object Modeling Language&#8221; 3d edition by Martin Fowler</p>
 </div></blockquote>
 <blockquote>
-<div><p>Since one Aggregate instance can reference other Aggregate instances, can the associations be navigated deeply, modifying various objects along the way?</p>
-<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id22">[5]</a> by Vaughn Vernon</p>
+<div><p>Наряду с агрегацией в языке UML есть более определенное свойство – композиция (composition).
+Экземпляр класса Point (Точка) может быть частью многоугольника, а может представлять центр окружности, но он не может быть и тем и другим одновременно.
+Главное правило состоит в том, что хотя класс может быть частью нескольких других классов, но любой экземпляр может принадлежать только одному владельцу.
+На диаграмме классов можно показать несколько классов потенциальных владельцев, но у любого экземпляра класса есть только один объектвладелец.</p>
+<p>As well as aggregation, the UML has the more defined property of composition.
+An instance of Point may be part of a polygon or may be the center of a circle, but it cannot be both.
+The general rule is that, although a class may be a component of many other classes, any instance must be a component of only one owner.
+The class diagram may show multiple classes of potential owners, but any instance has only a single object as its owner.</p>
+<p>- &#8220;UML Distilled. A Brief Guide to the Standard Object Modeling Language&#8221; 3d edition by Martin Fowler</p>
 </div></blockquote>
 <blockquote>
-<div><p>When designing Aggregates, we may desire a compositional structure that allows for traversal through deep object graphs, but that is not the motivation of the pattern. [Evans] states that one Aggregate may hold references to the Root of other Aggregates. However, we must keep in mind that this does not place the referenced Aggregate inside the consistency boundary of the one referencing it. The reference does not cause the formation of just one whole Aggregate. There are still two (or more), as shown in Figure 10.5.</p>
-<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id23">[5]</a> by Vaughn Vernon</p>
+<div><p>Композиция – это хороший способ показать свойства, которыми владеют по значению, свойства объектов-значений или свойства, которые имеют определенные и до некоторой степени исключительные права владения другими компонентами.
+Агрегация совершенно не имеет смысла; поэтому я не рекомендовал бы применять ее в диаграммах.
+Если вы встретите ее в диаграммах других разработчиков, то вам придется покопаться, чтобы понять их значение.
+Разные авторы и команды разработчиков используют их в совершенно разных целях.</p>
+<p>Composition is a good way of showing properties that own by value, properties to value objects, or properties that have a strong and somewhat exclusive ownership of particular other components.
+Aggregation is strictly meaningless; as a result, I recommend that you ignore it in your own diagrams.
+If you see it in other people&#8217;s diagrams, you&#8217;ll need to dig deeper to find out what they mean by it.
+Different authors and teams use it for very different purposes.</p>
+<p>- &#8220;UML Distilled. A Brief Guide to the Standard Object Modeling Language&#8221; 3d edition by Martin Fowler</p>
 </div></blockquote>
+<p>Итак, то что в UML называется &#8220;композиция&#8221; или &#8220;агрегация&#8221;, в DDD называется просто &#8220;агрегация&#8221;.</p>
 <blockquote>
-<div><p>Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service. However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go. The Aggregate can then double-dispatch to the Domain Service to resolve references. Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.</p>
-<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id24">[5]</a> by Vaughn Vernon</p>
+<div><p>AGGREGATE - A cluster of associated objects that are treated as a unit for the purpose of data changes.
+External references are restricted to one member of the AGGREGATE , designated as the root.
+A set of consistency rules applies within the AGGREGATE&#8217;S boundaries.</p>
+<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id20">[4]</a> by Eric Evans</p>
 </div></blockquote>
-<p>Принцип физического присваивания связанных объектов <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">реализован также и в библиотеке js-data</a>.</p>
-<p>В нашей библиотеке мы предусмотрели как возможность декомпозиции вложенных объектов, так и возможность их композиции из плоских данных в Repositories.
-Причем, коллекции выбранных объектов всегда сохраняет актуальное состояние, и при добавлении, изменении, удалении объекта в Repository, изменения автоматически отображаются в соответствующих коллекциях.
-Библиотека реализует это поведение как в парадигме Реактивного программирования, так и в парадигме Событийно-ориентированного программирования (на выбор).</p>
-<p>Существует также возможность формировать двусторонние связи.
-Но, несмотря на то, что современные интерпретаторы легко чистят мусор с кольцевыми ссылками, с концептуальной точки зрения лучше когда вложенные объекты не осведомлены о своем родителе, если на то нет веских оснований.</p>
-<p>Таким образом, для реализации связей объекту совершенно не требуется никакая служебная логика доступа к данным, что поддерживает нулевое сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>) и образует кристально чистые доменные модели.
-Это значит, что доменные модели могут быть инстанцией &#8220;класса&#8221; Object.</p>
+<p>Агрегаты получили широкое распространение с развитием распределенных хранилищ данных. Границей транзакции является граница агрегата, и все объекты, принадлежащие агрегату, хранятся на одном узле кластера, чем гарантируется их согласованность.</p>
 </div>
+</div>
+<div class="section" id="id21">
+<h1><a class="toc-backref" href="#id52">Виды связей по способу доступа</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="object-references">
+<h2><a class="toc-backref" href="#id53">Объектные Ссылки (Object References)</a><a class="headerlink" href="#object-references" title="Permalink to this headline">¶</a></h2>
+<p>Этот способ связи экземпляров Доменных Моделей применялся достаточно давно.
+Со временем он уступил свои позиции Ленивой Загрузке, но, по мере роста применяемости распределенных систем, интерес к нему снова возвратился.</p>
+<p>Также этот способ часто применяется в асинхронных приложениях, поскольку асинхронное обращение к ленивым связям Доменных Моделей значительно усложняет ясность программного кода, и препятствует оптимизации и пакетной предзагрузке связанных объектов.</p>
+<div class="section" id="id22">
+<h3><a class="toc-backref" href="#id54">Классическая реализация создания объектных ссылок</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>Чтобы построить объектные ссылки, Data Mapper извлекаемой Domain Model обращается к Data Mapper связанной Domain Model и линкует связанные экземпляры Доменных Моделей при их создании.</p>
+<p>Наглядную реализацию можно посмотреть в &#8220;Chapter 12. Object-Relational Structural Patterns :: Foreign Key Mapping&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford.
+Смотрите Example: Single-Valued Reference (Java): Figure 12.4. Sequence for loading a single-valued field и реализацию класса AlbumMapper. А так же Example: Multitable Find (Java).</p>
+<p>Другим хорошим примером может служить легковесный Data Mapper <a class="reference external" href="https://bitbucket.org/emacsway/openorm/src/default/python/">OpenORM</a>.</p>
+<p>Этот принцип <a class="reference external" href="http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations">реализован также и в библиотеке js-data</a>.</p>
+</div>
+<div class="section" id="id23">
+<h3><a class="toc-backref" href="#id55">Классическая реализация создания агрегатов</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>Для построения агрегатов часто используется паттерн &#8220;<a class="reference external" href="https://martinfowler.com/eaaCatalog/dependentMapping.html">Dependent Mapping</a>&#8221;, смотрите &#8220;Chapter 12. Object-Relational Structural Patterns :: Dependent Mapping&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford. В этом случае один DataMapper ответственен за создание агрегата.</p>
+<blockquote>
+<div><p>Главная идея, лежащая в основе типового решения отображение зависимых объектов, состоит в том, что один класс (зависимый объект) передает другому классу (владельцу) все свои полномочия по взаимодействию с базой данных.
+При этом у каждого зависимого объекта должен быть один и только один владелец.</p>
+<p>The basic idea behind Dependent Mapping is that one class (the dependent) relies upon some other class (the owner) for its database persistence.
+Each dependent can have only one owner and must have one owner.</p>
+<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</p>
+</div></blockquote>
+<blockquote>
+<div><p>Зависимый объект может быть владельцем другого зависимого объекта. В этом случае владелец первого зависимого объекта отвечает и за второй зависимый объект.
+Вообще говоря, у вас может быть целая иерархия зависимых объектов, контролируемых единственным первичным владельцем.</p>
+<p>A dependent may itself be the owner of another dependent. In this case the owner of the first dependent is also responsible for the persistence of the second dependent.
+You can have a whole hierarchy of dependents controlled by a single primary owner.</p>
+<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</p>
+</div></blockquote>
+</div>
+<div class="section" id="id24">
+<h3><a class="toc-backref" href="#id56">Создание Объектных Ссылок на уровне инфраструктуры</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<p>Для сохранения агрегата целиком часто используются агрегато-ориентированные NoSQL хранилища данных и <a class="reference external" href="https://martinfowler.com/bliki/ApplicationDatabase.html">Application Database</a> и <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects">REST-API endpoints</a>.</p>
 </div>
 <div class="section" id="id25">
-<h1><a class="toc-backref" href="#id36">Исходный код</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h1>
+<h3><a class="toc-backref" href="#id57">Создание Объектных Ссылок на уровне приложения</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p>В DDD связка агрегатов между собой может производиться на уровне логики приложения, например, в обработчике CQRS Command Handler.
+Дело в том, что слой Application Logic (или слой Application-specific Business Rules), координирующий работу слоя Business Rules, обладает более лучшими возможностями для предвидения, оптимизации и пакетной загрузки требуемых данных с удаленных источников.
+А это играет <a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/antipatterns/chatty-io/">немаловажную роль</a>, когда накладные расходы получения данных с удаленных источников высоки.</p>
+<blockquote>
+<div><p>Objects within the AGGREGATE can hold references to other AGGREGATE roots.</p>
+<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id26">[4]</a> by Eric Evans</p>
+</div></blockquote>
+<blockquote>
+<div><p>Поскольку один экземпляр АГРЕГАТА может ссылаться на другие экземпляры АГРЕГАТА, можно ли перемещаться по связям достаточно далеко, изменяя различные объекты на пути следования?</p>
+<p>Since one Aggregate instance can reference other Aggregate instances, can the associations be navigated deeply, modifying various objects along the way?</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id27">[5]</a> by Vaughn Vernon</p>
+</div></blockquote>
+<p>При этом нужно отметить, что:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>И АГРЕГАТ (Backlogitem), который ссылается, и АГРЕГАТ (Product), на который ссылаются, не должны. изменяться в рамках одной и той же транзакции. В отдельно взятой транзакции может изменяться только один из них.</li>
+<li>Если вы изменяете несколько экземпляров в рамках одной транзакции, значит, ваши границы согласованности проведены неправильно. В этом случае, вероятно, в ходе моделирования вы пропустили какую-то концепцию; некая концепция ЕДИНОГО ЯЗЫКА еще не выявлена, хотя она бросается в глаза (такая ситуация была описана выше).</li>
+<li>Если вы пытаетесь применить п. 2 и получаете крупнокластерный АГРЕГАТ со всеми его недостатками, указанными ранее, возможно, вам следует использовать концепцию итоговой, а не атомарной согласованности (см. ниже).</li>
+</ol>
+<ol class="arabic simple">
+<li>Both the referencing Aggregate ( BacklogItem ) and the referenced Aggregate ( Product ) must not be modified in the same transaction. Only one or the other may be modified in a single transaction.</li>
+<li>If you are modifying multiple instances in a single transaction, it may be a strong indication that your consistency boundaries are wrong. If so, it is possibly a missed modeling opportunity; a concept of your Ubiquitous Language has not yet been discovered although it is waving its hands and shouting at you (see earlier in this chapter).</li>
+<li>If you are attempting to apply point 2, and doing so influences a large-cluster Aggregate with all the previously stated caveats, it may be an indication that you need to use eventual consistency (see later in this chapter) instead of atomic consistency.</li>
+</ol>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id28">[5]</a> by Vaughn Vernon</p>
+</div></blockquote>
+<blockquote>
+<div><p>При разработке АГРЕГАТОВ может возникнуть желание создать структуру, допускающую обход по глубоким графам объектов, но назначение этого шаблона другое.
+В книге [Эванс] утверждается, что один АГРЕГАТ может содержать ссылки на КОРНИ других АГРЕГАТОВ.
+Однако мы должны иметь в виду, что это не помещает АГРЕГАТ, на который ссылаются, в границы согласованности АГРЕГАТА, который на него ссылается.
+Ссылка не порождает один целостный АГРЕГАТ.
+Вместо него существуют два (или больше) АГРЕГАТА, как показано в рис. 10.5.</p>
+<p>When designing Aggregates, we may desire a compositional structure that allows for traversal through deep object graphs, but that is not the motivation of the pattern. [Evans] states that one Aggregate may hold references to the Root of other Aggregates. However, we must keep in mind that this does not place the referenced Aggregate inside the consistency boundary of the one referencing it. The reference does not cause the formation of just one whole Aggregate. There are still two (or more), as shown in Figure 10.5.</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id29">[5]</a> by Vaughn Vernon</p>
+</div></blockquote>
+<blockquote>
+<div><p>Наличие ПРИКЛАДНОЙ СЛУЖБЫ делает АГРЕГАТ независимым от РЕПОЗИТАРИЯ или СЛУЖБЫ ПРЕДМЕТНОЙ ОБЛАСТИ.
+Однако в очень сложных и проблемно-ориентированных системах для освобождения от зависимости, возможно, лучше всего передать СЛУЖБУ ПРЕДМЕТНОЙ ОБЛАСТИ в командный метод АГРЕГАТА.
+Тогда АГРЕГАТ сможет выполнить двойную диспетчеризацию, обращаясь к СЛУЖБЕ ПРЕДМЕТНОЙ ОБЛАСТИ, и разрешить ссылки.
+Повторим, каким бы способом один АГРЕГАТ ни получал доступ к другим АГРЕГАТАМ, ссылка на многочисленные АГРЕГАТЫ в одном запросе не дает оснований для модификации нескольких агрегатов.</p>
+<p>Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service. However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go. The Aggregate can then double-dispatch to the Domain Service to resolve references. Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id30">[5]</a> by Vaughn Vernon</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="lazy-load">
+<h2><a class="toc-backref" href="#id58">Ленивая Загрузка (Lazy Load)</a><a class="headerlink" href="#lazy-load" title="Permalink to this headline">¶</a></h2>
+<p>Ленивая Загрузка (<a class="reference external" href="https://www.martinfowler.com/eaaCatalog/lazyLoad.html">Lazy Load</a>) бывает синхронной и асинхронной.</p>
+<div class="section" id="ioc">
+<h3><a class="toc-backref" href="#id59">Классическая реализация с использованием IoC</a><a class="headerlink" href="#ioc" title="Permalink to this headline">¶</a></h3>
+<p>Ключевым моментом при реализации Ленивой Загрузки связей является освобождение Domain Model от логики доступа к источнику данных. Это необходимо как из принципа чистоты архитектуры и проектных решений, чтобы снизить сопряжение (<a class="reference external" href="http://wiki.c2.com/?CouplingAndCohesion">Coupling</a>), так и из принципа простоты тестирования.</p>
+<p>Классический вариант реализации синхронной Ленивой Загрузки связанных объектов, основанный на IoC, можно увидеть в подразделе &#8220;Example: Separating the Finders (Java)&#8221; главы &#8220;Chapter 10. Data Source Architectural Patterns :: Data Mapper&#8221; книги &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id31">[3]</a>.</p>
+<p>При этом Доменная Модель осведомлена об интерфейсе доступа к данным, который объявляется на этом же уровне логики, но реализуется на инфраструктурном уровне.</p>
+</div>
+<div class="section" id="aop-cross-cutting-concerns">
+<h3><a class="toc-backref" href="#id60">Реализация посредством AOP (Cross-Cutting Concerns)</a><a class="headerlink" href="#aop-cross-cutting-concerns" title="Permalink to this headline">¶</a></h3>
+<p>В отличии от только что рассмотренного варианта классической реализации, использующей IoC, реализация посредством AOP (Cross-Cutting Concerns) позволяет освободить Доменную Модель от осведомленности об интерфейсе доступа к данным.
+Доменная Модель просто объявляет методы, ответственные за доступ к связанным объектам, но не реализует их.</p>
+<p>Когда Repository создает экземпляр доменной модели, он накладывает на этот экземпляр аспект, ответственный за доступ к данным и реализующий все методы, которые были объявлены, но не реализованы, Доменной Моделью.
+В этом случае, объект-обертка, реализующий интерфейс оригинального объекта, обычно называется Aspect или Decorator (см. одноименный паттерн в GOF).
+Часто в таких случаях можно услышать термин Proxy, но, на самом деле паттерн Proxy имеет немного другое назначение.</p>
+<p>Более подробно о Cross-Cutting Concerns можно посмотреть в главах:</p>
+<ul class="simple">
+<li>&#8220;Chapter 11: Systems :: Cross-Cutting Concerns&#8221;</li>
+<li>&#8220;Chapter 11: Systems :: Pure Java AOP Frameworks&#8221;</li>
+</ul>
+<p>книги &#8220;Clean Code: A Handbook of Agile Software Craftsmanship&#8221; <a class="footnote-reference" href="#fnccode" id="id32">[1]</a> by Robert C. Martin.</p>
+</div>
+<div class="section" id="id33">
+<h3><a class="toc-backref" href="#id61">Эмуляция Объектных Ссылок (Object References)</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<p>Для того, чтобы Ленивые Загрузки со стороны клиента выглядели как Объектные Ссылки, часто применяются <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html">Descriptors</a>, которые, зачастую, динамически внедряются в класс Доменной Модели в момент инициализации класса посредством метапрограммирования.</p>
+</div>
+<div class="section" id="id34">
+<h3><a class="toc-backref" href="#id62">Оптимизация и пакетная загрузка</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<p>Недостатком Ленивой Загрузки является N+1 проблема, которая заключается в большом количество запросов к хранилищу данных. С целью оптимизации, ленивые связи <a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/loading_relationships.html">можно предварительно загрузить пакетно</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id35">
+<h1><a class="toc-backref" href="#id63">Как реализует связи библиотека?</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h1>
+<p>Наша библиотека позволяет реализовать связи как посредством Объектных Ссылок, так и посредством Ленивой Загрузки, включая Cross-Cutting Concerns.
+Причем, однажды созданные Объектные Ссылки автоматически реагируют (актуализируются) в ответ на изменения состояния Repository (что особенно актуально для One-To-Many связей).
+Реакции реализованы как в парадигме Реактивного программирования, так и в парадигме Событийно-ориентированного программирования (на выбор).
+Объектные Ссылки могут создаваться как односторонние, так и двусторонние.</p>
+</div>
+<div class="section" id="id36">
+<h1><a class="toc-backref" href="#id64">Исходный код</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>Edge (unstable) repo - <a class="reference external" href="https://github.com/emacsway/store">https://github.com/emacsway/store</a></li>
 <li>Canonical repo - <a class="reference external" href="https://github.com/joor/store-js-external">https://github.com/joor/store-js-external</a></li>
@@ -340,7 +481,7 @@ find the constituents of an object and then reconstitute it.</p>
 <table class="docutils footnote" frame="void" id="fnccode" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> &#8220;<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>&#8221; by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id32">2</a>)</em> &#8220;<a class="reference external" href="http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884">Clean Code: A Handbook of Agile Software Craftsmanship</a>&#8221; by <a class="reference external" href="http://informit.com/martinseries">Robert C. Martin</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fncodec" rules="none">
@@ -352,19 +493,19 @@ find the constituents of an object and then reconstitute it.</p>
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td>&#8220;<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>&#8221; by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id31">[3]</a></td><td>&#8220;<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>&#8221; by <a class="reference external" href="https://martinfowler.com/aboutMe.html">Martin Fowler</a>, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id12">3</a>, <a class="fn-backref" href="#id13">4</a>, <a class="fn-backref" href="#id14">5</a>, <a class="fn-backref" href="#id15">6</a>, <a class="fn-backref" href="#id19">7</a>, <a class="fn-backref" href="#id21">8</a>)</em> &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id14">3</a>, <a class="fn-backref" href="#id15">4</a>, <a class="fn-backref" href="#id16">5</a>, <a class="fn-backref" href="#id20">6</a>, <a class="fn-backref" href="#id26">7</a>)</em> &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fniddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id22">1</a>, <a class="fn-backref" href="#id23">2</a>, <a class="fn-backref" href="#id24">3</a>)</em> &#8220;Implementing Domain-Driven Design&#8221; by Vaughn Vernon</td></tr>
+<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id27">1</a>, <a class="fn-backref" href="#id28">2</a>, <a class="fn-backref" href="#id29">3</a>, <a class="fn-backref" href="#id30">4</a>)</em> &#8220;Implementing Domain-Driven Design&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngof" rules="none">

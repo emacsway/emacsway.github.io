@@ -8,6 +8,8 @@ Implementation of Repository pattern for browser's JavaScript
    :category:
    :author: Ivan Zakrevsky
 
+.. ru-revision: 8b523b00f2a1
+
 
 Good architecture makes you free from certain implementation.
 It allows you to postpone the moment of decision on implementation and `begin code construction even without the decision <Service Stub_>`__.
