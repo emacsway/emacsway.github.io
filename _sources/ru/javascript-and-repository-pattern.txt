@@ -251,11 +251,31 @@
 Ассоциация
 ----------
 
+    Ассоциация (association) — это отношение между классами (или точнее, экземплярами этих классов), отражающая некоторое значимые и полезные связи между ними.
+    В языке UML ассоциации описываются как "семантические взаимосвязи между двумя или несколькими классификаторами и их экземплярами".
+
+    Ассоциация (association) - Описание набора однородных связей между объектами двух классов.
+
+    Квалифицированная ассоциация (Qualified association) - Ассоциация, участники которой определяются значением квалификатора.
+
+    An association is a relationship between classes (more precisely, instances of those classes) that indicates some meaningful and interesting connection.
+    In the UML, associations are defined as "the semantic relationship between two or more classifiers that involve connections among their instances."
+
+    Association - A description of a related set of links between objects of two classes.
+
+    Qualified association - An association whose membership is partitioned by the value of a qualifier.
+
+    \- "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" [#fnaumlap]_ by Craig Larman
+
 
 Агрегация
 ---------
 
-Сперва рассмотрим агрегацию с позиции UML:
+Сперва рассмотрим агрегацию с позиции UML.
+
+
+Агрегация в UML
+^^^^^^^^^^^^^^^
 
     Агрегация (aggregation) – это отношение типа "часть целого". Точно так же можно сказать, что двигатель и колеса представляют собой части автомобиля.
 
@@ -264,6 +284,39 @@
     \- "UML Distilled. A Brief Guide to the Standard Object Modeling Language" 3d edition by Martin Fowler
 
 ..
+
+    Агрегация (aggregation) является слабоопределенным типом ассоциации в UML и отображает самую общую зависимость типа "целое-часть" (как и многие другие ассоциации).
+    Этот тип связи не имеет четко определенной семантики в UML, в отличие от обычной ассоциации.
+    Несмотря на это данный термин введен в спецификации UML.
+    Зачем? Ответ заключен в цитате Румбаха (одного из основоположников и ключевых разработчиков UML).
+
+    "Несмотря на слабовыраженную семантику агрегации, все считают, что она необходима (по различным причинам).
+    Думайте о ней как о плацебо в моделировании."
+    - Rumbaugh, J, Jacobson, I., and Booch, G. The Unified Modeling Language Reference Manual, 2e. Reading, MA.: Addison-Wesley, 2004.
+
+    Рекомендация. Таким образом, следуя совету создателей UML, не следует использовать агрегацию при моделировании.
+    Вместо этого по возможности стоит использовать композицию (composition).
+
+    Агрегация (Aggregation) - Свойство ассоциации, представляющей отношение "целое-часть", и (обычно) ограничение времени жизни частей временем жизни целого.
+
+    Aggregation is a vague kind of association in the UML that loosely suggests whole-part relationships (as do many ordinary associations).
+    It has no meaningful distinct semantics in the UML versus a plain association, but the term is defined in the UML.
+    Why?
+    To quote Rumbaugh (one of the original and key UML creators):
+
+    "In spite of the few semantics attached to aggregation, everybody thinks it is necessary (for different reasons).
+    Think of it as a modeling placebo."
+    - Rumbaugh, J, Jacobson, I., and Booch, G. The Unified Modeling Language Reference Manual, 2e. Reading, MA.: Addison-Wesley, 2004.
+
+    Guideline: Therefore, following the advice of UML creators, don't bother to use aggregation in the UML; rather, use composition when appropriate.
+
+    Aggregation - A property of an association representing a whole-part relationship and (usually) life-time containment.
+
+    \- "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" [#fnaumlap]_ by Craig Larman
+
+
+Композиция в UML
+^^^^^^^^^^^^^^^^
 
     Наряду с агрегацией в языке UML есть более определенное свойство – композиция (composition).
     Экземпляр класса Point (Точка) может быть частью многоугольника, а может представлять центр окружности, но он не может быть и тем и другим одновременно.
@@ -291,6 +344,38 @@
 
     \- "UML Distilled. A Brief Guide to the Standard Object Modeling Language" 3d edition by Martin Fowler
 
+..
+
+    Композиция, так же известная как композитная агрегация (composite aggregation) является строго определенным типом связи "целое-часть" и полезна в некоторых моделях.
+    Отношение композиции предполагает, что
+    1) экземпляр части (например Square) в каждый момент времени принадлежит только одному целому (например, Board);
+    2) часть всегда принадлежит целому (пальцы не существуют отдельно от руки);
+    3) целое ответственно за создание и удаление своих частей — либо через самостоятельное создание/удаление, либо через взаимодействие с другими объектами.
+    Следствием этих ограничений является то, что при уничтожении композитного объекта его части должны быть либо уничтожены, либо присоединены к другому композитному объекту.
+    Например, если реальная настольная игра "Монополия" уничтожается, то также уничтожаются и все ее клетки (с концептуальной точки зрения).
+    Аналогично, если программный объект Board уничтожается, то уничтожаются и программные объекты Square.
+    Для обозначения композиции в UML используется закрашенный ромб на линииассоциации со стороны целого.
+
+    Композитный класс (Composition) - Класс, каждый экземпляр которого состоит из объектов других классов.
+
+    Composition, also known as composite aggregation, is a strong kind of whole-part aggregation and is useful to show in some models.
+    A composition relationship implies that
+    1) an instance of the part (such as a Square) belongs to only one composite instance (such as one Board) at a time,
+    2) the part must always belong to a composite (no free-floating Fingers), and
+    3) the composite is responsible for the creation and deletion of its partseither by itself creating/deleting the parts, or by collaborating with other objects.
+    Related to this constraint is that if the composite is destroyed, its parts must either be destroyed, or attached to another compositeno free-floating Fingers allowed!
+    For example, if a physical paper Monopoly game board is destroyed, we think of the squares as being destroyed as well (a conceptual perspective).
+    Likewise, if a software Board object is destroyed, its software Square objects are destroyed, in a DCD software perspective. 
+    The UML notation for composition is a filled diamond on an association line, at the composite end of the line.
+
+    Composition - The definition of a class in which each instance is comprised of other objects.
+
+    \- "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" [#fnaumlap]_ by Craig Larman
+
+
+Агрегат в DDD
+^^^^^^^^^^^^^
+
 Итак, то что в UML называется "композиция" или "агрегация", в DDD называется просто "агрегация".
 
     AGGREGATE - A cluster of associated objects that are treated as a unit for the purpose of data changes.
@@ -300,6 +385,29 @@
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
 
 Агрегаты получили широкое распространение с развитием распределенных хранилищ данных. Границей транзакции является граница агрегата, и все объекты, принадлежащие агрегату, хранятся на одном узле кластера, чем гарантируется их согласованность.
+
+    What is an Aggregate?
+    Two are represented here.
+    Each Aggregate is composed of one or more Entities, where one Entity is called the Aggregate Root.
+    Aggregates may also have Value Objects composed on them.
+    As you see here, Value Objects are used inside both Aggregates.
+
+    The Root Entity of each Aggregate owns all the other elements clustered inside it.
+    The name of the Root Entity is the Aggregate's conceptual name.
+    You should choose a name that properly describes the conceptual whole that the Aggregate models.
+
+    Each Aggregate forms a transactional consistency boundary.
+    This means that within a single Aggregate, all composed parts must be consistent, according to business rules, when the controlling transaction is committed to the database.
+    This doesn't necessarily mean that you are not supposed to compose other elements within an Aggregate that don't need to be consistent after a transaction.
+    After all, an Aggregate also models a conceptual whole.
+    But you should be first and foremost concerned with transactional consistency.
+    The outer boundary drawn around Aggregate Type 1 and Aggregate Type 2 represents a separate transaction that will be in control of atomically
+    persisting each object cluster.
+
+    The reasons for the transactional boundary are business motivated, because it is the business that determines what a valid state of the cluster should be at any given time.
+    In other words, if the Aggregate was not stored in a whole and valid state, the business operation that was performed would be considered incorrect according to business rules.
+
+    \- "Domain-Driven Design Distilled" by Vaughn Vernon
 
 
 Виды связей по способу доступа
@@ -561,7 +669,7 @@
 
         A true functional programming language has no assignment operator.
         You cannot change the state of a variable.
-        Indeed, the word “variable” is a misnomer in a functional language because you cannot vary them.
+        Indeed, the word "variable" is a misnomer in a functional language because you cannot vary them.
 
         ...The overriding difference between a functional language and a non-functional language is that functional languages don’t have assignment statements.
 
@@ -712,6 +820,7 @@ This article in English ":doc:`../en/javascript-and-repository-pattern`".
 .. [#fnca] "`Clean Architecture`_" by Robert C. Martin
 .. [#fntca] "`The Clean Architecture`_" by Robert C. Martin
 .. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
+.. [#fnaumlap] "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
 
 
 .. update:: Nov 16, 2019
