@@ -534,7 +534,7 @@ You can have a whole hierarchy of dependents controlled by a single primary owne
 <p>Для этого часто используется <a class="reference external" href="https://en.wikipedia.org/wiki/Currying">Каррирование</a> фабричной функции создания экземпляра Доменной Модели.
 Идея с внедрением зависимости через <a class="reference external" href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">замыкания</a> пришла <a class="reference external" href="https://vimeo.com/131636650">из функционального программирования</a> (преобразование более общей функции в более конкретную функцию).
 Этот метод хорошо работает, например, в Python, где нет синтаксического различия между инстанционированием экземпляра класса и вызовом обычной функции.</p>
-<p>В некоторых проектах я встречал внедрение зависимостей посредством использования замыкания фабрики класса Доменной Модели, а фабрики не экземпляра Доменной Модели.</p>
+<p>В некоторых проектах я встречал внедрение зависимостей посредством использования замыкания фабрики класса Доменной Модели, а не фабрики экземпляра Доменной Модели.</p>
 </div>
 <div class="section" id="aop-cross-cutting-concerns">
 <span id="domain-model-relationship-implementing-aop-ru"></span><h3><a class="toc-backref" href="#id69">Реализация посредством AOP (Cross-Cutting Concerns)</a><a class="headerlink" href="#aop-cross-cutting-concerns" title="Permalink to this headline">¶</a></h3>
