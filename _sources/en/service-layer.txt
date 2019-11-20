@@ -866,6 +866,7 @@ Further Reading
     - `Chapter 5: Layered Application Guidelines <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109%28v%3dpandp.10%29>`__ ... 55
     - `Chapter 5: Layered Application Guidelines : Services and Layers <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109%28v%3dpandp.10%29#services-layer>`__ ... 58
     - `Chapter 9: Service Layer Guidelines <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658090%28v%3dpandp.10%29>`__ ... 115
+    - `Chapter 17: Crosscutting Concerns <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658105%28v%3dpandp.10%29>`__ ... 205
     - `Chapter 21: Designing Web Applications : Service Layer <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658099%28v%3dpandp.10%29#service-layer>`__ ... 288
     - `Chapter 25: Designing Service Applications : Service Layer <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658114%28v%3dpandp.10%29#service-layer>`__ ... 371
 - "Microsoft .NET: Architecting Applications for the Enterprise" 2nd Edition by Dino Esposito, Andrea Saltarello, chapters:
