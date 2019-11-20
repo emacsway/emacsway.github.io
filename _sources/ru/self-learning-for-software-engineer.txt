@@ -261,6 +261,7 @@
 - "`Azure Application Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/guide/>`__" by Microsoft Corporation and community
 - "`Azure Data Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/data-guide/>`__" by Microsoft Corporation and community
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
+- "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st Edition by Chris Richardson (`more info <https://microservices.io/book>`__)
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
 - "The Site Reliability Workbook" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
@@ -279,7 +280,7 @@
 - "`Development of Further Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaDev/>`__" by Martin Fowler
 - "Domain Specific Languages" by Martin Fowler (with Rebecca Parsons)
 - "Pattern Hatching: Design Patterns Applied" by John Vlissides
-- "Microsoft Application Architecture Guide" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+- "`Microsoft Application Architecture Guide <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff650706(v=pandp.10)?redirectedfrom=MSDN>`__" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
 - "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
 - "Object-Oriented Software Construction" 2nd Edition by Bertrand Meyer
 - "Working Effectively with Legacy Code" by Michael C. Feathers
@@ -347,8 +348,8 @@ Online-каталоги
 - `SOAPatterns.org <http://soapatterns.org/>`__
 - `CloudPatterns.org <http://www.cloudpatterns.org/>`__
 - `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
-- `Microservice Patterns <https://microservices.io/patterns/>`__
-- `Microservice Patterns (book) <https://www.manning.com/books/microservice-patterns>`__
+- `Microservices Patterns <https://microservices.io/patterns/>`__
+- `Microservices Patterns (book) <https://www.manning.com/books/microservice-patterns>`__
 - `Microservices Patterns from Sam Newman <https://samnewman.io/patterns/>`__
 - `About DDD on the site of Ward Cunningham <http://ddd.fed.wiki.org/>`__
 - `Refactoring Databases <http://www.databaserefactoring.com/>`__
