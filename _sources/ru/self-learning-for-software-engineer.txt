@@ -263,7 +263,8 @@
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
 - "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st Edition by Chris Richardson (`more info <https://microservices.io/book>`__)
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
-- "The Site Reliability Workbook" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
+- "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
+- "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen

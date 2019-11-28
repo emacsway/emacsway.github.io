@@ -86,7 +86,8 @@ The order of the list is unstable.
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
 - "`Microsoft Application Architecture Guide <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff650706(v=pandp.10)?redirectedfrom=MSDN>`__" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
 - "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st Edition by Chris Richardson (`more info <https://microservices.io/book>`__)
-- "The Site Reliability Workbook" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
+- "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
+- "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
 - "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
 - "`Development of Further Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaDev/>`__" by Martin Fowler
