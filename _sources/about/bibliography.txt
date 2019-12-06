@@ -112,6 +112,7 @@ The order of the list is unstable.
 - "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
 - "Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing, Volume 4" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
 - "Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
+- "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
 
 ..
     - "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins

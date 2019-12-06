@@ -238,6 +238,12 @@
 Читать весь список необязательно.
 
 
+Справочники
+===========
+
+- "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
+
+
 Базы данных
 ===========
 
