@@ -282,6 +282,8 @@ TDD позволяет сфокусировать мозг на минималь
 
     \- "Test-Driven Development By Example" [#fntdd]_ by Kent Beck
 
+Математическое объяснение этого явления можно найти в главе "1. Recurrent Problems : 1.1. The Tower of Hanoi" книги "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik.
+
 Кроме того, при TDD хорошо отслеживается ниточка, за которую можно распутать клубок сложности, и вопрос "с какого конца подступиться" решается сам собой.
 
 При TDD Вы больше работаете пальцами, но меньше работаете головой. А поскольку 90% при кодировании занимает именно обдумывание, отсюда и бОльшее влияние на темпы разработки.
