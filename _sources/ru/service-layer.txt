@@ -359,7 +359,7 @@ Eric Evans разделяет Сервисы на три уровня логик
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
-.. _domain-service:
+.. _domain-service-ru:
 
 Сервисы уровня Доменной Логики (Domain Logic)
 ---------------------------------------------
@@ -996,6 +996,12 @@ Event Sourcing
     You can say that any projection any state is a left fold over your previous history.
 
     \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1004>`__" at 16:44
+
+..
+
+    It's actually functional.
+
+    \- Greg Young, "`Event Sourcing is actually just functional code <https://youtu.be/kZL41SMXWdM?t=2089>`__" at 34:49
 
 ..
 

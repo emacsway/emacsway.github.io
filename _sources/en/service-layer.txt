@@ -825,6 +825,12 @@ This topic is well covered in Chapter 6 "Functional Programming" of "Clean Archi
 
 ..
 
+    It's actually functional.
+
+    \- Greg Young, "`Event Sourcing is actually just functional code <https://youtu.be/kZL41SMXWdM?t=2089>`__" at 34:49
+
+..
+
     I have always said that Event Sourcing is "Functional Data Storage".
     In this talk we will try migrating to a idiomatic functional way of looking at Event Sourcing.
     Come and watch all the code disappear!
