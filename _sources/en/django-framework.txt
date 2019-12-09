@@ -49,7 +49,7 @@ This pattern mixes business logic and data access logic in one class.
 Unfortunately, this simplicity is appropriate only in simple cases.
 In a more serious application, there are more problems than advantages.
 
-Since Django does not use the `Repository`_ layer, it would be desirable to hide the implementation of access to the data source by the Service Layer, see the article ":doc:`service-layer`".
+Since Django does not implement `Repository`_ pattern, it would be desirable to hide an implementation of data access logic at least with ":doc:`Service Layer <service-layer>`".
 This is necessary because the capabilities of Django ORM are not always enough to build complicated queries or to create complicated models, and you have to replace Django ORM with third-party tools or a bare implementation of `DataMapper`_ pattern (we will return to this issue a little later).
 In any case, the implementation of data access must be hidden from the application, and this is one of the responsibilities of the Service Layer.
 
@@ -74,7 +74,7 @@ Transactional consistency of data
 Django allows you to create multiple instances of the same domain object in the thread's memory, and this can lead to data loss due to the dissynchronization of the state of these instances.
 Worse still, these instances do not synchronize their state with their records in the database at the time of the commit (rollback) of the transaction.
 
-Django supports transactions, but does not support the transactional consistency of the data (`ACID`_, `Two-phase transaction`_) unlike the Storm ORM / SQLAlchemy.
+Django supports transactions, but does not support the transactional consistency of the data unlike the Storm ORM / SQLAlchemy.
 You have to take care about the state model instances in the memory at the time of the commit (rollback) of the transaction.
 
 For example, if you use the transaction isolation level "Repeatable read", after the transaction is committed, the status of your model instances in the memory may become outdated.
