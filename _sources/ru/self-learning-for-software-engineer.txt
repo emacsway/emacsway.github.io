@@ -190,6 +190,8 @@
 
 - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+- "`A plain english introduction to CAP Theorem <http://ksat.me/a-plain-english-introduction-to-cap-theorem/>`__" by Kaushik Sathupadi
+- "`Map Reduce: A really simple introduction <http://ksat.me/map-reduce-a-really-simple-introduction-kloudo/>`__" by Kaushik Sathupadi
 - "`All Things Distributed <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
 
 
