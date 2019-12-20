@@ -191,7 +191,7 @@ Four ways to organize Application Logic are widespread:
 
     \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
 
-4. `Use Case <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__, which also is a kind of Command pattern.
+4. `Use Case <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__ (`see also <http://wiki.c2.com/?UseCase>`__), which also is a kind of Command pattern.
 At 15:50 Robert C. Martin points to a `parallel between Use Case and Command pattern <https://youtu.be/Nsjsiz2A9mg?t=15m45s>`__.
 
 In fact, even `Method Object <https://refactoring.com/catalog/replaceFunctionWithCommand.html>`__ is a derivative of Command pattern.
