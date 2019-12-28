@@ -262,7 +262,8 @@
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
 - "Microsoft .NET: Architecting Applications for the Enterprise" 2nd Edition by Dino Esposito, Andrea Saltarello
-- "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson
+- "`Cloud Design Patterns <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__"
+- "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn568099(v=pandp.10)>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson. (`Code Samples <http://aka.ms/cloud-design-patterns-sample>`__)
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
 - "`Cloud Best Practices <https://docs.microsoft.com/en-us/azure/architecture/best-practices/>`__" by Microsoft Corporation and community
 - "`Performance Antipatterns <https://docs.microsoft.com/en-us/azure/architecture/antipatterns>`__" by Microsoft Corporation and community
@@ -317,6 +318,12 @@ POSA
 - "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
 
 Хорошая подборка книг по алгоритмам: http://e-maxx.ru/bookz/
+
+Это довольно сложные книги, и я хотел бы поделиться одним советом, который я услышал еще в студенчестве.
+Если что-то непонятно - прочитай три раза.
+Первый раз просто прочитай, оставив попытки что-то понять, - нужно просто получить обзорность материала.
+Второй раз прочитай уже пытаясь слегка вникать.
+И третий раз прочитай уже вникая полностью.
 
 
 Тестирование
@@ -421,6 +428,7 @@ Code Smell catalogs
 - `Sample Bounded Contexts for C#.NET from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples_NET>`__ by Vaughn Vernon
 - `Sample Bounded Contexts from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples>`__ by Vaughn Vernon
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
+- Implementation of samples from the book "Domain-Driven Design" by Eric Evans in `Java <https://github.com/citerus/dddsample-core>`__, `C# <https://github.com/SzymonPobiega/DDDSample.Net>`__, `Ruby <https://github.com/paulrayner/ddd_sample_app_ruby>`__, `Golang <https://github.com/marcusolsson/goddd>`__. See also `the article <https://www.citerus.se/go-ddd>`__.
 
 .. update:: Nov 12, 2019
 
