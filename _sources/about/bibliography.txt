@@ -104,6 +104,7 @@ The order of the list is unstable.
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
 - "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
 - "REST API Design Rulebook" by Mark Massé
+- "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
 - "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik
 - "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth

@@ -310,6 +310,7 @@ POSA
 Алгоритмы. Второй заход.
 ========================
 
+- "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
 - "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
 - "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik
