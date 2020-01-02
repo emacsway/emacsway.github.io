@@ -176,6 +176,33 @@
 
 - "Algorithms Unlocked" 3d edition by Thomas H. Cormen
 
+Данная книга не акцентируется на математике, что, с одной стороны, облегчает освоение материала, но, с другой стороны, оставляет невосполненным важный аспект профессиональных знаний.
+К счастью, существует книга, которая обеспечивает легкий вход в алгоритмы, включая их математический анализ:
+
+- "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
+
+При чтении этой книги могут возникать вопросы справочного характера по математике, ответы на которые можно находить в математических справочниках (например, М.Я. Выгодского, А.А. Гусака) или в справочном разделе по математике "VIII Appendix: Mathematical Background" книги "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein.
+
+
+Изучаем математику
+==================
+
+Существует монументальная книга, которую стоит упомянуть отдельно.
+Чтобы не тормозить общий процесс обучения, ее лучше читать в параллельно-фоновом режиме.
+
+- "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik
+
+Эта книга дает прекрасную математическую базу для функционального программирования.
+И хорошо заходит в сочетании с "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth, поскольку у них многие темы пересекаются и раскрываются с разных точек зрения, что дает полноту понимания.
+Справочник математических нотаций в конце книги нередко оказывается полезным.
+
+Книги по математике и алгоритмам - сложные книги, и я хотел бы поделиться одним советом, который я услышал еще в студенчестве.
+Если что-то непонятно - прочитай три раза.
+
+1. Первый раз просто прочитай, оставив попытки что-то понять, - нужно просто получить обзорность материала.
+2. Второй раз прочитай уже пытаясь слегка вникать.
+3. И третий раз прочитай уже вникая полностью.
+
 
 Учимся архитектуре
 ==================
@@ -310,21 +337,14 @@ POSA
 Алгоритмы. Второй заход.
 ========================
 
-- "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
 - "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
-- "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik
 - "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
+- "The Art Of Computer Programming" Volume 4 by Donald Knuth
 
 Хорошая подборка книг по алгоритмам: http://e-maxx.ru/bookz/
-
-Это довольно сложные книги, и я хотел бы поделиться одним советом, который я услышал еще в студенчестве.
-Если что-то непонятно - прочитай три раза.
-Первый раз просто прочитай, оставив попытки что-то понять, - нужно просто получить обзорность материала.
-Второй раз прочитай уже пытаясь слегка вникать.
-И третий раз прочитай уже вникая полностью.
 
 
 Тестирование

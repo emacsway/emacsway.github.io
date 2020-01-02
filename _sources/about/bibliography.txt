@@ -36,6 +36,8 @@ The list of software literature read by me:
     - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 - Algorithms:
     - "Algorithms Unlocked" 3d edition by Thomas H. Cormen
+    - "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
+    - "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik
     - "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
 - Compilers & Parsers:
     - "Compiler Construction" by N.Wirth
@@ -104,8 +106,6 @@ The order of the list is unstable.
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
 - "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
 - "REST API Design Rulebook" by Mark Massé
-- "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
-- "Concrete Mathematics: A Foundation for Computer Science" 2nd edition by Ronald L. Graham, Donald E. Knuth, Oren Patashnik
 - "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
 - "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
