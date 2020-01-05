@@ -181,7 +181,7 @@
 
 - "Introduction to the Design and Analysis of Algorithms" 3d edition by A.Levitin
 
-При чтении этой книги могут возникать вопросы справочного характера по математике, ответы на которые можно находить в математических справочниках (например, М.Я. Выгодского, А.А. Гусака) или в справочном разделе по математике "VIII Appendix: Mathematical Background" книги "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein.
+При чтении этой книги могут возникать вопросы справочного характера по математике, ответы на которые можно найти в приложении этой книги (Appendix A: Useful Formulas for the Analysis of Algorithms, Appendix B: Short Tutorial on Recurrence Relations), в математических справочниках (например, М.Я. Выгодского, А.А. Гусака) или в справочном разделе по математике "VIII Appendix: Mathematical Background" книги "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein.
 
 
 Изучаем математику
