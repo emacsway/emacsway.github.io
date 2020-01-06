@@ -420,6 +420,7 @@ Code Smell catalogs
 - `MAXimal :: bookz - электронные версии различных книг по алгоритмам <http://e-maxx.ru/bookz/>`__
 - `Programming and design learning resources by Kamil Grzybek <http://www.kamilgrzybek.com/programming-and-design-resources/>`__
 - `Список книг от Сергея Теплякова <https://sergeyteplyakov.blogspot.com/2013/08/blog-post.html>`__
+- `Книги по направлению Архитектура и проектирование ПО от эксперта luxoft <https://www.luxoft-training.ru/about/experts/answers/302/30945/>`__
 
 
 Почтовые рассылки и сообщества
