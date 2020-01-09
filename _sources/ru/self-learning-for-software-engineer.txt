@@ -259,8 +259,18 @@
 ===========
 
 - "Domain-Driven Design" by Eric Evans
-- "Implementing Domain-Driven Design" by Vaughn Vernon
+- "`Implementing Domain-Driven Design <https://kalele.io/books/>`__" by Vaughn Vernon
 
+Существуют краткие изложения этих двух книг по DDD.
+
+Краткие изложения "Domain-Driven Design" by Eric Evans:
+
+- "`Domain-Driven Design Reference <https://domainlanguage.com/ddd/reference/>`__" by Eric Evans
+- "`Domain-Driven Design Quickly <https://www.infoq.com/books/domain-driven-design-quickly/>`__"
+
+Краткое изложение "Implementing Domain-Driven Design" by Vaughn Vernon:
+
+- "`Domain-Driven Design Distilled <https://kalele.io/books/>`__" by V.Vernon
 
 Собственно, этих знаний достаточно для того, чтобы стать зрелым специалистом.
 Своего рода - кандидатский минимум.
@@ -372,6 +382,12 @@ POSA
 
 - "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell (я встречал в интернете `краткий конспект <http://igorshevchenko.ru/blog/entries/software-estimation>`__)
 - "Agile Estimating and Planning" by Mike Cohn
+
+
+Функциональное программирование
+===============================
+
+- "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
 
 
 Online-каталоги
