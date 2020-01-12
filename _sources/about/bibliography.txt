@@ -69,13 +69,14 @@ The order of the list is unstable.
 - "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
 - "Implementation Patterns" by Kent Beck
 - "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
-- "Software Architecture in Practice" 3d Edition by Len Bass, Paul Clements, Rick Kazman
+- "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
+- "Object-Oriented Analysis and Design with Applications" 3rd edition by Grady Booch, Robert A. Maksimchuk, Michael W. Engle, Bobbi J. Young Ph.D., Jim Conallen, Kelli A. Houston
 - "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
 - "Domain Specific Languages" by Martin Fowler (with Rebecca Parsons)
 - "Implementing Domain-Driven Design" by Vaughn Vernon
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
-- "Microsoft .NET: Architecting Applications for the Enterprise" 2nd Edition by Dino Esposito, Andrea Saltarello
+- "Microsoft .NET: Architecting Applications for the Enterprise" 2nd edition by Dino Esposito, Andrea Saltarello
 - "`Cloud Design Patterns <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__"
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn568099(v=pandp.10)>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson. (`Code Samples <http://aka.ms/cloud-design-patterns-sample>`__)
 - "`Build Microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices>`__" by Microsoft Corporation and community
@@ -87,8 +88,8 @@ The order of the list is unstable.
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
-- "`Microsoft Application Architecture Guide <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff650706(v=pandp.10)?redirectedfrom=MSDN>`__" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
-- "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st Edition by Chris Richardson (`more info <https://microservices.io/book>`__)
+- "`Microsoft Application Architecture Guide <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff650706(v=pandp.10)?redirectedfrom=MSDN>`__" 2nd edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
+- "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st edition by Chris Richardson (`more info <https://microservices.io/book>`__)
 - "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
@@ -97,7 +98,7 @@ The order of the list is unstable.
 - "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
-- "Object-Oriented Software Construction" 2nd Edition by Bertrand Meyer
+- "Object-Oriented Software Construction" 2nd edition by Bertrand Meyer
 - "Working Effectively with Legacy Code" by Michael C. Feathers
 - "PostgreSQL 10 High Performance" by Ibrar Ahmed, Gregory Smith, Enrico Pirozzi
 - "Refactoring To Patterns" by Joshua Kerievsky
