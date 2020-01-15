@@ -117,6 +117,9 @@ The order of the list is unstable.
 - "Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing, Volume 4" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
 - "Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
 - "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
+- "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
+- "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition (2nd Edition)" by David Thomas, Andrew Hunt
+- "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
 
 ..
     - "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins

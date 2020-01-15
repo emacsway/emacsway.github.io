@@ -391,6 +391,14 @@ POSA
 - "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
 
 
+Развитие личностных профессиональных качеств
+============================================
+
+- "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
+    - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition (2nd Edition)" by David Thomas, Andrew Hunt
+- "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
+
+
 Online-каталоги
 ===============
 
@@ -413,6 +421,7 @@ Online-каталоги
 - `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
 - `Refactoring Databases <https://databaserefactoring.com/>`__
 - `Catalog of Database Refactorings <http://www.agiledata.org/essays/databaseRefactoringCatalog.html>`__
+- `Extreme Programming Rules <http://www.extremeprogramming.org/rules.html>`__
 
 
 Code Smell catalogs
