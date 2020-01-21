@@ -14,7 +14,7 @@ About me
    :alt: me
    :align: right
 
-Solution/Application Architect, Tech Lead, XP coach, Python/FullStack Software Engineer
+Systems/Software Architect, XP coach, Python/FullStack Lead Software Engineer
 
 - Ivan Zakrevskyi
 - Blog: https://emacsway.github.io/
