@@ -252,6 +252,7 @@
 
 - "Extreme Programming Explained" 2nd edition by Kent Beck
 - "Planning Extreme Programming" by Kent Beck, Martin Fowler
+- "Clean Agile: Back to Basics" by Robert C. Martin
 - "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
 
 
@@ -277,12 +278,7 @@
 Далее - порядок чтения может быть произвольным.
 Читать весь список необязательно.
 
-
-Справочники
-===========
-
-- "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
-
+--------------------------------------------------------------------------------
 
 Базы данных
 ===========
@@ -350,10 +346,21 @@ POSA
 
 - "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
-- "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
-- "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
-- "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
-- "The Art Of Computer Programming" Volume 4 by Donald Knuth
+
+Donald E. Knuth:
+
+- "The Art of Computer Programming, Volume 1: Fundamental Algorithms" 3d edition by Donald Knuth
+- "The Art of Computer Programming, Volume 1, Fascicle 1: MMIX; A RISC Computer for the New Millennium" 1st edition by Donald Knuth
+- "The Art of Computer Programming, Volume 2, Seminumerical Algorithms" 3rd edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 3, Sorting and Searching" 2nd edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 0: Introduction to Combinatorial Algorithms and Boolean Functions" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 1: Bitwise Tricks & Techniques; Binary Decision Diagrams" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 2: Generating All Tuples and Permutations" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 3: Generating All Combinations and Partitions Paperback" 1st edition by Donald E. Knuth
+- "Art of Computer Programming, Volume 4, Fascicle 4: Generating All Trees; History of Combinatorial Generation 1st edition by Donald E. Knuth
+- "The Art of Computer Programming" Volume 4, Fascicle 5: Mathematical Preliminaries Redux; Introduction to Backtracking; Dancing Links" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 6: Satisfiability" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4A, Combinatorial Algorithms, Part 1" 1st edition by Donald E. Knuth
 
 Хорошая подборка книг по алгоритмам: http://e-maxx.ru/bookz/
 
@@ -395,8 +402,14 @@ POSA
 ============================================
 
 - "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
-    - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition (2nd Edition)" by David Thomas, Andrew Hunt
+    - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
 - "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
+
+
+Справочники
+===========
+
+- "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
 
 
 Online-каталоги

@@ -57,6 +57,9 @@ The list of software literature read by me:
     - "English. Reference materials." by Ksenia A. Guzeeva, Tamara G. Troshko
 
 
+--------------------------------------------------------------------------------
+
+
 In the queue
 ------------
 
@@ -67,6 +70,7 @@ The order of the list is unstable.
 - "An Introduction to Database Systems" by C.J. Date
 - "Analysis Patterns. Reusable Object Models" by Martin Fowler
 - "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
+- "Clean Agile: Back to Basics" by Robert C. Martin
 - "Implementation Patterns" by Kent Beck
 - "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
@@ -108,9 +112,18 @@ The order of the list is unstable.
 - "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
 - "REST API Design Rulebook" by Mark Massé
 - "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
-- "The Art Of Computer Programming" Volume 1 3d edition by Donald Knuth
-- "The Art Of Computer Programming" Volume 2 3d edition by Donald Knuth
-- "The Art Of Computer Programming" Volume 3 2d edition by Donald Knuth
+- "The Art of Computer Programming, Volume 1: Fundamental Algorithms" 3d edition by Donald Knuth
+- "The Art of Computer Programming, Volume 1, Fascicle 1: MMIX; A RISC Computer for the New Millennium" 1st edition by Donald Knuth
+- "The Art of Computer Programming, Volume 2, Seminumerical Algorithms" 3rd edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 3, Sorting and Searching" 2nd edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 0: Introduction to Combinatorial Algorithms and Boolean Functions" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 1: Bitwise Tricks & Techniques; Binary Decision Diagrams" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 2: Generating All Tuples and Permutations" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 3: Generating All Combinations and Partitions Paperback" 1st edition by Donald E. Knuth
+- "Art of Computer Programming, Volume 4, Fascicle 4: Generating All Trees; History of Combinatorial Generation 1st edition by Donald E. Knuth
+- "The Art of Computer Programming" Volume 4, Fascicle 5: Mathematical Preliminaries Redux; Introduction to Backtracking; Dancing Links" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4, Fascicle 6: Satisfiability" 1st edition by Donald E. Knuth
+- "The Art of Computer Programming, Volume 4A, Combinatorial Algorithms, Part 1" 1st edition by Donald E. Knuth
 - "Pattern-Oriented Software Architecture: A System of Patterns, Volume 1" by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
 - "Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2" by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
 - "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
@@ -118,7 +131,7 @@ The order of the list is unstable.
 - "Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
 - "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
 - "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
-- "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition (2nd Edition)" by David Thomas, Andrew Hunt
+- "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition"  2nd edition by David Thomas, Andrew Hunt
 - "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
 
 ..
