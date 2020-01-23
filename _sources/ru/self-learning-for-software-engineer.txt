@@ -245,17 +245,6 @@
 - https://github.com/microsoftarchive/cqrs-journey (Event Sourcing, SAGA transactions)
 
 
-Учимся делать команду эффективной. Углубляем навыки.
-====================================================
-
-Теперь можно прочесть и второе издание XP:
-
-- "Extreme Programming Explained" 2nd edition by Kent Beck
-- "Planning Extreme Programming" by Kent Beck, Martin Fowler
-- "Clean Agile: Back to Basics" by Robert C. Martin
-- "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
-
-
 Изучаем DDD
 ===========
 
@@ -278,7 +267,29 @@
 Далее - порядок чтения может быть произвольным.
 Читать весь список необязательно.
 
+
 --------------------------------------------------------------------------------
+
+
+Учимся делать команду эффективной. Углубляем навыки.
+====================================================
+
+Теперь можно прочесть и второе издание XP.
+
+- "Extreme Programming Explained" 2nd edition by Kent Beck
+- "Planning Extreme Programming" by Kent Beck, Martin Fowler
+- "Clean Agile: Back to Basics" by Robert C. Martin
+- "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
+- "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
+
+
+Развитие личностных профессиональных качеств
+============================================
+
+- "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
+    - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
+- "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
+
 
 Базы данных
 ===========
@@ -398,18 +409,13 @@ Donald E. Knuth:
 - "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
 
 
-Развитие личностных профессиональных качеств
-============================================
-
-- "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
-    - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
-- "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
-
-
 Справочники
 ===========
 
 - "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
+
+
+--------------------------------------------------------------------------------
 
 
 Online-каталоги
@@ -492,5 +498,5 @@ Code Smell catalogs
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
 - Implementation of samples from the book "Domain-Driven Design" by Eric Evans in `Java <https://github.com/citerus/dddsample-core>`__, `C# <https://github.com/SzymonPobiega/DDDSample.Net>`__, `Ruby <https://github.com/paulrayner/ddd_sample_app_ruby>`__, `Golang <https://github.com/marcusolsson/goddd>`__. See also `the article <https://www.citerus.se/go-ddd>`__.
 
-.. update:: Nov 12, 2019
+.. update:: Jan 22, 2020
 
