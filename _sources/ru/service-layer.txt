@@ -963,6 +963,20 @@ CQRS
 
 Использование CQRS способствует использованию парадигмы Функционального Программирования.
 
+    \- Давайте все же немного вернемся к вопросу OOP vs FP. Какие именно преимущества у функционального подхода на "низком уровне"?
+
+    \- В Eiffel существует очень важный принцип, под названием Command-Query Separation Principle, который можно рассматривать, в некотором роде, как сближение ОО и ФП миров. Я не считаю, что наличие состояния – это однозначно плохо. Но очень важно, чтобы мы могли ясно различать операции, которые это состояние изменяют (т.е. командами), и операции, которые лишь возвращают информацию о состоянии, его не изменяя (т.е. запросами). В других языках эта разница отсутствует. Так, например, в С/С++ часто пишут функции, которые возвращают результат и изменяют состояние. Следование этому принципу позволяет безопасно использовать выражения с запросами зная, что они не изменяют состояние. В некоторых случаях можно пойти еще дальше и работать в чисто функциональном мире с полным отсутствием побочных эффектов.
+
+    \- Bertrand Meyer в интервью Сергея Теплякова "`Интервью с Бертраном Мейером <https://sergeyteplyakov.blogspot.com/2014/05/interview-with-bertrand-meyer.html>`__"
+
+..
+
+    For both theoretical and practical reasons detailed elsewhere [10], the command-query separation principle is a methodological rule, not a language feature, but all serious software developed in Eiffel observes it scrupulously, to great referential transparency advantage.
+    Although other schools of object-oriented programming regrettable do not apply it (continuing instead the C style of calling functions rather than procedures to achieve changes), but in my view it is a key element of the object-oriented approach.
+    It seems like a viable way to obtain the referential transparency goal of functional programming — since expressions, which only involve queries, will not change the state, and hence can be understood as in traditional mathematics or a functional language — while acknowledging, through the notion of command, the fundamental role of the concept of state in modeling systems and computations.
+
+    \- `"Software architecture: object-oriented vs functional <http://se.ethz.ch/~meyer/publications/functional/meyer_functional_oo.pdf>`__" by Bertrand Meyer
+
 Функциональное Программирование по своей сути не может порождать побочных эффектов (т.к. Функциональное Программирование накладывает ограничение на присваивание (изменяемость)), и именно этим обусловлен рост его популярности в эпоху распределенных вычислений.
 Нет изменяемого состояния - нет проблем параллельного обновления.
 

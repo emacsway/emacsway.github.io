@@ -796,6 +796,12 @@ Organizing Application Logic and Business Logic is well covered in the article "
 
 The use of CQRS facilitates the use of Functional Programming paradigm.
 
+    For both theoretical and practical reasons detailed elsewhere [10], the command-query separation principle is a methodological rule, not a language feature, but all serious software developed in Eiffel observes it scrupulously, to great referential transparency advantage.
+    Although other schools of object-oriented programming regrettable do not apply it (continuing instead the C style of calling functions rather than procedures to achieve changes), but in my view it is a key element of the object-oriented approach.
+    It seems like a viable way to obtain the referential transparency goal of functional programming — since expressions, which only involve queries, will not change the state, and hence can be understood as in traditional mathematics or a functional language — while acknowledging, through the notion of command, the fundamental role of the concept of state in modeling systems and computations.
+
+    \- `"Software architecture: object-oriented vs functional <http://se.ethz.ch/~meyer/publications/functional/meyer_functional_oo.pdf>`__" by Bertrand Meyer
+
 Functional Programming inherently cannot produce side effects (since Functional Programming imposes a restriction on assignment (mutability)).
 This is the reason for its popularity growth in the era of distributed computing.
 No mutability - no concurrent update issues.

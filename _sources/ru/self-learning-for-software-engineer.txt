@@ -74,7 +74,7 @@
 Когда я читал каталог Code Smells, я частенько вспоминал свой код.
 В результате, решения навечно запечатлелись в памяти.
 
-Очень правильно `сказал <http://sergeyteplyakov.blogspot.com/2017/02/reading-books-considered-harmful.html>`__ Сергей Тепляков: "Полноценное обучение – это не теория vs. практика. Это комбинация этих вещей, при этом процент одного и другого зависит от человека и изучаемой темы."
+Очень правильно `сказал <https://sergeyteplyakov.blogspot.com/2017/02/reading-books-considered-harmful.html>`__ Сергей Тепляков: "Полноценное обучение – это не теория vs. практика. Это комбинация этих вещей, при этом процент одного и другого зависит от человека и изучаемой темы."
 
 Ну и, главное, не впадать в фанатизм.
 Засасывает.
@@ -406,6 +406,7 @@ Donald E. Knuth:
 Функциональное программирование
 ===============================
 
+- `"Software architecture: object-oriented vs functional <http://se.ethz.ch/~meyer/publications/functional/meyer_functional_oo.pdf>`__" by Bertrand Meyer
 - "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
 
 
