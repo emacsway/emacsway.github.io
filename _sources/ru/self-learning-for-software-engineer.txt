@@ -496,8 +496,14 @@ Code Smell catalogs
 - `Refactoring from anemic to rich Domain Model example <https://github.com/kgrzybek/refactoring-from-anemic-to-rich-domain-model-example>`__ by Kamil Grzybek
 - `Sample Bounded Contexts for C#.NET from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples_NET>`__ by Vaughn Vernon
 - `Sample Bounded Contexts from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples>`__ by Vaughn Vernon
-- `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
 - Implementation of samples from the book "Domain-Driven Design" by Eric Evans in `Java <https://github.com/citerus/dddsample-core>`__, `C# <https://github.com/SzymonPobiega/DDDSample.Net>`__, `Ruby <https://github.com/paulrayner/ddd_sample_app_ruby>`__, `Golang <https://github.com/marcusolsson/goddd>`__. See also `the article <https://www.citerus.se/go-ddd>`__.
+- `Simple CQRS example <https://github.com/gregoryyoung/m-r>`__ by Greg Young (приложение так же реализует Event Sourcing)
+- `Greg Young's SimpleCQRS in F# <https://github.com/thinkbeforecoding/m-r>`__ by Jérémie Chassaing
+
+Others:
+
+- `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
+
 
 .. update:: Jan 22, 2020
 
