@@ -951,7 +951,7 @@ It seems like a viable way to obtain the referential transparency goal of functi
 Такой шаблон позволяет работать с хранилищами данных в Функциональном стиле, и предоставляет такие же выгоды: нет изменяемого состояния - нет проблемы параллельного обновления.
 И такие же недостатки - потребность в большом количестве памяти и процессорной мощности.
 Именно поэтому, данный шаблон широко используется в распределенных системах, где остро проявляется потребность в его достоинствах, и, вместе с тем, не проявляются его недостатки (ведь распределенные системы не лимитированы ни в памяти, ни в процессорной мощности).</p>
-<p>Наглядным примером Event Sourcing может быть принцип организации банковского счета в базе данных, когда счет не является источником истины, а просто отражает совокупное значение всех транзакций (т.е. событий).</p>
+<p>Наглядным примером Event Sourcing может быть <a class="reference external" href="https://martinfowler.com/eaaDev/AccountingNarrative.html">принцип организации банковского счета</a> в базе данных, когда счет не является источником истины, а просто отражает совокупное значение всех транзакций (т.е. событий).</p>
 <p>Наиболее ясно эта тема раскрывается в Chapter 6 &#8220;Functional Programming&#8221; of &#8220;Clean Architecture&#8221; by Robert C. Martin.</p>
 <blockquote>
 <div><p>Что особенно важно, никакая информация не удаляется из такого хранилища и не изменяется.
@@ -1146,6 +1146,8 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 <li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>&#8220;</p>
 </li>
 <li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/articles/201701-event-driven.html">What do you mean by &#8220;Event-Driven&#8221;?</a>&#8220;</p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/AccountingNarrative.html">Patterns for Accounting</a>&#8220;</p>
 </li>
 <li><p class="first">&#8220;<a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">CQRS, Task Based UIs, Event Sourcing agh!</a>&#8221; by Greg Young</p>
 </li>

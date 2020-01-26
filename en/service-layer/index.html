@@ -798,7 +798,7 @@ There are specialized storages that implement Event Sourcing, but it can also be
 This pattern allows working with data storages in the Functional style, and provides the same benefits: no mutable state - no concurrent update issues.
 And the same disadvantages - high memory and processor consumption.
 This is the reason why this pattern is widely used in distributed systems, where there is an acute need for its advantages, and at the same time, its weaknesses do not appear (since distributed systems are not limited either in memory or in processor power).</p>
-<p>A good example of Event Sourcing can be the principle of organizing a bank account in a database, when the account is not a source of truth, but simply reflects the aggregate value of all transactions (i.e. events).</p>
+<p>A good example of Event Sourcing can be <a class="reference external" href="https://martinfowler.com/eaaDev/AccountingNarrative.html">the principle of organizing a bank account</a> in a database, when the account is not a source of truth, but simply reflects the aggregate value of all transactions (i.e. events).</p>
 <p>This topic is well covered in Chapter 6 &#8220;Functional Programming&#8221; of &#8220;Clean Architecture&#8221; by Robert C. Martin.</p>
 <blockquote>
 <div><p>More importantly, nothing ever gets deleted or updated from such a data store.
@@ -987,6 +987,8 @@ By the time you leave you will never want an &#8220;Event Sourcing Framework (TM
 <li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>&#8220;</p>
 </li>
 <li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/articles/201701-event-driven.html">What do you mean by &#8220;Event-Driven&#8221;?</a>&#8220;</p>
+</li>
+<li><p class="first">&#8220;<a class="reference external" href="https://martinfowler.com/eaaDev/AccountingNarrative.html">Patterns for Accounting</a>&#8220;</p>
 </li>
 <li><p class="first">&#8220;<a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">CQRS, Task Based UIs, Event Sourcing agh!</a>&#8221; by Greg Young</p>
 </li>

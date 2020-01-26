@@ -822,7 +822,7 @@ This pattern allows working with data storages in the Functional style, and prov
 And the same disadvantages - high memory and processor consumption.
 This is the reason why this pattern is widely used in distributed systems, where there is an acute need for its advantages, and at the same time, its weaknesses do not appear (since distributed systems are not limited either in memory or in processor power).
 
-A good example of Event Sourcing can be the principle of organizing a bank account in a database, when the account is not a source of truth, but simply reflects the aggregate value of all transactions (i.e. events).
+A good example of Event Sourcing can be `the principle of organizing a bank account <https://martinfowler.com/eaaDev/AccountingNarrative.html>`__ in a database, when the account is not a source of truth, but simply reflects the aggregate value of all transactions (i.e. events).
 
 This topic is well covered in Chapter 6 "Functional Programming" of "Clean Architecture" by Robert C. Martin.
 
@@ -931,6 +931,7 @@ Further Reading
 - "`Command Query Separation <https://martinfowler.com/bliki/CommandQuerySeparation.html>`__
 - "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
 - "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
+- "`Patterns for Accounting <https://martinfowler.com/eaaDev/AccountingNarrative.html>`__"
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "`CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>`__" by Greg Young
