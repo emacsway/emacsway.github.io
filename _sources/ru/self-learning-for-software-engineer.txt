@@ -218,8 +218,8 @@
 
 - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
-- "`A plain english introduction to CAP Theorem <http://ksat.me/a-plain-english-introduction-to-cap-theorem/>`__" by Kaushik Sathupadi
-- "`Map Reduce: A really simple introduction <http://ksat.me/map-reduce-a-really-simple-introduction-kloudo/>`__" by Kaushik Sathupadi
+- "`A plain english introduction to CAP Theorem <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__" (`Russian <https://habr.com/ru/post/130577/>`__) by Kaushik Sathupadi
+- "`Map Reduce: A really simple introduction <http://ksat.me/map-reduce-a-really-simple-introduction-kloudo>`__" by Kaushik Sathupadi
 - "`All Things Distributed <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
 
 
@@ -319,6 +319,7 @@
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
 - "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
+- "Distributed Systems. Prentice-Hall." 3d edition by Andrew C. Tanenbaum and Maarten Van Steen. 
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
