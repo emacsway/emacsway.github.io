@@ -421,7 +421,7 @@
 Часто его называют "Eager Loading".
 Со временем он уступил свои позиции Ленивой Загрузке, но, по мере роста применяемости распределенных систем, и, соответственно, по мере роста интереса к понятию Агрегата (как границы транзакции), интерес к нему снова возвратился.
 
-Также этот способ часто применяется в асинхронных приложениях, поскольку асинхронное обращение к ленивым связям Доменных Моделей значительно усложняет ясность программного кода, и препятствует оптимизации и пакетной предзагрузке связанных объектов.
+Также этот способ часто применялся в асинхронных приложениях (до появления конструкции async/await), поскольку асинхронное обращение к ленивым связям Доменных Моделей значительно усложняет ясность программного кода, и препятствует оптимизации и пакетной предзагрузке связанных объектов.
 
 
 Классическая реализация создания объектных ссылок
@@ -520,6 +520,8 @@
     Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service. However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go. The Aggregate can then double-dispatch to the Domain Service to resolve references. Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+
+Однако, нужно учитывать, что потребность одного агрегата в данных другого агрегата, для реализации своей бизнес-логики, чаще всего свидетельствует о нарушении принципа SRP, и, в таком случае, зависимый(е) агрегат(ы) иногда лучше разделить (`пример <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/master/iddd_agilepm/Domain.Model/Products/Sprints/CommittedBacklogItem.cs>`__).
 
 
 Ленивая Загрузка (Lazy Load)
