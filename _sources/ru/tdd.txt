@@ -531,9 +531,15 @@ Sociable or Solitary?
 
 ..
 
-    At the end of the day it's not important to decide if you go for solitary or sociable unit tests. Writing automated tests is what's important. Personally, I find myself using both approaches all the time
+    At the end of the day it's not important to decide if you go for solitary or sociable unit tests. Writing automated tests is what's important. Personally, I find myself using both approaches all the time.
 
     \-  "`The Practical Test Pyramid <https://martinfowler.com/articles/practical-test-pyramid.html#SociableAndSolitary>`__" by Ham Vocke with support of Martin Fowler.
+
+..
+
+    TestDrivenDevelopment produces Developer Tests. The failure of a test case implicates only the developer's most recent edit. **This implies that developers don't need to use Mock Objects to split all their code up into testable units**. And it implies a developer may always avoid debugging by reverting that last edit.
+
+    \- "`Unit Test <https://wiki.c2.com/?UnitTest>`__" on c2.com
 
 Недостатки и достоинства обоих подходов описаны в статье "`Mocks Aren't Stubs <https://martinfowler.com/articles/mocksArentStubs.html>`__".
 
