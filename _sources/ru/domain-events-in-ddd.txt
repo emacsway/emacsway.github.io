@@ -22,7 +22,7 @@ Domain Events в DDD
     \- "Agile!: The Good, the Hype and the Ugly" by Bertrand Meyer
 
 Поэтому, я буду начинать всегда с первоисточников, т.е. с Eric Evans, Bertrand Meyer и др.
-Но так же буду делать обзор мнений их ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune и коллектив авторов руководств Microsoft по архитектуре.
+Но так же буду делать обзор мнений их ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune, коллектив авторов руководств Microsoft по архитектуре и др.
 К счастью, при внимательном рассмотрении, противоречий между ними практически нет.
 
 
