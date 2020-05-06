@@ -375,6 +375,15 @@ Strong Consistency - новичкам
 Мнение Udi Dahan
 ----------------
 
+    I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
+    I think that answers my question.
+    What he says **within a bounded context we can keep one logical transaction using in memory domain events**.
+    **However once one transaction is committed within bounded context then we send one way messaging using Service Bus that message is called integration message.**
+    This is the message on which other bounded context are interested.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
 
     > This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
     Is there any specific reason for handle domain events within the same transaction scoping DoSomething?
@@ -427,6 +436,20 @@ Strong Consistency - новичкам
     That service bus event gets routed to multiple subscribers, behind which you’d have each of the respective aggregates that would updated in their own transactions.
 
     \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-74959>`__" [#fnudde3]_ comment of Udi Dahan
+
+
+Cesar De la Torre
+-----------------
+
+Именно на этого парня `ссылается Udi Dahan <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__ по этому вопросу.
+
+    When handling the event, any event handler subscribed to the event could run additional domain operations by using other AggregateRoot objects, but again, you still need to be within the same transaction scope.
+
+    <..>
+
+    for in-memory event based communication across disconnected aggregates that are part of the same domain model and part of the same transaction, domain events are great ensuring consistency across a single domain model within the same microservice or Bounded-Context.
+
+    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
 
 
 In-process vs out-of-process
@@ -543,7 +566,7 @@ Domain Events могут покидать пределы Bounded Context:
 
    FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
-Разделяет их и Udi Dahan:
+Разделяет Domain Events на внутренние и внешние и Udi Dahan:
 
     I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
     I think that answers my question.
@@ -898,5 +921,6 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnudde1] "`How to create fully encapsulated Domain Models <http://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
 .. [#fnudde2] "`Domain Events – Take 2 <http://udidahan.com/2008/08/25/domain-events-take-2/>`__" by Udi Dahan
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
+.. [#cdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET (`is cited by Udi Dahan <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__)
 
 .. .. update:: May 05, 2020
