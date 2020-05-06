@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 20:59:50 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 21:01:26 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -164,7 +164,7 @@ Allow different aggregates to be distributed among nodes.</p>
 <p>- &#8220;Domain-Driven Design Reference&#8221; <a class="footnote-reference" href="#fndddr" id="id4">[2]</a> by Eric Evans, Chapter &#8220;Aggregates&#8221;</p>
 </div></blockquote>
 <p>Здесь мы видим, что краеугольной причиной Eventual Consistency является распределенное хранение данных.
-Это значит, что, в силу <a class="reference external" href="http://ksat.me/a-plain-english-introduction-to-cap-theorem">CAP-теоремы</a> (<a class="reference external" href="https://habr.com/ru/post/130577/">перевод на Русский</a>), становится невозможным достигнуть одновременно Consistency и Availability при Partition Tolerance.
+Это значит, что, в силу <a class="reference external" href="http://ksat.me/a-plain-english-introduction-to-cap-theorem">CAP-теоремы</a> (<a class="reference external" href="https://habr.com/ru/post/130577/">перевод на Русский</a>), становится невозможно достигнуть одновременно Consistency и Availability при Partition Tolerance.
 Это та самая причина, по которой концепция Агрегата лежит в основе практически любого распределенного NoSQL хранилища - агрегат просто хранится целиком на одном узле, поэтому, он всегда и доступен, и согласован одновременно.</p>
 <p>Представьте на минутку, что узлы автомобиля хранятся на разных узлах, и они не успели прийти в согласованное состояние после обновления агрегата, в котором был заменен типоразмер шин.
 Тогда у нас возникла бы вероятность получить из хранилища автомобиль с различными типоразмерами шин, что нарушило бы инвариант агрегата.</p>

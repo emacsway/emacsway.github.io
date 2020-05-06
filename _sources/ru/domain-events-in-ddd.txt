@@ -68,7 +68,7 @@ Eventual Consistency - это следствие, а не причина
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Aggregates"
 
 Здесь мы видим, что краеугольной причиной Eventual Consistency является распределенное хранение данных.
-Это значит, что, в силу `CAP-теоремы <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__ (`перевод на Русский <https://habr.com/ru/post/130577/>`__), становится невозможным достигнуть одновременно Consistency и Availability при Partition Tolerance.
+Это значит, что, в силу `CAP-теоремы <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__ (`перевод на Русский <https://habr.com/ru/post/130577/>`__), становится невозможно достигнуть одновременно Consistency и Availability при Partition Tolerance.
 Это та самая причина, по которой концепция Агрегата лежит в основе практически любого распределенного NoSQL хранилища - агрегат просто хранится целиком на одном узле, поэтому, он всегда и доступен, и согласован одновременно.
 
 Представьте на минутку, что узлы автомобиля хранятся на разных узлах, и они не успели прийти в согласованное состояние после обновления агрегата, в котором был заменен типоразмер шин.
