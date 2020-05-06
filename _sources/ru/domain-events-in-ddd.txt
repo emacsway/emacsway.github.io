@@ -275,7 +275,7 @@ Strong Consistency - новичкам
     With true messaging and a service bus, a message is fired and handled to asynchronously.
     With domain events, the response is synchronous
 
-    \- "Strengthening your domain: Domain Events" [# fnjbde1]_ by Jimmy Bogard
+    \- "Strengthening your domain: Domain Events" [#fnjbde1]_ by Jimmy Bogard
 
 ..
 
@@ -294,7 +294,7 @@ Strong Consistency - новичкам
     But for synchronous messaging across disconnected aggregates, **domain events are a great way to ensure aggregate root consistency across the entire model**.
     The alternative would be transaction script design, where consistency is enforced not by the domain model but by some other (non-intuitive) layer.
 
-    \- "Strengthening your domain: Domain Events" [# fnjbde1]_ by Jimmy Bogard
+    \- "Strengthening your domain: Domain Events" [#fnjbde1]_ by Jimmy Bogard
 
 ..
 
@@ -306,7 +306,7 @@ Strong Consistency - новичкам
 
     Just before we commit our transaction, we dispatch our events to their respective handlers.
 
-    \- "A better domain events pattern" [# fnjbde2]_ by Jimmy Bogard
+    \- "A better domain events pattern" [#fnjbde2]_ by Jimmy Bogard
 
 
 Мнение Kamil Grzybek
@@ -824,7 +824,7 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnkgde1] "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" by Kamil Grzybek
 .. [#fnkgde2] "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" by Kamil Grzybek
 .. [#fnkgoutbox] "`The Outbox Pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__ by Kamil Grzybek
-.. [# fnjbde1] "`Strengthening your domain: Domain Events <https://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/>`__" by Jimmy Bogard
-.. [# fnjbde2] "`A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__" by Jimmy Bogard
+.. [#fnjbde1] "`Strengthening your domain: Domain Events <https://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/>`__" by Jimmy Bogard
+.. [#fnjbde2] "`A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__" by Jimmy Bogard
 
 .. .. update:: May 05, 2020
