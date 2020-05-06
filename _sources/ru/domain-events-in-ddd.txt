@@ -237,7 +237,7 @@ Eventual Consistency предпочтительней
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Reasons to Break the Rules :: Adhering to the Rules"
 
-Далее, в главе "Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?" он демонстрирует применение принципа "Ask Whose Job It Is" на практике.
+Далее, в главе "Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?" книги, он демонстрирует применение принципа "Ask Whose Job It Is" на практике.
 
 
 Strong Consistency - новичкам
