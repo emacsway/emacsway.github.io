@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 20:53:06 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 20:57:52 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -96,7 +96,7 @@
 <li><a class="reference internal" href="#domain-event" id="id85">Назначение Domain Event</a></li>
 <li><a class="reference internal" href="#eventual-consistency-vs-strong-transactional-consistency" id="id86">Eventual Consistency vs Strong (Transactional) Consistency</a><ul>
 <li><a class="reference internal" href="#eventual-consistency" id="id87">Eventual Consistency - это следствие, а не причина</a></li>
-<li><a class="reference internal" href="#id13" id="id88">Eventual Consistency - основной способ синхронизации агрегатов</a></li>
+<li><a class="reference internal" href="#id13" id="id88">Eventual Consistency предпочтительней</a></li>
 <li><a class="reference internal" href="#id16" id="id89">Все решают бизнес-правила</a></li>
 <li><a class="reference internal" href="#ask-whose-job-it-is" id="id90">Принцип &#8220;Ask Whose Job It Is&#8221;</a></li>
 <li><a class="reference internal" href="#strong-consistency" id="id91">Strong Consistency - новичкам</a></li>
@@ -237,7 +237,7 @@ By definition locking the root locks all members of the aggregate. The root lock
 <p>Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что &#8220;the system transaction in which you commit the business transaction&#8221;, т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ими.</p>
 </div>
 <div class="section" id="id13">
-<h2><a class="toc-backref" href="#id88">Eventual Consistency - основной способ синхронизации агрегатов</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id88">Eventual Consistency предпочтительней</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами:</p>
 <blockquote>
 <div><p>Thus, if executing a command on one Aggregate instance requires that additional business rules execute on one or more other Aggregates, use eventual consistency.
