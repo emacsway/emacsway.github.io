@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 20:16:12 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 20:53:06 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -96,7 +96,7 @@
 <li><a class="reference internal" href="#domain-event" id="id85">Назначение Domain Event</a></li>
 <li><a class="reference internal" href="#eventual-consistency-vs-strong-transactional-consistency" id="id86">Eventual Consistency vs Strong (Transactional) Consistency</a><ul>
 <li><a class="reference internal" href="#eventual-consistency" id="id87">Eventual Consistency - это следствие, а не причина</a></li>
-<li><a class="reference internal" href="#id13" id="id88">Eventual Consistency - основной способ согласования агрегатов</a></li>
+<li><a class="reference internal" href="#id13" id="id88">Eventual Consistency - основной способ синхронизации агрегатов</a></li>
 <li><a class="reference internal" href="#id16" id="id89">Все решают бизнес-правила</a></li>
 <li><a class="reference internal" href="#ask-whose-job-it-is" id="id90">Принцип &#8220;Ask Whose Job It Is&#8221;</a></li>
 <li><a class="reference internal" href="#strong-consistency" id="id91">Strong Consistency - новичкам</a></li>
@@ -126,8 +126,9 @@
 <div><p>The zealots of an idea are often more extreme than its creators - the phase &#8220;more royalist than the King&#8221; captures that phenomenon - and you will find that foundational agile texts, such as those by Beck, Larman or Cockburn, occupy a higher plane of discourse; in particular they avoid below-the-belt hits at other approaches.</p>
 <p>- &#8220;Agile!: The Good, the Hype and the Ugly&#8221; by Bertrand Meyer</p>
 </div></blockquote>
-<p>Поэтому, я буду начинать всегда с первоисточника, т.е. с Eric Evans, Bertrand Meyer и др.
-Но так же буду делать обзор мнений его ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune и коллектив авторов руководств Microsoft по архитектуре. К счастью, при внимательном рассмотрении, противоречий между ними практически нет.</p>
+<p>Поэтому, я буду начинать всегда с первоисточников, т.е. с Eric Evans, Bertrand Meyer и др.
+Но так же буду делать обзор мнений их ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune и коллектив авторов руководств Microsoft по архитектуре.
+К счастью, при внимательном рассмотрении, противоречий между ними практически нет.</p>
 </div>
 <div class="section" id="domain-event">
 <h1><a class="toc-backref" href="#id85">Назначение Domain Event</a><a class="headerlink" href="#domain-event" title="Permalink to this headline">¶</a></h1>
@@ -164,7 +165,7 @@ Allow different aggregates to be distributed among nodes.</p>
 </div></blockquote>
 <p>Здесь мы видим, что краеугольной причиной Eventual Consistency является распределенное хранение данных.
 Это значит, что, в силу <a class="reference external" href="http://ksat.me/a-plain-english-introduction-to-cap-theorem">CAP-теоремы</a> (<a class="reference external" href="https://habr.com/ru/post/130577/">перевод на Русский</a>), становится невозможным достигнуть одновременно Consistency и Availability при Partition Tolerance.
-Это та самая причина, по которой концепция Агрегата лежит в основе практически любого распределенного хранилища - агрегат просто хранится целиком на одном узле, поэтому, он всегда и доступен, и согласован одновременно.</p>
+Это та самая причина, по которой концепция Агрегата лежит в основе практически любого распределенного NoSQL хранилища - агрегат просто хранится целиком на одном узле, поэтому, он всегда и доступен, и согласован одновременно.</p>
 <p>Представьте на минутку, что узлы автомобиля хранятся на разных узлах, и они не успели прийти в согласованное состояние после обновления агрегата, в котором был заменен типоразмер шин.
 Тогда у нас возникла бы вероятность получить из хранилища автомобиль с различными типоразмерами шин, что нарушило бы инвариант агрегата.</p>
 <p>Иными словами, Eventual Consistency является не причиной, а следствием. И сохраняется агрегат одной транзакцией потому, что иное просто технически невозможно в условиях распределенности. Точнее, Агрегат является границей транзакции. И Вернон прибегает к Eventual Consistency потому что это лучше для high availability, чем Two-Phase Commit.</p>
@@ -174,7 +175,7 @@ Allow different aggregates to be distributed among nodes.</p>
 Правда, это может ухудшить уровень параллелизма, поэтому важно стремиться достигать наименее возможных границ транзакции.
 А вот синхронизация агрегатов различных сервисов может быть только асинхронной, либо же с использованием Two-Phase Commit.
 То же самое справедливо и для Bounded Contexts DDD-монолита.</p>
-<p>Избегание Two-Phase Commit в целях достижения a highly scalable подталкивает Vaughn Vernon к Eventual Consistency:</p>
+<p>Стремление избежать Two-Phase Commit, в целях достижения highly scalable, подталкивает Vaughn Vernon к Eventual Consistency:</p>
 <blockquote>
 <div><p><strong>It can eliminate the need for two-phase commits (global transactions) and support of the rules of Aggregates (10).</strong>
 One rule of Aggregates states that only a single instance should be modified in a single transaction, and all other dependent changes must occur in separate transactions.
@@ -184,7 +185,7 @@ The decoupling helps provide <strong>a highly scalable</strong> and peak-perform
 It also allows us to achieve loose coupling between systems.</p>
 <p>-&#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id5">[3]</a> by Vaughn Vernon, Chapter &#8220;Chapter 8. Domain Events :: The When and Why of Domain Events&#8221;</p>
 </div></blockquote>
-<p>Но мы видим, что, кроме проблемы одновременной Согласованности и Доступности при распределенном хранении агрегатом, озвучивается еще одна причина - database locking.
+<p>Но мы видим, что, кроме проблемы достижения одновременной Согласованности и Доступности при распределенном хранении агрегатов (и устойчивости к разделению), озвучивается еще одна причина - database locking.
 Означает ли проблема database locking то, что коммититься должен только один агрегат в одной транзакции при использовании RDBMS (Relational Database Management System)?
 Это означает только то, что транзакция должна быть fine-grained.
 &#8220;Fine-grained system transaction&#8221; != &#8220;one aggregate per transaction&#8221;.</p>
@@ -233,10 +234,10 @@ The aggregate&#8217;s characteristics call for a Coarse-Grained Lock, since work
 By definition locking the root locks all members of the aggregate. The root lock gives us a single point of contention.</p>
 <p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id12">[9]</a> by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter &#8220;16. Offline Concurrency Patterns :: Coarse-Grained Lock&#8221;</p>
 </div></blockquote>
-<p>Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что &#8220;the system transaction in which you commit the business transaction&#8221;, т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ею.</p>
+<p>Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что &#8220;the system transaction in which you commit the business transaction&#8221;, т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ими.</p>
 </div>
 <div class="section" id="id13">
-<h2><a class="toc-backref" href="#id88">Eventual Consistency - основной способ согласования агрегатов</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id88">Eventual Consistency - основной способ синхронизации агрегатов</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами:</p>
 <blockquote>
 <div><p>Thus, if executing a command on one Aggregate instance requires that additional business rules execute on one or more other Aggregates, use eventual consistency.
@@ -320,7 +321,7 @@ You might choose to use this approach in cases that you know will succeed but us
 <div class="section" id="net-microservices">
 <h2><a class="toc-backref" href="#id92">Рекомендации от &#8221;.NET Microservices&#8221;</a><a class="headerlink" href="#net-microservices" title="Permalink to this headline">¶</a></h2>
 <p>&#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id21">[6]</a> явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) от внешних Integration Events.
-Внутренние Domain Events рекомендуется использовать для согласования Агрегатов.</p>
+Внутренние Domain Events рекомендуется использовать для синхронизации Агрегатов внутри Bounded Context.</p>
 <blockquote>
 <div><p>Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain</p>
 <p>If executing a command related to one aggregate instance requires additional domain rules to be run on one or more additional aggregates, you should design and implement those side effects to be triggered by domain events.
