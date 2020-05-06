@@ -227,7 +227,7 @@ Eventual Consistency предпочтительней
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary :: Ask Whose Job It Is"
 
-В цитате Вона Вернона видно, что Эрик Эванс не спешит разделять его стремление к одному агрегату на транзакцию, и предлагает каждый кейс рассматривать отдельно.
+В цитате Вона Вернона видно, что Эрик Эванс не спешит разделять его стремление к одному агрегату на транзакцию, и предлагает рассматривать каждый случай отдельно.
 
 Можно заметить, что принцип "When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent. **If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.**" не противоречит приведенному ранее принципу "developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command."
 
