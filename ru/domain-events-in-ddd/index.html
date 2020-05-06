@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 21:09:09 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 21:11:54 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -302,7 +302,7 @@ That understanding is much more valuable than defaulting to a technical leaning.
 <div><p>We’ll have <strong>consistency</strong> where necessary [имеется ввиду CAP-theorem], and support for optimally performing and <strong>highly scalable systems</strong>.</p>
 <p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id19">[3]</a> by Vaughn Vernon, Chapter &#8220;10 Aggregates :: Reasons to Break the Rules :: Adhering to the Rules&#8221;</p>
 </div></blockquote>
-<p>Далее, в главе &#8220;Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?&#8221; он демонстрирует применение принципа &#8220;Ask Whose Job It Is&#8221; на практике.</p>
+<p>Далее, в главе &#8220;Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?&#8221; книги, он демонстрирует применение принципа &#8220;Ask Whose Job It Is&#8221; на практике.</p>
 </div>
 <div class="section" id="strong-consistency">
 <h2><a class="toc-backref" href="#id91">Strong Consistency - новичкам</a><a class="headerlink" href="#strong-consistency" title="Permalink to this headline">¶</a></h2>
@@ -320,7 +320,7 @@ You might choose to use this approach in cases that you know will succeed but us
 </div>
 <div class="section" id="net-microservices">
 <h2><a class="toc-backref" href="#id92">Рекомендации от &#8221;.NET Microservices&#8221;</a><a class="headerlink" href="#net-microservices" title="Permalink to this headline">¶</a></h2>
-<p>&#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id21">[6]</a> явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) от внешних Integration Events.
+<p>&#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id21">[6]</a> явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) и внешние Integration Events.
 Внутренние Domain Events рекомендуется использовать для синхронизации Агрегатов внутри Bounded Context.</p>
 <blockquote>
 <div><p>Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain</p>
@@ -382,7 +382,7 @@ Therefore, the transactional boundary encapsulates creating the new account and 
 </div>
 <div class="section" id="jimmy-bogard">
 <h2><a class="toc-backref" href="#id94">Мнение Jimmy Bogard</a><a class="headerlink" href="#jimmy-bogard" title="Permalink to this headline">¶</a></h2>
-<p>Вот что говорит &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221;со ссылкой на Jimmy Bogard:</p>
+<p>Вот что говорит &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; со ссылкой на Jimmy Bogard:</p>
 <blockquote>
 <div><p>However, other developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command.
 For instance, in <a class="reference external" href="https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/">A better domain events pattern</a>, Bogard says this:</p>
