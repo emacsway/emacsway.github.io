@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 21:06:49 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 21:08:17 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -296,8 +296,8 @@ That understanding is much more valuable than defaulting to a technical leaning.
 <p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id18">[3]</a> by Vaughn Vernon, Chapter &#8220;10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary :: Ask Whose Job It Is&#8221;</p>
 </div></blockquote>
 <p>В цитате Вона Вернона видно, что Эрик Эванс не спешит разделять его стремление к одному агрегату на транзакцию, и предлагает рассматривать каждый случай отдельно.</p>
-<p>Можно заметить, что принцип &#8220;When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent. <strong>If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.</strong>&#8221; не противоречит приведенному ранее принципу &#8220;developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command.&#8221;</p>
-<p>Здесь же Vaughn Vernon напоминает нам, что во главе угла стоит опять же, масштабирование и распределенность:</p>
+<p>Можно заметить, что принцип &#8220;When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent. <strong>If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.</strong>&#8221; не противоречит приведенному ниже принципу &#8220;developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command.&#8221;</p>
+<p>Здесь же Vaughn Vernon напоминает нам, что во главе угла стоит, опять же, масштабирование и распределенность:</p>
 <blockquote>
 <div><p>We’ll have <strong>consistency</strong> where necessary [имеется ввиду CAP-theorem], and support for optimally performing and <strong>highly scalable systems</strong>.</p>
 <p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id19">[3]</a> by Vaughn Vernon, Chapter &#8220;10 Aggregates :: Reasons to Break the Rules :: Adhering to the Rules&#8221;</p>
