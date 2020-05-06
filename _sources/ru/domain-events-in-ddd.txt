@@ -112,7 +112,7 @@ Eventual Consistency - это следствие, а не причина
 
     Smaller Aggregates not only perform and scale better, they are also biased toward transactional success, meaning that conflicts preventing a commit are rare.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 9. Modules :: Rule: Design Small Aggregates"
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 10 Aggregates :: Rule: Design Small Aggregates"
 
 Сам Eric Evans в своем известном выражении, которое многие приводят как первопричину Eventual Consistency, вовсе не требует одну транзакцию на агрегат, а говорит лишь о том, что после коммита инвариант каждого из агрегатов должен соблюдаться:
 
@@ -131,9 +131,14 @@ Eventual Consistency - это следствие, а не причина
 
 Такую же причину озвучивает и Vaughn Vernon:
 
+    **Transactions across distributed systems are not atomic.**
+    **The various systems bring multiple Aggregates into a consistent state eventually.**
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Reference Other Aggregates by Identity :: Scalability and Distribution"
+
     Accepting that **all Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent** helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "9. Modules :: Rule: Use Eventual Consistency Outside the Boundary"
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
 
 Кстати, автором идеи агрегата является даже не Eric Evans, а David Siegel.
 Оригинальная работа  к сожалению, не опубликована (по крайней мере, мне ее отыскать не удалось).
@@ -149,11 +154,46 @@ Eventual Consistency - это следствие, а не причина
 Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что "the system transaction in which you commit the business transaction", т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ею.
 
 
+Eventual Consistency - основной способ согласования агрегатов
+-------------------------------------------------------------
 
+С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами:
+
+    Thus, if executing a command on one Aggregate instance requires that additional business rules execute on one or more other Aggregates, use eventual consistency.
+    Accepting that all Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
+
+И тут же объясняет - агрегаты в высоконагруженных масштабируемых распределенных приложениях, устойчивых к разделению, никогда не бывают доступны и согласованы между собой одновременно.
+
+    An invariant is a business rule that must always be consistent.
+    There are different kinds of consistency. One is transactional consistency, which is considered immediate and atomic.
+    There is also eventual consistency. When discussing invariants, we are referring to transactional consistency.
+
+    <...>
+
+    The consistency boundary logically asserts that everything inside adheres to a specific set of business invariant rules no matter what operations are performed.
+    The consistency of everything outside this boundary is irrelevant to the Aggregate.
+    Thus, Aggregate is synonymous with transactional consistency boundary.
+
+    <...>
+
+    When employing a typical persistence mechanism, we use a single `transaction <https://martinfowler.com/eaaCatalog/unitOfWork.html>`__ to manage consistency.
+    When the transaction commits, everything inside one boundary must be consistent.
+    A properly designed Aggregate is one that can be modified in any way required by the business with its invariants completely consistent within a single transaction.
+    And a properly designed Bounded Context modifies only one Aggregate instance per transaction in all cases.
+    What is more, we cannot correctly reason on Aggregate design without applying transactional analysis.
+    Limiting modification to one Aggregate instance per transaction may sound overly strict.
+    However, it is a rule of thumb and should be the goal in most cases.
+    It addresses the very reason to use Aggregates.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Model True Invariants in Consistency Boundaries"
 
 
 Все решают бизнес-правила
 -------------------------
+
+С другой стороны, все решают бизнес-правила:
 
     The main point to remember from this section is that business rules are the drivers for determining what must be whole, complete, and consistent at the end of a single transaction.
 
@@ -375,16 +415,6 @@ Strong Consistency - новичкам
 Мнение Udi Dahan
 ----------------
 
-    I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
-    I think that answers my question.
-    What he says **within a bounded context we can keep one logical transaction using in memory domain events**.
-    **However once one transaction is committed within bounded context then we send one way messaging using Service Bus that message is called integration message.**
-    This is the message on which other bounded context are interested.
-
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__" [#fnudde3]_ comment of Udi Dahan
-
-..
-
     > This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
     Is there any specific reason for handle domain events within the same transaction scoping DoSomething?
 
@@ -438,10 +468,8 @@ Strong Consistency - новичкам
     \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-74959>`__" [#fnudde3]_ comment of Udi Dahan
 
 
-Cesar De la Torre
------------------
-
-Именно на этого парня `ссылается Udi Dahan <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__ по этому вопросу.
+Мнение Cesar De la Torre
+------------------------
 
     When handling the event, any event handler subscribed to the event could run additional domain operations by using other AggregateRoot objects, but again, you still need to be within the same transaction scope.
 
@@ -566,15 +594,39 @@ Domain Events могут покидать пределы Bounded Context:
 
    FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
-Разделяет Domain Events на внутренние и внешние и Udi Dahan:
+Разделяют Domain Events на внутренние и внешние и специалисты .NET.
 
-    I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
-    I think that answers my question.
-    What he says within a bounded context we can keep one logical transaction using in memory domain events.
-    **However once one transaction is committed within bounded context then we send one way messaging using Service Bus that message is called integration message.**
-    **This is the message on which other bounded context are interested.**
+    Basically, by differentiating between Domain Events and Integration Events you can solve the issue of dealing with transactions since domain events are always scoped within a transaction but integration events (using an EventBus.Publish()) are only published to the outside world if the transaction was committed successfully.
+    By doing this you can be sure that other domain-models, microservices and external systems do not react on something that in fact has rolled back and does not exist anymore.
 
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__" [#fnudde3]_ comment of Udi Dahan
+    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
+
+..
+
+    Domain events versus integration events
+
+    Semantically, domain and integration events are the same thing: notifications about something that just happened.
+    However, their implementation must be different.
+    Domain events are just messages pushed to a domain event dispatcher, which could be implemented as an in-memory mediator based on an IoC container or any other method.
+
+    On the other hand, the purpose of integration events is to propagate committed transactions and updates to additional subsystems, whether they are other microservices, Bounded Contexts or even external applications.
+    Hence, they should occur only if the entity is successfully persisted, otherwise it's as if the entire operation never happened.
+
+    As mentioned before, integration events must be based on asynchronous communication between multiple microservices (other Bounded Contexts) or even external systems/applications.
+
+    Thus, the event bus interface needs some infrastructure that allows inter-process and distributed communication between potentially remote services.
+    It can be based on a commercial service bus, queues, a shared database used as a mailbox, or any other distributed and ideally push based messaging system.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Domain events versus integration events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-versus-integration-events>`__"
+
+..
+
+    Domain events can generate integration events to be published outside of the microservice boundaries
+
+    Finally, it's important to mention that you might sometimes want to propagate events across multiple microservices.
+    That propagation is an integration event, and it could be published through an event bus from any specific domain event handler.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events :: Domain events can generate integration events to be published outside of the microservice boundaries <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-can-generate-integration-events-to-be-published-outside-of-the-microservice-boundaries>`__"
 
 ..
 
@@ -583,7 +635,7 @@ Domain Events могут покидать пределы Bounded Context:
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
 
 
-One stage vs Two Stage
+One-phase vs Two-phase
 ======================
 
 .. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain
@@ -653,6 +705,19 @@ One stage vs Two Stage
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
 
+В другом месте Vaughn Vernon приводит небольшой пример, по которому создается иллюзия, что якобы асинхронные подписчики уведомляются непосредственно (однофазно):
+
+    There is a practical way to support eventual consistency in a DDD model.
+    An Aggregate command method publishes a Domain Event that is in time delivered to one or more asynchronous subscribers:
+
+    Each of these subscribers then retrieves a different yet corresponding Aggregate instance and executes its behavior based on it.
+    Each of the subscribers executes in a separate transaction, obeying the rule of Aggregates to modify just one instance per transaction.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
+
+Однако, если найти этот пример в коде, то эта иллюзия рассеивается.
+См. `здесь <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_agilepm/Domain.Model/Products/BacklogItems/BacklogItem.cs#L201>`__ и `здесь <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_common/Domain.Model/DomainEventPublisher.cs#L77>`__
+
 Kamil Grzybek вводит явное разделение механизма доставки на две ступени, первая - для внутренних Domain Events, вторая - для внешних:
 
     Domain Events Notifications
@@ -678,8 +743,33 @@ Kamil Grzybek вводит явное разделение механизма д
 А вот Udi Dahan в своей статье "Domain Events – Salvation" [#fnudde3]_ предложил использовать единый Mediator как для внутренних синхронных подписчиков, вызываемых в той же транзакции, так и для асинхронных подписчиков.
 
 
-Может ли Domain Event отменить событие его инициировавшее?
-==========================================================
+Кто может издавать Domain Event?
+================================
+
+    One more point about what can cause a Domain Event is noteworthy.
+    Although often it is a user-based command emitted by the user interface that causes an event to occur, sometimes Domain Events
+    can be caused by a different source.
+    This might be from a timer that expires, such as at the end of the business day or the end of a week, month, or year.
+    In cases like this it won’t be a command that causes the event, because the ending of some time period is a matter of fact.
+    You can’t reject the fact that some time frame has expired, and if the business cares about this fact, the time expiration is modeled as a Domain Event, and not as a command.
+
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
+
+..
+
+    Sometimes Events are designed to be created by direct request from clients.
+    This is done in response to some occurrence that is not the direct result of executing behavior on an instance of an Aggregate in the model.
+    Possibly a user of the system initiates some action that is considered an Event in its own right.
+    When that happens, the Event can be modeled as an Aggregate and retained in its own Repository.
+    Since it represents some past occurrence, its Repository would not permit its removal.
+    When Events are modeled in this way, like Aggregates they become part of the model’s structure.
+    Thus, they are not just a record of some past occurrence, although they are that also.
+
+    \-"Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 8. Domain Events :: Modeling Events :: With Aggregate Characteristics"
+
+
+Может ли Domain Event отменить свою причину?
+============================================
 
     Domain events are ordinarily immutable, as they are **a record of something in the past**.
     In addition to a description of the event, a domain event typically contains a timestamp for the time the event occurred and the identity of entities involved in the event.
@@ -921,6 +1011,6 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnudde1] "`How to create fully encapsulated Domain Models <http://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
 .. [#fnudde2] "`Domain Events – Take 2 <http://udidahan.com/2008/08/25/domain-events-take-2/>`__" by Udi Dahan
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
-.. [#cdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET (`is cited by Udi Dahan <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__)
+.. [#cdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
 
 .. .. update:: May 05, 2020
