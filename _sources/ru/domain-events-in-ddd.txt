@@ -44,7 +44,8 @@ Eventual Consistency - это следствие, а не причина
 --------------------------------------------------
 
     A distinct, though related set of issues arises in distributed systems.
-    The state of a distributed system cannot be kept completely consistent at all times. We keep the aggregates internally consistent at all times, while making other changes asynchronously.
+    The state of a distributed system cannot be kept completely consistent at all times.
+    We keep the aggregates internally consistent at all times, while making other changes asynchronously.
     As changes propagate across nodes of a network, it can be difficult to resolve multiple updates arriving out of order or from distinct sources.
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
@@ -274,7 +275,7 @@ Strong Consistency - новичкам
     With true messaging and a service bus, a message is fired and handled to asynchronously.
     With domain events, the response is synchronous
 
-    \- "Strengthening your domain: Domain Events" [#fnjb1]_ by Jimmy Bogard
+    \- "Strengthening your domain: Domain Events" [# fnjbde1]_ by Jimmy Bogard
 
 ..
 
@@ -293,7 +294,7 @@ Strong Consistency - новичкам
     But for synchronous messaging across disconnected aggregates, **domain events are a great way to ensure aggregate root consistency across the entire model**.
     The alternative would be transaction script design, where consistency is enforced not by the domain model but by some other (non-intuitive) layer.
 
-    \- "Strengthening your domain: Domain Events" [#fnjb1]_ by Jimmy Bogard
+    \- "Strengthening your domain: Domain Events" [# fnjbde1]_ by Jimmy Bogard
 
 ..
 
@@ -305,7 +306,7 @@ Strong Consistency - новичкам
 
     Just before we commit our transaction, we dispatch our events to their respective handlers.
 
-    \- "A better domain events pattern" [#fnjb2]_ by Jimmy Bogard
+    \- "A better domain events pattern" [# fnjbde2]_ by Jimmy Bogard
 
 
 Мнение Kamil Grzybek
@@ -495,6 +496,10 @@ Domain Events могут покидать пределы Bounded Context:
 One stage vs Two Stage
 ======================
 
+.. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain
+.. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates
+.. TODO: В статье http://udidahan.com/2009/06/14/domain-events-salvation/ Уди Дахан рассматривает асинхронную обработку ивентов как в дополнение к синхронной, а не вместо неё.
+
 Ответ на вопрос о разделении доставки Domain Events во многом зависит от того, разделять ли Domain Events на внутренние и внешние?
 
 Хотя у Vaughn Vernon такое разделение не совсем очевидное, он разделяет реализацию доставки  для подписчиков внутри Bounded Context за его пределами.
@@ -519,6 +524,42 @@ One stage vs Two Stage
     The contract of Event publishing should have the potential to be at least as broad as the enterprise, or even broader.
     Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
     Refer back to Figure 8.1.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
+
+В качестве первой ступени доставки Domain Events внутренним подписчикам, Vaughn Vernon предлагает использовать обычные GOF-паттерны (Mediator, Observer), которые вызывают подписчиков в том же самом потоке и в той же самой транзакции.
+
+    Publishing Events from the Domain Model
+
+    Avoid exposing the domain model to any kind of middleware messaging infrastructure.
+    Those kinds of components live only in the infrastructure.
+    And while the domain model might at times use such infrastructure indirectly, it would never explicitly couple to it. We’ll use an approach that completely avoids the use of infrastructure.
+
+    One of the simplest and most effective ways to publish Domain Events without coupling to components outside the domain model is to create a lightweight Observer [Gamma et al.].
+    For the sake of naming I use Publish-Subscribe, which is acknowledged by [Gamma et al.] as another name for the same pattern.
+    The examples in that pattern and my use of it are lightweight because there is no network involved in subscribing to Events and publishing them.
+    All registered subscribers execute in the same process space with the publisher and run on the same thread.
+    When an Event is published, each subscriber is notified synchronously, one by one.
+    This also implies that **all subscribers are running within the same transaction**, perhaps controlled by an Application Service that is the direct client of the domain model.
+
+    Considering the two halves of Publish-Subscribe separately helps to explain them in a DDD context.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model"
+
+..
+
+    What components register subscribers to Domain Events?
+    Generally speaking, Application Services (14), and sometimes Domain Services, will.
+    **The subscriber may be any component that is running on the same thread as the Aggregate that publishes the Event**, and that can subscribe prior to the Event being published.
+    This means that **the subscriber is registered in the method execution path that uses the domain model**.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
+
+При этом, Vaughn Vernon делает предостережение относительно первой ступени доставки, т.е. внутренних подписчиков, впрочем, это предостережение зависит от уже рассмотренного ранее вопроса Eventual Consistency vs Strong (Transactional) Consistency.
+
+    Remember, the Application Service controls the transaction.
+    Don't use the Event notification to modify a second Aggregate instance.
+    That breaks a rule of thumb to modify one Aggregate instance per transaction.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
 
@@ -615,6 +656,10 @@ Kamil Grzybek вводит явное разделение механизма д
 
 
 Итак, ответ прост - если вы не используете асинхронное исполнение Команды посредством инфраструктуры (Command Bus), то ничто не препятствует вам получить идентификатор вновь созданной записи БД в возвращаемом командой результате, и реализацию можно существенно упростить.
+
+Вы можете удивиться, какая связь между Командами CQRS и Domain Events?
+А связь заключается в том, что и в первом, и во втором случае, отступление от принципа приводит к упрощению реализации, но к ухудшению возможностей масштабирования.
+И в том, и в другом случае, решением является баланс между простотой реализации и потребностью в масштабировании.
 
 Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
 Забегая наперед, скажу, что не противоречит, при соблюдении определенных условий.
@@ -778,7 +823,8 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture <https://www.martinfowler.com/books/eaa.html>`__" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnkgde1] "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" by Kamil Grzybek
 .. [#fnkgde2] "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" by Kamil Grzybek
-.. [#fnjb1] "`Strengthening your domain: Domain Events <https://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/>`__" by Jimmy Bogard
-.. [#fnjb2] "`A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__" by Jimmy Bogard
+.. [#fnkgoutbox] "`The Outbox Pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__ by Kamil Grzybek
+.. [# fnjbde1] "`Strengthening your domain: Domain Events <https://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/>`__" by Jimmy Bogard
+.. [# fnjbde2] "`A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__" by Jimmy Bogard
 
 .. .. update:: May 05, 2020

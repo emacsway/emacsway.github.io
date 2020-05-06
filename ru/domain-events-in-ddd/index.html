@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Tue, 05 May 2020 12:07:05 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 06 May 2020 00:52:04 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он искал." />
         
@@ -140,7 +140,8 @@ A domain event is a full-fledged part of the domain model, a representation of s
 <h2><a class="toc-backref" href="#id60">Eventual Consistency - это следствие, а не причина</a><a class="headerlink" href="#eventual-consistency" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>A distinct, though related set of issues arises in distributed systems.
-The state of a distributed system cannot be kept completely consistent at all times. We keep the aggregates internally consistent at all times, while making other changes asynchronously.
+The state of a distributed system cannot be kept completely consistent at all times.
+We keep the aggregates internally consistent at all times, while making other changes asynchronously.
 As changes propagate across nodes of a network, it can be difficult to resolve multiple updates arriving out of order or from distinct sources.</p>
 <p>- &#8220;Domain-Driven Design Reference&#8221; <a class="footnote-reference" href="#fndddr" id="id3">[2]</a> by Eric Evans, Chapter &#8220;Domain Events&#8221;</p>
 </div></blockquote>
@@ -323,7 +324,7 @@ For instance, in <a class="reference external" href="https://lostechies.com/jimm
 <div><p>Domain events are similar to messaging-style eventing, with one key difference.
 With true messaging and a service bus, a message is fired and handled to asynchronously.
 With domain events, the response is synchronous</p>
-<p>- &#8220;Strengthening your domain: Domain Events&#8221; <a class="footnote-reference" href="#fnjb1" id="id19">[12]</a> by Jimmy Bogard</p>
+<p>- &#8220;Strengthening your domain: Domain Events&#8221; [# fnjbde1]_ by Jimmy Bogard</p>
 </div></blockquote>
 <blockquote>
 <div><p>Transactions are handled in our unit of work wrapping each HTTP request.
@@ -337,14 +338,14 @@ We’ve also locked down all the ways the risk status could change (charged a ne
 If I need to do something like send an email, notify a web service or any other potentially blocking tasks, I should revert back to normal asynchronous messaging.
 But for synchronous messaging across disconnected aggregates, <strong>domain events are a great way to ensure aggregate root consistency across the entire model</strong>.
 The alternative would be transaction script design, where consistency is enforced not by the domain model but by some other (non-intuitive) layer.</p>
-<p>- &#8220;Strengthening your domain: Domain Events&#8221; <a class="footnote-reference" href="#fnjb1" id="id20">[12]</a> by Jimmy Bogard</p>
+<p>- &#8220;Strengthening your domain: Domain Events&#8221; [# fnjbde1]_ by Jimmy Bogard</p>
 </div></blockquote>
 <blockquote>
 <div><p>Typically, I want the side effects of a domain event to occur within the same logical transaction, but not necessarily in the same scope of raising the domain event. If I cared enough to have the side effects occur, I would instead just couple myself directly to that other service as an argument to my domain’s method.</p>
 <p>Instead of dispatching to a domain event handler immediately, what if instead we recorded our domain events, and before committing our transaction, dispatch those domain events at that point? This will have a number of benefits, besides us not tearing our hair out. Instead of raising domain events, let’s define a container for events on our domain object:</p>
 <p>&lt;...&gt;</p>
 <p>Just before we commit our transaction, we dispatch our events to their respective handlers.</p>
-<p>- &#8220;A better domain events pattern&#8221; <a class="footnote-reference" href="#fnjb2" id="id21">[13]</a> by Jimmy Bogard</p>
+<p>- &#8220;A better domain events pattern&#8221; [# fnjbde2]_ by Jimmy Bogard</p>
 </div></blockquote>
 </div>
 <div class="section" id="kamil-grzybek">
@@ -356,7 +357,7 @@ If you use DomainEvents static class, you have to handle event immediately.
 In other two cases you control when events are published as well handlers execution – in or outside existing transaction.</p>
 <p>In my opinion <strong>it is good approach to always handle domain events in existing transaction</strong> and treat aggregate method execution and handlers processing as atomic operation.
 This is good because if you have a lot of events and handlers you do not have to think about initializing connections, transactions and what should be treat in “all-or-nothing” way and what not.</p>
-<p>- &#8220;How to publish and handle Domain Events&#8221; <a class="footnote-reference" href="#fnkgde1" id="id22">[10]</a> by Kamil Grzybek</p>
+<p>- &#8220;How to publish and handle Domain Events&#8221; <a class="footnote-reference" href="#fnkgde1" id="id19">[10]</a> by Kamil Grzybek</p>
 </div></blockquote>
 <blockquote>
 <div><p>Thanks for question Andreas!</p>
@@ -368,12 +369,12 @@ This is good because if you have a lot of events and handlers you do not have to
 To do that I have two types of events: <strong>Domain Events (private, handled in the same transaction)</strong> and <strong>Domain Events Notifications (handled outside transaction)</strong>.
 Domain Event Notification often becomes an Integration Event which is send to Events Bus to other Bounded Context.
 This way I support all cases - immediate consistency, eventual consistency and integrations scenarios.</p>
-<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id23">[10]</a>, comment of Kamil Grzybek</p>
+<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id20">[10]</a>, comment of Kamil Grzybek</p>
 </div></blockquote>
 <blockquote>
 <div><p>Aggregates can publish multiple Domain Events, and for each Domain Event there can be many handlers responsible for different behavior.
 This behavior can be communication with an external system or <strong>executing a Command on another Aggregate</strong>, which will again publish its events to which another part of our system will subscribe.</p>
-<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; <a class="footnote-reference" href="#fnkgde2" id="id24">[11]</a> by Kamil Grzybek</p>
+<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; <a class="footnote-reference" href="#fnkgde2" id="id21">[11]</a> by Kamil Grzybek</p>
 </div></blockquote>
 <blockquote>
 <div><p>Let’s assume that in this particular case <strong>both Order placement and Payment creation should take place in the same transaction</strong>.
@@ -391,7 +392,7 @@ If transaction is successful, we need to send 2 emails – about the Order and P
 </ul>
 <p>&lt;...&gt;</p>
 <p>The second thing we have to do is to save notifications about Domain Events that we want to process outside of the transaction.</p>
-<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; <a class="footnote-reference" href="#fnkgde2" id="id25">[11]</a> by Kamil Grzybek</p>
+<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; <a class="footnote-reference" href="#fnkgde2" id="id22">[11]</a> by Kamil Grzybek</p>
 </div></blockquote>
 <p>И, в своем демонстрационном приложении sample-dotnet-core-cqrs-api, <a class="reference external" href="https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Application/Orders/PlaceCustomerOrder/OrderPlacedDomainEventHandler.cs#L22">он демонстрирует обработку Domain Event в одной транзакции с агрегатом</a>.</p>
 </div>
@@ -410,7 +411,7 @@ If transaction is successful, we need to send 2 emails – about the Order and P
 <p>Domain Events могут покидать пределы Bounded Context:</p>
 <blockquote>
 <div><p>&#8220;Using Domain Events will help you both to model explicitly and to share what has occurred within your model with the systems that need to know about it. The interested parties might be your own local Bounded Context and other remote Bounded Contexts.&#8221;</p>
-<p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id26">[4]</a> by Vaughn Vernon, Chapter &#8220;1. DDD for Me :: Tactical Design&#8221;</p>
+<p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id23">[4]</a> by Vaughn Vernon, Chapter &#8220;1. DDD for Me :: Tactical Design&#8221;</p>
 </div></blockquote>
 <p>Это выдвигает вопрос по отношению к Domain Events - нужно ли отделять внутренние от внешних?
 Проблему озвучивает сам Vaughn Vernon:</p>
@@ -423,12 +424,12 @@ This is your way of telling the world that something noteworthy has occurred in 
 As recommended in Implementing Domain-Driven Design [IDDD] , and specifically in Chapter 13, “Integrating Bounded Contexts,” <strong>consumers should not use the event types (e.g., classes) of an event publisher</strong>.
 Rather, <strong>they should depend only on the schema of the events</strong>, that is, <strong>their Published Language</strong>.
 This generally means that if the events are published as JSON, or perhaps a more economical object format, the consumer should consume the events by parsing them to obtain their data attributes.&#8221;</p>
-<p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id27">[4]</a> by Vaughn Vernon, Chapter &#8220;6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events&#8221;</p>
+<p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id24">[4]</a> by Vaughn Vernon, Chapter &#8220;6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events&#8221;</p>
 </div></blockquote>
 <p>Тут он четко обозначает проблему, которой рано или поздно задаются многие. И он делает две вещи:</p>
 <ol class="arabic simple">
 <li>Он разделяет реализацию издания Domain Events внутри Bounded Context (ГОФ-паттерны), от реализации издания Domain Events для других Bounded Contexts (интеграционная шина), которая начинает выполняться после завершения первой.</li>
-<li>Он разделяет Domain Events с публичной схемой, от остальных Domain Events. А это, по сути, и есть то самое, что в &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnesoc" id="id28">[6]</a> именуется как Integration Event.</li>
+<li>Он разделяет Domain Events с публичной схемой, от остальных Domain Events. А это, по сути, и есть то самое, что в &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnesoc" id="id25">[6]</a> именуется как Integration Event.</li>
 </ol>
 <p>Поскольку эти виды Ивентов имеют различные цели, различный способ доставки, различные реализации, различные категории подписчиков, различную область действия и различное назначение, то они, резонно, разделили их на два вида события:</p>
 <ol class="arabic simple">
@@ -438,7 +439,7 @@ This generally means that if the events are published as JSON, or perhaps a more
 <p>Такого же мнения придерживается и Kamil Grzybek, называя внешние события термином &#8220;Domain Event Notifications&#8221;:</p>
 <blockquote>
 <div><p>Last thing to consider is processing of Domain Event Notifications (public events). We need to find a way to process them outside transaction and here Outbox Pattern comes in to play.</p>
-<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; <a class="footnote-reference" href="#fnkgde2" id="id29">[11]</a> by Kamil Grzybek</p>
+<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; <a class="footnote-reference" href="#fnkgde2" id="id26">[11]</a> by Kamil Grzybek</p>
 </div></blockquote>
 <blockquote>
 <div><p>Sometimes, however, it is necessary to communicate with 3rd party service (for example e-mail or web service) based on Domain Event.
@@ -449,14 +450,14 @@ So I created Domain Events Notifications.</p>
 I gave that name because I think it fits best – it is notification that domain event was published.</p>
 <p>&lt;..&gt;</p>
 <p>For non-trasactional operations Domain Events Notifications were introduced.</p>
-<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id30">[10]</a> by Kamil Grzybek</p>
+<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id27">[10]</a> by Kamil Grzybek</p>
 </div></blockquote>
 <p>А в одном из своих комментариев он прямо называет их &#8220;Integration Events&#8221;:</p>
 <blockquote>
 <div><p>Domain Event Notification often becomes an <strong>Integration Event</strong> which is sent to Events Bus to other Bounded Context.</p>
-<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id31">[10]</a>, comment of Kamil Grzybek</p>
+<p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id28">[10]</a>, comment of Kamil Grzybek</p>
 </div></blockquote>
-<p>Еще дальше идут авторы книги &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id32">[5]</a>, вводя явное разделение внутренних и внешних событий:</p>
+<p>Еще дальше идут авторы книги &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id29">[5]</a>, вводя явное разделение внутренних и внешних событий:</p>
 <div class="figure align-center" id="id54">
 <a class="reference internal image-reference" href="../../_images/pppddd-18.1.png"><img alt="FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.1.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
@@ -472,7 +473,7 @@ This is another differentiator with internal events, because if you make breakin
 <p>As you start to implement domain events, you will see that in a typical business use case there may  be a number of internal events raised, and just one or two external events that are raised by the  service layer.
 Figure 18-2 illustrates how the sequence of events may occur in a typical use case.</p>
 <p>With all of these differences in mind, it makes sense to put your events in different namespaces to  accentuate those that are internal from those that are external.</p>
-<p>- &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id33">[5]</a> by Scott Millett, Nick Tune, Chapter &#8220;18 Domain Events :: Internal vs External Events&#8221;</p>
+<p>- &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id30">[5]</a> by Scott Millett, Nick Tune, Chapter &#8220;18 Domain Events :: Internal vs External Events&#8221;</p>
 </div></blockquote>
 <div class="figure align-center" id="id55">
 <a class="reference internal image-reference" href="../../_images/pppddd-18.2.png"><img alt="FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.2.png" style="width: 70%;" /></a>
@@ -480,7 +481,7 @@ Figure 18-2 illustrates how the sequence of events may occur in a typical use ca
 </div>
 <blockquote>
 <div><p>Model information about activity in the domain as a series of discrete events. Represent each event as a domain object. These are distinct from system events that reflect activity within the software itself, although often a system event is associated with a domain event, either as part of a response to the domain event or as a way of carrying information about the domain event into the system.</p>
-<p>- &#8220;Domain-Driven Design Reference&#8221; <a class="footnote-reference" href="#fndddr" id="id34">[2]</a> by Eric Evans, Chapter &#8220;Domain Events&#8221;</p>
+<p>- &#8220;Domain-Driven Design Reference&#8221; <a class="footnote-reference" href="#fndddr" id="id31">[2]</a> by Eric Evans, Chapter &#8220;Domain Events&#8221;</p>
 </div></blockquote>
 </div>
 <div class="section" id="one-stage-vs-two-stage">
@@ -492,7 +493,7 @@ Figure 18-2 illustrates how the sequence of events may occur in a typical use ca
 <p class="caption"><span class="caption-text">Figure 8.1. Aggregates create Events and publish them.
 <strong>Subscribers may store Events and then forward them to remote subscribers, or just forward them without storing.</strong>
 Immediate forwarding requires XA (two-phase commit) unless messaging middleware shares the model’s data store.
-The image is from &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id35">[3]</a> by Vaughn Vernon</span></p>
+The image is from &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id32">[3]</a> by Vaughn Vernon</span></p>
 </div>
 <blockquote>
 <div><p>Forwarding the Event via a messaging infrastructure would allow asynchronous delivery to out-of-band subscribers.
@@ -503,6 +504,35 @@ In other words, Events are a domain-wide concept, not just a concept in a single
 The contract of Event publishing should have the potential to be at least as broad as the enterprise, or even broader.
 Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
 Refer back to Figure 8.1.</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id33">[3]</a> by Vaughn Vernon, Chapter &#8220;8. Domain Events :: Publishing Events from the Domain Model :: Subscribers&#8221;</p>
+</div></blockquote>
+<p>В качестве первой ступени доставки Domain Events внутренним подписчикам, Vaughn Vernon предлагает использовать обычные GOF-паттерны (Mediator, Observer), которые вызывают подписчиков в том же самом потоке и в той же самой транзакции.</p>
+<blockquote>
+<div><p>Publishing Events from the Domain Model</p>
+<p>Avoid exposing the domain model to any kind of middleware messaging infrastructure.
+Those kinds of components live only in the infrastructure.
+And while the domain model might at times use such infrastructure indirectly, it would never explicitly couple to it. We’ll use an approach that completely avoids the use of infrastructure.</p>
+<p>One of the simplest and most effective ways to publish Domain Events without coupling to components outside the domain model is to create a lightweight Observer [Gamma et al.].
+For the sake of naming I use Publish-Subscribe, which is acknowledged by [Gamma et al.] as another name for the same pattern.
+The examples in that pattern and my use of it are lightweight because there is no network involved in subscribing to Events and publishing them.
+All registered subscribers execute in the same process space with the publisher and run on the same thread.
+When an Event is published, each subscriber is notified synchronously, one by one.
+This also implies that <strong>all subscribers are running within the same transaction</strong>, perhaps controlled by an Application Service that is the direct client of the domain model.</p>
+<p>Considering the two halves of Publish-Subscribe separately helps to explain them in a DDD context.</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id34">[3]</a> by Vaughn Vernon, Chapter &#8220;8. Domain Events :: Publishing Events from the Domain Model&#8221;</p>
+</div></blockquote>
+<blockquote>
+<div><p>What components register subscribers to Domain Events?
+Generally speaking, Application Services (14), and sometimes Domain Services, will.
+<strong>The subscriber may be any component that is running on the same thread as the Aggregate that publishes the Event</strong>, and that can subscribe prior to the Event being published.
+This means that <strong>the subscriber is registered in the method execution path that uses the domain model</strong>.</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id35">[3]</a> by Vaughn Vernon, Chapter &#8220;8. Domain Events :: Publishing Events from the Domain Model :: Subscribers&#8221;</p>
+</div></blockquote>
+<p>При этом, Vaughn Vernon делает предостережение относительно первой ступени доставки, т.е. внутренних подписчиков, впрочем, это предостережение зависит от уже рассмотренного ранее вопроса Eventual Consistency vs Strong (Transactional) Consistency.</p>
+<blockquote>
+<div><p>Remember, the Application Service controls the transaction.
+Don&#8217;t use the Event notification to modify a second Aggregate instance.
+That breaks a rule of thumb to modify one Aggregate instance per transaction.</p>
 <p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id36">[3]</a> by Vaughn Vernon, Chapter &#8220;8. Domain Events :: Publishing Events from the Domain Model :: Subscribers&#8221;</p>
 </div></blockquote>
 <p>Kamil Grzybek вводит явное разделение механизма доставки на две ступени, первая - для внутренних Domain Events, вторая - для внешних:</p>
@@ -577,6 +607,9 @@ Each of the names clearly and concisely states what happened in your Core Domain
 <p>- &#8220;<a class="reference external" href="https://lostechies.com/jimmybogard/2012/08/22/busting-some-cqrs-myths/#comment-3422377189">Busting some CQRS myths</a>&#8221; by Jimmy Bogard</p>
 </div></blockquote>
 <p>Итак, ответ прост - если вы не используете асинхронное исполнение Команды посредством инфраструктуры (Command Bus), то ничто не препятствует вам получить идентификатор вновь созданной записи БД в возвращаемом командой результате, и реализацию можно существенно упростить.</p>
+<p>Вы можете удивиться, какая связь между Командами CQRS и Domain Events?
+А связь заключается в том, что и в первом, и во втором случае, отступление от принципа приводит к упрощению реализации, но к ухудшению возможностей масштабирования.
+И в том, и в другом случае, решением является баланс между простотой реализации и потребностью в масштабировании.</p>
 <p>Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
 Забегая наперед, скажу, что не противоречит, при соблюдении определенных условий.
 Во-первых, в основе CQS лежит принцип функциональной чистоты:</p>
@@ -711,31 +744,31 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 <table class="docutils footnote" frame="void" id="fndddr" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id34">4</a>, <a class="fn-backref" href="#id39">5</a>)</em> &#8220;<a class="reference external" href="https://domainlanguage.com/ddd/reference/">Domain-Driven Design Reference</a>&#8221; by Eric Evans</td></tr>
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id31">4</a>, <a class="fn-backref" href="#id39">5</a>)</em> &#8220;<a class="reference external" href="https://domainlanguage.com/ddd/reference/">Domain-Driven Design Reference</a>&#8221; by Eric Evans</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fniddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id10">3</a>, <a class="fn-backref" href="#id14">4</a>, <a class="fn-backref" href="#id15">5</a>, <a class="fn-backref" href="#id35">6</a>, <a class="fn-backref" href="#id36">7</a>, <a class="fn-backref" href="#id45">8</a>, <a class="fn-backref" href="#id52">9</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Implementing Domain-Driven Design</a>&#8221; by Vaughn Vernon</td></tr>
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id10">3</a>, <a class="fn-backref" href="#id14">4</a>, <a class="fn-backref" href="#id15">5</a>, <a class="fn-backref" href="#id32">6</a>, <a class="fn-backref" href="#id33">7</a>, <a class="fn-backref" href="#id34">8</a>, <a class="fn-backref" href="#id35">9</a>, <a class="fn-backref" href="#id36">10</a>, <a class="fn-backref" href="#id45">11</a>, <a class="fn-backref" href="#id52">12</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Implementing Domain-Driven Design</a>&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fndddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id16">2</a>, <a class="fn-backref" href="#id26">3</a>, <a class="fn-backref" href="#id27">4</a>, <a class="fn-backref" href="#id40">5</a>, <a class="fn-backref" href="#id41">6</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Domain-Driven Design Distilled</a>&#8221; by Vaughn Vernon</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id16">2</a>, <a class="fn-backref" href="#id23">3</a>, <a class="fn-backref" href="#id24">4</a>, <a class="fn-backref" href="#id40">5</a>, <a class="fn-backref" href="#id41">6</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Domain-Driven Design Distilled</a>&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnpppddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id17">1</a>, <a class="fn-backref" href="#id32">2</a>, <a class="fn-backref" href="#id33">3</a>)</em> &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</td></tr>
+<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id17">1</a>, <a class="fn-backref" href="#id29">2</a>, <a class="fn-backref" href="#id30">3</a>)</em> &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnesoc" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id28">3</a>)</em> &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index">.NET Microservices: Architecture for Containerized .NET Applications</a>&#8221; edition v2.2.1 (<a class="reference external" href="https://aka.ms/microservicesebook">mirror</a>) by Cesar de la Torre, Bill Wagner, Mike Rousos</td></tr>
+<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id18">2</a>, <a class="fn-backref" href="#id25">3</a>)</em> &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index">.NET Microservices: Architecture for Containerized .NET Applications</a>&#8221; edition v2.2.1 (<a class="reference external" href="https://aka.ms/microservicesebook">mirror</a>) by Cesar de la Torre, Bill Wagner, Mike Rousos</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fncqrsj" rules="none">
@@ -759,25 +792,19 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 <table class="docutils footnote" frame="void" id="fnkgde1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[10]</td><td><em>(<a class="fn-backref" href="#id22">1</a>, <a class="fn-backref" href="#id23">2</a>, <a class="fn-backref" href="#id30">3</a>, <a class="fn-backref" href="#id31">4</a>, <a class="fn-backref" href="#id37">5</a>)</em> &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/">How to publish and handle Domain Events</a>&#8221; by Kamil Grzybek</td></tr>
+<tr><td class="label">[10]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id20">2</a>, <a class="fn-backref" href="#id27">3</a>, <a class="fn-backref" href="#id28">4</a>, <a class="fn-backref" href="#id37">5</a>)</em> &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/">How to publish and handle Domain Events</a>&#8221; by Kamil Grzybek</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnkgde2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[11]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id25">2</a>, <a class="fn-backref" href="#id29">3</a>)</em> &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; by Kamil Grzybek</td></tr>
+<tr><td class="label">[11]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id26">3</a>)</em> &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/">Handling Domain Events: Missing Part</a>&#8221; by Kamil Grzybek</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="fnjb1" rules="none">
+<table class="docutils footnote" frame="void" id="fnkgoutbox" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[12]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> &#8220;<a class="reference external" href="https://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/">Strengthening your domain: Domain Events</a>&#8221; by Jimmy Bogard</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="fnjb2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[13]</a></td><td>&#8220;<a class="reference external" href="https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/">A better domain events pattern</a>&#8221; by Jimmy Bogard</td></tr>
+<tr><td class="label">[12]</td><td>&#8220;<a class="reference external" href="https://www.kamilgrzybek.com/design/the-outbox-pattern/">The Outbox Pattern</a> by Kamil Grzybek</td></tr>
 </tbody>
 </table>
 </div>
