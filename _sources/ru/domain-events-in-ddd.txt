@@ -372,6 +372,63 @@ Strong Consistency - новичкам
 И, в своем демонстрационном приложении sample-dotnet-core-cqrs-api, `он демонстрирует обработку Domain Event в одной транзакции с агрегатом <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Application/Orders/PlaceCustomerOrder/OrderPlacedDomainEventHandler.cs#L22>`__.
 
 
+Мнение Udi Dahan
+----------------
+
+
+    > This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
+    Is there any specific reason for handle domain events within the same transaction scoping DoSomething?
+
+    Domain events get handled by service layer objects in the same process which usually send out other messages – as such, we want those messages to be sent (or not) in the same transactional context.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4723>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
+
+    > In message number 120 above, Lars asks about how to access the data if the event is fired before the commit.
+    I didn’t understand your response.
+    Maybe my situation is different so I’ll explain.
+
+    > I have 2 BCs.
+    One context deals with the merging of employee information.
+    I’d like to fire a domain event specifying that the employee was merged.
+    I’d like the 2nd BC to react to this event.
+    The issue is that the data won’t be committed at that point, and this data that changed is vital to the 2nd BC to react.
+
+    > Am I going down the wrong path by attempting to use domain events? Is there another solution you could suggest?
+
+    The question is whether you need both your BCs to be consistent with each other at \*all\* times – ergo in the same transaction.
+
+    **If the answer is yes, then you absolutely do want the event to be raised and handled in the same transaction – you’d also be deploying both BCs together.**
+
+    If the answer is no, then you should use some kind of message bus between the BCs.
+    The handler for the domain event would publish a message using the bus, and that would be enlisted in the same transaction – thus is the first BC rolled back, the message wouldn’t be sent.
+    The second BC would be invoked by the bus when the message arrives at its queue where its handling would then be done in a separate transaction.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4730>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
+
+    > Shouldn’t the event only be handled when the transaction commits?
+    Until the transaction commits, the change to the domain object isn’t really permanent, right?
+
+    Not necessarily – sometimes you want loose-coupling within the same transaction.
+
+    I do agree that often where we find a place ready for logical decoupling it coincides with separate transaction boundaries.
+    In those cases, using a transactionally-aware technology like NServiceBus will be a better choice for publishing events.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4773>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
+
+    > Domain event could alter multiple aggregates which is common, wouldn’t you be updating multiple aggregates in a single transaction?
+
+    **The more common case is where those multiple aggregates are updated in separate transactions**, usually as a result of some kind of "service bus" event being transmitted from the domain events.
+    That service bus event gets routed to multiple subscribers, behind which you’d have each of the respective aggregates that would updated in their own transactions.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-74959>`__" [#fnudde3]_ comment of Udi Dahan
+
+
 In-process vs out-of-process
 ============================
 
@@ -486,6 +543,16 @@ Domain Events могут покидать пределы Bounded Context:
 
    FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
+Разделяет их и Udi Dahan:
+
+    I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
+    I think that answers my question.
+    What he says within a bounded context we can keep one logical transaction using in memory domain events.
+    **However once one transaction is committed within bounded context then we send one way messaging using Service Bus that message is called integration message.**
+    **This is the message on which other bounded context are interested.**
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__" [#fnudde3]_ comment of Udi Dahan
+
 ..
 
     Model information about activity in the domain as a series of discrete events. Represent each event as a domain object. These are distinct from system events that reflect activity within the software itself, although often a system event is associated with a domain event, either as part of a response to the domain event or as a way of carrying information about the domain event into the system.
@@ -584,6 +651,8 @@ Kamil Grzybek вводит явное разделение механизма д
     7. Publish domain events notifications and handle them.
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" [#fnkgde1]_ by Kamil Grzybek
+
+А вот Udi Dahan в своей статье "Domain Events – Salvation" [#fnudde3]_ предложил использовать единый Mediator как для внутренних синхронных подписчиков, вызываемых в той же транзакции, так и для асинхронных подписчиков.
 
 
 Может ли Domain Event отменить событие его инициировавшее?
@@ -826,5 +895,8 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnkgoutbox] "`The Outbox Pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__ by Kamil Grzybek
 .. [#fnjbde1] "`Strengthening your domain: Domain Events <https://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/>`__" by Jimmy Bogard
 .. [#fnjbde2] "`A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__" by Jimmy Bogard
+.. [#fnudde1] "`How to create fully encapsulated Domain Models <http://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
+.. [#fnudde2] "`Domain Events – Take 2 <http://udidahan.com/2008/08/25/domain-events-take-2/>`__" by Udi Dahan
+.. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
 
 .. .. update:: May 05, 2020
