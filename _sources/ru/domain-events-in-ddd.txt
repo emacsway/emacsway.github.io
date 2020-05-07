@@ -275,14 +275,14 @@ Strong Consistency - новичкам
 Причем, Strong Consistency является приемлемым для внутренних Domain Events, синхронизирующих Агрегаты внутри Bounded Context:
 
     Be aware that transactional boundaries come into significant play here.
-    If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.
+    **If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.**
     But if the transaction cannot span aggregates, such as when you are using a NoSQL database like Azure CosmosDB, you have to implement additional steps to achieve consistency.
 
     \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events :: The deferred approach to raise and dispatch events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#the-deferred-approach-to-raise-and-dispatch-events>`__"
 
 Оба подхода, и Strong Consistency, и Eventual Consistency, являются приемлемыми для синхронизации Агрегатов внутри Bounded Context:
 
-    Actually, both approaches (single atomic transaction and eventual consistency) can be right.
+    **Actually, both approaches (single atomic transaction and eventual consistency) can be right.**
     It really depends on your domain or business requirements and what the domain experts tell you.
     It also depends on how scalable you need the service to be (more granular transactions have less impact with regard to database locks).
     And it depends on how much investment you are willing to make in your code, since eventual consistency requires more complex code in order to detect possible inconsistencies across aggregates and the need to implement compensatory actions.
@@ -347,7 +347,7 @@ Strong Consistency - новичкам
 
 Вот что говорит ".NET Microservices: Architecture for Containerized .NET Applications" со ссылкой на Jimmy Bogard:
 
-    However, other developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command.
+    However, other developers and architects like Jimmy Bogard are **okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command**.
     For instance, in `A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__, Bogard says this:
 
         Typically, I want the side effects of a domain event to occur within the same logical transaction, but not necessarily in the same scope of raising the domain event [...] Just before we commit our transaction, we dispatch our events to their respective handlers.

@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Thu, 07 May 2020 10:09:28 GMT" />
+        <meta http-equiv="Last-Modified" content="Thu, 07 May 2020 10:21:21 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -333,13 +333,13 @@ As shown in Figure 7-14, and as one of the most important use cases, a domain ev
 <p>Причем, Strong Consistency является приемлемым для внутренних Domain Events, синхронизирующих Агрегаты внутри Bounded Context:</p>
 <blockquote>
 <div><p>Be aware that transactional boundaries come into significant play here.
-If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.
+<strong>If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.</strong>
 But if the transaction cannot span aggregates, such as when you are using a NoSQL database like Azure CosmosDB, you have to implement additional steps to achieve consistency.</p>
 <p>- &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id23">[6]</a> by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#the-deferred-approach-to-raise-and-dispatch-events">Domain events: design and implementation :: Implement domain events :: The deferred approach to raise and dispatch events</a>&#8220;</p>
 </div></blockquote>
 <p>Оба подхода, и Strong Consistency, и Eventual Consistency, являются приемлемыми для синхронизации Агрегатов внутри Bounded Context:</p>
 <blockquote>
-<div><p>Actually, both approaches (single atomic transaction and eventual consistency) can be right.
+<div><p><strong>Actually, both approaches (single atomic transaction and eventual consistency) can be right.</strong>
 It really depends on your domain or business requirements and what the domain experts tell you.
 It also depends on how scalable you need the service to be (more granular transactions have less impact with regard to database locks).
 And it depends on how much investment you are willing to make in your code, since eventual consistency requires more complex code in order to detect possible inconsistencies across aggregates and the need to implement compensatory actions.
@@ -388,7 +388,7 @@ Therefore, the transactional boundary encapsulates creating the new account and 
 <h2><a class="toc-backref" href="#id94">Мнение Jimmy Bogard</a><a class="headerlink" href="#jimmy-bogard" title="Permalink to this headline">¶</a></h2>
 <p>Вот что говорит &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; со ссылкой на Jimmy Bogard:</p>
 <blockquote>
-<div><p>However, other developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command.
+<div><p>However, other developers and architects like Jimmy Bogard are <strong>okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command</strong>.
 For instance, in <a class="reference external" href="https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/">A better domain events pattern</a>, Bogard says this:</p>
 <blockquote>
 <div>Typically, I want the side effects of a domain event to occur within the same logical transaction, but not necessarily in the same scope of raising the domain event [...] Just before we commit our transaction, we dispatch our events to their respective handlers.</div></blockquote>
