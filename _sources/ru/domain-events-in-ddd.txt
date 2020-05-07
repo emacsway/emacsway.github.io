@@ -565,9 +565,6 @@ Domain Events могут покидать пределы Bounded Context:
 Это выдвигает вопрос по отношению к Domain Events - нужно ли отделять внутренние от внешних?
 Проблему озвучивает сам Vaughn Vernon:
 
-
-С другой стороны, возникает вопрос, который формулирует сам же Вернон:
-
     **Once your Domain Event is saved to the event store, it can be published to any interested parties . This might be within your own Bounded Context and to external Bounded Contexts.**
     This is your way of telling the world that something noteworthy has occurred in your Core Domain.
 

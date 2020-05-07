@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Thu, 07 May 2020 10:32:46 GMT" />
+        <meta http-equiv="Last-Modified" content="Thu, 07 May 2020 10:35:41 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -552,7 +552,6 @@ Yet, wide broadcast does not forbid delivery of Events by consumers in the same 
 </div></blockquote>
 <p>Это выдвигает вопрос по отношению к Domain Events - нужно ли отделять внутренние от внешних?
 Проблему озвучивает сам Vaughn Vernon:</p>
-<p>С другой стороны, возникает вопрос, который формулирует сам же Вернон:</p>
 <blockquote>
 <div><p><strong>Once your Domain Event is saved to the event store, it can be published to any interested parties . This might be within your own Bounded Context and to external Bounded Contexts.</strong>
 This is your way of telling the world that something noteworthy has occurred in your Core Domain.</p>
