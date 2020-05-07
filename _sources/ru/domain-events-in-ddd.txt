@@ -691,6 +691,24 @@ Domain Events могут покидать пределы Bounded Context:
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
 
+..
+
+    More importantly, the outside API is tightly coupled to the internal structure of the Bounded Context. Changing the internals would force an API change.
+
+    <..>
+
+    Set up separate messaging channels for inside the Bounded Context and outside.
+
+    <..>
+
+    In general, my feeling is that the problem seldom occurs when the Domain Events have been chosen carefully to reflect the business domain, using Ubiquitous Language, and at the right granularity.
+    These events then tend to become stable very quickly during development, and rarely need to be altered.
+    When there are significant changes in the domain, the events may need to change, but in these cases you’ll need an API change anyway.
+
+    That said, it’s a universally useful heuristic in software design to keep everything as closed off as possible, and only open up things where there’s a good case for it.
+
+    \- "Patterns for Decoupling in Distributed Systems: Explicit Public Events" [#fnmvpe]_ by Mathias Verraes
+
 
 One-phase vs Two-phase
 ======================
@@ -1074,5 +1092,6 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnudde2] "`Domain Events – Take 2 <http://udidahan.com/2008/08/25/domain-events-take-2/>`__" by Udi Dahan
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
 .. [#fncdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
+.. [#fnmvpe] "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
 
 .. .. update:: May 05, 2020
