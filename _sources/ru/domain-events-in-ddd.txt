@@ -548,13 +548,14 @@ Internal vs External
 
 Domain Events могут покидать пределы Bounded Context:
 
-    "Using Domain Events will help you both to model explicitly and to share what has occurred within your model with the systems that need to know about it. The interested parties might be your own local Bounded Context and other remote Bounded Contexts."
+    Using Domain Events will help you both to model explicitly and to share what has occurred within your model with the systems that need to know about it.
+    **The interested parties might be your own local Bounded Context and other remote Bounded Contexts.**
 
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "1. DDD for Me :: Tactical Design"
 
 ..
 
-    Publishing the Event outward to any number Bounded Contexts of other Subdomains (2) emphasizes the word Domain in the term Domain Event.
+    **Publishing the Event outward to any number Bounded Contexts of other Subdomains (2) emphasizes the word Domain in the term Domain Event.**
     In other words, Events are a domain-wide concept, not just a concept in a single Bounded Context.
     The contract of Event publishing should have the potential to be at least as broad as the enterprise, or even broader.
     Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
@@ -908,6 +909,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
 Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
 Забегая наперед, скажу, что не противоречит, при соблюдении определенных условий.
+
 Во-первых, в основе CQS лежит принцип функциональной чистоты:
 
     Command-Query Separation principle - Functions should not produce abstract side effects.
@@ -916,7 +918,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
 Во-вторых, кроме функций-команд и функций-запросов, Bertrand Meyer вводит еще и функции-конструкторы. И тут кроется интересное:
 
-    From a mathematical perspective we may pretend that all of the objects of interest, for all times past, present and future, are already inscribed in the Great Book of Objects; ***a creation instruction is just a way to obtain one of them, but it does not by itself change anything in the environment**. It is common, and legitimate, for a function to create, initialize and return such an object.
+    From a mathematical perspective we may pretend that all of the objects of interest, for all times past, present and future, are already inscribed in the Great Book of Objects; **a creation instruction is just a way to obtain one of them, but it does not by itself change anything in the environment**. It is common, and legitimate, for a function to create, initialize and return such an object.
     **These observations assume that in the second form the creation procedure make does not produce side effects on any object other than the one being created.**
 
     \- "Object-Oriented Software Construction" [#fnoosc]_ 2nd edition by Bertrand Meyer, chapter "23.1 SIDE EFFECTS IN FUNCTIONS :: Functions that create objects"
