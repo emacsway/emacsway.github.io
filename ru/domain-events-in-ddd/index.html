@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Thu, 07 May 2020 09:59:08 GMT" />
+        <meta http-equiv="Last-Modified" content="Thu, 07 May 2020 10:09:28 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -330,12 +330,14 @@ You might choose to use this approach in cases that you know will succeed but us
 As shown in Figure 7-14, and as one of the most important use cases, a domain event should be used to propagate state changes across multiple aggregates within the same domain model.</p>
 <p>- &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id22">[6]</a> by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain">Domain events: design and implementation :: Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain</a>&#8220;</p>
 </div></blockquote>
+<p>Причем, Strong Consistency является приемлемым для внутренних Domain Events, синхронизирующих Агрегаты внутри Bounded Context:</p>
 <blockquote>
 <div><p>Be aware that transactional boundaries come into significant play here.
 If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.
 But if the transaction cannot span aggregates, such as when you are using a NoSQL database like Azure CosmosDB, you have to implement additional steps to achieve consistency.</p>
 <p>- &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id23">[6]</a> by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#the-deferred-approach-to-raise-and-dispatch-events">Domain events: design and implementation :: Implement domain events :: The deferred approach to raise and dispatch events</a>&#8220;</p>
 </div></blockquote>
+<p>Оба подхода, и Strong Consistency, и Eventual Consistency, являются приемлемыми для синхронизации Агрегатов внутри Bounded Context:</p>
 <blockquote>
 <div><p>Actually, both approaches (single atomic transaction and eventual consistency) can be right.
 It really depends on your domain or business requirements and what the domain experts tell you.

@@ -272,7 +272,7 @@ Strong Consistency - новичкам
 
     \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain>`__"
 
-..
+Причем, Strong Consistency является приемлемым для внутренних Domain Events, синхронизирующих Агрегаты внутри Bounded Context:
 
     Be aware that transactional boundaries come into significant play here.
     If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.
@@ -280,7 +280,7 @@ Strong Consistency - новичкам
 
     \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events :: The deferred approach to raise and dispatch events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#the-deferred-approach-to-raise-and-dispatch-events>`__"
 
-..
+Оба подхода, и Strong Consistency, и Eventual Consistency, являются приемлемыми для синхронизации Агрегатов внутри Bounded Context:
 
     Actually, both approaches (single atomic transaction and eventual consistency) can be right.
     It really depends on your domain or business requirements and what the domain experts tell you.
