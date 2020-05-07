@@ -137,6 +137,8 @@ Eventual Consistency - это следствие, а не причина
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Reference Other Aggregates by Identity :: Scalability and Distribution"
 
+..
+
     Accepting that **all Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent** helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
@@ -158,14 +160,15 @@ Eventual Consistency - это следствие, а не причина
 Eventual Consistency предпочтительней
 -------------------------------------
 
-С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами:
+С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами.
+И тут же объясняет - агрегаты в высоконагруженных масштабируемых распределенных приложениях, устойчивых к разделению, никогда не бывают доступны и согласованы между собой одновременно.
 
-    Thus, if executing a command on one Aggregate instance requires that additional business rules execute on one or more other Aggregates, use eventual consistency.
-    Accepting that all Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
+    Thus, if executing a command on one Aggregate instance requires that additional business rules execute on one or more other Aggregates, **use eventual consistency**.
+    Accepting that all **Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent** helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
 
-И тут же объясняет - агрегаты в высоконагруженных масштабируемых распределенных приложениях, устойчивых к разделению, никогда не бывают доступны и согласованы между собой одновременно.
+..
 
     An invariant is a business rule that must always be consistent.
     There are different kinds of consistency. One is transactional consistency, which is considered immediate and atomic.
@@ -227,9 +230,9 @@ Eventual Consistency предпочтительней
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary :: Ask Whose Job It Is"
 
-В цитате Вона Вернона видно, что Эрик Эванс не спешит разделять его стремление к одному агрегату на транзакцию, и предлагает рассматривать каждый случай отдельно.
+В цитате Вона Вернона видно, что Эрик Эванс не спешит разделять стремление к одному агрегату на транзакцию, и предлагает рассматривать каждый случай отдельно.
 
-Можно заметить, что принцип "When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent. **If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.**" не противоречит приведенному ниже принципу "developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command."
+Можно заметить, что принцип "When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent. **If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.**" не противоречит приведенному ниже принципу "developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only **when those additional aggregates are related to side effects for the same original command**."
 
 Здесь же Vaughn Vernon напоминает нам, что во главе угла стоит, опять же, масштабирование и распределенность:
 
