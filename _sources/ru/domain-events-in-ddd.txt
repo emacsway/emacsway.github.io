@@ -1050,7 +1050,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" [#fnrmp]_ by Vaughn Vernon, Chapter "5. Messaging Channels :: Point-to-Point Channel"
 
-Этой же проблема посвящена и глава "Chapter 7 Message Routing :: Resequencer" [#fnrmp]_ той же книги.
+Этой же проблеме посвящена и глава "Chapter 7 Message Routing :: Resequencer" [#fnrmp]_ той же книги.
 
 Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html>`__ описан также и в главе "7.Message Routing :: Resequencer" книги "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" [#fneip]_ by Gregor Hohpe, Bobby Woolf.
 

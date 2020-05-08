@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Fri, 08 May 2020 15:45:41 GMT" />
+        <meta http-equiv="Last-Modified" content="Fri, 08 May 2020 15:52:27 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -923,7 +923,7 @@ Sometimes a latent message could be accepted even if it is not perfect timing, b
 This may be dealt with more gracefully by using the actors become() capabilities.</p>
 <p>- &#8220;Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka&#8221; <a class="footnote-reference" href="#fnrmp" id="id80">[5]</a> by Vaughn Vernon, Chapter &#8220;5. Messaging Channels :: Point-to-Point Channel&#8221;</p>
 </div></blockquote>
-<p>Этой же проблема посвящена и глава &#8220;Chapter 7 Message Routing :: Resequencer&#8221; <a class="footnote-reference" href="#fnrmp" id="id81">[5]</a> той же книги.</p>
+<p>Этой же проблеме посвящена и глава &#8220;Chapter 7 Message Routing :: Resequencer&#8221; <a class="footnote-reference" href="#fnrmp" id="id81">[5]</a> той же книги.</p>
 <p>Pattern <a class="reference external" href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html">Resequencer</a> описан также и в главе &#8220;7.Message Routing :: Resequencer&#8221; книги &#8220;Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions&#8221; <a class="footnote-reference" href="#fneip" id="id82">[11]</a> by Gregor Hohpe, Bobby Woolf.</p>
 <p>Существует open source integration framework <a class="reference external" href="https://camel.apache.org/">Camel</a>, который предоставляет <a class="reference external" href="https://camel.apache.org/components/latest/eips/resequence-eip.html">готовую из коробки реализацию паттерна Resequencer</a>.
 Он отлично интегрируется с различными системами обмена сообщениями, например, <a class="reference external" href="https://camel.apache.org/components/latest/nats-component.html">с Nats</a> (<a class="reference external" href="https://nats.io/blog/apache-camel-nats-connector/">подробнее</a>).</p>
