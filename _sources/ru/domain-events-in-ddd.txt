@@ -1055,7 +1055,7 @@ Kamil Grzybek вводит явное разделение механизма д
 Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html>`__ описан также и в главе "7.Message Routing :: Resequencer" книги "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" [#fneip]_ by Gregor Hohpe, Bobby Woolf.
 
 Существует open source integration framework `Camel <https://camel.apache.org/>`__, который предоставляет `готовую из коробки реализацию паттерна Resequencer <https://camel.apache.org/components/latest/eips/resequence-eip.html>`__.
-Он отлично интегрируется с различными системами обмена сообщениями, например, `с Nats <https://camel.apache.org/components/latest/nats-component.html>`__ (`подробнее <https://nats.io/blog/apache-camel-nats-connector/>`__).
+Он легко интегрируется с различными системами обмена сообщениями, например, `с Nats <https://camel.apache.org/components/latest/nats-component.html>`__ (`подробнее <https://nats.io/blog/apache-camel-nats-connector/>`__).
 
 В "CQRS Journey" [#fncqrsj]_ предлагается два варианта решения:
 
