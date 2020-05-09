@@ -524,6 +524,11 @@ Strong Consistency - новичкам
 
     \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#fncdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
 
+Ссылки по теме:
+
+- "`Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels, CTO - Amazon.com
+- "`Eventually Consistent <https://www.allthingsdistributed.com/2007/12/eventually_consistent.html>`__" by Werner Vogels, CTO - Amazon.com
+
 
 In-process vs out-of-process
 ============================
@@ -923,6 +928,13 @@ Kamil Grzybek вводит явное разделение механизма д
 И в том, и в другом случае, решением является баланс между простотой реализации и потребностью в масштабировании.
 
 Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
+Как известно, термин CQRS ввел Greg Young, разделив CQS на два отдельных класса.
+
+    Starting with CQRS, CQRS is simply the creation of two objects where there was previously only one.
+    The separation occurs based upon whether the methods are a command or a query (the same definition that is used by Meyer in Command and Query Separation, a command is any method that mutates state and a query is any method that returns a value).
+
+    \- "CQRS, Task Based UIs, Event Sourcing agh!" [#fngycqrs]_ by Greg Young
+
 Забегая наперед, скажу, что не противоречит, при соблюдении определенных условий.
 
 Во-первых, в основе CQS лежит принцип функциональной чистоты:
@@ -1026,6 +1038,11 @@ Kamil Grzybek вводит явное разделение механизма д
 .. - https://dzone.com/articles/event-driven-data-management-for-microservices-1
 .. - https://microservices.io/patterns/#transactional-messaging
 .. - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus
+.. - Готовая реализация паттерна outbox с примером (см. README) https://github.com/ThreeDotsLabs/watermill/tree/master/_examples/real-world-examples/transactional-events
+
+
+.. Transactional Client and Transactional Actor
+.. ============================================
 
 
 Проблема сохранения очередности Integration Events
@@ -1070,9 +1087,15 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
 Еще проблемы распределенности хорошо освещаются в книге "Database Reliability Engineering. Designing and Operating Resilient Database Systems." [#fndre]_ by Laine Campbell and Charity Majors.
 
+Ссылки по теме:
 
-.. Transactional Client and Transactional Actor
-.. ============================================
+- "`Don't Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage. <https://queue.acm.org/detail.cfm?id=2610533>`__" (`pdf <https://dl.acm.org/ft_gateway.cfm?id=2610533&ftid=1449165&dwn=1>`__) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University
+- "`Bolt-on Causal Consistency <http://www.bailis.org/papers/bolton-sigmod2013.pdf>`__" by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology
+
+Ссылки для начинающих в Integration Events:
+
+- Хороший лаконичный обзорный блог-пост по возможностям NATS Streaming Server "`Guest Post: Use cases for persistent logs with NATS Streaming <https://nats.io/blog/use-cases-for-persistent-logs-with-nats-streaming/>`__" by Byron Ruth
+- Лучше один раз увидеть. `Живые примеры по работе с NATS Streaming Server <https://github.com/bruth/code-examples/tree/master/patterns-nats-streaming>`__.
 
 
 Почему важно читать оригиналы вместо переводов
@@ -1152,5 +1175,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
 .. [#fncdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
 .. [#fnmvpe] "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
+.. [#fngycqrs] "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+
 
 .. .. update:: May 05, 2020
