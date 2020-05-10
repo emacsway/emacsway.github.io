@@ -1083,6 +1083,16 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
     \- "CQRS Journey" [#fncqrsj]_ by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, Chapter "`Journey 6: Versioning Our System :: Message ordering <https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering>`__"
 
+Проблема сохранения очередности сообщений в условиях конкурирующих подписчиков рассматривается и в главе "`3.3.5 Competing receivers and message ordering <https://livebook.manning.com/book/microservices-patterns/chapter-3/298>`__" книги "Microservices Patterns: With examples in Java" [#fnmsp]_ by Chris Richardson, где для решения проблемы предлагается использовать партиционирование каналов.
+
+Но даже если подписчик всего один, и сообщения доставляются последовательно, то и тогда очередность обработки сообщений может быть нарушена:
+
+    With the redelivery feature, order can't be guaranteed, since by definition server will resend messages that have not been acknowledged after a period of time. Suppose your consumer receives messages 1, 2 and 3, does not acknowledge 2. Then message 4 is produced, server sends this message to the consumer. The redelivery timer then kicks in and server will resend message 2. The consumer would see messages: 1, 2, 3, 4, 2, 5, etc...
+
+    In conclusion, the server does not offer this guarantee although it tries to redeliver messages first thing on startup. That being said, if the durable is stalled (number of outstanding messages >= MaxInflight), then the redelivery will also be stalled, and new messages will be allowed to be sent. When the consumer resumes acking messages, then it may receive redelivered and new messages interleaved (new messages will be in order though).
+
+    \- nats-streaming-server, `issue #187 "Order of delivery" <https://github.com/nats-io/nats-streaming-server/issues/187#issuecomment-257024506>`__, comment by Ivan Kozlovic
+
 Ну а лучше всего эта тема раскрывается в Chapter "12 The Future of Data Systems :: Data Integration :: Combining Specialized Tools by Deriving Data :: Ordering events to capture causality" книги "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" [#fnddia]_ by Martin Kleppmann.
 
 Еще проблемы распределенности хорошо освещаются в книге "Database Reliability Engineering. Designing and Operating Resilient Database Systems." [#fndre]_ by Laine Campbell and Charity Majors.
@@ -1165,6 +1175,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 .. [#fneip] "`Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions <https://www.enterpriseintegrationpatterns.com/>`__" by Gregor Hohpe, Bobby Woolf
 .. [#fnddia] "`Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems <https://dataintensive.net/>`__" by Martin Kleppmann
 .. [#fndre] "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
+.. [#fnmsp] "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st edition by Chris Richardson (`more info <https://microservices.io/book>`__)
 .. [#fnkgde1] "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" by Kamil Grzybek
 .. [#fnkgde2] "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" by Kamil Grzybek
 .. [#fnkgoutbox] "`The Outbox Pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__ by Kamil Grzybek
