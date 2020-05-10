@@ -1032,13 +1032,28 @@ Kamil Grzybek вводит явное разделение механизма д
 Как результат, в одном из лучших демонстрационных приложений, Команда возвращает результат, смотрите `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Controllers/OrdersController.cs#L151>`__ и `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Application/Commands/CreateOrderDraftCommandHandler.cs#L40>`__.
 
 
-.. Atomicity and Resiliency of Integration Events
-.. ==============================================
+Atomicity and Resiliency of Integration Events
+==============================================
 
-.. - https://dzone.com/articles/event-driven-data-management-for-microservices-1
-.. - https://microservices.io/patterns/#transactional-messaging
-.. - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus
-.. - Готовая реализация паттерна outbox с примером (см. README) https://github.com/ThreeDotsLabs/watermill/tree/master/_examples/real-world-examples/transactional-events
+Если отправить Integration Event до коммита транзакции базы данных, то другой процесс не увидит изменений.
+А если после коммита, то существует вероятность, что процесс может аварийно завершиться, и сообщение отправлено не будет, что приведет к утрате согласованности данных.
+
+Подробно эта проблема рассмотрена в главе "`Subscribing to events :: Publishing events through the event bus :: Designing atomicity and resiliency when publishing to the event bus <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus>`__" книги ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos.
+
+Chris Richardson называет эту проблему `Transactional messaging <https://microservices.io/patterns/#transactional-messaging>`__ рассматривает ее в главе "`3.3.7 Transactional messaging <https://livebook.manning.com/book/microservices-patterns/chapter-3/section-3-3-7?origin=product-toc>`__" книги "Microservices Patterns: With examples in Java" [#fnmsp]_.
+
+Vaughn Vernon посвящает этой проблеме главу "8 Domain Events :: Spreading the News to Remote Bounded Contexts :: Messaging Infrastructure Consistency" книги "Implementing Domain-Driven Design" [#fniddd]_.
+
+Существует три основных способа решения этой проблемы:
+
+1. `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
+2. `Transaction log mining <https://www.scoop.it/t/sql-server-transaction-log-mining>`__ (и `еще <https://microservices.io/patterns/data/transaction-log-tailing.html>`__)
+3. `Outbox pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__
+
+Ссылки по теме:
+
+- `Event-Driven Data Management for Microservices <https://dzone.com/articles/event-driven-data-management-for-microservices-1>`__
+- `Готовая реализация паттерна outbox на Golang с примером использования (см. README) <https://github.com/ThreeDotsLabs/watermill/tree/master/_examples/real-world-examples/transactional-events>`__
 
 
 .. Transactional Client and Transactional Actor
@@ -1083,7 +1098,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
     \- "CQRS Journey" [#fncqrsj]_ by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, Chapter "`Journey 6: Versioning Our System :: Message ordering <https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering>`__"
 
-Проблема сохранения очередности сообщений в условиях конкурирующих подписчиков рассматривается и в главе "`3.3.5 Competing receivers and message ordering <https://livebook.manning.com/book/microservices-patterns/chapter-3/298>`__" книги "Microservices Patterns: With examples in Java" [#fnmsp]_ by Chris Richardson, где для решения проблемы предлагается использовать партиционирование каналов.
+Проблема сохранения очередности сообщений в условиях конкурирующих подписчиков рассматривается и в главе "`3.3.5 Competing receivers and message ordering <https://livebook.manning.com/book/microservices-patterns/chapter-3/section-3-3-5?origin=product-toc>`__" книги "Microservices Patterns: With examples in Java" [#fnmsp]_ by Chris Richardson, где для решения проблемы предлагается использовать партиционирование каналов.
 
 Но даже если подписчик всего один, и сообщения доставляются последовательно, то и тогда очередность обработки сообщений может быть нарушена:
 
