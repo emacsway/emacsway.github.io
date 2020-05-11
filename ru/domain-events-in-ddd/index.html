@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Domain Events в DDD &mdash; @emacsway&#39;s blog</title>
+    <title>Domain Events in DDD &mdash; @emacsway&#39;s blog</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sun, 10 May 2020 21:04:23 GMT" />
+        <meta http-equiv="Last-Modified" content="Mon, 11 May 2020 20:10:04 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -85,14 +85,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="domain-events-ddd">
-<h1><a class="toc-backref" href="#id99">Domain Events в DDD</a><a class="headerlink" href="#domain-events-ddd" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="domain-events-in-ddd">
+<h1><a class="toc-backref" href="#id99">Domain Events in DDD</a><a class="headerlink" href="#domain-events-in-ddd" title="Permalink to this headline">¶</a></h1>
 <p>Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events.
 Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#domain-events-ddd" id="id99">Domain Events в DDD</a></li>
+<li><a class="reference internal" href="#domain-events-in-ddd" id="id99">Domain Events in DDD</a></li>
 <li><a class="reference internal" href="#domain-event" id="id100">Назначение Domain Event</a></li>
 <li><a class="reference internal" href="#eventual-consistency-vs-strong-transactional-consistency" id="id101">Eventual Consistency vs Strong (Transactional) Consistency</a><ul>
 <li><a class="reference internal" href="#eventual-consistency" id="id102">Eventual Consistency - это следствие, а не причина</a></li>
@@ -919,7 +919,8 @@ For example assume in a function on stacks contains the operation</p>
 <div class="section" id="atomicity-and-resiliency-of-integration-events">
 <h1><a class="toc-backref" href="#id120">Atomicity and Resiliency of Integration Events</a><a class="headerlink" href="#atomicity-and-resiliency-of-integration-events" title="Permalink to this headline">¶</a></h1>
 <p>Если отправить Integration Event до коммита транзакции базы данных, то другой процесс не увидит изменений.
-А если после коммита, то существует вероятность, что процесс может аварийно завершиться, и сообщение отправлено не будет, что приведет к утрате согласованности данных.</p>
+К тому же, может произойти откат транзакции, и согласованность данных будет утрачена.
+А если после коммита, то существует вероятность, что процесс может аварийно завершиться, и сообщение так и не будет отправлено, что приведет к утрате согласованности данных.</p>
 <p>Подробно эта проблема рассмотрена в главе &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus">Subscribing to events :: Publishing events through the event bus :: Designing atomicity and resiliency when publishing to the event bus</a>&#8221; книги &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id79">[7]</a> by Cesar de la Torre, Bill Wagner, Mike Rousos.</p>
 <p>Chris Richardson называет эту проблему <a class="reference external" href="https://microservices.io/patterns/#transactional-messaging">Transactional messaging</a> рассматривает ее в главе &#8220;<a class="reference external" href="https://livebook.manning.com/book/microservices-patterns/chapter-3/section-3-3-7?origin=product-toc">3.3.7 Transactional messaging</a>&#8221; книги &#8220;Microservices Patterns: With examples in Java&#8221; <a class="footnote-reference" href="#fnmsp" id="id80">[14]</a>.</p>
 <p>Vaughn Vernon посвящает этой проблеме главу &#8220;8 Domain Events :: Spreading the News to Remote Bounded Contexts :: Messaging Infrastructure Consistency&#8221; книги &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id81">[3]</a>.</p>

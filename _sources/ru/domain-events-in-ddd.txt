@@ -1,6 +1,6 @@
 
-Domain Events в DDD
-===================
+Domain Events in DDD
+====================
 
 .. post::
    :language: ru
@@ -1036,7 +1036,8 @@ Atomicity and Resiliency of Integration Events
 ==============================================
 
 Если отправить Integration Event до коммита транзакции базы данных, то другой процесс не увидит изменений.
-А если после коммита, то существует вероятность, что процесс может аварийно завершиться, и сообщение отправлено не будет, что приведет к утрате согласованности данных.
+К тому же, может произойти откат транзакции, и согласованность данных будет утрачена.
+А если после коммита, то существует вероятность, что процесс может аварийно завершиться, и сообщение так и не будет отправлено, что приведет к утрате согласованности данных.
 
 Подробно эта проблема рассмотрена в главе "`Subscribing to events :: Publishing events through the event bus :: Designing atomicity and resiliency when publishing to the event bus <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus>`__" книги ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos.
 
