@@ -37,7 +37,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Mon, 11 May 2020 20:10:04 GMT" />
+        <meta http-equiv="Last-Modified" content="Wed, 13 May 2020 18:52:27 GMT" />
         
             <meta name="description" content="Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events. Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти." />
         
@@ -873,13 +873,13 @@ The separation occurs based upon whether the methods are a command or a query (t
 <div><p>the origin server SHOULD send a 201 (Created) response containing a Location header field that provides an identifier for the primary resource created (Section 7.1.2) and a representation that describes the status of the request while referring to the new resource(s).</p>
 <p>- &#8220;<a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-4.3.3">Section 4.3.3. POST of RFC-7231</a>&#8220;</p>
 </div></blockquote>
-<p>Есть два варианта.</p>
+<p>Есть два варианта (помимо того, что можно просто запросить идентификатор у сервера предварительно).</p>
 <p>Первый предлагает Udi Dahan:</p>
 <blockquote>
 <div><p>If the data is needed by the client as soon as it is submitted, it is there – on the client that submitted it. No need to poll the query side. The only thing that might not have been there is an ID from the database – which is easily solved with client-generated GUIDs instead of database-generated IDs.</p>
 <p>- &#8220;<a class="reference external" href="http://udidahan.com/2009/12/09/clarified-cqrs/#comment-5118">Clarified CQRS</a>&#8221; comment 68 of Udi Dahan</p>
 </div></blockquote>
-<p>Мы просто генерируем идентификатор на стороне клиента, а затем применяем <a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-4.3.4">PUT Request Method</a> для создания объекта.</p>
+<p>Мы просто генерируем идентификатор на стороне клиента (используя <a class="reference external" href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Hi/Lo_algorithm">Hi/Lo algorithm</a> и т.п.), а затем применяем <a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-4.3.4">PUT Request Method</a> для создания объекта.</p>
 <blockquote>
 <div><p>The PUT method requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload. &lt;...&gt; If the target resource does not have a current representation and the PUT successfully creates one, then the origin server MUST inform the user agent by sending a 201 (Created) response.</p>
 <p>- &#8220;<a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-4.3.4">Section 4.3.4. PUT of RFC-7231</a>&#8220;</p>
@@ -979,6 +979,7 @@ This may be dealt with more gracefully by using the actors become() capabilities
 <ul class="simple">
 <li>&#8220;<a class="reference external" href="https://queue.acm.org/detail.cfm?id=2610533">Don&#8217;t Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage.</a>&#8221; (<a class="reference external" href="https://dl.acm.org/ft_gateway.cfm?id=2610533&amp;ftid=1449165&amp;dwn=1">pdf</a>) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University</li>
 <li>&#8220;<a class="reference external" href="http://www.bailis.org/papers/bolton-sigmod2013.pdf">Bolt-on Causal Consistency</a>&#8221; by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology</li>
+<li>&#8220;<a class="reference external" href="https://eventsourcing.readthedocs.io/en/stable/topics/process.html#causal-dependencies">Causal dependencies at eventsourcing framework by Python</a>&#8221; by John Bywater</li>
 </ul>
 <p>Ссылки для начинающих в Integration Events:</p>
 <ul class="simple">

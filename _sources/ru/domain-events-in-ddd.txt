@@ -977,7 +977,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- "`Section 4.3.3. POST of RFC-7231 <https://tools.ietf.org/html/rfc7231#section-4.3.3>`__"
 
-Есть два варианта.
+Есть два варианта (помимо того, что можно просто запросить идентификатор у сервера предварительно).
 
 Первый предлагает Udi Dahan:
 
@@ -985,7 +985,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/#comment-5118>`__" comment 68 of Udi Dahan
 
-Мы просто генерируем идентификатор на стороне клиента, а затем применяем `PUT Request Method <https://tools.ietf.org/html/rfc7231#section-4.3.4>`__ для создания объекта.
+Мы просто генерируем идентификатор на стороне клиента (используя `UUID <https://en.wikipedia.org/wiki/Universally_unique_identifier>`__, `Hi/Lo algorithm <https://en.wikipedia.org/wiki/Hi/Lo_algorithm>`__ и т.п.), а затем применяем `PUT Request Method <https://tools.ietf.org/html/rfc7231#section-4.3.4>`__ для создания объекта.
 
     The PUT method requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload. <...> If the target resource does not have a current representation and the PUT successfully creates one, then the origin server MUST inform the user agent by sending a 201 (Created) response.
 
@@ -1117,6 +1117,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
 - "`Don't Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage. <https://queue.acm.org/detail.cfm?id=2610533>`__" (`pdf <https://dl.acm.org/ft_gateway.cfm?id=2610533&ftid=1449165&dwn=1>`__) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University
 - "`Bolt-on Causal Consistency <http://www.bailis.org/papers/bolton-sigmod2013.pdf>`__" by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology
+- "`Causal dependencies at eventsourcing framework by Python <https://eventsourcing.readthedocs.io/en/stable/topics/process.html#causal-dependencies>`__" by John Bywater
 
 Ссылки для начинающих в Integration Events:
 
