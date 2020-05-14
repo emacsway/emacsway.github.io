@@ -2,13 +2,12 @@
 Domain Events in DDD
 ====================
 
-.. post::
+.. post:: May 05, 2020
    :language: ru
    :tags: DDD, Model
    :category:
    :author: Ivan Zakrevsky
 
-.. May 05, 2020
 
 Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events.
 Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти.
@@ -1206,4 +1205,4 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 .. [#fngycqrs] "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 
 
-.. .. update:: May 05, 2020
+.. update:: May 15, 2020
