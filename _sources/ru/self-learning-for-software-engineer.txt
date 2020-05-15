@@ -411,7 +411,7 @@ Donald E. Knuth:
 
 - `"Software architecture: object-oriented vs functional <http://se.ethz.ch/~meyer/publications/functional/meyer_functional_oo.pdf>`__" by Bertrand Meyer
 - "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
-
+- "`Domain Modeling Made Functional. Tackle Software Complexity with Domain-Driven Design and F# <https://fsharpforfunandprofit.com/books/>`__" by Scott Wlaschin
 
 Справочники
 ===========
@@ -509,6 +509,11 @@ Code Smell catalogs
 - `FTGO example application. Example code for the book Microservice patterns <https://github.com/microservices-patterns/ftgo-application>`__ by Chris Richardson
 - `Sample code for the book Principles, Practices and Patterns of Domain-Driven Design <https://github.com/elbandit/PPPDDD>`__ by Scott Millett, Nick Tune
 - `Hands-On Domain-Driven Design with .NET Core, published by Packt <https://github.com/PacktPublishing/Hands-On-Domain-Driven-Design-with-.NET-Core>`__ by Alexey Zimarev
+- `Extended code samples related to the book "Domain Modeling Made Functional" <https://github.com/swlaschin/DomainModelingMadeFunctional>`__ by Scott Wlaschin
+- `Railway-Oriented-Programming-Example <https://github.com/swlaschin/Railway-Oriented-Programming-Example>`__ by Scott Wlaschin
+- `DDD with Actors <https://github.com/VaughnVernon/DDDwithActors>`__ by Vaughn Vernon
+- `The examples for the book "Reactive Messaging Patterns with the Actor Model" <https://github.com/VaughnVernon/ReactiveMessagingPatterns_ActorModel>`__ by Vaughn Vernon
+- `A Stock Trader system to demonstrate reactive systems development <https://github.com/VaughnVernon/reactive-stock-trader>`__ (`source <https://github.com/RedElastic/reactive-stock-trader>`__ by RedElastic)
 
 Others:
 
