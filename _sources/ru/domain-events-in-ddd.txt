@@ -1116,6 +1116,8 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
 - "`Don't Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage. <https://queue.acm.org/detail.cfm?id=2610533>`__" (`pdf <https://dl.acm.org/ft_gateway.cfm?id=2610533&ftid=1449165&dwn=1>`__) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University
 - "`Bolt-on Causal Consistency <http://www.bailis.org/papers/bolton-sigmod2013.pdf>`__" by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology
+- "`Detecting Causal Relationships in Distributed Computations:In Search of the Holy Grail <https://disco.ethz.ch/courses/hs08/seminar/papers/mattern4.pdf>`__" by Reinhard Schwarz, Friedemann Mattern
+- "`Principles ofEventual Consistency <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/final-printversion-10-5-14.pdf>`__" by Sebastian Burckhardt, Microsoft Research
 - "`Causal dependencies at eventsourcing framework by Python <https://eventsourcing.readthedocs.io/en/stable/topics/process.html#causal-dependencies>`__" by John Bywater
 
 Ссылки для начинающих в Integration Events:
