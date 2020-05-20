@@ -1031,7 +1031,7 @@ Such finicking around feels dirty, but it separates the database code from the r
 Aspect-oriented programming will do this more cleanly with source code, and as its tools become more commonplace I expect to see this strategy being used.</p>
 <p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id95">[10]</a> by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter &#8220;16. Offline Concurrency Patterns :: Coarse-Grained Lock&#8221;</p>
 </div></blockquote>
-<p>Также существует и разница между термином &#8220;insert&#8221; (&#8220;вставить&#8221;) и &#8220;create&#8221; (&#8220;создать&#8221;).
+<p>Также существует разница и между термином &#8220;insert&#8221; (&#8220;вставить&#8221;) и &#8220;create&#8221; (&#8220;создать&#8221;).
 Первый применим к Коллекции объектов (как и &#8220;remove&#8221;), а второй - к состоянию жизненного цикла самого объекта (как и &#8220;delete&#8221;).</p>
 <p>Вопрос о том, где создавать Domain Event для удаляемого агрегата, во многом зависит от того, где создавать Domain Event для создаваемого объекта, который, в свою очередь, зависит от того, каким образом создается идентификатор создаваемого объекта.
 В целом я придерживаюсь такого правила - если Domain Event о &#8220;вставке&#8221; (&#8220;insert&#8221;) объекта создает Коллекция (Repository), то и Domain Event об &#8220;удалении&#8221; (&#8220;remove&#8221;) объекта должна создавать тоже Коллекция (Repository), на том же уровне абстракции.

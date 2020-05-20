@@ -1177,7 +1177,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter "16. Offline Concurrency Patterns :: Coarse-Grained Lock"
 
-Также существует и разница между термином "insert" ("вставить") и "create" ("создать").
+Также существует разница и между термином "insert" ("вставить") и "create" ("создать").
 Первый применим к Коллекции объектов (как и "remove"), а второй - к состоянию жизненного цикла самого объекта (как и "delete").
 
 Вопрос о том, где создавать Domain Event для удаляемого агрегата, во многом зависит от того, где создавать Domain Event для создаваемого объекта, который, в свою очередь, зависит от того, каким образом создается идентификатор создаваемого объекта.
