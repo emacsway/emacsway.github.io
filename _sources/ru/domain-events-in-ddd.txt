@@ -1126,6 +1126,65 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 - Лучше один раз увидеть. `Живые примеры по работе с NATS Streaming Server <https://github.com/bruth/code-examples/tree/master/patterns-nats-streaming>`__.
 
 
+Где создавать Domain Event об удалении объекта?
+===============================================
+
+Информации по этому вопросу практически нет, поэтому, я поделюсь своими мыслями.
+
+В Английском языке есть `разница <https://english.stackexchange.com/a/52509>`__ между словом "delete" и "remove".
+"Delete" подразумевает "уничтожить".
+"Remove" - "изъять", "вынести".
+
+Кстати, русское слово "удалить" `происходит <https://ru.wiktionary.org/wiki/%D1%83%D0%B4%D0%B0%D0%BB%D0%B8%D1%82%D1%8C#%D0%AD%D1%82%D0%B8%D0%BC%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F>`__ от слова "даль".
+Например, "Удалить ненужные вещи из комнаты", "Удалить занозу".
+
+Термин "remove" (удаление) применим к Коллекции, содержащей объект, и означает то, что объект удаляется от Коллекции (в даль).
+Но при этом, объект, сам по себе, продолжает существовать.
+Он может быть удален от (из) одной Коллекции, а затем вставлен в иную Коллекцию.
+Как говорилось ранее, источником Domain Event не обязательно должен быть Агрегат или Команда.
+Источником может быть и Коллекция, т.е. Repository.
+
+Но если мы будем говорить не об удалении, а об "уничтожении" ("delete"), то мы говорим о состоянии, т.е. о части жизненного цикла объекта.
+В таком случае было бы уместно, чтобы событие о переходе в новое состояние жизненного цикла объекта создавал сам объект.
+Это становится особенно заметно, если мы используем soft delete.
+Пример можно посмотреть `здесь <https://github.com/kgrzybek/modular-monolith-with-ddd/blob/78810bb44ae10cd88ca12b8d81712ba20c0ca43f/src/Modules/Meetings/Domain/Meetings/MeetingAttendee.cs#L124>`__ (вызывается `здесь <https://github.com/kgrzybek/modular-monolith-with-ddd/blob/78810bb44ae10cd88ca12b8d81712ba20c0ca43f/src/Modules/Meetings/Domain/Meetings/Meeting.cs#L289>`__).
+Это не Агрегат - это вложенная Сущность.
+
+В другом `примере <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/1d344b90658c6593993eaa1391410b5ab1ebabfc/src/SampleProject.Domain/Customers/Orders/Order.cs#L111>`__ реализации soft delete, событие `создается <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Domain/Customers/Customer.cs#L89>`__ Агрегатом, владеющим Сущностью.
+Похожие примеры можно найти и у Vaughn Vernon, см. `здесь <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_identityaccess/Domain.Model/Identity/Group.cs#L159>`__ и `здесь <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_identityaccess/Domain.Model/Identity/Group.cs#L142>`__.
+
+Посмотреть `пример реализации soft delete Агрегата <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_agilepm/Domain.Model/Products/BacklogItems/BacklogItem.cs#L360>`__ (а не Сущности) можно у Vaughn Vernon (Агрегат BacklogItem хоть и `создается <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_agilepm/Domain.Model/Products/Product.cs#L128>`__ Агрегатом Product, но является самостоятельным корнем).
+
+Скрыть присутствие Repository помогает pattern "`Unit of Work <https://martinfowler.com/eaaCatalog/unitOfWork.html>`__".
+В одноименной главе книги "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ приводится пример класса DomainObject, который содержит метод markRemoved().
+
+    With object registration (Figure 11.2), the onus is removed from the caller.
+    The usual trick here is to place registration methods in object methods. Loading an object from the database registers the object as clean;
+    the setting methods register the object as dirty.
+    For this scheme to work the Unit of Work needs either to be passed to the object or to be in a well-known place.
+    Passing the Unit of Work around is tedious but usually no problem to have it present in some kind of session object.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter "16. Offline Concurrency Patterns :: Coarse-Grained Lock"
+
+Для этих целей удобно применять Aspect-oriented programming:
+
+    This is a natural place for code generation to generate appropriate calls, but that only works when you can clearly separate generated and nongenerated code.
+    This problem turns out to be particularly suited to aspect-oriented programming.
+    I've also come across post-processing of the object files to pull this off.
+    In this example a post-processor examined all the Java .class files, looked for the appropriate methods and inserted registration calls into the byte code.
+    Such finicking around feels dirty, but it separates the database code from the regular code.
+    Aspect-oriented programming will do this more cleanly with source code, and as its tools become more commonplace I expect to see this strategy being used.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter "16. Offline Concurrency Patterns :: Coarse-Grained Lock"
+
+Также существует и разница между термином "insert" ("вставить") и "create" ("создать").
+Первый применим к Коллекции объектов (как и "remove"), а второй - к состоянию жизненного цикла самого объекта (как и "delete").
+
+Вопрос о том, где создавать Domain Event для удаляемого агрегата, во многом зависит от того, где создавать Domain Event для создаваемого объекта, который, в свою очередь, зависит от того, каким образом создается идентификатор создаваемого объекта.
+В целом я придерживаюсь такого правила - если Domain Event о "вставке" ("insert") объекта создает Коллекция (Repository), то и Domain Event об "удалении" ("remove") объекта должна создавать тоже Коллекция (Repository), на том же уровне абстракции.
+А если Domain Event о "создании" ("create") объекта создает сам объект, как уведомление о переходе в новое состояние своего жизненного цикла, то и Domain Event об "уничтожении" ("delete") объекта должен создавать он же.
+
+
 Почему важно читать оригиналы вместо переводов
 ==============================================
 
