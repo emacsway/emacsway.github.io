@@ -944,7 +944,7 @@ For example assume in a function on stacks contains the operation</p>
 <div><p>Note that just saving the Domain Event in its causal order doesn’t guarantee that it will arrive at other distributed nodes in the same order.
 Thus, it is also the responsibility of the consuming Bounded Context to recognize proper causality.
 It might be the Domain Event type itself that can indicate causality, or it may be metadata associated with the Domain Event, such as a sequence or causal identifier.
-The sequence or causal identifier would indicate what caused this Domain Event, and <strong>if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives</strong>.
+The <strong>sequence</strong> or <strong>causal identifier</strong> would indicate <strong>what caused this Domain Event</strong>, and <strong>if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives</strong>.
 In some cases it is possible to ignore latent Domain Events that have already been superseded by the actions associated with a later one; in this case causality has a dismissible impact.</p>
 <p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id82">[4]</a> by Vaughn Vernon, Chapter &#8220;6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events&#8221;</p>
 </div></blockquote>

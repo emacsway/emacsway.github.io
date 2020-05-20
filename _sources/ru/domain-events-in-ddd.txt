@@ -1069,7 +1069,7 @@ Vaughn Vernon посвящает этой проблеме главу "8 Domain 
     Note that just saving the Domain Event in its causal order doesn’t guarantee that it will arrive at other distributed nodes in the same order.
     Thus, it is also the responsibility of the consuming Bounded Context to recognize proper causality.
     It might be the Domain Event type itself that can indicate causality, or it may be metadata associated with the Domain Event, such as a sequence or causal identifier.
-    The sequence or causal identifier would indicate what caused this Domain Event, and **if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives**.
+    The **sequence** or **causal identifier** would indicate **what caused this Domain Event**, and **if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives**.
     In some cases it is possible to ignore latent Domain Events that have already been superseded by the actions associated with a later one; in this case causality has a dismissible impact.
 
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events"
