@@ -876,6 +876,9 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#implement-domain-events>`__"
 
+Таким образом, Событие не может изменить прошлого, хотя и может `инициировть компенсационную транзакцию <https://microservices.io/patterns/data/saga.html>`__.
+Но рассмотрение `компенсационных транзакций <https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction>`__ уже выходит за рамки данного поста.
+
 
 Решение - это баланс стоимости и обретаемой выгоды
 ==================================================
