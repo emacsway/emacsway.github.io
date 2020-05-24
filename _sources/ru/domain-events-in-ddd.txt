@@ -876,8 +876,16 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#implement-domain-events>`__"
 
-Таким образом, Событие не может изменить прошлого, хотя и может `инициировать компенсационную транзакцию <https://microservices.io/patterns/data/saga.html>`__.
-Но рассмотрение `компенсационных транзакций <https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction>`__ уже выходит за рамки данного поста.
+Таким образом, Событие не может изменить прошлого, хотя и может `инициировать компенсационную транзакцию <https://microservices.io/patterns/data/saga.html>`__ и изменить будущее.
+Если вы когда-нибудь работали с Emacs, то заметили, что его команда Undo `не возвращает в прошлое <https://www.gnu.org/software/emacs/manual/html_node/emacs/Undo.html>`__, а компенсирует ранее выполненные команды.
+По этой причине в Emacs отсутствует Redo.
+
+    Starting from that moment, the entire sequence of undo commands that you have just performed are themselves placed into the undo record.
+    Therefore, to re-apply changes you have undone, type C-f or any other command that harmlessly breaks the sequence of undoing; then type C-/ one or more times to undo some of the undo commands.
+
+    \- `The Emacs Editor <https://www.gnu.org/software/emacs/manual/html_node/emacs/Undo.html>`__
+
+Однако, рассмотрение `компенсационных транзакций <https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction>`__ уже выходит за рамки данного поста.
 
 
 Решение - это баланс стоимости и обретаемой выгоды

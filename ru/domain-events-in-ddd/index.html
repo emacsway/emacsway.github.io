@@ -794,8 +794,15 @@ Therefore, it must be an immutable class. You can see in the previous code that 
 There&#8217;s no way to update the object, you can only set values when you create it.</p>
 <p>- &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id69">[7]</a> by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#implement-domain-events">Domain events: design and implementation :: Implement domain events</a>&#8220;</p>
 </div></blockquote>
-<p>Таким образом, Событие не может изменить прошлого, хотя и может <a class="reference external" href="https://microservices.io/patterns/data/saga.html">инициировать компенсационную транзакцию</a>.
-Но рассмотрение <a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction">компенсационных транзакций</a> уже выходит за рамки данного поста.</p>
+<p>Таким образом, Событие не может изменить прошлого, хотя и может <a class="reference external" href="https://microservices.io/patterns/data/saga.html">инициировать компенсационную транзакцию</a> и изменить будущее.
+Если вы когда-нибудь работали с Emacs, то заметили, что его команда Undo <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Undo.html">не возвращает в прошлое</a>, а компенсирует ранее выполненные команды.
+По этой причине в Emacs отсутствует Redo.</p>
+<blockquote>
+<div><p>Starting from that moment, the entire sequence of undo commands that you have just performed are themselves placed into the undo record.
+Therefore, to re-apply changes you have undone, type C-f or any other command that harmlessly breaks the sequence of undoing; then type C-/ one or more times to undo some of the undo commands.</p>
+<p>- <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Undo.html">The Emacs Editor</a></p>
+</div></blockquote>
+<p>Однако, рассмотрение <a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction">компенсационных транзакций</a> уже выходит за рамки данного поста.</p>
 </div>
 <div class="section" id="id70">
 <h1><a class="toc-backref" href="#id122">Решение - это баланс стоимости и обретаемой выгоды</a><a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h1>
