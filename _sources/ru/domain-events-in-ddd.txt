@@ -887,6 +887,17 @@ Kamil Grzybek вводит явное разделение механизма д
 
 Однако, рассмотрение `компенсационных транзакций <https://docs.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction>`__ уже выходит за рамки данного поста.
 
+    Eventual consistency can lead to undesirable scenarios.
+    For example, if a payment has been rejected, you can’t just roll back the transaction and not create the order (as many non‐eventually consistent systems would); the order was already created as part of a previous transaction in a different component and currently lives in that component’s database.
+    What you can do, though, is roll forward into a new state.
+    You’d probably tell the customer the order could not be completed because payment failed.
+    Ideally you would tell her immediately when she tries to place an order.
+    However, you have to remember that you’re trying to build a scalable fault‐tolerant solution and you need to make sacrifices.
+    Upsetting the few customers who cannot successfully place orders so that everybody else gets a superior user experience is often an acceptable trade‐off.
+    When you are in an inconsistent state, you need to roll forward into a new state that represents the wishes of the business or the real‐world domain processes you are modeling.
+
+    \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_ by Scott Millett, Nick Tune, Chapter "12 Integrating via Messaging :: Building an E‐Commerce Application with NServiceBus :: Eventual Consistency in Practice :: Dealing with Inconsistency"
+
 
 Решение - это баланс стоимости и обретаемой выгоды
 ==================================================
