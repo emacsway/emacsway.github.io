@@ -512,12 +512,41 @@
 
 ..
 
+    Ссылки по идентификатору не могут полностью исключить навигацию по модели.
+    Для выполнения поиска к ХРАНИЛИЩУ (12) иногда обращаются из АГРЕГАТА.
+    Этот способ называется ОТКЛЮЧЕННОЙ МОДЕЛЬЮ ПРЕДМЕТНОЙ ОБЛАСТИ (DISCONNECТED DOМAIN МODEL).
+    По существу, он представляет собой одну из форм отложенной загрузки.
+    Впрочем, существуют разные подходы к поиску зависимых объектов с помощью АГРЕГАТОВ:
+    использовать ХРАНИЛИЩЕ или СЛУЖБУ ПРЕДМЕТНОЙ ОБЛАСТИ (7).
+    Этой службой может управлять клиент ПРИКЛАДНОЙ СЛУЖБЫ, который потом передает управление АГРЕГАТУ.
+
     Наличие ПРИКЛАДНОЙ СЛУЖБЫ делает АГРЕГАТ независимым от РЕПОЗИТАРИЯ или СЛУЖБЫ ПРЕДМЕТНОЙ ОБЛАСТИ.
     Однако в очень сложных и проблемно-ориентированных системах для освобождения от зависимости, возможно, лучше всего передать СЛУЖБУ ПРЕДМЕТНОЙ ОБЛАСТИ в командный метод АГРЕГАТА.
     Тогда АГРЕГАТ сможет выполнить двойную диспетчеризацию, обращаясь к СЛУЖБЕ ПРЕДМЕТНОЙ ОБЛАСТИ, и разрешить ссылки.
     Повторим, каким бы способом один АГРЕГАТ ни получал доступ к другим АГРЕГАТАМ, ссылка на многочисленные АГРЕГАТЫ в одном запросе не дает оснований для модификации нескольких агрегатов.
 
-    Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service. However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go. The Aggregate can then double-dispatch to the Domain Service to resolve references. Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.
+    Ограничение модели использовать исключительно ссылки с помощью идентификаторов затрудняет обслуживание клиентов, собирающих и прорисовывающих представления ПОЛЬЗОВАТЕЛЬСКОГО ИНТЕРФЕЙСА (14).
+    Для рассылки представлений в отдельном сценарии использования, вероятно, придется использовать многочисленные ХРАНИЛИЩА.
+    Если затраты, связанные с выполнением запросов, снижают производительность системы, то, может быть, целесообразно рассмотреть возможность использования тета-обьединений (theta joins) или принципа CQRS.
+    Библиотека Hibernate, например, использует тета-объединения как средство сборки многих связанных ссылками АГРЕГАТОВ в один объединенный запрос, который может обеспечить просмотр необходимых частей.
+    Если принцип CQRS и тета-объединения не подходят, вы, возможно, должны достичь баланса между косвенными и прямыми ссылками.
+
+    Reference by identity doesn’t completely prevent navigation through the model.
+    Some will use a Repository (12) from inside an Aggregate for lookup.
+    This technique is called Disconnected Domain Model, and it’s actually a form of lazy loading.
+    There’s a different recommended approach, however: Use a Repository or Domain Service (7) to look up dependent objects ahead of invoking the Aggregate behavior.
+    A client Application Service may control this, then dispatch to the Aggregate.
+
+    Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service.
+    However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go.
+    The Aggregate can then double-dispatch to the Domain Service to resolve references.
+    Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.
+
+    Limiting a model to using only reference by identity could make it more difficult to serve clients that assemble and render User Interface (14) views.
+    You may have to use multiple Repositories in a single use case to populate views.
+    If query overhead causes performance issues, it may be worth considering the use of theta joins or CQRS.
+    Hibernate, for example, supports theta joins as a means to assemble a number of referentially associated Aggregate instances in a single join query, which can provide the necessary viewable parts.
+    If CQRS and theta joins are not an option, you may need to strike a balance between inferred and direct object reference.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
 
