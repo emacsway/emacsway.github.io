@@ -660,7 +660,7 @@ That propagation is an integration event, and it could be published through an e
 These events then tend to become stable very quickly during development, and rarely need to be altered.
 When there are significant changes in the domain, the events may need to change, but in these cases you’ll need an API change anyway.</p>
 <p>That said, it’s a universally useful heuristic in software design to keep everything as closed off as possible, and only open up things where there’s a good case for it.</p>
-<p>- &#8220;Patterns for Decoupling in Distributed Systems: Explicit Public Events&#8221; <a class="footnote-reference" href="#fnmvpe" id="id53">[24]</a> by Mathias Verraes</p>
+<p>- &#8220;Patterns for Decoupling in Distributed Systems: Explicit Public Events&#8221; <a class="footnote-reference" href="#fnmvpe" id="id53">[25]</a> by Mathias Verraes</p>
 </div></blockquote>
 </div>
 <div class="section" id="one-phase-vs-two-phase">
@@ -853,7 +853,7 @@ When you are in an inconsistent state, you need to roll forward into a new state
 <blockquote>
 <div><p>Starting with CQRS, CQRS is simply the creation of two objects where there was previously only one.
 The separation occurs based upon whether the methods are a command or a query (the same definition that is used by Meyer in Command and Query Separation, a command is any method that mutates state and a query is any method that returns a value).</p>
-<p>- &#8220;CQRS, Task Based UIs, Event Sourcing agh!&#8221; <a class="footnote-reference" href="#fngycqrs" id="id72">[25]</a> by Greg Young</p>
+<p>- &#8220;CQRS, Task Based UIs, Event Sourcing agh!&#8221; <a class="footnote-reference" href="#fngycqrs" id="id72">[26]</a> by Greg Young</p>
 </div></blockquote>
 <p>Забегая наперед, скажу, что не противоречит, при соблюдении определенных условий.</p>
 <p>Во-первых, в основе CQS лежит принцип функциональной чистоты:</p>
@@ -1237,16 +1237,22 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 <tr><td class="label">[23]</td><td><em>(<a class="fn-backref" href="#id38">1</a>, <a class="fn-backref" href="#id49">2</a>)</em> &#8220;<a class="reference external" href="https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/">Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures</a>&#8221; by Cesar De la Torre, Principal Program Manager, .NET</td></tr>
 </tbody>
 </table>
+<table class="docutils footnote" frame="void" id="fnntuhbr" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[24]</td><td>&#8220;<a class="reference external" href="https://medium.com/nick-tune-tech-strategy-blog/uncovering-hidden-business-rules-with-ddd-aggregates-67fb02abc4b">Uncovering Hidden Business Rules with DDD Aggregates</a> by Nick Tune</td></tr>
+</tbody>
+</table>
 <table class="docutils footnote" frame="void" id="fnmvpe" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id53">[24]</a></td><td>&#8220;<a class="reference external" href="https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/">Patterns for Decoupling in Distributed Systems: Explicit Public Events</a>&#8221; by Mathias Verraes</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id53">[25]</a></td><td>&#8220;<a class="reference external" href="https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/">Patterns for Decoupling in Distributed Systems: Explicit Public Events</a>&#8221; by Mathias Verraes</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fngycqrs" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id72">[25]</a></td><td>&#8220;<a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">CQRS, Task Based UIs, Event Sourcing agh!</a>&#8221; by Greg Young</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id72">[26]</a></td><td>&#8220;<a class="reference external" href="http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/">CQRS, Task Based UIs, Event Sourcing agh!</a>&#8221; by Greg Young</td></tr>
 </tbody>
 </table>
 <div class="note update admonition">

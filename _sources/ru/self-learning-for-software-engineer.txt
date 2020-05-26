@@ -278,6 +278,7 @@
 
 - "Extreme Programming Explained" 2nd edition by Kent Beck
 - "Planning Extreme Programming" by Kent Beck, Martin Fowler
+- "More Effective Agile: A Roadmap for Software Leaders" by Steve McConnell
 - "Clean Agile: Back to Basics" by Robert C. Martin
 - "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
 - "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
@@ -295,6 +296,7 @@
 ===========
 
 - "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
+- "The Art of PostgreSQL" 2nd edition by Dimitri Fontaine - is the new title of "Mastering PostgreSQL in Application Development"
 - "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
 - "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
 - "An Introduction to Database Systems" by C.J. Date
