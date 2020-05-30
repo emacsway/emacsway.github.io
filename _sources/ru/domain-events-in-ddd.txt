@@ -1141,6 +1141,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 - "`Detecting Causal Relationships in Distributed Computations:In Search of the Holy Grail <https://disco.ethz.ch/courses/hs08/seminar/papers/mattern4.pdf>`__" by Reinhard Schwarz, Friedemann Mattern
 - "`Principles ofEventual Consistency <https://www.microsoft.com/en-us/research/publication/principles-of-eventual-consistency/>`__" (`pdf <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/final-printversion-10-5-14.pdf>`__) by Sebastian Burckhardt, Microsoft Research
 - "`Causal dependencies at eventsourcing framework by Python <https://eventsourcing.readthedocs.io/en/stable/topics/process.html#causal-dependencies>`__" by John Bywater
+- "`The vclock package <http://labix.org/vclock>`__ offers full vector clock support for the Go language. Vector clocks allow recording and analyzing the inherent partial ordering of events in a distributed system in a comfortable way." by Gustavo Niemeyer (`more info <https://blog.labix.org/2010/12/21/vector-clock-support-for-go>`__)
 
 Ссылки для начинающих в Integration Events:
 
