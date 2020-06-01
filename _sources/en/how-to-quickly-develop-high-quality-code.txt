@@ -356,10 +356,13 @@ As Martin Fowler said:
     The value of good software design is economic: you can continue to add new functionality quickly even as the code-base grows in size.
     ("`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler)
 
+.. _design-stamina-graph-en:
 
-.. image:: /_media/en/how-to-quickly-develop-high-quality-code/designStaminaGraph.png
+.. figure:: /_media/en/how-to-quickly-develop-high-quality-code/designStaminaGraph.png
    :alt: The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "Design Stamina Hypothesis" by Martin Fowler.
    :align: center
+
+   The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "Design Stamina Hypothesis" by Martin Fowler.
 
 ..
 
@@ -394,6 +397,48 @@ As Martin Fowler said:
     \- Martin Fowler, "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__"
 
 The pseudo-graph plots delivered functionality (cumulative) versus time for two imaginary stereotypical projects: one with good design and one with no design. The image from the article "`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler. See also great video for 14 minutes "`Making Architecture Matter - Martin Fowler Keynote <https://www.youtube.com/watch?v=DngAZyWMGR0>`_".
+
+    Refactoring Helps Me Program Faster
+
+    In the end, all the earlier points come down to this: Refactoring helps me develop code more quickly.
+
+    This sounds counterintuitive.
+    When I talk about refactoring, people can easily see that it improves quality.
+    Better internal design, readability, reducing bugs—all theseimprove quality.
+    But doesn’t the time I spend on refactoring reduce the speed of development?
+
+    When I talk to software developers who have been working on a system for a while, I often hear that they were able to make progress rapidly at first, but now it takes much longer to add new features.
+    Every new feature requires more and more time to understand how to fit it into the existing code base, and once it’s added, bugs often crop up that take even longer to fix.
+    The code base starts looking like a series of patches covering patches, and it takes an exercise in archaeology to figure out how things work.
+    This burden slows down adding new features — to the point that developers wish they could start again from a blank slate.
+
+    I can visualize this state of affairs with :ref:`the following pseudograph <design-stamina-graph-en>`.
+
+    But some teams report a different experience.
+    They find they can add new features faster because they can leverage the existing things by quickly building on what’s already there.
+
+    The difference between these two is the internal quality of the software.
+    Software with a good internal design allows me to easily find how and where I need to make changes to add a new feature.
+    Good modularity allows me to only have to understand a small subset of the code base to make a change.
+    If the code is clear, I’m less likely to introduce a bug, and if I do, the debugging effort is much easier.
+    Done well, my code base turns into a platform for building new features for its domain.
+
+    I refer to this effect as the `Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__:
+    By putting our effort into a good internal design, we increase the stamina of the software effort, allowing us to go faster for longer.
+    I can’t prove that this is the case, which is why I refer to it as a hypothesis.
+    But it explains my experience, together with the experience of hundreds of great programmers that I’ve got to know over my career.
+
+    Twenty years ago, the conventional wisdom was that to get this kind of good design, it had to be completed before starting to program — because once we wrote the code, we could only face decay.
+    Refactoring changes this picture. We now know we can improve the design of existing code—so we can form and improve a design over time, even as the needs of the program change.
+    Since it is very difficult to do a good design up front, refactoring becomes vital to achieving that virtuous path of rapid functionality.
+
+    \- "Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ 2nd edition by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+
+..
+
+    The whole point of good design and clean code is to make you go faster - if it didn't people like Uncle Bob, Kent Beck, and Ward Cunningham wouldn't be spending time talking about it.
+
+    \- "`Technical Debt Quadrant <https://martinfowler.com/bliki/TechnicalDebtQuadrant.html>`__" by Martin Fowler
 
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
