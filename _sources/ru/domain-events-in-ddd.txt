@@ -143,7 +143,22 @@ Eventual Consistency - это следствие, а не причина
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
 
 Кстати, автором идеи агрегата является даже не Eric Evans, а David Siegel.
-Оригинальная работа  к сожалению, не опубликована (по крайней мере, мне ее отыскать не удалось).
+
+    Schemes have been developed for defining ownership relationships in the model.
+    The following simple but rigorous system, distilled from those concepts, includes a set of rules for implementing transactions that modify the objects and their owners. [1]
+    (**David Siegel devised and used this system on projects in the 1990s but has not published it.**)
+
+    First we need an abstraction for encapsulating references within the model.
+    An AGGREGATE is a cluster of associated objects that we treat as a unit for the purpose of data changes.
+    Each AGGREGATE has a root and a boundary.
+    The boundary defines what is inside the AGGREGATE.
+    The root is a single, specific ENTITY contained in the AGGREGATE.
+    The root is the only member of the AGGREGATE that outside objects are allowed to hold references to, although objects within the boundary may hold references to each other.
+    ENTITIES other than the root have local identity, but that identity needs to be distinguishable only within the AGGREGATE, because no outside object can ever see it out of the context of the root ENTITY.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans, Chapter "Six. The Life Cycle of a Domain Object :: Aggregates"
+
+Оригинальная работа David Siegel к сожалению, не опубликована (по крайней мере, мне ее отыскать не удалось).
 Но он упоминается также в PoEAA, где определение агрегата звучит так:
 
     Eric Evans and David Siegel [Evans] define an **aggregate as a cluster of associated objects that we treat as a unit for data changes**.
