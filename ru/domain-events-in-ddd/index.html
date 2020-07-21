@@ -1039,7 +1039,7 @@ This may be dealt with more gracefully by using the actors become() capabilities
 Источником может быть и Коллекция, т.е. Repository.</p>
 <p>Но если мы будем говорить не об удалении, а об &#8220;уничтожении&#8221; (&#8220;delete&#8221;), то мы говорим о состоянии, т.е. о части жизненного цикла объекта.
 В таком случае было бы уместно, чтобы событие о переходе в новое состояние жизненного цикла объекта создавал сам объект.
-Это становится особенно заметно, если мы используем soft delete.
+Это становится особенно заметно, если мы используем soft delete (смотрите статью &#8220;<a class="reference external" href="http://udidahan.com/2009/09/01/dont-delete-just-dont/">Don&#8217;t Delete – Just Don&#8217;t</a>&#8221; by Udi Dahan по этому поводу).
 Пример можно посмотреть <a class="reference external" href="https://github.com/kgrzybek/modular-monolith-with-ddd/blob/78810bb44ae10cd88ca12b8d81712ba20c0ca43f/src/Modules/Meetings/Domain/Meetings/MeetingAttendee.cs#L124">здесь</a> (вызывается <a class="reference external" href="https://github.com/kgrzybek/modular-monolith-with-ddd/blob/78810bb44ae10cd88ca12b8d81712ba20c0ca43f/src/Modules/Meetings/Domain/Meetings/Meeting.cs#L289">здесь</a>).
 Это не Агрегат - это вложенная Сущность.</p>
 <p>В другом <a class="reference external" href="https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/1d344b90658c6593993eaa1391410b5ab1ebabfc/src/SampleProject.Domain/Customers/Orders/Order.cs#L111">примере</a> реализации soft delete, событие <a class="reference external" href="https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Domain/Customers/Customer.cs#L89">создается</a> Агрегатом, владеющим Сущностью.

@@ -1184,7 +1184,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
 Но если мы будем говорить не об удалении, а об "уничтожении" ("delete"), то мы говорим о состоянии, т.е. о части жизненного цикла объекта.
 В таком случае было бы уместно, чтобы событие о переходе в новое состояние жизненного цикла объекта создавал сам объект.
-Это становится особенно заметно, если мы используем soft delete.
+Это становится особенно заметно, если мы используем soft delete (смотрите статью "`Don't Delete – Just Don't <http://udidahan.com/2009/09/01/dont-delete-just-dont/>`__" by Udi Dahan по этому поводу).
 Пример можно посмотреть `здесь <https://github.com/kgrzybek/modular-monolith-with-ddd/blob/78810bb44ae10cd88ca12b8d81712ba20c0ca43f/src/Modules/Meetings/Domain/Meetings/MeetingAttendee.cs#L124>`__ (вызывается `здесь <https://github.com/kgrzybek/modular-monolith-with-ddd/blob/78810bb44ae10cd88ca12b8d81712ba20c0ca43f/src/Modules/Meetings/Domain/Meetings/Meeting.cs#L289>`__).
 Это не Агрегат - это вложенная Сущность.
 
