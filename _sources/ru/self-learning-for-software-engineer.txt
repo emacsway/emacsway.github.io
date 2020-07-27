@@ -289,6 +289,11 @@
 - "`Bounded Contexts are NOT Microservices <https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/>`__" by Vladik Khononov
 - "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
 - "`DDDDD: Bounded Contexts, Microservices, and Everything In Between <https://youtu.be/Z0RgR9xIQE4>`__" by Vladik Khononov
+- "`Event Sourcing and Microservices <https://zimarev.com/blog/event-sourcing/microservices/>`__" by Alexey Zimarev
+- "`Entities as event streams <https://zimarev.com/blog/event-sourcing/entities-as-streams/>`__" by Alexey Zimarev
+- "`Event Sourcing basics <https://zimarev.com/blog/event-sourcing/introduction/>`__" by Alexey Zimarev
+- "`What is Event Sourcing? <https://eventstore.com/blog/what-is-event-sourcing/>`__" by Alexey Zimarev
+- "`Event Sourcing and CQRS <https://eventstore.com/blog/event-sourcing-and-cqrs/>`__" by Alexey Zimarev
 - "`Effective Aggregate Design <https://dddcommunity.org/library/vernon_2011/>`__" by Vaughn Vernon
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
@@ -313,8 +318,11 @@
 - "Planning Extreme Programming" by Kent Beck, Martin Fowler
 - "More Effective Agile: A Roadmap for Software Leaders" by Steve McConnell
 - "Clean Agile: Back to Basics" by Robert C. Martin
+- "Agile! The Good, the Hype and the Ugly" by Bertrand Meyer
 - "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
 - "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
+- "Succeeding with Agile: Software Development Using Scrum" by Mike Cohn
+- "User Stories Applied: For Agile Software Development" by Mike Cohn
 
 
 Развитие личностных профессиональных качеств
@@ -421,6 +429,12 @@ Donald E. Knuth:
 ------------
 
 - "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
+- "Growing Object-Oriented Software, Guided by Tests" by Steve Freeman, Nat Pryce
+- "Agile Testing: A Practical Guide for Testers and Agile Teams" by Lisa Crispin, Janet Gregory
+- "More Agile Testing: Learning Journeys for the Whole Team" by Lisa Crispin, Janet Gregory
+- "ATDD by Example: A Practical Guide to Acceptance Test-Driven Development" by Markus Gärtner
+- "Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation" by Jez Humble, David Farley
+- "Continuous Integration: Improving Software Quality and Reducing Risk" by Paul M. Duvall, Steve Matyas, Andrew Glover
 
 
 Компиляторы
@@ -430,7 +444,7 @@ Donald E. Knuth:
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
 
 
-Изучаем архитектору
+Изучаем архитектуру
 -------------------
 
 - "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
