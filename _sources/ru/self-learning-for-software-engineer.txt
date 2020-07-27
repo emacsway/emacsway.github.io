@@ -286,14 +286,21 @@
 - "`Domain model isolation <https://enterprisecraftsmanship.com/posts/domain-model-isolation/>`__" by Vladimir Khorikov
 - "`Email uniqueness as an aggregate invariant <https://enterprisecraftsmanship.com/posts/email-uniqueness-as-aggregate-invariant/>`__" by Vladimir Khorikov
 - "`How to know if your Domain model is properly isolated? <https://enterprisecraftsmanship.com/posts/how-to-know-if-your-domain-model-is-properly-isolated/>`__" by Vladimir Khorikov
+
 - "`Bounded Contexts are NOT Microservices <https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/>`__" by Vladik Khononov
 - "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
 - "`DDDDD: Bounded Contexts, Microservices, and Everything In Between <https://youtu.be/Z0RgR9xIQE4>`__" by Vladik Khononov
+
+- "`Overselling Event Sourcing <https://zimarev.com/blog/event-sourcing/myth-busting/2020-07-09-overselling-event-sourcing/>`__" by Alexey Zimarev
 - "`Event Sourcing and Microservices <https://zimarev.com/blog/event-sourcing/microservices/>`__" by Alexey Zimarev
+- "`Projections in Event Sourcing <https://zimarev.com/blog/event-sourcing/projections/>`__" by Alexey Zimarev
+- "`Event Sourcing and CQRS <https://zimarev.com/blog/event-sourcing/cqrs/>`__" by Alexey Zimarev
 - "`Entities as event streams <https://zimarev.com/blog/event-sourcing/entities-as-streams/>`__" by Alexey Zimarev
 - "`Event Sourcing basics <https://zimarev.com/blog/event-sourcing/introduction/>`__" by Alexey Zimarev
+
 - "`What is Event Sourcing? <https://eventstore.com/blog/what-is-event-sourcing/>`__" by Alexey Zimarev
 - "`Event Sourcing and CQRS <https://eventstore.com/blog/event-sourcing-and-cqrs/>`__" by Alexey Zimarev
+
 - "`Effective Aggregate Design <https://dddcommunity.org/library/vernon_2011/>`__" by Vaughn Vernon
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
