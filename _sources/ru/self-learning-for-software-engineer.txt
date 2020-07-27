@@ -84,9 +84,11 @@
 По сути, знания нужны только для того, чтобы избавиться от всего лишнего.
 Архитектура - это, на самом деле, наука об ограничениях (т.е. о том, как не надо делать).
 
+Кандидатский минимум
+====================
 
 Учимся обучению
-================
+---------------
 
 Это может показаться немного удивительным, но первая книга будет посвящена не техническим знаниям, а вопросам самоорганизации, управления временем, психологии, методикам работы под стрессом, оцеванию задач по разработке программного обеспечения, вопросам коммуникации и поведению в конфликтных ситуациях, и, самое главное, - науке быть правдивым.
 Именно правдивость является важнейшим отличительным признаком настоящего профессионала.
@@ -99,20 +101,29 @@
 
 
 Изучаем основную используемую технологию
-========================================
+----------------------------------------
 
 Следующая книга должна быть посвящена основной используемой технологии, т.е. синтаксическим возможностям языка программирования.
-Если вы работаете с Python, то хорошим выбором была бы книга:
+Для Python-разработчиков хорошим выбором была бы книга:
 
 - "Learning Python" 5th edition by Mark Lutz
 
-А вот, если вы фронтенд-разработчик, работающий с Angular, то я бы советовал:
+Для Golang интересно выглядят книги:
+
+- "Hands-On Software Architecture with Golang. Design and architect highly scalable and robust applications using Go" by Jyotiswarup Raiturkar
+- "The Go Programming Language" by Alan A.A. Donovan Google Inc., Brian W. Kernighan Princeton University
+
+Для Erlang:
+
+- "Programming Erlang: Software for a Concurrent World (Pragmatic Programmers)" 2nd edition by Joe Armstrong
+
+Для frontend-разработчиков, работающих с Angular, имеет смысл обратить внимание на книгу:
 
 - "ng-book2. The Complete Book on Angular 6" by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda
 
 
 Азбука программирования
-=======================
+-----------------------
 
 Подразумевается что вы уже хорошо знаете синтаксис основного языка программирования.
 Но, знание букв еще не делает вас поэтом.
@@ -129,7 +140,7 @@
 
 
 Учимся быть эффективным
-=======================
+-----------------------
 
 Знаний предыдущих пяти книг достаточно для того, чтобы вы стали работать в разы эффективней.
 Но нужно не только знать, а еще и :doc:`уметь быть эффективным на практике <./tdd>`.
@@ -139,7 +150,7 @@
 
 
 Учимся делать команду эффективной
-=================================
+---------------------------------
 
 Следующий барьер - умение сделать команду эффективной.
 Вы не сможете быть эффективным в изоляции, поскольку ваша эффективность определяется качеством кодовой базы, а она разрабатывается всей командой.
@@ -153,7 +164,7 @@
 
 
 Изучаем операционную систему
-============================
+----------------------------
 
 Вот по операционным системам я мало что могу посоветовать, так как низкоуровневым программированием я практически не занимался.
 Но вам обязательно нужно получить представление о том, как работают регистры процессора, память, и как управлять операционной системой.
@@ -169,7 +180,7 @@
 
 
 Изучаем основы алгоритмов и структур данных
-===========================================
+-------------------------------------------
 
 Алгоритмы хоть и используются редко в прикладной разработке (если вы только не пишете поисковые системы, системные утилиты, языки программирования и операционные системы, системы маршрутизации, биржевые анализаторы и т.п.), но знать хотя бы базовые основы необходимо.
 Существует книга, которая за двести с небольшим страниц может дать эти базовые основы в легкой и популярной форме:
@@ -185,7 +196,7 @@
 
 
 Изучаем математику
-==================
+------------------
 
 Существует монументальная книга, которую стоит упомянуть отдельно (обратите внимание на фамилии авторов, которые в представлении не нуждаются).
 Чтобы не тормозить общий процесс обучения, ее лучше читать в параллельно-фоновом режиме.
@@ -206,7 +217,7 @@
 
 
 Учимся архитектуре
-==================
+------------------
 
 Теперь можно приступить и к архитектуре:
 
@@ -214,7 +225,7 @@
 
 
 Изучаем распределенные системы
-==============================
+------------------------------
 
 - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
@@ -224,7 +235,7 @@
 
 
 Изучаем распределенные системы. Углубляем навыки.
-=================================================
+-------------------------------------------------
 
 Книг по этой теме предстоит прочитать слишком много.
 Вряд-ли ваша работа будет ждать, пока вы прочитаете их все.
@@ -246,7 +257,13 @@
 
 
 Изучаем DDD
-===========
+-----------
+
+Начинать я рекомендовал бы с прекрасного краткого руководства:
+
+- "`What Is Domain-Driven Design? <https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/>__`" by Vladik Khononov
+
+Затем приступить к классике:
 
 - "Domain-Driven Design" by Eric Evans
 - "`Implementing Domain-Driven Design <https://kalele.io/books/>`__" by Vaughn Vernon
@@ -268,11 +285,12 @@
 Читать весь список необязательно.
 
 
---------------------------------------------------------------------------------
+Дополнительная литература (на выбор)
+====================================
 
 
 Учимся делать команду эффективной. Углубляем навыки.
-====================================================
+----------------------------------------------------
 
 Теперь можно прочесть и второе издание XP.
 
@@ -285,7 +303,7 @@
 
 
 Развитие личностных профессиональных качеств
-============================================
+--------------------------------------------
 
 - "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
     - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
@@ -293,7 +311,7 @@
 
 
 Базы данных
-===========
+-----------
 
 - "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
 - "The Art of PostgreSQL" 2nd edition by Dimitri Fontaine - is the new title of "Mastering PostgreSQL in Application Development"
@@ -304,7 +322,7 @@
 
 
 Изучаем распределенные системы. Третий заход.
-=============================================
+---------------------------------------------
 
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
 - "Service Design Patterns: Fundamental Design Solutions for SOAP/WSDL and RESTful Web Services" by Robert Daigneau
@@ -318,11 +336,14 @@
 - "`Azure Data Architecture Guide <https://docs.microsoft.com/en-us/azure/architecture/data-guide/>`__" by Microsoft Corporation and community
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
 - "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st edition by Chris Richardson (`more info <https://microservices.io/book>`__)
+- "Monolith to Microservices Evolutionary Patterns to Transform Your Monolith" by Sam Newman
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
 - "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+- "Hands-On Domain-Driven Design with .NET Core: Tackling complexity in the heart of software by putting DDD principles into practice" by Alexey Zimarev
 - "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" by Martin Kleppmann
+- "Database Internals: A Deep Dive into How Distributed Data Systems Work" by Alex Petrov
 - "Distributed systems: principles and paradigms" 3d edition by Andrew S. Tanenbaum, Maarten Van Steen
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
@@ -332,7 +353,7 @@
 
 
 Изучаем проектирование
-======================
+----------------------
 
 - "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
 - "Analysis Patterns. Reusable Object Models" by Martin Fowler
@@ -348,7 +369,7 @@
 
 
 POSA
-====
+----
 
 - "Pattern-Oriented Software Architecture: A System of Patterns, Volume 1" by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
 - "Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2" by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
@@ -358,7 +379,7 @@ POSA
 
 
 Алгоритмы. Второй заход.
-========================
+------------------------
 
 - "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 - "Algorithms and Data Structures" (Oberon version: August 2004) by N.Wirth
@@ -382,50 +403,58 @@ Donald E. Knuth:
 
 
 Тестирование
-============
+------------
 
 - "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
 
 
 Компиляторы
-===========
+-----------
 
 - "Compiler Construction" by N.Wirth
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
 
 
 Изучаем архитектору
-===================
+-------------------
 
 - "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
 - "Object-Oriented Analysis and Design with Applications" 3rd edition by Grady Booch, Robert A. Maksimchuk, Michael W. Engle, Bobbi J. Young Ph.D., Jim Conallen, Kelli A. Houston
 
 
 Изучаем оценивание задач
-========================
+------------------------
 
 - "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell (я встречал в интернете `краткий конспект <http://igorshevchenko.ru/blog/entries/software-estimation>`__)
 - "Agile Estimating and Planning" by Mike Cohn
 
 
 Функциональное программирование
-===============================
+-------------------------------
 
 - `"Software architecture: object-oriented vs functional <http://se.ethz.ch/~meyer/publications/functional/meyer_functional_oo.pdf>`__" by Bertrand Meyer
 - "`Category Theory for Programmers <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__" by Bartosz Milewski (`unofficial PDF and LaTeX source <https://github.com/hmemcpy/milewski-ctfp-pdf>`__)
 - "`Domain Modeling Made Functional. Tackle Software Complexity with Domain-Driven Design and F# <https://fsharpforfunandprofit.com/books/>`__" by Scott Wlaschin
+- "`F# for Fun and Profit <https://fsharpforfunandprofit.com/>`__" by Scott Wlaschin
+- "Functional Programming for the Object-Oriented Programmer" by Brian Marick
+- "Functional Thinking" by Neal Ford
+- "`Haskell <https://en.wikibooks.org/wiki/Haskell>`__"
+- "`The Science of Functional Programming. A Tutorial, with Examples in Scala. <https://github.com/winitzki/sofp/blob/master/sofp-src/sofp.pdf>`__" by Sergei Winitzki, Ph.D.
+- "Microservices with Clojure. Develop event-driven, scalable, and reactive microservices with real-time monitoring" by Anuj Kumar
+
+
+Справочная информация
+=====================
+
 
 Справочники
-===========
+-----------
 
 - "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
 
 
---------------------------------------------------------------------------------
-
-
 Online-каталоги
-===============
+---------------
 
 - `Catalog of Refactorings <http://www.refactoring.com/catalog/>`__
 - `Code Smell <http://c2.com/cgi/wiki?CodeSmell>`__
@@ -450,7 +479,7 @@ Online-каталоги
 
 
 Code Smell catalogs
-===================
+-------------------
 
 - Chapter 17: "Smells and Heuristics" of the book "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
 - Chapter 3. "Bad Smells in Code" of the book "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
@@ -459,7 +488,7 @@ Code Smell catalogs
 
 
 Другие подборки литературы
-==========================
+--------------------------
 
 - `Awesome lists <https://github.com/sindresorhus/awesome>`__
 - `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
@@ -476,7 +505,7 @@ Code Smell catalogs
 
 
 Почтовые рассылки и сообщества
-==============================
+------------------------------
 
 - `Domain Driven Design Community <http://dddcommunity.org/>`__
 - `Domain Driven Design Weekly <http://dddweekly.com/>`__
