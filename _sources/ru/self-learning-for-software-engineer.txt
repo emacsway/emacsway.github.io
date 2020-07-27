@@ -261,7 +261,7 @@
 
 Начинать я рекомендовал бы с прекрасного краткого руководства:
 
-- "`What Is Domain-Driven Design? <https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/>__`" by Vladik Khononov
+- "`What Is Domain-Driven Design? <https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/>`__" by Vladik Khononov
 
 Затем приступить к классике:
 
