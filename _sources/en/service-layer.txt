@@ -936,6 +936,7 @@ Further Reading
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "`CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>`__" by Greg Young
 - "`Sagas <http://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf>`__" by Hector Garcia-Molina and Kenneth Salem
+- "`Domain services vs Application services <https://enterprisecraftsmanship.com/posts/domain-vs-application-services/>`__" by Vladimir Khorikov
 
 Эта статья на Русском языке ":doc:`../ru/service-layer`".
 
