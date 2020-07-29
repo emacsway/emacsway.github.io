@@ -279,7 +279,7 @@
 
 - "`Domain-Driven Design Distilled <https://kalele.io/books/>`__" by V.Vernon
 
-Статьи на частые вопросы:
+Статьи на частые вопросы по DDD:
 
 - "`What is domain logic? <https://enterprisecraftsmanship.com/posts/what-is-domain-logic/>`__" by Vladimir Khorikov
 - "`Domain services vs Application services <https://enterprisecraftsmanship.com/posts/domain-vs-application-services/>`__" by Vladimir Khorikov
@@ -305,6 +305,17 @@
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "`How to create fully encapsulated Domain Models <https://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
+
+Статьи на частые вопросы по проектированию API:
+
+- "`Designing APIs for microservices <https://docs.microsoft.com/en-us/azure/architecture/microservices/design/api-design>`__"
+- "`Web API design <https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design>`__"
+- "`Web API implementation <https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-implementation>`__"
+- "`Microsoft REST API Guidelines <https://github.com/Microsoft/api-guidelines>`__"
+- "`Google REST API Guidelines <https://google.aip.dev/general>`__"
+- "`Web API Design- Crafting Interfaces that Developers Love <https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf>`__"
+- "`REST vs. GraphQL: A Critical Review <https://goodapi.co/blog/rest-vs-graphql>`__"
+- "`5 reasons you shouldn’t be using GraphQL <https://blog.logrocket.com/5-reasons-you-shouldnt-be-using-graphql-61c7846e7ed3/?gi=f67074d77004>`__" (`перевод на Русский <https://medium.com/devschacht/esteban-herrera-5-reasons-you-shouldnt-use-graphql-bae94ab105bc>`__)
 
 Собственно, этих знаний достаточно для того, чтобы стать зрелым специалистом.
 Своего рода - кандидатский минимум.
