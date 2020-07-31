@@ -699,6 +699,34 @@ The quality code is always simple!
 
 ..
 
+    Travel light - You can't expect to carry a lot of baggage and move fast.
+    The artifacts we maintain should be:
+
+    - Few
+    - Simple
+    - Valuable
+
+    The XP team becomes intellectual nomads, always prepared to quickly pack up the tents and follow the herd.
+    The herd in this case might be a design that wants to go a different direction than anticipated, or a customer that wants to go a different direction than anticipated, or a team member who leaves, or a technology that suddenly gets hot, or a business climate that shifts.
+
+    Like the nomads, the XP team gets used to traveling light.
+    They don't carry much in the way of baggage except what they must have to keep producing value for the customer—tests and code.
+
+    <...>
+
+    Travel light - suggests that the manager doesn't impose a lot of overhead - long all-hands meetings, lengthy status reports.
+    Whatever the manager requires of the programmers shouldn't take much time to fulfill.
+
+    <...>
+
+    Travel light - The design strategy should produce no "extra" design.
+    There should be enough to suit our current purposes (the need to do quality work), but no more.
+    If we embrace change, we will be willing to start simple and continually refine.
+
+    \- "Extreme Programming Explained" [#fnxp]_ by Kent Beck
+
+..
+
     "It's hard to do simple things. It seems crazy, but sometimes it is easier to do
     something more complicated than to do something simple. This is particularly true
     when you have been successful doing the complicated thing in the past. Learning to
