@@ -1081,9 +1081,13 @@ Chris Richardson называет эту проблему `Transactional messagi
 
 Vaughn Vernon посвящает этой проблеме главу "8 Domain Events :: Spreading the News to Remote Bounded Contexts :: Messaging Infrastructure Consistency" книги "Implementing Domain-Driven Design" [#fniddd]_.
 
+Очень глубокое понимание этой проблемы и способов ее решения дается в главе "10.Messaging Endpoints :: Transactional Client" книги "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" [#fneip]_ by Gregor Hohpe, Bobby Woolf.
+
+А также эта тема затрагивается в главе "Chapter 9. Message Endpoints :: Transactional Client/Actor" книги "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" [#fnrmp]_ by Vaughn Vernon.
+
 Существует три основных способа решения этой проблемы:
 
-1. `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
+1. `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__ (сюда же относится `Front-Door Queue <https://github.com/obsidiandynamics/goharvest/wiki/Comparison-of-messaging-patterns#front-door-queue>`__ pattern и Transactional Consumer [#fneip]_ vs Transactional Sender)
 2. `Transaction log mining <https://www.scoop.it/t/sql-server-transaction-log-mining>`__ (и `еще <https://microservices.io/patterns/data/transaction-log-tailing.html>`__)
 3. `Outbox pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__
 

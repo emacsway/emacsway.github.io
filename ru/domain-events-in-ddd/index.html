@@ -86,42 +86,42 @@
           <div class="body" role="main">
             
   <div class="section" id="domain-events-in-ddd">
-<h1><a class="toc-backref" href="#id105">Domain Events in DDD</a><a class="headerlink" href="#domain-events-in-ddd" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id108">Domain Events in DDD</a><a class="headerlink" href="#domain-events-in-ddd" title="Permalink to this headline">¶</a></h1>
 <p>Существует множество спорных точек зрения среди практиков DDD по поводу реализации Domain Events.
 Лучший способ понять суть вещей - это обратиться к первоисточнику, чтобы понять его мотивы и те проблемы, решение которым он стремился найти.</p>
 <div class="contents topic" id="id1">
 <p class="topic-title first">Содержание</p>
 <ul class="simple">
-<li><a class="reference internal" href="#domain-events-in-ddd" id="id105">Domain Events in DDD</a></li>
-<li><a class="reference internal" href="#domain-event" id="id106">Назначение Domain Event</a></li>
-<li><a class="reference internal" href="#eventual-consistency-vs-strong-transactional-consistency" id="id107">Eventual Consistency vs Strong (Transactional) Consistency</a><ul>
-<li><a class="reference internal" href="#eventual-consistency" id="id108">Eventual Consistency - это следствие, а не причина</a></li>
-<li><a class="reference internal" href="#id14" id="id109">Eventual Consistency предпочтительней</a></li>
-<li><a class="reference internal" href="#id17" id="id110">Все решают бизнес-правила</a></li>
-<li><a class="reference internal" href="#ask-whose-job-it-is" id="id111">Принцип &#8220;Ask Whose Job It Is&#8221;</a></li>
-<li><a class="reference internal" href="#strong-consistency" id="id112">Strong Consistency - новичкам</a></li>
-<li><a class="reference internal" href="#net-microservices" id="id113">Рекомендации от &#8221;.NET Microservices&#8221;</a></li>
-<li><a class="reference internal" href="#scott-millett-nick-tune" id="id114">Мнение Scott Millett и Nick Tune</a></li>
-<li><a class="reference internal" href="#jimmy-bogard" id="id115">Мнение Jimmy Bogard</a></li>
-<li><a class="reference internal" href="#kamil-grzybek" id="id116">Мнение Kamil Grzybek</a></li>
-<li><a class="reference internal" href="#udi-dahan" id="id117">Мнение Udi Dahan</a></li>
-<li><a class="reference internal" href="#cesar-de-la-torre" id="id118">Мнение Cesar De la Torre</a></li>
+<li><a class="reference internal" href="#domain-events-in-ddd" id="id108">Domain Events in DDD</a></li>
+<li><a class="reference internal" href="#domain-event" id="id109">Назначение Domain Event</a></li>
+<li><a class="reference internal" href="#eventual-consistency-vs-strong-transactional-consistency" id="id110">Eventual Consistency vs Strong (Transactional) Consistency</a><ul>
+<li><a class="reference internal" href="#eventual-consistency" id="id111">Eventual Consistency - это следствие, а не причина</a></li>
+<li><a class="reference internal" href="#id14" id="id112">Eventual Consistency предпочтительней</a></li>
+<li><a class="reference internal" href="#id17" id="id113">Все решают бизнес-правила</a></li>
+<li><a class="reference internal" href="#ask-whose-job-it-is" id="id114">Принцип &#8220;Ask Whose Job It Is&#8221;</a></li>
+<li><a class="reference internal" href="#strong-consistency" id="id115">Strong Consistency - новичкам</a></li>
+<li><a class="reference internal" href="#net-microservices" id="id116">Рекомендации от &#8221;.NET Microservices&#8221;</a></li>
+<li><a class="reference internal" href="#scott-millett-nick-tune" id="id117">Мнение Scott Millett и Nick Tune</a></li>
+<li><a class="reference internal" href="#jimmy-bogard" id="id118">Мнение Jimmy Bogard</a></li>
+<li><a class="reference internal" href="#kamil-grzybek" id="id119">Мнение Kamil Grzybek</a></li>
+<li><a class="reference internal" href="#udi-dahan" id="id120">Мнение Udi Dahan</a></li>
+<li><a class="reference internal" href="#cesar-de-la-torre" id="id121">Мнение Cesar De la Torre</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#in-process-vs-out-of-process" id="id119">In-process vs out-of-process</a></li>
-<li><a class="reference internal" href="#internal-vs-external" id="id120">Internal vs External</a></li>
-<li><a class="reference internal" href="#one-phase-vs-two-phase" id="id121">One-phase vs Two-phase</a></li>
-<li><a class="reference internal" href="#id63" id="id122">Кто может издавать Domain Event?</a></li>
-<li><a class="reference internal" href="#id66" id="id123">Может ли Domain Event отменить свою причину?</a></li>
-<li><a class="reference internal" href="#id72" id="id124">Решение - это баланс стоимости и обретаемой выгоды</a><ul>
-<li><a class="reference internal" href="#cqrs" id="id125">Может ли CQRS-команда возвращать результат?</a></li>
+<li><a class="reference internal" href="#in-process-vs-out-of-process" id="id122">In-process vs out-of-process</a></li>
+<li><a class="reference internal" href="#internal-vs-external" id="id123">Internal vs External</a></li>
+<li><a class="reference internal" href="#one-phase-vs-two-phase" id="id124">One-phase vs Two-phase</a></li>
+<li><a class="reference internal" href="#id63" id="id125">Кто может издавать Domain Event?</a></li>
+<li><a class="reference internal" href="#id66" id="id126">Может ли Domain Event отменить свою причину?</a></li>
+<li><a class="reference internal" href="#id72" id="id127">Решение - это баланс стоимости и обретаемой выгоды</a><ul>
+<li><a class="reference internal" href="#cqrs" id="id128">Может ли CQRS-команда возвращать результат?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#atomicity-and-resiliency-of-integration-events" id="id126">Atomicity and Resiliency of Integration Events</a></li>
-<li><a class="reference internal" href="#integration-events" id="id127">Проблема сохранения очередности Integration Events</a></li>
-<li><a class="reference internal" href="#id94" id="id128">Где создавать Domain Event об удалении объекта?</a></li>
-<li><a class="reference internal" href="#id98" id="id129">Почему важно читать оригиналы вместо переводов</a></li>
-<li><a class="reference internal" href="#id101" id="id130">Послесловие</a></li>
+<li><a class="reference internal" href="#atomicity-and-resiliency-of-integration-events" id="id129">Atomicity and Resiliency of Integration Events</a></li>
+<li><a class="reference internal" href="#integration-events" id="id130">Проблема сохранения очередности Integration Events</a></li>
+<li><a class="reference internal" href="#id97" id="id131">Где создавать Domain Event об удалении объекта?</a></li>
+<li><a class="reference internal" href="#id101" id="id132">Почему важно читать оригиналы вместо переводов</a></li>
+<li><a class="reference internal" href="#id104" id="id133">Послесловие</a></li>
 </ul>
 </div>
 <p>Как сказал Bertrand Meyer,</p>
@@ -134,7 +134,7 @@
 К счастью, при внимательном рассмотрении, противоречий между ними практически нет.</p>
 </div>
 <div class="section" id="domain-event">
-<h1><a class="toc-backref" href="#id106">Назначение Domain Event</a><a class="headerlink" href="#domain-event" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id109">Назначение Domain Event</a><a class="headerlink" href="#domain-event" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Something happened that domain experts care about.
 Model information about activity in the domain as a series of discrete events. Represent each event as a domain object.
@@ -144,9 +144,9 @@ A domain event is a full-fledged part of the domain model, a representation of s
 </div></blockquote>
 </div>
 <div class="section" id="eventual-consistency-vs-strong-transactional-consistency">
-<h1><a class="toc-backref" href="#id107">Eventual Consistency vs Strong (Transactional) Consistency</a><a class="headerlink" href="#eventual-consistency-vs-strong-transactional-consistency" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id110">Eventual Consistency vs Strong (Transactional) Consistency</a><a class="headerlink" href="#eventual-consistency-vs-strong-transactional-consistency" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="eventual-consistency">
-<h2><a class="toc-backref" href="#id108">Eventual Consistency - это следствие, а не причина</a><a class="headerlink" href="#eventual-consistency" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id111">Eventual Consistency - это следствие, а не причина</a><a class="headerlink" href="#eventual-consistency" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>A distinct, though related set of issues arises in distributed systems.
 The state of a distributed system cannot be kept completely consistent at all times.
@@ -255,7 +255,7 @@ By definition locking the root locks all members of the aggregate. The root lock
 <p>Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что &#8220;the system transaction in which you commit the business transaction&#8221;, т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ими.</p>
 </div>
 <div class="section" id="id14">
-<h2><a class="toc-backref" href="#id109">Eventual Consistency предпочтительней</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id112">Eventual Consistency предпочтительней</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами.
 И тут же объясняет - агрегаты в высоконагруженных масштабируемых распределенных приложениях, устойчивых к разделению, никогда не бывают доступны и согласованы между собой одновременно.</p>
 <blockquote>
@@ -284,7 +284,7 @@ It addresses the very reason to use Aggregates.</p>
 </div></blockquote>
 </div>
 <div class="section" id="id17">
-<h2><a class="toc-backref" href="#id110">Все решают бизнес-правила</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id113">Все решают бизнес-правила</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <p>С другой стороны, все решают бизнес-правила:</p>
 <blockquote>
 <div><p>The main point to remember from this section is that business rules are the drivers for determining what must be whole, complete, and consistent at the end of a single transaction.</p>
@@ -292,7 +292,7 @@ It addresses the very reason to use Aggregates.</p>
 </div></blockquote>
 </div>
 <div class="section" id="ask-whose-job-it-is">
-<h2><a class="toc-backref" href="#id111">Принцип &#8220;Ask Whose Job It Is&#8221;</a><a class="headerlink" href="#ask-whose-job-it-is" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id114">Принцип &#8220;Ask Whose Job It Is&#8221;</a><a class="headerlink" href="#ask-whose-job-it-is" title="Permalink to this headline">¶</a></h2>
 <p>Тем не менее, Vaughn Vernon не считает вопрос Strong (Transactional) Consistency vs Eventual Consistency однозначным, и приводит четыре причины, по которым выбор может отдаваться в пользу Strong (Transactional) Consistency.
 Цитировать все не буду - слишком много текста.
 Кому интересно - глава &#8220;Chapter 10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary :: Ask Whose Job It Is&#8221; и далее, вплоть до главы &#8220;Gaining Insight through Discovery&#8221;.
@@ -323,7 +323,7 @@ That understanding is much more valuable than defaulting to a technical leaning.
 <p>Далее, в главе &#8220;Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?&#8221; книги, он демонстрирует применение принципа &#8220;Ask Whose Job It Is&#8221; на практике.</p>
 </div>
 <div class="section" id="strong-consistency">
-<h2><a class="toc-backref" href="#id112">Strong Consistency - новичкам</a><a class="headerlink" href="#strong-consistency" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id115">Strong Consistency - новичкам</a><a class="headerlink" href="#strong-consistency" title="Permalink to this headline">¶</a></h2>
 <p>Вот что советует новичкам Vaughn Vernon:</p>
 <blockquote>
 <div><p>There is nothing incredibly difficult about using eventual consistency.
@@ -337,7 +337,7 @@ You might choose to use this approach in cases that you know will succeed but us
 </div></blockquote>
 </div>
 <div class="section" id="net-microservices">
-<h2><a class="toc-backref" href="#id113">Рекомендации от &#8221;.NET Microservices&#8221;</a><a class="headerlink" href="#net-microservices" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id116">Рекомендации от &#8221;.NET Microservices&#8221;</a><a class="headerlink" href="#net-microservices" title="Permalink to this headline">¶</a></h2>
 <p>&#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id22">[7]</a> явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) и внешние Integration Events.
 Внутренние Domain Events рекомендуется использовать для синхронизации Агрегатов внутри Bounded Context.</p>
 <blockquote>
@@ -371,7 +371,7 @@ It is also the approach used in the ordering microservice in eShopOnContainers.<
 </div></blockquote>
 </div>
 <div class="section" id="scott-millett-nick-tune">
-<h2><a class="toc-backref" href="#id114">Мнение Scott Millett и Nick Tune</a><a class="headerlink" href="#scott-millett-nick-tune" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id117">Мнение Scott Millett и Nick Tune</a><a class="headerlink" href="#scott-millett-nick-tune" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><strong>Sometimes it is actually good practice to modify multiple aggregates within a transaction.</strong>
 But it’s important to understand why the guidelines exist in the first place so that you can be aware of the consequences of ignoring them.</p>
@@ -401,7 +401,7 @@ Therefore, the transactional boundary encapsulates creating the new account and 
 </div></blockquote>
 </div>
 <div class="section" id="jimmy-bogard">
-<h2><a class="toc-backref" href="#id115">Мнение Jimmy Bogard</a><a class="headerlink" href="#jimmy-bogard" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id118">Мнение Jimmy Bogard</a><a class="headerlink" href="#jimmy-bogard" title="Permalink to this headline">¶</a></h2>
 <p>Вот что говорит &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; со ссылкой на Jimmy Bogard:</p>
 <blockquote>
 <div><p>However, other developers and architects like Jimmy Bogard are <strong>okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command</strong>.
@@ -440,7 +440,7 @@ The alternative would be transaction script design, where consistency is enforce
 </div></blockquote>
 </div>
 <div class="section" id="kamil-grzybek">
-<h2><a class="toc-backref" href="#id116">Мнение Kamil Grzybek</a><a class="headerlink" href="#kamil-grzybek" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id119">Мнение Kamil Grzybek</a><a class="headerlink" href="#kamil-grzybek" title="Permalink to this headline">¶</a></h2>
 <p>Вот что говорит Kamil Grzybek:</p>
 <blockquote>
 <div><p>The way of handling of domain events depends indirectly on publishing method.
@@ -488,7 +488,7 @@ If transaction is successful, we need to send 2 emails – about the Order and P
 <p>И, в своем демонстрационном приложении sample-dotnet-core-cqrs-api, <a class="reference external" href="https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Application/Orders/PlaceCustomerOrder/OrderPlacedDomainEventHandler.cs#L22">он демонстрирует обработку Domain Event в одной транзакции с агрегатом</a>.</p>
 </div>
 <div class="section" id="udi-dahan">
-<h2><a class="toc-backref" href="#id117">Мнение Udi Dahan</a><a class="headerlink" href="#udi-dahan" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id120">Мнение Udi Dahan</a><a class="headerlink" href="#udi-dahan" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>&gt; This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
 Is there any specific reason for handle domain events within the same transaction scoping DoSomething?</p>
@@ -528,7 +528,7 @@ That service bus event gets routed to multiple subscribers, behind which you’d
 </div></blockquote>
 </div>
 <div class="section" id="cesar-de-la-torre">
-<h2><a class="toc-backref" href="#id118">Мнение Cesar De la Torre</a><a class="headerlink" href="#cesar-de-la-torre" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id121">Мнение Cesar De la Torre</a><a class="headerlink" href="#cesar-de-la-torre" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>When handling the event, any event handler subscribed to the event could run additional domain operations by using other AggregateRoot objects, but again, you still need to be within the same transaction scope.</p>
 <p>&lt;..&gt;</p>
@@ -543,7 +543,7 @@ That service bus event gets routed to multiple subscribers, behind which you’d
 </div>
 </div>
 <div class="section" id="in-process-vs-out-of-process">
-<h1><a class="toc-backref" href="#id119">In-process vs out-of-process</a><a class="headerlink" href="#in-process-vs-out-of-process" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id122">In-process vs out-of-process</a><a class="headerlink" href="#in-process-vs-out-of-process" title="Permalink to this headline">¶</a></h1>
 <p>Обычно считается, что in-process - это синхронное исполнение, а out-of-process - асинхронное.
 Хотя, сугубо технически, асинхронное исполнение может быть как in-process, так и out-of-process.
 К тому же асинхронное исполнение нужно подразделять на использующее event-loop (async/await) и использующее внешнюю инфраструктуру (external event bus).</p>
@@ -555,7 +555,7 @@ However, you could also use some AMQP implementation like RabbitMQ or Azure Serv
 </div></blockquote>
 </div>
 <div class="section" id="internal-vs-external">
-<h1><a class="toc-backref" href="#id120">Internal vs External</a><a class="headerlink" href="#internal-vs-external" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id123">Internal vs External</a><a class="headerlink" href="#internal-vs-external" title="Permalink to this headline">¶</a></h1>
 <p>Существует ряд методик (Anti-Corruption Layer, CQRS etc.), направленных на то, чтобы защитить изменения внутренних интерфейсов от изменения внешних и наоборот.
 Это логично, так как они будут изменяться в разное время, с разной частотой и по разным причинам.</p>
 <p>Domain Events могут покидать пределы Bounded Context:</p>
@@ -615,7 +615,7 @@ I gave that name because I think it fits best – it is notification that domain
 <p>- &#8220;<a class="reference external" href="http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620">How to publish and handle Domain Events</a>&#8221; <a class="footnote-reference" href="#fnkgde1" id="id47">[15]</a>, comment of Kamil Grzybek</p>
 </div></blockquote>
 <p>Еще дальше идут авторы книги &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id48">[6]</a>, вводя явное разделение внутренних и внешних событий:</p>
-<div class="figure align-center" id="id102">
+<div class="figure align-center" id="id105">
 <a class="reference internal image-reference" href="../../_images/pppddd-18.1.png"><img alt="FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.1.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
 </div>
@@ -632,7 +632,7 @@ Figure 18-2 illustrates how the sequence of events may occur in a typical use ca
 <p>With all of these differences in mind, it makes sense to put your events in different namespaces to  accentuate those that are internal from those that are external.</p>
 <p>- &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id49">[6]</a> by Scott Millett, Nick Tune, Chapter &#8220;18 Domain Events :: Internal vs External Events&#8221;</p>
 </div></blockquote>
-<div class="figure align-center" id="id103">
+<div class="figure align-center" id="id106">
 <a class="reference internal image-reference" href="../../_images/pppddd-18.2.png"><img alt="FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.2.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
 </div>
@@ -677,10 +677,10 @@ When there are significant changes in the domain, the events may need to change,
 </div></blockquote>
 </div>
 <div class="section" id="one-phase-vs-two-phase">
-<h1><a class="toc-backref" href="#id121">One-phase vs Two-phase</a><a class="headerlink" href="#one-phase-vs-two-phase" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id124">One-phase vs Two-phase</a><a class="headerlink" href="#one-phase-vs-two-phase" title="Permalink to this headline">¶</a></h1>
 <p>Ответ на вопрос о разделении доставки Domain Events во многом зависит от того, разделять ли Domain Events на внутренние и внешние?</p>
 <p>Хотя у Vaughn Vernon такое разделение не совсем очевидное, он разделяет реализацию доставки  для подписчиков внутри Bounded Context за его пределами.</p>
-<div class="figure align-center" id="id104">
+<div class="figure align-center" id="id107">
 <a class="reference internal image-reference" href="../../_images/iddd-8.1.png"><img alt="Figure 8.1. Aggregates create Events and publish them. Subscribers may store Events and then forward them to remote subscribers, or just forward them without storing. Immediate forwarding requires XA (two-phase commit) unless messaging middleware shares the model’s data store. The image is from &quot;Implementing Domain-Driven Design&quot; by Vaughn Vernon" src="../../_images/iddd-8.1.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">Figure 8.1. Aggregates create Events and publish them.
 <strong>Subscribers may store Events and then forward them to remote subscribers, or just forward them without storing.</strong>
@@ -760,7 +760,7 @@ The complete process looks like this:</p>
 <p>А вот Udi Dahan в своей статье &#8220;Domain Events – Salvation&#8221; <a class="footnote-reference" href="#fnudde3" id="id62">[22]</a> предложил использовать единый Mediator как для внутренних синхронных подписчиков, вызываемых в той же транзакции, так и для асинхронных подписчиков.</p>
 </div>
 <div class="section" id="id63">
-<h1><a class="toc-backref" href="#id122">Кто может издавать Domain Event?</a><a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id125">Кто может издавать Domain Event?</a><a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>One more point about what can cause a Domain Event is noteworthy.
 Although often it is a user-based command emitted by the user interface that causes an event to occur, sometimes Domain Events
@@ -782,7 +782,7 @@ Thus, they are not just a record of some past occurrence, although they are that
 </div></blockquote>
 </div>
 <div class="section" id="id66">
-<h1><a class="toc-backref" href="#id123">Может ли Domain Event отменить свою причину?</a><a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id126">Может ли Domain Event отменить свою причину?</a><a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Domain events are ordinarily immutable, as they are <strong>a record of something in the past</strong>.
 In addition to a description of the event, a domain event typically contains a timestamp for the time the event occurred and the identity of entities involved in the event.</p>
@@ -829,12 +829,12 @@ When you are in an inconsistent state, you need to roll forward into a new state
 </div></blockquote>
 </div>
 <div class="section" id="id72">
-<h1><a class="toc-backref" href="#id124">Решение - это баланс стоимости и обретаемой выгоды</a><a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id127">Решение - это баланс стоимости и обретаемой выгоды</a><a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h1>
 <p>Любое решение - это баланс выгод и затрат на его реализацию.
 Решение не должно базироваться на <a class="reference external" href="https://youtu.be/LDW0QWie21s?t=1363">&#8220;религиозном&#8221; догматизме</a>, основываясь на бездумной вере только в то, что кто-то так сказал, не понимая при этом причин и следствий.
 Нужно понимать причину решения, решаемую им проблему, и применять его сообразно стоящими перед конкретным проектом проблемами.</p>
 <div class="section" id="cqrs">
-<h2><a class="toc-backref" href="#id125">Может ли CQRS-команда возвращать результат?</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id128">Может ли CQRS-команда возвращать результат?</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h2>
 <p>Хорошим примером, демонстрирующим архитектурную гибкость мышления, является ответ Jimmy Bogard по поводу того, может ли Команда в CQRS возвращать результат?</p>
 <blockquote>
 <div><p>It might seem rather strange that commands always have a result, but it’s much, much easier to deal with side effects of commands through return parameters than through some other means (global registry, static field, re-querying some object, collecting parameter, etc.). <strong>For commands that create an item, I usually want to redirect to a screen showing that item, very easily accomplished when I can get the created item and as for its ID.</strong></p>
@@ -951,16 +951,18 @@ For example assume in a function on stacks contains the operation</p>
 </div>
 </div>
 <div class="section" id="atomicity-and-resiliency-of-integration-events">
-<h1><a class="toc-backref" href="#id126">Atomicity and Resiliency of Integration Events</a><a class="headerlink" href="#atomicity-and-resiliency-of-integration-events" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id129">Atomicity and Resiliency of Integration Events</a><a class="headerlink" href="#atomicity-and-resiliency-of-integration-events" title="Permalink to this headline">¶</a></h1>
 <p>Если отправить Integration Event до коммита транзакции базы данных, то другой процесс не увидит изменений.
 К тому же, может произойти откат транзакции, и согласованность данных будет утрачена.
 А если после коммита, то существует вероятность, что процесс может аварийно завершиться, и сообщение так и не будет отправлено, что приведет к утрате согласованности данных.</p>
 <p>Подробно эта проблема рассмотрена в главе &#8220;<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus">Subscribing to events :: Publishing events through the event bus :: Designing atomicity and resiliency when publishing to the event bus</a>&#8221; книги &#8221;.NET Microservices: Architecture for Containerized .NET Applications&#8221; <a class="footnote-reference" href="#fnnetms" id="id81">[7]</a> by Cesar de la Torre, Bill Wagner, Mike Rousos.</p>
 <p>Chris Richardson называет эту проблему <a class="reference external" href="https://microservices.io/patterns/#transactional-messaging">Transactional messaging</a> рассматривает ее в главе &#8220;<a class="reference external" href="https://livebook.manning.com/book/microservices-patterns/chapter-3/section-3-3-7?origin=product-toc">3.3.7 Transactional messaging</a>&#8221; книги &#8220;Microservices Patterns: With examples in Java&#8221; <a class="footnote-reference" href="#fnmsp" id="id82">[14]</a>.</p>
 <p>Vaughn Vernon посвящает этой проблеме главу &#8220;8 Domain Events :: Spreading the News to Remote Bounded Contexts :: Messaging Infrastructure Consistency&#8221; книги &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id83">[3]</a>.</p>
+<p>Очень глубокое понимание этой проблемы и способов ее решения дается в главе &#8220;10.Messaging Endpoints :: Transactional Client&#8221; книги &#8220;Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions&#8221; <a class="footnote-reference" href="#fneip" id="id84">[11]</a> by Gregor Hohpe, Bobby Woolf.</p>
+<p>А также эта тема затрагивается в главе &#8220;Chapter 9. Message Endpoints :: Transactional Client/Actor&#8221; книги &#8220;Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka&#8221; <a class="footnote-reference" href="#fnrmp" id="id85">[5]</a> by Vaughn Vernon.</p>
 <p>Существует три основных способа решения этой проблемы:</p>
 <ol class="arabic simple">
-<li><a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing">Event Sourcing pattern</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing">Event Sourcing pattern</a> (сюда же относится <a class="reference external" href="https://github.com/obsidiandynamics/goharvest/wiki/Comparison-of-messaging-patterns#front-door-queue">Front-Door Queue</a> pattern и Transactional Consumer <a class="footnote-reference" href="#fneip" id="id86">[11]</a> vs Transactional Sender)</li>
 <li><a class="reference external" href="https://www.scoop.it/t/sql-server-transaction-log-mining">Transaction log mining</a> (и <a class="reference external" href="https://microservices.io/patterns/data/transaction-log-tailing.html">еще</a>)</li>
 <li><a class="reference external" href="https://www.kamilgrzybek.com/design/the-outbox-pattern/">Outbox pattern</a></li>
 </ol>
@@ -971,7 +973,7 @@ For example assume in a function on stacks contains the operation</p>
 </ul>
 </div>
 <div class="section" id="integration-events">
-<h1><a class="toc-backref" href="#id127">Проблема сохранения очередности Integration Events</a><a class="headerlink" href="#integration-events" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id130">Проблема сохранения очередности Integration Events</a><a class="headerlink" href="#integration-events" title="Permalink to this headline">¶</a></h1>
 <p>Подписчики не всегда получают Integration Events в той же последовательности, в которой они были отправлены, по ряду причин.
 Одно из решений этой проблемы заключается в том, что, если получатель обнаруживает, что сообщение не соответствует ожидаемому порядку, то он просто не забирает его из очереди.</p>
 <blockquote>
@@ -980,35 +982,35 @@ Thus, it is also the responsibility of the consuming Bounded Context to recogniz
 It might be the Domain Event type itself that can indicate causality, or it may be metadata associated with the Domain Event, such as a sequence or causal identifier.
 The <strong>sequence</strong> or <strong>causal identifier</strong> would indicate <strong>what caused this Domain Event</strong>, and <strong>if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives</strong>.
 In some cases it is possible to ignore latent Domain Events that have already been superseded by the actions associated with a later one; in this case causality has a dismissible impact.</p>
-<p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id84">[4]</a> by Vaughn Vernon, Chapter &#8220;6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events&#8221;</p>
+<p>- &#8220;Domain-Driven Design Distilled&#8221; <a class="footnote-reference" href="#fndddd" id="id87">[4]</a> by Vaughn Vernon, Chapter &#8220;6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events&#8221;</p>
 </div></blockquote>
-<p>В книге &#8220;Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka&#8221; <a class="footnote-reference" href="#fnrmp" id="id85">[5]</a> by Vaughn Vernon также говорится о том, что Actor должен сам решать, принимать ли ему сообщение:</p>
+<p>В книге &#8220;Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka&#8221; <a class="footnote-reference" href="#fnrmp" id="id88">[5]</a> by Vaughn Vernon также говорится о том, что Actor должен сам решать, принимать ли ему сообщение:</p>
 <blockquote>
 <div><p>Actors must be prepared to accept and reject messages based on their current state, which is reflected by the order in which previous messages were received.
 Sometimes a latent message could be accepted even if it is not perfect timing, but the actor’s reaction to the latent message may have to carefully take into account its current state beforehand.
 This may be dealt with more gracefully by using the actors become() capabilities.</p>
-<p>- &#8220;Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka&#8221; <a class="footnote-reference" href="#fnrmp" id="id86">[5]</a> by Vaughn Vernon, Chapter &#8220;5. Messaging Channels :: Point-to-Point Channel&#8221;</p>
+<p>- &#8220;Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka&#8221; <a class="footnote-reference" href="#fnrmp" id="id89">[5]</a> by Vaughn Vernon, Chapter &#8220;5. Messaging Channels :: Point-to-Point Channel&#8221;</p>
 </div></blockquote>
-<p>Этой же проблеме посвящена и глава &#8220;Chapter 7 Message Routing :: Resequencer&#8221; <a class="footnote-reference" href="#fnrmp" id="id87">[5]</a> той же книги.</p>
-<p>Pattern <a class="reference external" href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html">Resequencer</a> описан также и в главе &#8220;7.Message Routing :: Resequencer&#8221; книги &#8220;Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions&#8221; <a class="footnote-reference" href="#fneip" id="id88">[11]</a> by Gregor Hohpe, Bobby Woolf.</p>
+<p>Этой же проблеме посвящена и глава &#8220;Chapter 7 Message Routing :: Resequencer&#8221; <a class="footnote-reference" href="#fnrmp" id="id90">[5]</a> той же книги.</p>
+<p>Pattern <a class="reference external" href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html">Resequencer</a> описан также и в главе &#8220;7.Message Routing :: Resequencer&#8221; книги &#8220;Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions&#8221; <a class="footnote-reference" href="#fneip" id="id91">[11]</a> by Gregor Hohpe, Bobby Woolf.</p>
 <p>Существует open source integration framework <a class="reference external" href="https://camel.apache.org/">Camel</a>, который предоставляет <a class="reference external" href="https://camel.apache.org/components/latest/eips/resequence-eip.html">готовую из коробки реализацию паттерна Resequencer</a>.
 Он легко интегрируется с различными системами обмена сообщениями, например, <a class="reference external" href="https://camel.apache.org/components/latest/nats-component.html">с Nats</a> (<a class="reference external" href="https://nats.io/blog/apache-camel-nats-connector/">подробнее</a>).</p>
-<p>В &#8220;CQRS Journey&#8221; <a class="footnote-reference" href="#fncqrsj" id="id89">[8]</a> предлагается два варианта решения:</p>
+<p>В &#8220;CQRS Journey&#8221; <a class="footnote-reference" href="#fncqrsj" id="id92">[8]</a> предлагается два варианта решения:</p>
 <blockquote>
 <div><p>The first option is to <strong>use message sessions</strong>, a feature of the Azure Service Bus. If you use message sessions, this guarantees that messages within a session are delivered in the same order that they were sent.</p>
 <p>The second alternative is to modify the handlers within the application to detect out-of-order messages through the use of sequence numbers or timestamps added to the messages when they are sent.
 <strong>If the receiving handler detects an out-of-order message, it rejects the message and puts it back onto the queue or topic to be processed later</strong>, after it has processed the messages that were sent before the rejected message.</p>
-<p>- &#8220;CQRS Journey&#8221; <a class="footnote-reference" href="#fncqrsj" id="id90">[8]</a> by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, Chapter &#8220;<a class="reference external" href="https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering">Journey 6: Versioning Our System :: Message ordering</a>&#8220;</p>
+<p>- &#8220;CQRS Journey&#8221; <a class="footnote-reference" href="#fncqrsj" id="id93">[8]</a> by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, Chapter &#8220;<a class="reference external" href="https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering">Journey 6: Versioning Our System :: Message ordering</a>&#8220;</p>
 </div></blockquote>
-<p>Проблема сохранения очередности сообщений в условиях конкурирующих подписчиков рассматривается и в главе &#8220;<a class="reference external" href="https://livebook.manning.com/book/microservices-patterns/chapter-3/section-3-3-5?origin=product-toc">3.3.5 Competing receivers and message ordering</a>&#8221; книги &#8220;Microservices Patterns: With examples in Java&#8221; <a class="footnote-reference" href="#fnmsp" id="id91">[14]</a> by Chris Richardson, где для решения проблемы предлагается использовать партиционирование каналов.</p>
+<p>Проблема сохранения очередности сообщений в условиях конкурирующих подписчиков рассматривается и в главе &#8220;<a class="reference external" href="https://livebook.manning.com/book/microservices-patterns/chapter-3/section-3-3-5?origin=product-toc">3.3.5 Competing receivers and message ordering</a>&#8221; книги &#8220;Microservices Patterns: With examples in Java&#8221; <a class="footnote-reference" href="#fnmsp" id="id94">[14]</a> by Chris Richardson, где для решения проблемы предлагается использовать партиционирование каналов.</p>
 <p>Но даже если подписчик всего один, и сообщения доставляются последовательно, то и тогда очередность обработки сообщений может быть нарушена:</p>
 <blockquote>
 <div><p>With the redelivery feature, order can&#8217;t be guaranteed, since by definition server will resend messages that have not been acknowledged after a period of time. Suppose your consumer receives messages 1, 2 and 3, does not acknowledge 2. Then message 4 is produced, server sends this message to the consumer. The redelivery timer then kicks in and server will resend message 2. The consumer would see messages: 1, 2, 3, 4, 2, 5, etc...</p>
 <p>In conclusion, the server does not offer this guarantee although it tries to redeliver messages first thing on startup. That being said, if the durable is stalled (number of outstanding messages &gt;= MaxInflight), then the redelivery will also be stalled, and new messages will be allowed to be sent. When the consumer resumes acking messages, then it may receive redelivered and new messages interleaved (new messages will be in order though).</p>
 <p>- nats-streaming-server, <a class="reference external" href="https://github.com/nats-io/nats-streaming-server/issues/187#issuecomment-257024506">issue #187 &#8220;Order of delivery&#8221;</a>, comment by Ivan Kozlovic</p>
 </div></blockquote>
-<p>Ну а лучше всего эта тема раскрывается в Chapter &#8220;12 The Future of Data Systems :: Data Integration :: Combining Specialized Tools by Deriving Data :: Ordering events to capture causality&#8221; книги &#8220;Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems&#8221; <a class="footnote-reference" href="#fnddia" id="id92">[12]</a> by Martin Kleppmann.</p>
-<p>Еще проблемы распределенности хорошо освещаются в книге &#8220;Database Reliability Engineering. Designing and Operating Resilient Database Systems.&#8221; <a class="footnote-reference" href="#fndre" id="id93">[13]</a> by Laine Campbell and Charity Majors.</p>
+<p>Ну а лучше всего эта тема раскрывается в Chapter &#8220;12 The Future of Data Systems :: Data Integration :: Combining Specialized Tools by Deriving Data :: Ordering events to capture causality&#8221; книги &#8220;Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems&#8221; <a class="footnote-reference" href="#fnddia" id="id95">[12]</a> by Martin Kleppmann.</p>
+<p>Еще проблемы распределенности хорошо освещаются в книге &#8220;Database Reliability Engineering. Designing and Operating Resilient Database Systems.&#8221; <a class="footnote-reference" href="#fndre" id="id96">[13]</a> by Laine Campbell and Charity Majors.</p>
 <p>Ссылки по теме:</p>
 <ul class="simple">
 <li>&#8220;<a class="reference external" href="https://queue.acm.org/detail.cfm?id=2610533">Don&#8217;t Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage.</a>&#8221; (<a class="reference external" href="https://dl.acm.org/ft_gateway.cfm?id=2610533&amp;ftid=1449165&amp;dwn=1">pdf</a>) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University</li>
@@ -1024,8 +1026,8 @@ This may be dealt with more gracefully by using the actors become() capabilities
 <li>Лучше один раз увидеть. <a class="reference external" href="https://github.com/bruth/code-examples/tree/master/patterns-nats-streaming">Живые примеры по работе с NATS Streaming Server</a>.</li>
 </ul>
 </div>
-<div class="section" id="id94">
-<h1><a class="toc-backref" href="#id128">Где создавать Domain Event об удалении объекта?</a><a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id97">
+<h1><a class="toc-backref" href="#id131">Где создавать Domain Event об удалении объекта?</a><a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h1>
 <p>Информации по этому вопросу практически нет, поэтому, я поделюсь своими мыслями.</p>
 <p>В Английском языке есть <a class="reference external" href="https://english.stackexchange.com/a/52509">разница</a> между словом &#8220;delete&#8221; и &#8220;remove&#8221;.
 &#8220;Delete&#8221; подразумевает &#8220;уничтожить&#8221;.
@@ -1046,14 +1048,14 @@ This may be dealt with more gracefully by using the actors become() capabilities
 Похожие примеры можно найти и у Vaughn Vernon, см. <a class="reference external" href="https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_identityaccess/Domain.Model/Identity/Group.cs#L159">здесь</a> и <a class="reference external" href="https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_identityaccess/Domain.Model/Identity/Group.cs#L142">здесь</a>.</p>
 <p>Посмотреть <a class="reference external" href="https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_agilepm/Domain.Model/Products/BacklogItems/BacklogItem.cs#L360">пример реализации soft delete Агрегата</a> (а не Сущности) можно у Vaughn Vernon (Агрегат BacklogItem хоть и <a class="reference external" href="https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_agilepm/Domain.Model/Products/Product.cs#L128">создается</a> Агрегатом Product, но является самостоятельным корнем).</p>
 <p>Скрыть присутствие Repository помогает pattern &#8220;<a class="reference external" href="https://martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a>&#8221;.
-В одноименной главе книги &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id95">[10]</a> приводится пример класса DomainObject, который содержит метод markRemoved().</p>
+В одноименной главе книги &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id98">[10]</a> приводится пример класса DomainObject, который содержит метод markRemoved().</p>
 <blockquote>
 <div><p>With object registration (Figure 11.2), the onus is removed from the caller.
 The usual trick here is to place registration methods in object methods. Loading an object from the database registers the object as clean;
 the setting methods register the object as dirty.
 For this scheme to work the Unit of Work needs either to be passed to the object or to be in a well-known place.
 Passing the Unit of Work around is tedious but usually no problem to have it present in some kind of session object.</p>
-<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id96">[10]</a> by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter &#8220;16. Offline Concurrency Patterns :: Coarse-Grained Lock&#8221;</p>
+<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id99">[10]</a> by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter &#8220;16. Offline Concurrency Patterns :: Coarse-Grained Lock&#8221;</p>
 </div></blockquote>
 <p>Для этих целей удобно применять Aspect-oriented programming:</p>
 <blockquote>
@@ -1063,7 +1065,7 @@ I&#8217;ve also come across post-processing of the object files to pull this off
 In this example a post-processor examined all the Java .class files, looked for the appropriate methods and inserted registration calls into the byte code.
 Such finicking around feels dirty, but it separates the database code from the regular code.
 Aspect-oriented programming will do this more cleanly with source code, and as its tools become more commonplace I expect to see this strategy being used.</p>
-<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id97">[10]</a> by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter &#8220;16. Offline Concurrency Patterns :: Coarse-Grained Lock&#8221;</p>
+<p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id100">[10]</a> by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter &#8220;16. Offline Concurrency Patterns :: Coarse-Grained Lock&#8221;</p>
 </div></blockquote>
 <p>Также существует разница и между термином &#8220;insert&#8221; (&#8220;вставить&#8221;) и &#8220;create&#8221; (&#8220;создать&#8221;).
 Первый применим к Коллекции объектов (как и &#8220;remove&#8221;), а второй - к состоянию жизненного цикла самого объекта (как и &#8220;delete&#8221;).</p>
@@ -1076,8 +1078,8 @@ Aspect-oriented programming will do this more cleanly with source code, and as i
 <p>В целом я придерживаюсь такого правила - если Domain Event о &#8220;вставке&#8221; (&#8220;insert&#8221;) объекта создает Коллекция (Repository), то и Domain Event об &#8220;удалении&#8221; (&#8220;remove&#8221;) объекта должна создавать тоже Коллекция (Repository), на том же уровне абстракции.
 А если Domain Event о &#8220;создании&#8221; (&#8220;create&#8221;) объекта создает сам объект, как уведомление о переходе в новое состояние своего жизненного цикла, то и Domain Event об &#8220;уничтожении&#8221; (&#8220;delete&#8221;) объекта должен создавать он же.</p>
 </div>
-<div class="section" id="id98">
-<h1><a class="toc-backref" href="#id129">Почему важно читать оригиналы вместо переводов</a><a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id101">
+<h1><a class="toc-backref" href="#id132">Почему важно читать оригиналы вместо переводов</a><a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h1>
 <p>В самом начале этого поста я говорил, что важно читать первоисточники.
 Теперь я хочу показать, почему важно читать оригиналы, а не их переводы.</p>
 <p>Возьмем известную фразу Эрика Эванса, которая послужила первопричиной для eventual consistency между агрегатами. Сравните ее смысл в оригинале:</p>
@@ -1086,7 +1088,7 @@ Aspect-oriented programming will do this more cleanly with source code, and as i
 <strong>Any rule that spans AGGREGATES [мн. число] will not be expected to be up-to-date at all times.</strong>
 Through event processing, batch processing, or other update mechanisms, other dependencies can be resolved within some specified time.
 But the invariants applied within an AGGREGATE will be enforced with the completion of each transaction.</p>
-<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id99">[1]</a> by Eric Evans, Chapter &#8220;Six. The Life Cycle of a Domain Object:: Aggregates&#8221;</p>
+<p>- &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; <a class="footnote-reference" href="#fnddd" id="id102">[1]</a> by Eric Evans, Chapter &#8220;Six. The Life Cycle of a Domain Object:: Aggregates&#8221;</p>
 </div></blockquote>
 <p>И ее смысл в переводе:</p>
 <blockquote>
@@ -1101,7 +1103,7 @@ But the invariants applied within an AGGREGATE will be enforced with the complet
 The primary idea is that some form of messaging takes place, and an enterprise messaging mechanism is needed.
 To be clear, the mechanism being spoken of here goes well beyond the simple, lightweight Publish-Subscribe components just discussed.
 Here we are discussing what takes over <strong>where the lightweight mechanism leaves off</strong>.</p>
-<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id100">[3]</a> by Vaughn Vernon, Chapter &#8220;8. Domain Events :: Spreading the News to Remote Bounded Contexts&#8221;</p>
+<p>- &#8220;Implementing Domain-Driven Design&#8221; <a class="footnote-reference" href="#fniddd" id="id103">[3]</a> by Vaughn Vernon, Chapter &#8220;8. Domain Events :: Spreading the News to Remote Bounded Contexts&#8221;</p>
 </div></blockquote>
 <p>Сравните с русским переводом:</p>
 <blockquote>
@@ -1113,15 +1115,15 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 И даже если считать оригинальный смысл недостаточно ясным, допускающим несколько трактовок, из которых можно выбрать наиболее корректную исходя из контекста и предыдущих утверждений автора, то русский перевод такой возможности нас лишает.
 Я трактую эту фразу так, чтобы она находилась в согласованности с другими утверждениями Вернона, т.е. &#8220;Ниже мы обсудим, что произойдет <strong>за пределами этого упрощенного механизма</strong>&#8221;, что полностью соответствует рис.8.1. и его описанию.</p>
 </div>
-<div class="section" id="id101">
-<h1><a class="toc-backref" href="#id130">Послесловие</a><a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id104">
+<h1><a class="toc-backref" href="#id133">Послесловие</a><a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h1>
 <p>Эта статья отражает мое мнение на текущий момент времени, которое, однако, я не спешил бы называть окончательно сформированным, поскольку существует еще достаточно большой пласт информации по этому вопросу, который мне только предстоит переработать.
 Основной посыл статьи - больше внимания уделять первоисточникам, и быть более гибким в принятии решений, хорошо осознавая их причины и следствия.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id9">2</a>, <a class="fn-backref" href="#id12">3</a>, <a class="fn-backref" href="#id99">4</a>)</em> &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id9">2</a>, <a class="fn-backref" href="#id12">3</a>, <a class="fn-backref" href="#id102">4</a>)</em> &#8220;Domain-Driven Design: Tackling Complexity in the Heart of Software&#8221; by Eric Evans</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fndddr" rules="none">
@@ -1133,19 +1135,19 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 <table class="docutils footnote" frame="void" id="fniddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id10">3</a>, <a class="fn-backref" href="#id11">4</a>, <a class="fn-backref" href="#id15">5</a>, <a class="fn-backref" href="#id16">6</a>, <a class="fn-backref" href="#id19">7</a>, <a class="fn-backref" href="#id20">8</a>, <a class="fn-backref" href="#id42">9</a>, <a class="fn-backref" href="#id55">10</a>, <a class="fn-backref" href="#id56">11</a>, <a class="fn-backref" href="#id57">12</a>, <a class="fn-backref" href="#id58">13</a>, <a class="fn-backref" href="#id59">14</a>, <a class="fn-backref" href="#id60">15</a>, <a class="fn-backref" href="#id65">16</a>, <a class="fn-backref" href="#id76">17</a>, <a class="fn-backref" href="#id83">18</a>, <a class="fn-backref" href="#id100">19</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Implementing Domain-Driven Design</a>&#8221; by Vaughn Vernon</td></tr>
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id10">3</a>, <a class="fn-backref" href="#id11">4</a>, <a class="fn-backref" href="#id15">5</a>, <a class="fn-backref" href="#id16">6</a>, <a class="fn-backref" href="#id19">7</a>, <a class="fn-backref" href="#id20">8</a>, <a class="fn-backref" href="#id42">9</a>, <a class="fn-backref" href="#id55">10</a>, <a class="fn-backref" href="#id56">11</a>, <a class="fn-backref" href="#id57">12</a>, <a class="fn-backref" href="#id58">13</a>, <a class="fn-backref" href="#id59">14</a>, <a class="fn-backref" href="#id60">15</a>, <a class="fn-backref" href="#id65">16</a>, <a class="fn-backref" href="#id76">17</a>, <a class="fn-backref" href="#id83">18</a>, <a class="fn-backref" href="#id103">19</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Implementing Domain-Driven Design</a>&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fndddd" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id21">2</a>, <a class="fn-backref" href="#id41">3</a>, <a class="fn-backref" href="#id43">4</a>, <a class="fn-backref" href="#id64">5</a>, <a class="fn-backref" href="#id68">6</a>, <a class="fn-backref" href="#id69">7</a>, <a class="fn-backref" href="#id84">8</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Domain-Driven Design Distilled</a>&#8221; by Vaughn Vernon</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id21">2</a>, <a class="fn-backref" href="#id41">3</a>, <a class="fn-backref" href="#id43">4</a>, <a class="fn-backref" href="#id64">5</a>, <a class="fn-backref" href="#id68">6</a>, <a class="fn-backref" href="#id69">7</a>, <a class="fn-backref" href="#id87">8</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Domain-Driven Design Distilled</a>&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnrmp" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id85">1</a>, <a class="fn-backref" href="#id86">2</a>, <a class="fn-backref" href="#id87">3</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka</a>&#8221; by Vaughn Vernon</td></tr>
+<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id85">1</a>, <a class="fn-backref" href="#id88">2</a>, <a class="fn-backref" href="#id89">3</a>, <a class="fn-backref" href="#id90">4</a>)</em> &#8220;<a class="reference external" href="https://kalele.io/books/">Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka</a>&#8221; by Vaughn Vernon</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnpppddd" rules="none">
@@ -1163,7 +1165,7 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 <table class="docutils footnote" frame="void" id="fncqrsj" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[8]</td><td><em>(<a class="fn-backref" href="#id89">1</a>, <a class="fn-backref" href="#id90">2</a>)</em> &#8220;<a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)">CQRS Journey</a>&#8221; by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian</td></tr>
+<tr><td class="label">[8]</td><td><em>(<a class="fn-backref" href="#id92">1</a>, <a class="fn-backref" href="#id93">2</a>)</em> &#8220;<a class="reference external" href="https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)">CQRS Journey</a>&#8221; by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnoosc" rules="none">
@@ -1175,31 +1177,31 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
 <table class="docutils footnote" frame="void" id="fnpoeaa" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[10]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id95">2</a>, <a class="fn-backref" href="#id96">3</a>, <a class="fn-backref" href="#id97">4</a>)</em> &#8220;<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
+<tr><td class="label">[10]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id98">2</a>, <a class="fn-backref" href="#id99">3</a>, <a class="fn-backref" href="#id100">4</a>)</em> &#8220;<a class="reference external" href="https://www.martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a>&#8221; by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fneip" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id88">[11]</a></td><td>&#8220;<a class="reference external" href="https://www.enterpriseintegrationpatterns.com/">Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions</a>&#8221; by Gregor Hohpe, Bobby Woolf</td></tr>
+<tr><td class="label">[11]</td><td><em>(<a class="fn-backref" href="#id84">1</a>, <a class="fn-backref" href="#id86">2</a>, <a class="fn-backref" href="#id91">3</a>)</em> &#8220;<a class="reference external" href="https://www.enterpriseintegrationpatterns.com/">Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions</a>&#8221; by Gregor Hohpe, Bobby Woolf</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnddia" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id92">[12]</a></td><td>&#8220;<a class="reference external" href="https://dataintensive.net/">Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems</a>&#8221; by Martin Kleppmann</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id95">[12]</a></td><td>&#8220;<a class="reference external" href="https://dataintensive.net/">Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems</a>&#8221; by Martin Kleppmann</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fndre" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id93">[13]</a></td><td>&#8220;Database Reliability Engineering. Designing and Operating Resilient Database Systems.&#8221; by Laine Campbell and Charity Majors</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id96">[13]</a></td><td>&#8220;Database Reliability Engineering. Designing and Operating Resilient Database Systems.&#8221; by Laine Campbell and Charity Majors</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnmsp" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[14]</td><td><em>(<a class="fn-backref" href="#id82">1</a>, <a class="fn-backref" href="#id91">2</a>)</em> &#8220;<a class="reference external" href="https://www.manning.com/books/microservice-patterns">Microservices Patterns: With examples in Java</a>&#8221; 1st edition by Chris Richardson (<a class="reference external" href="https://microservices.io/book">more info</a>)</td></tr>
+<tr><td class="label">[14]</td><td><em>(<a class="fn-backref" href="#id82">1</a>, <a class="fn-backref" href="#id94">2</a>)</em> &#8220;<a class="reference external" href="https://www.manning.com/books/microservice-patterns">Microservices Patterns: With examples in Java</a>&#8221; 1st edition by Chris Richardson (<a class="reference external" href="https://microservices.io/book">more info</a>)</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fnkgde1" rules="none">
