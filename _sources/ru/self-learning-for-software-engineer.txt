@@ -507,6 +507,23 @@ Donald E. Knuth:
 =====================
 
 
+Body of Knowledge
+-----------------
+
+- "`Guide to the Systems Engineering Body of Knowledge (SEBoK) <https://www.sebokwiki.org/wiki/Download_SEBoK_PDF>`__"
+- "`The Information Technology Architecture Body of Knowledge (ITABoK) <https://itabok.iasaglobal.org/>`__"
+- "`The Enterprise Architecture Body of Knowledge (EABoK) <https://www.mitre.org/>`__"
+- "`A Guide to the Business Architecture Body of Knowledge(R) (BIZBOK(R) Guide) <https://www.businessarchitectureguild.org/page/BIZBOK>`__"
+- "`A Guide to the Business Analysis Body of Knowledge (BABoK) <https://www.iiba.org/>`__"
+
+
+ГОСТы
+-----
+
+- "`База ГОСТов allgosts.ru - 35. ИНФОРМАЦИОННЫЕ ТЕХНОЛОГИИ. МАШИНЫ КОНТОРСКИЕ <https://allgosts.ru/35/>`__"
+- "`StandartGOST.ru - бесплатные ГОСТы и магазин документов. Информационные технологии. Машины конторские <https://standartgost.ru/0/753-informatsionnye_tehnologii_mashiny_kontorskie>`__"
+
+
 Online-каталоги
 ---------------
 
