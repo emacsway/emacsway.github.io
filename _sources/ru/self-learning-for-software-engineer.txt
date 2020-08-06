@@ -512,9 +512,12 @@ Body of Knowledge
 
 - "`Guide to the Systems Engineering Body of Knowledge (SEBoK) <https://www.sebokwiki.org/wiki/Download_SEBoK_PDF>`__"
 - "`The Information Technology Architecture Body of Knowledge (ITABoK) <https://itabok.iasaglobal.org/>`__"
-- "`The Enterprise Architecture Body of Knowledge (EABoK) <https://www.mitre.org/>`__"
+- "`The Enterprise Architecture Body of Knowledge (EABoK) <https://www.mitre.org/publications/technical-papers/guide-to-the-evolving-enterprise-architecture-body-of-knowledge>`__"
 - "`A Guide to the Business Architecture Body of Knowledge(R) (BIZBOK(R) Guide) <https://www.businessarchitectureguild.org/page/BIZBOK>`__"
-- "`A Guide to the Business Analysis Body of Knowledge (BABoK) <https://www.iiba.org/>`__"
+- "`A Guide to the Business Analysis Body of Knowledge (BABoK) <https://www.iiba.org/standards-and-resources/babok/>`__"
+- "`The Project Management Body of Knowledge <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>`__"
+- "`Учебник 4CIO. Настольная книга ИТ-Директора <https://book4cio.ru/>`__"
+- "`Учебник 4CDTO. Настольная книга руководителя цифровой трансформации <https://4cio.ru/pages/570>`__"
 
 
 ГОСТы
