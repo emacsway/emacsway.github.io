@@ -286,6 +286,7 @@
 - "`Domain model isolation <https://enterprisecraftsmanship.com/posts/domain-model-isolation/>`__" by Vladimir Khorikov
 - "`Email uniqueness as an aggregate invariant <https://enterprisecraftsmanship.com/posts/email-uniqueness-as-aggregate-invariant/>`__" by Vladimir Khorikov
 - "`How to know if your Domain model is properly isolated? <https://enterprisecraftsmanship.com/posts/how-to-know-if-your-domain-model-is-properly-isolated/>`__" by Vladimir Khorikov
+- "`Domain model purity vs. domain model completeness <https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/>`__" by Vladimir Khorikov
 
 - "`Bounded Contexts are NOT Microservices <https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/>`__" by Vladik Khononov
 - "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
