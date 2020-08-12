@@ -906,6 +906,8 @@ Further Reading
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman, chapters:
     - Chapter 3 How to Model Services : Premature Decomposition ... 33
+- "Monolith to Microservices Evolutionary Patterns to Transform Your Monolith" by Sam Newman
+    - Chapter 4. Decomposing the Database : Sagas
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
     - `Command and Query Responsibility Segregation (CQRS) pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs>`__
     - `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
@@ -937,6 +939,7 @@ Further Reading
 - "`CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>`__" by Greg Young
 - "`Sagas <http://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf>`__" by Hector Garcia-Molina and Kenneth Salem
 - "`Domain services vs Application services <https://enterprisecraftsmanship.com/posts/domain-vs-application-services/>`__" by Vladimir Khorikov
+- "`Sagas <https://vasters.com/archive/Sagas.html>`__" by Clemens Vasters ("`Sample Code <https://gist.github.com/clemensv/3562597>`__")
 
 Эта статья на Русском языке ":doc:`../ru/service-layer`".
 
