@@ -623,6 +623,14 @@ Code Smell catalogs
 - `The examples for the book "Reactive Messaging Patterns with the Actor Model" <https://github.com/VaughnVernon/ReactiveMessagingPatterns_ActorModel>`__ by Vaughn Vernon
 - `A Stock Trader system to demonstrate reactive systems development <https://github.com/VaughnVernon/reactive-stock-trader>`__ (`source <https://github.com/RedElastic/reactive-stock-trader>`__ by RedElastic)
 
+- `Refactoring from Anemic Domain Model Towards a Rich One <https://github.com/vkhorikov/AnemicDomainModel>`__ by Vladimir Khorikov
+- `DDD in Practice <https://github.com/vkhorikov/DddInAction>`__ by Vladimir Khorikov
+- `DDD and EF Core <https://github.com/vkhorikov/DddAndEFCore>`__ by Vladimir Khorikov
+- `CQRS in Practice <https://github.com/vkhorikov/CqrsInPractice>`__ by Vladimir Khorikov
+- `Applying Functional Principles in C# <https://github.com/vkhorikov/FuntionalPrinciplesCsharp>`__ by Vladimir Khorikov
+- `Specification Pattern in C# <https://github.com/vkhorikov/SpecPattern>`__ by Vladimir Khorikov
+- `Specification pattern implementation in C# <https://github.com/vkhorikov/SpecificationPattern>`__ by Vladimir Khorikov
+
 Others:
 
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
