@@ -20,13 +20,13 @@ Systems/Software Architect, XP coach, Python/FullStack Lead Software Engineer
 - Blog: https://emacsway.github.io/
 - E-mail: emacsway@gmail.com
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
-- Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `VK <https://vk.com/emacsway>`__, `Instagram <https://www.instagram.com/emacsway/>`__
+- Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `VK <https://vk.com/emacsway>`__, `Instagram <https://www.instagram.com/emacsway/>`__, `Telegram <https://t.me/emacsway_log>`__
 
 
 About me
 --------
 
-An expert in Software Design and Agile.
+A Software Design researcher and practitioner focusing on DDD, Microservices, XP.
 
 Was participated in development of software for various business domains - B2B and marketplace platforms, social networks, enterprise content management systems, content aggregators, GIS and travel portals, intracorporate portals etc.
 
