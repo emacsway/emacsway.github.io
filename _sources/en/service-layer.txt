@@ -412,6 +412,21 @@ Them are two idiomatic styles of collaboration.
 The main drawback of the first one is a high awareness of the interface of other Services, i.e. High coupling, which reduces its reuse.
 The last one is a variation of the Command pattern, and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).
 
+    With orchestration, we rely on a central brain to guide and drive the process, much like the conductor in an orchestra. With choreography, we inform each part of the system of its job, and let it work out the details, like dancers all finding their way and reacting to others around them in a ballet.
+
+    <...>
+
+    The downside to this orchestration approach is that the customer service can become too much of a central governing authority. It can become the hub in the middle of a web, and a central point where logic starts to live.
+    I have seen this approach result in a small number of smart “god” services telling anemic CRUD-based services what to do. 
+
+    With a choreographed approach, we could instead just have the customer service emit an event in an asynchronous manner, saying Customer created.
+    The email service, postal service, and loyalty points bank then just subscribe to these events and react accordingly, as in Figure 4-4.
+    This approach is significantly more decoupled.
+    If some other service needed to reach to the creation of a customer, it just needs to subscribe to the events and do its job when needed.
+    The downside is that the explicit view of the business process we see in Figure 4-2 is now only implicitly reflected in our system.
+
+    \- "Building Microservices. Designing Fine-Grained Systems" [#fnbm]_ by Sam Newman
+
 
 Orchestration Service
 ---------------------
