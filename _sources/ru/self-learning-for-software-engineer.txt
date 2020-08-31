@@ -308,6 +308,8 @@
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "`How to create fully encapsulated Domain Models <https://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
 
+- "`Designing a Domain Model to enforce No Duplicate Names <https://github.com/ardalis/DDD-NoDuplicates>`__ by Steve Smith
+
 Статьи на частые вопросы по проектированию API:
 
 - "`Designing APIs for microservices <https://docs.microsoft.com/en-us/azure/architecture/microservices/design/api-design>`__"

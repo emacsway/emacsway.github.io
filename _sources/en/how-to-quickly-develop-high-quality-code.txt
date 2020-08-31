@@ -693,6 +693,12 @@ The quality code is always simple!
     dead end they still have other options."
     ("Clean Coder" [#fnccoder]_ by Robert Martin)
 
+..
+
+    "A good architecture comes from understanding it more as a journey than as a destination, more as an ongoing process of enquiry than as a frozen artifact."
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+
 .. "Когда кто-либо привязывается к одной какой-нибудь, хотя бы и верной, идее, то он, в сущности, попадает в то же положение, в каком находился бы человек, привязавший себя к столбу, для того чтобы не заблудиться. То, что может быть желанной истиной на известной ступени духовного роста, может быть помехой к этому росту и заблуждением на другой, более высокой ступени."
 
     \- Люси Малори
@@ -1260,6 +1266,7 @@ Further reading
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
 .. [#fnccoder] "The Clean Coder: a code of conduct for professional programmers" by `Robert C. Martin`_
+.. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
 .. [#fncodec] "`Code Complete`_" by Steve McConnell
 .. [#fnrefactoring] "`Refactoring: Improving the Design of Existing Code`_" by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnrtp] "`Refactoring To Patterns`_" by Joshua Kerievsky
