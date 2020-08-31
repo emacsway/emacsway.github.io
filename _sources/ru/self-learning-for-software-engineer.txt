@@ -554,6 +554,8 @@ Online-каталоги
 - `Refactoring Databases <https://databaserefactoring.com/>`__
 - `Catalog of Database Refactorings <http://www.agiledata.org/essays/databaseRefactoringCatalog.html>`__
 - `Extreme Programming Rules <http://www.extremeprogramming.org/rules.html>`__
+- `Consistency Models - a clickable map <https://jepsen.io/consistency>`__
+- `Subway Map to Agile Practices - a clickable map <https://www.agilealliance.org/agile101/subway-map-to-agile-practices/>`__
 
 
 Code Smell catalogs
