@@ -69,7 +69,7 @@ Articles
 - `Concurrency model and Event Loop <https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop>`__
 - `Clean architectures in Python: a step-by-step example <http://blog.thedigitalcatonline.com/blog/2016/11/14/clean-architectures-in-python-a-step-by-step-example/>`__
 - `Designing a DDD-oriented microservice <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/ddd-oriented-microservice>`__
-- `All Things Distributed <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__
+- `Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__
 
 
 

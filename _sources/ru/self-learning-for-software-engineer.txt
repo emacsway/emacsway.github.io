@@ -231,7 +231,7 @@
 - "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 - "`A plain english introduction to CAP Theorem <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__" (`Russian <https://habr.com/ru/post/130577/>`__) by Kaushik Sathupadi
 - "`Map Reduce: A really simple introduction <http://ksat.me/map-reduce-a-really-simple-introduction-kloudo>`__" by Kaushik Sathupadi
-- "`All Things Distributed <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
+- "`Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
 
 
 Изучаем распределенные системы. Углубляем навыки.
