@@ -288,6 +288,7 @@
 - "`How to know if your Domain model is properly isolated? <https://enterprisecraftsmanship.com/posts/how-to-know-if-your-domain-model-is-properly-isolated/>`__" by Vladimir Khorikov
 - "`Domain model purity vs. domain model completeness <https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/>`__" by Vladimir Khorikov
 - "`Immutable architecture <https://enterprisecraftsmanship.com/posts/immutable-architecture/>`__" by Vladimir Khorikov
+- "`Link to an aggregate: reference or Id? <https://enterprisecraftsmanship.com/posts/link-to-an-aggregate-reference-or-id/>`__" by Vladimir Khorikov
 
 - "`Bounded Contexts are NOT Microservices <https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/>`__" by Vladik Khononov
 - "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
