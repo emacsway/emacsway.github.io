@@ -123,6 +123,14 @@ Eventual Consistency - это следствие, а не причина
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans, Chapter "Six. The Life Cycle of a Domain Object :: Aggregates"
 
+..
+
+    Leave transaction control to the client. Although the REPOSITORY will insert into and delete from the database, it will ordinarily not commit anything.
+    It is tempting to commit after saving, for example, but the client presumably has the context to correctly initiate and commit units of work.
+    Transaction management will be simpler if the REPOSITORY keeps its hands off.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans, Chapter "Six. The Life Cycle of a Domain Object :: Repositories"
+
 А здесь он говорит о корне агрегата во множественном числе:
 
     Schemes have been developed for defining ownership relationships in the model. The following simple but rigorous system, distilled from those concepts, includes a set of rules for implementing transactions that modify the objects and their owners.
