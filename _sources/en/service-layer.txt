@@ -949,6 +949,7 @@ Further Reading
 - "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
 - "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
 - "`Patterns for Accounting <https://martinfowler.com/eaaDev/AccountingNarrative.html>`__"
+- "`Accounting Patterns <https://martinfowler.com/apsupp/accounting.pdf>`__"
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "`CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>`__" by Greg Young
