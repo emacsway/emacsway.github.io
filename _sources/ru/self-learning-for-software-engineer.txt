@@ -401,6 +401,7 @@
 - "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
 - "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 - "Hands-On Domain-Driven Design with .NET Core: Tackling complexity in the heart of software by putting DDD principles into practice" by Alexey Zimarev
+- "Event Sourced Building Blocks for Domain-Driven Design with Python <https://leanpub.com/dddwithpython>`__ by John Bywater
 
 
 Изучаем проектирование
