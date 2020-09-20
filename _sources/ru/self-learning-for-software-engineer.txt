@@ -279,7 +279,12 @@
 
 - "`Domain-Driven Design Distilled <https://kalele.io/books/>`__" by V.Vernon
 
-Статьи на частые вопросы по DDD:
+
+Статьи на частые вопросы по DDD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Aggregate & Domain Modeling:
 
 - "`What is domain logic? <https://enterprisecraftsmanship.com/posts/what-is-domain-logic/>`__" by Vladimir Khorikov
 - "`Domain services vs Application services <https://enterprisecraftsmanship.com/posts/domain-vs-application-services/>`__" by Vladimir Khorikov
@@ -290,9 +295,14 @@
 - "`Immutable architecture <https://enterprisecraftsmanship.com/posts/immutable-architecture/>`__" by Vladimir Khorikov
 - "`Link to an aggregate: reference or Id? <https://enterprisecraftsmanship.com/posts/link-to-an-aggregate-reference-or-id/>`__" by Vladimir Khorikov
 
-- "`Bounded Contexts are NOT Microservices <https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/>`__" by Vladik Khononov
-- "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
-- "`DDDDD: Bounded Contexts, Microservices, and Everything In Between <https://youtu.be/Z0RgR9xIQE4>`__" by Vladik Khononov
+- "`How to create fully encapsulated Domain Models <https://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
+
+- "`Effective Aggregate Design <https://dddcommunity.org/library/vernon_2011/>`__" by Vaughn Vernon
+
+- "`Designing a Domain Model to enforce No Duplicate Names <https://github.com/ardalis/DDD-NoDuplicates>`__ by Steve Smith
+
+
+CQRS & Event Sourcing:
 
 - "`Overselling Event Sourcing <https://zimarev.com/blog/event-sourcing/myth-busting/2020-07-09-overselling-event-sourcing/>`__" by Alexey Zimarev
 - "`Event Sourcing and Microservices <https://zimarev.com/blog/event-sourcing/microservices/>`__" by Alexey Zimarev
@@ -300,18 +310,26 @@
 - "`Event Sourcing and CQRS <https://zimarev.com/blog/event-sourcing/cqrs/>`__" by Alexey Zimarev
 - "`Entities as event streams <https://zimarev.com/blog/event-sourcing/entities-as-streams/>`__" by Alexey Zimarev
 - "`Event Sourcing basics <https://zimarev.com/blog/event-sourcing/introduction/>`__" by Alexey Zimarev
-
 - "`What is Event Sourcing? <https://eventstore.com/blog/what-is-event-sourcing/>`__" by Alexey Zimarev
 - "`Event Sourcing and CQRS <https://eventstore.com/blog/event-sourcing-and-cqrs/>`__" by Alexey Zimarev
 
-- "`Effective Aggregate Design <https://dddcommunity.org/library/vernon_2011/>`__" by Vaughn Vernon
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
-- "`How to create fully encapsulated Domain Models <https://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
 
-- "`Designing a Domain Model to enforce No Duplicate Names <https://github.com/ardalis/DDD-NoDuplicates>`__ by Steve Smith
 
-Статьи на частые вопросы по проектированию API:
+Bounded Context and Microservices:
+
+- "`Bounded Contexts are NOT Microservices <https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/>`__" by Vladik Khononov
+- "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
+- "`DDDDD: Bounded Contexts, Microservices, and Everything In Between <https://youtu.be/Z0RgR9xIQE4>`__" by Vladik Khononov
+
+- "`Reactive Microservices <https://kalele.io/reactive-microservices/>`__" by Vaughn Vernon
+- "`Microservices and [Micro]services <https://kalele.io/microservices-and-microservices/>`__" by Vaughn Vernon
+
+- "`About Bounded Contexts and Microservices <https://blog.avanscoperta.it/2020/06/11/about-bounded-contexts-and-microservices/>`__" by Alberto Brandolini
+
+
+API-Design:
 
 - "`Designing APIs for microservices <https://docs.microsoft.com/en-us/azure/architecture/microservices/design/api-design>`__"
 - "`Web API design <https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design>`__"
