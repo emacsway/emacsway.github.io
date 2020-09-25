@@ -281,6 +281,90 @@ Strong Consistency - новичкам
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "5. Tactical Design with Aggregates :: Rule 4: Update Other Aggregates Using Eventual Consistency"
 
 
+Интересы performance
+--------------------
+
+Ранее упоминалось, что одной из ключевых причин fine-grained транзакций является performance.
+Но всегда ли?
+На самом деле, все зависит от конкретных условий.
+Забегая наперед, рассмотрим такое утверждение:
+
+    NOTE: Try not to confuse this guideline with loading or creating aggregates.
+    It is perfectly fine to load multiple aggregates inside the same transaction as long as you save only one of them.
+    **Equally, it is permissible to create multiple aggregates inside a single transaction because adding new aggregates should not cause concurrency issues.**
+
+    \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_ by Scott Millett, Nick Tune, Chapter "19 Aggregates :: Special Cases"
+
+Какое значение имеет это утверждение для performance?
+Я обращусь к статьям двух известных организаций в области highload:
+
+    This consistent insert throughput also persists when writing large batches of rows in single operations to TimescaleDB (instead of row-by-row).
+    Such batched inserts are common practice for databases employed in more high-scale production environments, e.g., when ingesting data from a distributed queue like Kafka.
+    **In such scenarios, a single Timescale server can ingest 130K rows (or 1.3M metrics) per second, approximately 15x that of vanilla PostgreSQL once the table has reached a couple 100M rows.**
+
+    \- "`Time-series data: Why (and how) to use a relational database instead of NoSQL <https://blog.timescale.com/blog/time-series-data-why-and-how-to-use-a-relational-database-instead-of-nosql-d0cd6975e87c/>`__" by Mike Freedman, Timescale CTO and co-founder. Professor of Computer Science at Princeton.
+
+..
+
+    7. Insert rows in batches.
+
+    In order to achieve higher ingest rates, you should insert your data with many rows in each INSERT call (or else use some bulk insert command, like COPY or our parallel copy tool).
+
+    Don't insert your data row-by-row – instead try at least hundreds (or thousands) of rows per INSERT.
+    This allows the database to spend less time on connection management, transaction overhead, SQL parsing, etc., and more time on data processing.
+
+    \- "`13 tips to improve PostgreSQL Insert performance <https://blog.timescale.com/blog/13-tips-to-improve-postgresql-insert-performance/>`__" by Mike Freedman, Timescale CTO and co-founder. Professor of Computer Science at Princeton.
+
+..
+
+    It is of note here that each insert is a transaction.
+    What this means is Postgres is doing some extra coordination to make sure the transaction is completed before returning.
+    On every single write this takes some overhead.
+    Instead of single row transactions, if we wrap all of our inserts in a transaction like below, we’ll see some nice performance gains::
+
+        begin;
+        insert 1;
+        insert 2;
+        insert 3;
+        ...
+        commit;
+
+    This took my inserts down from 15 minutes 30 seconds to 5 minutes and 4 seconds.
+    We’ve suddenly boosted our throughput by 3x to about 3k inserts per second.
+
+    <...>
+
+    By batching our inserts into a single transaction, we saw our throughput go higher.
+    But hold on, there is even more we can do. The ``\copy`` mechanism gives a way to bulk load data in an even more performant manner.
+
+    <...>
+
+    Running this \copy completes in 82 seconds! We’re now processing over 10k writes per second on some fairly modest hardware.
+
+    \- "`Faster bulk loading in Postgres with copy <https://www.citusdata.com/blog/2017/11/08/faster-bulk-loading-in-postgresql-with-copy/>`__" by Craig Kerstiens, CitusData
+
+Вот что говорит по этому вопросу документация по PostgreSQL:
+
+    When using multiple INSERTs, turn off autocommit and just do one commit at the end.
+    (In plain SQL, this means issuing BEGIN at the start and COMMIT at the end. Some client libraries might do this behind your back, in which case you need to make sure the library does it when you want it done.)
+    **If you allow each insertion to be committed separately, PostgreSQL is doing a lot of work for each row that is added.**
+
+    \- "`PostgreSQL 11 Documentation :: 14.4. Populating a Database :: 14.4.1. Disable Autocommit <https://www.postgresql.org/docs/11/populate.html#DISABLE-AUTOCOMMIT>`__"
+
+Целесообразность использования Eventual Consistency в интересах performance нужно рассматривать в каждом конкретном случае отдельно.
+Универсального рецепта не существует.
+Этот вопрос особенно актуален при разработке сертифицированных приложений, где свобода выбора базы данных ограничена списком сертифицированных решений (зачастую вся свобода выбора сводится к RDBMS PostgresPro).
+Организовать пакетирование запросов можно на уровне `Unit of Work <https://martinfowler.com/eaaCatalog/unitOfWork.html>`__.
+
+В контексте этого вопроса можно еще раз вспомнить утверждение Eric Evans:
+
+    Discussing this with Eric Evans revealed a very simple and sound guideline.
+    When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent.
+    **If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.**
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary :: Ask Whose Job It Is"
+
+
 Рекомендации от ".NET Microservices"
 ------------------------------------
 
