@@ -84,8 +84,10 @@
 По сути, знания нужны только для того, чтобы избавиться от всего лишнего.
 Архитектура - это, на самом деле, наука об ограничениях (т.е. о том, как не надо делать).
 
+
 Кандидатский минимум
 ====================
+
 
 Учимся обучению
 ---------------
@@ -247,6 +249,10 @@
 
 - https://github.com/dotnet-architecture/eShopOnContainers (CQRS, DDD, Microservices)
 
+Еще одно хорошее краткое руководство от Microsoft:
+
+- "`Building microservices on Azure <https://docs.microsoft.com/en-us/azure/architecture/microservices/>`__"
+
 И можно сюда включить еще и книгу:
 
 - "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
@@ -327,6 +333,14 @@ Bounded Context and Microservices:
 - "`Microservices and [Micro]services <https://kalele.io/microservices-and-microservices/>`__" by Vaughn Vernon
 
 - "`About Bounded Contexts and Microservices <https://blog.avanscoperta.it/2020/06/11/about-bounded-contexts-and-microservices/>`__" by Alberto Brandolini
+
+- "`Using domain analysis to model microservices <https://docs.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis>`__"
+- "`Identifying microservice boundaries <https://docs.microsoft.com/en-us/azure/architecture/microservices/model/microservice-boundaries>`__"
+
+
+Domain Events:
+
+- ":doc:`./domain-events-in-ddd`"
 
 
 API-Design:
