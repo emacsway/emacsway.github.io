@@ -661,6 +661,7 @@ Code Smell catalogs
 - `DDD with Actors <https://github.com/VaughnVernon/DDDwithActors>`__ by Vaughn Vernon
 - `The examples for the book "Reactive Messaging Patterns with the Actor Model" <https://github.com/VaughnVernon/ReactiveMessagingPatterns_ActorModel>`__ by Vaughn Vernon
 - `A Stock Trader system to demonstrate reactive systems development <https://github.com/VaughnVernon/reactive-stock-trader>`__ (`source <https://github.com/RedElastic/reactive-stock-trader>`__ by RedElastic)
+- `ContosoUniversityDotNetCore-Pages <https://github.com/jbogard/ContosoUniversityDotNetCore-Pages>`__ by Jimmy Bogard
 
 - `Refactoring from Anemic Domain Model Towards a Rich One <https://github.com/vkhorikov/AnemicDomainModel>`__ by Vladimir Khorikov
 - `DDD in Practice <https://github.com/vkhorikov/DddInAction>`__ by Vladimir Khorikov
