@@ -784,6 +784,11 @@ The quality code is always simple!
     "I'm not a great programmer; I'm just a good programmer with great habits."
     \- Kent Beck
 
+..
+
+    "Software design is a constant battle with complexity."
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+
 See also the great article "`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler.
 
 
