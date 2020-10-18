@@ -230,7 +230,7 @@
 ------------------------------
 
 - "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
-- "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+- "Building Microservices. Designing Fine-Grained Systems" 2nd edition by Sam Newman
 - "`A plain english introduction to CAP Theorem <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__" (`Russian <https://habr.com/ru/post/130577/>`__) by Kaushik Sathupadi
 - "`Map Reduce: A really simple introduction <http://ksat.me/map-reduce-a-really-simple-introduction-kloudo>`__" by Kaushik Sathupadi
 - "`Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
@@ -415,6 +415,8 @@ API-Design:
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
 - "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st edition by Chris Richardson (`more info <https://microservices.io/book>`__)
 - "Monolith to Microservices Evolutionary Patterns to Transform Your Monolith" by Sam Newman
+- "Microservices AntiPatterns and Pitfalls" by Mark Richards
+- "Microservices vs. Service-Oriented Architecture" by Mark Richards
 - "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" by Martin Kleppmann
@@ -452,6 +454,7 @@ API-Design:
 - "Refactoring To Patterns" by Joshua Kerievsky
 - "Structure and Interpretation of Computer Programs" (aka SICP) 2nd edition (MIT Electrical Engineering and Computer Science) by Harold Abelson, Gerald Jay Sussman, Julie Sussman
 - "Object Oriented Software Engineering: A Use Case Driven Approach" by Ivar Jacobson
+- "Object-Oriented Analysis and Design with Applications" 3rd edition by Grady Booch, Robert A. Maksimchuk, Michael W. Engle, Bobbi J. Young Ph.D., Jim Conallen, Kelli A. Houston
 
 
 POSA
@@ -511,7 +514,17 @@ Donald E. Knuth:
 -------------------
 
 - "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
-- "Object-Oriented Analysis and Design with Applications" 3rd edition by Grady Booch, Robert A. Maksimchuk, Michael W. Engle, Bobbi J. Young Ph.D., Jim Conallen, Kelli A. Houston
+- "Documenting Software Architectures: Views and Beyond" 2nd edition by Paul Clements, Felix Bachmann, Len Bass, David Garlan, James Ivers, Reed Little, Paulo Merson, Robert Nord, Judith Stafford
+- "Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives" 2nd edition by Nick Rozanski, Eóin Woods
+- "Designing Software Architectures: A Practical Approach (SEI Series in Software Engineering)" 1st edition by Humberto Cervantes, Rick Kazman
+- "Fundamentals of Software Architecture: An Engineering Approach" 1st edition by Mark Richards, Neal Ford
+- "Building Evolutionary Architectures: Support Constant Change" 1st Edition by Neal Ford, Rebecca Parsons, Patrick Kua
+- "Introduction to Solution Architecture Paperback" by Alan McSweeney
+- "Systems Analysis and Design" 7th edition by Alan Dennis, Barbara Haley Wixom, Roberta M. Roth
+
+- "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
+- "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-1:v1:en>`__"
+- `ГОСТ Р 57100-2016 Системная и программная инженерия. Описание архитектуры <https://allgosts.ru/35/080/gost_r_57100-2016>`__
 
 
 Изучаем оценивание задач
