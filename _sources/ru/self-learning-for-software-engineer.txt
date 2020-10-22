@@ -355,8 +355,8 @@ API-Design
 - "`Web API implementation <https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-implementation>`__"
 - "`Microsoft REST API Guidelines <https://github.com/Microsoft/api-guidelines>`__"
 - "`Google REST API Guidelines <https://google.aip.dev/general>`__"
+- "`Microservice API Patterns <https://microservice-api-patterns.org/>`__"
 - "`Web API Design - Crafting Interfaces that Developers Love <https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf>`__"
--  "`Microservice API Patterns <https://microservice-api-patterns.org/>`__"
 - "`REST vs. GraphQL: A Critical Review <https://goodapi.co/blog/rest-vs-graphql>`__"
 - "`5 reasons you shouldn’t be using GraphQL <https://blog.logrocket.com/5-reasons-you-shouldnt-be-using-graphql-61c7846e7ed3/?gi=f67074d77004>`__" (`перевод на Русский <https://medium.com/devschacht/esteban-herrera-5-reasons-you-shouldnt-use-graphql-bae94ab105bc>`__)
 
