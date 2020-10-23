@@ -472,7 +472,7 @@ Related articles:
 - "`Design Stamina Hypothesis <https://martinfowler.com/bliki/DesignStaminaHypothesis.html>`__" by Martin Fowler
 - "`Is High Quality Software Worth the Cost? <https://martinfowler.com/articles/is-quality-worth-cost.html>`__" by Martin Fowler
 - "`Is Design Dead? <https://martinfowler.com/articles/designDead.html>`__" by Martin Fowler
-- "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman, chapter "7 Modifiability"
+- "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman, Chapter "7 Modifiability"
 
 
 The third myth. Pair programming reduces the velocity of development.
