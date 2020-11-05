@@ -289,6 +289,8 @@
 Статьи на частые вопросы по DDD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+- `Patterns related to Domain Driven Design <https://martinfowler.com/tags/domain%20driven%20design.html>`__ by Martin Fowler
+
 
 Aggregate & Domain Modeling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -360,6 +362,46 @@ API-Design
 - "`REST vs. GraphQL: A Critical Review <https://goodapi.co/blog/rest-vs-graphql>`__"
 - "`5 reasons you shouldn’t be using GraphQL <https://blog.logrocket.com/5-reasons-you-shouldnt-be-using-graphql-61c7846e7ed3/?gi=f67074d77004>`__" (`перевод на Русский <https://medium.com/devschacht/esteban-herrera-5-reasons-you-shouldnt-use-graphql-bae94ab105bc>`__)
 
+
+Event Storming
+~~~~~~~~~~~~~~
+
+
+By Alberto Brandolini (`twitter <https://twitter.com/ziobrando>`__):
+
+- "Domain-Driven Design: The First 15 Years", chapter "Discovering Bounded Contexts with EventStorming" by Alberto Brandolini
+- "`Introducing Event Storming <http://ziobrando.blogspot.com/2013/11/introducing-event-storming.html>`__" by Alberto Brandolini
+- "`Remote EventStorming <https://blog.avanscoperta.it/2020/03/26/remote-eventstorming/>`__" by Alberto Brandolini
+- "`Leanpub: Introducing EventStorming <https://leanpub.com/introducing_eventstorming>`__" by Alberto Brandolini
+- `EventStorming.com <https://www.eventstorming.com/>`__
+
+
+Others:
+
+- "Domain-Driven Design Distilled" by Vaughn Vernon, chapter "Chapter 7 Acceleration and Management Tools :: Event Storming"
+- "`What is Domain-Driven Design? <https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/>`__" by Vladik Khononov, chapter "Chapter 8: Event Storming"
+- "`EventStorming Glossary & Cheat sheet <https://ddd-crew.github.io/eventstorming-glossary-cheat-sheet/>`__" by Nick Tune
+- "Open Agile Architecture", chapter "`19. Event Storming <https://ddd-crew.github.io/eventstorming-glossary-cheat-sheet/>`__"
+- "`Event Storming на практических кейсах <http://agilemindset.ru/event-storming-%D0%BD%D0%B0-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85-%D0%BA%D0%B5%D0%B9%D1%81%D0%B0%D1%85/>`__", Сергей Баранов (`видео <https://www.youtube.com/watch?v=kJjuTuviZ-E>`__)
+- "`Reactive in practice, Unit 1: Event storming the stock trader domain <https://developer.ibm.com/tutorials/reactive-in-practice-1/>`__" by Kevin Webber, Dana Harrington
+- "`Event storming at ibm.com <https://www.ibm.com/cloud/architecture/architecture/practices/event-storming-methodology-architecture/>`__"
+- "`Event driven solution implementation methodology <https://ibm-cloud-architecture.github.io/refarch-eda/methodology/event-storming/>`__"
+- "`Awesome EventStorming <https://github.com/mariuszgil/awesome-eventstorming>`__"
+
+
+Tools:
+
+- `EventStorming для PlantUML <https://github.com/tmorin/plantuml-libs/blob/master/dist/eventstorming/README.md>`__
+- `miro.com <https://miro.com/>`__, см. `Event Storming template <https://miro.com/miroverse/category/ideation-and-brainstorming/event-storming>`__
+
+
+Modelling
+~~~~~~~~~
+
+- "`Domain-Driven Design Starter Modelling Process <https://github.com/ddd-crew/ddd-starter-modelling-process>`__" by Nick Tune
+- "`Legacy Architecture Modernisation With Strategic Domain-Driven Design <https://medium.com/nick-tune-tech-strategy-blog/legacy-architecture-modernisation-with-strategic-domain-driven-design-3e7c05bb383f>`__" by Nick Tune
+
+
 Собственно, этих знаний достаточно для того, чтобы стать зрелым специалистом.
 Своего рода - кандидатский минимум.
 Далее - порядок чтения может быть произвольным.
@@ -384,6 +426,7 @@ API-Design
 - "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
 - "Succeeding with Agile: Software Development Using Scrum" by Mike Cohn
 - "User Stories Applied: For Agile Software Development" by Mike Cohn
+- "`Systems Thinking <https://less.works/less/principles/systems-thinking.html>`__" by Craig Larman (`перевод на Русский <https://less.works/ru/less/principles/systems-thinking.html>`__)
 
 
 Развитие личностных профессиональных качеств
@@ -392,6 +435,8 @@ API-Design
 - "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
     - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
 - "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
+- "Systems Thinking. Quality Software Management. New York: Dorset House." by Gerald M. Weinberg, 1992,  ISBN: 0932633226
+- "An Introduction to General Systems Thinking" by Gerald M. Weinberg
 
 
 Базы данных
@@ -527,6 +572,7 @@ Donald E. Knuth:
 - "Building Evolutionary Architectures: Support Constant Change" 1st Edition by Neal Ford, Rebecca Parsons, Patrick Kua
 - "Introduction to Solution Architecture Paperback" by Alan McSweeney
 - "Systems Analysis and Design" 7th edition by Alan Dennis, Barbara Haley Wixom, Roberta M. Roth
+- "The Design of Design: Essays from a Computer Scientist" by Frederick P. Brooks
 
 - "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
 - "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-1:v1:en>`__"
