@@ -372,6 +372,7 @@ By Alberto Brandolini (`twitter <https://twitter.com/ziobrando>`__):
 - "Domain-Driven Design: The First 15 Years", chapter "Discovering Bounded Contexts with EventStorming" by Alberto Brandolini
 - "`Introducing Event Storming <http://ziobrando.blogspot.com/2013/11/introducing-event-storming.html>`__" by Alberto Brandolini
 - "`Remote EventStorming <https://blog.avanscoperta.it/2020/03/26/remote-eventstorming/>`__" by Alberto Brandolini
+- "`EventStorming in COVID-19 times <https://blog.avanscoperta.it/2020/03/26/eventstorming-in-covid-19-times/>`__" by Alberto Brandolini
 - "`Leanpub: Introducing EventStorming <https://leanpub.com/introducing_eventstorming>`__" by Alberto Brandolini
 - `EventStorming.com <https://www.eventstorming.com/>`__
 
