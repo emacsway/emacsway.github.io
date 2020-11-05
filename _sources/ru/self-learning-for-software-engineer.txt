@@ -574,6 +574,7 @@ Donald E. Knuth:
 - "Introduction to Solution Architecture Paperback" by Alan McSweeney
 - "Systems Analysis and Design" 7th edition by Alan Dennis, Barbara Haley Wixom, Roberta M. Roth
 - "The Design of Design: Essays from a Computer Scientist" by Frederick P. Brooks
+- "Living Documentation: Continuous Knowledge Sharing by Design" by Cyrille Martraire
 
 - "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
 - "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-1:v1:en>`__"
