@@ -496,6 +496,7 @@ Modelling
 - "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss
 - "Analysis Patterns. Reusable Object Models" by Martin Fowler
 - "Implementation Patterns" by Kent Beck
+- "Smalltalk Best Practice Patterns" by Kent Beck
 - "`Development of Further Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaDev/>`__" by Martin Fowler
 - "Domain Specific Languages" by Martin Fowler (with Rebecca Parsons)
 - "Pattern Hatching: Design Patterns Applied" by John Vlissides
