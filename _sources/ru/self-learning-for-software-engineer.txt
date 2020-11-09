@@ -576,6 +576,10 @@ Donald E. Knuth:
 - "Systems Analysis and Design" 7th edition by Alan Dennis, Barbara Haley Wixom, Roberta M. Roth
 - "The Design of Design: Essays from a Computer Scientist" by Frederick P. Brooks
 - "Living Documentation: Continuous Knowledge Sharing by Design" by Cyrille Martraire
+- "Just Enough Software Architecture: A Risk-Driven Approach" by George H. Fairbanks
+- "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
+- "The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise 1st Edition" by Gregor Hohpe
+- "Cloud Strategy: A Decision-based Approach to Successful Cloud Migration" by Gregor Hohpe, Michele Danieli, Jean-Francois Landreau, Tahir Hashmi
 
 - "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
 - "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-1:v1:en>`__"
