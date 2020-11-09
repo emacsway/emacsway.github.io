@@ -661,6 +661,7 @@ Online-каталоги
 - `Subway Map to Agile Practices - a clickable map <https://www.agilealliance.org/agile101/subway-map-to-agile-practices/>`__
 - `The Arcitura Education Patterns, Mechanisms and Metrics Master Catalog <https://patterns.arcitura.com/>`__
 - `Microservice API Patterns <https://microservice-api-patterns.org/>`__
+- `Architecture Playbook <https://nocomplexity.com/documents/arplaybook/>`__ (`source <https://github.com/nocomplexity/ArchitecturePlaybook>`__)
 
 
 Code Smell catalogs
