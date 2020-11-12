@@ -606,6 +606,10 @@ Donald E. Knuth:
 - "`The Science of Functional Programming. A Tutorial, with Examples in Scala. <https://github.com/winitzki/sofp/blob/master/sofp-src/sofp.pdf>`__" by Sergei Winitzki, Ph.D.
 - "Microservices with Clojure. Develop event-driven, scalable, and reactive microservices with real-time monitoring" by Anuj Kumar
 
+Для Golang-разработчиков:
+
+- "Learning Functional Programming in Go: Change the way you approach your applications using functional programming in Go" by Lex Sheehan
+
 
 Справочники
 -----------
