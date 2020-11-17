@@ -1406,8 +1406,8 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 .. [#fnntuhbr] "`Uncovering Hidden Business Rules with DDD Aggregates <https://medium.com/nick-tune-tech-strategy-blog/uncovering-hidden-business-rules-with-ddd-aggregates-67fb02abc4b>`__ by Nick Tune
 .. [#fnmvpe] "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
 .. [#fngycqrs] "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
-.. [#fnvkdesrs] "`Domain events: simple and reliable solution <https://enterprisecraftsmanship.com/posts/domain-events-simple-reliable-solution/>`__" by Vladimir Khorikov
-.. [#fnvkdesrs] "`Merging domain events before dispatching <https://enterprisecraftsmanship.com/posts/merging-domain-events-dispatching/>`__" by Vladimir Khorikov
+.. [#fnvkdesars] "`Domain events: simple and reliable solution <https://enterprisecraftsmanship.com/posts/domain-events-simple-reliable-solution/>`__" by Vladimir Khorikov
+.. [#fnvkmdebd] "`Merging domain events before dispatching <https://enterprisecraftsmanship.com/posts/merging-domain-events-dispatching/>`__" by Vladimir Khorikov
 
 
 .. update:: May 15, 2020

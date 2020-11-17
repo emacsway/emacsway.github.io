@@ -735,6 +735,9 @@ Code Smell catalogs
 - `go-iddd - showcase project for implementing DDD in Go <https://github.com/AntonStoeckl/go-iddd>`__ by Anton Stöckl (see more info `here <https://medium.com/@TonyBologni/implementing-domain-driven-design-and-hexagonal-architecture-with-go-1-292938c0a4d4>`__ and `here <https://medium.com/@TonyBologni/implementing-domain-driven-design-and-hexagonal-architecture-with-go-2-efd432505554>`__).
 - `Demo taxi system, using eventsourcing library <https://github.com/johnbywater/es-example-taxi-demo>`__ by John Bywater
 - `FTGO example application. Example code for the book Microservice patterns <https://github.com/microservices-patterns/ftgo-application>`__ by Chris Richardson
+- `Eventuate Tram Customers and Orders <https://github.com/eventuate-tram/eventuate-tram-examples-customers-and-orders/>`__ by Chris Richardson
+- `Eventuate Tram Customers and Orders - .NET version <https://github.com/eventuate-examples/eventuate-tram-core-dotnet-examples-customers-and-orders>`__ by Chris Richardson
+- `eventuate-examples <https://github.com/eventuate-examples>`__ by Chris Richardson
 - `Sample code for the book Principles, Practices and Patterns of Domain-Driven Design <https://github.com/elbandit/PPPDDD>`__ by Scott Millett, Nick Tune
 - `Hands-On Domain-Driven Design with .NET Core, published by Packt <https://github.com/PacktPublishing/Hands-On-Domain-Driven-Design-with-.NET-Core>`__ by Alexey Zimarev
 - `Extended code samples related to the book "Domain Modeling Made Functional" <https://github.com/swlaschin/DomainModelingMadeFunctional>`__ by Scott Wlaschin
