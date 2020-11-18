@@ -471,7 +471,9 @@ Modelling
 - "Monolith to Microservices Evolutionary Patterns to Transform Your Monolith" by Sam Newman
 - "Microservices AntiPatterns and Pitfalls" by Mark Richards
 - "Microservices vs. Service-Oriented Architecture" by Mark Richards
-- "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
+- "`Site Reliability Engineering: How Google runs production systems <https://landing.google.com/sre/books/>`__" edited by Betsy Beyer, Chris Jones, Jennifer Petoff & Niall Richard Murphy
+- "`The Site Reliability Workbook: Practical Ways to Implement SRE. <https://landing.google.com/sre/books/>`__" by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
+- "`Building Secure & Reliable Systems: Best Practices for Designing, Implementing and Maintaining Systems. <https://landing.google.com/sre/books/>`__" by Heather Adkins, Betsy Beyer, Paul Blankinship, Ana Oprea, Piotr Lewandowski, Adam Stubblefield
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" by Martin Kleppmann
 - "Database Internals: A Deep Dive into How Distributed Data Systems Work" by Alex Petrov
