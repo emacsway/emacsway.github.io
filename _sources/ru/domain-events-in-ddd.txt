@@ -351,6 +351,8 @@ Strong Consistency - новичкам
 
     \- "`PostgreSQL 11 Documentation :: 14.4. Populating a Database :: 14.4.1. Disable Autocommit <https://www.postgresql.org/docs/11/populate.html#DISABLE-AUTOCOMMIT>`__"
 
+Напомню, Event Sourcing состоит из одних только вставок.
+
 Целесообразность использования Eventual Consistency в интересах performance нужно рассматривать в каждом конкретном случае отдельно.
 Универсального рецепта не существует.
 Этот вопрос особенно актуален при разработке сертифицированных приложений, где свобода выбора базы данных ограничена списком сертифицированных решений (зачастую вся свобода выбора сводится к RDBMS PostgresPro).

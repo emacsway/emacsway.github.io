@@ -126,6 +126,26 @@ NoSQL хранилища построены вокруг идеи агрегат
 То же самое справедливо и к случаю использования паттерна `Special Case <https://martinfowler.com/eaaCatalog/specialCase.html>`__, известного также как метод рефакторинга `Introduce Null Object <https://www.refactoring.com/catalog/introduceNullObject.html>`__.
 Смотрите также `Replace Conditional with Polymorphism <https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__, `Replace Type Code With Polymorphism <https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html>`__ и `Replace Type Code with State/Strategy <https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html>`__ (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).
 
+Материалы по теме:
+
+- "`What is domain logic? <https://enterprisecraftsmanship.com/posts/what-is-domain-logic/>`__" by Vladimir Khorikov
+- "`Domain services vs Application services <https://enterprisecraftsmanship.com/posts/domain-vs-application-services/>`__" by Vladimir Khorikov
+- "`Domain model isolation <https://enterprisecraftsmanship.com/posts/domain-model-isolation/>`__" by Vladimir Khorikov
+- "`Email uniqueness as an aggregate invariant <https://enterprisecraftsmanship.com/posts/email-uniqueness-as-aggregate-invariant/>`__" by Vladimir Khorikov
+- "`How to know if your Domain model is properly isolated? <https://enterprisecraftsmanship.com/posts/how-to-know-if-your-domain-model-is-properly-isolated/>`__" by Vladimir Khorikov
+- "`Domain model purity vs. domain model completeness <https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/>`__" by Vladimir Khorikov
+- "`Domain model purity and lazy loading <https://enterprisecraftsmanship.com/posts/domain-model-purity-lazy-loading/>`__" by Vladimir Khorikov
+- "`Domain model purity and the current time <https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/>`__" by Vladimir Khorikov
+- "`Immutable architecture <https://enterprisecraftsmanship.com/posts/immutable-architecture/>`__" by Vladimir Khorikov
+- "`Link to an aggregate: reference or Id? <https://enterprisecraftsmanship.com/posts/link-to-an-aggregate-reference-or-id/>`__" by Vladimir Khorikov
+
+- "`How to create fully encapsulated Domain Models <https://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
+
+Примеры преобразования Anemic Domain Model в Domain Model:
+
+- `Refactoring from Anemic Domain Model Towards a Rich One <https://github.com/vkhorikov/AnemicDomainModel>`__ by Vladimir Khorikov
+- `Refactoring from anemic to rich Domain Model example <https://github.com/kgrzybek/refactoring-from-anemic-to-rich-domain-model-example>`__ by Kamil Grzybek
+
 .. В определенной мере, затрагиваемая тема относится и к этой презентации \https://www.destroyallsoftware.com/talks/boundaries .
 
 .. rubric:: Footnotes

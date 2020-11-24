@@ -181,6 +181,25 @@ NoSQL хранилища построены вокруг идеи агрегат
 <p>Попробуйте реализовать в таком стиле паттерн <a class="reference external" href="https://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a> для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
 То же самое справедливо и к случаю использования паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/specialCase.html">Special Case</a>, известного также как метод рефакторинга <a class="reference external" href="https://www.refactoring.com/catalog/introduceNullObject.html">Introduce Null Object</a>.
 Смотрите также <a class="reference external" href="https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html">Replace Conditional with Polymorphism</a>, <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html">Replace Type Code With Polymorphism</a> и <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html">Replace Type Code with State/Strategy</a> (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).</p>
+<p>Материалы по теме:</p>
+<ul class="simple">
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/what-is-domain-logic/">What is domain logic?</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-vs-application-services/">Domain services vs Application services</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-isolation/">Domain model isolation</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/email-uniqueness-as-aggregate-invariant/">Email uniqueness as an aggregate invariant</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/how-to-know-if-your-domain-model-is-properly-isolated/">How to know if your Domain model is properly isolated?</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/">Domain model purity vs. domain model completeness</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-lazy-loading/">Domain model purity and lazy loading</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/">Domain model purity and the current time</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/immutable-architecture/">Immutable architecture</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/link-to-an-aggregate-reference-or-id/">Link to an aggregate: reference or Id?</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/">How to create fully encapsulated Domain Models</a>&#8221; by Udi Dahan</li>
+</ul>
+<p>Примеры преобразования Anemic Domain Model в Domain Model:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/vkhorikov/AnemicDomainModel">Refactoring from Anemic Domain Model Towards a Rich One</a> by Vladimir Khorikov</li>
+<li><a class="reference external" href="https://github.com/kgrzybek/refactoring-from-anemic-to-rich-domain-model-example">Refactoring from anemic to rich Domain Model example</a> by Kamil Grzybek</li>
+</ul>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="fnadminapen" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
