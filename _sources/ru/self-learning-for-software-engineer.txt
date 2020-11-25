@@ -700,6 +700,8 @@ Code Smell catalogs
 - `Список книг от Сергея Теплякова <https://sergeyteplyakov.blogspot.com/2013/08/blog-post.html>`__
 - `Список книг от Grady Booch <https://handbookofsoftwarearchitecture.com/books/>`__
 - `Книги по направлению Архитектура и проектирование ПО от эксперта luxoft <https://www.luxoft-training.ru/about/experts/answers/302/30945/>`__
+- `The Architect’s Path (Part 1 - Model) <https://architectelevator.com/architecture/architect-path/>`__ by Gregor Hohpe
+- `The Architect’s Path (Part 2 - Implementation) <https://architectelevator.com/architecture/architect-bookshelf/>`__ by Gregor Hohpe
 
 
 Почтовые рассылки и сообщества
