@@ -402,7 +402,6 @@ But hold on, there is even more we can do. The <code class="docutils literal"><s
 <strong>If you allow each insertion to be committed separately, PostgreSQL is doing a lot of work for each row that is added.</strong></p>
 <p>- &#8220;<a class="reference external" href="https://www.postgresql.org/docs/11/populate.html#DISABLE-AUTOCOMMIT">PostgreSQL 11 Documentation :: 14.4. Populating a Database :: 14.4.1. Disable Autocommit</a>&#8220;</p>
 </div></blockquote>
-<p>Напомню, Event Sourcing состоит из одних только вставок.</p>
 <p>Целесообразность использования Eventual Consistency в интересах performance нужно рассматривать в каждом конкретном случае отдельно.
 Универсального рецепта не существует.
 Этот вопрос особенно актуален при разработке сертифицированных приложений, где свобода выбора базы данных ограничена списком сертифицированных решений (зачастую вся свобода выбора сводится к RDBMS PostgresPro).
