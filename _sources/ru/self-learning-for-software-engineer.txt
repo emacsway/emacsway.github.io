@@ -396,6 +396,9 @@ Tools:
 
 - `EventStorming для PlantUML <https://github.com/tmorin/plantuml-libs/blob/master/dist/eventstorming/README.md>`__
 - `miro.com <https://miro.com/>`__, см. `Event Storming template <https://miro.com/miroverse/category/ideation-and-brainstorming/event-storming>`__
+- EventStorming для ArchiMate:
+    - см. "`Figure 13: Event Storming Model <https://nicea.nic.in/download-files.php?nid=247>`__"
+    - `Model used by Jean-Baptiste Sarrodie for presentation "Enterprise Architecture Modelling with ArchiMate in an Agile at Scale Programme" <https://community.opengroup.org/archimate-user-community/home/-/issues/8>`__
 
 
 Modelling
