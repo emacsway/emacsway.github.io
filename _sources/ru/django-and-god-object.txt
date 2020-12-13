@@ -459,12 +459,13 @@ Code Smell "Switch Statements"
    :name: robots-urls-py-v5
    :linenos:
 
+   from django.conf import settings
    from django.urls import path
    from robots.factory import RobotsFactory
 
 
    urlpatterns = [
-       path('robots.txt', RobotsFactory.make_robots_txt_view(), name='robots.txt'),
+       path('robots.txt', RobotsFactory.make_robots_txt_view(settings.ENVIRONMENT), name='robots.txt'),
    ]
 
 

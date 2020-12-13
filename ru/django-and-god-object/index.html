@@ -607,12 +607,14 @@ polymorphic objects that take the place of other such switch statements in the r
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">robots.factory</span> <span class="kn">import</span> <span class="n">RobotsFactory</span>
 
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;robots.txt&#39;</span><span class="p">,</span> <span class="n">RobotsFactory</span><span class="o">.</span><span class="n">make_robots_txt_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;robots.txt&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;robots.txt&#39;</span><span class="p">,</span> <span class="n">RobotsFactory</span><span class="o">.</span><span class="n">make_robots_txt_view</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">ENVIRONMENT</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;robots.txt&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 </td></tr></table></div>
