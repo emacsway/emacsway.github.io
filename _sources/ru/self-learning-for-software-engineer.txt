@@ -234,6 +234,8 @@
 - "`A plain english introduction to CAP Theorem <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__" (`Russian <https://habr.com/ru/post/130577/>`__) by Kaushik Sathupadi
 - "`Map Reduce: A really simple introduction <http://ksat.me/map-reduce-a-really-simple-introduction-kloudo>`__" by Kaushik Sathupadi
 - "`Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels
+- "`Distributed systems: for fun and profit <http://book.mixu.net/distsys/>`__" (2013). An introduction to distributed systems. (`source code <https://github.com/mixu/distsysbook>`__)
+- "`Lecture notes (PDF) (including exercises) <https://martin.kleppmann.com/2020/11/18/distributed-systems-and-elliptic-curves.html>`__" by Martin Kleppman (`download <https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/dist-sys-notes.pdf>`__, `source code <https://github.com/ept/dist-sys>`__, `video <https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB>`__)
 
 
 Изучаем распределенные системы. Углубляем навыки.
@@ -343,6 +345,8 @@ Bounded Context and Microservices
 
 - "`Using domain analysis to model microservices <https://docs.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis>`__"
 - "`Identifying microservice boundaries <https://docs.microsoft.com/en-us/azure/architecture/microservices/model/microservice-boundaries>`__"
+
+- "`Domain, Subdomain, Bounded Context, Problem/Solution Space in DDD: Clearly Defined <https://medium.com/nick-tune-tech-strategy-blog/domains-subdomain-problem-solution-space-in-ddd-clearly-defined-e0b49c7b586c>`__" by Nick Tune
 
 
 Domain Events
