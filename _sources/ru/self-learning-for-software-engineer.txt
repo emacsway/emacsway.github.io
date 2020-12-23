@@ -709,6 +709,7 @@ Code Smell catalogs
 - `Книги по направлению Архитектура и проектирование ПО от эксперта luxoft <https://www.luxoft-training.ru/about/experts/answers/302/30945/>`__
 - `The Architect’s Path (Part 1 - Model) <https://architectelevator.com/architecture/architect-path/>`__ by Gregor Hohpe
 - `The Architect’s Path (Part 2 - Implementation) <https://architectelevator.com/architecture/architect-bookshelf/>`__ by Gregor Hohpe
+- `Software Architecture Book References <https://www.developertoarchitect.com/books.html>`__ by Mark Richards
 
 
 Почтовые рассылки и сообщества
