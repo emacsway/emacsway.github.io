@@ -766,6 +766,7 @@ Code Smell catalogs
 - `Applying Functional Principles in C# <https://github.com/vkhorikov/FuntionalPrinciplesCsharp>`__ by Vladimir Khorikov
 - `Specification Pattern in C# <https://github.com/vkhorikov/SpecPattern>`__ by Vladimir Khorikov
 - `Specification pattern implementation in C# <https://github.com/vkhorikov/SpecificationPattern>`__ by Vladimir Khorikov
+- `Validation in DDD course <https://github.com/vkhorikov/ValidationInDDD>`__ by Vladimir Khorikov
 
 Others:
 
