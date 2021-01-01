@@ -681,6 +681,7 @@ Online-каталоги
 - `The Arcitura Education Patterns, Mechanisms and Metrics Master Catalog <https://patterns.arcitura.com/>`__
 - `Microservice API Patterns <https://microservice-api-patterns.org/>`__
 - `Architecture Playbook <https://nocomplexity.com/documents/arplaybook/>`__ (`source <https://github.com/nocomplexity/ArchitecturePlaybook>`__)
+- `Software Systems Architecture <https://www.viewpoints-and-perspectives.info/>`__ - This web site contains a selection of supporting material for the book ("Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives" 2nd edition by Nick Rozanski, Eóin Woods), including sample chapters, references and white papers.
 
 
 Code Smell catalogs
