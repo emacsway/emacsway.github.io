@@ -96,8 +96,17 @@
 Как минимум, просмотрите хотя бы этот видеоролик: &#8220;<a class="reference external" href="https://www.youtube.com/watch?v=TMuno5RZNeE">Bob Martin SOLID Principles of Object Oriented and Agile Design</a>&#8221;.</p>
 <p>Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет соответствовать пятому принципу &#8220;D&#8221; в SOLID, а лишение объекта полиморфизма (да еще и в условиях отсутствия <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch">Множественной Диспетчеризации</a>) будет соответствовать третьему принципу &#8220;L&#8221; в SOLID.
 В таком случае внедрять зависимости и обеспечивать полиморфизм придется вручную, фактически превращая программу из объектно-ориентированной в процедурную.</p>
+<blockquote>
+<div><p>The fact that the boundaries are not visible during the deployment of a monolith does not mean that they are not present and meaningful.
+Even when statically linked into a single executable, the ability to independently develop and marshal the various components for final assembly is immensely valuable.</p>
+<p>Such architectures almost always depend on some kind of <strong>dynamic polymorphism to manage their internal dependencies</strong>.
+<strong>This is one of the reasons that object-oriented development has become such an important paradigm in recent decades.</strong>
+Without OO, or an equivalent form of polymorphism, architects must fall back on the dangerous practice of using pointers to functions to achieve the appropriate decoupling.
+Most architects find prolific use of pointers to functions to be too risky, so they are forced to abandon any kind of component partitioning.</p>
+<p>- &#8220;Clean Architecture: A Craftsman’s Guide to Software Structure and Design&#8221; by Robert C. Martin</p>
+</div></blockquote>
 <p>Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, не понимая отличий межу функциональным программированием и процедурным.
-Если говорить о превосходствах функционального программирования, то этот вопрос хорошо осветил Роберт Мартин в статье &#8220;<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>&#8221;.</p>
+Если говорить о превосходствах функционального программирования, то этот вопрос хорошо осветил Роберт Мартин в статьях &#8220;<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>&#8221; (2014) и &#8220;<a class="reference external" href="https://blog.cleancoder.com/uncle-bob/2018/04/13/FPvsOO.html">FP vs. OO</a>&#8221; (2018).</p>
 <p>Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных. А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.</p>
 <p>Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Date Type в функциональной парадигме.
 Вот <a class="reference external" href="https://youtu.be/dnUFEg68ESM?t=3085">здесь</a>, например, сам Eric Evans говорит о том, что в своей книге &#8220;Domain-Driven Design&#8221; он не рассматривал глубоко функциональную парадигму, потому что в 2003 она не имела такого применения как сегодня.

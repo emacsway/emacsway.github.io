@@ -21,8 +21,18 @@
 Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет соответствовать пятому принципу "D" в SOLID, а лишение объекта полиморфизма (да еще и в условиях отсутствия `Множественной Диспетчеризации <https://en.wikipedia.org/wiki/Multiple_dispatch>`__) будет соответствовать третьему принципу "L" в SOLID.
 В таком случае внедрять зависимости и обеспечивать полиморфизм придется вручную, фактически превращая программу из объектно-ориентированной в процедурную.
 
+    The fact that the boundaries are not visible during the deployment of a monolith does not mean that they are not present and meaningful.
+    Even when statically linked into a single executable, the ability to independently develop and marshal the various components for final assembly is immensely valuable.
+
+    Such architectures almost always depend on some kind of **dynamic polymorphism to manage their internal dependencies**.
+    **This is one of the reasons that object-oriented development has become such an important paradigm in recent decades.**
+    Without OO, or an equivalent form of polymorphism, architects must fall back on the dangerous practice of using pointers to functions to achieve the appropriate decoupling.
+    Most architects find prolific use of pointers to functions to be too risky, so they are forced to abandon any kind of component partitioning.
+
+    \- "Clean Architecture: A Craftsman’s Guide to Software Structure and Design" by Robert C. Martin
+
 Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, не понимая отличий межу функциональным программированием и процедурным.
-Если говорить о превосходствах функционального программирования, то этот вопрос хорошо осветил Роберт Мартин в статье "`OO vs FP <http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html>`__".
+Если говорить о превосходствах функционального программирования, то этот вопрос хорошо осветил Роберт Мартин в статьях "`OO vs FP <http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html>`__" (2014) и "`FP vs. OO <https://blog.cleancoder.com/uncle-bob/2018/04/13/FPvsOO.html>`__" (2018).
 
 Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных. А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.
 
