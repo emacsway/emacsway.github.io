@@ -350,6 +350,8 @@ Bounded Context and Microservices
 
 - "`Monolith -> Services: Theory & Practice <https://medium.com/@kentbeck_7670/monolith-services-theory-practice-617e4546a879>`__" by Kent Beck
 
+- "`How to break a Monolith into Microservices :: Go Macro First, then Micro <https://martinfowler.com/articles/break-monolith-into-microservices.html#GoMacroFirstThenMicro>`__" by Zhamak Dehghani
+
 
 Domain Events
 ~~~~~~~~~~~~~
