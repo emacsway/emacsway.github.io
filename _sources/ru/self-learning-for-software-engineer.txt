@@ -451,6 +451,8 @@ Modelling
 - "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
 - "Systems Thinking. Quality Software Management. New York: Dorset House." by Gerald M. Weinberg, 1992,  ISBN: 0932633226
 - "An Introduction to General Systems Thinking" by Gerald M. Weinberg
+- "Harvard Business Review on Decision Making" by Harvard Business School Press
+
 
 
 Базы данных
