@@ -108,6 +108,9 @@ Most architects find prolific use of pointers to functions to be too risky, so t
 <p>Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, не понимая отличий межу функциональным программированием и процедурным.
 Если говорить о превосходствах функционального программирования, то этот вопрос хорошо осветил Роберт Мартин в статьях &#8220;<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>&#8221; (2014) и &#8220;<a class="reference external" href="https://blog.cleancoder.com/uncle-bob/2018/04/13/FPvsOO.html">FP vs. OO</a>&#8221; (2018).</p>
 <p>Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных. А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.</p>
+<blockquote>
+<div>&#8220;OO makes code understandable by encapsulating moving parts. FP makes code understandable by minimizing moving parts.&#8221;
+- <a class="reference external" href="https://twitter.com/mfeathers/status/29581296216">Michael Feathers</a></div></blockquote>
 <p>Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Date Type в функциональной парадигме.
 Вот <a class="reference external" href="https://youtu.be/dnUFEg68ESM?t=3085">здесь</a>, например, сам Eric Evans говорит о том, что в своей книге &#8220;Domain-Driven Design&#8221; он не рассматривал глубоко функциональную парадигму, потому что в 2003 она не имела такого применения как сегодня.
 А сегодня, в контексте Event Sourcing, она имеет уже совсем другое значение.</p>
