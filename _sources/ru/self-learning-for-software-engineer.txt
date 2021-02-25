@@ -775,6 +775,12 @@ Code Smell catalogs
 - `Specification pattern implementation in C# <https://github.com/vkhorikov/SpecificationPattern>`__ by Vladimir Khorikov
 - `Validation in DDD course <https://github.com/vkhorikov/ValidationInDDD>`__ by Vladimir Khorikov
 
+Варианты реализации OO/Functional Aggregates на примере Reference Applications by Chris Richardson:
+
+- `Traditional OO mutable Domain Objects <https://github.com/cer/event-sourcing-examples/tree/master/java-spring>`__
+- `Functional Scala witn immutable Domain Objects <https://github.com/cer/event-sourcing-using-scala-typeclasses>`__
+- `Hybrid OO/Functional Scala with immutable Domain Objects <https://github.com/cer/event-sourcing-examples/tree/master/scala-spring>`__
+
 Others:
 
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
