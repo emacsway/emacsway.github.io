@@ -196,6 +196,12 @@
 
 При чтении этой книги могут возникать вопросы справочного характера по математике, ответы на которые можно найти в приложении этой книги (Appendix A: Useful Formulas for the Analysis of Algorithms, Appendix B: Short Tutorial on Recurrence Relations), в математических справочниках (например, М.Я. Выгодского, А.А. Гусака) или в справочном разделе по математике "VIII Appendix: Mathematical Background" книги "Introduction to Algorithms" 3d edition by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein.
 
+В качестве минималистичного ликбеза по теоретическим основам может неплохо подойти книга:
+
+- "Computer Science Distilled" by Wladston Ferreira Filho
+
+Она содержит минималистичные основы математики (логика, комбинаторика, вероятность), алгоритмы и структуры данных, основы Баз Данных (RDBMS, NoSQL), описание Парадигм Программирования и основы архитектуры железа.
+
 
 Изучаем математику
 ------------------
