@@ -603,9 +603,12 @@ Donald E. Knuth:
 - "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
 - "The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise 1st Edition" by Gregor Hohpe
 - "Cloud Strategy: A Decision-based Approach to Successful Cloud Migration" by Gregor Hohpe, Michele Danieli, Jean-Francois Landreau, Tahir Hashmi
+- "Architecting for Scale" 2nd Edition by Lee Atchison
 
 - "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
-- "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-1:v1:en>`__"
+- "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/standard/50508.html>`__"
+- "`ISO/IEC/IEEE 42020:2019 Software, systems and enterprise — Architecture processes <https://www.iso.org/standard/68982.html>`__"
+- "`ISO/IEC/IEEE 42030:2019 Software, systems and enterprise — Architecture evaluation framework <https://www.iso.org/standard/73436.html>`__"
 - `ГОСТ Р 57100-2016 Системная и программная инженерия. Описание архитектуры <https://allgosts.ru/35/080/gost_r_57100-2016>`__
 
 
