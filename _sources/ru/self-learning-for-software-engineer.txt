@@ -723,6 +723,7 @@ Code Smell catalogs
 - `The Architect’s Path (Part 1 - Model) <https://architectelevator.com/architecture/architect-path/>`__ by Gregor Hohpe
 - `The Architect’s Path (Part 2 - Implementation) <https://architectelevator.com/architecture/architect-bookshelf/>`__ by Gregor Hohpe
 - `Software Architecture Book References <https://www.developertoarchitect.com/books.html>`__ by Mark Richards
+- `Как прокачаться в проектировании программного обеспечения — список книг <https://apolomodov.medium.com/software-design-books-743be52e4c71>`__ by Alexander Polomodov
 
 
 Почтовые рассылки и сообщества
