@@ -579,6 +579,7 @@ Donald E. Knuth:
 ------------
 
 - "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
+- "Unit Testing Principles, Practices, and Patterns: Effective testing styles, patterns, and reliable automation for unit testing, mocking, and integration testing with examples in C#" 1st Edition by Vladimir Khorikov
 - "Growing Object-Oriented Software, Guided by Tests" by Steve Freeman, Nat Pryce
 - "Agile Testing: A Practical Guide for Testers and Agile Teams" by Lisa Crispin, Janet Gregory
 - "More Agile Testing: Learning Journeys for the Whole Team" by Lisa Crispin, Janet Gregory
