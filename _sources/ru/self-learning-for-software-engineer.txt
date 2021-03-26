@@ -688,7 +688,7 @@ Online-каталоги
 - `Service Design Patterns <http://servicedesignpatterns.com>`__
 - `SOAPatterns.org <http://soapatterns.org/>`__
 - `CloudPatterns.org <http://www.cloudpatterns.org/>`__
-- `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
+- `BigDataPatterns.org <https://patterns.arcitura.com/big-data-patterns>`__
 - `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
 - `Workflow Patterns <http://workflowpatterns.com/patterns/>`__
 - `Microservices Patterns <https://microservices.io/patterns/>`__
