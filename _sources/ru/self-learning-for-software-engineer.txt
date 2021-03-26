@@ -377,6 +377,9 @@ API-Design
 - "`Web API Design - Crafting Interfaces that Developers Love <https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf>`__"
 - "`REST vs. GraphQL: A Critical Review <https://goodapi.co/blog/rest-vs-graphql>`__"
 - "`5 reasons you shouldn’t be using GraphQL <https://blog.logrocket.com/5-reasons-you-shouldnt-be-using-graphql-61c7846e7ed3/?gi=f67074d77004>`__" (`перевод на Русский <https://medium.com/devschacht/esteban-herrera-5-reasons-you-shouldnt-use-graphql-bae94ab105bc>`__)
+- "`Microservice API Patterns <https://microservice-api-patterns.org/>`__"
+- "`OpenAPIs <https://www.openapis.org/>`__"
+- "`AsyncAPI <https://www.asyncapi.com/>`__"
 
 
 Event Storming
@@ -458,7 +461,9 @@ Modelling
 - "Systems Thinking. Quality Software Management. New York: Dorset House." by Gerald M. Weinberg, 1992,  ISBN: 0932633226
 - "An Introduction to General Systems Thinking" by Gerald M. Weinberg
 - "Harvard Business Review on Decision Making" by Harvard Business School Press
-
+- "The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise 1st Edition" by Gregor Hohpe
+- "Fundamentals of Software Architecture: An Engineering Approach" 1st edition by Mark Richards, Neal Ford
+- "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
 
 
 Базы данных
@@ -502,6 +507,9 @@ Modelling
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
 - "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
 - "REST API Design Rulebook" by Mark Massé
+- "Workflow patterns: the definitive guide" by Aalst, Wil van der, Russell, Nick, Ter Hofstede, Arthur
+- "Real-Life BPMN (4th edition): Includes an introduction to DMN" by Jakob Freund, Bernd Rücker
+- "Practical Process Automation" by Bernd Ruecker
 
 
 Углубляем DDD
@@ -681,13 +689,14 @@ Online-каталоги
 - `SOAPatterns.org <http://soapatterns.org/>`__
 - `CloudPatterns.org <http://www.cloudpatterns.org/>`__
 - `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
+- `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
+- `Workflow Patterns <http://workflowpatterns.com/patterns/>`__
 - `Microservices Patterns <https://microservices.io/patterns/>`__
 - `Microservices Patterns (book) <https://www.manning.com/books/microservice-patterns>`__
 - `Microservices Patterns from Sam Newman <https://samnewman.io/patterns/>`__
 - `About DDD on the site of Ward Cunningham <http://ddd.fed.wiki.org/>`__
 - `Refactoring Databases <http://www.databaserefactoring.com/>`__
 - `XUnit Test Patterns <http://xunitpatterns.com/>`__
-- `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
 - `Refactoring Databases <https://databaserefactoring.com/>`__
 - `Catalog of Database Refactorings <http://www.agiledata.org/essays/databaseRefactoringCatalog.html>`__
 - `Extreme Programming Rules <http://www.extremeprogramming.org/rules.html>`__
@@ -695,6 +704,8 @@ Online-каталоги
 - `Subway Map to Agile Practices - a clickable map <https://www.agilealliance.org/agile101/subway-map-to-agile-practices/>`__
 - `The Arcitura Education Patterns, Mechanisms and Metrics Master Catalog <https://patterns.arcitura.com/>`__
 - `Microservice API Patterns <https://microservice-api-patterns.org/>`__
+- `OpenAPIs <https://www.openapis.org/>`__
+- `AsyncAPI <https://www.asyncapi.com/>`__
 - `Architecture Playbook <https://nocomplexity.com/documents/arplaybook/>`__ (`source <https://github.com/nocomplexity/ArchitecturePlaybook>`__)
 - `Software Systems Architecture <https://www.viewpoints-and-perspectives.info/>`__ - This web site contains a selection of supporting material for the book ("Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives" 2nd edition by Nick Rozanski, Eóin Woods), including sample chapters, references and white papers.
 
@@ -757,6 +768,7 @@ Code Smell catalogs
 - `Sample Bounded Contexts for C#.NET from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples_NET>`__ by Vaughn Vernon
 - `Sample Bounded Contexts from the book "Implementing Domain-Driven Design" <https://github.com/VaughnVernon/IDDD_Samples>`__ by Vaughn Vernon
 - Implementation of samples from the book "Domain-Driven Design" by Eric Evans in `Java <https://github.com/citerus/dddsample-core>`__, `C# <https://github.com/SzymonPobiega/DDDSample.Net>`__, `Ruby <https://github.com/paulrayner/ddd_sample_app_ruby>`__, `Golang <https://github.com/marcusolsson/goddd>`__ (`yet another Golang <https://github.com/go-kit/kit/tree/master/examples/shipping>`__). See also `the article <https://www.citerus.se/go-ddd>`__.
+- `Goa <https://goa.design/>`__ provides a holistic approach for developing remote APIs and microservices in Go.
 - `Simple CQRS example <https://github.com/gregoryyoung/m-r>`__ by Greg Young (приложение так же реализует Event Sourcing)
 - `Greg Young's Simple CQRS in F# <https://github.com/thinkbeforecoding/m-r>`__ by Jérémie Chassaing
 - `Complete serverless application to show how to apply DDD, Clean Architecture, and CQRS by practical refactoring of a Go project <https://github.com/ThreeDotsLabs/wild-workouts-go-ddd-example>`__ (`more info <https://threedots.tech/post/serverless-cloud-run-firebase-modern-go-application/>`__) by Robert Laszczak
