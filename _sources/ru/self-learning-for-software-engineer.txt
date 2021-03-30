@@ -464,6 +464,8 @@ Modelling
 - "The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise 1st Edition" by Gregor Hohpe
 - "Fundamentals of Software Architecture: An Engineering Approach" 1st edition by Mark Richards, Neal Ford
 - "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
+- " Eat or Be Eaten!: Jungle Warfare for the Corporate Master Politician" by Phil Porter
+
 
 
 Базы данных

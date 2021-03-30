@@ -20,7 +20,7 @@ Solution/Systems/Software Architect, XP coach, Python/FullStack Lead Software En
 - Blog: https://emacsway.github.io/
 - Telegram-channel: https://t.me/emacsway_log
 - E-mail: emacsway@gmail.com
-- Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
+- Open source: `Github <https://github.com/emacsway>`__
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `VK <https://vk.com/emacsway>`__, `Instagram <https://www.instagram.com/emacsway/>`__, `Telegram <https://t.me/emacsway_log>`__
 
 
