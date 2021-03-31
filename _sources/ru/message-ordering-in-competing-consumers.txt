@@ -186,7 +186,7 @@ Vaughn Vernon в "Reactive Messaging Patterns with the Actor Model: Applications
 
 ..
 
-    📝 "To see the full power that results from using Domain Events , consider the concept of causal consistency. A business domain provides causal consistency if its operations that are causally related —one operation causes another—are seen by every dependent node of a distributed system in the same order [Causal https://queue.acm.org/detail.cfm?id=2610533 ] . This means that causally related operations must occur in a specific order, and thus one thing cannot happen unless another thing happens before it. Perhaps this means that one Aggregate cannot be created or modified until it is clear that a specific operation occurred to another
+    📝 "To see the full power that results from using Domain Events , consider the concept of causal consistency. A business domain provides causal consistency if its operations that are causally related —one operation causes another—are seen by every dependent node of a distributed system in the same order [`Causal <https://queue.acm.org/detail.cfm?id=2610533>`__] . This means that causally related operations must occur in a specific order, and thus one thing cannot happen unless another thing happens before it. Perhaps this means that one Aggregate cannot be created or modified until it is clear that a specific operation occurred to another
     Aggregate."
 
     -- "Domain-Driven Design Distilled" by Vaughn Vernon
