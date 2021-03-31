@@ -76,6 +76,68 @@
     
 
     <div class="section">
+      <h2><a href="../../../ru/message-ordering-in-competing-consumers/">О гонке сообщений в условиях конкурирующих подписчиков</a></h2>
+
+      <ul class="ablog-archive">
+      <li>
+      <i class="fa fa-calendar"></i>
+        Mar 31, 2021
+      
+      </li>
+        
+
+  
+  <li><i class="fa-fw fa fa-user"></i>
+    
+      
+      <a href="#">Ivan Zakrevsky</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-language"></i>
+    
+      
+      <a href="../../language/russian/">Russian</a>
+      
+    </li>
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-tags"></i>
+      
+    
+      
+      <a href="../../tag/ddd/">DDD</a>,
+      
+    
+      
+      <a href="../../tag/microservices/">Microservices</a>,
+      
+    
+      
+      <a href="../../tag/distributed-systems/">Distributed Systems</a>,
+      
+    
+      
+      <a href="../../tag/eip/">EIP</a>
+      
+    </li>
+  
+  </ul>
+      <p>Данная статья представляет собой компиляцию <a class="reference external" href="https://t.me/emacsway_log/57">сообщений</a> с Telegram-channel <a class="reference external" href="https://t.me/emacsway_log">&#64;emacsway_log</a>. Одной из непростых  тем в DDD и микросервисной архитектуре является т.н. <strong>проблема &#8220;конкурирующих подписчиков&#8221;</strong>. Это когда два причинно-зависимых события попадают на конкурирующие узлы обработки событий, и второе событие может &#8220;обогнать&#8221; первое, например, по причине того, что при обработке первого события возникли сетевые издержки, или запустился сборщик мусора, или по какой-либо причине первое сообщение не было обработано и подтверждено (ack) с первого раза. Возникает гонка сообщений.</p>
+
+      <p><a href="../../../ru/message-ordering-in-competing-consumers/">Read more ...</a></p>
+      <hr>
+    </div>
+    
+
+    <div class="section">
       <h2><a href="../../../ru/domain-events-in-ddd/">Domain Events in DDD</a></h2>
 
       <ul class="ablog-archive">
@@ -1946,6 +2008,8 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
   <ul>
     
     
+      <li><a href="../../../ru/message-ordering-in-competing-consumers/">Mar 31 - О гонке сообщений в условиях конкурирующих подписчиков</a></li>
+    
       <li><a href="../../../ru/domain-events-in-ddd/">May 05 - Domain Events in DDD</a></li>
     
       <li><a href="../../../ru/self-learning-for-software-engineer/">Oct 11 - Список литературы для самообучения разработчика программного обеспечения</a></li>
@@ -1953,8 +2017,6 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       <li><a href="../../../ru/tdd/">Sep 30 - TDD - Разработка через тестирование</a></li>
     
       <li><a href="../../../ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">Sep 16 - Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</a></li>
-    
-      <li><a href="../../../ru/easily-about-agile-way-to-rapid-development/">Sep 15 - Про Agile на пальцах. Путь к быстрой разработке.</a></li>
     
   </ul>
 
@@ -2023,6 +2085,11 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../tag/distributed-systems/">Distributed Systems</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="../../tag/django/">Django</a></li>
       
     
@@ -2034,6 +2101,11 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       
       <li class="ablog-cloud ablog-cloud-1">
         <a href="../../tag/docker/">Docker</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../tag/eip/">EIP</a></li>
       
     
       
@@ -2074,6 +2146,11 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       
       <li class="ablog-cloud ablog-cloud-1">
         <a href="../../tag/javascript/">JavaScript</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../tag/microservices/">Microservices</a></li>
       
     
       
@@ -2214,6 +2291,10 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
 
   <h3><a href="../../archive/">Archives</a></h3>
   <ul>
+  
+    
+    <li><a href="../../2021/">2021 (1)</a></li>
+    
   
     
     <li><a href="../../2020/">2020 (1)</a></li>
