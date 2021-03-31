@@ -277,7 +277,9 @@ Greg Young&#8221;</p>
 <li><a class="reference external" href="https://github.com/kgrzybek/modular-monolith-with-ddd/blob/4e2d66d16f97b3c863fbecd072dad52338516882/src/Modules/Payments/Infrastructure/AggregateStore/SqlStreamAggregateStore.cs#L44-L45">два</a></li>
 </ul>
 <p>Шпаргалка по EIP-паттернам:</p>
-<p>-&#8220;<a class="reference external" href="https://www.enterpriseintegrationpatterns.com/download/EIPTutorialReferenceChart.pdf">Enterprise Integration Patterns Tutorial Reference Chart</a>&#8220;</p>
+<ul class="simple">
+<li>&#8220;<a class="reference external" href="https://www.enterpriseintegrationpatterns.com/download/EIPTutorialReferenceChart.pdf">Enterprise Integration Patterns Tutorial Reference Chart</a>&#8220;</li>
+</ul>
 <p>Но даже если подписчик всего один, и сообщения доставляются последовательно, то и тогда очередность обработки сообщений может быть нарушена. Пример из NATS-Streaming Server:</p>
 <blockquote>
 <div><p>📝 &#8220;With the redelivery feature, order can’t be guaranteed, since by definition server will resend messages that have not been acknowledged after a period of time. Suppose your consumer receives messages 1, 2 and 3, does not acknowledge 2. Then message 4 is produced, server sends this message to the consumer. The redelivery timer then kicks in and server will resend message 2. The consumer would see messages: 1, 2, 3, 4, 2, 5, etc...</p>

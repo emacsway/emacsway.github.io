@@ -240,7 +240,7 @@ Vaughn Vernon в "Reactive Messaging Patterns with the Actor Model: Applications
 
 Шпаргалка по EIP-паттернам:
 
--"`Enterprise Integration Patterns Tutorial Reference Chart <https://www.enterpriseintegrationpatterns.com/download/EIPTutorialReferenceChart.pdf>`__"
+- "`Enterprise Integration Patterns Tutorial Reference Chart <https://www.enterpriseintegrationpatterns.com/download/EIPTutorialReferenceChart.pdf>`__"
 
 Но даже если подписчик всего один, и сообщения доставляются последовательно, то и тогда очередность обработки сообщений может быть нарушена. Пример из NATS-Streaming Server:
 
