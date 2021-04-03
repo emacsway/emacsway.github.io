@@ -75,6 +75,9 @@
 </ul>
 <p>Here is a list of most recent posts:</p>
 <ul class="postlist-style-none postlist">
+<li><p class="first">Apr 02 - <a class="reference internal" href="ru/cqrs-command-and-result/">Может ли CQRS-команда возвращать результат?</a></p>
+<p>Данная статья представляет собой компиляцию <a class="reference external" href="https://t.me/emacsway_log/276">сообщений</a> с Telegram-channel <a class="reference external" href="https://t.me/emacsway_log">&#64;emacsway_log</a>. И посвящена довольно дискуссионному вопросу о том, может ли CQRS-команда возвращать результат.</p>
+</li>
 <li><p class="first">Mar 31 - <a class="reference internal" href="ru/message-ordering-in-competing-consumers/">О гонке сообщений в условиях конкурирующих подписчиков</a></p>
 <p>Данная статья представляет собой компиляцию <a class="reference external" href="https://t.me/emacsway_log/57">сообщений</a> с Telegram-channel <a class="reference external" href="https://t.me/emacsway_log">&#64;emacsway_log</a>. Одной из непростых  тем в DDD и микросервисной архитектуре является т.н. <strong>проблема &#8220;конкурирующих подписчиков&#8221;</strong>. Это когда два причинно-зависимых события попадают на конкурирующие узлы обработки событий, и второе событие может &#8220;обогнать&#8221; первое, например, по причине того, что при обработке первого события возникли сетевые издержки, или запустился сборщик мусора, или по какой-либо причине первое сообщение не было обработано и подтверждено (ack) с первого раза. Возникает гонка сообщений.</p>
 </li>
@@ -229,6 +232,8 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
   <ul>
     
     
+      <li><a href="ru/cqrs-command-and-result/">Apr 02 - Может ли CQRS-команда возвращать результат?</a></li>
+    
       <li><a href="ru/message-ordering-in-competing-consumers/">Mar 31 - О гонке сообщений в условиях конкурирующих подписчиков</a></li>
     
       <li><a href="ru/domain-events-in-ddd/">May 05 - Domain Events in DDD</a></li>
@@ -236,8 +241,6 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       <li><a href="ru/self-learning-for-software-engineer/">Oct 11 - Список литературы для самообучения разработчика программного обеспечения</a></li>
     
       <li><a href="ru/tdd/">Sep 30 - TDD - Разработка через тестирование</a></li>
-    
-      <li><a href="ru/role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">Sep 16 - Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</a></li>
     
   </ul>
 
@@ -270,8 +273,13 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="blog/tag/cqrs/">CQRS</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/cqs/">CQS</a></li>
       
     
       
@@ -285,7 +293,7 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="blog/tag/ddd/">DDD</a></li>
       
     
@@ -356,6 +364,11 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/functional-programming/">Functional Programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="blog/tag/hr/">HR</a></li>
       
     
@@ -377,6 +390,11 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
       
       <li class="ablog-cloud ablog-cloud-4">
         <a href="blog/tag/model/">Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/oop/">OOP</a></li>
       
     
       
@@ -514,7 +532,7 @@ This article focuses mainly on architects and managers, so there&#8217;s a lot o
   <ul>
   
     
-    <li><a href="blog/2021/">2021 (1)</a></li>
+    <li><a href="blog/2021/">2021 (2)</a></li>
     
   
     

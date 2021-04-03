@@ -69,6 +69,7 @@ Articles in Russian:
 - ":doc:`../ru/message-ordering-in-competing-consumers`"
 - ":doc:`../ru/domain-events-in-ddd`"
 - ":doc:`../ru/self-learning-for-software-engineer`"
+- ":doc:`../ru/cqrs-command-and-result`"
 - ":doc:`../ru/easily-about-agile-way-to-rapid-development`"
 - ":doc:`../ru/tdd`"
 - ":doc:`../ru/service-layer`"

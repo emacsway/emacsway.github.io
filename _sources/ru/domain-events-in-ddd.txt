@@ -730,11 +730,11 @@ Domain Events могут покидать пределы Bounded Context:
 Еще дальше идут авторы книги "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_, вводя явное разделение внутренних и внешних событий:
 
 .. figure:: /_media/en/domain-events-in-ddd/pppddd-18.1.png
-   :alt: FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   :alt: FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
    :align: center
    :width: 70%
 
-   FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
 ..
 
@@ -756,11 +756,11 @@ Domain Events могут покидать пределы Bounded Context:
     \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_ by Scott Millett, Nick Tune, Chapter "18 Domain Events :: Internal vs External Events"
 
 .. figure:: /_media/en/domain-events-in-ddd/pppddd-18.2.png
-   :alt: FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   :alt: FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
    :align: center
    :width: 70%
 
-   FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
 Разделяют Domain Events на внутренние и внешние и специалисты .NET.
 
@@ -1013,6 +1013,9 @@ Kamil Grzybek вводит явное разделение механизма д
 Решение не должно базироваться на `"религиозном" догматизме <https://youtu.be/LDW0QWie21s?t=1363>`__, основываясь на бездумной вере только в то, что кто-то так сказал, не понимая при этом причин и следствий.
 Нужно понимать причину решения, решаемую им проблему, и применять его сообразно стоящими перед конкретным проектом проблемами.
 
+
+.. _de-cqrs-command-and-result-ru:
+
 Может ли CQRS-команда возвращать результат?
 -------------------------------------------
 
@@ -1055,7 +1058,7 @@ Kamil Grzybek вводит явное разделение механизма д
 А связь заключается в том, что и в первом, и во втором случае, отступление от принципа приводит к упрощению реализации, но к ухудшению возможностей масштабирования.
 И в том, и в другом случае, решением является баланс между простотой реализации и потребностью в масштабировании.
 
-Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
+Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на ":doc:`отдельное исследование <./cqrs-command-and-result>`".
 Как известно, термин CQRS ввел Greg Young, разделив CQS на два отдельных класса.
 
     Starting with CQRS, CQRS is simply the creation of two objects where there was previously only one.

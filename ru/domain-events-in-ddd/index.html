@@ -694,8 +694,8 @@ I gave that name because I think it fits best – it is notification that domain
 </div></blockquote>
 <p>Еще дальше идут авторы книги &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id51">[6]</a>, вводя явное разделение внутренних и внешних событий:</p>
 <div class="figure align-center" id="id108">
-<a class="reference internal image-reference" href="../../_images/pppddd-18.1.png"><img alt="FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.1.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-text">FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
+<a class="reference internal image-reference" href="../../_images/pppddd-18.1.png"><img alt="FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is from &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is from &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
 </div>
 <blockquote>
 <div><p>An important distinction needs to be made when using the domain events pattern to avoid confusion that can lead to poor technical implementations. It is crucial that you are aware of the difference between internal and external events. Internal events are internal to a domain model–they are not shared between bounded contexts.
@@ -711,8 +711,8 @@ Figure 18-2 illustrates how the sequence of events may occur in a typical use ca
 <p>- &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; <a class="footnote-reference" href="#fnpppddd" id="id52">[6]</a> by Scott Millett, Nick Tune, Chapter &#8220;18 Domain Events :: Internal vs External Events&#8221;</p>
 </div></blockquote>
 <div class="figure align-center" id="id109">
-<a class="reference internal image-reference" href="../../_images/pppddd-18.2.png"><img alt="FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.2.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-text">FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
+<a class="reference internal image-reference" href="../../_images/pppddd-18.2.png"><img alt="FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is from &quot;Patterns, Principles, and Practices of Domain-Driven Design&quot; by Scott Millett, Nick Tune" src="../../_images/pppddd-18.2.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is from &#8220;Patterns, Principles, and Practices of Domain-Driven Design&#8221; by Scott Millett, Nick Tune</span></p>
 </div>
 <p>Разделяют Domain Events на внутренние и внешние и специалисты .NET.</p>
 <blockquote>
@@ -912,7 +912,7 @@ When you are in an inconsistent state, you need to roll forward into a new state
 Решение не должно базироваться на <a class="reference external" href="https://youtu.be/LDW0QWie21s?t=1363">&#8220;религиозном&#8221; догматизме</a>, основываясь на бездумной вере только в то, что кто-то так сказал, не понимая при этом причин и следствий.
 Нужно понимать причину решения, решаемую им проблему, и применять его сообразно стоящими перед конкретным проектом проблемами.</p>
 <div class="section" id="cqrs">
-<h2><a class="toc-backref" href="#id132">Может ли CQRS-команда возвращать результат?</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h2>
+<span id="de-cqrs-command-and-result-ru"></span><h2><a class="toc-backref" href="#id132">Может ли CQRS-команда возвращать результат?</a><a class="headerlink" href="#cqrs" title="Permalink to this headline">¶</a></h2>
 <p>Хорошим примером, демонстрирующим архитектурную гибкость мышления, является ответ Jimmy Bogard по поводу того, может ли Команда в CQRS возвращать результат?</p>
 <blockquote>
 <div><p>It might seem rather strange that commands always have a result, but it’s much, much easier to deal with side effects of commands through return parameters than through some other means (global registry, static field, re-querying some object, collecting parameter, etc.). <strong>For commands that create an item, I usually want to redirect to a screen showing that item, very easily accomplished when I can get the created item and as for its ID.</strong></p>
@@ -939,7 +939,7 @@ When you are in an inconsistent state, you need to roll forward into a new state
 <p>Вы можете удивиться, какая связь между Командами CQRS и Domain Events?
 А связь заключается в том, что и в первом, и во втором случае, отступление от принципа приводит к упрощению реализации, но к ухудшению возможностей масштабирования.
 И в том, и в другом случае, решением является баланс между простотой реализации и потребностью в масштабировании.</p>
-<p>Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
+<p>Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на &#8220;<a class="reference internal" href="../cqrs-command-and-result/"><span class="doc">отдельное исследование</span></a>&#8221;.
 Как известно, термин CQRS ввел Greg Young, разделив CQS на два отдельных класса.</p>
 <blockquote>
 <div><p>Starting with CQRS, CQRS is simply the creation of two objects where there was previously only one.
@@ -1530,6 +1530,8 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
   <ul>
     
     
+      <li><a href="../cqrs-command-and-result/">Apr 02 - Может ли CQRS-команда возвращать результат?</a></li>
+    
       <li><a href="../message-ordering-in-competing-consumers/">Mar 31 - О гонке сообщений в условиях конкурирующих подписчиков</a></li>
     
       <li><a href="../self-learning-for-software-engineer/">Oct 11 - Список литературы для самообучения разработчика программного обеспечения</a></li>
@@ -1537,8 +1539,6 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
       <li><a href="../tdd/">Sep 30 - TDD - Разработка через тестирование</a></li>
     
       <li><a href="../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">Sep 16 - Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular</a></li>
-    
-      <li><a href="../easily-about-agile-way-to-rapid-development/">Sep 15 - Про Agile на пальцах. Путь к быстрой разработке.</a></li>
     
   </ul>
 
@@ -1571,8 +1571,13 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="../../blog/tag/cqrs/">CQRS</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cqs/">CQS</a></li>
       
     
       
@@ -1586,7 +1591,7 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/ddd/">DDD</a></li>
       
     
@@ -1657,6 +1662,11 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/functional-programming/">Functional Programming</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="../../blog/tag/hr/">HR</a></li>
       
     
@@ -1678,6 +1688,11 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
       
       <li class="ablog-cloud ablog-cloud-4">
         <a href="../../blog/tag/model/">Model</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/oop/">OOP</a></li>
       
     
       
@@ -1815,7 +1830,7 @@ Here we are discussing what takes over <strong>where the lightweight mechanism l
   <ul>
   
     
-    <li><a href="../../blog/2021/">2021 (1)</a></li>
+    <li><a href="../../blog/2021/">2021 (2)</a></li>
     
   
     

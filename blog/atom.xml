@@ -2,10 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">@emacsway's blog</title>
   <id>https://emacsway.github.io/blog/atom.xml</id>
-  <updated>2021-03-31T00:00:00Z</updated>
+  <updated>2021-04-02T00:00:00Z</updated>
   <link href="https://emacsway.github.io/" />
   <link href="https://emacsway.github.io/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.3">ABlog</generator>
+  <entry xml:base="https://emacsway.github.io/blog/atom.xml">
+    <title type="text">Может ли CQRS-команда возвращать результат?</title>
+    <id>https://emacsway.github.io/ru/cqrs-command-and-result/</id>
+    <updated>2021-04-02T00:00:00Z</updated>
+    <published>2021-04-02T00:00:00Z</published>
+    <link href="https://emacsway.github.io/ru/cqrs-command-and-result/" />
+    <author>
+      <name>Ivan Zakrevsky</name>
+    </author>
+    <content type="html">&lt;p&gt;Данная статья представляет собой компиляцию &lt;a class=&quot;reference external&quot; href=&quot;https://t.me/emacsway_log/276&quot;&gt;сообщений&lt;/a&gt; с Telegram-channel &lt;a class=&quot;reference external&quot; href=&quot;https://t.me/emacsway_log&quot;&gt;&amp;#64;emacsway_log&lt;/a&gt;. И посвящена довольно дискуссионному вопросу о том, может ли CQRS-команда возвращать результат.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="https://emacsway.github.io/blog/atom.xml">
     <title type="text">О гонке сообщений в условиях конкурирующих подписчиков</title>
     <id>https://emacsway.github.io/ru/message-ordering-in-competing-consumers/</id>
