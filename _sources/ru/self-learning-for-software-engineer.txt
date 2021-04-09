@@ -448,6 +448,9 @@ Agile
 - "Essential Scrum: A Practical Guide to the Most Popular Agile Process" by Kenneth Rubin
 - "Succeeding with Agile: Software Development Using Scrum" by Mike Cohn
 - "User Stories Applied: For Agile Software Development" by Mike Cohn
+- "Scaling Software Agility: Best Practices for Large Enterprises" by Dean Leffingwell
+- "Agile Software Requirements: Lean Requirements Practices for Teams, Programs, and the Enterprise" by Dean Leffingwell
+- "SAFe® 5.0: The World’s Leading Framework for Business Agility" by Richard Knaster, Dean Leffingwell
 
 
 Менеджмент
