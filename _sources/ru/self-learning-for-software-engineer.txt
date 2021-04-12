@@ -711,7 +711,8 @@ Body of Knowledge
 - "`The Enterprise Architecture Body of Knowledge (EABoK) <https://www.mitre.org/publications/technical-papers/guide-to-the-evolving-enterprise-architecture-body-of-knowledge>`__"
 - "`MITRE Systems Engineering Guide <https://www.mitre.org/publications/technical-papers/the-mitre-systems-engineering-guide>`__
 - "`A Guide to the Business Architecture Body of Knowledge(R) (BIZBOK(R) Guide) <https://www.businessarchitectureguild.org/page/BIZBOK>`__"
-- "`A Guide to the Business Analysis Body of Knowledge (BABoK) <https://www.iiba.org/standards-and-resources/babok/>`__"
+- "`A Guide to the Business Analysis Body of Knowledge (BABOK®) <https://www.iiba.org/career-resources/a-business-analysis-professionals-foundation-for-success/babok/>`__"
+- "`Agile Extension to the BABOK® Guide <https://www.iiba.org/career-resources/business-analysis-resources/iiba-bookstore/>`__"
 - "`DAMA-DMBOK: Data Management Body of Knowledge <https://www.dama.org/content/what-data-management>`__" 2nd edition by DAMA International
 - "`The Project Management Body of Knowledge <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>`__"
 - "`Учебник 4CIO. Настольная книга ИТ-Директора <https://book4cio.ru/>`__"
