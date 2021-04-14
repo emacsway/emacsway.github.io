@@ -472,12 +472,14 @@ Agile
 - "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
 - "Systems Thinking. Quality Software Management. New York: Dorset House." by Gerald M. Weinberg, 1992,  ISBN: 0932633226
 - "An Introduction to General Systems Thinking" by Gerald M. Weinberg
+- "Becoming a Technical Leader Kindle Edition" by Gerald Weinberg
 - "Harvard Business Review on Decision Making" by Harvard Business School Press
 - "The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise 1st Edition" by Gregor Hohpe
 - "Fundamentals of Software Architecture: An Engineering Approach" 1st edition by Mark Richards, Neal Ford
 - "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
 - "Eat or Be Eaten!: Jungle Warfare for the Corporate Master Politician" by Phil Porter
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
+- "Think Like An Architect: How to develop critical, creative and collaborative problem-solving skills" by Randy Deutsch
 
 
 
