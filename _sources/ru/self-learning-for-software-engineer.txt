@@ -479,6 +479,7 @@ Agile
 - "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
 - "Eat or Be Eaten!: Jungle Warfare for the Corporate Master Politician" by Phil Porter
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
+- "Thinking in Systems: A Primer" by Donella H. Meadows, Diana Wright
 - "Think Like An Architect: How to develop critical, creative and collaborative problem-solving skills" by Randy Deutsch
 
 
@@ -647,6 +648,7 @@ Donald E. Knuth:
 - "The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise 1st Edition" by Gregor Hohpe
 - "Cloud Strategy: A Decision-based Approach to Successful Cloud Migration" by Gregor Hohpe, Michele Danieli, Jean-Francois Landreau, Tahir Hashmi
 - "Architecting for Scale" 2nd Edition by Lee Atchison
+- "Software Engineering: A Practitioner's Approach" 9th edition by Roger S. Pressman, Bruce Maxim
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
 
 - "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
