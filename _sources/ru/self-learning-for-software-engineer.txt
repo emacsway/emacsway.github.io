@@ -829,6 +829,7 @@ Code Smell catalogs
 - `Clean Monolith Shop <https://github.com/ThreeDotsLabs/monolith-microservice-shop>`__ by Robert Laszczak - Source code for `Why using Microservices or Monolith can be just a detail? <https://threedots.tech/post/microservices-or-monolith-its-detail/>`__ article
 - `go-iddd - showcase project for implementing DDD in Go <https://github.com/AntonStoeckl/go-iddd>`__ by Anton Stöckl (see more info `here <https://medium.com/@TonyBologni/implementing-domain-driven-design-and-hexagonal-architecture-with-go-1-292938c0a4d4>`__ and `here <https://medium.com/@TonyBologni/implementing-domain-driven-design-and-hexagonal-architecture-with-go-2-efd432505554>`__).
 - `Demo taxi system, using eventsourcing library <https://github.com/johnbywater/es-example-taxi-demo>`__ by John Bywater
+- `Example "bank accounts" application using the Python eventsourcing library <https://github.com/johnbywater/es-example-bank-accounts>`__ by John Bywater
 - `FTGO example application. Example code for the book Microservice patterns <https://github.com/microservices-patterns/ftgo-application>`__ by Chris Richardson
 - `Eventuate Tram Customers and Orders <https://github.com/eventuate-tram/eventuate-tram-examples-customers-and-orders/>`__ by Chris Richardson
 - `Eventuate Tram Customers and Orders - .NET version <https://github.com/eventuate-examples/eventuate-tram-core-dotnet-examples-customers-and-orders>`__ by Chris Richardson
