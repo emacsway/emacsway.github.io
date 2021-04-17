@@ -16,7 +16,7 @@ About me
 
 Solution/Systems/Software Architect, XP coach, Python/FullStack Lead Software Engineer
 
-- Ivan Zakrevskii
+- Ivan Zakrevsky
 - Blog: https://emacsway.github.io/
 - Telegram-channel: https://t.me/emacsway_log
 - E-mail: emacsway@gmail.com

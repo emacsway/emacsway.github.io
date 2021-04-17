@@ -778,6 +778,7 @@ Code Smell catalogs
 
 - `Awesome lists <https://github.com/sindresorhus/awesome>`__
 - `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
+- `Domain Driven Design in Python, Ruby and other dynamic languages resources <https://github.com/valignatev/ddd-dynamic>`__
 - `Awesome Microservices <https://github.com/mfornos/awesome-microservices>`__
 - `Solution Architecture links, articles, books, video lessons, etc. <https://github.com/unlight/solution-architecture>`__
 - `Awesome Algorithms <https://github.com/tayllan/awesome-algorithms>`__
