@@ -191,7 +191,7 @@ Vaughn Vernon в "Reactive Messaging Patterns with the Actor Model: Applications
 
     -- "Domain-Driven Design Distilled" by Vaughn Vernon
 
-Посмотреть вживую `обеспечение Causal Consistency <https://eventsourcing.readthedocs.io/en/stable/topics/process.html#causal-dependencies>`__ на уровне подписчика можно в EventSourcing Framework. Реализация `здесь <https://github.com/johnbywater/eventsourcing/blob/fd73c5dbd97c0ae759c59f7bb0700afb12db7532/eventsourcing/application/process.py#L273>`__.
+Посмотреть вживую `обеспечение Causal Consistency <https://eventsourcing.readthedocs.io/en/v8.3.0/topics/process.html#causal-dependencies>`__ на уровне подписчика можно в EventSourcing Framework. Реализация `здесь <https://github.com/johnbywater/eventsourcing/blob/fd73c5dbd97c0ae759c59f7bb0700afb12db7532/eventsourcing/application/process.py#L273>`__.
 
 Собственно, Causal является промежуточным уровнем строгости согласованности, чтобы избежать строгую линеаризацию сообщений (которая часто избыточна) из соображений сохранения параллелизма и повышения производительности, но при этом, не допускать параллелизма в потоках причинно-зависимых сообщений (где очередность сообщений, действительно, востребована).
 
