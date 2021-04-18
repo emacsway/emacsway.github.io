@@ -536,7 +536,8 @@ PostgresPro представил `три книги <https://postgrespro.ru/educ
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" by Martin Kleppmann
 - "Database Internals: A Deep Dive into How Distributed Data Systems Work" by Alex Petrov
-- "Distributed systems: principles and paradigms" 3d edition by Andrew S. Tanenbaum, Maarten Van Steen
+- "`Distributed systems: principles and paradigms <https://www.distributed-systems.net/index.php/books/ds3/>`__" 3d edition by Andrew S. Tanenbaum, Maarten Van Steen
+- "`Введение в распределенные вычисления <http://books.ifmo.ru/file/pdf/1551.pdf>`__" / Косяков М. С. — СПб: НИУ ИТМО, 2014. — С. 75-82. — 155 с.
 - "Service-Oriented Architecture Analysis and Design for Services and Microservices" by Thomas Erl
 - "REST in Practice: Hypermedia and Systems Architecture" by Savas Parastatidis, Jim Webber, Ian Robinson
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
