@@ -334,6 +334,7 @@ CQRS & Event Sourcing
 - "`Event Sourcing and CQRS <https://eventstore.com/blog/event-sourcing-and-cqrs/>`__" by Alexey Zimarev
 
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+- "`CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "`Busting some CQRS myths <https://lostechies.com/jimmybogard/2012/08/22/busting-some-cqrs-myths/>`__" by Jimmy Bogard
 
