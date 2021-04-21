@@ -632,15 +632,14 @@ Donald E. Knuth:
 - "Compilers: Principles, Techniques, and Tools" 2nd edition by Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman
 
 
-Изучаем архитектуру
--------------------
+Архитектура
+-----------
 
 - "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
 - "Documenting Software Architectures: Views and Beyond" 2nd edition by Paul Clements, Felix Bachmann, Len Bass, David Garlan, James Ivers, Reed Little, Paulo Merson, Robert Nord, Judith Stafford
 - "Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives" 2nd edition by Nick Rozanski, Eóin Woods
 - "Designing Software Architectures: A Practical Approach (SEI Series in Software Engineering)" 1st edition by Humberto Cervantes, Rick Kazman
 - "Fundamentals of Software Architecture: An Engineering Approach" 1st edition by Mark Richards, Neal Ford
-- "Building Evolutionary Architectures: Support Constant Change" 1st Edition by Neal Ford, Rebecca Parsons, Patrick Kua
 - "Introduction to Solution Architecture Paperback" by Alan McSweeney
 - "Systems Analysis and Design" 7th edition by Alan Dennis, Barbara Haley Wixom, Roberta M. Roth
 - "The Design of Design: Essays from a Computer Scientist" by Frederick P. Brooks
@@ -652,6 +651,16 @@ Donald E. Knuth:
 - "Architecting for Scale" 2nd Edition by Lee Atchison
 - "Software Engineering: A Practitioner's Approach" 9th edition by Roger S. Pressman, Bruce Maxim
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
+
+
+Архитектура в Agile:
+
+- "Building Evolutionary Architectures: Support Constant Change" 1st Edition by Neal Ford, Rebecca Parsons, Patrick Kua
+- "Agile Software Architecture: Aligning Agile Processes and Software Architectures" by Muhammad Ali Babar, Alan W. Brown, Kai Koskimies, Ivan Mistrík
+- "Continuous Architecture: Sustainable Architecture in an Agile and Cloud-Centric World" by Murat Erder, Pierre Pureur
+
+
+Стандарты:
 
 - "`Open Agile Architecture: A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
 - "`ISO/IEC/IEEE 42010:2011(en) Systems and software engineering — Architecture description <https://www.iso.org/standard/50508.html>`__"
@@ -665,11 +674,15 @@ Donald E. Knuth:
 
 - "Software Requirements (Developer Best Practices)" 3rd Edition by Karl Wiegers
 
+
 Аналитика в Agile:
 
 - "Agile Software Requirements: Lean Requirements Practices for Teams, Programs, and the Enterprise" by Dean Leffingwell
 - Whitepaper "`A Lean and Scalable Requirements Information Model for the Agile Enterprise <https://scalingsoftwareagility.files.wordpress.com/2007/03/a-lean-and-scalable-requirements-information-model-for-agile-enterprises-pdf.pdf>`__" by Dean Leffingwell with Juha‐Markus Aalto
 - "`An Agile Architectural Epic Kanban System: Part 2 – The Model <https://scalingsoftwareagility.wordpress.com/2010/03/05/an-agile-architectural-epic-kanban-system-part-2-%E2%80%93-the-model/>`__" by Dean Leffingwell
+
+
+Другие подборки литературы по аналитике:
 
 - `Литература по аналитике на сайте Systems.Education <https://systems.education/books>`__
 
