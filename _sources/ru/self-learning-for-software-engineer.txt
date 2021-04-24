@@ -481,8 +481,6 @@ Agile
 - "Eat or Be Eaten!: Jungle Warfare for the Corporate Master Politician" by Phil Porter
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
 - "Thinking in Systems: A Primer" by Donella H. Meadows, Diana Wright
-- "Think Like An Architect: How to develop critical, creative and collaborative problem-solving skills" by Randy Deutsch
-
 
 
 Базы данных
