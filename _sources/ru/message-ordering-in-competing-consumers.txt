@@ -199,6 +199,8 @@ Vaughn Vernon в "Reactive Messaging Patterns with the Actor Model: Applications
 
 Другой пример кода, реализующего Causal Store можно посмотреть в главе "6.4.2 Causal Store" статьи "`Principles of Eventual Consistency <https://www.microsoft.com/en-us/research/publication/principles-of-eventual-consistency/>`__" (`pdf <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/final-printversion-10-5-14.pdf>`__) by Sebastian Burckhardt, Microsoft Research.
 
+Реализация `Vector Clock на Golang <https://labix.org/vclock>`__.
+
     📝 "Note that just **saving the Domain Event in its causal order doesn’t guarantee that it will arrive at other distributed nodes in the same order**. Thus, it is also the responsibility of the consuming Bounded Context to recognize proper **causality**. It might be the Domain Event type itself that can indicate causality, or it may be **metadata** associated with the Domain Event, such as a **sequence** or **causal identifier**. The **sequence** or **causal identifier** would **indicate what caused this Domain Event, and if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives**. In some cases it is possible to ignore latent Domain Events that have already been superseded by the actions associated with a later one; in this case causality has a dismissible impact [об этом способе уже говорилось ранее, прим. моё]."
 
     -- "Domain-Driven Design Distilled" by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events"
