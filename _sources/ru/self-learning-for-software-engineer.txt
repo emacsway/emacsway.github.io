@@ -547,6 +547,16 @@ PostgresPro представил `три книги <https://postgrespro.ru/educ
 - "Practical Process Automation" by Bernd Ruecker
 
 
+Streaming Processing
+--------------------
+
+По рекомендации Геннадия Круглова:
+
+- "Streaming Data: Understanding the real-time pipeline" 1st edition by Andrew Psaltis
+- "Big Data: Principles and best practices of scalable realtime data systems" 1st edition by Nathan Marz, James Warren
+- "Kafka Streams in Action: Real-time apps and microservices with the Kafka Streams API" 1st edition by Bill Bejeck 
+
+
 Углубляем DDD
 -------------
 
@@ -649,6 +659,7 @@ Donald E. Knuth:
 - "Architecting for Scale" 2nd Edition by Lee Atchison
 - "Software Engineering: A Practitioner's Approach" 9th edition by Roger S. Pressman, Bruce Maxim
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
+- "Team Topologies: Organizing Business and Technology Teams for Fast Flow" by Matthew Skelton, Manuel Pais
 
 
 Архитектура в Agile:
