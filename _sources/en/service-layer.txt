@@ -109,7 +109,27 @@ You should also distinguish Business from `Business Process <http://wiki.c2.com/
 
 Wikipedia `gives us the following definition of the term Business Logic <https://en.wikipedia.org/wiki/Business_logic>`__:
 
-    In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program. 
+    In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.
+
+Craig Larman sees the term Business as synonymous with Domain, and in "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development", he cites them side by side many times, complementing one term with another in parentheses.
+He gives the next definition for the term Business Rules:
+
+    Business Rules - Business rules (also called Domain Rules) typically describe requirements or policies that transcend one software project - they are required in the domain or business, and many applications may need to conform to them. An excellent example is government tax laws. Domain rule details may be recorded in the Supplementary Specification, but because they are usually more enduring and applicable than for one software project, placing them in a central Business Rules artifact (shared by all analysts of the company) makes for better reuse of the analysis effort.
+
+    <...>
+
+    The Business Rules (or Domain Rules) capture long-living and spanning rules or policies, such as tax laws, that transcend one particular application.
+
+    <...>
+
+    Domain rules [Ross97, GK00] dictate how a domain or business may operate. They are not requirements of any one application, although an application’s requirements are often influenced by domain rules. Company policies, physical laws (such as how oil flows underground), and government laws are common domain rules.
+
+    They are commonly called business rules, which is the most common type, but that term is poor, as many software applications are for non-business problems, such as weather simulation or military logistics. A weather simulation has "domain rules," related to physical laws and relationships, that influence the application requirements.
+
+    It’s useful to identify and record domain rules in a separate application-independent artifact - what the UP calls the Business Rules artifact - so that this analysis can be shared and reused across the organization and across projects, rather than buried within a project-specific document.
+
+    -- "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development" by Craig Larman
+
 
 Let me summarize this in my own words:
 

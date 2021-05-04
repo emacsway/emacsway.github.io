@@ -8,7 +8,7 @@
    :category:
    :author: Ivan Zakrevsky
 
-Данная статья представляет собой компиляцию `сообщений <https://t.me/emacsway_log/276>`__ с Telegram-channel `@emacsway_log <https://t.me/emacsway_log>`__. И посвящена довольно дискуссионному вопросу о том, может ли CQRS-команда возвращать результат.
+Данная статья представляет собой компиляцию `сообщений <https://t.me/emacsway_log/276>`__ с Telegram-channel `@emacsway_log <https://t.me/emacsway_log>`__, и посвящена довольно дискуссионному вопросу о том, может ли CQRS-команда возвращать результат.
 
 
 .. contents:: Содержание
