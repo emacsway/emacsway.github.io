@@ -4,7 +4,7 @@ Design of Service Layer and Application Logic
 
 .. post:: Jul 17, 2017
    :language: en
-   :tags: Design, Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
+   :tags: Software Design, Software Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
 

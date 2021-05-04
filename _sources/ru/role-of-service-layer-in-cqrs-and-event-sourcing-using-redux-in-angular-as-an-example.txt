@@ -4,7 +4,7 @@
 
 .. post:: Sep 16, 2018
    :language: ru
-   :tags: Design, Architecture, Service Layer, Angular, Redux, Flux, JavaScript, Model, CQRS, Event Sourcing
+   :tags: Software Design, Software Architecture, Service Layer, Angular, Redux, Flux, JavaScript, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
 

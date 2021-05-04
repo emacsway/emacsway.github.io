@@ -4,7 +4,7 @@
 
 .. post:: Jul 17, 2017
    :language: ru
-   :tags: Design, Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
+   :tags: Software Design, Software Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
    :redirect: ru/redux-and-flux-for-oop-programmers, ru/application-logic-management

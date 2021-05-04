@@ -4,7 +4,7 @@
 
 .. post:: Oct 22, 2015
    :language: ru
-   :tags: Python, programming
+   :tags: Python, Programming, Software Construction
    :category:
    :author: Ivan Zakrevsky
 

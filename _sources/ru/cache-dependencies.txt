@@ -5,7 +5,7 @@
 
 .. post:: May 21, 2016
    :language: ru
-   :tags: cache
+   :tags: Cache
    :category:
    :author: Ivan Zakrevsky
    :redirect: ru/cache-tagging

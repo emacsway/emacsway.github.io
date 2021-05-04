@@ -5,7 +5,7 @@ About problems of cache invalidation. Cache tagging.
 
 .. post:: May 21, 2016
    :language: en
-   :tags: cache
+   :tags: Cache
    :category:
    :author: Ivan Zakrevsky
 

@@ -4,7 +4,7 @@ TDD - Разработка через тестирование
 
 .. post:: Sep 30, 2019
    :language: ru
-   :tags: TDD, Refactoring, Clean Code, Architecture, XP, Extreme Programming
+   :tags: TDD, Refactoring, Clean Code, Software Architecture, XP, Extreme Programming
    :category:
    :author: Ivan Zakrevsky
 

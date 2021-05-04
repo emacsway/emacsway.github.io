@@ -4,8 +4,8 @@
 
 .. post:: Oct 11, 2019
    :language: ru
-   :tags:
-   :category:  Architecture, DDD, Clean Architecture, Clean Code, Event-Driven, Microservices, CQRS, Event Sourcing, Extreme Programming, TDD, XP, Refactoring, programming
+   :tags: Software Architecture, DDD, Clean Architecture, Clean Code, Event-Driven, Microservices, CQRS, Event Sourcing, Extreme Programming, TDD, XP, Refactoring, Programming, Software Construction, Career
+   :category:
    :author: Ivan Zakrevsky
    :redirect: en/eda-reference-applications
 
@@ -162,7 +162,7 @@
 - "Extreme Programming Explained" 1st edition by Kent Beck
 
 На данном этапе, этой книги достаточно.
-Обратите внимание, я советую именно первое издание, так как оно лучше раскрывает смысл и назначение :doc:`Agile разработки <./easily-about-agile-way-to-rapid-development>`.
+Обратите внимание, я советую именно первое издание, так как оно лучше раскрывает смысл и назначение :doc:`Agile разработки <./agile/easily-about-agile-way-to-rapid-development>`.
 
 
 Изучаем операционную систему

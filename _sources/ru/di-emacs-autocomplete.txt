@@ -3,7 +3,7 @@
 
 .. post:: Oct 09, 2015
    :language: ru
-   :tags: Emacs, Dependency Injection, autocomplete, Python
+   :tags: Emacs, Dependency Injection, Autocomplete, Python
    :author: Ivan Zakrevsky
 
 
