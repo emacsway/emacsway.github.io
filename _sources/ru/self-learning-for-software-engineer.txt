@@ -162,7 +162,7 @@
 - "Extreme Programming Explained" 1st edition by Kent Beck
 
 На данном этапе, этой книги достаточно.
-Обратите внимание, я советую именно первое издание, так как оно лучше раскрывает смысл и назначение :doc:`Agile разработки <./agile/easily-about-agile-way-to-rapid-development>`.
+Обратите внимание, я советую именно первое издание, так как оно лучше раскрывает смысл и назначение :doc:`Agile разработки <./it/agile/easily-about-agile-way-to-rapid-development>`.
 
 
 Изучаем операционную систему

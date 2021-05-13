@@ -8,30 +8,30 @@
     
     <title>Про Agile на пальцах. Путь к быстрой разработке. &mdash; @emacsway&#39;s blog</title>
     
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/fa/css/all.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/jquery-toast-plugin/jquery.toast.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/fa/css/all.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
+        URL_ROOT:    '../../../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="@emacsway&#39;s blog" href="../../../" />
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="@emacsway&#39;s blog" href="../../../../" />
   
 
    
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -43,11 +43,11 @@
             <meta name="description" content="Я уже писал “на тему Agile-разработки шпаргалку”, более чем наполовину состоящую из цитат выдающихся архитекторов. Проблема в том, что она ориентирована на осведомленных людей (как правило, на менеджеров и архитекторов), и малопонятна тем, кто сталкивается с этим впервые. Поэтому я решил написать упрощенную версию своими словами. Вы не сможете использовать фрагменты этой статьи для аргументации перед заказчиком, так как она не содержит цитат праотцов архитекторы, но я надеюсь, что она будет легче для понимания ключевых моментов экономики разработки программного обеспечения." />
         
         
-            <meta property="og:image" content="../../../_static/logo.jpg" />
-            <link rel="image_src" href="../../../_static/logo.jpg" />
+            <meta property="og:image" content="../../../../_static/logo.jpg" />
+            <link rel="image_src" href="../../../../_static/logo.jpg" />
         
 
-        <link rel="canonical" href="https://emacsway.github.io/ru/agile/easily-about-agile-way-to-rapid-development/" />
+        <link rel="canonical" href="https://emacsway.github.io/ru/it/agile/easily-about-agile-way-to-rapid-development/" />
 
         <script type="text/javascript">
             setTimeout(function() {
@@ -63,7 +63,7 @@
 
 
   
-  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="@emacsway's blog">
+  <link rel="alternate" type="application/atom+xml"  href="../../../../blog/atom.xml" title="@emacsway's blog">
   
   
   <link href="True" rel="stylesheet">
@@ -88,7 +88,7 @@
             
   <div class="section" id="agile">
 <h1><a class="toc-backref" href="#id16">Про Agile на пальцах. Путь к быстрой разработке.</a><a class="headerlink" href="#agile" title="Permalink to this headline">¶</a></h1>
-<p>Я уже писал &#8220;<a class="reference internal" href="../../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">на тему Agile-разработки шпаргалку</span></a>&#8221;, более чем наполовину состоящую из цитат выдающихся архитекторов.
+<p>Я уже писал &#8220;<a class="reference internal" href="../../../../en/how-to-quickly-develop-high-quality-code/"><span class="doc">на тему Agile-разработки шпаргалку</span></a>&#8221;, более чем наполовину состоящую из цитат выдающихся архитекторов.
 Проблема в том, что она ориентирована на осведомленных людей (как правило, на менеджеров и архитекторов), и малопонятна тем, кто сталкивается с этим впервые.
 Поэтому я решил написать упрощенную версию своими словами.
 Вы не сможете использовать фрагменты этой статьи для аргументации перед заказчиком, так как она не содержит цитат праотцов архитекторы, но я надеюсь, что она будет легче для понимания ключевых моментов экономики разработки программного обеспечения.</p>
@@ -252,7 +252,7 @@
 <p>Здесь, наверное, было бы уместно сделать небольшое отступление.
 Классическим заблуждением начинающих и толковых ребят является вера в то, что практика и опыт могут заменить работу с теорией, в частности - с литературой.</p>
 <p>Во-первых, честно говоря, среднестатистический коммерческий проект на рынке редко может служить источником качественной практики (если даже наоборот).
-Более лучшим источником качественной практики могут служить <a class="reference internal" href="../../self-learning-for-software-engineer/#reference-applications-ru"><span class="std std-ref">открытые проекты</span></a>, основанные компетентными сообществами.</p>
+Более лучшим источником качественной практики могут служить <a class="reference internal" href="../../../self-learning-for-software-engineer/#reference-applications-ru"><span class="std std-ref">открытые проекты</span></a>, основанные компетентными сообществами.</p>
 <p>А во-вторых, помните что Дейкстра говорил о строго ограниченных размерах человеческого черепа?
 Воспроизвести в одиночку эволюцию целой индустрии - это весьма самонадеянно.
 Жизни не хватит.
@@ -271,7 +271,7 @@
 <p>Теория также играет важную роль в формировании коллективного понимания того, как устроена система, что существенно снижает порог вхождения нового разработчика в проект, смягчая негативное воздействие <a class="reference external" href="https://en.wikipedia.org/wiki/Brooks%27s_law">Закона Брукса</a>.</p>
 <p>Другая крайность при работе с литературой заключается в чрезмерном перегибе, который приводит к подсознательному отторжению этого процесса.
 Чтобы стать хорошим специалистом, достаточно читать 5 страниц в день, по крайней мере так говорит один из известнейших авторитетов в области IT-индустрии Steve McConnell.
-И желательно <a class="reference internal" href="../../self-learning-for-software-engineer/"><span class="doc">работать с первоисточниками</span></a>.
+И желательно <a class="reference internal" href="../../../self-learning-for-software-engineer/"><span class="doc">работать с первоисточниками</span></a>.
 Если Design Patterns - значит GOF.
 Если рефакторинг - значит Martin Fowler.
 И т.д.</p>
@@ -305,7 +305,7 @@
 <span id="id8"></span><h1><a class="toc-backref" href="#id24">Самотестируемый код</a><a class="headerlink" href="#self-testing-code-for-agile-ru" title="Permalink to this headline">¶</a></h1>
 <p>На самом деле, без тестирования просто невозможен рефакторинг, а значит, невозможен и Evolutionary Design.
 А без Evolutionary Design разработчик возвращается к засасывающей воронке времени под названием upfront thinking.</p>
-<p>Однако, есть и другие причины использовать тестирование, причем, желательно в <a class="reference internal" href="../../tdd/"><span class="doc">стиле TDD</span></a>.</p>
+<p>Однако, есть и другие причины использовать тестирование, причем, желательно в <a class="reference internal" href="../../../tdd/"><span class="doc">стиле TDD</span></a>.</p>
 <ol class="arabic simple">
 <li>Тестирование повышает качество кода, т.к. разработчику легче изначально написать слабо сопряженный код (Low Coupling), чем ломать голову над тем, как протестировать код с высоким сопряжением (High Coupling). С целью достижения наибольшего эффекта, желательно ограничить использование автоматизированных средств создания Mock-объектов, так как они упрощают тестирование плохо спроектированного кода.</li>
 <li>TDD повышает качество интерфейсов, т.к. мы продумываем интерфейс изначально с точки зрения его использования, и используем этот интерфейс еще до реализации. Вы, наверное, обращали внимание на то, что, при итеративной разработке, представитель бизнеса всегда получает более ясное представление об User Interface после того, как впервые попробует его использование. Здесь то же самое, только интерфейсы программные.</li>
@@ -492,7 +492,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
   <span style="float: left;">
   
   
-  <a href="../../anemic-domain-model/">
+  <a href="../../../anemic-domain-model/">
     <i class="fa fa-arrow-circle-left"></i>
     Про Anemic Domain Model
   </a>
@@ -502,7 +502,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
   <span style="float: right;">
   
   
-  <a href="../../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">
+  <a href="../../../role-of-service-layer-in-cqrs-and-event-sourcing-using-redux-in-angular-as-an-example/">
     Роль сервисного слоя в CQRS и Event Sourcing на примере использования Redux в Angular
     <i class="fa fa-arrow-circle-right"></i>
   </a>
@@ -517,9 +517,9 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'emacsway';
-        var disqus_identifier = '/ru/agile/easily-about-agile-way-to-rapid-development/';
+        var disqus_identifier = '/ru/it/agile/easily-about-agile-way-to-rapid-development/';
         var disqus_title = 'Про Agile на пальцах. Путь к быстрой разработке.';
-        var disqus_url = 'https://emacsway.github.io/ru/agile/easily-about-agile-way-to-rapid-development/';
+        var disqus_url = 'https://emacsway.github.io/ru/it/agile/easily-about-agile-way-to-rapid-development/';
 
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -539,8 +539,8 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <p class="logo">
-  <a href="../../../">
-    <img class="logo" src="../../../_static/logo.jpg" alt="Logo"/>
+  <a href="../../../../">
+    <img class="logo" src="../../../../_static/logo.jpg" alt="Logo"/>
     
     <h1 class="logo logo-name">@emacsway's blog</h1>
     
@@ -574,7 +574,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
   <li><i class="fa-fw fa fa-user"></i>
     
       
-      <a href="../../../blog/author/ivan-zakrevsky/">Ivan Zakrevsky</a>
+      <a href="../../../../blog/author/ivan-zakrevsky/">Ivan Zakrevsky</a>
       
     </li>
   
@@ -585,7 +585,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
   <li><i class="fa-fw fa fa-language"></i>
     
       
-      <a href="../../../blog/language/russian/">Russian</a>
+      <a href="../../../../blog/language/russian/">Russian</a>
       
     </li>
   
@@ -597,27 +597,27 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
       
     
       
-      <a href="../../../blog/tag/agile/">Agile</a>,
+      <a href="../../../../blog/tag/agile/">Agile</a>,
       
     
       
-      <a href="../../../blog/tag/xp/">XP</a>,
+      <a href="../../../../blog/tag/xp/">XP</a>,
       
     
       
-      <a href="../../../blog/tag/scrum/">Scrum</a>,
+      <a href="../../../../blog/tag/scrum/">Scrum</a>,
       
     
       
-      <a href="../../../blog/tag/extreme-programming/">Extreme Programming</a>,
+      <a href="../../../../blog/tag/extreme-programming/">Extreme Programming</a>,
       
     
       
-      <a href="../../../blog/tag/refactoring/">Refactoring</a>,
+      <a href="../../../../blog/tag/refactoring/">Refactoring</a>,
       
     
       
-      <a href="../../../blog/tag/software-architecture/">Software Architecture</a>
+      <a href="../../../../blog/tag/software-architecture/">Software Architecture</a>
       
     </li>
   
@@ -636,7 +636,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
     }());
     </script>
     <i class="fa-fw fa fa-comments"></i>
-    <a href="#disqus_thread" data-disqus-identifier="/ru/agile/easily-about-agile-way-to-rapid-development/"> </a>
+    <a href="#disqus_thread" data-disqus-identifier="/ru/it/agile/easily-about-agile-way-to-rapid-development/"> </a>
   </li>
   
   </ul>
@@ -644,7 +644,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../about/">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/">About me</a></li>
 </ul>
 
 
@@ -654,23 +654,23 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
     
 </ul>
 
-  <h3><a href="../../../blog/">Recent Posts</a></h3>
+  <h3><a href="../../../../blog/">Recent Posts</a></h3>
   <ul>
     
     
       <li><a href="../crash-course-in-software-development-economics/">May 05 - Краткий курс по экономике разработки программного обеспечения</a></li>
     
-      <li><a href="../../soft-skills/psychological-effects/">May 04 - Список психологических эффектов</a></li>
+      <li><a href="../../../soft-skills/psychological-effects/">May 04 - Список психологических эффектов</a></li>
     
-      <li><a href="../../cqrs-command-and-result/">Apr 02 - Может ли CQRS-команда возвращать результат?</a></li>
+      <li><a href="../../../cqrs-command-and-result/">Apr 02 - Может ли CQRS-команда возвращать результат?</a></li>
     
-      <li><a href="../../message-ordering-in-competing-consumers/">Mar 31 - О гонке сообщений в условиях конкурирующих подписчиков</a></li>
+      <li><a href="../../../message-ordering-in-competing-consumers/">Mar 31 - О гонке сообщений в условиях конкурирующих подписчиков</a></li>
     
-      <li><a href="../../domain-events-in-ddd/">May 05 - Domain Events in DDD</a></li>
+      <li><a href="../../../domain-events-in-ddd/">May 05 - Domain Events in DDD</a></li>
     
   </ul>
 
-  <h3><a href="../../../blog/tag/">Tags</a></h3>
+  <h3><a href="../../../../blog/tag/">Tags</a></h3>
   <style type="text/css">
     ul.ablog-cloud {list-style: none; overflow: auto;}
     ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
@@ -685,204 +685,204 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/agile/">Agile</a></li>
+        <a href="../../../../blog/tag/agile/">Agile</a></li>
       
     
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/angular/">Angular</a></li>
+        <a href="../../../../blog/tag/angular/">Angular</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/autocomplete/">Autocomplete</a></li>
+        <a href="../../../../blog/tag/autocomplete/">Autocomplete</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/cqrs/">CQRS</a></li>
+        <a href="../../../../blog/tag/cqrs/">CQRS</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/cqs/">CQS</a></li>
+        <a href="../../../../blog/tag/cqs/">CQS</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/cache/">Cache</a></li>
+        <a href="../../../../blog/tag/cache/">Cache</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/career/">Career</a></li>
+        <a href="../../../../blog/tag/career/">Career</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/clean-architecture/">Clean Architecture</a></li>
+        <a href="../../../../blog/tag/clean-architecture/">Clean Architecture</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/clean-code/">Clean Code</a></li>
+        <a href="../../../../blog/tag/clean-code/">Clean Code</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/communication/">Communication</a></li>
+        <a href="../../../../blog/tag/communication/">Communication</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/db/">DB</a></li>
+        <a href="../../../../blog/tag/db/">DB</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-4">
-        <a href="../../../blog/tag/ddd/">DDD</a></li>
+        <a href="../../../../blog/tag/ddd/">DDD</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/datamapper/">DataMapper</a></li>
+        <a href="../../../../blog/tag/datamapper/">DataMapper</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/dependency-injection/">Dependency Injection</a></li>
+        <a href="../../../../blog/tag/dependency-injection/">Dependency Injection</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/distributed-systems/">Distributed Systems</a></li>
+        <a href="../../../../blog/tag/distributed-systems/">Distributed Systems</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/django/">Django</a></li>
+        <a href="../../../../blog/tag/django/">Django</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../../blog/tag/django-model/">Django Model</a></li>
+        <a href="../../../../blog/tag/django-model/">Django Model</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/docker/">Docker</a></li>
+        <a href="../../../../blog/tag/docker/">Docker</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/eip/">EIP</a></li>
+        <a href="../../../../blog/tag/eip/">EIP</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/economics/">Economics</a></li>
+        <a href="../../../../blog/tag/economics/">Economics</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/emacs/">Emacs</a></li>
+        <a href="../../../../blog/tag/emacs/">Emacs</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/event-sourcing/">Event Sourcing</a></li>
+        <a href="../../../../blog/tag/event-sourcing/">Event Sourcing</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/event-driven/">Event-Driven</a></li>
+        <a href="../../../../blog/tag/event-driven/">Event-Driven</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/extreme-programming/">Extreme Programming</a></li>
+        <a href="../../../../blog/tag/extreme-programming/">Extreme Programming</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/flux/">Flux</a></li>
+        <a href="../../../../blog/tag/flux/">Flux</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/fowler/">Fowler</a></li>
+        <a href="../../../../blog/tag/fowler/">Fowler</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/functional-programming/">Functional Programming</a></li>
+        <a href="../../../../blog/tag/functional-programming/">Functional Programming</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/hr/">HR</a></li>
+        <a href="../../../../blog/tag/hr/">HR</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/hiring/">Hiring</a></li>
+        <a href="../../../../blog/tag/hiring/">Hiring</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/javascript/">JavaScript</a></li>
+        <a href="../../../../blog/tag/javascript/">JavaScript</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/management/">Management</a></li>
+        <a href="../../../../blog/tag/management/">Management</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/microservices/">Microservices</a></li>
+        <a href="../../../../blog/tag/microservices/">Microservices</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-4">
-        <a href="../../../blog/tag/model/">Model</a></li>
+        <a href="../../../../blog/tag/model/">Model</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/oop/">OOP</a></li>
+        <a href="../../../../blog/tag/oop/">OOP</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../../blog/tag/orm/">ORM</a></li>
+        <a href="../../../../blog/tag/orm/">ORM</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/programming/">Programming</a></li>
+        <a href="../../../../blog/tag/programming/">Programming</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-4">
-        <a href="../../../blog/tag/python/">Python</a></li>
+        <a href="../../../../blog/tag/python/">Python</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/redux/">Redux</a></li>
+        <a href="../../../../blog/tag/redux/">Redux</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/refactoring/">Refactoring</a></li>
+        <a href="../../../../blog/tag/refactoring/">Refactoring</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/repository/">Repository</a></li>
+        <a href="../../../../blog/tag/repository/">Repository</a></li>
       
     
       
@@ -891,96 +891,96 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/sql/">SQL</a></li>
+        <a href="../../../../blog/tag/sql/">SQL</a></li>
       
     
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/scrum/">Scrum</a></li>
+        <a href="../../../../blog/tag/scrum/">Scrum</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/service-layer/">Service Layer</a></li>
+        <a href="../../../../blog/tag/service-layer/">Service Layer</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/soft-skills/">Soft Skills</a></li>
+        <a href="../../../../blog/tag/soft-skills/">Soft Skills</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-4">
-        <a href="../../../blog/tag/software-architecture/">Software Architecture</a></li>
+        <a href="../../../../blog/tag/software-architecture/">Software Architecture</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/software-construction/">Software Construction</a></li>
+        <a href="../../../../blog/tag/software-construction/">Software Construction</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/software-design/">Software Design</a></li>
+        <a href="../../../../blog/tag/software-design/">Software Design</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/storm-orm/">Storm ORM</a></li>
+        <a href="../../../../blog/tag/storm-orm/">Storm ORM</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/tdd/">TDD</a></li>
+        <a href="../../../../blog/tag/tdd/">TDD</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/xp/">XP</a></li>
+        <a href="../../../../blog/tag/xp/">XP</a></li>
       
     
       
     
   </ul>
 
-  <h3><a href="../../../blog/archive/">Archives</a></h3>
+  <h3><a href="../../../../blog/archive/">Archives</a></h3>
   <ul>
   
     
-    <li><a href="../../../blog/2021/">2021 (4)</a></li>
+    <li><a href="../../../../blog/2021/">2021 (4)</a></li>
     
   
     
-    <li><a href="../../../blog/2020/">2020 (1)</a></li>
+    <li><a href="../../../../blog/2020/">2020 (1)</a></li>
     
   
     
-    <li><a href="../../../blog/2019/">2019 (2)</a></li>
+    <li><a href="../../../../blog/2019/">2019 (2)</a></li>
     
   
     
-    <li><a href="../../../blog/2018/">2018 (4)</a></li>
+    <li><a href="../../../../blog/2018/">2018 (4)</a></li>
     
   
     
-    <li><a href="../../../blog/2017/">2017 (9)</a></li>
+    <li><a href="../../../../blog/2017/">2017 (9)</a></li>
     
   
     
-    <li><a href="../../../blog/2016/">2016 (5)</a></li>
+    <li><a href="../../../../blog/2016/">2016 (5)</a></li>
     
   
     
-    <li><a href="../../../blog/2015/">2015 (6)</a></li>
+    <li><a href="../../../../blog/2015/">2015 (6)</a></li>
     
   
   </ul>
 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="../../../search/" method="get">
+    <form class="search" action="../../../../search/" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -1001,7 +1001,7 @@ TDD позволяет &#8220;развязать&#8221; реализуемые �
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../../_sources/ru/agile/easily-about-agile-way-to-rapid-development.txt"
+      <a href="../../../../_sources/ru/it/agile/easily-about-agile-way-to-rapid-development.txt"
           rel="nofollow">Page source</a>
     </div>
 

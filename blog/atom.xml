@@ -8,10 +8,10 @@
   <generator uri="http://ablog.readthedocs.org" version="0.8.3">ABlog</generator>
   <entry xml:base="https://emacsway.github.io/blog/atom.xml">
     <title type="text">Краткий курс по экономике разработки программного обеспечения</title>
-    <id>https://emacsway.github.io/ru/agile/crash-course-in-software-development-economics/</id>
+    <id>https://emacsway.github.io/ru/it/agile/crash-course-in-software-development-economics/</id>
     <updated>2021-05-05T00:00:00Z</updated>
     <published>2021-05-05T00:00:00Z</published>
-    <link href="https://emacsway.github.io/ru/agile/crash-course-in-software-development-economics/" />
+    <link href="https://emacsway.github.io/ru/it/agile/crash-course-in-software-development-economics/" />
     <author>
       <name>Ivan Zakrevsky</name>
     </author>
@@ -109,10 +109,10 @@
   </entry>
   <entry xml:base="https://emacsway.github.io/blog/atom.xml">
     <title type="text">Про Agile на пальцах. Путь к быстрой разработке.</title>
-    <id>https://emacsway.github.io/ru/agile/easily-about-agile-way-to-rapid-development/</id>
+    <id>https://emacsway.github.io/ru/it/agile/easily-about-agile-way-to-rapid-development/</id>
     <updated>2019-11-15T00:00:00Z</updated>
     <published>2018-09-15T00:00:00Z</published>
-    <link href="https://emacsway.github.io/ru/agile/easily-about-agile-way-to-rapid-development/" />
+    <link href="https://emacsway.github.io/ru/it/agile/easily-about-agile-way-to-rapid-development/" />
     <author>
       <name>Ivan Zakrevsky</name>
     </author>
