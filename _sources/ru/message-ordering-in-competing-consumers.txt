@@ -32,10 +32,21 @@
 А пока - список литературы, который хорошо освещает эту проблему:
 
 - "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" by Martin Kleppmann
+- "`Lecture notes (PDF) (including exercises) <https://martin.kleppmann.com/2020/11/18/distributed-systems-and-elliptic-curves.html>`__" by Martin Kleppman (`download <https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/dist-sys-notes.pdf>`__, `source code <https://github.com/ept/dist-sys>`__, `video <https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB>`__)
 - "Database Internals: A Deep Dive into How Distributed Data Systems Work" by Alex Petrov
 - "Distributed systems: principles and paradigms" 3d edition by Andrew S. Tanenbaum, Maarten Van Steen
+- "`Введение в распределенные вычисления <http://books.ifmo.ru/file/pdf/1551.pdf>`__" / Косяков М. С. — СПб: НИУ ИТМО, 2014. — С. 75-82. — 155 с.
+- "`Distributed systems: for fun and profit <http://book.mixu.net/distsys/>`__" (2013). An introduction to distributed systems. (`source code <https://github.com/mixu/distsysbook>`__)
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "`Event Sourced Building Blocks for Domain-Driven Design with Python <https://leanpub.com/dddwithpython>`__" by John Bywater
+
+Статьи по теме:
+
+- "`Don't Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage. <https://queue.acm.org/detail.cfm?id=2610533>`__" (`pdf <https://dl.acm.org/ft_gateway.cfm?id=2610533&ftid=1449165&dwn=1>`__) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University
+- "`Bolt-on Causal Consistency <http://www.bailis.org/papers/bolton-sigmod2013.pdf>`__" by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology
+- "`Detecting Causal Relationships in Distributed Computations:In Search of the Holy Grail <https://disco.ethz.ch/courses/hs08/seminar/papers/mattern4.pdf>`__" by Reinhard Schwarz, Friedemann Mattern
+- "`Principles of Eventual Consistency <https://www.microsoft.com/en-us/research/publication/principles-of-eventual-consistency/>`__" (`pdf <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/final-printversion-10-5-14.pdf>`__) by Sebastian Burckhardt, Microsoft Research
+- "`HighLoad++, Михаил Тюленев (MongoDB): Causal consistency: от теории к практике <https://habr.com/ru/company/ua-hosting/blog/487638/>`__"
 
 Список литературы по интеграционным паттернам:
 
@@ -112,6 +123,10 @@ Vaughn Vernon в "Reactive Messaging Patterns with the Actor Model: Applications
 Превосходная статья от CTO of Amazon.com Werner Vogels:
 
 - "`Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__"
+
+Превосходная статья по Causal Consistency (Causal Dependencies) доступным языком:
+
+- "`HighLoad++, Михаил Тюленев (MongoDB): Causal consistency: от теории к практике <https://habr.com/ru/company/ua-hosting/blog/487638/>`__"
 
 
 Восстановление очередности сообщений
