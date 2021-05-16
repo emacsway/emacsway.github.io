@@ -1,1 +1,1 @@
-Source code of https://emacsway.github.io/
+Built site https://emacsway.github.io/

@@ -38,7 +38,7 @@
 
     
 
-        <meta http-equiv="Last-Modified" content="Sat, 16 Nov 2019 00:00:00 GMT" />
+        <meta http-equiv="Last-Modified" content="Sat, 16 May 2020 00:00:00 GMT" />
         
             <meta name="description" content="Время от времени в кругу моих знакомых регулярно поднимается вопрос о том, что Anemic Domain Model - никакой вовсе и не антипаттерн, и в качестве аргументов приводятся ссылки на статью “The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design” [1]. После очередного упоминания этой статьи я решил об этом написать." />
         
@@ -91,10 +91,10 @@
 <p>Время от времени в кругу моих знакомых регулярно поднимается вопрос о том, что Anemic Domain Model - никакой вовсе и не антипаттерн, и в качестве аргументов приводятся ссылки на статью &#8220;The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design&#8221; <a class="footnote-reference" href="#fnadminapen" id="id1">[1]</a>.
 После очередного упоминания этой статьи я решил об этом написать.</p>
 <p>Я не знаю, читал ли автор той статьи весь список перечисленной внизу нее литературы, потому что в этом списке присутствует книга &#8220;Martin, Robert C. Agile software development: principles, patterns, and practices. Prentice Hall PTR, 2003&#8221;.</p>
-<p>А эта книга дает, на мой взгляд, лучшее представление о том, что делают методы объекта: <a class="reference external" href="https://youtu.be/TMuno5RZNeE?t=33m30s">они Внедряют Зависимости (Dependency Injection)</a>, что делает полиморфизм возможным!
-Я всем советую сперва прочесть эту книгу (именно книгу в оригинале, а не краткие выдержки из Википедии), прежде чем читать указанную статью.
-Как минимум, просмотрите хотя бы этот видеоролик: &#8220;<a class="reference external" href="https://www.youtube.com/watch?v=TMuno5RZNeE">Bob Martin SOLID Principles of Object Oriented and Agile Design</a>&#8221;.</p>
-<p>Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет соответствовать пятому принципу &#8220;D&#8221; в SOLID, а лишение объекта полиморфизма (да еще и в условиях отсутствия <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch">Множественной Диспетчеризации</a>) будет соответствовать третьему принципу &#8220;L&#8221; в SOLID.
+<p>Эта книга дает, на мой взгляд, лучшее представление о том, что делают методы объекта: <a class="reference external" href="https://youtu.be/TMuno5RZNeE?t=33m30s">они Внедряют Зависимости (Dependency Injection)</a>, что делает полиморфизм возможным!
+Я рекомендую прочесть эту книгу (именно книгу в оригинале, а не краткие выдержки из Википедии), прежде чем читать указанную статью.
+Как минимум, просмотреть хотя бы этот видеоролик: &#8220;<a class="reference external" href="https://www.youtube.com/watch?v=TMuno5RZNeE">Bob Martin SOLID Principles of Object Oriented and Agile Design</a>&#8221;.</p>
+<p>Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет сильно соответствовать пятому принципу &#8220;D&#8221; в SOLID, а лишение объекта полиморфизма (особенно в условиях отсутствия <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch">Множественной Диспетчеризации</a>) будет соответствовать третьему принципу &#8220;L&#8221; в SOLID.
 В таком случае внедрять зависимости и обеспечивать полиморфизм придется вручную, фактически превращая программу из объектно-ориентированной в процедурную.</p>
 <blockquote>
 <div><p>The fact that the boundaries are not visible during the deployment of a monolith does not mean that they are not present and meaningful.
@@ -105,13 +105,13 @@ Without OO, or an equivalent form of polymorphism, architects must fall back on 
 Most architects find prolific use of pointers to functions to be too risky, so they are forced to abandon any kind of component partitioning.</p>
 <p>- &#8220;Clean Architecture: A Craftsman’s Guide to Software Structure and Design&#8221; by Robert C. Martin</p>
 </div></blockquote>
-<p>Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, не понимая отличий межу функциональным программированием и процедурным.
+<p>Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, зачастую не понимая отличий между функциональным программированием и процедурным.
 Если говорить о превосходствах функционального программирования, то этот вопрос хорошо осветил Роберт Мартин в статьях &#8220;<a class="reference external" href="http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html">OO vs FP</a>&#8221; (2014) и &#8220;<a class="reference external" href="https://blog.cleancoder.com/uncle-bob/2018/04/13/FPvsOO.html">FP vs. OO</a>&#8221; (2018).</p>
 <p>Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных. А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.</p>
 <blockquote>
 <div>&#8220;OO makes code understandable by encapsulating moving parts. FP makes code understandable by minimizing moving parts.&#8221;
 - <a class="reference external" href="https://twitter.com/mfeathers/status/29581296216">Michael Feathers</a></div></blockquote>
-<p>Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Date Type в функциональной парадигме.
+<p>Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Data Type в функциональной парадигме.
 Вот <a class="reference external" href="https://youtu.be/dnUFEg68ESM?t=3085">здесь</a>, например, сам Eric Evans говорит о том, что в своей книге &#8220;Domain-Driven Design&#8221; он не рассматривал глубоко функциональную парадигму, потому что в 2003 она не имела такого применения как сегодня.
 А сегодня, в контексте Event Sourcing, она имеет уже совсем другое значение.</p>
 <blockquote>
@@ -133,7 +133,7 @@ Options that were really not there in 2003.</p>
 <p>Также следует отличать Anemic Domain Model от <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice#layers-in-ddd-microservices">ViewModel</a>, ибо ViewModel по определению не предназначено для какого-либо поведения (а именно неверное расположение поведения является сутью антипаттерна Anemic Domain Model), и часто <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/cqrs-microservice-reads">применяется в CQRS</a>.</p>
 <p>Но вернемся к обсуждаемой статье.
 Я так и не смог найти имя автора той статьи на том сайте.
-Нечего и говорить, что это - весомый аргумент для авторитета статьи, которая с легкостью берется опровергать статью Мартина Фаулера(!) &#8220;<a class="reference external" href="https://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221;.
+Вероятно, это должно было как-то поднять авторитет статьи, которая с легкостью берется опровергать статью &#8220;<a class="reference external" href="https://www.martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a>&#8221; by Martin Fowler.
 Создается впечатление, что подобные статьи - просто способ привлечь внимание к ресурсу, используя общественную резонансность скандальных утверждений.</p>
 <p>Автор демонстрирует отсутствие четкого понимания различий между:</p>
 <ol class="arabic simple">
@@ -142,7 +142,7 @@ Options that were really not there in 2003.</p>
 <li>Обязанностью доступа к данным (что не является бизнес-логикой), иногда именуемой слоем данных</li>
 </ol>
 <p>Указанная статья целиком построена на ошибках проектирования.
-В своем примере он рассматривает вместо бизнес-логики - обязанность доступа к данным (да еще и в виде Active Record(!)).
+В своем примере он рассматривает вместо бизнес-логики - обязанность доступа к данным (да еще и в виде Active Record).
 Жаль, что в его списке литературы нет книги &#8220;Clean Code&#8221; by Robert C. Martin, в которой рассказывается, как для разделения служебной логики и бизнес-логики вот уже более 10 лет используется <a class="reference internal" href="../javascript-and-repository-pattern/#domain-model-relationship-implementing-aop-ru"><span class="std std-ref">Cross-Cutting Concerns</span></a>.</p>
 <p>Уникальная способность автора всунуть в доменную модель обязанности слоя доступа к данным, - это, действительно, достаточно весомый аргумент для того, чтобы автор не наделял доменную модель вообще никакими обязанностями.
 К тому же Service Layer относится к Application Logic, т.е. имеет политику более низкого уровня, нежели Domain Logic.
@@ -150,16 +150,26 @@ Options that were really not there in 2003.</p>
 <p>Для того чтобы завуалировать неразбериху, автор вводит лишнее понятие Rich Domain Model, вводя тем самым читателя в заблуждение относительно присутствия некой дифференцированности в реализации Domain Model.
 Нет никаких Rich Domain Model.
 Есть Domain Model (объект моделирующий поведение объекта реального мира (предметной области)), а есть Anemic Domain Model (т.е. структура данных, выраженная объектами без поведения).</p>
-<p>В целом, основной мотив сторонников Anemic Domain Model сводится к тому, что, поскольку они не умеют обеспечить разделение реализаций служебной Логики Доступа к Данным и Бизнес-Логики Доменной Модели, т.е. отделить разного рода (Инфраструктурные) Сервисы от Доменной Модели, то, поэтому, они предлагают вынести всю Бизнес-Логику из Доменной Модели к служебной логике в Сервисы.
+<p>В целом, основной мотив сторонников Anemic Domain Model сводится к тому, что, они встречают сложность в разделении реализации служебной Логики Доступа к Данным и Бизнес-Логики Доменной Модели.
+Поэтому, они предлагают вынести всю Бизнес-Логику из Доменной Модели к служебной логике в Сервисы.
 Ну... хорошо... а что это решает?
-В Сервисах их разделять не нужно?
-Это же все-таки политики разного уровня...
+Разве в Сервисах не нужно разделять логику разного уровня политики?
 Получаются те же яйца, только в процедурном стиле.
 От перестановки мест слагаемых проблема не решается.</p>
-<p>Мне эта ситуация напомнила случай, когда Мартину Фаулеру сказали, что гибкое проектирование невозможно, потому что схему базы данных сложно изменить, а значит, ее нужно проектировать заблаговременно.
+<p>Трудности нужно решать, а не убегать от них (это называется <a class="reference external" href="https://ru.m.wikipedia.org/wiki/%D0%97%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9_%D0%BC%D0%B5%D1%85%D0%B0%D0%BD%D0%B8%D0%B7%D0%BC">Психологическая Защита</a>).
+Главный императив разработки ПО - это управление сложностью.
+Легче всего писать Spaghetti code.</p>
+<blockquote>
+<div><p>&#8220;хочу сказать, что сделать простое иногда во много раз сложнее, чем сложное.&#8221;</p>
+<p class="attribution">&mdash;М.Т. Калашников в интервью журналисту газеты «Metro Москва», 2009 год.</p>
+</div></blockquote>
+<blockquote>
+<div><p>&#8220;Усложнять - просто, упрощать - сложно&#8221;.</p>
+<p class="attribution">&mdash;&#8220;Закон Мейера&#8221;</p>
+</div></blockquote>
+<p>Мне это напоминает случай, когда Мартину Фаулеру сказали, что гибкое проектирование невозможно, потому что схему базы данных сложно изменить, а значит, ее нужно проектировать заблаговременно.
 Мартин Фаулер <a class="reference external" href="https://youtu.be/VjKYO6DP3fo?t=16m11s">ответил</a>, что если схему базы сложно изменить, значит мы должны подумать о том, как можно сделать процесс миграций проще.
-Так появился механизм миграций базы данных, и гибкое проектирование Agile стало возможным.
-Т.е. возник вопрос - реакционно застрять на месте, потому что возникло препятствие, или же найти решение, устраняющее это препятствие, и продолжить движение вперед.</p>
+Так появился механизм миграций базы данных, который сделал возможной Agile-разработку.</p>
 <p>Все что не относится к логике предметной области, - это новая обязанность, которая должна быть вынесена за пределы Domain Model, или, по крайней мере, не рассматриваться как бизнес-логика, если Domain Model реализована в виде паттерна Active Record (как в той статье).</p>
 <p>Очень часто можно наблюдать разбухшие модели, которые выполняют очень много несвойственных ее предметной области обязанностей, в т.ч. и уровня приложения (управление транзакциями, проверка привилегий и т.п.).
 Domain Model должна моделировать только поведение объекта предметной области (реального мира).
@@ -168,12 +178,12 @@ Domain Model должна моделировать только поведени
 <p>Еще одной частой причиной порождения Anemic Domain Model является недостаточное использование <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation">Domain Event</a>, либо некорректная его реализация.</p>
 <p>Domain Model может быть представлена в виде агрегата, т.е. композиции связанных объектов, что характерно для DDD и NoSQL.
 Domain Model может иметь методы, изменяющие ее состояние или композицию, но она не должна заботиться о сохранении этой композиции в базе данных.
-Предположим, Вы осознали что NoSQL-хранилище Вам подходит лучше, чем RDBMS, и решили заменить реализацию класса ответственного за сохранение объекта.
+Предположим, что по мере роста информированности в процессе разработки проекта, вы пришли к выводу, что NoSQL-хранилище подходит лучше, чем RDBMS, и решили заменить реализацию класса ответственного за сохранение объекта.
 С точки зрения архитектуры, база данных - это IO-устройство, от которого приложение стремится быть независимым.
-NoSQL хранилища построены вокруг идеи агрегата, что позволяет, в определенной мере, избавиться от реляционных связей и упростить шардинг.
+NoSQL хранилища построены вокруг идеи агрегата, что позволяет, в определенной мере, избавиться от реляционных связей и упростить масштабирование.
 Границами транзакции NoSQL-хранилища являются границы агрегата.
-Если у Вас детали реализации сохранения агрегата скрыты за интерфейсом ответственного за это объекта (обычно это Repository + DataMapper), то такой рефакторинг не затронет реализацию самой Доменной Модели.
-Если Вы вынуждены изменять реализацию Domain Model, то это значит, что Ваша программа не имеет независимости от IO-устройства, что нарушает Single Responsibility Principle (в виде Code Smell &#8220;Shotgun Surgery&#8221;).</p>
+Если детали реализации сохранения агрегата скрыты за интерфейсом ответственного за это объекта (обычно это Repository + DataMapper), то такой рефакторинг минимизирует изменение самой Доменной Модели.
+В противном случае, программа не имеет независимости от IO-устройства, что нарушает Single Responsibility Principle (что проявляется в виде Code Smell &#8220;Shotgun Surgery&#8221;).</p>
 <p>Иногда случается, что Бизнес-Логика Доменной Модели нуждается в доступе к экземпляру связанной Доменной Модели, или даже в доступе к корню другого Агрегата.
 Недостаточное понимание способов разделения политики разных уровней (Бизнес-Логики и Логики Доступа к Данным) часто приводит к оправданию Anemic Domain Model.
 Между тем, существует целый <a class="reference internal" href="../javascript-and-repository-pattern/#domain-model-relationship-ru"><span class="std std-ref">ряд способов решения этой проблемы</span></a>.</p>
@@ -183,14 +193,17 @@ NoSQL хранилища построены вокруг идеи агрегат
 <li>&#8220;<a class="reference internal" href="../service-layer/"><span class="doc">Проектирование Сервисного Слоя и Логики Приложения</span></a>&#8220;</li>
 <li>&#8220;<a class="reference internal" href="../storm-orm/"><span class="doc">Почему я выбираю Storm ORM для Python</span></a>&#8220;</li>
 </ul>
+<p>Существует превосходная статья по этому вопросу:</p>
+<ul class="simple">
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-lazy-loading/">Domain model purity and lazy loading</a>&#8221; by Vladimir Khorikov</li>
+</ul>
 <p>Ключевой признак плохой архитектуры - это ее зависимость от деталей реализации.
-Если Вы принимаете проектные решения (а тем более - парадигму) в угоду реализации, то это говорит о проблемах проектирования.
-Это - зависимость.
-Архитектура должна указывать реализацию, а не подстраиваться под нее.</p>
+Архитектура должна определять реализацию, а не подстраиваться под нее.</p>
 <p>Да, бывают случаи, когда мы должны использовать структуры данных вместо объектов.
 Хорошо эту тему раскрывает Robert C. Martin в главе &#8220;Chapter 6: Objects and Data Structures :: Data/Object Anti-Symmetry&#8221; книги &#8220;Clean Code: A Handbook of Agile Software Craftsmanship&#8221;.
-Но это не имеет никакого отношения к тому, что написал автор.</p>
-<p>Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.</p>
+Мне попадалась ещё статья на эту тему: &#8220;<a class="reference external" href="https://ru.hexlet.io/blog/posts/expression-problem">Что такое expression problem, или о дуализме функционального и объектно-ориентированного программирования</a>&#8221; / Дмитрий Дементий.
+Но эта тема не имеет никакого отношения к тому, что написал автор.
+Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.</p>
 <p>Попробуйте реализовать в таком стиле паттерн <a class="reference external" href="https://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a> для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
 То же самое справедливо и к случаю использования паттерна <a class="reference external" href="https://martinfowler.com/eaaCatalog/specialCase.html">Special Case</a>, известного также как метод рефакторинга <a class="reference external" href="https://www.refactoring.com/catalog/introduceNullObject.html">Introduce Null Object</a>.
 Смотрите также <a class="reference external" href="https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html">Replace Conditional with Polymorphism</a>, <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html">Replace Type Code With Polymorphism</a> и <a class="reference external" href="https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html">Replace Type Code with State/Strategy</a> (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).</p>
@@ -203,6 +216,7 @@ NoSQL хранилища построены вокруг идеи агрегат
 <li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/how-to-know-if-your-domain-model-is-properly-isolated/">How to know if your Domain model is properly isolated?</a>&#8221; by Vladimir Khorikov</li>
 <li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/">Domain model purity vs. domain model completeness</a>&#8221; by Vladimir Khorikov</li>
 <li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-lazy-loading/">Domain model purity and lazy loading</a>&#8221; by Vladimir Khorikov</li>
+<li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/defense-lazy-loading">In Defense of Lazy Loading</a>&#8221; by Vladimir Khorikov</li>
 <li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/">Domain model purity and the current time</a>&#8221; by Vladimir Khorikov</li>
 <li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/immutable-architecture/">Immutable architecture</a>&#8221; by Vladimir Khorikov</li>
 <li>&#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/link-to-an-aggregate-reference-or-id/">Link to an aggregate: reference or Id?</a>&#8221; by Vladimir Khorikov</li>
@@ -231,7 +245,7 @@ NoSQL хранилища построены вокруг идеи агрегат
 </tbody>
 </table>
 <div class="note update admonition">
-<p class="first last admonition-title">Updated on Nov 16, 2019</p>
+<p class="first last admonition-title">Updated on May 16, 2020</p>
 </div>
 </div>
 
@@ -319,7 +333,7 @@ NoSQL хранилища построены вокруг идеи агрегат
   <ul>
     
   <li><i class="fa fa-pencil-square-o"></i>
-    Nov 16, 2019</li>
+    May 16, 2020</li>
   
 
   
