@@ -123,7 +123,7 @@
 К тому же Service Layer относится к Application Logic, т.е. имеет политику более низкого уровня, нежели Domain Logic.
 А :ref:`у Domain Service есть ограниченный список причин для своего существования <domain-service-ru>`.
 
-Автор неверно трактует Single Responsibility Principle (SRP), полагая, что он подразумевает "делать одну вещь".
+В статье приводится неверная трактовка Single Responsibility Principle (SRP), которая подразумевает "делать одну вещь".
 
 В своей книге Clean Architecture, Robert C. Martin именно поэтому сожалеет, что выбрал такое название (SRP):
 
@@ -157,7 +157,7 @@
 В книге "Agile Software Development. Principles, Patterns, and Practices." by Robert C. Martin, James W. Newkirk, Robert S. Koss, в оригинальной статье "`Principles Of OOD <http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod>`__" by Robert C. Martin, и в комментирующей статье "`The Single Responsibility Principle <http://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html>`__" by Robert C. Martin, SRP выводится из понятий `Coupling and Cohesion <https://wiki.c2.com/?CouplingAndCohesion>`__ of Constantine's Law.
 В то время, как в обсуждаемой статье Cohesion совершенно не учитывается.
 
-Для того чтобы завуалировать неразбериху, автор вводит лишнее понятие Rich Domain Model, вводя тем самым читателя в заблуждение относительно присутствия некой дифференцированности в реализации Domain Model.
+Вся эта неразбериха завуалирована введением избыточного понятия Rich Domain Model, что вводит читателя в заблуждение относительно присутствия некой дифференцированности в реализации Domain Model.
 Никаких Rich Domain Model нет.
 Есть Domain Model (объект моделирующий поведение объекта реального мира (предметной области)), а есть Anemic Domain Model (т.е. структура данных, выраженная объектами без поведения).
 
@@ -228,8 +228,7 @@ NoSQL хранилища построены вокруг идеи агрегат
 Да, бывают случаи, когда целесообразней использовать структуры данных вместо объектов.
 Хорошо эту тему раскрывает Robert C. Martin в главе "Chapter 6: Objects and Data Structures :: Data/Object Anti-Symmetry" книги "Clean Code: A Handbook of Agile Software Craftsmanship".
 Мне попадалась ещё статья на эту тему: "`Что такое expression problem, или о дуализме функционального и объектно-ориентированного программирования <https://ru.hexlet.io/blog/posts/expression-problem>`__" / Дмитрий Дементий.
-Но эта тема не имеет никакого отношения к тому, что написал автор.
-Автор просто пишет о том, как писать процедурные программы в Объектно-Ориентированных языках.
+Но эта тема не имеет никакого отношения к предмету обсуждаемой статьи, которая посвящена тому, как писать процедурные программы в Объектно-Ориентированных языках.
 
 Попробуйте реализовать в таком стиле паттерн `Class Table Inheritance <https://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
 То же самое справедливо и к случаю использования паттерна `Special Case <https://martinfowler.com/eaaCatalog/specialCase.html>`__, известного также как метод рефакторинга `Introduce Null Object <https://www.refactoring.com/catalog/introduceNullObject.html>`__.
