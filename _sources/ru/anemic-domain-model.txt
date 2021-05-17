@@ -18,7 +18,7 @@
 Я рекомендую прочесть эту книгу (именно книгу в оригинале, а не краткие выдержки из Википедии), прежде чем читать указанную статью.
 Как минимум, просмотреть хотя бы этот видеоролик: "`Bob Martin SOLID Principles of Object Oriented and Agile Design <https://www.youtube.com/watch?v=TMuno5RZNeE>`__".
 
-Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет сильно соответствовать пятому принципу "D" в SOLID, а лишение объекта полиморфизма (особенно в условиях отсутствия `Множественной Диспетчеризации <https://en.wikipedia.org/wiki/Multiple_dispatch>`__) будет соответствовать третьему принципу "L" в SOLID.
+Я не думаю, что исключение внедрения зависимостей (Dependency Injection) на уровне объекта будет сильно способствовать пятому принципу "D" в SOLID (поскольку `DI является механизмом реализации DIP <https://sergeyteplyakov.blogspot.com/2014/11/di-vs-dip-vs-ioc.html>`__), а лишение объекта полиморфизма (особенно в условиях отсутствия `Множественной Диспетчеризации <https://en.wikipedia.org/wiki/Multiple_dispatch>`__) будет способствовать третьему принципу "L" в SOLID.
 В таком случае внедрять зависимости и обеспечивать полиморфизм придется вручную, фактически превращая программу из объектно-ориентированной в процедурную.
 
     📝 The fact that the boundaries are not visible during the deployment of a monolith does not mean that they are not present and meaningful.
@@ -31,13 +31,55 @@
 
     \- "Clean Architecture: A Craftsman’s Guide to Software Structure and Design" by Robert C. Martin
 
-Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, зачастую не понимая отличий между функциональным программированием и процедурным.
+Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, зачастую не проводя различий между функциональным программированием и процедурным.
 Превосходства функционального программирования хорошо осветил Роберт Мартин в статьях "`OO vs FP <http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html>`__" (2014) и "`FP vs. OO <https://blog.cleancoder.com/uncle-bob/2018/04/13/FPvsOO.html>`__" (2018).
 
-Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных. А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.
+Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных.
+А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.
 
     📝 "OO makes code understandable by encapsulating moving parts. FP makes code understandable by minimizing moving parts."
-    \- `Michael Feathers <https://twitter.com/mfeathers/status/29581296216>`__
+    -- `Michael Feathers <https://twitter.com/mfeathers/status/29581296216>`__
+
+Обе парадигмы, и функциональная, и объектно-ориентированная, решают вопрос управления существенной сложностью (Essential Complexity) программы, но разными способами.
+
+    📝 "Brooks argues that software development is made difficult because of two different classes of problems—the essential and the accidental. In referring to these two terms, Brooks draws on a philosophical tradition going back to Aristotle. In philosophy, the essential properties are the properties that a thing must have in order to be that thing. A car must have an engine, wheels, and doors to be a car. If it doesn't have any of those essential properties, it isn't really a car.
+
+    Accidental properties are the properties a thing just happens to have, properties that don't really bear on whether the thing is what it is. A car could have a V8, a turbocharged 4-cylinder, or some other kind of engine and be a car regardless of that detail. A car could have two doors or four; it could have skinny wheels or mag wheels. All those details are accidental properties. You could also think of accidental properties as incidental, discretionary, optional, and happenstance.
+
+    <...>
+
+    As Dijkstra pointed out, modern software is inherently complex, and no matter how hard you try, you'll eventually bump into some level of complexity that's inherent in the real-world problem itself. This suggests a two-prong approach to managing complexity:
+
+    - Minimize the amount of essential complexity that anyone's brain has to deal with at any one time.
+    - Keep accidental complexity from needlessly proliferating."
+
+    <...>
+
+    Abstraction is the ability to engage with a concept while safely ignoring some of its details—handling different details at different levels. Any time you work with an aggregate, you're working with an abstraction. If you refer to an object as a "house" rather than a combination of glass, wood, and nails, you're making an abstraction. If you refer to a collection of houses as a "town," you're making another abstraction.
+
+    <...>
+
+    From a complexity point of view, the principal benefit of abstraction is that it allows you to ignore irrelevant details. Most real-world objects are already abstractions of some kind. As just mentioned, a house is an abstraction of windows, doors, siding, wiring, plumbing, insulation, and a particular way of organizing them. A door is in turn an abstraction of a particular arrangement of a rectangular piece of material with hinges and a doorknob. And the doorknob is an abstraction of a particular formation of brass, nickel, iron, or steel.
+
+    <...>
+
+    Encapsulation picks up where abstraction leaves off. Abstraction says, "You're allowed to look at an object at a high level of detail." Encapsulation says, "Furthermore, you aren't allowed to look at an object at any other level of detail."
+
+    -- "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell
+
+..
+
+    📝 "Following Aristotle, I divide them [difficulties] into essence - the difficulties inherent in the nature of the software - and accidents - those difficulties that today attend its production but that are not inherent.
+
+    <...>
+
+    The complexity of software is in essential property, not an accidental one.
+    Hence descriptions of a software entity that **abstract away its complexity often abstract away its essence**.
+    Mathematics and the physical sciences made great strides for three centuries by constructing simplified models of complex phenomena, deriving properties from the models, and verifying those properties experimentally.
+    This worked because the complexities ignored in the models were not the essential properties of the phenomena.
+    It does not work when the complexities are the essence."
+
+    -- "No Silver Bullet - Essence and Accident in Software Engineering" by Frederick P. Brooks, Jr.
 
 Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Data Type в функциональной парадигме.
 Вот `здесь <https://youtu.be/dnUFEg68ESM?t=3085>`_, например, сам Eric Evans говорит о том, что в своей книге "Domain-Driven Design" он не рассматривал глубоко функциональную парадигму, потому что в 2003 она не имела такого применения как сегодня.
@@ -225,4 +267,4 @@ NoSQL хранилища построены вокруг идеи агрегат
 .. [#fnadminapen] "The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design" \https://blog.inf.ed.ac.uk/sapm/2014/02/04/the-anaemic-domain-model-is-no-anti-pattern-its-a-solid-design/ (перевод на русский "Анемичная модель предметной области — не анти-шаблон, а архитектура по принципам SOLID" \https://habrahabr.ru/post/346016/ )
 .. [#fnpoeaa] "Patterns of Enterprise Application Architecture" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 
-.. update:: May 16, 2021
+.. update:: May 17, 2021
