@@ -121,7 +121,7 @@
 
 В статье приводится неверная трактовка Single Responsibility Principle (SRP), которая подразумевает "делать одну вещь".
 
-В своей книге Clean Architecture, Robert C. Martin именно поэтому сожалеет, что выбрал такое название (SRP):
+В своей книге Clean Architecture, Robert C. Martin именно по этой причине сожалеет, что выбрал такое название (SRP):
 
     📝 "Of all the SOLID principles, the **Single Responsibility Principle (SRP) might be the least well understood**. That’s likely because it has a particularly **inappropriate name**.
     It is too easy for programmers **to hear the name and then assume that it means that every module should do just one thing**.
