@@ -50,7 +50,7 @@
 
     As Dijkstra pointed out, modern software is inherently complex, and no matter how hard you try, you'll eventually bump into some level of complexity that's inherent in the real-world problem itself. This suggests a two-prong approach to managing complexity:
 
-    - Minimize the amount of essential complexity that anyone's brain has to deal with at any one time.
+    - **Minimize the amount of essential complexity that anyone's brain has to deal with at any one time.**
     - Keep accidental complexity from needlessly proliferating."
 
     <...>
