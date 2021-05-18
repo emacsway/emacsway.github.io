@@ -226,9 +226,8 @@ NoSQL хранилища построены вокруг идеи агрегат
 Мне попадалась ещё статья на эту тему: "`Что такое expression problem, или о дуализме функционального и объектно-ориентированного программирования <https://ru.hexlet.io/blog/posts/expression-problem>`__" / Дмитрий Дементий.
 Но эта тема не имеет никакого отношения к предмету обсуждаемой статьи, которая посвящена тому, как писать процедурные программы в Объектно-Ориентированных языках.
 
-Попробуйте реализовать в таком стиле паттерн `Class Table Inheritance <https://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ для коллекции полиморфных объектов с достаточно богатой бизнес-логикой, и вы поймете все недостатки Anemic Domain Model.
-То же самое справедливо и к случаю использования паттерна `Special Case <https://martinfowler.com/eaaCatalog/specialCase.html>`__, известного также как метод рефакторинга `Introduce Null Object <https://www.refactoring.com/catalog/introduceNullObject.html>`__.
-Смотрите также `Replace Conditional with Polymorphism <https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__, `Replace Type Code With Polymorphism <https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html>`__ и `Replace Type Code with State/Strategy <https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html>`__ (желательно смотреть информацию в книге, номер страницы указан на страницах онлайн-каталога по ссылкам).
+Для меня остается загадкой, как можно реализовать в стиле Anemic Domain Model паттерн `Class Table Inheritance <https://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ для коллекции полиморфных объектов с достаточно богатой бизнес-логикой.
+То же самое справедливо и к паттернам `Special Case <https://martinfowler.com/eaaCatalog/specialCase.html>`__ (aka `Introduce Null Object <https://www.refactoring.com/catalog/introduceNullObject.html>`__), `Replace Conditional with Polymorphism <https://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__, `Replace Type Code With Polymorphism <https://www.refactoring.com/catalog/replaceTypeCodeWithPolymorphism.html>`__ и `Replace Type Code with State/Strategy <https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html>`__.
 
 Материалы по теме:
 
