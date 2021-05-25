@@ -482,6 +482,7 @@ Agile
 - "The Book: 37 Things One Architect Knows About IT Transformation" by Gregor Hohpe
 - "Eat or Be Eaten!: Jungle Warfare for the Corporate Master Politician" by Phil Porter
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
+- "Technology Strategy Patterns: Architecture as Strategy" 1st edition by Eben Hewitt
 - "Thinking in Systems: A Primer" by Donella H. Meadows, Diana Wright
 
 
@@ -662,7 +663,7 @@ Donald E. Knuth:
 - "Software Engineering: A Practitioner's Approach" 9th edition by Roger S. Pressman, Bruce Maxim
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
 - "Team Topologies: Organizing Business and Technology Teams for Fast Flow" by Matthew Skelton, Manuel Pais
-
+- "Technology Strategy Patterns: Architecture as Strategy" 1st edition by Eben Hewitt
 
 Архитектура в Agile:
 
@@ -684,6 +685,7 @@ Donald E. Knuth:
 ---------
 
 - "Software Requirements (Developer Best Practices)" 3rd Edition by Karl Wiegers
+- "INCOSE Guide for Writing Requirements" by INCOSE
 
 
 Аналитика в Agile:
@@ -696,6 +698,12 @@ Donald E. Knuth:
 Другие подборки литературы по аналитике:
 
 - `Литература по аналитике на сайте Systems.Education <https://systems.education/books>`__
+- `Литература по аналитике на сайте Volere Requirements Resources <https://www.volere.org/resources/books/>`__.
+
+Смотрите также список инструментов для управления требованиями:
+
+- `Tools <https://www.volere.org/tools/>`__ on Volere Requirements Resources
+- `Requirements Tools <https://www.volere.org/requirements-tools/>`__ on Volere Requirements Resources
 
 
 Изучаем оценивание задач
@@ -747,6 +755,8 @@ Body of Knowledge
 - "`The Project Management Body of Knowledge <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>`__"
 - "`Учебник 4CIO. Настольная книга ИТ-Директора <https://book4cio.ru/>`__"
 - "`Учебник 4CDTO. Настольная книга руководителя цифровой трансформации <https://4cio.ru/pages/570>`__"
+
+- "`Systems engineering handbook. A guide for System Life Cycle Processes and activities. <https://www.incose.org/products-and-publications/se-handbook>`__" by INCOSE
 
 
 ГОСТы
