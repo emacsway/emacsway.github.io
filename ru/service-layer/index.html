@@ -97,7 +97,7 @@
 <li><a class="reference internal" href="#layered-architecture" id="id72">Layered Architecture</a></li>
 <li><a class="reference internal" href="#business-logic" id="id73">Что такое Бизнес-Логика (Business Logic)?</a></li>
 <li><a class="reference internal" href="#business-rules" id="id74">Подвиды Бизнес-Правил (Business Rules)</a></li>
-<li><a class="reference internal" href="#business-rules-application-logic" id="id75">Почему важно отделять Business Rules от Application Logic?</a></li>
+<li><a class="reference internal" href="#business-logic-application-logic" id="id75">Почему важно отделять Business Logic от Application Logic?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#application-logic" id="id76">Способы организации Логики Приложения (Application Logic)</a></li>
@@ -217,6 +217,9 @@ architectural framework.</dd>
 <p>Википедия <a class="reference external" href="https://en.wikipedia.org/wiki/Business_logic">дает следующее определение термину Business Logic</a>:</p>
 <blockquote>
 <div>In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.</div></blockquote>
+<p>И поясняет, чем отличается Business Logic от Business Rules:</p>
+<blockquote>
+<div>Business logic should be distinguished from business rules.[&#8220;<a class="reference external" href="http://c2.com/cgi/wiki?BusinessLogicDefinition">Definition of business logic</a>&#8220;] Business logic is the portion of an enterprise system which determines how data is transformed or calculated, and how it is routed to people or software (workflow). Business rules are formal expressions of business policy. Anything that is a process or procedure is business logic, and anything that is neither a process nor a procedure is a business rule. Welcoming a new visitor is a process (workflow) consisting of steps to be taken, whereas saying every new visitor must be welcomed is a business rule. Further, business logic is procedural whereas business rules are declarative.[William Ulrich. &#8220;<a class="reference external" href="https://web.archive.org/web/20131224094752/http://www.omg.org/news/meetings/tc/mn/special-events/br/Ulrich.pdf">OMG Business Rules Symposium</a>&#8221; (архив <a class="reference external" href="http://www.omg.org/news/meetings/tc/mn/special-events/br/Ulrich.pdf">оригинала</a> от 2013-12-24)]</div></blockquote>
 <p>Craig Larman считает термин Business синонимом к термину Domain, и в книге &#8220;Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development&#8221; он многократно приводит их рядом, дополняя один термин другим, взятым в скобки.
 Термину Business Rules он дает следующее определение:</p>
 <blockquote>
@@ -290,9 +293,9 @@ I find this a curious term because there are few things that are less logical th
 <p>- &#8220;Patterns of Enterprise Application Architecture&#8221; <a class="footnote-reference" href="#fnpoeaa" id="id7">[3]</a> by Martin Fowler</p>
 </div></blockquote>
 </div>
-<div class="section" id="business-rules-application-logic">
-<h2><a class="toc-backref" href="#id75">Почему важно отделять Business Rules от Application Logic?</a><a class="headerlink" href="#business-rules-application-logic" title="Permalink to this headline">¶</a></h2>
-<p>Поскольку целью создания приложения является реализация именно Business Rules - критически важно обеспечить их переносимость, и отделить их от Application Logic.
+<div class="section" id="business-logic-application-logic">
+<h2><a class="toc-backref" href="#id75">Почему важно отделять Business Logic от Application Logic?</a><a class="headerlink" href="#business-logic-application-logic" title="Permalink to this headline">¶</a></h2>
+<p>Поскольку целью создания приложения является реализация именно Business Logic - критически важно обеспечить их переносимость, и отделить их от Application Logic.
 Эти два вида логики будут изменяться в разное время, с разной частотой и по разным причинам, поэтому их следует разделить
 так, чтобы их можно было изменять независимо <a class="footnote-reference" href="#fncarch" id="id8">[2]</a> .
 В свое время Гради Буч сказал, что &#8220;Архитектура отражает важные проектные решения по формированию системы, где важность определяется стоимостью изменений&#8221; <a class="footnote-reference" href="#fncarch" id="id9">[2]</a> .</p>
@@ -318,8 +321,8 @@ A Command [Gang of Four] is a good choice, since it allows it to easily get hold
 <p>4. <a class="reference external" href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html">Use Case</a> (<a class="reference external" href="http://wiki.c2.com/?UseCase">см. также</a>), который также, является разновидностью паттерна Command.
 На 15:50 Robert C. Martin проводит <a class="reference external" href="https://youtu.be/Nsjsiz2A9mg?t=15m45s">параллель между Use Case и паттерном Command</a>.</p>
 <p>Собственно говоря, производной паттерна Command является даже <a class="reference external" href="https://refactoring.com/catalog/replaceFunctionWithCommand.html">Method Object</a>.</p>
-<p>Use Case обязан своим существованием именно наличию Бизнес-Логики, которая  application specific, и не имеет смысла вне контекста приложения.
-Он обеспечивает независимость этих application-specific Business Rules от приложения путем инверсии контроля (IoC).</p>
+<p>Use Case обязан своим существованием именно наличию application-specific Business Rules, которые не имеют смысла существования вне контекста приложения.
+Он обеспечивает их независимость от приложения путем инверсии контроля (IoC).</p>
 <p>Если бы Use Case не содержал Бизнес-Логики, то не было бы и смысла отделять его от Page Controller, иначе приложение пыталось бы абстрагироваться от самого себя же.</p>
 <p>Мы видим, что в организации Логики Приложения широко применяются разновидности паттерна Команда (Command).</p>
 <p>Рассмотренные способы организовывают, в первую очередь, Логику Приложения, и лишь во вторую очередь, Бизнес-Логику, которая не обязательно должна присутствовать, кроме случая использования Use Case, т.к. иначе он утратил бы причины для существования.</p>

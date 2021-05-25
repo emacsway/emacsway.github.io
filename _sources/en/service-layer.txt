@@ -111,6 +111,10 @@ Wikipedia `gives us the following definition of the term Business Logic <https:/
 
     In computer software, business logic or domain logic is the part of the program that encodes the real-world Business Rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.
 
+And explains how Business Logic differs from Business Rules:
+
+    Business logic should be distinguished from business rules.["`Definition of business logic <http://c2.com/cgi/wiki?BusinessLogicDefinition>`__"] Business logic is the portion of an enterprise system which determines how data is transformed or calculated, and how it is routed to people or software (workflow). Business rules are formal expressions of business policy. Anything that is a process or procedure is business logic, and anything that is neither a process nor a procedure is a business rule. Welcoming a new visitor is a process (workflow) consisting of steps to be taken, whereas saying every new visitor must be welcomed is a business rule. Further, business logic is procedural whereas business rules are declarative.[William Ulrich. "`OMG Business Rules Symposium <https://web.archive.org/web/20131224094752/http://www.omg.org/news/meetings/tc/mn/special-events/br/Ulrich.pdf>`__" (archived from `the original <http://www.omg.org/news/meetings/tc/mn/special-events/br/Ulrich.pdf>`__ on 2013-12-24)]
+
 Craig Larman sees the term Business as synonymous with Domain, and in "Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development", he cites them side by side many times, complementing one term with another in parentheses.
 He gives the next definition for the term Business Rules:
 
@@ -179,10 +183,10 @@ And even he admits the presence of a certain vagueness:
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
 
-Why is separation of Business Rules from Application Logic so important?
+Why is separation of Business Logic from Application Logic so important?
 ------------------------------------------------------------------------
 
-Since the purpose of creating an application is precisely the implementation of Business Rules, it is important to ensure their portability and to separate them from the Application Logic.
+Since the purpose of creating an application is precisely the implementation of Business Logic, it is important to ensure their portability and to separate them from the Application Logic.
 These two different kinds of rules will change  at different times, at different rates, and for different reasons - so they should be separated so that they can be independently changed [#fncarch]_ .
 Grady Booch said that "Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change [#fncarch]_ ."
 
@@ -216,8 +220,8 @@ At 15:50 Robert C. Martin points to a `parallel between Use Case and Command pat
 
 In fact, even `Method Object <https://refactoring.com/catalog/replaceFunctionWithCommand.html>`__ is a derivative of Command pattern.
 
-Use Case is necessary because there is Application-specific Business Logic which does not make sense outside the context of the application.
-It ensures that these application-specific Business Rules are independent of the Application Logic using inverse control (IoC).
+Use Case is necessary because there are application-specific Business Rules which do not make sense outside the context of the application.
+It makes them independent from the Application Logic using inverse control (IoC).
 
 If the Use Case did not contain Business Logic, then there would be no sense in separating it from Page Controller, otherwise the application would try to abstract itself from itself.
 
