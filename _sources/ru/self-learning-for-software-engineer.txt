@@ -386,6 +386,10 @@ API-Design
 - "`Microservice API Patterns <https://microservice-api-patterns.org/>`__"
 - "`OpenAPIs <https://www.openapis.org/>`__"
 - "`AsyncAPI <https://www.asyncapi.com/>`__"
+- "`Resource Query Language (RQL) <http://www.persvr.org/rql/>`__"
+- "`JSON:API <https://jsonapi.org/>`__"
+- "`JSONPath specification - XPath for JSON <https://goessner.net/articles/JsonPath/>`__", "`Introduction to JsonPath <https://www.baeldung.com/guide-to-jayway-jsonpath>`__"
+- "`Falcor <https://netflix.github.io/falcor/starter/what-is-falcor.html>`__"
 
 
 Event Storming
