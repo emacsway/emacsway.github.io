@@ -365,6 +365,16 @@ Strong Consistency - новичкам
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary :: Ask Whose Job It Is"
 
 
+Обратная совместимость формата объектов событий
+-----------------------------------------------
+
+Другим достоинством Strong Consistency является отсутствие потребности в обеспечении обратной совместимости формата объектов событий, ведь их время жизни ограничено одной транзакцией.
+При использовании же шины сообщений всегда сохраняется вероятность того, что обновленная версия программного обеспечения, после ее развертывания, получит из шины устаревший формат сообщения, отправленный в шину еще предыдущей версией программного обеспечения.
+Кроме того, возникает потребность поддерживать оба формата сообщений для организации `blue-green deployment <https://thenewstack.io/deployment-strategies/>`__.
+
+Подробнее о версионировании сообщений смотрите в книге "`Versioning in an Event Sourced System <https://leanpub.com/esversioning>`__" by Greg Young (`конспект книги <https://github.com/luque/Notes--Versioning-Event-Sourced-System>`__), а так же в главе "`Event versioning <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj591577(v=pandp.10)#event-versioning>`__ книги "CQRS Journey".
+
+
 Рекомендации от ".NET Microservices"
 ------------------------------------
 
