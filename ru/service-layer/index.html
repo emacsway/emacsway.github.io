@@ -511,7 +511,7 @@ architectural framework.</p>
 </div>
 <div class="section" id="id22">
 <h1><a class="toc-backref" href="#id82">Классификация Сервисов по способу взаимодействия</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h1>
-<p>По способу взаимодействия Сервисы разделяются на <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Оркестровые</a> (&#8220;request/response&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Хореографические</a> (Event-Driven, т.е. loosely coupled) <a class="footnote-reference" href="#fnbm" id="id23">[8]</a>.
+<p>По способу взаимодействия Сервисы разделяются на <a class="reference external" href="https://en.wikipedia.org/wiki/Orchestration_(computing)">Оркестровые</a> (&#8220;request/response&#8221;, т.е. сервис осведомлен об интерфейсе других сервисов) и <a class="reference external" href="https://en.wikipedia.org/wiki/Service_choreography">Хореографические</a> (Event-Driven, т.е. <a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/patterns/choreography">loosely coupled</a>) <a class="footnote-reference" href="#fnbm" id="id23">[8]</a>.
 Их еще называют идиоматическими стилями взаимодействия.
 Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
 Последний же является разновидностью паттерна Command, и используется, как правило, в Event-Driven Architecture (в частности, в CQRS и Event Sourcing приложениях, наглядный пример - reducer в Redux), и в DDD-приложениях (обработчик Domain/Integration Event).</p>

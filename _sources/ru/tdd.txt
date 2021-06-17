@@ -684,13 +684,31 @@ One assertion per test?
 
     \- "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
 
+Эту же тему рассматривает и Robert C. Martin в главе "Chapter 9: Unit Tests :: One Assert per Test" книги "Clean Code: A Handbook of Agile Software Craftsmanship":
+
+    Я думаю, что правило «одного assert» является хорошей рекомендацией.
+    Обычно я стараюсь создать предметно-ориентированный язык тестирования, который это правило поддерживает, как в листинге 9.5.
+    Но при этом я не боюсь включать в свои тесты более одной директивы assert.
+    Вероятно, лучше всего сказать, что количество директив assert в тесте должно быть сведено к минимуму.
+
+    I think the single assert rule is a good guideline.
+    I usually try to create a domainspeciﬁc testing language that supports it, as in Listing 9-5.
+    But I am not afraid to put more than one assert in a test.
+    I think the best thing we can say is that the number of asserts in a test ought to be minimized.
+
+    - "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin
+
+Здесь он отсылает к статье "`One Assertion Per Test <https://www.artima.com/weblogs/viewpost.jsp?thread=35578>`__" by Dave Astels в качестве первоисточника.
+
+
 .. rubric:: Footnotes
 
 .. [#fntdd] "Test-Driven Development By Example" by Kent Beck
 .. [#fnccoder] "The Clean Coder: a code of conduct for professional programmers" by Robert C. Martin
+.. [#fnccode] "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
 .. [#fncarch] "Clean Architecture: A Craftsman’s Guide to Software Structure and Design" by Robert C. Martin
 .. [#fnrefactoring] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 
 
-.. update:: Sep 30, 2019
+.. update:: Jun 17, 2021
 

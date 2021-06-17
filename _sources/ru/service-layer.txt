@@ -472,7 +472,7 @@ Eric Evans разделяет Сервисы на три уровня логик
 Классификация Сервисов по способу взаимодействия
 ================================================
 
-По способу взаимодействия Сервисы разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. loosely coupled) [#fnbm]_.
+По способу взаимодействия Сервисы разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. `loosely coupled <https://docs.microsoft.com/en-us/azure/architecture/patterns/choreography>`__) [#fnbm]_.
 Их еще называют идиоматическими стилями взаимодействия.
 Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
 Последний же является разновидностью паттерна Command, и используется, как правило, в Event-Driven Architecture (в частности, в CQRS и Event Sourcing приложениях, наглядный пример - reducer в Redux), и в DDD-приложениях (обработчик Domain/Integration Event).

@@ -198,7 +198,7 @@ Four ways to organize Application Logic are widespread:
 
 1. Orchestration Service ("request/response", i.e. the service is aware of the interface of other services) aka Service Layer.
 
-2. Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).
+2. Choreography Service (Event-Driven, т.е. `loosely coupled <https://docs.microsoft.com/en-us/azure/architecture/patterns/choreography>`__), which is a derivative of Command pattern and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).
 
 3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ and `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (which are also kinds of Command pattern).
 
