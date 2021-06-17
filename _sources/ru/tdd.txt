@@ -696,7 +696,7 @@ One assertion per test?
     But I am not afraid to put more than one assert in a test.
     I think the best thing we can say is that the number of asserts in a test ought to be minimized.
 
-    - "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin
+    -- "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin
 
 Здесь он отсылает к статье "`One Assertion Per Test <https://www.artima.com/weblogs/viewpost.jsp?thread=35578>`__" by Dave Astels в качестве первоисточника.
 
