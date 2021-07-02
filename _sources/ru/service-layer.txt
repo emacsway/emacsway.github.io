@@ -160,11 +160,116 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
 
     Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
 
-    \- "Clean Architecture" by Robert Martin
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
 
 Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
 
-И, хотя, Robert Martin выделяет отдельную категорию классов UseCase (Interactor) для Application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Logic.
+При этом, Robert Martin выводит свои 4 слоя: Entities, Use Cases, Interface Adapters, Frameworks and Drivers.
+
+Нужно отметить, что Robert Martin под "Business Rules" понимает не только правила, но и процедуры, смывая грань между "Business Rules" и "Business Logic":
+
+    Строго говоря, бизнес-правила — это правила или процедуры, делающие или экономящие деньги.
+
+    Strictly speaking, business rules are rules or procedures that make or save the business money.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
+
+При этом, у него можно наблюдать небольшое противоречие.
+С одной стороны, вся суть "Business Rules" у него сводится к тому, что они относятся исключительно к реальному миру:
+
+    Строго говоря, бизнес-правила — это правила или процедуры, делающие или экономящие деньги.
+    Еще строже говоря, бизнес-правила — это правила, делающие или экономящие деньги **независимо от наличия или отсутствия их реализации на компьютере**.
+    Они делают или экономят деньги, **даже когда выполняются вручную**.
+
+    Банк взимает N% за кредит — это бизнес-правило, которое приносит банку деньги.
+    **И неважно, имеется ли компьютерная программа, вычисляющая процент, или служащий вычисляет его на счетах.**
+
+    Strictly speaking, business rules are rules or procedures that make or save the business money.
+    Very strictly speaking, these rules would make or save the business money, **irrespective of whether they were implemented on a computer**.
+    They would make or save money **even if they were executed manually**.
+
+    The fact that a bank charges N% interest for a loan is a business rule that makes the bank money.
+    **It doesn’t matter if a computer program calculates the interest, or if a clerk with an abacus calculates the interest.**
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
+
+Далее Robert Martin говорит важную информацию - "Business Rules" являются причиной существования Приложения.
+Из этого следует, что Приложение уже не может являться причиной существования "Business Rules":
+
+    **Бизнес-правила являются причиной существования программной системы.**
+    Они составляют основу функционирования.
+    Они порождают код, который делает или экономит деньги.
+    Они — наши семейные реликвии.
+
+    Бизнес-правила должны оставаться в неприкосновенности, незапятнанными низкоуровневыми аспектами, такими как пользовательский интерфейс или база данных.
+    В идеале код, представляющий бизнес-правила, должен быть сердцем системы, а другие задачи — просто подключаться к ним.
+    Реализация бизнес-правил должна быть самым независимым кодом в системе, готовым к многократному использованию.
+
+    **Business rules are the reason a software system exists.**
+    They are the core functionality.
+    They carry the code that makes, or saves, money.
+    They are the family jewels.
+
+    The business rules should remain pristine, unsullied by baser concerns such as the user interface or database used.
+    Ideally, the code that represents the business rules should be the heart of the system, with lesser concerns being plugged in to them.
+    The business rules should be the most independent and reusable code in the system.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
+
+Однако, с другой стороны, он допускает существование "Business Rules" в контексте функционирования приложения:
+
+    Не все бизнес-правила так же чисты, как сущности.
+    **Некоторые бизнес-правила делают или экономят деньги, определяя и ограничивая деятельность автоматизированной системы.**
+    Эти правила не могут выполняться вручную, потому что **имеют смысл только как часть автоматизированной системы.**
+
+    Not all business rules are as pure as Entities.
+    **Some business rules make or save money for the business by defining and constraining the way that an automated system operates.**
+    These rules would not be used in a manual environment, because **they make sense only as part of an automated system.**
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
+
+Не совсем понятно - "Business Rules" **являются причиной существования Приложения**, или **имеют имеют смысл только как часть Приложения**?
+"Business rules are the reason a software system exists" или "they make sense only as part of an automated system"?
+
+Тут просматривается небольшое взаимоисключение, и это именно та причина, по которой я придерживаюсь формулировки Eric Evans - "Application Layer does not contain business rules".
+
+Понятно, что здесь не хватает термина для выражения различных явлений, и Robert Martin решает дифференцировать уже существующий термин "Business Rules", разделив его на два уровня - "Critical Business Rules" и "Application-specific Business Rules":
+
+    **Вариант использования описывает способ использования автоматизированной системы.**
+    Он определяет, что должен ввести пользователь, что должно быть выведено в ответ и какие действия должны быть выполнены для получения выводимой информации.
+    В отличие от **критических бизнес-правил** внутри сущностей, вариант использования описывает **бизнес-правила, характерные для конкретного приложения.**
+
+    A use case is a description of **the way that an automated system is used**.
+    It specifies the input to be provided by the user, the output to be returned to the user, and the processing steps involved in producing that output.
+    A use case describes **application-specific business rules** as opposed to the **Critical Business Rules** within the Entities.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
+
+Но далее он сводит обязанности Use Case к обязанностям Application Logic, и подчеркивает, что Use Case координирует "Critical Business Rules", реализованных в виде Entities:
+
+    Варианты использования определяют, как и когда вызываются критические бизнес-правила в сущности.
+    Варианты использования управляют действиями сущности.
+
+    <...>
+
+    Почему сущности относятся к высокому уровню, а варианты использования к низкому?
+    Потому что варианты использования характерны для единственного приложения и, соответственно, ближе к вводу и выводу системы.
+    **Сущности — это обобщения, которые можно использовать в множестве разных приложений**, соответственно, они дальше от ввода и вывода системы.
+    Варианты использования зависят от сущностей; сущности не зависят от вариантов использования.
+
+    Use cases contain the rules that specify how and when the Critical Business Rules within the Entities are invoked.
+    Use cases control the dance of the Entities.
+
+    <...>
+
+    Why are Entities high level and use cases lower level?
+    Because use cases are specific to a single application and, therefore, are closer to the inputs and outputs of that system.
+    **Entities are generalizations that can be used in many different applications, so they are farther from the inputs and outputs of the system.**
+    Use cases depend on Entities; Entities do not depend on use cases.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
+
+Хотя, Robert Martin выделяет отдельную категорию классов UseCase (Interactor) для Application-specific Business Rules, на практике этот уровень часто "округляется" до уровня Application Logic.
 Так, например, Martin Fowler и Randy Stafford разделяют "Business Logic" на два вида - Логика Домена (Domain Logic) и Логика Приложения (Application Logic):
 
     Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области

@@ -102,7 +102,7 @@
 Также следует отличать Anemic Domain Model от `ViewModel <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice#layers-in-ddd-microservices>`__, ибо ViewModel по определению не предназначено для какого-либо поведения (а именно неверное расположение поведения является сутью антипаттерна Anemic Domain Model), и часто `применяется в CQRS <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/cqrs-microservice-reads>`__.
 
 Но вернемся к обсуждаемой статье.
-Я так и не смог найти имя автора той статьи на том сайте.
+Я так и не смог обнаружить имя автора той статьи на том сайте.
 Не уверен, что это как-то могло бы поднять авторитет статьи, которая с такой легкостью берется опровергать статью "`Anemic Domain Model <https://www.martinfowler.com/bliki/AnemicDomainModel.html>`__" by Martin Fowler.
 Зато я нередко наблюдал подобный приём с целью привлечения внимания к ресурсу, используя общественную резонансность скандальных утверждений.
 
