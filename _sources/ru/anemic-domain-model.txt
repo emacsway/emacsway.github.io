@@ -223,6 +223,7 @@ NoSQL хранилища построены вокруг идеи агрегат
 
 Да, бывают случаи, когда целесообразней использовать структуры данных вместо объектов.
 Хорошо эту тему раскрывает Robert C. Martin в главе "Chapter 6: Objects and Data Structures :: Data/Object Anti-Symmetry" книги "Clean Code: A Handbook of Agile Software Craftsmanship".
+В Википедии это называется `Expression problem <https://en.m.wikipedia.org/wiki/Expression_problem>`__.
 Мне попадалась ещё статья на эту тему: "`Что такое expression problem, или о дуализме функционального и объектно-ориентированного программирования <https://ru.hexlet.io/blog/posts/expression-problem>`__" / Дмитрий Дементий.
 Но эта тема не имеет никакого отношения к предмету обсуждаемой статьи, которая посвящена тому, как писать процедурные программы в Объектно-Ориентированных языках.
 
