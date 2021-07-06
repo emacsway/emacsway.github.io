@@ -253,7 +253,8 @@ NoSQL хранилища построены вокруг идеи агрегат
 
 Видео:
 
-- `Доклад Vladimir Khorikov про Anemic Domain Model <https://youtu.be/UlEmtTJUwtA?t=6075>`__
+- `Доклад Vladimir Khorikov про Anemic Domain Model <https://youtu.be/cZYezl_2mZk?t=5855>`__
+- `Доклад Vladimir Khorikov про Anemic Domain Model 2 <https://youtu.be/JOy_SNK3qj4?t=1323>`__
 
 .. В определенной мере, затрагиваемая тема относится и к этой презентации \https://www.destroyallsoftware.com/talks/boundaries .
 
