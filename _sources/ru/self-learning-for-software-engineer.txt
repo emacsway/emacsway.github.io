@@ -494,6 +494,7 @@ Agile
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
 - "Technology Strategy Patterns: Architecture as Strategy" 1st edition by Eben Hewitt
 - "Thinking in Systems: A Primer" by Donella H. Meadows, Diana Wright
+- "Social psychology" 7th edition David G. Myers. Перевод: "Социальная психология" / Майерс Д. Пер. с англ. З. Замчук; Зав. ред. кол. Л. Винокуров. — 7-е изд. — СПб.: Питер, 2006.
 
 
 Базы данных
@@ -562,8 +563,6 @@ PostgresPro представил `три книги <https://postgrespro.ru/educ
 
 Streaming Processing
 --------------------
-
-По рекомендации Геннадия Круглова:
 
 - "Streaming Data: Understanding the real-time pipeline" 1st edition by Andrew Psaltis
 - "Big Data: Principles and best practices of scalable realtime data systems" 1st edition by Nathan Marz, James Warren
@@ -763,7 +762,8 @@ Body of Knowledge
 - "`A Guide to the Business Analysis Body of Knowledge (BABOK®) <https://www.iiba.org/career-resources/a-business-analysis-professionals-foundation-for-success/babok/>`__"
 - "`Agile Extension to the BABOK® Guide <https://www.iiba.org/career-resources/business-analysis-resources/iiba-bookstore/>`__"
 - "`DAMA-DMBOK: Data Management Body of Knowledge <https://www.dama.org/content/what-data-management>`__" 2nd edition by DAMA International
-- "`The Project Management Body of Knowledge <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>`__"
+- "`The Project Management Body of Knowledge (PMBoK) <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>`__" by Project Management Institute (PMI)
+- "`Agile Practice Guide <https://www.pmi.org/pmbok-guide-standards/practice-guides/agile>`__" by Project Management Institute (PMI), 2017
 - "`Учебник 4CIO. Настольная книга ИТ-Директора <https://book4cio.ru/>`__"
 - "`Учебник 4CDTO. Настольная книга руководителя цифровой трансформации <https://4cio.ru/pages/570>`__"
 
