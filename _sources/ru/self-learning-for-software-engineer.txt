@@ -494,7 +494,7 @@ Agile
 - "Presentation patterns: techniques for crafting better presentations" by Neal Ford, Matthew McCullough, Nathaniel Schutta
 - "Technology Strategy Patterns: Architecture as Strategy" 1st edition by Eben Hewitt
 - "Thinking in Systems: A Primer" by Donella H. Meadows, Diana Wright
-- "Social psychology" 7th edition David G. Myers. Перевод: "Социальная психология" / Майерс Д. Пер. с англ. З. Замчук; Зав. ред. кол. Л. Винокуров. — 7-е изд. — СПб.: Питер, 2006.
+- "Social psychology" 13th edition by David G. Myers. Перевод: "Социальная психология" / Майерс Д. Пер. с англ. З. Замчук; Зав. ред. кол. Л. Винокуров. — 7-е изд. — СПб.: Питер, 2006.
 
 
 Базы данных
