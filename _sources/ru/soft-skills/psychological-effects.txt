@@ -40,6 +40,8 @@
 - "`Эффект телескопа <https://ru.wikipedia.org/wiki/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82_%D1%82%D0%B5%D0%BB%D0%B5%D1%81%D0%BA%D0%BE%D0%BF%D0%B0>`__"
 - "`Эффект недавнего <https://ru.wikipedia.org/wiki/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82_%D0%BD%D0%B5%D0%B4%D0%B0%D0%B2%D0%BD%D0%B5%D0%B3%D0%BE>`__"
 - "`Каскад доступной информации <https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%81%D0%BA%D0%B0%D0%B4_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%BE%D0%B9_%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8>`__"
+- "`Закон тривиальности (эффект велосипедного сарая) <https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD_%D1%82%D1%80%D0%B8%D0%B2%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8>`__"
+- "`Первый закон Паркинсона (Работа заполняет время, отпущенное на неё) <https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD%D1%8B_%D0%9F%D0%B0%D1%80%D0%BA%D0%B8%D0%BD%D1%81%D0%BE%D0%BD%D0%B0>`__"
 
 Обзорные (агрегированные) статьи:
 
@@ -56,5 +58,22 @@
 
 - "`О медленном программировании <https://habr.com/ru/company/web_payment_ru/blog/246081/>`__"
 
+
+Шпаргалки по теме:
+
+- "`Шпаргалка по когнитивным искажениям в виде мобильного приложения <https://play.google.com/store/apps/details?id=ru.free_coding.biascs>`__"
+
+В виде JSON:
+
+- https://www.dropbox.com/s/8l49rx8ig9i4za3/cognitive-bias-cheat-sheet-ru.json
+- http://ezh.li/cbcs-json
+- https://github.com/busterbenson/public/blob/master/cognitive-bias-cheat-sheet.json
+
+
+Статьи по теме:
+
+- "`Cognitive bias cheat sheet <https://betterhumans.pub/cognitive-bias-cheat-sheet-55a472476b18>`__" by Buster Benson
+- "`Памятка по когнитивным искажениям <https://medium.com/russian/cognitive-bias-cheat-sheet-5bb0664b67b5>`__" / Alexey Ezhikov
+- "`Шпаргалка по когнитивным искажениям <https://www.talent-management.com.ua/3467-shpargalka-po-kognitivnym-iskazheniyam/>`__"
 
 .. update:: May 04, 2021

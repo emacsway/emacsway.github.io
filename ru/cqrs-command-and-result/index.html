@@ -357,8 +357,22 @@ buffer.remove</p>
 <div class="section" id="id7">
 <h1><a class="toc-backref" href="#id22">Однонаправленный поток изменений</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
 <p>Referential Transparency означает, что вызов функции можно многократно повторять без какого-либо ущерба, и она всегда будет возвращать один и тот же результат.</p>
-<p>Более того, - возникает возможность легко управлять потоком изменений, сделав его однонаправленным, и сформировав единственный источник истины (single source of truth - один из ключевых принципов <a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/three-principles">Redux</a>, который <a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/motivation">следует принципам CQRS</a>).
-Это существенно облегчает создание сложных приложений, используя Task Based UI, позволяет легко организовать репликацию и кэширование, устранить задержки.
+<p>Более того, - возникает возможность легко управлять потоком изменений, сделав его однонаправленным, и сформировав единственный источник истины (single source of truth - один из ключевых принципов <a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/three-principles">Redux</a>, который <a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/motivation">следует принципам CQRS</a>).</p>
+<blockquote>
+<div><p>Following in the steps of <a class="reference external" href="https://facebook.github.io/flux">Flux</a>, <a class="reference external" href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>, and <a class="reference external" href="https://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a>, Redux attempts to make state mutations predictable by imposing certain restrictions on how and when updates can happen. These restrictions are reflected in the <a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/three-principles">three principles</a> of Redux.</p>
+<p class="attribution">&mdash;&#8220;<a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/motivation">Motivation</a>&#8220;</p>
+</div></blockquote>
+<blockquote>
+<div><p>Redux can be described in three fundamental principles: 1) Single source of truth... 2) State is read-only... 3) Changes are made with pure functions</p>
+<p>&lt;...&gt;</p>
+<p>The only way to change the state is to emit an action, an object describing what happened.</p>
+<p class="attribution">&mdash;&#8220;<a class="reference external" href="https://redux.js.org/understanding/thinking-in-redux/three-principles">Three Principles</a>&#8220;</p>
+</div></blockquote>
+<blockquote>
+<div><p>Redux uses a &#8220;one-way data flow&#8221; app structure</p>
+<p class="attribution">&mdash;&#8220;<a class="reference external" href="https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow">Redux Fundamentals, Part 2: Concepts and Data Flow</a>&#8220;</p>
+</div></blockquote>
+<p>Это существенно облегчает создание сложных приложений, используя Task Based UI, позволяет легко организовать репликацию и кэширование, устранить задержки.
 Подробнее эти вопросы хорошо раскрывает Udi Dahan в монументальной статье &#8220;<a class="reference external" href="http://udidahan.com/2009/12/09/clarified-cqrs/">Clarified CQRS</a>&#8221;.</p>
 <p>Статья доступна для скачивания <a class="reference external" href="https://udidahan.com/wp-content/uploads/Clarified_CQRS.pdf">в формате pdf</a>.</p>
 <p>Представьте, что пользователь добавил в корзину последний товар, используя совмещенную операцию Команды и Запроса. В ответ на Команду, сервер сообщил, что товар снят с продажи. Клиентское приложение пользователя обновило свое состояние, и заблокировало в UI возможность заказать уже недоступный товар.</p>

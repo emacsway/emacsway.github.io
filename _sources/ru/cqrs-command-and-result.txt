@@ -364,6 +364,27 @@ B.Meyer решает эту проблему с помощью концепци�
 Referential Transparency означает, что вызов функции можно многократно повторять без какого-либо ущерба, и она всегда будет возвращать один и тот же результат.
 
 Более того, - возникает возможность легко управлять потоком изменений, сделав его однонаправленным, и сформировав единственный источник истины (single source of truth - один из ключевых принципов `Redux <https://redux.js.org/understanding/thinking-in-redux/three-principles>`__, который `следует принципам CQRS <https://redux.js.org/understanding/thinking-in-redux/motivation>`__).
+
+    Following in the steps of `Flux <https://facebook.github.io/flux>`__, `CQRS <https://martinfowler.com/bliki/CQRS.html>`__, and `Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__, Redux attempts to make state mutations predictable by imposing certain restrictions on how and when updates can happen. These restrictions are reflected in the `three principles <https://redux.js.org/understanding/thinking-in-redux/three-principles>`__ of Redux.
+
+    -- "`Motivation <https://redux.js.org/understanding/thinking-in-redux/motivation>`__"
+
+..
+
+    Redux can be described in three fundamental principles: 1) Single source of truth... 2) State is read-only... 3) Changes are made with pure functions
+
+    <...>
+
+    The only way to change the state is to emit an action, an object describing what happened.
+
+    -- "`Three Principles <https://redux.js.org/understanding/thinking-in-redux/three-principles>`__"
+
+..
+
+    Redux uses a "one-way data flow" app structure
+
+    -- "`Redux Fundamentals, Part 2: Concepts and Data Flow <https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow>`__"
+
 Это существенно облегчает создание сложных приложений, используя Task Based UI, позволяет легко организовать репликацию и кэширование, устранить задержки.
 Подробнее эти вопросы хорошо раскрывает Udi Dahan в монументальной статье "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__".
 

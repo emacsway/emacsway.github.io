@@ -557,7 +557,7 @@ Strong Consistency - новичкам
 
     1. **Command Handler defines transaction boundary. Transaction is started when Command Handler is invoked and committed at the end.**
     2. **Each Domain Event handler is invoked in context of the same transaction boundary.**
-    3. If we want to process something outside the transaction, we need to create a public event based on the Domain Event. I call it Domain Event Notification, some people call it a public event, but the concept is the same.
+    3. If we want to process something outside the transaction, we need to create a **public event** based on the Domain Event. I call it Domain Event Notification, `some people call it a public event <http://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__, but the concept is the same.
 
     The second most important thing is when to publish and process Domain Events? Events may be created after each action on the Aggregate, so we must publish them:
 
@@ -569,6 +569,12 @@ Strong Consistency - новичкам
     The second thing we have to do is to save notifications about Domain Events that we want to process outside of the transaction.
 
     \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" [#fnkgde2]_ by Kamil Grzybek
+
+Обратите внимание, что, по приведенной им ссылке, под термином "public event" понимается сообщение, выходящее за пределы Bounded Context (к этому вопросу мы еще вернемся):
+
+    Set up separate messaging channels for inside the Bounded Context and outside. Keep all events private by default, and indicate the ones you want to make public with an explicit @Public annotation, a marker interface, or an isPublic():bool method. When emitting events, the event publishing mechanism knows to read the annotation and either send the event on the private channel only, or on both the private and the public channel.
+
+    -- "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
 
 И, в своем демонстрационном приложении sample-dotnet-core-cqrs-api, `он демонстрирует обработку Domain Event в одной транзакции с агрегатом <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Application/Orders/PlaceCustomerOrder/OrderPlacedDomainEventHandler.cs#L22>`__.
 
@@ -708,7 +714,7 @@ Domain Events могут покидать пределы Bounded Context:
 1. Domain Events, которые действуют исключительно внутри Bounded Context, и доставляются посредством ГОФ-паттернов синхронно или асинхронно (но исключительно in-process, используя event-loop и async/await конструкции) в той же транзакции.
 2. Integration Event, которые выходят за пределы Bounded Context, доставляются интеграционной шиной, всегда асинхронны и в другой транзакции.
 
-Такого же мнения придерживается и Kamil Grzybek, называя внешние события термином "Domain Event Notifications":
+Такого же мнения придерживается и Kamil Grzybek, называя внешние события (public event, которые уже упоминались) термином "Domain Event Notifications":
 
     Last thing to consider is processing of Domain Event Notifications (public events). We need to find a way to process them outside transaction and here Outbox Pattern comes in to play.
 
@@ -731,11 +737,47 @@ Domain Events могут покидать пределы Bounded Context:
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" [#fnkgde1]_ by Kamil Grzybek
 
-А в одном из своих комментариев он прямо называет их "Integration Events":
+В одном из своих комментариев он  связывает "Domain Event Notification" с "Integration Events":
 
-    Domain Event Notification often becomes an **Integration Event** which is sent to Events Bus to other Bounded Context.
+My approach is similar to Vaughn Vernon - I try always handle event in separate transaction if it is possible. To do that I have two types of events: Domain Events (private, handled in the same transaction) and Domain Events Notifications (handled outside transaction). Domain Event Notification often becomes an **Integration Event** which is send to Events Bus to other Bounded Context. This way I support all cases - immediate consistency, eventual consistency and integrations scenarios.
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620>`__" [#fnkgde1]_, comment of Kamil Grzybek
+
+Обратите внимание на окончание - там перечислены три сценария:
+
+1. Immediate consistency
+2. Eventual consistency
+3. Integrations scenarios
+
+В другом комментарии он вносит уточнение:
+
+    Domain Event - private event, not persisted [Outbox], part of UL
+
+    Domain Event Notification - private event, persisted [Outbox], part of UL. Sometimes called "persisted event"
+
+    Integration event - public event, part of PL as you described
+
+    \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/#comment-5205858557>`__" [#fnkgde2]_ by Kamil Grzybek
+
+Здесь у него, правда, наблюдается небольшое противоречие с предыдущим его комментарием:
+
+    If you want to process Domain Event in separate transaction, you need to create Domain Event Notification **(public event)** which is saved within the same transaction to the Outbox but processed in different (Outbox processing).
+
+    \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/#comment-4507778871>`__" [#fnkgde2]_ by Kamil Grzybek
+
+А так же, наблюдается противоречие с другим его выражением, где он, ссылаясь на определение Mathias Verraes, приравнивает Domain Event Notification к "public event":
+
+    3. If we want to process something outside the transaction, we need to create a **public event** based on the Domain Event. I call it Domain Event Notification, `some people call it a public event <http://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__, but the concept is the same.
+
+    \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" [#fnkgde2]_ by Kamil Grzybek
+
+Как уже упоминалось ранее, по приведенной им ссылке, под термином "public event" понимается сообщение, выходящее за пределы Bounded Context:
+
+    Set up separate messaging channels for inside the Bounded Context and outside. Keep all events private by default, and indicate the ones you want to make public with an explicit @Public annotation, a marker interface, or an isPublic():bool method. When emitting events, the event publishing mechanism knows to read the annotation and either send the event on the private channel only, or on both the private and the public channel.
+
+    -- "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
+
+Но, в целом, понятно, что Domain Event обрабатывается внутри транзакции, Domain Event Notification - вне транзакции (и может требовать Outbox pattern), и Integration Event - за пределами Bounded Context.
 
 Еще дальше идут авторы книги "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_, вводя явное разделение внутренних и внешних событий:
 
