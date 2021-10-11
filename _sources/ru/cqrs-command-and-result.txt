@@ -499,7 +499,13 @@ Referential Transparency означает, что вызов функции мо
 
 Вопрос не в том, возвращает ли команда результат (при этом нужно отличать результат от служебной информации, например, от успешности валидации и принятия команды), а в том, можно ли получить информацию о ресурсе без abstract side effect, т.е. смогут ли другие клиенты получить ту же информацию, если она им нужна.
 
-Этот вопрос так же разбирал Максим Аршинов в статье "`CQRS. Факты и заблуждения <https://habr.com/ru/post/347908/>`__".
+Этот вопрос также разбирали следующие авторы:
+
+- "`CQRS. Факты и заблуждения <https://habr.com/ru/post/347908/>`__" / Максим Аршинов
+- "`Can command return a value? <https://event-driven.io/en/can_command_return_a_value/>`__" by Oskar Dudycz
+- "`CQRS facts and myths explained <https://event-driven.io/en/cqrs_facts_and_myths_explained/>`__" by Oskar Dudycz
+- "`CQS versus server generated IDs <https://blog.ploeh.dk/2014/08/11/cqs-versus-server-generated-ids/>`__" by Mark Seemann
+- "`Returning data from command handlers <https://blogs.cuttingedge.it/steven/posts/2012/returning-data-from-command-handlers/>`__" by Steven van Deursen
 
 Ранее, этот вопрос :ref:`частично уже рассматривался <de-cqrs-command-and-result-ru>`.
 

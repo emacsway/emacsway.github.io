@@ -452,7 +452,14 @@ buffer.remove</p>
 <p>Итак, ответ прост - если вы не используете асинхронное исполнение Команды посредством инфраструктуры (Command Bus), то ничто не препятствует вам получить идентификатор вновь созданной записи БД в возвращаемом командой результате, и реализацию можно существенно упростить.
 Впрочем, возвратить результат можно даже используя Command Bus, но тут вопрос к потреблению ресурсов (все зависит от конкретного случая).</p>
 <p>Вопрос не в том, возвращает ли команда результат (при этом нужно отличать результат от служебной информации, например, от успешности валидации и принятия команды), а в том, можно ли получить информацию о ресурсе без abstract side effect, т.е. смогут ли другие клиенты получить ту же информацию, если она им нужна.</p>
-<p>Этот вопрос так же разбирал Максим Аршинов в статье &#8220;<a class="reference external" href="https://habr.com/ru/post/347908/">CQRS. Факты и заблуждения</a>&#8221;.</p>
+<p>Этот вопрос также разбирали следующие авторы:</p>
+<ul class="simple">
+<li>&#8220;<a class="reference external" href="https://habr.com/ru/post/347908/">CQRS. Факты и заблуждения</a>&#8221; / Максим Аршинов</li>
+<li>&#8220;<a class="reference external" href="https://event-driven.io/en/can_command_return_a_value/">Can command return a value?</a>&#8221; by Oskar Dudycz</li>
+<li>&#8220;<a class="reference external" href="https://event-driven.io/en/cqrs_facts_and_myths_explained/">CQRS facts and myths explained</a>&#8221; by Oskar Dudycz</li>
+<li>&#8220;<a class="reference external" href="https://blog.ploeh.dk/2014/08/11/cqs-versus-server-generated-ids/">CQS versus server generated IDs</a>&#8221; by Mark Seemann</li>
+<li>&#8220;<a class="reference external" href="https://blogs.cuttingedge.it/steven/posts/2012/returning-data-from-command-handlers/">Returning data from command handlers</a>&#8221; by Steven van Deursen</li>
+</ul>
 <p>Ранее, этот вопрос <a class="reference internal" href="../domain-events-in-ddd/#de-cqrs-command-and-result-ru"><span class="std std-ref">частично уже рассматривался</span></a>.</p>
 <div class="note update admonition">
 <p class="first last admonition-title">Updated on Apr 02, 2021</p>
