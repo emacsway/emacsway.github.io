@@ -906,6 +906,7 @@ Code Smell catalogs
 - `Complete serverless application to show how to apply DDD, Clean Architecture, and CQRS by practical refactoring of a Go project <https://github.com/ThreeDotsLabs/wild-workouts-go-ddd-example>`__ (`more info <https://threedots.tech/post/serverless-cloud-run-firebase-modern-go-application/>`__) by Robert Laszczak
 - `Clean Monolith Shop <https://github.com/ThreeDotsLabs/monolith-microservice-shop>`__ by Robert Laszczak - Source code for `Why using Microservices or Monolith can be just a detail? <https://threedots.tech/post/microservices-or-monolith-its-detail/>`__ article
 - `go-iddd - showcase project for implementing DDD in Go <https://github.com/AntonStoeckl/go-iddd>`__ by Anton Stöckl (see more info `here <https://medium.com/@TonyBologni/implementing-domain-driven-design-and-hexagonal-architecture-with-go-1-292938c0a4d4>`__ and `here <https://medium.com/@TonyBologni/implementing-domain-driven-design-and-hexagonal-architecture-with-go-2-efd432505554>`__).
+- `Real-time Map <https://github.com/asynkron/realtimemap-go>`__ displays real-time positions of public transport vehicles in Helsinki. It's a showcase for `Proto.Actor <https://proto.actor/>`__ - an ultra-fast distributed actors solution for Go, C#, and Java/Kotlin. See also `realtimemap-dotnet <https://github.com/asynkron/realtimemap-dotnet>`__ implementation in .NET.
 - `Demo taxi system, using eventsourcing library <https://github.com/johnbywater/es-example-taxi-demo>`__ by John Bywater
 - `Example "bank accounts" application using the Python eventsourcing library <https://github.com/johnbywater/es-example-bank-accounts>`__ by John Bywater
 - `Example "cargo shipping" application using the Python eventsourcing library <https://github.com/johnbywater/es-example-cargo-shipping>`__ by John Bywater
@@ -916,6 +917,7 @@ Code Smell catalogs
 - `eventuate-examples <https://github.com/eventuate-examples>`__ by Chris Richardson
 - `Sample code for the book Principles, Practices and Patterns of Domain-Driven Design <https://github.com/elbandit/PPPDDD>`__ by Scott Millett, Nick Tune
 - `Hands-On Domain-Driven Design with .NET Core, published by Packt <https://github.com/PacktPublishing/Hands-On-Domain-Driven-Design-with-.NET-Core>`__ by Alexey Zimarev
+- "`dotnet-sample <https://github.com/Eventuous/dotnet-sample>`__" - Sample application using Eventuous .NET by Alexey Zimarev
 - `Extended code samples related to the book "Domain Modeling Made Functional" <https://github.com/swlaschin/DomainModelingMadeFunctional>`__ by Scott Wlaschin
 - `Railway-Oriented-Programming-Example <https://github.com/swlaschin/Railway-Oriented-Programming-Example>`__ by Scott Wlaschin
 - `DDD with Actors <https://github.com/VaughnVernon/DDDwithActors>`__ by Vaughn Vernon
