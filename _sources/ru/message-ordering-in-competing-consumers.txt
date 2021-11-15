@@ -48,6 +48,7 @@
 - "`Principles of Eventual Consistency <https://www.microsoft.com/en-us/research/publication/principles-of-eventual-consistency/>`__" (`pdf <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/final-printversion-10-5-14.pdf>`__) by Sebastian Burckhardt, Microsoft Research
 - "`HighLoad++, Михаил Тюленев (MongoDB): Causal consistency: от теории к практике <https://habr.com/ru/company/ua-hosting/blog/487638/>`__"
 - "`Version Vector <https://martinfowler.com/articles/patterns-of-distributed-systems/version-vector.html>`__" by Unmesh Joshi
+- "`Nobody Needs Reliable Messaging <https://www.infoq.com/articles/no-reliable-messaging/>`__" by Marc de Graauw
 
 Список литературы по интеграционным паттернам:
 

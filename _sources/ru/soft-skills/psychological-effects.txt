@@ -76,4 +76,8 @@
 - "`Памятка по когнитивным искажениям <https://medium.com/russian/cognitive-bias-cheat-sheet-5bb0664b67b5>`__" / Alexey Ezhikov
 - "`Шпаргалка по когнитивным искажениям <https://www.talent-management.com.ua/3467-shpargalka-po-kognitivnym-iskazheniyam/>`__"
 
+Простой и доходчивый видеокурс по SoftSkills:
+
+- "`Soft Skills Pro <https://youtube.com/channel/UCSN7G8syJUaRiXrw1l0qk_g>`__"
+
 .. update:: May 04, 2021
