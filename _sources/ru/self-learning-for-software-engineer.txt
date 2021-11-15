@@ -505,6 +505,7 @@ Agile
 - "Technology Strategy Patterns: Architecture as Strategy" 1st edition by Eben Hewitt
 - "Thinking in Systems: A Primer" by Donella H. Meadows, Diana Wright
 - "Social psychology" 13th edition by David G. Myers. Перевод: "Социальная психология" / Майерс Д. Пер. с англ. З. Замчук; Зав. ред. кол. Л. Винокуров. — 7-е изд. — СПб.: Питер, 2006.
+- "Never split the difference: negotiating as if life depended on it" by Chris Voss. Перевод: "Договориться не проблема. Как добиваться своего без конфликтов и ненужных уступок." / Крисс Водс
 - "Искусство спора. О теории и практике спора." / Поварнин С.И.
 - "Эристика, или Искусство побеждать в спорах" / Шопенгауэр Артур. English: "The Art of Being Right: 38 Ways to Win an Argument" by Arthur Schopenhauer
 - "Как читать книги" / Поварнин С.И.
