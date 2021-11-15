@@ -9,7 +9,7 @@ Domain Events in DDD
    :author: Ivan Zakrevsky
 
 
-Статья переехала на новый адрес: https://dckms.github.io/system-architecture/emacsway/it/ddd/tactical-design/domain-model/domain-events/domain-events-in-ddd.html
+Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/ddd/tactical-design/domain-model/domain-events/domain-events-in-ddd.html>`__.
 
 
 .. update:: Nov 14, 2021
