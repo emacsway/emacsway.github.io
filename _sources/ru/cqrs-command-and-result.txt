@@ -8,7 +8,7 @@
    :category:
    :author: Ivan Zakrevsky
 
-Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/ddd/tactical-design/cqrs/cqrs-command-and-result.html>`__.
+Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/ddd/tactical-design/cqrs/cqrs-command-and-result.html>`__ в Distributed Collaborative Knowledge Management System for System Architecture (`о проекте <https://dckms.github.io/system-architecture/README.html>`__).
 
 
 .. update:: Nov 14, 2021

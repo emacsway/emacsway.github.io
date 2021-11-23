@@ -9,7 +9,7 @@ Domain Events in DDD
    :author: Ivan Zakrevsky
 
 
-Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/ddd/tactical-design/domain-model/domain-events/domain-events-in-ddd.html>`__.
+Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/ddd/tactical-design/domain-model/domain-events/domain-events-in-ddd.html>`__ в Distributed Collaborative Knowledge Management System for System Architecture (`о проекте <https://dckms.github.io/system-architecture/README.html>`__).
 
 
 .. update:: Nov 14, 2021
