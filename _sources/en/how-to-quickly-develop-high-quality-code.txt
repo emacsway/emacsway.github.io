@@ -886,6 +886,12 @@ The cost of change may not rise dramatically over time. The image from the book 
 
 Let me repeat the words of Kent Beck, the creator of the first agile methodology "Extreme Programming": **"If a flattened change cost curve makes XP possible, a steep change cost curve makes XP impossible."**
 
+    "Make the change easy then make the easy change."
+
+    -- Kent Beck, dddeu 20
+
+..
+
     "Extreme Programming (XP) is a software development methodology developed primarily by Kent Beck.
     XP was one of the first agile methods, indeed XP was the dominant agile method in the late 90s and early 00s before Scrum became dominant as the noughties passed.
     Many people (including myself) consider XP to be the primary catalyst that got attention to agile methods, and superior to Scrum as a base for starting out in agile development."
