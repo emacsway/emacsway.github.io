@@ -61,7 +61,7 @@
 
     Encapsulation picks up where abstraction leaves off. Abstraction says, "You're allowed to look at an object at a high level of detail." Encapsulation says, "Furthermore, you aren't allowed to look at an object at any other level of detail."
 
-    -- "Software Estimation: Demystifying the Black Art (Developer Best Practices)" by Steve McConnell
+    -- "Code Complete" 2nd edition by Steve McConnell
 
 ..
 
