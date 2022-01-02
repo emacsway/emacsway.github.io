@@ -8,6 +8,6 @@
    :category:
    :author: Ivan Zakrevsky
 
-Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/sdlc/adaptation/crash-course-in-software-development-economics.html>`__ в Distributed Collaborative Knowledge Management System for System Architecture (`о проекте <https://dckms.github.io/system-architecture/README.html>`__).
+Статья переехала на `новый адрес <https://dckms.github.io/system-architecture/emacsway/it/sdlc/uncertainty-management/adaptation/crash-course-in-software-development-economics.html>`__ в Distributed Collaborative Knowledge Management System for System Architecture (`о проекте <https://dckms.github.io/system-architecture/README.html>`__).
 
 .. update:: Dec 02, 2021
