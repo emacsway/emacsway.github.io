@@ -232,6 +232,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
 "Business rules are the reason a software system exists" или "they make sense only as part of an automated system"?
 
 Тут просматривается небольшое взаимоисключение, и это именно та причина, по которой я придерживаюсь формулировки Eric Evans - "Application Layer does not contain business rules".
+Тут нужно добавить, что в силу "`DDD Trilemma <https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/>`__", доменная логика все-таки может просачиваться на уровень логики приложения, см. вариант "Domain model purity + Performance" ("Split the decision-making process between the domain layer and controllers ").
 
 Понятно, что здесь не хватает термина для выражения различных явлений, и Robert Martin решает дифференцировать уже существующий термин "Business Rules", разделив его на два уровня - "Critical Business Rules" и "Application-specific Business Rules":
 

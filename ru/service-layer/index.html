@@ -297,7 +297,8 @@ These rules would not be used in a manual environment, because <strong>they make
 </div></blockquote>
 <p>Не совсем понятно - &#8220;Business Rules&#8221; <strong>являются причиной существования Приложения</strong>, или <strong>имеют имеют смысл только как часть Приложения</strong>?
 &#8220;Business rules are the reason a software system exists&#8221; или &#8220;they make sense only as part of an automated system&#8221;?</p>
-<p>Тут просматривается небольшое взаимоисключение, и это именно та причина, по которой я придерживаюсь формулировки Eric Evans - &#8220;Application Layer does not contain business rules&#8221;.</p>
+<p>Тут просматривается небольшое взаимоисключение, и это именно та причина, по которой я придерживаюсь формулировки Eric Evans - &#8220;Application Layer does not contain business rules&#8221;.
+Тут нужно добавить, что в силу &#8220;<a class="reference external" href="https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/">DDD Trilemma</a>&#8221;, доменная логика все-таки может просачиваться на уровень логики приложения, см. вариант &#8220;Domain model purity + Performance&#8221; (&#8220;Split the decision-making process between the domain layer and controllers &#8221;).</p>
 <p>Понятно, что здесь не хватает термина для выражения различных явлений, и Robert Martin решает дифференцировать уже существующий термин &#8220;Business Rules&#8221;, разделив его на два уровня - &#8220;Critical Business Rules&#8221; и &#8220;Application-specific Business Rules&#8221;:</p>
 <blockquote>
 <div><p><strong>Вариант использования описывает способ использования автоматизированной системы.</strong>
