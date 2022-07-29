@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">@emacsway's blog</title>
   <id>https://emacsway.github.io/blog/atom.xml</id>
-  <updated>2022-01-01T00:00:00Z</updated>
+  <updated>2022-07-29T00:00:00Z</updated>
   <link href="https://emacsway.github.io/" />
   <link href="https://emacsway.github.io/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.3">ABlog</generator>
@@ -122,13 +122,13 @@
   <entry xml:base="https://emacsway.github.io/blog/atom.xml">
     <title type="text">Про Anemic Domain Model</title>
     <id>https://emacsway.github.io/ru/anemic-domain-model/</id>
-    <updated>2021-05-17T00:00:00Z</updated>
+    <updated>2022-07-29T00:00:00Z</updated>
     <published>2018-01-04T00:00:00Z</published>
     <link href="https://emacsway.github.io/ru/anemic-domain-model/" />
     <author>
       <name>Ivan Zakrevsky</name>
     </author>
-    <content type="html">&lt;p&gt;Время от времени в кругу моих знакомых регулярно поднимается вопрос о том, что Anemic Domain Model - никакой вовсе и не антипаттерн, и в качестве аргументов приводятся ссылки на статью &amp;#8220;The Anaemic Domain Model is no Anti-Pattern, it’s a SOLID design&amp;#8221; &lt;a class=&quot;footnote-reference&quot; href=&quot;#fnadminapen&quot; id=&quot;id1&quot;&gt;[1]&lt;/a&gt;.
+    <content type="html">&lt;p&gt;Время от времени в кругу моих знакомых регулярно поднимается вопрос о том, что Anemic Domain Model - никакой вовсе и не антипаттерн, и в качестве аргументов приводятся ссылки на статью &amp;#8220;The Anaemic Domain Model is no Anti-Pattern, it&amp;#8217;s a SOLID design&amp;#8221; &lt;a class=&quot;footnote-reference&quot; href=&quot;#fnadminapen&quot; id=&quot;id1&quot;&gt;[1]&lt;/a&gt;.
 После очередного упоминания этой статьи я решил об этом написать.&lt;/p&gt;
 </content>
   </entry>
